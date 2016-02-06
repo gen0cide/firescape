@@ -29,6 +29,7 @@
 		<java classname="org.rscdaemon.server.Server" fork="true">
 			<jvmarg value="-Xms128m" />
 			<jvmarg value="-Xmx512m" />
+			<jvmarg value="-XX:+UseParallelGC" />
 			<arg value="world.xml" />
 			<classpath>
 				<pathelement location="${lib}/mina.jar" />
