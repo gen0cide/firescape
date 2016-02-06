@@ -1,0 +1,10 @@
+*.class
+rscd.jar
+.metadata
+.recommenders
+.DS_Store
+firescape-server/players/*.cfg
+*.log
+.svn
+*/lib/.svn
+*/lib/.svn/*

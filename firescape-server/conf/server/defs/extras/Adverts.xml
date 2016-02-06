@@ -1,0 +1,14 @@
+<AdvertDef-array>
+	<AdvertDef>
+		<message>If you need help, contact an Admin, Mod or PMod.</message>
+	</AdvertDef>
+	<AdvertDef>
+		<message>Autoing, Scamming and Racism will get you @red@banned</message>
+	</AdvertDef>
+	<AdvertDef>
+		<message>Don't forget to visit our forums daily for update information</message>
+	</AdvertDef>
+	<AdvertDef>
+		<message>@whi@Thanks for playing FireScape v3.0, %name!</message>
+	</AdvertDef>
+</AdvertDef-array>
