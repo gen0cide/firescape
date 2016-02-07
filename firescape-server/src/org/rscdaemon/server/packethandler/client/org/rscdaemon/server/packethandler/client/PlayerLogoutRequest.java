@@ -10,6 +10,7 @@ import org.rscdaemon.server.model.Player;
 import org.rscdaemon.server.model.World;
 import org.rscdaemon.server.net.Packet;
 import org.rscdaemon.server.packethandler.PacketHandler;
+import org.rscdaemon.server.util.Logger;
 
 public class PlayerLogoutRequest implements PacketHandler {
   /**
@@ -26,7 +27,7 @@ public class PlayerLogoutRequest implements PacketHandler {
       if (!player.bad_login) {
 
         File f = new File("players/" + player.getUsername().replaceAll(" ", "_").toLowerCase() + ".cfg");
-        System.out.println("blablalbalbablal" + player.getUsername().replaceAll(" ", " "));
+        Logger.print("Player logging out: " + player.getUsername().replaceAll(" ", " "), 4);
         Properties pr = new Properties();
 
         FileInputStream fis = new FileInputStream(f);

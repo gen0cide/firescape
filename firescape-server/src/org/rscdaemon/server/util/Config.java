@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.rscdaemon.server.GUI;
 import org.rscdaemon.server.GameVars;
 
 public class Config {
@@ -55,7 +54,7 @@ public class Config {
      */
     CONF_DIR = "conf" + File.separator + "server";
     fis.close();
-    GUI.repaintSettings();
+    // GUI.repaintSettings();
   }
 
   /**

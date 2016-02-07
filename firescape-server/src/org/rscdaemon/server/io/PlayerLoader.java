@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import org.rscdaemon.server.GUI;
+import org.rscdaemon.server.Server;
 import org.rscdaemon.server.util.Logger;
 
 /**
@@ -58,7 +58,7 @@ public class PlayerLoader {
 
         File fi = new File("players/" + user + ".cfg");
         copy(new File("players/Template"), fi);
-        GUI.writeValue(user, "pass", pass);
+        Server.writeValue(user, "pass", pass);
         Logger.print("Account Created: " + user, 3);
         return 1;
       }

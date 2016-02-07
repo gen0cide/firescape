@@ -1,0 +1,14 @@
+0: Thick skin
+1: Burst of strength
+2: Clarity of thought
+3: Rock skin
+4: Superhuman strength
+5: Improved reflexes
+6: Rapid restore
+7: Rapid heal
+8: Protect items
+9: Steel skin
+10: Ultimate strength
+11: Incredible reflexes
+12: Paralyze monster
+13: Protect from missiles

@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Properties;
 
-import javax.swing.UIManager;
-
 import org.apache.mina.common.IoAcceptor;
 import org.apache.mina.common.IoAcceptorConfig;
 import org.apache.mina.transport.socket.nio.SocketAcceptor;
@@ -19,6 +17,8 @@ import org.rscdaemon.server.event.SingleEvent;
 import org.rscdaemon.server.model.Player;
 import org.rscdaemon.server.model.World;
 import org.rscdaemon.server.net.RSCConnectionHandler;
+import org.rscdaemon.server.util.Config;
+import org.rscdaemon.server.util.DataConversions;
 import org.rscdaemon.server.util.Logger;
 
 /**
@@ -195,6 +195,21 @@ public class Server {
    * prepares the server socket to accept connections.
    */
   public Server() {
+    String configFile = "FireScape.cfg";
+    try {
+      Config.initConfig(configFile);
+    }
+    catch (Exception e) {
+      Logger.print(e, 1);
+    }
+    resetVars();
+    try {
+      Logger.print("FireScape Starting Up.", 3);
+      GameVars.serverRunning = true;
+    }
+    catch (Exception r) {
+      Logger.print(r.toString(), 1);
+    }
     resetOnline();
     running = true;
     world.setServer(this);
@@ -227,7 +242,7 @@ public class Server {
    * Kills the game engine and irc engine
    */
   public void kill() {
-    GUI.resetVars();
+    // GUI.resetVars();
     Logger.print("CleanRSC Shutting Down...", 3);
     running = false;
     engine.emptyWorld();
@@ -239,23 +254,86 @@ public class Server {
   public void unbind() {
     try {
       acceptor.unbindAll();
-      GUI.cout("Socket Closed", 3);
+      // GUI.cout("Socket Closed", 3);
     }
     catch (Exception e) {
+    }
+  }
+
+  public static void resetVars() {
+    GameVars.modsOnline = 0;
+    GameVars.adminsOnline = 0;
+    GameVars.userPeak = 0;
+    GameVars.usersOnline = 0;
+    GameVars.serverRunning = false;
+  }
+
+  public static boolean isOnline(String player) {
+    Player p = world.getPlayer(DataConversions.usernameToHash(player));
+    return p != null;
+  }
+
+  public static String readValue(String user, String key) {
+    try {
+      // System.out.println("Test 4");
+      String username = user.replaceAll(" ", "_");
+      File f = new File("players/" + username.toLowerCase() + ".cfg");
+      Properties pr = new Properties();
+
+      FileInputStream fis = new FileInputStream(f);
+      pr.load(fis);
+
+      String ret = pr.getProperty(key);
+      fis.close();
+      return ret;
+    }
+    catch (Exception e) {
+      Logger.print(e, 1);
+    }
+    return null;
+  }
+
+  public static void writeValue(String user, String key, String value) {
+    try {
+      String username = user.replaceAll(" ", "_");
+      File f = new File("players/" + username.toLowerCase() + ".cfg");
+      Properties pr = new Properties();
+
+      FileInputStream fis = new FileInputStream(f);
+      pr.load(fis);
+      fis.close();
+      pr.setProperty(key, value);
+
+      FileOutputStream fos = new FileOutputStream(f);
+      pr.store(fos, "");
+      fos.close();
+    }
+    catch (Exception e) {
+      Logger.print(e, 1);
+    }
+  }
+
+  public static void launchServer() {
+    try {
+      new Server();
+    }
+    catch (Exception r) {
+      Logger.print(r.toString(), 1);
     }
   }
 
   public static void main(String[] args) throws IOException {
     try {
 
-      UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+      // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
       // UIManager.setLookAndFeel("com.easynth.lookandfeel.EaSynthLookAndFeel");
+      launchServer();
     }
     catch (Exception e) {
 
     }
-    GUI.args = args;
-    new GUI();
+    // GUI.args = args;
+    // new Server();
 
   }
 }

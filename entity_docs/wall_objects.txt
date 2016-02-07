@@ -1,0 +1,214 @@
+0: Wall
+1: Doorframe
+2: Door
+3: Window
+4: Fence
+5: railings
+6: Stained glass window
+7: Highwall
+8: Door
+9: Doorframe
+10: battlement
+11: Doorframe
+12: snowwall
+13: arrowslit
+14: timberwall
+15: timberwindow
+16: blank
+17: highblank
+18: mossybricks
+19: Door
+20: Door
+21: Door
+22: Odd looking wall
+23: Door
+24: web
+25: Door
+26: Door
+27: Door
+28: Door
+29: Door
+30: Door
+31: Door
+32: Door
+33: Door
+34: Window
+35: Door
+36: Door
+37: Door
+38: Door
+39: Door
+40: Door
+41: Crumbled
+42: Cavern
+43: Door
+44: Door
+45: Door
+46: cavern2
+47: Door
+48: Door
+49: Door
+50: Door
+51: Door
+52: Door
+53: Door
+54: Door
+55: Door
+56: Wall
+57: Door
+58: Strange looking wall
+59: Door
+60: Door
+61: Door
+62: memberrailings
+63: Door
+64: Door
+65: Magic Door
+66: Door
+67: Door
+68: Door
+69: Door
+70: Door
+71: Door
+72: Door
+73: Door
+74: Door
+75: Door
+76: Door
+77: Door
+78: Door
+79: Strange Panel
+80: Door
+81: Door
+82: Door
+83: Door
+84: Door
+85: Door
+86: blockblank
+87: unusual looking wall
+88: Door
+89: Door
+90: Door
+91: Door
+92: Door
+93: Door
+94: Door
+95: Door
+96: Door
+97: Door
+98: Door
+99: Door
+100: Door
+101: Fence with loose pannels
+102: Door
+103: Door
+104: Door
+105: Door
+106: Door
+107: Door
+108: Door
+109: Door
+110: Door
+111: rat cage
+112: Door
+113: Door
+114: Door
+115: Door
+116: Door
+117: Door
+118: arrowslit
+119: solidblank
+120: Door
+121: Door
+122: Door
+123: Door
+124: loose panel
+125: Door
+126: plankswindow
+127: Low Fence
+128: Door
+129: Door
+130: Door
+131: Door
+132: Door
+133: Door
+134: Door
+135: Door
+136: Door
+137: Cooking pot
+138: Door
+139: Door
+140: Door
+141: Door
+142: Door
+143: Door
+144: plankstimber
+145: Door
+146: Door
+147: magic portal
+148: magic portal
+149: magic portal
+150: Door
+151: Cavern wall
+152: Door
+153: Door
+154: Door
+155: Door
+156: Door
+157: Door
+158: Door
+159: Door
+160: Door
+161: Door
+162: Door
+163: Low wall
+164: Low wall
+165: Blacksmiths Door
+166: railings
+167: railings
+168: railings
+169: railings
+170: railings
+171: railings
+172: railings
+173: Door
+174: Doorframe
+175: Tent
+176: Jail Door
+177: Jail Door
+178: Window
+179: magic portal
+180: Jail Door
+181: railings
+182: railings
+183: railings
+184: railings
+185: railings
+186: railings
+187: Cave exit
+188: Cave exit
+189: Cave exit
+190: Cave exit
+191: Cave exit
+192: Cave exit
+193: railings
+194: Door
+195: battlement
+196: Tent Door
+197: Door
+198: Tent Door
+199: Low Fence
+200: Sturdy Iron Gate
+201: battlement
+202: Water
+203: Wheat
+204: Jungle
+205: Window
+206: Rut
+207: Crumbled Cavern 1
+208: Crumbled Cavern 2
+209: cavernhole
+210: flamewall
+211: Ruined wall
+212: Ancient Wall
+213: Door

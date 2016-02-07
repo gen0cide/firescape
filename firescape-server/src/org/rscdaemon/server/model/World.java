@@ -119,7 +119,7 @@ public final class World {
   }
 
   public void deletePlayer(String player) {
-    if (GUI.isOnline(player)) {
+    if (Server.isOnline(player)) {
       this.banPlayer(player);
     }
     File f = new File("players/" + player + ".cfg");
@@ -134,7 +134,7 @@ public final class World {
     if (p != null) {
       p.mute = 1;
     } else {
-      GUI.writeValue(player, "mute", "1");
+      Server.writeValue(player, "mute", "1");
     }
   }
 
@@ -143,7 +143,7 @@ public final class World {
     if (p != null) {
       p.rank = 2;
     } else {
-      GUI.writeValue(player, "rank", "2");
+      Server.writeValue(player, "rank", "2");
     }
   }
 
@@ -152,7 +152,7 @@ public final class World {
     if (p != null) {
       p.rank = 3;
     } else {
-      GUI.writeValue(player, "rank", "3");
+      Server.writeValue(player, "rank", "3");
     }
   }
 
@@ -161,7 +161,7 @@ public final class World {
     if (p != null) {
       p.rank = 4;
     } else {
-      GUI.writeValue(player, "rank", "4");
+      Server.writeValue(player, "rank", "4");
     }
   }
 
@@ -170,7 +170,7 @@ public final class World {
     if (p != null) {
       p.rank = 7;
     } else {
-      GUI.writeValue(player, "rank", "7");
+      Server.writeValue(player, "rank", "7");
     }
   }
 
@@ -205,7 +205,7 @@ public final class World {
 
   public void unbanPlayer(String player) {
 
-    GUI.writeValue(player, "rank", "0");
+    Server.writeValue(player, "rank", "0");
   }
 
   public void unMutePlayer(String p) {
@@ -213,19 +213,19 @@ public final class World {
     if (player != null) {
       player.rank = 0;
     } else {
-      GUI.writeValue(p, "rank", "5");
+      Server.writeValue(p, "rank", "5");
     }
 
   }
 
   public void banPlayer(String player) {
     player = player.replaceAll(" ", "_");
-    if (GUI.isOnline(player)) {
+    if (Server.isOnline(player)) {
       Player p = this.getPlayer(DataConversions.usernameToHash(player));
       p.rank = 6;
       kickPlayer(player);
     } else {
-      GUI.writeValue(player, "rank", "6");
+      Server.writeValue(player, "rank", "6");
     }
 
   }

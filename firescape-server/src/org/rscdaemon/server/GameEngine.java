@@ -114,7 +114,7 @@ public final class GameEngine extends Thread {
     }
     if (!running)
       world.getServer().unbind();
-    GUI.resetVars();
+    // GUI.resetVars();
   }
 
   private static String processAdvert(String advert, Player p) {
@@ -134,8 +134,8 @@ public final class GameEngine extends Thread {
   public static void kill() {
     Logger.print("Terminating GameEngine", 1);
     GameVars.serverRunning = false;
-    GUI.resetVars();
-    GUI.repaintVars();
+    // GUI.resetVars();
+    // GUI.repaintVars();
     running = false;
 
   }

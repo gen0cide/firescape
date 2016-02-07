@@ -33,14 +33,14 @@ public final class ClientUpdater {
   }
 
   public void updateClients() {
-    GUI.repaintVars();
+    // GUI.repaintVars();
     updateNpcPositions();
     updatePlayersPositions();
     updateMessageQueues();
     updateOffers();
-    GUI.populateWorldList();
-    if (GUI.lastClickedName != null)
-      GUI.refreshWorldList(GUI.lastClickedName);
+    // GUI.populateWorldList();
+    // if (GUI.lastClickedName != null)
+    // GUI.refreshWorldList(GUI.lastClickedName);
     for (Player p : players) {
       updateTimeouts(p);
 

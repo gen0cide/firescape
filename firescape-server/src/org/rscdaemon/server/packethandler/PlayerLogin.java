@@ -12,6 +12,7 @@ import org.rscdaemon.server.net.Packet;
 import org.rscdaemon.server.packetbuilder.RSCPacketBuilder;
 import org.rscdaemon.server.util.DataConversions;
 import org.rscdaemon.server.util.Formulae;
+import org.rscdaemon.server.util.Logger;
 
 public class PlayerLogin implements PacketHandler {
   /**
@@ -29,6 +30,7 @@ public class PlayerLogin implements PacketHandler {
 
   public void handlePacket(Packet p, IoSession session) throws Exception {
     byte loginCode = p.readByte();
+    Logger.error("Login code: " + loginCode);
     RSCPacketBuilder pb = new RSCPacketBuilder();
     pb.setBare(true);
     pb.addByte(loginCode);

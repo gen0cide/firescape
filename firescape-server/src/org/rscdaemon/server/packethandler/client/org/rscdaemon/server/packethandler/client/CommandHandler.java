@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.apache.mina.common.IoSession;
-import org.rscdaemon.server.GUI;
+import org.rscdaemon.server.Server;
 import org.rscdaemon.server.clan.Party;
 import org.rscdaemon.server.entityhandling.EntityHandler;
 import org.rscdaemon.server.event.SingleEvent;
@@ -433,7 +433,7 @@ public class CommandHandler implements PacketHandler {
         return;
       }
       if (banned) {
-        if (Integer.valueOf(GUI.readValue(args[0], "rank")) == 6) {
+        if (Integer.valueOf(Server.readValue(args[0], "rank")) == 6) {
           player.getActionSender().sendMessage("Target is already banned");
           return;
         } else {
@@ -441,7 +441,7 @@ public class CommandHandler implements PacketHandler {
           Logger.mod(player.getUsername() + " has banned " + args[0]);
         }
       } else {
-        if (Integer.valueOf(GUI.readValue(args[0], "rank")) == 6) {
+        if (Integer.valueOf(Server.readValue(args[0], "rank")) == 6) {
           world.unbanPlayer(args[0]);
           Logger.mod(player.getUsername() + " has unbanned " + args[0]);
         } else {
@@ -677,7 +677,7 @@ public class CommandHandler implements PacketHandler {
         return;
       }
       if (mute) {
-        if (Integer.valueOf(GUI.readValue(args[0], "mute")) == 1) {
+        if (Integer.valueOf(Server.readValue(args[0], "mute")) == 1) {
           player.getActionSender().sendMessage("[@red@FireScape@whi@] That player is already @red@muted@whi@!");
           return;
         } else {
@@ -708,11 +708,11 @@ public class CommandHandler implements PacketHandler {
         return;
       }
       if (unmute) {
-        if (Integer.valueOf(GUI.readValue(args[0], "mute")) == 0) {
+        if (Integer.valueOf(Server.readValue(args[0], "mute")) == 0) {
           player.getActionSender().sendMessage("[@red@FireScape@whi@] That player is not even muted!");
           return;
         } else {
-          if (Integer.valueOf(GUI.readValue(args[0], "mute")) == 1) {
+          if (Integer.valueOf(Server.readValue(args[0], "mute")) == 1) {
             world.unMutePlayer(args[0]);
             Player affectedPlayer = world.getPlayer(DataConversions.usernameToHash(args[0]));
             player.getActionSender()
@@ -774,7 +774,7 @@ public class CommandHandler implements PacketHandler {
         return;
       }
       if (banned) {
-        if (Integer.valueOf(GUI.readValue(args[0], "rank")) == 6) {
+        if (Integer.valueOf(Server.readValue(args[0], "rank")) == 6) {
           player.getActionSender().sendMessage("Target is already banned");
           return;
         } else {
@@ -782,7 +782,7 @@ public class CommandHandler implements PacketHandler {
           Logger.mod(player.getUsername() + " has banned " + args[0]);
         }
       } else {
-        if (Integer.valueOf(GUI.readValue(args[0], "rank")) == 6) {
+        if (Integer.valueOf(Server.readValue(args[0], "rank")) == 6) {
           world.unbanPlayer(args[0]);
           Logger.mod(player.getUsername() + " has unbanned " + args[0]);
         } else {

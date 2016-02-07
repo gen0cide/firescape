@@ -1,0 +1,48 @@
+0: Wind strike
+1: Confuse
+2: Water strike
+3: Enchant lvl-1 amulet
+4: Earth strike
+5: Weaken
+6: Fire strike
+7: Bones to bananas
+8: Wind bolt
+9: Curse
+10: Low level alchemy
+11: Water bolt
+12: Varrock teleport
+13: Enchant lvl-2 amulet
+14: Earth bolt
+15: Lumbridge teleport
+16: Telekinetic grab
+17: Fire bolt
+18: Falador teleport
+19: Crumble undead
+20: Wind blast
+21: Superheat item
+22: Camelot teleport
+23: Water blast
+24: Enchant lvl-3 amulet
+25: Iban blast
+26: Ardougne teleport
+27: Earth blast
+28: High level alchemy
+29: Charge Water Orb
+30: Enchant lvl-4 amulet
+31: Watchtower teleport
+32: Fire blast
+33: Claws of Guthix
+34: Saradomin strike
+35: Flames of Zamorak
+36: Charge earth Orb
+37: Wind wave
+38: Charge Fire Orb
+39: Water wave
+40: Charge air Orb
+41: Vulnerability
+42: Enchant lvl-5 amulet
+43: Earth wave
+44: Enfeeble
+45: Fire wave
+46: Stun
+47: Charge

@@ -9,6 +9,7 @@ import org.rscdaemon.server.net.RSCPacket;
 import org.rscdaemon.server.packetbuilder.RSCPacketBuilder;
 import org.rscdaemon.server.packethandler.PacketHandler;
 import org.rscdaemon.server.util.DataConversions;
+import org.rscdaemon.server.util.Logger;
 
 public class PlayerLogin implements PacketHandler {
   /**
@@ -45,6 +46,7 @@ public class PlayerLogin implements PacketHandler {
       if (world.countPlayers() >= org.rscdaemon.server.GameVars.maxUsers) {
         loginCode = 10;
       } else if (clientVersion != GameVars.clientVersion) {
+        Logger.print("Client versions is " + clientVersion + " but should be " + GameVars.clientVersion, 4);
         loginCode = 4;
       } else if (!player.setSessionKeys(sessionKeys)) {
         loginCode = 5;

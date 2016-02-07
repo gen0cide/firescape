@@ -16,8 +16,8 @@ import java.util.ListIterator;
 import java.util.Properties;
 
 import org.apache.mina.common.IoSession;
-import org.rscdaemon.server.GUI;
 import org.rscdaemon.server.GameVars;
+import org.rscdaemon.server.Server;
 import org.rscdaemon.server.entityhandling.EntityHandler;
 import org.rscdaemon.server.entityhandling.defs.PrayerDef;
 import org.rscdaemon.server.event.DelayedEvent;
@@ -1030,7 +1030,7 @@ public final class Player extends Mob {
       }
       destroy = true;
       actionSender.sendLogout();
-      GUI.writeValue(user, "loggedin", "false");
+      Server.writeValue(user, "loggedin", "false");
       if (this.isAdmin())
         GameVars.adminsOnline--;
       else if (this.rank == 3 || this.rank == 2)
@@ -1271,7 +1271,7 @@ public final class Player extends Mob {
       sender.sendIgnoreList();
       sender.sendCombatStyle();
 
-      GUI.populateWorldList();
+      // GUI.populateWorldList();
       for (Player p : world.getPlayers()) {
         if (p.isFriendsWith(this.getUsername())) {
           p.getActionSender().sendFriendUpdate(this.getUsernameHash(), org.rscdaemon.server.util.Config.SERVER_NUM);
