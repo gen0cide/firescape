@@ -33,7 +33,7 @@ Each directory (-client and -server) are Eclipse projects and can be imported as
    
 # Credits
 
-[RuneScape © 1999–2014, Jagex Ltd.](www.runescape.com)
+[RuneScape © 1999–2014, Jagex Ltd.](https://www.runescape.com)
 
 A list of folks that have inspired/taught me a lot over the years (inb4 shoutout):
  * reines

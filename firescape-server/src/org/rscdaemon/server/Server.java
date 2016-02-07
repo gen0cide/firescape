@@ -220,7 +220,7 @@ public class Server {
       IoAcceptorConfig config = new SocketAcceptorConfig();
       config.setDisconnectOnUnbind(true);
       ((SocketSessionConfig) config.getSessionConfig()).setReuseAddress(true);
-      acceptor.bind(new InetSocketAddress("localhost", GameVars.portNumber), new RSCConnectionHandler(engine), config);
+      acceptor.bind(new InetSocketAddress("0.0.0.0", GameVars.portNumber), new RSCConnectionHandler(engine), config);
     }
     catch (Exception e) {
       Logger.error(e);
