@@ -19,6 +19,8 @@
 			<pathelement location="${lib}/mysql-connector.jar" />
 			<pathelement location="${lib}/hex-string.jar" />
 			<pathelement location="${lib}/jmf.jar" />
+		  	<pathelement location="${lib}/jedis.jar" />
+		  	<pathelement location="${lib}/gson.jar" />
 			<pathelement path="${java.class.path}/"/>
 		  </classpath>
 		</javac>
@@ -36,6 +38,8 @@
 				<pathelement location="${lib}/xpp3.jar" />
 				<pathelement location="${lib}/slf4j.jar" />
 				<pathelement location="${lib}/xstream.jar" />
+				<pathelement location="${lib}/jedis.jar" />
+				<pathelement location="${lib}/gson.jar" />
 				<pathelement location="${lib}/hex-string.jar" />
 				<pathelement location="quests/" />
 				<pathelement path="${jar}/" />

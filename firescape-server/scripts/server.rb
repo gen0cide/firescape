@@ -10,11 +10,12 @@ require './lib/mina.jar'
 require './lib/slf4j.jar'
 require './lib/xpp3.jar'
 require './lib/xstream.jar'
+require './lib/jedis.jar'
+require './lib/gson.jar'
 
 require './rscd.jar'
 
 server = Java::OrgRscdaemonServer::Server.new
-
 
 class FireScape
   

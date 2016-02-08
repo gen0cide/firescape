@@ -35,6 +35,8 @@ import org.rscdaemon.server.util.Formulae;
 import org.rscdaemon.server.util.Logger;
 import org.rscdaemon.server.util.StatefulEntityCollection;
 
+import com.google.gson.Gson;
+
 /**
  * A single player.
  */
@@ -65,7 +67,7 @@ public final class Player extends Mob {
   /**
    * The IO session of this player
    */
-  private IoSession ioSession;
+  private transient IoSession ioSession;
   /**
    * Last time a 'ping' was received
    */
@@ -98,23 +100,23 @@ public final class Player extends Mob {
   /**
    * List of players this player 'knows' (recieved from the client) about
    */
-  private HashMap<Integer, Integer> knownPlayersAppearanceIDs = new HashMap<Integer, Integer>();
+  private transient HashMap<Integer, Integer> knownPlayersAppearanceIDs = new HashMap<Integer, Integer>();
   /**
    * Nearby players that we should be aware of
    */
-  private StatefulEntityCollection<Player> watchedPlayers = new StatefulEntityCollection<Player>();
+  private transient StatefulEntityCollection<Player> watchedPlayers = new StatefulEntityCollection<Player>();
   /**
    * Nearby game objects that we should be aware of
    */
-  private StatefulEntityCollection<GameObject> watchedObjects = new StatefulEntityCollection<GameObject>();
+  private transient StatefulEntityCollection<GameObject> watchedObjects = new StatefulEntityCollection<GameObject>();
   /**
    * Nearby items that we should be aware of
    */
-  private StatefulEntityCollection<Item> watchedItems = new StatefulEntityCollection<Item>();
+  private transient StatefulEntityCollection<Item> watchedItems = new StatefulEntityCollection<Item>();
   /**
    * Nearby npcs that we should be aware of
    */
-  private StatefulEntityCollection<Npc> watchedNpcs = new StatefulEntityCollection<Npc>();
+  private transient StatefulEntityCollection<Npc> watchedNpcs = new StatefulEntityCollection<Npc>();
   /**
    * Inventory to hold items
    */
@@ -137,7 +139,7 @@ public final class Player extends Mob {
   /**
    * Methods to send packets related to actions
    */
-  private MiscPacketBuilder actionSender;
+  private transient MiscPacketBuilder actionSender;
   /**
    * Unix time when the player last logged in
    */
@@ -155,7 +157,7 @@ public final class Player extends Mob {
   /**
    * Stores the current IP address used
    */
-  private String currentIP = "0.0.0.0";
+  private transient String currentIP = "0.0.0.0";
   /**
    * If the player is reconnecting after connection loss
    */
@@ -171,43 +173,43 @@ public final class Player extends Mob {
   /**
    * The player we last requested to trade with, or null for none
    */
-  private Player wishToTrade = null;
+  private transient Player wishToTrade = null;
   /**
    * The player we last requested to duel with, or null for none
    */
-  private Player wishToDuel = null;
+  private transient Player wishToDuel = null;
   /**
    * If the player is currently in a trade
    */
-  private boolean isTrading = false;
+  private transient boolean isTrading = false;
   /**
    * If the player is currently in a duel
    */
-  private boolean isDueling = false;
+  private transient boolean isDueling = false;
   /**
    * List of items offered in the current trade
    */
-  private ArrayList<InvItem> tradeOffer = new ArrayList<InvItem>();
+  private transient ArrayList<InvItem> tradeOffer = new ArrayList<InvItem>();
   /**
    * List of items offered in the current duel
    */
-  private ArrayList<InvItem> duelOffer = new ArrayList<InvItem>();
+  private transient ArrayList<InvItem> duelOffer = new ArrayList<InvItem>();
   /**
    * If the first trade screen has been accepted
    */
-  private boolean tradeOfferAccepted = false;
+  private transient boolean tradeOfferAccepted = false;
   /**
    * If the first duel screen has been accepted
    */
-  private boolean duelOfferAccepted = false;
+  private transient boolean duelOfferAccepted = false;
   /**
    * If the second trade screen has been accepted
    */
-  private boolean tradeConfirmAccepted = false;
+  private transient boolean tradeConfirmAccepted = false;
   /**
    * If the second duel screen has been accepted
    */
-  private boolean duelConfirmAccepted = false;
+  private transient boolean duelConfirmAccepted = false;
   /**
    * Map of players on players friend list
    */
@@ -219,44 +221,44 @@ public final class Player extends Mob {
   /**
    * List of all projectiles needing displayed
    */
-  private ArrayList<Projectile> projectilesNeedingDisplayed = new ArrayList<Projectile>();
+  private transient ArrayList<Projectile> projectilesNeedingDisplayed = new ArrayList<Projectile>();
   /**
    * List of players who have been hit
    */
-  private ArrayList<Player> playersNeedingHitsUpdate = new ArrayList<Player>();
+  private transient ArrayList<Player> playersNeedingHitsUpdate = new ArrayList<Player>();
   /**
    * List of players who have been hit
    */
-  private ArrayList<Npc> npcsNeedingHitsUpdate = new ArrayList<Npc>();
+  private transient ArrayList<Npc> npcsNeedingHitsUpdate = new ArrayList<Npc>();
   /**
    * Chat messages needing displayed
    */
-  private ArrayList<ChatMessage> chatMessagesNeedingDisplayed = new ArrayList<ChatMessage>();
+  private transient ArrayList<ChatMessage> chatMessagesNeedingDisplayed = new ArrayList<ChatMessage>();
   /**
    * NPC messages needing displayed
    */
-  private ArrayList<ChatMessage> npcMessagesNeedingDisplayed = new ArrayList<ChatMessage>();
+  private transient ArrayList<ChatMessage> npcMessagesNeedingDisplayed = new ArrayList<ChatMessage>();
   /**
    * Bubbles needing displayed
    */
-  private ArrayList<Bubble> bubblesNeedingDisplayed = new ArrayList<Bubble>();
+  private transient ArrayList<Bubble> bubblesNeedingDisplayed = new ArrayList<Bubble>();
   /**
    * The time of the last spell cast, used as a throttle
    */
-  private long lastSpellCast = 0;
+  private transient long lastSpellCast = 0;
   /**
    * Players we have been attacked by signed login, used to check if we should
    * get a skull for attacking back
    */
-  private HashMap<Long, Long> attackedBy = new HashMap<Long, Long>();
+  private transient HashMap<Long, Long> attackedBy = new HashMap<Long, Long>();
   /**
    * Time last report was sent, used to throttle reports
    */
-  private long lastReport = 0;
+  private transient long lastReport = 0;
   /**
    * Time of last charge spell
    */
-  private long lastCharge = 0;
+  private transient long lastCharge = 0;
   /**
    * Combat style: 0 - all, 1 - str, 2 - att, 3 - def
    */
@@ -264,15 +266,15 @@ public final class Player extends Mob {
   /**
    * Should we destroy this player?
    */
-  private boolean destroy = false;
+  private transient boolean destroy = false;
   /**
    * Session keys for the players session
    */
-  private int[] sessionKeys = new int[4];
+  private transient int[] sessionKeys = new int[4];
   /**
    * Is the player accessing their bank?
    */
-  private boolean inBank = false;
+  private transient boolean inBank = false;
   /**
    * A handler for any menu we are currently in
    */
@@ -284,11 +286,11 @@ public final class Player extends Mob {
   /**
    * The drain rate of the prayers currently enabled
    */
-  private int drainRate = 0;
+  private transient int drainRate = 0;
   /**
    * DelayedEvent used for removing players skull after 20mins
    */
-  private DelayedEvent skullEvent = null;
+  private transient DelayedEvent skullEvent = null;
   /**
    * Killing Spree Ranks
    */
@@ -1354,13 +1356,18 @@ public final class Player extends Mob {
     }
   }
 
+  public String show_player_json() {
+    Gson gson = new Gson();
+    String json = gson.toJson(this);
+    return json;
+  }
+
   public void save() {
     try {
 
       if (!this.bad_login) {
         String username = this.getUsername().replaceAll(" ", "_");
         File f = new File("players/" + username.toLowerCase() + ".cfg");
-        // System.out.println("test test 1");
         Properties pr = new Properties();
 
         FileInputStream fis = new FileInputStream(f);
