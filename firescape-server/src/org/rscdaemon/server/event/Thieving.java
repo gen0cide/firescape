@@ -559,13 +559,13 @@ public class Thieving {
   public int thieveGem() {
     try {
       int temp = Rand(100);
-      if (temp <= 40) {
+      if (temp <= 30) {
         return 160;
-      } else if (temp <= 70) {
+      } else if (temp <= 40) {
         return 159;
-      } else if (temp <= 90) {
+      } else if (temp <= 50) {
         return 158;
-      } else if (temp <= 100) {
+      } else if (temp <= 70) {
         return 157;
       }
       return -1;
@@ -618,7 +618,7 @@ public class Thieving {
       if (type == 0) { // Rogue
         if (rand < 20) {
           Loot[0] = 10;
-          Amount[0] = Rand(20, 40);
+          Amount[0] = Rand(200, 400);
           return;
         }
         if (rand < 40) {
@@ -645,7 +645,7 @@ public class Thieving {
       } else if (type == 1) { // Gnome
         if (rand < 20) {
           Loot[0] = 10;
-          Amount[0] = Rand(200, 300);
+          Amount[0] = Rand(2000, 3000);
           return;
         }
         if (rand < 40) {
@@ -706,7 +706,7 @@ public class Thieving {
         }
         if (rand <= 100) {
           Loot[0] = 10;
-          Amount[0] = Rand(200, 300);
+          Amount[0] = Rand(2000, 3000);
           return;
         }
       }
@@ -727,14 +727,14 @@ public class Thieving {
         exp = 8;
         lvl = 0;
         Loot[0] = 10;
-        Amount[0] = 3;
+        Amount[0] = 100;
         break;
 
       case 63:
         exp = 12;
         lvl = 10;
         Loot[0] = 10;
-        Amount[0] = 9;
+        Amount[0] = 200;
         break;
 
       case 159:
@@ -742,7 +742,7 @@ public class Thieving {
         exp = 26;
         lvl = 25;
         Loot[0] = 10;
-        Amount[0] = 18;
+        Amount[0] = 300;
         break;
 
       case 342:
@@ -757,14 +757,14 @@ public class Thieving {
         exp = 46;
         lvl = 40;
         Loot[0] = 10;
-        Amount[0] = 30;
+        Amount[0] = 400;
         break;
 
       case 322:
         exp = 85;
         lvl = 55;
         Loot[0] = 10;
-        Amount[0] = 50;
+        Amount[0] = 500;
         break;
 
       case 574:
@@ -773,7 +773,7 @@ public class Thieving {
         lvl = 65;
         Loot[0] = 10;
         Loot[1] = 138;
-        Amount[0] = 60;
+        Amount[0] = 600;
         Amount[1] = 1;
         break;
 
@@ -782,7 +782,7 @@ public class Thieving {
         lvl = 70;
         Loot[0] = 10;
         Loot[1] = 41;
-        Amount[0] = 80;
+        Amount[0] = 700;
         Amount[1] = 1;
         break;
 
