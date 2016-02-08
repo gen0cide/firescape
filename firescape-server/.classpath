@@ -41,5 +41,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jedis.jar"/>
 	<classpathentry kind="lib" path="lib/gson.jar"/>
+	<classpathentry kind="lib" path="lib/commons-pool2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

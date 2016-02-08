@@ -10,7 +10,6 @@ import java.util.TreeMap;
 
 import org.rscdaemon.server.ClientUpdater;
 import org.rscdaemon.server.DelayedEventHandler;
-import org.rscdaemon.server.GUI;
 import org.rscdaemon.server.Server;
 import org.rscdaemon.server.entityhandling.locs.GameObjectLoc;
 import org.rscdaemon.server.entityhandling.locs.NPCLoc;
@@ -25,11 +24,20 @@ import org.rscdaemon.server.util.EntityList;
 import org.rscdaemon.server.util.Logger;
 import org.rscdaemon.server.util.PersistenceManager;
 
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+
 public final class World {
   /**
    * World instance
    */
   private static World worldInstance;
+
+  /**
+   * Redis pool for use for persistence
+   */
+  public JedisPool redis = new JedisPool(new JedisPoolConfig(), "localhost");
+
   /**
    * The maximum width of the map
    */
@@ -122,11 +130,11 @@ public final class World {
     if (Server.isOnline(player)) {
       this.banPlayer(player);
     }
-    File f = new File("players/" + player + ".cfg");
-    if (f.exists()) {
-      f.delete();
-    }
-    GUI.populateWorldList();
+    // File f = new File("players/" + player + ".cfg");
+    // if (f.exists()) {
+    // f.delete();
+    // }
+    // GUI.populateWorldList();
   }
 
   public void mutePlayer(String player) {

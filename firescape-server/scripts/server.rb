@@ -12,6 +12,7 @@ require './lib/xpp3.jar'
 require './lib/xstream.jar'
 require './lib/jedis.jar'
 require './lib/gson.jar'
+require './lib/commons-pool2.jar'
 
 require './rscd.jar'
 

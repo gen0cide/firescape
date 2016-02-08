@@ -1,10 +1,14 @@
 package org.rscdaemon.server.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -36,6 +40,8 @@ import org.rscdaemon.server.util.Logger;
 import org.rscdaemon.server.util.StatefulEntityCollection;
 
 import com.google.gson.Gson;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * A single player.
@@ -1366,13 +1372,27 @@ public final class Player extends Mob {
     try {
 
       if (!this.bad_login) {
-        String username = this.getUsername().replaceAll(" ", "_");
-        File f = new File("players/" + username.toLowerCase() + ".cfg");
         Properties pr = new Properties();
+        String username = this.getUsername().replaceAll(" ", "_");
+        String redis_key = "players_" + username.toLowerCase();
+        try (Jedis jedis = world.redis.getResource()) {
+          if (jedis.exists(redis_key)) {
+            InputStream ios = new ByteArrayInputStream(jedis.get(redis_key).getBytes(StandardCharsets.UTF_8));
+            pr.load(ios);
+            ios.close();
+            Logger.print("Loaded players_" + username.toLowerCase() + " from redis.", 3);
+          } else {
+            File f = new File("players/" + username.toLowerCase() + ".cfg");
+            FileInputStream fis = new FileInputStream(f);
+            pr.load(fis);
+            fis.close();
+            Logger.print("Key players_" + username.toLowerCase() + " not in redis. Loading from file.", 3);
+          }
+          ByteArrayOutputStream bos = new ByteArrayOutputStream();
+          pr.store(bos, "Redis backed character data");
+          jedis.set("players_" + username.toLowerCase(), bos.toString());
 
-        FileInputStream fis = new FileInputStream(f);
-        pr.load(fis);
-        fis.close();
+        }
 
         pr.setProperty("rank", "" + this.rank);
         pr.setProperty("x", "" + this.getLocation().getX());
@@ -1444,9 +1464,16 @@ public final class Player extends Mob {
           pr.setProperty("ba" + i, "" + item.getAmount());
         }
 
-        FileOutputStream fos = new FileOutputStream(f);
-        pr.store(fos, "Character Data.");
-        fos.close();
+        // FileOutputStream fos = new FileOutputStream(f);
+        // pr.store(fos, "Character Data.");
+        // fos.close();
+
+        try (Jedis jedis = world.redis.getResource()) {
+          ByteArrayOutputStream bos = new ByteArrayOutputStream();
+          pr.store(bos, "Redis backed character data");
+          jedis.set("players_" + username.toLowerCase(), bos.toString());
+          Logger.print("Saved players_" + username.toLowerCase() + " data to redis.", 3);
+        }
 
       }
     }
