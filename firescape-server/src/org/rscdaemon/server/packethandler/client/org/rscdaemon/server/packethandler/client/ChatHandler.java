@@ -18,6 +18,7 @@ public class ChatHandler implements PacketHandler {
       sender.getActionSender().sendMessage("You are @red@MUTED@whi@. Nobody will see your messages.");
       return;
     }
+    // add to redis
     sender.addMessageToChatQueue(p.getData());
   }
 

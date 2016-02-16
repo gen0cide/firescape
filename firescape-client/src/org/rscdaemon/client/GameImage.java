@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.DirectColorModel;
 import java.awt.image.ImageConsumer;
@@ -56,6 +57,10 @@ public class GameImage implements ImageProducer, ImageObserver {
       e.printStackTrace();
       System.exit(1);
     }
+  }
+
+  public void setSpriteAtIndex(BufferedImage img, int idx) {
+    sprites[idx] = Sprite.fromImage(img);
   }
 
   public boolean loadSprite(int id, String packageName) {

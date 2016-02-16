@@ -1,10 +1,13 @@
 package org.rscdaemon.server;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import org.apache.mina.common.IoAcceptor;
@@ -20,6 +23,8 @@ import org.rscdaemon.server.net.RSCConnectionHandler;
 import org.rscdaemon.server.util.Config;
 import org.rscdaemon.server.util.DataConversions;
 import org.rscdaemon.server.util.Logger;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * The entry point for RSC server.
@@ -294,19 +299,20 @@ public class Server {
   }
 
   public static void writeValue(String user, String key, String value) {
-    try {
-      String username = user.replaceAll(" ", "_");
-      File f = new File("players/" + username.toLowerCase() + ".cfg");
-      Properties pr = new Properties();
-
-      FileInputStream fis = new FileInputStream(f);
-      pr.load(fis);
-      fis.close();
-      pr.setProperty(key, value);
-
-      FileOutputStream fos = new FileOutputStream(f);
-      pr.store(fos, "");
-      fos.close();
+    String username = user.replaceAll(" ", "_").toLowerCase();
+    String redis_key = "players_" + username.toLowerCase();
+    try (Jedis jedis = world.redis.getResource()) {
+      if (jedis.exists(redis_key)) {
+        ByteArrayInputStream ios = new ByteArrayInputStream(jedis.get(redis_key).getBytes(StandardCharsets.UTF_8));
+        Logger.print("Loaded players_" + username.toLowerCase() + " from redis.", 3);
+        Properties pr = new Properties();
+        pr.load(ios);
+        ios.close();
+        pr.setProperty(key, value);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        pr.store(bos, "Redis backed character data");
+        jedis.set(redis_key, bos.toString());
+      }
     }
     catch (Exception e) {
       Logger.print(e, 1);

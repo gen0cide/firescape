@@ -1,5 +1,6 @@
 require 'pry'
 require 'pry-remote'
+require 'redis'
 
 require 'java'
 
@@ -38,7 +39,17 @@ class FireScape
   end
 end
 
-mgmt = Thread.new {
+slack = Thread.new do  
+  redis = Redis.new
+
+  redis.subscribe('game_chat') do |on|
+    on.message do |channel, msg|
+      # Do something with the channel messages here
+    end
+  end
+end
+
+mgmt = Thread.new do
   @@is_running = true
 
   game = FireScape.new
@@ -51,8 +62,9 @@ mgmt = Thread.new {
   while(@@is_running)
     binding.remote_pry
   end
-}
+end
 
+slack.join
 mgmt.join
 
 abort

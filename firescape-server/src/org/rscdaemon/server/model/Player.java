@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
@@ -723,6 +722,10 @@ public final class Player extends Mob {
   }
 
   public void addMessageToChatQueue(byte[] messageData) {
+    try (Jedis jedis = world.redis.getResource()) {
+      String chat_message = DataConversions.byteToString(messageData, 0, messageData.length);
+      jedis.publish("game_chat", "(" + this.getUsername() + ") " + chat_message);
+    }
     chatQueue.add(new ChatMessage(this, messageData));
     if (chatQueue.size() > 2) {
       destroy(false);
@@ -1069,19 +1072,22 @@ public final class Player extends Mob {
 
   public void load(String username, String password, int uid, boolean reconnecting) {
     try {
-      // String user = username.replaceAll("_");
-      File f = new File("players/" + username + ".cfg");
-      if (!f.exists()) {
-        this.destroy(true);
-        return;
+      InputStream ios = null;
+      String redis_key = "players_" + username.toLowerCase();
+      try (Jedis jedis = world.redis.getResource()) {
+        if (jedis.exists(redis_key)) {
+          ios = new ByteArrayInputStream(jedis.get(redis_key).getBytes(StandardCharsets.UTF_8));
+          Logger.print("Loaded players_" + username.toLowerCase() + " from redis.", 3);
+        } else {
+          this.destroy(true);
+          return;
+        }
       }
       setID(uid);
       this.password = password;
       this.reconnecting = reconnecting;
       usernameHash = DataConversions.usernameToHash(username);
       this.username = DataConversions.hashToUsername(usernameHash);
-      // TODO
-      // world.getServer().getLoginConnector().getActionSender().playerLogin(this);
 
       world.getDelayedEventHandler().add(new DelayedEvent(this, 60000) {
         public void run() {
@@ -1130,13 +1136,8 @@ public final class Player extends Mob {
         }
       };
       world.getDelayedEventHandler().add(drainer);
-      // setOwner(p.readInt()); SQL/PunBB Integration "Owner ID" Which i won't
-      // be needing.
-      // player.setGroupID(p.readInt()); <-- Same.
       Properties props = new Properties();
-
-      FileInputStream fis = new FileInputStream(f);
-      props.load(fis);
+      props.load(ios);
 
       setSubscriptionExpires(0); // No sub atm.
       setLastIP(props.getProperty("ip"));
@@ -1149,6 +1150,7 @@ public final class Player extends Mob {
         GameVars.modsOnline++;
       setLocation(Point.location(Integer.parseInt(props.getProperty("x")), Integer.parseInt(props.getProperty("y"))),
           true);
+
       setFatigue(Integer.parseInt(props.getProperty("fat")));
       impcatcherstatus = Integer.parseInt(props.getProperty("impcatcherstatus"));
       doricsqueststatus = Integer.parseInt(props.getProperty("doricsqueststatus"));
@@ -1187,6 +1189,7 @@ public final class Player extends Mob {
         destroy(true);
         getSession().close();
       }
+
       setAppearance(appearance);
       setWornItems(getPlayerAppearance().getSprites());
 
@@ -1235,13 +1238,20 @@ public final class Player extends Mob {
         if (id != 7000)
           bank.add(new InvItem(id, amount));
       }
+
       setBank(bank);
+
       if (!this.bad_login) {
-        fis.close();
-        FileOutputStream fos = new FileOutputStream(f);
-        props.setProperty("loggedin", "true");
-        props.store(fos, "Character Data.");
-        fos.close();
+        ios.close();
+        try (Jedis jedis = world.redis.getResource()) {
+          ByteArrayOutputStream bos = new ByteArrayOutputStream();
+          props.setProperty("loggedin", "true");
+          props.store(bos, "Redis backed character data");
+          jedis.set("players_" + username.toLowerCase(), bos.toString());
+          Logger.print("Saved players_" + username.toLowerCase() + " data to redis.", 3);
+          bos.close();
+        }
+
       }
 
       /* End of loading methods */

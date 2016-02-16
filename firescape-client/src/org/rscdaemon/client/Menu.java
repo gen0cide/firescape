@@ -1,10 +1,10 @@
 package org.rscdaemon.client;
 
 public class Menu {
-  public static final int COLOUR_BOX_GRADIENT_TOP = 0x0033CC;
-  public static final int COLOUR_BOX_GRADIENT_BOTTOM = 0x003399;
-  public static final int COLOUR_BOX_BORDER1 = 0x0066FF;
-  public static final int COLOUR_BOX_BORDER2 = 0x0066CC;
+  public static final int COLOUR_BOX_GRADIENT_TOP = 0xDD3300;
+  public static final int COLOUR_BOX_GRADIENT_BOTTOM = 0xAA3300;
+  public static final int COLOUR_BOX_BORDER1 = 0xFF0000;
+  public static final int COLOUR_BOX_BORDER2 = 0xCC0000;
 
   public Menu(GameImage gi, int i) {
     currentFocusHandle = -1;
@@ -29,12 +29,12 @@ public class Menu {
     menuObjectTextType = new int[i];
     menuObjectText = new String[i];
     menuListText = new String[i][];
-    anInt207 = convertRGBToLongWithModifier(114, 114, 176);
-    anInt208 = convertRGBToLongWithModifier(14, 14, 62);
-    anInt209 = convertRGBToLongWithModifier(200, 208, 232);
-    anInt210 = convertRGBToLongWithModifier(96, 129, 184);
-    anInt211 = convertRGBToLongWithModifier(53, 95, 115);
-    anInt212 = convertRGBToLongWithModifier(117, 142, 171);
+    anInt207 = convertRGBToLongWithModifier(114, 114, 176); // faded royal blue
+    anInt208 = convertRGBToLongWithModifier(14, 14, 62); // navy blue
+    anInt209 = convertRGBToLongWithModifier(200, 208, 232); // lavender
+    anInt210 = convertRGBToLongWithModifier(96, 129, 184); // facebook blue
+    anInt211 = convertRGBToLongWithModifier(53, 95, 115); // teal blue
+    anInt212 = convertRGBToLongWithModifier(117, 142, 171); // faded teal blue
     anInt213 = convertRGBToLongWithModifier(98, 122, 158);
     anInt214 = convertRGBToLongWithModifier(86, 100, 136);
   }

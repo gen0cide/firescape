@@ -1,15 +1,21 @@
 package org.rscdaemon.server.io;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
-import org.rscdaemon.server.Server;
 import org.rscdaemon.server.util.Logger;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * 
@@ -17,52 +23,52 @@ import org.rscdaemon.server.util.Logger;
  */
 public class PlayerLoader {
 
+  public static JedisPool redis = new JedisPool(new JedisPoolConfig(), "localhost");
+
   static Properties props = new Properties();
+  static Properties baseProps = new Properties();
 
   public static int getLogin(String user, String pass) {
     try {
 
       // user = user.replaceAll("_", " ");
-
-      File f = new File("players/" + user.trim() + ".cfg");
-      if (f.exists()) {
-        FileInputStream fis = new FileInputStream(f);
-        props.load(fis);
-        if (Integer.valueOf(props.getProperty("rank")) == 6) {
-          fis.close();
-          return 6; // Banned.
-        }
-
-        if (props.getProperty("pass").equalsIgnoreCase(pass)) {
-          if (props.getProperty("loggedin").equalsIgnoreCase("true")) {
-            fis.close();
-            return 2; // Already logged in.
+      InputStream ios = null;
+      String username = user.replaceAll(" ", "_").toLowerCase();
+      String redis_key = "players_" + username.toLowerCase();
+      try (Jedis jedis = redis.getResource()) {
+        if (jedis.exists(redis_key)) {
+          ios = new ByteArrayInputStream(jedis.get(redis_key).getBytes(StandardCharsets.UTF_8));
+          Logger.print("Loaded players_" + username.toLowerCase() + " from redis.", 3);
+          props.load(ios);
+          if (Integer.valueOf(props.getProperty("rank")) == 6) {
+            ios.close();
+            return 6; // Banned.
           }
-          fis.close();
-          return 1; // Correct, Log in.
+          if (props.getProperty("pass").equalsIgnoreCase(pass)) {
+            if (props.getProperty("loggedin").equalsIgnoreCase("true")) {
+              ios.close();
+              return 2; // Already logged in.
+            }
+            ios.close();
+            return 1; // Correct, Log in.
 
-        } else { // Bad password
-          fis.close();
-          return 0;
+          } else { // Bad password
+            ios.close();
+            return 0;
+          }
+        } else {
+          Properties pr = new Properties();
+          pr.load(new FileInputStream(new File("players/Template")));
+          ByteArrayOutputStream bos = new ByteArrayOutputStream();
+          pr.setProperty("pass", pass);
+          pr.store(bos, "Redis backed character data");
+          jedis.set(redis_key, bos.toString());
+          Logger.print("Saved " + redis_key + " data to redis.", 3);
+          // Server.writeValue(user, "pass", pass);
+          Logger.print("Account Created: " + user, 3);
+          return 1;
         }
       }
-
-      if (user.startsWith("_")) {
-        // System.out.println("test test test");
-        return 0;
-      }
-      if (user.endsWith("_")) {
-        // System.out.println("test test test");
-        return 0;
-      } else {
-
-        File fi = new File("players/" + user + ".cfg");
-        copy(new File("players/Template"), fi);
-        Server.writeValue(user, "pass", pass);
-        Logger.print("Account Created: " + user, 3);
-        return 1;
-      }
-
     }
     catch (Exception e) {
       e.printStackTrace();

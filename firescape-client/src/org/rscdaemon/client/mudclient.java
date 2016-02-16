@@ -25,6 +25,16 @@ import org.rscdaemon.client.util.DataConversions;
 
 public final class mudclient extends GameWindowMiddleMan {
 
+  private static mudclient mcInstance;
+
+  public static synchronized mudclient getmc() {
+    return mcInstance;
+  }
+
+  public static synchronized void setmc(mudclient mc) {
+    mcInstance = mc;
+  }
+
   public static final int SPRITE_MEDIA_START = 2000;
   public static final int SPRITE_UTIL_START = 2100;
   public static final int SPRITE_ITEM_START = 2150;
@@ -71,6 +81,19 @@ public final class mudclient extends GameWindowMiddleMan {
     Config.initConfig(args.length > 0 ? args[0] : "settings.ini");
     GameWindowMiddleMan.clientVersion = 3;
     mudclient mc = new mudclient();
+    mc.appletMode = false;
+    mc.setLogo(Toolkit.getDefaultToolkit().getImage(Config.CONF_DIR + File.separator + "Loading.rscd"));
+    mc.createWindow(mc.windowWidth, mc.windowHeight + 11, "FireScape", false);
+    System.out.println("FireScape is now loading...");
+    System.out.println("Please... Wait...");
+    System.out.println("Created By Alex Levinson");
+  }
+
+  public static final void startScript() throws Exception {
+    Config.initConfig("settings.ini");
+    GameWindowMiddleMan.clientVersion = 3;
+    mudclient mc = new mudclient();
+    mudclient.setmc(mc);
     mc.appletMode = false;
     mc.setLogo(Toolkit.getDefaultToolkit().getImage(Config.CONF_DIR + File.separator + "Loading.rscd"));
     mc.createWindow(mc.windowWidth, mc.windowHeight + 11, "FireScape", false);
@@ -531,20 +554,34 @@ public final class mudclient extends GameWindowMiddleMan {
     }
   }
 
+  public static BufferedImage getLoginLogo() {
+    String file = Config.CONF_DIR + File.separator + "fire.jpg";
+    System.out.println("Loading file at: " + file);
+    BufferedImage img = null;
+    try {
+      img = ImageIO.read(new File(file));
+    }
+    catch (IOException e) {
+      System.out.println("Cannot load: " + file);
+    }
+    BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+    Graphics2D bGr = bimage.createGraphics();
+    bGr.drawImage(img, 0, 0, null);
+    bGr.dispose();
+    return bimage;
+  }
+
   private final void drawLoginScreen() {
     hasReceivedWelcomeBoxDetails = false;
     gameGraphics.f1Toggle = false;
     gameGraphics.method211();
-    if (loginScreenNumber == 0 || loginScreenNumber == 1 || loginScreenNumber == 2 || loginScreenNumber == 3) {
-      gameGraphics.drawPicture(0, 0, SPRITE_LOGO_START);
-    }
     if (loginScreenNumber == 0)
       menuWelcome.drawMenu();
     if (loginScreenNumber == 1)
       menuNewUser.drawMenu();
     if (loginScreenNumber == 2)
       menuLogin.drawMenu();
-    gameGraphics.drawPicture(0, windowHeight, SPRITE_MEDIA_START + 22);
+    gameGraphics.drawPicture(0, 0, 3151);
     gameGraphics.drawImage(aGraphics936, 0, 0);
   }
 
@@ -3153,6 +3190,7 @@ public final class mudclient extends GameWindowMiddleMan {
       }
       loadSprite(SPRITE_ITEM_START + (j - 1) * 30, "media.object", k);
     }
+    gameGraphics.setSpriteAtIndex(this.getLoginLogo(), 3151);
   }
 
   private final void loadEntity() {
@@ -7534,7 +7572,7 @@ public final class mudclient extends GameWindowMiddleMan {
       "Thieving" };
   private boolean showDuelWindow;
   private int anIntArray923[];
-  private GameImageMiddleMan gameGraphics;
+  public GameImageMiddleMan gameGraphics;
   private final String skillArrayLong[] = { "Attack", "Defense", "Strength", "Hits", "Ranged", "Prayer", "Magic",
       "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblaw",
       "Agility", "Thieving" };
@@ -7547,7 +7585,7 @@ public final class mudclient extends GameWindowMiddleMan {
   int mouseClickYArray[];
   private boolean showDuelConfirmWindow;
   private boolean duelWeAccept;
-  private Graphics aGraphics936;
+  public Graphics aGraphics936;
   private int doorX[];
   private int doorY[];
   private int wildernessType;
