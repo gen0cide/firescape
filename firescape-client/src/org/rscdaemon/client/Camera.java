@@ -18,11 +18,11 @@ public class Camera {
     maxVisibleModelCount = 100;
     visibleModelsArray = new Model[maxVisibleModelCount];
     visibleModelIntArray = new int[maxVisibleModelCount];
-    width = 512;
-    halfWidth = 256;
-    halfHeight = 192;
-    halfWidth2 = 256;
-    halfHeight2 = 256;
+    width = 512; // was 512
+    halfWidth = 256; // was 256
+    halfHeight = 192; // was 192
+    halfWidth2 = 256; // was 256
+    halfHeight2 = 256; // was 256
     cameraSizeInt = 8;
     anInt402 = 4;
     anIntArray441 = new int[40];

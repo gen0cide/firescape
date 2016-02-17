@@ -55,6 +55,14 @@ public class Sprite {
     return something2;
   }
 
+  public void setID(int id) {
+    this.id = id;
+  }
+
+  public void setPackageName(String name) {
+    this.packageName = name;
+  }
+
   public void setName(int id, String packageName) {
     this.id = id;
     this.packageName = packageName;
@@ -180,8 +188,8 @@ public class Sprite {
     if (in.remaining() < 25) {
       throw new IOException("Provided buffer too short - Headers missing");
     }
-    int width = in.getInt();
-    int height = in.getInt();
+    int width = in.getInt(); // 4
+    int height = in.getInt(); // 4
 
     boolean requiresShift = in.get() == 1;
     int xShift = in.getInt();

@@ -439,8 +439,8 @@ public class GameWindow extends Applet implements Runnable {
   }
 
   public GameWindow() {
-    appletWidth = 512;
-    appletHeight = 384;
+    appletWidth = 512; // was 512
+    appletHeight = 384; // was 384
     threadSleepModifier = 20;
     anInt5 = 1000;
     currentTimeArray = new long[10];

@@ -11,5 +11,7 @@
 	<classpathentry kind="lib" path="lib/xstream.jar"/>
 	<classpathentry kind="lib" path="rscd.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Users/alexl/Documents/fireshere/firescape-client/lib/gson.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

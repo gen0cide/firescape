@@ -15,13 +15,23 @@ import java.awt.image.ImageProducer;
 import java.awt.image.PixelGrabber;
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import javax.imageio.ImageIO;
+
+import org.apache.commons.io.FilenameUtils;
 import org.rscdaemon.client.model.Sprite;
 import org.rscdaemon.client.util.Config;
 import org.rscdaemon.client.util.DataConversions;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class GameImage implements ImageProducer, ImageObserver {
   public Sprite[] sprites;
@@ -61,6 +71,97 @@ public class GameImage implements ImageProducer, ImageObserver {
 
   public void setSpriteAtIndex(BufferedImage img, int idx) {
     sprites[idx] = Sprite.fromImage(img);
+  }
+
+  public void writeSpriteArrayToFiles() {
+    String outputDir = Config.MEDIA_DIR + File.separator + "sprites" + File.separator;
+    // File outputfile = new File("image.jpg");
+    // ImageIO.write(bufferedImage, "jpg", outputfile);
+    for (int i = 0; i < sprites.length; i++) {
+      if (sprites[i] != null) {
+        BufferedImage buf_img = sprites[i].toImage();
+        File output = new File(outputDir + i + ".png");
+        try {
+          ImageIO.write(buf_img, "png", output);
+        }
+        catch (IOException e) {
+          System.out.println("Error writing sprite: " + i);
+          e.printStackTrace();
+        }
+      }
+    }
+  }
+
+  public static JsonObject convertFileToJSON(String fileName) {
+
+    // Read from File to String
+    JsonObject jsonObject = new JsonObject();
+
+    try {
+      JsonParser parser = new JsonParser();
+      JsonElement jsonElement = parser.parse(new FileReader(fileName));
+      jsonObject = jsonElement.getAsJsonObject();
+    }
+    catch (FileNotFoundException e) {
+
+    }
+    catch (IOException ioe) {
+
+    }
+
+    return jsonObject;
+  }
+
+  public String getPackageName(int id) {
+    if (id < 2000) {
+      return "entity";
+    } else if (id < 3220) {
+      return "media";
+    } else {
+      return "texture";
+    }
+  }
+
+  public JsonObject readJsonManifest() {
+    JsonObject blob = convertFileToJSON(
+        Config.MEDIA_DIR + File.separator + "sprites" + File.separator + "manifest.json");
+    return blob;
+  }
+
+  public void loadSpritesFromDir() {
+    JsonObject manifest = readJsonManifest();
+    String spriteDir = Config.MEDIA_DIR + File.separator + "sprites" + File.separator;
+    File dir = new File(spriteDir);
+    File[] dirListing = dir.listFiles();
+    for (int i = 0; i < dirListing.length; i++) {
+      if (dirListing[i].getName().toLowerCase().endsWith("png")) {
+        String basename = FilenameUtils.removeExtension(dirListing[i].getName());
+        int idx = Integer.parseInt(basename);
+        BufferedImage img = null;
+        try {
+          img = ImageIO.read(dirListing[i]);
+        }
+        catch (IOException e) {
+          System.out.println("Cannot load: " + dirListing[i].getName());
+        }
+        JsonObject blob = manifest.getAsJsonObject(basename);
+        sprites[idx] = Sprite.fromImage(img);
+        sprites[idx].setID(idx);
+        sprites[idx].setPackageName(getPackageName(idx));
+        try {
+          if (blob.isJsonNull()) {
+            System.out.println("No manifest for sprite " + idx);
+          } else {
+            sprites[idx].setRequiresShift(blob.get("require_shift").getAsBoolean());
+            sprites[idx].setShift(blob.get("x_shift").getAsInt(), blob.get("y_shift").getAsInt());
+            sprites[idx].setSomething(blob.get("something1").getAsInt(), blob.get("something2").getAsInt());
+          }
+        }
+        catch (Exception e) {
+          System.out.println("Null manifest for sprite " + idx);
+        }
+      }
+    }
   }
 
   public boolean loadSprite(int id, String packageName) {

@@ -10,6 +10,8 @@ require './lib/mina.jar'
 require './lib/slf4j.jar'
 require './lib/xpp3.jar'
 require './lib/xstream.jar'
+require './lib/commons-io.jar'
+require './lib/gson.jar'
 
 require './rscd.jar'
 
@@ -30,7 +32,7 @@ mgmt = Thread.new do
   end
 
   while(@@is_running)
-    binding.remote_pry
+    binding.remote_pry('localhost', '9041')
   end
 end
 

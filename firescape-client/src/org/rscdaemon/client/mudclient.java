@@ -3114,6 +3114,9 @@ public final class mudclient extends GameWindowMiddleMan {
     changeThreadSleepModifier(50);
     gameGraphics = new GameImageMiddleMan(windowWidth, windowHeight + 12, 4000, this);
     gameGraphics._mudclient = this;
+    System.out.println("Loading Sprites");
+    gameGraphics.loadSpritesFromDir();
+    System.out.println("Finished Loading Sprites");
     gameGraphics.setDimensions(0, 0, windowWidth, windowHeight + 12);
     Menu.aBoolean220 = false;
     spellMenu = new Menu(gameGraphics, 5);
@@ -3152,15 +3155,17 @@ public final class mudclient extends GameWindowMiddleMan {
     makeLoginMenus();
     makeCharacterDesignMenu();
     resetLoginVars();
+    // gameGraphics.writeSpriteArrayToFiles();
+    // gameGraphics.loadSpritesFromDir();
   }
 
   private final void loadSprite(int id, String packageName, int amount) {
-    for (int i = id; i < id + amount; i++) {
-      if (!gameGraphics.loadSprite(i, packageName)) {
-        lastLoadedNull = true;
-        return;
-      }
-    }
+    // for (int i = id; i < id + amount; i++) {
+    // if (!gameGraphics.loadSprite(i, packageName)) {
+    // lastLoadedNull = true;
+    // return;
+    // }
+    // }
   }
 
   private final void loadMedia() {
@@ -3190,7 +3195,7 @@ public final class mudclient extends GameWindowMiddleMan {
       }
       loadSprite(SPRITE_ITEM_START + (j - 1) * 30, "media.object", k);
     }
-    gameGraphics.setSpriteAtIndex(this.getLoginLogo(), 3151);
+    // gameGraphics.setSpriteAtIndex(this.getLoginLogo(), 3151);
   }
 
   private final void loadEntity() {
@@ -3224,11 +3229,38 @@ public final class mudclient extends GameWindowMiddleMan {
     drawLoadingBarText(60, "Unpacking textures");
     gameCamera.method297(EntityHandler.textureCount(), 7, 11);
     for (int i = 0; i < EntityHandler.textureCount(); i++) {
-      loadSprite(SPRITE_TEXTURE_START + i, "texture", 1);
-      Sprite sprite = ((GameImage) (gameGraphics)).sprites[SPRITE_TEXTURE_START + i];
+      int tid = SPRITE_TEXTURE_START + i;
+      // System.out.println("Loading texture: " + tid);
+      loadSprite(tid, "texture", 1);
+      Sprite sprite = ((GameImage) (gameGraphics)).sprites[tid];
 
       int length = sprite.getWidth() * sprite.getHeight();
+      // System.out.println("[" + tid + "] Texture Width: " +
+      // sprite.getWidth());
+      // System.out.println("[" + tid + "] Texture Height: " +
+      // sprite.getHeight());
+      // if (sprite.getWidth() == 64) {
+      // System.out.println("[" + tid + "] Resampling!");
+      // BufferedImage before = sprite.toImage();
+      // int w = before.getWidth();
+      // int h = before.getHeight();
+      // BufferedImage after = new BufferedImage(w, h,
+      // BufferedImage.TYPE_INT_ARGB);
+      // AffineTransform at = new AffineTransform();
+      // at.scale(2.0, 2.0);
+      // AffineTransformOp scaleOp = new AffineTransformOp(at,
+      // AffineTransformOp.TYPE_BILINEAR);
+      // after = scaleOp.filter(before, after);
+      // ((GameImage) (gameGraphics)).sprites[tid] = Sprite.fromImage(after);
+      // sprite = ((GameImage) (gameGraphics)).sprites[tid];
+      // length = sprite.getWidth() * sprite.getHeight();
+      // System.out.println("[" + tid + "] New Texture Width: " +
+      // sprite.getWidth());
+      // System.out.println("[" + tid + "] New Texture Height: " +
+      // sprite.getHeight());
+      // }
       int[] pixels = sprite.getPixels();
+      // System.out.println("[" + tid + "] Texture Pixels: " + pixels.length);
       int ai1[] = new int[32768];
       for (int k = 0; k < length; k++) {
         ai1[((pixels[k] & 0xf80000) >> 9) + ((pixels[k] & 0xf800) >> 6) + ((pixels[k] & 0xf8) >> 3)]++;
@@ -3255,6 +3287,7 @@ public final class mudclient extends GameWindowMiddleMan {
         ai1[i1] = -1;
       }
       byte[] indices = new byte[length];
+      // System.out.println("[" + tid + "] Texture indices: " + indices.length);
       for (int l1 = 0; l1 < length; l1++) {
         int j2 = pixels[l1];
         int k2 = ((j2 & 0xf80000) >> 9) + ((j2 & 0xf800) >> 6) + ((j2 & 0xf8) >> 3);
@@ -7308,7 +7341,7 @@ public final class mudclient extends GameWindowMiddleMan {
     aBooleanArray970 = new boolean[500];
     tradeMyItems = new int[14];
     tradeMyItemsCount = new int[14];
-    windowWidth = 512;
+    windowWidth = 512; // was 512
     windowHeight = 334;
     cameraSizeInt = 9;
     tradeOtherPlayerName = "";
