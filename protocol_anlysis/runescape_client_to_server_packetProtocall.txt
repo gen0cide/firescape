@@ -9,19 +9,63 @@ PlayerLogin(Packet p){
 	int clientVersion = p.readShort();
 	RSCPacket loginPacket = DataConversions.decryptRSA(p.readBytes(p.readByte()));
 	int[] sessionKeys = new int[4];
-	for (int key = 0; key < sessionKeys.length; key++) {
-	    sessionKeys[key] = loginPacket.readInt();
-	}
-	int uid = loginPacket.readInt();
-	String username = loginPacket.readString(20).trim();
-	loginPacket.skip(1);
-	String password = loginPacket.readString(20).trim();
-	loginPacket.skip(1);
+    for (int key = 0; key < sessionKeys.length; key++) {
+        sessionKeys[key] = loginPacket.readInt();
+    }
+    int uid = loginPacket.readInt();
+    String username = loginPacket.readString(20).trim();
+    loginPacket.skip(1);
+    String password = loginPacket.readString(20).trim();
+    loginPacket.skip(1);
+
+
+	username = user;
+	user = DataOperations.addCharacters(user, 20);
+	password = pass;
+	pass = DataOperations.addCharacters(pass, 20);
+	int sessionRotationKeys[] = new int[4];
+	sessionRotationKeys[0] = (int) (Math.random() * 99999999D);
+	sessionRotationKeys[1] = (int) (Math.random() * 99999999D);
+	sessionRotationKeys[2] = (int) (sessionID >> 32);
+	sessionRotationKeys[3] = (int) sessionID;
+	DataEncryption dataEncryption = new DataEncryption(new byte[500]);
+	dataEncryption.offset = 0;
+	dataEncryption.add4ByteInt(sessionRotationKeys[0]);
+	dataEncryption.add4ByteInt(sessionRotationKeys[1]);
+	dataEncryption.add4ByteInt(sessionRotationKeys[2]);
+	dataEncryption.add4ByteInt(sessionRotationKeys[3]);
+	dataEncryption.add4ByteInt(0); // UID
+	dataEncryption.addString(user);
+	dataEncryption.addString(pass);
+	dataEncryption.encryptPacketWithKeys(key, modulus);
+	streamClass.createPacket(0);
+	if (reconnecting)
+	  streamClass.addByte(1);
+	else
+	  streamClass.addByte(0);
+	streamClass.add2ByteInt(clientVersion);
+	streamClass.addBytes(dataEncryption.packet, 0, dataEncryption.offset);
+	streamClass.finalisePacket();
+	int loginResponse = streamClass.readInputStream();
+	System.out.println(" - Login Response:" + loginResponse);
 }
 SessionRequest(Packet p){
 	packet_id = 32
 	byte userByte = p.readByte();
 	player.setClassName(p.readString().trim());
+
+
+	username = user;
+	user = DataOperations.addCharacters(user, 20);
+	streamClass = new StreamClass(makeSocket(Config.SERVER_IP, Config.SERVER_PORT), this);
+	streamClass.maxPacketReadCount = maxPacketReadCount;
+	long l = DataOperations.stringLength12ToLong(user);
+	streamClass.createPacket(32);
+	streamClass.addByte((int) (l >> 16 & 31L));
+	streamClass.addString(this.getClass().getName().toUpperCase());
+	streamClass.finalisePacket();
+	long sessionID = streamClass.read8ByteLong();
+	System.out.print("Session ID: " + sessionID);
 }
 PlayerLogoutRequest(Packet p){
 	packet_id = 129
@@ -43,14 +87,14 @@ WalkRequest(Packet p){
 	packet_id = (246 || 132)
 	// if 132 means in a combat
 	int startX = p.readShort();
-	int startY = p.readShort();
-	int numWaypoints = p.remaining() / 2;
-	byte[] waypointXoffsets = new byte[numWaypoints];
-	byte[] waypointYoffsets = new byte[numWaypoints];
-	for (int x = 0; x < numWaypoints; x++) {
-	  waypointXoffsets[x] = p.readByte();
-	  waypointYoffsets[x] = p.readByte();
-	}
+    int startY = p.readShort();
+    int numWaypoints = p.remaining() / 2;
+    byte[] waypointXoffsets = new byte[numWaypoints];
+    byte[] waypointYoffsets = new byte[numWaypoints];
+    for (int x = 0; x < numWaypoints; x++) {
+      waypointXoffsets[x] = p.readByte();
+      waypointYoffsets[x] = p.readByte();
+    }
 }
 ChatHandler(Packet p){
 	packet_id = 145
@@ -59,9 +103,9 @@ ChatHandler(Packet p){
 PrivacySettingHandler(Packet p){
 	packet_id = 176
  	boolean[] newSettings = new boolean[4];
-	for (int i = 0; i < 4; i++) {
-	  newSettings[i] = p.readByte() == 1;
-	}
+    for (int i = 0; i < 4; i++) {
+      newSettings[i] = p.readByte() == 1;
+    }
 }
 GameSettingHandler(Packet p){
 	packet_id = 157
@@ -89,10 +133,10 @@ WieldHandler(Packet p){
 PlayerAppearanceIDHandler(Packet p){
 	packet_id = 83
 	int mobCount = p.readShort();
-	for (int x = 0; x < mobCount; x++) {
-	  indicies[x] = p.readShort();
-	  appearanceIDs[x] = p.readShort();
-	}
+    for (int x = 0; x < mobCount; x++) {
+      indicies[x] = p.readShort();
+      appearanceIDs[x] = p.readShort();
+    }
 }
 SpellHandler(Packet p){
 	packet_id = (206 || 55 || 5 || 71 || 49 || 67 || 17 || 104 || 232)
@@ -107,20 +151,20 @@ SpellHandler(Packet p){
 	// 67 is casting on a door
 	// 17 is casting on a game object
 	// 104 is casting on a ground item
-	ActiveTile t = world.getTile(p.readShort(), p.readShort());
-	int itemId = p.readShort(); 
-	// 232 is cast on ground
+    ActiveTile t = world.getTile(p.readShort(), p.readShort());
+    int itemId = p.readShort(); 
+    // 232 is cast on ground
 }
 PlayerAppearanceUpdater(Packet p){
 	packet_id = 218
 	byte headGender = p.readByte();
-	byte headType = p.readByte();
-	byte bodyGender = p.readByte();
-	p.readByte(); // wtf is this?
-	int hairColour = (int) p.readByte();
-	int topColour = (int) p.readByte();
-	int trouserColour = (int) p.readByte();
-	int skinColour = (int) p.readByte();
+    byte headType = p.readByte();
+    byte bodyGender = p.readByte();
+    p.readByte(); // wtf is this?
+    int hairColour = (int) p.readByte();
+    int topColour = (int) p.readByte();
+    int trouserColour = (int) p.readByte();
+    int skinColour = (int) p.readByte();
 }
 TradeHandler(Packet p){
 	packet_id = (166 || 211 || 216 || 70 || 53)
@@ -130,10 +174,10 @@ TradeHandler(Packet p){
 	// 53 confirm accepted
 	// 216 trade declined
 	// 70 receive offered item data
-	int count = (int) p.readByte();
-	for (int slot = 0; slot < count; slot++) {
-	  InvItem tItem = new InvItem(p.readShort(), p.readInt());
-	}
+    int count = (int) p.readByte();
+    for (int slot = 0; slot < count; slot++) {
+      InvItem tItem = new InvItem(p.readShort(), p.readInt());
+    }
 }
 FriendHandler(Packet p){
 	packet_id = 168, 52, 25, 108, 254
@@ -151,13 +195,13 @@ InvActionHandler(Packet p){
 }
 InvUseOnPlayer(Packet p){
 	packet_id = 16
-	final Player affectedPlayer = world.getPlayer(p.readShort());
-	final InvItem item = player.getInventory().get(p.readShort());
+    final Player affectedPlayer = world.getPlayer(p.readShort());
+    final InvItem item = player.getInventory().get(p.readShort());
 }
 PickupItem(Packet p){
 	packet_id = 245
-	Point location = Point.location(p.readShort(), p.readShort()); final ActiveTile tile = world.getTile(location);
-	int id = p.readShort(); final Item item = getItem(id, tile, player);
+    Point location = Point.location(p.readShort(), p.readShort()); final ActiveTile tile = world.getTile(location);
+    int id = p.readShort(); final Item item = getItem(id, tile, player);
 }
 ObjectAction(Packet p){
 	packet_id = (40 || 51)
@@ -167,16 +211,16 @@ ObjectAction(Packet p){
 WallObjectAction(Packet p){
 	packet_id = (235 || 126)
 	final int click = pID == 126 ? 0 : 1;
-	final GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
+    final GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
 }
 InvUseOnObject(Packet p){
 	packet_id = (36 || 94)
 	ActiveTile tile = world.getTile(p.readShort(), p.readShort());
 	// 36 Use on door
-	int dir = p.readByte();
-	item = player.getInventory().get(p.readShort());
-	// 94 use on GameObject
-	item = player.getInventory().get(p.readShort());
+    int dir = p.readByte();
+    item = player.getInventory().get(p.readShort());
+    // 94 use on GameObject
+    item = player.getInventory().get(p.readShort());
 }
 AttackHandler(Packet p){
 	packet_id = (57 || 73)
@@ -197,10 +241,10 @@ BankHandler(Packet p){
 	// 48 close bank
 	// 198 deposit item
 	itemID = p.readShort();
-	amount = p.readInt();
-	// 183withdraw item
-	itemID = p.readShort();
-	amount = p.readInt();
+    amount = p.readInt();
+    // 183withdraw item
+    itemID = p.readShort();
+    amount = p.readInt();
 }
 MenuReplyHandler(Packet p){
 	packet_id = 154
@@ -208,7 +252,7 @@ MenuReplyHandler(Packet p){
 }
 ExceptionHandler(Packet p){
 	packet_id = 156
-	Logger.error("Exception from " + player.getUsername() + ": " + p.readString());
+    Logger.error("Exception from " + player.getUsername() + ": " + p.readString());
 }
 InvUseOnGroundItem(Packet p){
 	packet_id = 34
@@ -218,8 +262,8 @@ InvUseOnGroundItem(Packet p){
 }
 InvUseOnItem(Packet p){
 	packet_id = 27
-	InvItem item1 = player.getInventory().get(p.readShort());
-	InvItem item2 = player.getInventory().get(p.readShort());
+    InvItem item1 = player.getInventory().get(p.readShort());
+    InvItem item2 = player.getInventory().get(p.readShort());
 }
 ShopHandler(Packet p){
 	packet_id = (253 || 128 || 255)
