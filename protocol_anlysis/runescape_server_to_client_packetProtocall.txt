@@ -1,0 +1,780 @@
+IncomingPacket(int command, int length, byte data[]){
+//Protocol function structure {
+	//Server logic block around target bytes
+
+
+	//Client logic block around target bytes
+//}	
+command_110 {
+	command = 110;
+	//SendServerInfo
+
+	s.addLong(Config.START_TIME);
+	serverStartTime = DataOperations.getUnsigned8Bytes(data, 1);
+
+	GAMEVars.serverLocation.getBytes()
+	serverLocation = new String(data, 9, length - 9);
+}
+
+command_145 {
+	//PlayerPosition
+	packet.addBits(playerToUpdate.getX(), 11);
+    packet.addBits(playerToUpdate.getY(), 13);
+    packet.addBits(playerToUpdate.getSprite(), 4);
+    packet.addBits(knownPlayers.size(), 8);
+    for (Player p : knownPlayers) {
+      if (playerToUpdate.getIndex() != p.getIndex()) {
+        packet.addBits(p.getIndex(), 16);
+        if (watchedPlayers.isRemoving(p)) {
+          packet.addBits(1, 1);
+          packet.addBits(1, 1);
+          packet.addBits(12, 4);
+        } else if (p.hasMoved()) {
+          packet.addBits(1, 1);
+          packet.addBits(0, 1);
+          packet.addBits(p.getSprite(), 3);
+        } else if (p.spriteChanged()) {
+          packet.addBits(1, 1);
+          packet.addBits(1, 1);
+          packet.addBits(p.getSprite(), 4);
+        } else {
+          packet.addBits(0, 1);
+        }
+      }
+    }
+    for (Player p : newPlayers) {
+      byte[] offsets = DataConversions.getMobPositionOffsets(p.getLocation(), playerToUpdate.getLocation());
+      packet.addBits(p.getIndex(), 16);
+      packet.addBits(offsets[0], 5);
+      packet.addBits(offsets[1], 5);
+      packet.addBits(p.getSprite(), 4);
+      packet.addBits(0, 1);
+    }
+    return packet.toPacket();
+  }
+	
+
+
+}
+
+command_173 {
+	command = 173
+	//StartPVP
+	s.addShort((int) (((double) seconds / 32D) * 50));
+
+}
+
+command_109 {
+	//ItemPosition
+	for (Item i : knownItems) {
+	  if (watchedItems.isRemoving(i)) {
+	    byte[] offsets = DataConversions.getObjectPositionOffsets(i.getLocation(), playerToUpdate.getLocation());
+	    // if(it's miles away) {
+	    // packet.addByte((byte)255);
+	    // packet.addByte((byte)sectionX);
+	    // packet.addByte((byte)sectionY);
+	    // }
+	    // else {
+	    packet.addShort(i.getID() + 32768);
+	    packet.addByte(offsets[0]);
+	    packet.addByte(offsets[1]);
+	    // }
+	  }
+	}
+	for (Item i : newItems) {
+	  byte[] offsets = DataConversions.getObjectPositionOffsets(i.getLocation(), playerToUpdate.getLocation());
+	  packet.addShort(i.getID());
+	  packet.addByte(offsets[0]);
+	  packet.addByte(offsets[1]);
+	}
+
+
+
+}
+
+command_27 {
+	//GameObjectPosition
+    for (GameObject o : knownObjets) {
+      if (o.getType() != 0) {
+        continue;
+      }
+      // We should remove ones miles away differently I think
+      if (watchedObjects.isRemoving(o)) {
+        byte[] offsets = DataConversions.getObjectPositionOffsets(o.getLocation(), playerToUpdate.getLocation());
+        packet.addShort(60000);
+        packet.addByte(offsets[0]);
+        packet.addByte(offsets[1]);
+        packet.addByte((byte) o.getDirection());
+      }
+    }
+    for (GameObject o : newObjects) {
+      if (o.getType() != 0) {
+        continue;
+      }
+      byte[] offsets = DataConversions.getObjectPositionOffsets(o.getLocation(), playerToUpdate.getLocation());
+      packet.addShort(o.getID());
+      packet.addByte(offsets[0]);
+      packet.addByte(offsets[1]);
+      packet.addByte((byte) o.getDirection());
+    }
+
+
+}
+
+command_114 {
+	command = 114
+	//SendInventory
+	s.addByte((byte) player.getInventory().size());
+    for (InvItem item : player.getInventory().getItems()) {
+      s.addShort(item.getID() + (item.isWielded() ? 32768 : 0));
+      if (item.getDef().isStackable()) {
+        s.addInt(item.getAmount());
+      }
+    }
+
+
+}
+
+command_53 {
+	//PlayerUpdate
+	updates.addShort(updateSize);
+    for (Bubble b : bubblesNeedingDisplayed) { // 0 - Draws item over players
+                                               // head
+      updates.addShort(b.getOwner().getIndex());
+      updates.addByte((byte) 0);
+      updates.addShort(b.getID());
+    }
+    for (ChatMessage cm : chatMessagesNeedingDisplayed) { // 1/6 - Player
+                                                          // talking
+      updates.addShort(cm.getSender().getIndex());
+      updates.addByte((byte) (cm.getRecipient() == null ? 1 : 6));
+      System.out.println(cm.getRecipient() == null);
+      updates.addByte((byte) cm.getLength());
+      updates.addBytes(cm.getMessage());
+    }
+    for (Player p : playersNeedingHitsUpdate) { // 2 - Hitpoints update for
+                                                // players, draws health bar
+                                                // etc too
+      updates.addShort(p.getIndex());
+      updates.addByte((byte) 2);
+      updates.addByte((byte) p.getLastDamage());
+      updates.addByte((byte) p.getCurStat(3));
+      updates.addByte((byte) p.getMaxStat(3));
+    }
+    for (Projectile p : projectilesNeedingDisplayed) { // 3/4 - Draws a
+                                                       // projectile
+      Entity victim = p.getVictim();
+      if (victim instanceof Npc) {
+        updates.addShort(p.getCaster().getIndex());
+        updates.addByte((byte) 3);
+        updates.addShort(p.getType());
+        updates.addShort(((Npc) victim).getIndex());
+      } else if (victim instanceof Player) {
+        updates.addShort(p.getCaster().getIndex());
+        updates.addByte((byte) 4);
+        updates.addShort(p.getType());
+        updates.addShort(((Player) victim).getIndex());
+      }
+    }
+    for (Player p : playersNeedingAppearanceUpdate) { // 5 - Updates players
+                                                      // appearance, clothes,
+                                                      // skull, combat etc.
+      PlayerAppearance appearance = p.getPlayerAppearance();
+      updates.addShort(p.getIndex());
+      updates.addByte((byte) 5);
+      updates.addShort(p.getAppearanceID());
+      updates.addLong(p.getUsernameHash());
+      updates.addByte((byte) p.getWornItems().length);
+      for (int i : p.getWornItems()) {
+        updates.addByte((byte) i);
+      }
+      updates.addByte(appearance.getHairColour());
+      updates.addByte(appearance.getTopColour());
+      updates.addByte(appearance.getTrouserColour());
+      updates.addByte(appearance.getSkinColour());
+      updates.addByte((byte) p.getCombatLevel());
+      updates.addByte((byte) (p.isSkulled() ? 1 : 0));
+      updates.addByte((byte) (p.isAdmin() ? 3 : (p.isMod() ? 2 : (p.isPMod() ? 1 : (p.isEvent() ? 4 : 0)))));
+    }
+
+
+}
+
+
+command_129 {
+	command = 129
+	//SendCombatStyle
+	s.addByte((byte) player.getCombatStyle());
+
+}
+
+command_95 {
+	//WallObjectPosition
+	for (GameObject o : knownObjets) {
+	  if (o.getType() != 1) {
+	    continue;
+	  }
+	  // We should remove ones miles away differently I think
+	  if (watchedObjects.isRemoving(o)) {
+	    byte[] offsets = DataConversions.getObjectPositionOffsets(o.getLocation(), playerToUpdate.getLocation());
+	    packet.addShort(60000);
+	    packet.addByte(offsets[0]);
+	    packet.addByte(offsets[1]);
+	    packet.addByte((byte) o.getDirection());
+	  }
+	}
+	for (GameObject o : newObjects) {
+	  if (o.getType() != 1) {
+	    continue;
+	  }
+	  byte[] offsets = DataConversions.getObjectPositionOffsets(o.getLocation(), playerToUpdate.getLocation());
+	  packet.addShort(o.getID());
+	  packet.addByte(offsets[0]);
+	  packet.addByte(offsets[1]);
+	  packet.addByte((byte) o.getDirection());
+	}
+
+
+}
+
+
+command_77 {
+	//NPCPosition
+	packet.addBits(knownNpcs.size(), 8);
+    for (Npc n : knownNpcs) {
+      packet.addBits(n.getIndex(), 16);
+      if (watchedNpcs.isRemoving(n)) {
+        packet.addBits(1, 1);
+        packet.addBits(1, 1);
+        packet.addBits(12, 4);
+      } else if (n.hasMoved()) {
+        packet.addBits(1, 1);
+        packet.addBits(0, 1);
+        packet.addBits(n.getSprite(), 3);
+      } else if (n.spriteChanged()) {
+        packet.addBits(1, 1);
+        packet.addBits(1, 1);
+        packet.addBits(n.getSprite(), 4);
+      } else {
+        packet.addBits(0, 1);
+      }
+    }
+    for (Npc n : newNpcs) {
+      byte[] offsets = DataConversions.getMobPositionOffsets(n.getLocation(), playerToUpdate.getLocation());
+      packet.addBits(n.getIndex(), 16);
+      packet.addBits(offsets[0], 5);
+      packet.addBits(offsets[1], 5);
+      packet.addBits(n.getSprite(), 4);
+      packet.addBits(n.getID(), 10);
+    }
+
+
+}
+
+command_190 {
+	//NpcUpdate
+	int updateSize = npcMessagesNeedingDisplayed.size() + npcsNeedingHitsUpdate.size();
+    if (updateSize > 0) {
+      RSCPacketBuilder updates = new RSCPacketBuilder();
+      updates.setID(190);
+      updates.addShort(updateSize);
+      for (ChatMessage cm : npcMessagesNeedingDisplayed) {
+        updates.addShort(cm.getSender().getIndex());
+        updates.addByte((byte) 1);
+        updates.addShort(cm.getRecipient().getIndex());
+        updates.addByte((byte) cm.getLength());
+        updates.addBytes(cm.getMessage());
+      }
+      for (Npc n : npcsNeedingHitsUpdate) {
+        updates.addShort(n.getIndex());
+        updates.addByte((byte) 2);
+        updates.addByte((byte) n.getLastDamage());
+        updates.addByte((byte) n.getHits());
+        updates.addByte((byte) n.getDef().getHits());
+      }
+      return updates.toPacket();
+    }
+
+
+}
+
+command_223 {
+	command = 223
+	//SendMenu
+    s.addByte((byte) options.length);
+    for (String option : options) {
+      s.addByte((byte) option.length());
+      s.addBytes(option.getBytes());
+    }
+
+
+}
+
+command_127 {
+	command = 127
+	//HideMenu
+
+	//showQuestionsMenu = false
+}
+
+command_131 {
+	command = 131
+	//SendWorldInfo
+    s.addShort(player.getIndex());
+    s.addShort(2304);
+    s.addShort(1776);
+    s.addShort(Formulae.getHeight(player.getLocation()));
+    s.addShort(944);
+}
+
+command_180{
+	command = 180
+	//SendStats
+	for (int lvl : player.getCurStats())
+      s.addByte((byte) lvl);
+    for (int lvl : player.getMaxStats())
+      s.addByte((byte) lvl);
+    for (int exp : player.getExps())
+      s.addInt(exp);
+
+}
+
+command_177{
+	command = 177
+	//SendEquipmentStats
+    s.addShort(player.getArmourPoints());
+    s.addShort(player.getWeaponAimPoints());
+    s.addShort(player.getWeaponPowerPoints());
+    s.addShort(player.getMagicPoints());
+    s.addShort(player.getPrayerPoints());
+    s.addShort(player.getRangePoints());
+
+
+}
+
+command_165{
+	command = 165
+	//SendDied
+
+	//playrAliveTimeout = 250;
+}
+
+command_155{
+	
+
+}
+
+
+command_207{
+	command = 207
+	//SendAppearanceScreen
+
+	//showCharcterLookScreen = true;
+}
+
+command_4{
+	command = 4
+	//SendTradeWindowOpen
+	s.addShort(with.getIndex()) //playerToTradeWith
+
+}
+
+command_187{
+	command = 187
+	//SendTradeWindowClose
+
+	//showTradeWindow = false;
+    //showTradeConfirmWindow = false;
+}
+
+command_250{
+	command = 250
+	//SendTradeItems
+    s.addByte((byte) items.size());
+    for (InvItem item : items) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+
+
+}
+
+command_92{
+	command = 92
+	//SendTraceAcceptUpdate //s2.toPacket
+    s2.addByte((byte) (with.isTradeOfferAccepted() ? 1 : 0));
+
+
+}
+
+command_253{
+	command = 253
+	//ShowShop
+    s.addByte((byte) shop.size());
+    s.addByte((byte) (shop.isGeneral() ? 1 : 0));
+    s.addByte((byte) shop.getSellModifier());
+    s.addByte((byte) shop.getBuyModifier());
+    for (InvItem i : shop.getItems()) {
+      s.addShort(i.getID());
+      s.addShort(i.getAmount());
+    }
+
+}
+
+command_220 {
+	command = 220
+	//HideShop
+
+	//showShop = false;
+}
+
+command_18 {
+	command = 18
+	//SendTradeAcceptUpdate
+	s1.addByte((byte) (player.isTradeOfferAccepted() ? 1 : 0));
+
+	tradeWeAccepted = data[1] == 1;
+}
+
+command_152{
+	command = 152
+	//SendGameSettings
+    s.addByte((byte) (player.getGameSetting(0) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(2) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(3) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(4) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(5) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(6) ? 1 : 0));
+
+    configAutoCameraAngle = DataOperations.getUnsignedByte(data[1]) == 1;
+    configMouseButtons = DataOperations.getUnsignedByte(data[2]) == 1;
+    configSoundEffects = DataOperations.getUnsignedByte(data[3]) == 1;
+    showRoof = DataOperations.getUnsignedByte(data[4]) == 1;
+    autoScreenshot = DataOperations.getUnsignedByte(data[5]) == 1;
+    combatWindow = DataOperations.getUnsignedByte(data[6]) == 1;
+}
+
+command_209{
+	command = 209
+	//SendPrayers
+    for (int x = 0; x < 14; x++) { // was 14
+      s.addByte((byte) (player.isPrayerActivated(x) ? 1 : 0));
+    }
+
+	
+}
+
+command_93{
+	command = 93
+	//ShowBank
+    s.addByte((byte) player.getBank().size());
+    s.addByte((byte) Bank.MAX_SIZE);
+    for (InvItem i : player.getBank().getItems()) {
+      s.addShort(i.getID());
+      s.addInt(i.getAmount());
+    }
+
+	
+
+}
+
+command_171{
+	command = 171
+	//HideBank
+
+	//showBank = false;
+}
+
+command_211{
+	command = 211	
+
+	int idx = data[1] & 0xFF; int oldExp = playerStatExperience[idx];
+    playerStatExperience[idx] = DataOperations.readInt(data, 2);
+}
+
+command_229{
+	command = 229
+	//SendDuelWindowOpen
+	s.addShort(with.getIndex());
+
+}
+
+command_160{
+	command = 160
+	//SendDuelWindowClose
+
+	//showDuelWindow = false;
+    //showDuelConfirmWindow = false;
+}
+
+command_251{
+	command = 251
+	//SendTradeAccept
+    s.addLong(with.getUsernameHash());
+    s.addByte((byte) with.getTradeOffer().size());
+    for (InvItem item : with.getTradeOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+    s.addByte((byte) player.getTradeOffer().size());
+    for (InvItem item : player.getTradeOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }	
+
+
+
+}
+
+command_63 {
+	command = 63
+	//SendDuelItems
+    s.addByte((byte) items.size());
+    for (InvItem item : items) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+
+
+}
+
+command_198 {
+	command = 198
+	//SendDuelSettingUpdate
+    s.addByte((byte) (player.getDuelSetting(0) ? 1 : 0));
+    s.addByte((byte) (player.getDuelSetting(1) ? 1 : 0));
+    s.addByte((byte) (player.getDuelSetting(2) ? 1 : 0));
+    s.addByte((byte) (player.getDuelSetting(3) ? 1 : 0));
+
+}
+
+command_139{
+	//UpdateBankItem
+    s.addByte((byte) slot);
+    s.addShort(newId);
+    s.addInt(amount);
+
+
+}
+
+command_228{
+	//SendUpdateItem
+    s.addByte((byte) slot);
+    s.addShort(item.getID() + (item.isWielded() ? 32768 : 0));
+    if (item.getDef().isStackable()) {
+      s.addInt(item.getAmount());
+    }
+
+}
+
+command_191{
+	//SendRemoveItem
+	s.addByte((byte) slot);
+
+}
+
+command_208{
+	//SendStat
+    s.addByte((byte) stat);
+    s.addByte((byte) player.getCurStat(stat));
+    s.addByte((byte) player.getMaxStat(stat));
+    s.addInt(player.getExp(stat));
+
+}
+
+command_65{
+	//SendDuelAcceptUpdate
+	s2.addByte((byte) (with.isDuelOfferAccepted() ? 1 : 0));
+
+	duelOpponentAccepted = data[1] == 1;
+}
+
+command_197{
+	duelMyAccepted = data[1] == 1;
+}
+
+command_147{
+	//SendDuelAccept
+    s.addLong(with.getUsernameHash());
+    s.addByte((byte) with.getDuelOffer().size());
+    for (InvItem item : with.getDuelOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+    s.addByte((byte) player.getDuelOffer().size());
+    for (InvItem item : player.getDuelOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+    s.addByte((byte) (player.getDuelSetting(0) ? 1 : 0)); // duelCantRetreat = data[i7++] & 0xff;
+    s.addByte((byte) (player.getDuelSetting(1) ? 1 : 0)); // duelUseMagic = data[i7++] & 0xff;
+    s.addByte((byte) (player.getDuelSetting(2) ? 1 : 0)); // duelUsePrayer = data[i7++] & 0xff;
+    s.addByte((byte) (player.getDuelSetting(3) ? 1 : 0)); // duelUseWeapons =  data[i7++] & 0xff;
+
+
+}
+command_11{
+	//SendSound
+	s.addBytes(soundName.getBytes());
+
+	String s = new String(data, 1, length - 1);
+    playSound(s);
+}
+
+command_23{
+	//SendTeleBubble
+    s.addByte((byte) (grab ? 1 : 0));
+    s.addByte((byte) (x - player.getX()));
+    s.addByte((byte) (y - player.getY()));
+	
+
+}
+
+command_248{
+	//SendLoginBox
+    s.addShort(player.getDaysSinceLastLogin());
+    s.addShort(player.getDaysSubscriptionLeft());
+    s.addBytes(player.getLastIP().getBytes());
+
+
+}
+
+command_148{
+	//SendAlert if Big is false
+	s.addBytes(message.getBytes());
+
+    serverMessage = new String(data, 1, length - 1);
+    showServerMessageBox = true;
+    serverMessageBoxTop = false;
+}
+
+command_64{
+	//SendAlert if Big is true
+	s.addBytes(message.getBytes());
+
+    serverMessage = new String(data, 1, length - 1);
+    showServerMessageBox = true;
+    serverMessageBoxTop = true;
+}
+
+command_126{
+	//SendFatigue
+	s.addShort(player.getFatigue());
+
+	fatigue = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_128{
+	//SendQuestPoints
+	s.addShort(player.getQuestPoints());
+
+	questpoints = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_206{
+	//SendKillingSpree
+	s.addShort(player.getKillingSpree());
+
+	killingspree = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_210{
+	//SendGuthixSpellCast
+	s.addShort(player.getGuthixSpellCast());
+
+	guthixspells = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_212{
+	//SendZamrokSpellCast
+	s.addShort(player.getZamorakSpellCast());
+
+	zamorakspells = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_213{
+	//SendSaradominSpellCast
+	s.addShort(player.getSaradominSpellCast());
+
+	saradominspells = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_137{
+	//SendDruidcRitualComplete
+    if (player.getDruidicRitualStatus() == 4) {
+      s.addShort(1);
+    } else {
+      s.addShort(0);
+    }
+
+	druidicritualcomplete = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_138{
+	//SendImpCatcherComplete
+	if (player.getImpCatcherStatus() == 2) {
+      s.addShort(1);
+    } else {
+      s.addShort(0);
+    }
+
+	impcatchercomplete = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_140{
+	//SendRomeoJulietComplete
+    if (player.getRomeoJulietStatus() == 3) {
+      s.addShort(1);
+    } else {
+      s.addShort(0);
+    }
+
+	romeojuliet = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_141{
+	sheepshearer = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_142{
+	witchpotion = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_143{
+	doricsquest = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_144{
+	cooksassistantcomplete = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_130{
+	maxHit = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_132{
+	//SendKills
+	s.addShort(player.getKills());
+
+	kills = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_134{
+	//SendDeaths
+	s.addShort(player.getDeaths());
+
+	deaths = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_181{
+	//SendScreenshot
+
+	//takeScreenshot(false);
+}
+
+command_172{
+	//StartShutdown
+	s.addShort((int) (((double) seconds / 32D) * 50));
+
+	systemUpdate = DataOperations.getUnsigned2Bytes(data, 1) * 32;
+}
