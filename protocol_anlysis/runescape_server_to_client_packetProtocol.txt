@@ -1,0 +1,583 @@
+IncomingPacket(int command, int length, byte data[]){
+//Protocol function structure
+//Server logic block around target bytes
+//Client logic block around target bytes
+	
+command_110 {
+	command = 110;
+	//SendServerInfo
+
+	s.addLong(Config.START_TIME);
+	serverStartTime = DataOperations.getUnsigned8Bytes(data, 1);
+
+	GAMEVars.serverLocation.getBytes()
+	serverLocation = new String(data, 9, length - 9);
+}
+
+command_145 {
+	//PlayerPosition
+	
+	
+
+}
+
+command_173 {
+	command = 173
+	//StartPVP
+	s.addShort((int) (((double) seconds / 32D) * 50));
+
+}
+
+command_109 {
+	//ItemPosition
+	for (Item i : knownItems) {
+	  if (watchedItems.isRemoving(i)) {
+	    byte[] offsets = DataConversions.getObjectPositionOffsets(i.getLocation(), playerToUpdate.getLocation());
+	    // if(it's miles away) {
+	    // packet.addByte((byte)255);
+	    // packet.addByte((byte)sectionX);
+	    // packet.addByte((byte)sectionY);
+	    // }
+	    // else {
+	    packet.addShort(i.getID() + 32768);
+	    packet.addByte(offsets[0]);
+	    packet.addByte(offsets[1]);
+	    // }
+	  }
+	}
+	for (Item i : newItems) {
+	  byte[] offsets = DataConversions.getObjectPositionOffsets(i.getLocation(), playerToUpdate.getLocation());
+	  packet.addShort(i.getID());
+	  packet.addByte(offsets[0]);
+	  packet.addByte(offsets[1]);
+	}
+
+
+}
+
+command_27 {
+	
+
+}
+
+command_114 {
+	command = 114
+	//SendInventory
+	s.addByte((byte) player.getInventory().size());
+    for (InvItem item : player.getInventory().getItems()) {
+      s.addShort(item.getID() + (item.isWielded() ? 32768 : 0));
+      if (item.getDef().isStackable()) {
+        s.addInt(item.getAmount());
+      }
+    }
+
+
+}
+
+command_53 {
+	
+
+}
+
+
+command_129 {
+	command = 129
+	//SendCombatStyle
+	s.addByte((byte) player.getCombatStyle());
+
+}
+
+command_95 {
+	
+
+}
+
+
+command_77 {
+	
+
+}
+
+command_190 {
+	
+
+}
+
+command_223 {
+	command = 223
+	//SendMenu
+    s.addByte((byte) options.length);
+    for (String option : options) {
+      s.addByte((byte) option.length());
+      s.addBytes(option.getBytes());
+    }
+
+
+}
+
+command_127 {
+	command = 
+	//HideMenu
+
+	//showQuestionsMenu = false
+}
+
+command_131 {
+	command = 131
+	//SendWorldInfo
+    s.addShort(player.getIndex());
+    s.addShort(2304);
+    s.addShort(1776);
+    s.addShort(Formulae.getHeight(player.getLocation()));
+    s.addShort(944);
+}
+
+command_180{
+	command = 180
+	//SendStats
+	for (int lvl : player.getCurStats())
+      s.addByte((byte) lvl);
+    for (int lvl : player.getMaxStats())
+      s.addByte((byte) lvl);
+    for (int exp : player.getExps())
+      s.addInt(exp);
+
+}
+
+command_177{
+	command = 177
+	//SendEquipmentStats
+    s.addShort(player.getArmourPoints());
+    s.addShort(player.getWeaponAimPoints());
+    s.addShort(player.getWeaponPowerPoints());
+    s.addShort(player.getMagicPoints());
+    s.addShort(player.getPrayerPoints());
+    s.addShort(player.getRangePoints());
+
+
+}
+
+command_165{
+	command = 165
+	//SendDied
+
+	//playrAliveTimeout = 250;
+}
+
+command_155{
+	
+
+}
+
+
+command_207{
+	command = 207
+	//SendAppearanceScreen
+
+	//showCharcterLookScreen = true;
+}
+
+command_4{
+	command = 4
+	//SendTradeWindowOpen
+	s.addShort(with.getIndex()) //playerToTradeWith
+
+}
+
+command_187{
+	command = 187
+	//SendTradeWindowClose
+
+	//showTradeWindow = false;
+    //showTradeConfirmWindow = false;
+}
+
+command_250{
+	command = 250
+	//SendTradeItems
+    s.addByte((byte) items.size());
+    for (InvItem item : items) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+
+
+}
+
+command_92{
+	command = 92
+	//SendTraceAcceptUpdate //s2.toPacket
+    s2.addByte((byte) (with.isTradeOfferAccepted() ? 1 : 0));
+
+
+}
+
+command_253{
+	command = 253
+	//ShowShop
+    s.addByte((byte) shop.size());
+    s.addByte((byte) (shop.isGeneral() ? 1 : 0));
+    s.addByte((byte) shop.getSellModifier());
+    s.addByte((byte) shop.getBuyModifier());
+    for (InvItem i : shop.getItems()) {
+      s.addShort(i.getID());
+      s.addShort(i.getAmount());
+    }
+
+}
+
+command_220 {
+	command = 220
+	//HideShop
+
+	//showShop = false;
+}
+
+command_18 {
+	command = 18
+	//SendTradeAcceptUpdate
+	s1.addByte((byte) (player.isTradeOfferAccepted() ? 1 : 0));
+
+	tradeWeAccepted = data[1] == 1;
+}
+
+command_152{
+	command = 152
+	//SendGameSettings
+    s.addByte((byte) (player.getGameSetting(0) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(2) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(3) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(4) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(5) ? 1 : 0));
+    s.addByte((byte) (player.getGameSetting(6) ? 1 : 0));
+
+    configAutoCameraAngle = DataOperations.getUnsignedByte(data[1]) == 1;
+    configMouseButtons = DataOperations.getUnsignedByte(data[2]) == 1;
+    configSoundEffects = DataOperations.getUnsignedByte(data[3]) == 1;
+    showRoof = DataOperations.getUnsignedByte(data[4]) == 1;
+    autoScreenshot = DataOperations.getUnsignedByte(data[5]) == 1;
+    combatWindow = DataOperations.getUnsignedByte(data[6]) == 1;
+}
+
+command_209{
+	command = 209
+	//SendPrayers
+    for (int x = 0; x < 14; x++) { // was 14
+      s.addByte((byte) (player.isPrayerActivated(x) ? 1 : 0));
+    }
+
+	
+}
+
+command_93{
+	command = 93
+	//ShowBank
+    s.addByte((byte) player.getBank().size());
+    s.addByte((byte) Bank.MAX_SIZE);
+    for (InvItem i : player.getBank().getItems()) {
+      s.addShort(i.getID());
+      s.addInt(i.getAmount());
+    }
+
+	
+
+}
+
+command_171{
+	command = 171
+	//HideBank
+
+	//showBank = false;
+}
+
+command_211{
+	command = 211	
+
+}
+
+command_229{
+	command = 229
+	//SendDuelWindowOpen
+	s.addShort(with.getIndex());
+
+}
+
+command_160{
+	command = 160
+	//SendDuelWindowClose
+
+	//showDuelWindow = false;
+    //showDuelConfirmWindow = false;
+}
+
+command_251{
+	command = 251
+	//SendTradeAccept
+    s.addLong(with.getUsernameHash());
+    s.addByte((byte) with.getTradeOffer().size());
+    for (InvItem item : with.getTradeOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+    s.addByte((byte) player.getTradeOffer().size());
+    for (InvItem item : player.getTradeOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }	
+
+
+
+}
+
+command_63 {
+	command = 63
+	//SendDuelItems
+    s.addByte((byte) items.size());
+    for (InvItem item : items) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+
+
+}
+
+command_198 {
+	command = 198
+	//SendDuelSettingUpdate
+    s.addByte((byte) (player.getDuelSetting(0) ? 1 : 0));
+    s.addByte((byte) (player.getDuelSetting(1) ? 1 : 0));
+    s.addByte((byte) (player.getDuelSetting(2) ? 1 : 0));
+    s.addByte((byte) (player.getDuelSetting(3) ? 1 : 0));
+
+}
+
+command_139{
+	//UpdateBankItem
+    s.addByte((byte) slot);
+    s.addShort(newId);
+    s.addInt(amount);
+
+
+}
+
+command_228{
+	//SendUpdateItem
+    s.addByte((byte) slot);
+    s.addShort(item.getID() + (item.isWielded() ? 32768 : 0));
+    if (item.getDef().isStackable()) {
+      s.addInt(item.getAmount());
+    }
+
+}
+
+command_191{
+	//SendRemoveItem
+	s.addByte((byte) slot);
+
+}
+
+command_208{
+	//SendStat
+    s.addByte((byte) stat);
+    s.addByte((byte) player.getCurStat(stat));
+    s.addByte((byte) player.getMaxStat(stat));
+    s.addInt(player.getExp(stat));
+
+}
+
+command_65{
+	//SendDuelAcceptUpdate
+	s2.addByte((byte) (with.isDuelOfferAccepted() ? 1 : 0));
+
+	duelOpponentAccepted = data[1] == 1;
+}
+
+command_197{
+	duelMyAccepted = data[1] == 1;
+}
+
+command_147{
+	//SendDuelAccept
+    s.addLong(with.getUsernameHash());
+    s.addByte((byte) with.getDuelOffer().size());
+    for (InvItem item : with.getDuelOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+    s.addByte((byte) player.getDuelOffer().size());
+    for (InvItem item : player.getDuelOffer()) {
+      s.addShort(item.getID());
+      s.addInt(item.getAmount());
+    }
+    s.addByte((byte) (player.getDuelSetting(0) ? 1 : 0)); // duelCantRetreat = data[i7++] & 0xff;
+    s.addByte((byte) (player.getDuelSetting(1) ? 1 : 0)); // duelUseMagic = data[i7++] & 0xff;
+    s.addByte((byte) (player.getDuelSetting(2) ? 1 : 0)); // duelUsePrayer = data[i7++] & 0xff;
+    s.addByte((byte) (player.getDuelSetting(3) ? 1 : 0)); // duelUseWeapons =  data[i7++] & 0xff;
+
+
+}
+command_11{
+	//SendSound
+	s.addBytes(soundName.getBytes());
+
+	String s = new String(data, 1, length - 1);
+    playSound(s);
+}
+
+command_23{
+	//SendTeleBubble
+    s.addByte((byte) (grab ? 1 : 0));
+    s.addByte((byte) (x - player.getX()));
+    s.addByte((byte) (y - player.getY()));
+	
+
+}
+
+command_248{
+	//SendLoginBox
+    s.addShort(player.getDaysSinceLastLogin());
+    s.addShort(player.getDaysSubscriptionLeft());
+    s.addBytes(player.getLastIP().getBytes());
+
+
+}
+
+command_148{
+	//SendAlert if Big is false
+	s.addBytes(message.getBytes());
+
+    serverMessage = new String(data, 1, length - 1);
+    showServerMessageBox = true;
+    serverMessageBoxTop = false;
+}
+
+command_64{
+	//SendAlert if Big is true
+	s.addBytes(message.getBytes());
+
+    serverMessage = new String(data, 1, length - 1);
+    showServerMessageBox = true;
+    serverMessageBoxTop = true;
+}
+
+command_126{
+	//SendFatigue
+	s.addShort(player.getFatigue());
+
+	fatigue = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_128{
+	//SendQuestPoints
+	s.addShort(player.getQuestPoints());
+
+	questpoints = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_206{
+	//SendKillingSpree
+	s.addShort(player.getKillingSpree());
+
+	killingspree = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_210{
+	//SendGuthixSpellCast
+	s.addShort(player.getGuthixSpellCast());
+
+	guthixspells = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_212{
+	//SendZamrokSpellCast
+	s.addShort(player.getZamorakSpellCast());
+
+	zamorakspells = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_213{
+	//SendSaradominSpellCast
+	s.addShort(player.getSaradominSpellCast());
+
+	saradominspells = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_137{
+	//SendDruidcRitualComplete
+    if (player.getDruidicRitualStatus() == 4) {
+      s.addShort(1);
+    } else {
+      s.addShort(0);
+    }
+
+	druidicritualcomplete = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_138{
+	//SendImpCatcherComplete
+	if (player.getImpCatcherStatus() == 2) {
+      s.addShort(1);
+    } else {
+      s.addShort(0);
+    }
+
+	impcatchercomplete = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_140{
+	//SendRomeoJulietComplete
+    if (player.getRomeoJulietStatus() == 3) {
+      s.addShort(1);
+    } else {
+      s.addShort(0);
+    }
+
+	romeojuliet = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_141{
+	sheepshearer = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_142{
+	witchpotion = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_143{
+	doricsquest = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_144{
+	cooksassistantcomplete = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_130{
+	maxHit = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_132{
+	//SendKills
+	s.addShort(player.getKills());
+
+	kills = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_134{
+	//SendDeaths
+	s.addShort(player.getDeaths());
+
+	deaths = DataOperations.getUnsigned2Bytes(data, 1);
+}
+
+command_181{
+	//SendScreenshot
+
+	//takeScreenshot(false);
+}
+
+command_172{
+	//StartShutdown
+	s.addShort((int) (((double) seconds / 32D) * 50));
+
+	systemUpdate = DataOperations.getUnsigned2Bytes(data, 1) * 32;
+}
