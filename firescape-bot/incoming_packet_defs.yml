@@ -1,0 +1,11 @@
+packets:
+  -!org.rscdaemon.bot.packethandler.PacketHandlerDef
+    ids:
+      - 1337
+      - 2674
+    className: org.rscdaemon.bot.packethandler.server.TestPacket
+  -!org.rscdaemon.bot.packethandler.PacketHandlerDef
+    ids:
+      - 4444
+    className: org.rscdaemon.bot.packethandler.server.TestPacket
+      

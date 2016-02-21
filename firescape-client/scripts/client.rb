@@ -32,7 +32,7 @@ mgmt = Thread.new do
   end
 
   while(@@is_running)
-    binding.remote_pry('localhost', '9041')
+    binding.remote_pry('localhost', '9042')
   end
 end
 

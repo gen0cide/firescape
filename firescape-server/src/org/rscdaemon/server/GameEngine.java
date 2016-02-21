@@ -15,6 +15,7 @@ import org.rscdaemon.server.net.PacketQueue;
 import org.rscdaemon.server.net.RSCPacket;
 import org.rscdaemon.server.packethandler.PacketHandler;
 import org.rscdaemon.server.packethandler.PacketHandlerDef;
+import org.rscdaemon.server.util.DataConversions;
 import org.rscdaemon.server.util.Logger;
 import org.rscdaemon.server.util.PersistenceManager;
 
@@ -35,6 +36,14 @@ public final class GameEngine extends Thread {
    * Whether the engine's thread is running
    */
   int curAdvert;
+
+  int tickIdx = 0;
+
+  int[] tickTimings = new int[20];
+
+  long lastTickTime = 0;
+
+  long currTickTime = 0;
 
   private long lastAdvert;
 
@@ -111,6 +120,19 @@ public final class GameEngine extends Thread {
       processIncomingPackets();
       processEvents();
       processClients();
+      currTickTime = System.currentTimeMillis();
+      if (lastTickTime == 0) {
+        lastTickTime = currTickTime;
+      } else {
+        if (tickIdx > 19) {
+          int avg = DataConversions.average(tickTimings);
+          tickIdx = 0;
+          System.out.println("Average Tick Speed: " + avg + "ms");
+        }
+        tickTimings[tickIdx] = (int) ((int) currTickTime - lastTickTime);
+        lastTickTime = currTickTime;
+        tickIdx++;
+      }
     }
     if (!running)
       world.getServer().unbind();

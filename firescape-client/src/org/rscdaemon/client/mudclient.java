@@ -6377,6 +6377,8 @@ public final class mudclient extends GameWindowMiddleMan {
 
   private final boolean sendWalkCommand(int walkSectionX, int walkSectionY, int x1, int y1, int x2, int y2,
       boolean stepBoolean, boolean coordsEqual) {
+    System.out.println("walkSectionX=" + walkSectionX + " walkSectionY=" + walkSectionY + " x1=" + x1 + " y1=" + y1
+        + " x2=" + x2 + " y2=" + y2 + " stepBool=" + stepBoolean + " coordsEqual=" + coordsEqual);
     // todo: needs checking
     int stepCount = engineHandle.getStepCount(walkSectionX, walkSectionY, x1, y1, x2, y2, sectionXArray, sectionYArray,
         stepBoolean);
@@ -6415,6 +6417,11 @@ public final class mudclient extends GameWindowMiddleMan {
 
   private final boolean sendWalkCommandIgnoreCoordsEqual(int walkSectionX, int walkSectionY, int x1, int y1, int x2,
       int y2, boolean stepBoolean, boolean coordsEqual) {
+    // System.out.println("walkSectionX=" + walkSectionX + " walkSectionY=" +
+    // walkSectionY + " x1=" + x1 + " y1=" + y1
+    // + " x2=" + x2 + " y2=" + y2 + " stepBool=" + stepBoolean + "coordsEqual="
+    // + coordsEqual);
+    //
     int stepCount = engineHandle.getStepCount(walkSectionX, walkSectionY, x1, y1, x2, y2, sectionXArray, sectionYArray,
         stepBoolean);
     if (stepCount == -1)

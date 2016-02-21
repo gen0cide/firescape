@@ -218,6 +218,7 @@ public abstract class GameWindowMiddleMan extends GameWindow {
   private long lastPacket = System.currentTimeMillis();
 
   protected final void checkIncomingPacket(int command, int length) {
+    System.out.println("[PACKET] id=" + command + " length=" + length);
     if (command == 48) {
       String s = new String(packetData, 1, length - 1);
       handleServerMessage(s);
