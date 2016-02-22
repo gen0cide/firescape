@@ -18,11 +18,13 @@ public class SessionRequest implements PacketHandler {
     Player player = (Player) session.getAttachment();
     byte userByte = p.readByte();
     player.setClassName(p.readString().trim());
+    System.out.println("Class Name: " + player.getClassName());
     long serverKey = Formulae.generateSessionKey(userByte);
     player.setServerKey(serverKey);
     RSCPacketBuilder pb = new RSCPacketBuilder();
     pb.setBare(true);
     pb.addLong(serverKey);
     session.write(pb.toPacket());
+    System.out.println("Server Key: " + serverKey);
   }
 }

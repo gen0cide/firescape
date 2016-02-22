@@ -1,13 +1,12 @@
 package org.rscdaemon.bot.packetbuilder.server;
 
+import org.rscdaemon.bot.model.Player;
 import org.rscdaemon.bot.net.RSCPacket;
 
 public class TestServerPacket extends ServerPacket {
 
-  public static final int PACKET_ID = 1776;
-
-  public TestServerPacket() {
-    packet.setID(PACKET_ID);
+  public TestServerPacket(Player p) {
+    super(p);
   }
 
   /**
@@ -18,6 +17,12 @@ public class TestServerPacket extends ServerPacket {
   public RSCPacket getPacket() {
     // TODO Auto-generated method stub
     return null;
+  }
+
+  @Override
+  public int getPacketID() {
+    // TODO Auto-generated method stub
+    return 1776;
   }
 
 }

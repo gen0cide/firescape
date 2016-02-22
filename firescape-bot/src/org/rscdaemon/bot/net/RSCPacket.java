@@ -1,6 +1,6 @@
 package org.rscdaemon.bot.net;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 
 public class RSCPacket extends Packet {
   /**
@@ -32,6 +32,6 @@ public class RSCPacket extends Packet {
    * @return A <code>String</code> representing this packet
    */
   public String toString() {
-    return super.toString() + " pid=" + pID;
+    return super.toString() + " pid=" + pID + " isBare=" + super.bare;
   }
 }

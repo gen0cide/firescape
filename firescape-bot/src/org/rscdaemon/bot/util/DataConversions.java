@@ -9,19 +9,21 @@ import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 
+import org.rscdaemon.bot.net.RSCPacket;
+
 import com.bombaydigital.vault.HexString;
 
 public final class DataConversions {
-  private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
-  private static MessageDigest md;
-  private static Random rand = new Random();
-  private static char characters[] = { ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c',
+  public static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
+  public static MessageDigest md;
+  public static Random rand = new Random();
+  public static char characters[] = { ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c',
       'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!',
       '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243', '$', '%', '"', '[',
       ']' };
-  private static final BigInteger key = new BigInteger(
-      "730546719878348732291497161314617369560443701473303681965331739205703475535302276087891130348991033265134162275669215460061940182844329219743687403068279");
-  private static final BigInteger modulus = new BigInteger(
+  public static final BigInteger key = new BigInteger(
+      "1370158896620336158431733257575682136836100155721926632321599369132092701295540721504104229217666225601026879393318399391095704223500673696914052239029335");
+  public static final BigInteger modulus = new BigInteger(
       "1549611057746979844352781944553705273443228154042066840514290174539588436243191882510185738846985723357723362764835928526260868977814405651690121789896823");
 
   public static void main(String[] argv) throws Exception {
@@ -39,6 +41,26 @@ public final class DataConversions {
     byte[] buffer = new byte[in.available()];
     in.read(buffer, 0, buffer.length);
     return ByteBuffer.wrap(buffer);
+  }
+
+  public static String addCharacters(String s, int i) {
+    String s1 = "";
+    for (int j = 0; j < i; j++) {
+      if (j >= s.length()) {
+        s1 = s1 + " ";
+      } else {
+        char c = s.charAt(j);
+        if (c >= 'a' && c <= 'z')
+          s1 = s1 + c;
+        else if (c >= 'A' && c <= 'Z')
+          s1 = s1 + c;
+        else if (c >= '0' && c <= '9')
+          s1 = s1 + c;
+        else
+          s1 = s1 + '_';
+      }
+    }
+    return s1;
   }
 
   /**
@@ -104,16 +126,16 @@ public final class DataConversions {
   /**
    * Decrypts an RSA encrypted packet using our private key
    */
-  // public static RSCPacket decryptRSA(byte[] pData) {
-  // try {
-  // BigInteger bigInteger = new BigInteger(pData);
-  // pData = bigInteger.modPow(key, modulus).toByteArray();
-  // return new RSCPacket(null, 0, pData, true);
-  // }
-  // catch (Exception e) {
-  // return null;
-  // }
-  // }
+  public static RSCPacket decryptRSA(byte[] pData) {
+    try {
+      BigInteger bigInteger = new BigInteger(pData);
+      pData = bigInteger.modPow(key, modulus).toByteArray();
+      return new RSCPacket(null, 0, pData, true);
+    }
+    catch (Exception e) {
+      return null;
+    }
+  }
 
   /**
    * Calculates the average of all values in the array

@@ -114,6 +114,7 @@ public final class DataConversions {
       return new RSCPacket(null, 0, pData, true);
     }
     catch (Exception e) {
+      e.printStackTrace();
       return null;
     }
   }

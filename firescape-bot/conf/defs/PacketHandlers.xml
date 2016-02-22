@@ -1,0 +1,14 @@
+<PacketHandler-array>
+	<PacketHandler>
+		<ids>
+			<int>1776</int>
+		</ids>
+		<className>org.rscdaemon.bot.packethandler.server.SessionResponse</className>
+	</PacketHandler>
+  <PacketHandler>
+    <ids>
+      <int>1777</int>
+    </ids>
+    <className>org.rscdaemon.bot.packethandler.server.LoginResponse</className>
+  </PacketHandler>
+</PacketHandler-array>

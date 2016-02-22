@@ -2,7 +2,7 @@ package org.rscdaemon.bot.net;
 
 import java.net.InetSocketAddress;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 import org.rscdaemon.bot.util.Logger;
 
 public class Packet {
@@ -178,12 +178,14 @@ public class Packet {
    */
   public long readLong() {
     try {
+      System.out.println("error here: " + pData.length + " caret=" + caret);
       return (long) ((long) (pData[caret++] & 0xff) << 56) | ((long) (pData[caret++] & 0xff) << 48)
           | ((long) (pData[caret++] & 0xff) << 40) | ((long) (pData[caret++] & 0xff) << 32)
           | ((long) (pData[caret++] & 0xff) << 24) | ((long) (pData[caret++] & 0xff) << 16)
           | ((long) (pData[caret++] & 0xff) << 8) | ((long) (pData[caret++] & 0xff));
     }
     catch (Exception e) {
+      System.out.println("error here: " + pData.length + " caret=" + caret);
       Logger.error(e.getMessage());
       return 0;
     }

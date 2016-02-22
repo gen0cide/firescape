@@ -1,6 +1,6 @@
 package org.rscdaemon.bot.packethandler;
 
-import org.apache.mina.common.IoSession;
+import org.apache.mina.core.session.IoSession;
 import org.rscdaemon.bot.net.Packet;
 
 public interface PacketHandler {

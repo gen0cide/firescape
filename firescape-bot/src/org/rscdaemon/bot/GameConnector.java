@@ -1,21 +1,23 @@
 package org.rscdaemon.bot;
 
+import java.io.File;
 import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.apache.mina.common.ConnectFuture;
-import org.apache.mina.common.IoHandler;
-import org.apache.mina.common.IoSession;
-import org.apache.mina.transport.socket.nio.SocketConnector;
-import org.apache.mina.transport.socket.nio.SocketConnectorConfig;
-import org.apache.mina.transport.socket.nio.SocketSessionConfig;
+import org.apache.mina.core.future.ConnectFuture;
+import org.apache.mina.core.service.IoHandler;
+import org.apache.mina.core.session.IoSession;
+import org.apache.mina.transport.socket.nio.NioSocketConnector;
+import org.rscdaemon.bot.model.Player;
 import org.rscdaemon.bot.net.PacketQueue;
 import org.rscdaemon.bot.net.RSCConnectionHandler;
 import org.rscdaemon.bot.net.RSCPacket;
 import org.rscdaemon.bot.packethandler.PacketHandler;
+import org.rscdaemon.bot.packethandler.PacketHandlerDef;
 import org.rscdaemon.bot.util.Config;
 import org.rscdaemon.bot.util.Logger;
+import org.rscdaemon.bot.util.PersistenceManager;
 
 public class GameConnector {
 
@@ -35,23 +37,25 @@ public class GameConnector {
 
   public int connectionAttempts = 0;
 
+  public Player player;
+
   public GameConnector() {
+    player = new Player();
     incomingPacketQueue = new PacketQueue<RSCPacket>();
     outgoingPacketQueue = new PacketQueue<RSCPacket>();
     loadPacketHandlers();
-    reconnect();
+    connect();
+    player.setIoSession(session);
   }
 
-  public boolean reconnect() {
-    // TODO Auto-generated method stub
+  public boolean connect() {
     Logger.net("Attempting to connect to server");
-    SocketConnector conn = new SocketConnector();
-    SocketConnectorConfig config = new SocketConnectorConfig();
-    ((SocketSessionConfig) config.getSessionConfig()).setKeepAlive(true);
-    ((SocketSessionConfig) config.getSessionConfig()).setTcpNoDelay(true);
-    ConnectFuture future = conn.connect(new InetSocketAddress(Config.SERVER_IP, Config.SERVER_PORT), connectionHandler,
-        config);
-    future.join(3000);
+    NioSocketConnector conn = new NioSocketConnector(1);
+    conn.getSessionConfig().setKeepAlive(true);
+    conn.getSessionConfig().setTcpNoDelay(true);
+    conn.setHandler(connectionHandler);
+    ConnectFuture future = conn.connect(new InetSocketAddress(Config.SERVER_IP, Config.SERVER_PORT));
+    future.awaitUninterruptibly();
     if (future.isConnected()) {
       session = future.getSession();
       Logger.net("Connected to server: " + Config.SERVER_IP + ":" + Config.SERVER_PORT);
@@ -63,11 +67,28 @@ public class GameConnector {
       System.exit(1);
       return false;
     }
-    return reconnect();
+    return connect();
   }
 
   public void loadPacketHandlers() {
-    // TODO Auto-generated method stub
+    PacketHandlerDef[] handlerDefs = (PacketHandlerDef[]) PersistenceManager
+        .load("defs" + File.separator + "PacketHandlers.xml");
+    for (PacketHandlerDef handlerDef : handlerDefs) {
+      try {
+        String className = handlerDef.getClassName();
+        Class c = Class.forName(className);
+        if (c != null) {
+          PacketHandler handler = (PacketHandler) c.newInstance();
+          for (int packetID : handlerDef.getAssociatedPackets()) {
+            Logger.info("Loaded " + className + " Packet Handler for pid = " + packetID);
+            packetHandlers.put(packetID, handler);
+          }
+        }
+      }
+      catch (Exception e) {
+        Logger.error(e);
+      }
+    }
   }
 
   public void loadPacketBuilders() {
@@ -75,21 +96,29 @@ public class GameConnector {
   }
 
   public void processIncomingPackets() {
-    List<RSCPacket> packets = incomingPacketQueue.getPackets();
-    for (RSCPacket packet : packets) {
-      PacketHandler handler;
-      if (packetHandlers.containsKey(packet.getID())) {
-        handler = packetHandlers.get(packet.getID());
-        try {
-          handler.handlePacket(packet, session);
+    if (incomingPacketQueue.hasPackets()) {
+      List<RSCPacket> packets = incomingPacketQueue.getPackets();
+      for (RSCPacket packet : packets) {
+        // Logger.net("Processing Packet! " + packet.toString());
+        PacketHandler handler;
+        if (packetHandlers.containsKey(packet.getID())) {
+          handler = packetHandlers.get(packet.getID());
+          try {
+            handler.handlePacket(packet, session);
+          }
+          catch (Exception e) {
+            // Logger.error("Exception with Incoming Packet! pid=" +
+            // packet.getID() + " message=" + e.getMessage());
+          }
+        } else {
+          // Logger.net("Unhandled packet from Server! id=" + packet.getID());
         }
-        catch (Exception e) {
-          Logger.error("Exception with Incoming Packet! pid=" + packet.getID() + " message=" + e.getMessage());
-        }
-      } else {
-        Logger.net("Unhandled packet from Server! id=" + packet.getID());
       }
     }
+  }
+
+  public void sendPacket(RSCPacket p) {
+    session.write(p);
   }
 
   public void sendQueuedPackets() {

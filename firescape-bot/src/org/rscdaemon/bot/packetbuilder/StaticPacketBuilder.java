@@ -64,6 +64,10 @@ public class StaticPacketBuilder {
       expandCapacity(minimumCapacity);
   }
 
+  public void addString(String s) {
+    addBytes(s.getBytes());
+  }
+
   /**
    * Expands the buffer to the specified size.
    *
@@ -173,6 +177,10 @@ public class StaticPacketBuilder {
    */
   public StaticPacketBuilder addByte(byte val) {
     return addByte(val, true);
+  }
+
+  public StaticPacketBuilder addByte(int val) {
+    return addByte((byte) val, true);
   }
 
   /**

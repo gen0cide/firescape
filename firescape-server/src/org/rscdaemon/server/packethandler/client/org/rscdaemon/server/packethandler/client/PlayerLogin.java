@@ -24,6 +24,9 @@ public class PlayerLogin implements PacketHandler {
       boolean reconnecting = (p.readByte() == 1);
       int clientVersion = p.readShort();
       RSCPacket loginPacket = DataConversions.decryptRSA(p.readBytes(p.readByte()));
+      if (loginPacket == null) {
+        System.out.println("loginPacket = null");
+      }
       int[] sessionKeys = new int[4];
       for (int key = 0; key < sessionKeys.length; key++) {
         sessionKeys[key] = loginPacket.readInt();
