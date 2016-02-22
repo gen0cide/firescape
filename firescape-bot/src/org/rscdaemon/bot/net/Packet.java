@@ -178,14 +178,12 @@ public class Packet {
    */
   public long readLong() {
     try {
-      System.out.println("error here: " + pData.length + " caret=" + caret);
       return (long) ((long) (pData[caret++] & 0xff) << 56) | ((long) (pData[caret++] & 0xff) << 48)
           | ((long) (pData[caret++] & 0xff) << 40) | ((long) (pData[caret++] & 0xff) << 32)
           | ((long) (pData[caret++] & 0xff) << 24) | ((long) (pData[caret++] & 0xff) << 16)
           | ((long) (pData[caret++] & 0xff) << 8) | ((long) (pData[caret++] & 0xff));
     }
     catch (Exception e) {
-      System.out.println("error here: " + pData.length + " caret=" + caret);
       Logger.error(e.getMessage());
       return 0;
     }

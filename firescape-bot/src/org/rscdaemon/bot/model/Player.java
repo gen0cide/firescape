@@ -52,9 +52,10 @@ public class Player {
       WriteFuture future = this.session.write(p);
       future.awaitUninterruptibly();
       if (future.isWritten()) {
-        Logger.net("Packet was written");
+        return;
       } else {
         Logger.net("Packet was NOT written");
+        return;
       }
     } else {
       this.session.write(p);

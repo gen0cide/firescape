@@ -12,18 +12,10 @@ public class RSCConnectionHandler implements IoHandler {
 
   public GameConnector gc = null;
 
-  // public PacketQueue<RSCPacket> incomingPackets;
-  // public PacketQueue<RSCPacket> outgoingPackets;
-
   public RSCConnectionHandler(GameConnector gc) {
     this.gc = gc;
     // gc.incomingPackets
   }
-
-  // public void setQueues() {
-  // incomingPackets = gameConnector.incomingPacketQueue;
-  // outgoingPackets = gameConnector.outgoingPacketQueue;
-  // }
 
   @Override
   public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
@@ -41,7 +33,7 @@ public class RSCConnectionHandler implements IoHandler {
     }
     RSCPacket p = (RSCPacket) message;
     if (p == null) {
-      // do nothing (null packet)
+      return;
     } else {
       gc.incomingPacketQueue.add(p);
     }
@@ -50,7 +42,6 @@ public class RSCConnectionHandler implements IoHandler {
   @Override
   public void messageSent(IoSession session, Object message) throws Exception {
     Logger.net("Message sent: " + message.toString());
-
   }
 
   @Override
@@ -63,7 +54,6 @@ public class RSCConnectionHandler implements IoHandler {
   public void sessionCreated(IoSession session) throws Exception {
     session.getFilterChain().addFirst("protocolFilter", new ProtocolCodecFilter(new RSCCodecFactory()));
     Logger.net("Session created!");
-    // session.getFilterChain().addFirst(arg0, arg1);
   }
 
   @Override

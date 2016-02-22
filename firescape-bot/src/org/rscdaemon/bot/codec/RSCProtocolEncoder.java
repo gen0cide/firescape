@@ -24,7 +24,6 @@ public class RSCProtocolEncoder implements ProtocolEncoder {
       Logger.error(new Exception("Wrong packet type! " + message.toString()));
       return;
     }
-    System.out.println("hit encoder");
     RSCPacket p = (RSCPacket) message;
     byte[] data = p.getData();
     int packetLength = data.length;
