@@ -28,7 +28,7 @@ This is cumbersome and should have a better way to do this.
 ## Explore an event pipeline
 I'm curious about how much "big data" we could collect in the game - trade transactions, attacks, kills, etc. Considering what to do on this front.
 
-## Move some configurations to ENV vars in the bot
+## [DONE] Move some configurations to ENV vars in the bot
 Right now, the bot uses `settings.ini` with a hardcoded username and password. We should be able to pass ENV vars instead making this cleaner.
 
 ## clean up CommandHandler code

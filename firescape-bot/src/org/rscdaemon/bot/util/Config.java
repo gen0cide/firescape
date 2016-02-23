@@ -2,6 +2,7 @@ package org.rscdaemon.bot.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 public class Config {
@@ -16,11 +17,15 @@ public class Config {
     Properties props = new Properties();
     props.load(new FileInputStream(file));
 
-    SERVER_IP = props.getProperty("server");
-    SERVER_PORT = Integer.parseInt(props.getProperty("port"));
-    CONF_DIR = props.getProperty("config_dir");
-    USERNAME = props.getProperty("username");
-    PASSWORD = props.getProperty("password");
+    Map<String, String> env = System.getenv();
+
+    // override config file if ENV variables are set
+    USERNAME = env.containsKey("FIRE_USER") ? env.get("FIRE_USER") : props.getProperty("username");
+    PASSWORD = env.containsKey("FIRE_PASS") ? env.get("FIRE_PASS") : props.getProperty("password");
+    SERVER_IP = env.containsKey("FIRE_SERVER") ? env.get("FIRE_SERVER") : props.getProperty("server");
+    SERVER_PORT = env.containsKey("FIRE_PORT") ? Integer.parseInt(env.get("FIRE_PORT"))
+        : Integer.parseInt(props.getProperty("port"));
+    CONF_DIR = env.containsKey("FIRE_CONF_DIR") ? env.get("FIRE_CONF_DIR") : props.getProperty("config_dir");
 
     props.clear();
   }
