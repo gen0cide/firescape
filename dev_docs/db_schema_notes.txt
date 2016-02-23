@@ -1,0 +1,109 @@
+# players
+id : integer
+username : string
+password : string
+last_ip  : string
+last_login : datetime
+rank : integer
+x : integer
+y : integer
+fatigue : integer
+qs_impcatcher : integer
+qs_doricsquest : integer
+qs_cooksquest : integer
+qs_shearer : integer
+qs_romeo : integer
+qs_witch : integer
+qs_druid : integer
+
+spell_guthix : integer
+spell_saradomin : integer
+spell_zamorak : integer
+
+killing_spree : integer
+
+mute : integer
+kills : integer
+deaths : integer
+quest_points : integer
+combat_style : integer
+
+privacy_set_a : integer
+privacy_set_b : integer
+privacy_set_c : integer
+privacy_set_d : integer
+
+game_set_a : integer
+game_set_b : integer
+game_set_c : integer
+game_set_d : integer
+game_set_e : integer
+game_set_f : integer
+
+hair_color : integer
+top_color : integer
+bottom_color : integer
+skin_color : integer
+head_style : integer
+body_style : integer
+
+gender : integer
+
+skull : integer
+
+exp_attack : integer
+exp_defense : integer
+exp_strength : integer
+exp_hits : integer
+exp_ranged : integer
+exp_prayer : integer
+exp_magic : integer
+exp_cooking : integer
+exp_woodcut : integer
+exp_fletching : integer
+exp_fishing : integer
+exp_firemaking : integer
+exp_crafting : integer
+exp_smithing : integer
+exp_mining : integer
+exp_herblaw : integer
+exp_agility : integer 
+exp_thieving : integer 
+
+curstat_attack : integer
+curstat_defense : integer
+curstat_strength : integer
+curstat_hits : integer
+curstat_ranged : integer
+curstat_prayer : integer
+curstat_magic : integer
+curstat_cooking : integer
+curstat_woodcut : integer
+curstat_fletching : integer
+curstat_fishing : integer
+curstat_firemaking : integer
+curstat_crafting : integer
+curstat_smithing : integer
+curstat_mining : integer
+curstat_herblaw : integer
+curstat_agility : integer 
+curstat_thieving : integer 
+
+# inventory
+id : integer
+player_id : integer
+item_id : integer
+amount : integer
+wielded : integer
+
+# bank
+id : integer
+player_id : integer
+item_id : integer
+amount : integer
+
+# friends (TBD)
+
+# quests (TBD)
+
+
