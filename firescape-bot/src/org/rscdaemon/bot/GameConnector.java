@@ -99,7 +99,6 @@ public class GameConnector {
     if (incomingPacketQueue.hasPackets()) {
       List<RSCPacket> packets = incomingPacketQueue.getPackets();
       for (RSCPacket packet : packets) {
-        // Logger.net("Processing Packet! " + packet.toString());
         PacketHandler handler;
         if (packetHandlers.containsKey(packet.getID())) {
           handler = packetHandlers.get(packet.getID());
@@ -107,11 +106,10 @@ public class GameConnector {
             handler.handlePacket(packet, session);
           }
           catch (Exception e) {
-            // Logger.error("Exception with Incoming Packet! pid=" +
-            // packet.getID() + " message=" + e.getMessage());
+
           }
         } else {
-          // Logger.net("Unhandled packet from Server! id=" + packet.getID());
+
         }
       }
     }
@@ -129,7 +127,6 @@ public class GameConnector {
   }
 
   public boolean isRunning() {
-    // TODO Auto-generated method stub
     return running;
   }
 }

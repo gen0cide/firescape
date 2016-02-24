@@ -15,13 +15,11 @@ public class TestServerPacket extends ServerPacket {
    * packet.addShort(foo); Define all of your packets here!
    */
   public RSCPacket getPacket() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   @Override
   public int getPacketID() {
-    // TODO Auto-generated method stub
     return 1776;
   }
 

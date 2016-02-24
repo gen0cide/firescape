@@ -47,7 +47,6 @@ public class Player {
   }
 
   public void sendPacket(RSCPacket p, boolean wait) {
-    // System.out.println("Session: " + this.session.toString());
     if (wait) {
       WriteFuture future = this.session.write(p);
       future.awaitUninterruptibly();

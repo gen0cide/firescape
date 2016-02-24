@@ -14,15 +14,12 @@ public class RSCConnectionHandler implements IoHandler {
 
   public RSCConnectionHandler(GameConnector gc) {
     this.gc = gc;
-    // gc.incomingPackets
   }
 
   @Override
   public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
-    // TODO Auto-generated method stub
     System.out.println("Exception in session!");
     cause.printStackTrace();
-
   }
 
   @Override
@@ -47,7 +44,6 @@ public class RSCConnectionHandler implements IoHandler {
   @Override
   public void sessionClosed(IoSession session) throws Exception {
     Logger.net("Session closed!");
-
   }
 
   @Override
@@ -59,20 +55,17 @@ public class RSCConnectionHandler implements IoHandler {
   @Override
   public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
     Logger.net("Session idle.");
-
   }
 
   @Override
   public void sessionOpened(IoSession session) throws Exception {
     Logger.net("Session opened!");
     session.setAttribute("player", gc.player);
-
   }
 
   @Override
   public void inputClosed(IoSession arg0) throws Exception {
     // TODO Auto-generated method stub
-
   }
 
 }

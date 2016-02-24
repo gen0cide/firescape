@@ -30,7 +30,6 @@ public class EncryptedPayload {
   public void addBytes(byte abyte0[], int i, int j) {
     for (int k = i; k < i + j; k++)
       packet[offset++] = abyte0[k];
-
   }
 
   public int getByte() {
@@ -51,7 +50,6 @@ public class EncryptedPayload {
   public void getBytes(byte abyte0[], int i, int j) {
     for (int k = i; k < i + j; k++)
       abyte0[k] = packet[offset++];
-
   }
 
   public void encryptPacketWithKeys(BigInteger biginteger, BigInteger biginteger1) {

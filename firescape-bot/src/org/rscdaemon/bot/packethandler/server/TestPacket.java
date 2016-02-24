@@ -9,7 +9,6 @@ public class TestPacket implements PacketHandler {
   @Override
   public void handlePacket(Packet p, IoSession session) throws Exception {
     // TODO Auto-generated method stub
-
   }
 
 }

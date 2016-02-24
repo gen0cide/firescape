@@ -58,5 +58,6 @@ public class RSCProtocolEncoder implements ProtocolEncoder {
    *          The IO session
    */
   public void dispose(IoSession session) {
+
   }
 }

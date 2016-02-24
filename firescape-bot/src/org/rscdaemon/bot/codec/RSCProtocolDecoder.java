@@ -63,7 +63,6 @@ public class RSCProtocolDecoder extends CumulativeProtocolDecoder {
       if (length - 1 < 0) {
         return false;
       }
-
       if (length >= 160) {
         length = (length - 160) * 256 + in.get();
       }

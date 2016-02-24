@@ -10,12 +10,10 @@ public class PlayerLogin extends ServerPacket {
 
   public PlayerLogin(Player p) {
     super(p);
-    // TODO Auto-generated constructor stub
   }
 
   @Override
   public RSCPacket getPacket() {
-    // TODO Auto-generated method stub
     if (player.sessionID == 0) {
       return null;
     } else {

@@ -12,9 +12,7 @@ public class SessionRequest extends ServerPacket {
     super(p);
   }
 
-  @Override
   public RSCPacket getPacket() {
-    packet.setID(getPacketID());
     byte[] randBytes = new byte[1];
     DataConversions.rand.nextBytes(randBytes);
     packet.addBytes(randBytes);
@@ -22,9 +20,7 @@ public class SessionRequest extends ServerPacket {
     return packet.toPacket();
   }
 
-  @Override
   public int getPacketID() {
-    // TODO Auto-generated method stub
     return 32;
   }
 
