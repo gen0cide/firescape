@@ -1,0 +1,39 @@
+upstream firescape {
+  server unix:/opt/firescape/firescape-data/tmp/thin.0.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.1.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.2.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.3.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.4.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.5.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.6.firescape fail_timeout=0;
+  server unix:/opt/firescape/firescape-data/tmp/thin.7.firescape fail_timeout=0;
+}
+
+server {
+  listen 127.0.0.1:9292;
+  root /opt/firescape/firescape-data;
+  error_page 404 /dynamic_404.html;
+  
+  location /dynamic_404.html {
+    return 404 'Object not found!';
+    add_header Content-Type text/plain;
+  }
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  try_files $uri/index.html $uri @firescape;
+
+  location @firescape {
+    proxy_pass http://firescape;
+  }
+
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+}
+
+

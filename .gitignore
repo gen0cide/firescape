@@ -6,3 +6,4 @@ rscd.jar
 firescape-server/players/*.cfg
 *.log
 .svn
+*.pem

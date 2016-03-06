@@ -1,0 +1,8 @@
+description "Google auth proxy"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [016]
+setuid <user>
+setgid <group>
+respawn
+respawn limit 10 5
+exec /usr/local/bin/oauth2_proxy --http-address="127.0.0.1:4180" --upstream="http://127.0.0.1:9292" --cookie-secret="..." --cookie-secure=true --provider="github" --client-id="..." --client-secret="..." --email-domain=*

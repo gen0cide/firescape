@@ -128,7 +128,6 @@ public class Packet {
     }
     caret += data.length;
     return data;
-
   }
 
   /**
