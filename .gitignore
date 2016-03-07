@@ -7,3 +7,4 @@ firescape-server/players/*.cfg
 *.log
 .svn
 *.pem
+.env
