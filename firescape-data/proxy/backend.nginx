@@ -11,7 +11,8 @@ upstream firescape {
 
 server {
   listen 127.0.0.1:9292;
-  root /opt/firescape/firescape-data;
+  root /opt/firescape/firescape-data/public;
+
   error_page 404 /dynamic_404.html;
   
   location /dynamic_404.html {

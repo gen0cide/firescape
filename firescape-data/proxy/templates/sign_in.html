@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" charset="utf-8">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Sign In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+  .logo {
+    padding-top: 10px;
+    color: #c10000;
+    font-size: 36px;
+  }
+
+  .desc {
+    font-size: 10px;
+    color: #aaa;
+    padding-bottom: 5px;
+  }
+
+  body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background: #111111;
+  }
+  .signin {
+    display:block;
+    margin:20px auto;
+    max-width:400px;
+    background: #2b2b2b;
+    border:1px solid #656565;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 5px;
+  }
+  .center {
+    text-align:center;
+  }
+  .btn {
+    color: #fff;
+    background-color: #c10000;
+    border: 1px solid #f94646;
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 6px 12px;
+      text-decoration: none;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #930000;
+    border-color: #f40b0b;
+    ext-decoration: none;
+  }
+  label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+  input {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin:0;
+    box-sizing: border-box;
+  }
+  footer {
+    display:block;
+    font-size:10px;
+    color:#aaa;
+    text-align:center;
+    margin-bottom:10px;
+  }
+  footer a {
+    display:inline-block;
+    height:25px;
+    line-height:25px;
+    color:#aaa;
+    text-decoration:underline;
+  }
+  footer a:hover {
+    color:#aaa;
+  }
+  </style>
+</head>
+<body>
+  <div class="center logo">
+    <i class="fa fa-fire fa-5x"></i>
+  </div>
+  <div class="signin center">
+  <div class="desc">
+    <p>To play FireScape, you must have a GitHub account.</p>
+  </div>
+  <form method="GET" action="{{.ProxyPrefix}}/start">
+  <input type="hidden" name="rd" value="{{.Redirect}}">
+  {{ if .SignInMessage }}
+  <p>{{.SignInMessage}}</p>
+  {{ end}}
+  <button type="submit" class="btn"><i class="fa fa-github"></i> Login</button><br/>
+  </form>
+  </div>
+  {{ if .CustomLogin }}
+  <div class="signin">
+  <form method="POST" action="{{.ProxyPrefix}}/sign_in">
+    <input type="hidden" name="rd" value="{{.Redirect}}">
+    <label for="username">Username:</label><input type="text" name="username" id="username" size="10"><br/>
+    <label for="password">Password:</label><input type="password" name="password" id="password" size="10"><br/>
+    <button type="submit" class="btn">Sign In</button>
+  </form>
+  </div>
+  {{ end }}
+  <footer>
+  -gen0cide-
+  </footer>
+</body>
+</html>
