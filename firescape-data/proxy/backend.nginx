@@ -1,17 +1,19 @@
 upstream firescape {
-  server unix:/opt/firescape/firescape-data/tmp/thin.0.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.1.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.2.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.3.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.4.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.5.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.6.firescape fail_timeout=0;
-  server unix:/opt/firescape/firescape-data/tmp/thin.7.firescape fail_timeout=0;
+  server 127.0.0.1:3000;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.0.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.1.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.2.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.3.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.4.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.5.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.6.firescape fail_timeout=0;
+#   server unix:/opt/firescape/firescape-data/tmp/thin.7.firescape fail_timeout=0;
 }
 
 server {
   listen 127.0.0.1:9292;
-  root /opt/firescape/firescape-data;
+  root /opt/firescape/firescape-data/public;
+
   error_page 404 /dynamic_404.html;
   
   location /dynamic_404.html {
