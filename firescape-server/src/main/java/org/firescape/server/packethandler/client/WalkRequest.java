@@ -51,13 +51,10 @@ public class WalkRequest implements PacketHandler {
     int numWaypoints = p.remaining() / 2;
     byte[] waypointXoffsets = new byte[numWaypoints];
     byte[] waypointYoffsets = new byte[numWaypoints];
-    System.out.print("Walk Request: startX=" + startX + " startY=" + startY + " numWaypoints=" + numWaypoints + " ");
     for (int x = 0; x < numWaypoints; x++) {
       waypointXoffsets[x] = p.readByte();
       waypointYoffsets[x] = p.readByte();
-      System.out.print("[" + x + "](" + waypointXoffsets[x] + "," + waypointYoffsets[x] + ") ");
     }
-    System.out.print("\n");
     Path path = new Path(startX, startY, waypointXoffsets, waypointYoffsets);
     player.setStatus(Action.IDLE);
     player.setPath(path);

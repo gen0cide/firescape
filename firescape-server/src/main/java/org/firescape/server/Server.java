@@ -123,18 +123,18 @@ public class Server {
   }
 
   public static String readValue(String user, String key) {
-    try {
-      // System.out.println("Test 4");
-      String username = user.replaceAll(" ", "_");
-      File f = new File("players/" + username.toLowerCase() + ".cfg");
-      Properties pr = new Properties();
-
-      FileInputStream fis = new FileInputStream(f);
-      pr.load(fis);
-
-      String ret = pr.getProperty(key);
-      fis.close();
-      return ret;
+    String username = user.replaceAll(" ", "_").toLowerCase();
+    String redis_key = "players_" + username.toLowerCase();
+    try (Jedis jedis = world.redis.getResource()) {
+      if (jedis.exists(redis_key)) {
+        ByteArrayInputStream ios = new ByteArrayInputStream(jedis.get(redis_key).getBytes(StandardCharsets.UTF_8));
+        Logger.print("Loaded players_" + username.toLowerCase() + " from redis.", 3);
+        Properties pr = new Properties();
+        pr.load(ios);
+        String ret = pr.getProperty(key);
+        ios.close();
+        return ret;
+      }
     } catch (Exception e) {
       Logger.print(e, 1);
     }
