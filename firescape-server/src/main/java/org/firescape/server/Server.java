@@ -20,6 +20,7 @@ import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+import java.util.UUID;
 
 /**
  * The entry point for RSC server.
@@ -162,8 +163,15 @@ public class Server {
   }
 
   public static void main(String[] args) {
-//    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
-//    System.out.println(ml.Multiply(12345, 67890));
+    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
+    for(int x = 0; x < 10000; x++) {
+      System.out.println("JAVA: " + ml.Puts(UUID.randomUUID().toString()));
+      try {
+        Thread.sleep(250);
+      } catch (InterruptedException e) {
+        System.out.println(e.getMessage());
+      }
+    }
     try {
 
       // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -331,7 +339,7 @@ public class Server {
     }
   }
 
-//  public interface MathLib {
-//    long Multiply(long x, long y);
-//  }
+  public interface MathLib {
+    String Puts(String s);
+  }
 }

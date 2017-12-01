@@ -389,6 +389,7 @@ org/firescape/server/GUI$19.class
 org/firescape/server/model/Point.class
 org/firescape/server/npchandler/Romeo$2$1$1.class
 org/firescape/server/model/PlayerAppearance.class
+org/firescape/server/Server$MathLib.class
 org/firescape/server/entityhandling/defs/extras/ObjectFishingDef.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$5$1.class
 org/firescape/server/npchandler/Cook$2$1.class
