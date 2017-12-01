@@ -7,9 +7,9 @@ import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Logger;
-import org.firescape.server.packethandler.PacketHandler;
 
 public class PlayerLogin implements PacketHandler {
   /**

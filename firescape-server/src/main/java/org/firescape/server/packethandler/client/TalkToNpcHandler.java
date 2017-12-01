@@ -7,49 +7,15 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.npchandler.NpcHandler;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.Logger;
-import org.firescape.server.packethandler.PacketHandler;
 
 public class TalkToNpcHandler implements PacketHandler {
   /**
    * World instance
    */
   public static final World world = World.getWorld();
-
-  public static int getSprite(int x1, int y1, int x2, int y2) {
-
-    int newx = x1 - x2;
-    int newy = y1 - y2;
-
-    if (newx == -1 && newy == -1) {
-      // TURN SOUTHWEST
-      return 3;
-    } else if (newx == -1 && newy == 0) {
-      // TURN WEST
-      return 2;
-    } else if (newx == -1 && newy == 1) {
-      // TURN NORTHWEST
-      return 1;
-    } else if (newx == 0 && newy == 1) {
-      // TURN NORTH
-      return 0;
-    } else if (newx == 1 && newy == 1) {
-      // TURN NORTHEAST
-      return 7;
-    } else if (newx == 1 && newy == 0) {
-      // TURN EAST
-      return 6;
-    } else if (newx == 1 && newy == -1) {
-      // TURN SOUTHEAST
-      return 5;
-    } else if (newx == 0 && newy == -1) {
-      // TURN SOUTH
-      return 4;
-    }
-
-    return -1;
-  }
 
   public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
@@ -108,5 +74,39 @@ public class TalkToNpcHandler implements PacketHandler {
         }
       }
     });
+  }
+
+  public static int getSprite(int x1, int y1, int x2, int y2) {
+
+    int newx = x1 - x2;
+    int newy = y1 - y2;
+
+    if (newx == -1 && newy == -1) {
+      // TURN SOUTHWEST
+      return 3;
+    } else if (newx == -1 && newy == 0) {
+      // TURN WEST
+      return 2;
+    } else if (newx == -1 && newy == 1) {
+      // TURN NORTHWEST
+      return 1;
+    } else if (newx == 0 && newy == 1) {
+      // TURN NORTH
+      return 0;
+    } else if (newx == 1 && newy == 1) {
+      // TURN NORTHEAST
+      return 7;
+    } else if (newx == 1 && newy == 0) {
+      // TURN EAST
+      return 6;
+    } else if (newx == 1 && newy == -1) {
+      // TURN SOUTHEAST
+      return 5;
+    } else if (newx == 0 && newy == -1) {
+      // TURN SOUTH
+      return 4;
+    }
+
+    return -1;
   }
 }

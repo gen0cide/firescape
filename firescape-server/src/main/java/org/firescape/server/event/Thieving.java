@@ -14,24 +14,60 @@ import java.util.Random;
 public class Thieving {
 
   private static final World world = World.getWorld();
-  public static String[] StealChats = {"You think i'm going to buy my own items off you? Get out of here.",
+  public static String[] StealChats = {
+          "You think i'm going to buy my own items off you? Get out of here.",
           "You've just stolen from me, I'm not selling you anything.",
-          "How dare you try and buy from me after you have stolen.", "Thief, go away now before i call security",
-          "You have guts, trying to sell my own goods back to me", "Real thiefs don't sell back to their victims",
-          "i know better than to buy my own items from thiefs"};
+          "How dare you try and buy from me after you have stolen.",
+          "Thief, go away now before i call security",
+          "You have guts, trying to sell my own goods back to me",
+          "Real thiefs don't sell back to their victims",
+          "i know better than to buy my own items from thiefs"
+  };
   public int ExpMultiplier = 1; // Modify
   // ID, LvlReq, Exp, RespawnTime, Loot then(amount)
-  public int[][] Chests = {{340, 59, 250, 15000, 619, 2}, // Blood
+  public int[][] Chests = {
+          {
+                  340,
+                  59,
+                  250,
+                  15000,
+                  619,
+                  2
+          },
+          // Blood
           // rune
           // chest.
-          {334, 18, 8, 10000, 10, 50}, // Next
+          {
+                  334,
+                  18,
+                  8,
+                  10000,
+                  10,
+                  50
+          },
+          // Next
           // 2
           // nature
           // chest.
-          {336, 72, 500, 180000, 546, 1, 154, 1, 160, 1, 10, 1000}, // Good
+          {
+                  336,
+                  72,
+                  500,
+                  180000,
+                  546,
+                  1,
+                  154,
+                  1,
+                  160,
+                  1,
+                  10,
+                  1000
+          },
+          // Good
           // chest,
           // ardy..
-          {339} // Dont
+          {339}
+          // Dont
           // add
           // anything
           // to
@@ -58,113 +94,405 @@ public class Thieving {
   private int exp = 0;
   private int lvl = 1;
   private int npcID;
-  private int Loot[] = {-1, -1};
-  private int Amount[] = {-1, -1};
+  private int Loot[] = {
+          -1,
+          -1
+  };
+  private int Amount[] = {
+          -1,
+          -1
+  };
   private int curDoor = -1;
   private int ourChest = -1;
 
   // LvReq, Obj ID, Exp, RespawnTime, LootID(s)
-  private int[][] Stalls = {{5, 322, 16, 5, 330}, // Bakers
-          {20, 323, 24, 11, 200}, // Silk
-          {35, 324, 36, 18, 541}, // Fur
-          {50, 325, 54, 31, 383}, // Silver
-          {65, 326, 81, 45, 707}, // Spice
-          {75, 327, 16, 80, 160, 159, 158, 157} // Gem
+  private int[][] Stalls = {
+          {
+                  5,
+                  322,
+                  16,
+                  5,
+                  330
+          },
+          // Bakers
+          {
+                  20,
+                  323,
+                  24,
+                  11,
+                  200
+          },
+          // Silk
+          {
+                  35,
+                  324,
+                  36,
+                  18,
+                  541
+          },
+          // Fur
+          {
+                  50,
+                  325,
+                  54,
+                  31,
+                  383
+          },
+          // Silver
+          {
+                  65,
+                  326,
+                  81,
+                  45,
+                  707
+          },
+          // Spice
+          {
+                  75,
+                  327,
+                  16,
+                  80,
+                  160,
+                  159,
+                  158,
+                  157
+          }
+          // Gem
   };
 
-  private int[][] StallProtectorLvls = {{28}, // Guards
-          {28}, // Guards
-          {28, 56}, // Guards
+  private int[][] StallProtectorLvls = {
+          {28},
+          // Guards
+          {28},
+          // Guards
+          {
+                  28,
+                  56
+          },
+          // Guards
           // +
           // Knights
-          {56}, // Knights
-          {56, 71}, // Knights
+          {56},
+          // Knights
+          {
+                  56,
+                  71
+          },
+          // Knights
           // +
           // Paladins
-          {71, 83} // Paladins
+          {
+                  71,
+                  83
+          }
+          // Paladins
           // +
           // Heroes
   };
 
   // Cur X, Cur Y, New X, New Y, Lvl, Exp
-  private int[][] Doors = {{586, 581, 585, 581, 10, 13}, // Nat
+  private int[][] Doors = {
+          {
+                  586,
+                  581,
+                  585,
+                  581,
+                  10,
+                  13
+          },
+          // Nat
           // rune
           // West
           // house
           // (In)
-          {585, 581, 586, 581, 10, 13}, // Nat
+          {
+                  585,
+                  581,
+                  586,
+                  581,
+                  10,
+                  13
+          },
+          // Nat
           // rune
           // West
           // house
           // (Out)
-          {539, 598, 539, 599, 10, 13}, // Nat
+          {
+                  539,
+                  598,
+                  539,
+                  599,
+                  10,
+                  13
+          },
+          // Nat
           // Rune
           // East
           // House
           // (Out)
-          {539, 599, 539, 598, 10, 13}, // Nat
+          {
+                  539,
+                  599,
+                  539,
+                  598,
+                  10,
+                  13
+          },
+          // Nat
           // Rune
           // East
           // House
           // (Out)
-          {609, 1547, 609, 1548, 61, 43}, // Paladin
+          {
+                  609,
+                  1547,
+                  609,
+                  1548,
+                  61,
+                  43
+          },
+          // Paladin
           // Door
           // (In)
-          {609, 1548, 609, 1547, 61, 43}, // Paladin
+          {
+                  609,
+                  1548,
+                  609,
+                  1547,
+                  61,
+                  43
+          },
+          // Paladin
           // Door
           // (Out)
-          {537, 3425, 536, 3425, 31, 25}, // Ardy
+          {
+                  537,
+                  3425,
+                  536,
+                  3425,
+                  31,
+                  25
+          },
+          // Ardy
           // Door
-          {536, 3425, 537, 3425, 31, 25}, // Ardy
+          {
+                  536,
+                  3425,
+                  537,
+                  3425,
+                  31,
+                  25
+          },
+          // Ardy
           // Door
-          {617, 556, 617, 555, 46, 37}, // Blood
+          {
+                  617,
+                  556,
+                  617,
+                  555,
+                  46,
+                  37
+          },
+          // Blood
           // rune
           // door
-          {617, 555, 617, 556, 46, 37}, // Blood
+          {
+                  617,
+                  555,
+                  617,
+                  556,
+                  46,
+                  37
+          },
+          // Blood
           // rune
           // door
-          {593, 3590, 593, 3589, 61, 41}, // yanile
+          {
+                  593,
+                  3590,
+                  593,
+                  3589,
+                  61,
+                  41
+          },
+          // yanile
           // door
-          {593, 3589, 593, 3590, 61, 41}, // yanile
+          {
+                  593,
+                  3589,
+                  593,
+                  3590,
+                  61,
+                  41
+          },
+          // yanile
           // door
-          {266, 100, 266, 99, 39, 35}, // pirate
+          {
+                  266,
+                  100,
+                  266,
+                  99,
+                  39,
+                  35
+          },
+          // pirate
           // doors
           // wildy
-          {266, 99, 266, 100, 39, 35}, // pirate
+          {
+                  266,
+                  99,
+                  266,
+                  100,
+                  39,
+                  35
+          },
+          // pirate
           // doors
           // wildy
-          {160, 103, 160, 102, 30, 28}, // Axe
+          {
+                  160,
+                  103,
+                  160,
+                  102,
+                  30,
+                  28
+          },
+          // Axe
           // hut
           // wildy
-          {160, 102, 160, 103, 30, 28}, // Axe
+          {
+                  160,
+                  102,
+                  160,
+                  103,
+                  30,
+                  28
+          },
+          // Axe
           // hut
           // wildy
-          {581, 580, 580, 580, 10, 30}, {580, 580, 581, 580, 10, 30}, {538, 592, 538, 591, 8, 10}, // Some
+          {
+                  581,
+                  580,
+                  580,
+                  580,
+                  10,
+                  30
+          },
+          {
+                  580,
+                  580,
+                  581,
+                  580,
+                  10,
+                  30
+          },
+          {
+                  538,
+                  592,
+                  538,
+                  591,
+                  8,
+                  10
+          },
+          // Some
           // ardy
           // door
-          {538, 591, 538, 592, 8, 10} // some
+          {
+                  538,
+                  591,
+                  538,
+                  592,
+                  8,
+                  10
+          }
+          // some
           // ardy
           // door
   };
-  private int[][] StallNpcs = {{325, 543, 546, 597, 602}, // Baker
-          {-1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1}, {328, 553, 558, 592, 595}, // Silver
+  private int[][] StallNpcs = {
+          {
+                  325,
+                  543,
+                  546,
+                  597,
+                  602
+          },
+          // Baker
+          {
+                  -1,
+                  -1,
+                  -1,
+                  -1,
+                  -1
+          },
+          {
+                  -1,
+                  -1,
+                  -1,
+                  -1,
+                  -1
+          },
+          {
+                  328,
+                  553,
+                  558,
+                  592,
+                  595
+          },
+          // Silver
           // merchant
-          {329, 542, 547, 588, 593}, // Spice
+          {
+                  329,
+                  542,
+                  547,
+                  588,
+                  593
+          },
+          // Spice
           // merchant
-          {330, 549, 553, 597, 602} // Gem
+          {
+                  330,
+                  549,
+                  553,
+                  597,
+                  602
+          }
+          // Gem
           // merchant
   };
-  private String[] Chats = {"Oi! Get your hands out of there -name-!", "Hey thief! get here!",
-          "Trying to steal from me hmm?", "No one steals from me!", "Take those hands off me Thief",
-          "Are you trying to steal from me -name-?", "Dont you dare touch me", "Thief get back here now!",
-          "Stealing won't get you anywhere", "Bad person! you shall die", "Die evil thief!",
-          "You are going to pay for that", "Ill make you wish you were never born", "-name- i am going to hurt you",
-          "-name- dont steal from me again", "Remove your filthy hands off me", "A real man doesn't need to steal"};
-  private String[] caughtChats = {"Guards! Guards! Im being Robbed!", "Help Guards i am being Robbed please help!",
-          "Someone help! My items are getting stolen!", "You'll wish you never did that, Thief!",
-          "You are going to pay for that", "-name- how could you steal from me? Guards!",
-          "-name- get your hands out of my stall!", "Hey -name- thats not yours!",
-          "Dont steal from me -name- Im going to go tell a mod", "Oi! -name- you deserve a spanking!"};
+  private String[] Chats = {
+          "Oi! Get your hands out of there -name-!",
+          "Hey thief! get here!",
+          "Trying to steal from me hmm?",
+          "No one steals from me!",
+          "Take those hands off me Thief",
+          "Are you trying to steal from me -name-?",
+          "Dont you dare touch me",
+          "Thief get back here now!",
+          "Stealing won't get you anywhere",
+          "Bad person! you shall die",
+          "Die evil thief!",
+          "You are going to pay for that",
+          "Ill make you wish you were never born",
+          "-name- i am going to hurt you",
+          "-name- dont steal from me again",
+          "Remove your filthy hands off me",
+          "A real man doesn't need to steal"
+  };
+  private String[] caughtChats = {
+          "Guards! Guards! Im being Robbed!",
+          "Help Guards i am being Robbed please help!",
+          "Someone help! My items are getting stolen!",
+          "You'll wish you never did that, Thief!",
+          "You are going to pay for that",
+          "-name- how could you steal from me? Guards!",
+          "-name- get your hands out of my stall!",
+          "Hey -name- thats not yours!",
+          "Dont steal from me -name- Im going to go tell a mod",
+          "Oi! -name- you deserve a spanking!"
+  };
 
   public Thieving(Player p, GameObject obj) {
     this.player = p;
@@ -177,11 +505,6 @@ public class Thieving {
     this.affectedNpc = np;
     this.affectedMob = mb;
     npcID = affectedNpc.getID();
-  }
-
-  public static int Rands(int min, int max) {
-    Random r = new Random();
-    return r.nextInt(max) + min;
   }
 
   public static int Rands(int max) {
@@ -204,6 +527,11 @@ public class Thieving {
       }
     }
     return !(rand < success);
+  }
+
+  public static int Rands(int min, int max) {
+    Random r = new Random();
+    return r.nextInt(max) + min;
   }
 
   public static boolean stallSuccess(int lvl, int reqLevel) {
@@ -303,6 +631,25 @@ public class Thieving {
         });
       }
     });
+  }
+
+  private void doChest() {
+    try {
+
+      world.registerGameObject(new GameObject(object.getLocation(), 339, object.getDirection(), object.getType()));
+      world.delayedSpawnObject(object.getLoc(), 900);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  private void replaceChest(int delay) {
+    try {
+      world.registerGameObject(new GameObject(object.getLocation(), 338, object.getDirection(), object.getType()));
+      world.delayedSpawnObject(object.getLoc(), delay);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   public void openThievedChest() {
@@ -429,32 +776,92 @@ public class Thieving {
     }
   }
 
-  private void doDoor() {
+  /**
+   * I don't have the best Maths, but this is a tweak-able formula for every 5
+   * levels -xEnt
+   */
+
+  public boolean chanceFormulae(int targetLv) {
     try {
-      player.getActionSender().sendSound("opendoor");
-      world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
-      world.delayedSpawnObject(object.getLoc(), 1000);
+      int chance[] = {
+              27,
+              33,
+              35,
+              37,
+              40,
+              43,
+              47,
+              51,
+              54,
+              58,
+              62,
+              66,
+              71,
+              74,
+              78,
+              81,
+              84,
+              88,
+              93,
+              95
+      };
+      int maxLvl[] = {
+              1,
+              5,
+              10,
+              15,
+              20,
+              25,
+              30,
+              35,
+              40,
+              45,
+              50,
+              55,
+              60,
+              65,
+              70,
+              75,
+              80,
+              85,
+              90,
+              95,
+              100
+      };
+      int diff = player.getMaxStat(17) - targetLv;
+      int index = 0;
+      for (int i = 0; i < maxLvl.length; i++)
+        if (diff >= maxLvl[i] && diff < maxLvl[i] + 5)
+          index = i;
+      int Chance = (chance[index] < 27 ? 27 : chance[index]);
+      return Rand(100) < Chance;
     } catch (Exception e) {
       System.out.println(e.getMessage());
+      return false;
     }
   }
 
-  private void replaceChest(int delay) {
-    try {
-      world.registerGameObject(new GameObject(object.getLocation(), 338, object.getDirection(), object.getType()));
-      world.delayedSpawnObject(object.getLoc(), delay);
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
+  public int Rand(int max) {
+    Random r = new Random();
+    return r.nextInt(max);
   }
 
-  private void doChest() {
+  public int thieveGem() {
     try {
-
-      world.registerGameObject(new GameObject(object.getLocation(), 339, object.getDirection(), object.getType()));
-      world.delayedSpawnObject(object.getLoc(), 900);
+      int temp = Rand(100);
+      if (temp <= 30) {
+        return 160;
+      } else if (temp <= 40) {
+        return 159;
+      } else if (temp <= 50) {
+        return 158;
+      } else if (temp <= 70) {
+        return 157;
+      }
+      return -1;
     } catch (Exception e) {
       System.out.println(e.getMessage());
+      return -1;
     }
   }
 
@@ -520,6 +927,16 @@ public class Thieving {
     }
   }
 
+  private void doDoor() {
+    try {
+      player.getActionSender().sendSound("opendoor");
+      world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
+      world.delayedSpawnObject(object.getLoc(), 1000);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public boolean checkToGetAttacked() {
     ActiveTile[][] tiles = player.getViewArea().getViewedArea(5, 5, 5, 5);
     for (int x = 0; x < tiles.length; x++) {
@@ -534,161 +951,6 @@ public class Thieving {
       }
     }
     return false;
-  }
-
-  public int Rand(int max) {
-    Random r = new Random();
-    return r.nextInt(max);
-  }
-
-  public int Rand(int min, int max) {
-    Random r = new Random();
-    return r.nextInt(max) + min;
-  }
-
-  /**
-   * I don't have the best Maths, but this is a tweak-able formula for every 5
-   * levels -xEnt
-   */
-
-  public boolean chanceFormulae(int targetLv) {
-    try {
-      int chance[] = {27, 33, 35, 37, 40, 43, 47, 51, 54, 58, 62, 66, 71, 74, 78, 81, 84, 88, 93, 95};
-      int maxLvl[] = {1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
-      int diff = player.getMaxStat(17) - targetLv;
-      int index = 0;
-      for (int i = 0; i < maxLvl.length; i++)
-        if (diff >= maxLvl[i] && diff < maxLvl[i] + 5)
-          index = i;
-      int Chance = (chance[index] < 27 ? 27 : chance[index]);
-      return Rand(100) < Chance;
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      return false;
-    }
-  }
-
-  public int thieveGem() {
-    try {
-      int temp = Rand(100);
-      if (temp <= 30) {
-        return 160;
-      } else if (temp <= 40) {
-        return 159;
-      } else if (temp <= 50) {
-        return 158;
-      } else if (temp <= 70) {
-        return 157;
-      }
-      return -1;
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      return -1;
-    }
-  }
-
-  public void setLootArrays(int type) {
-    try {
-      int rand = Rand(100);
-      int[] tempArray = {};
-      if (type == 0) { // Rogue
-        if (rand < 20) {
-          Loot[0] = 10;
-          Amount[0] = Rand(200, 400);
-          return;
-        }
-        if (rand < 40) {
-          Loot[0] = 33;
-          Amount[0] = 8;
-          return;
-        }
-        if (rand < 60) {
-          Loot[0] = 714;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 80) {
-          Loot[0] = 559;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand <= 100) {
-          Loot[0] = 142;
-          Amount[0] = 1;
-          return;
-        }
-
-      } else if (type == 1) { // Gnome
-        if (rand < 20) {
-          Loot[0] = 10;
-          Amount[0] = Rand(2000, 3000);
-          return;
-        }
-        if (rand < 40) {
-          Loot[0] = 34;
-          Amount[0] = Rand(1, 5);
-          return;
-        }
-        if (rand < 50) {
-          Loot[0] = 612;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 60) {
-          Loot[0] = 152;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 80) {
-          Loot[0] = 895;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand <= 100) {
-          Loot[0] = 897;
-          Amount[0] = 1;
-          return;
-        }
-      } else { // Hero
-        if (rand <= 5) {
-          Loot[0] = 161;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 15) {
-          Loot[0] = 619;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 30) {
-          Loot[0] = 38;
-          Amount[0] = 2;
-          return;
-        }
-        if (rand < 40) {
-          Loot[0] = 152;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 50) {
-          Loot[0] = 612;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand < 60) {
-          Loot[0] = 142;
-          Amount[0] = 1;
-          return;
-        }
-        if (rand <= 100) {
-          Loot[0] = 10;
-          Amount[0] = Rand(2000, 3000);
-          return;
-        }
-      }
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
   }
 
   public void beginPickpocket() {
@@ -945,6 +1207,115 @@ public class Thieving {
       player.setSpam(false);
     }
 
+  }
+
+  public void setLootArrays(int type) {
+    try {
+      int rand = Rand(100);
+      int[] tempArray = {};
+      if (type == 0) { // Rogue
+        if (rand < 20) {
+          Loot[0] = 10;
+          Amount[0] = Rand(200, 400);
+          return;
+        }
+        if (rand < 40) {
+          Loot[0] = 33;
+          Amount[0] = 8;
+          return;
+        }
+        if (rand < 60) {
+          Loot[0] = 714;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 80) {
+          Loot[0] = 559;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand <= 100) {
+          Loot[0] = 142;
+          Amount[0] = 1;
+          return;
+        }
+
+      } else if (type == 1) { // Gnome
+        if (rand < 20) {
+          Loot[0] = 10;
+          Amount[0] = Rand(2000, 3000);
+          return;
+        }
+        if (rand < 40) {
+          Loot[0] = 34;
+          Amount[0] = Rand(1, 5);
+          return;
+        }
+        if (rand < 50) {
+          Loot[0] = 612;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 60) {
+          Loot[0] = 152;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 80) {
+          Loot[0] = 895;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand <= 100) {
+          Loot[0] = 897;
+          Amount[0] = 1;
+          return;
+        }
+      } else { // Hero
+        if (rand <= 5) {
+          Loot[0] = 161;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 15) {
+          Loot[0] = 619;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 30) {
+          Loot[0] = 38;
+          Amount[0] = 2;
+          return;
+        }
+        if (rand < 40) {
+          Loot[0] = 152;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 50) {
+          Loot[0] = 612;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand < 60) {
+          Loot[0] = 142;
+          Amount[0] = 1;
+          return;
+        }
+        if (rand <= 100) {
+          Loot[0] = 10;
+          Amount[0] = Rand(2000, 3000);
+          return;
+        }
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public int Rand(int min, int max) {
+    Random r = new Random();
+    return r.nextInt(max) + min;
   }
 
 }

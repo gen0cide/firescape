@@ -16,7 +16,10 @@ public class Wyson implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"Well, yes I am. Can you get some?", "Who told you that?"};
+        String[] options = new String[]{
+                "Well, yes I am. Can you get some?",
+                "Who told you that?"
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {

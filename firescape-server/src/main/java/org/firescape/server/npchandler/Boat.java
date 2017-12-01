@@ -9,11 +9,24 @@ public class Boat implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  private static final String[] destinationNames = {"Karamja", "Brimhaven", "Port Sarim", "Ardougne", "Port Khazard",
-          "Catherby", "Shilo"};
-  private static final Point[] destinationCoords = {Point.location(324, 713), Point.location(467, 649),
-          Point.location(268, 650), Point.location(538, 616), Point.location(541, 702), Point.location(439, 506),
-          Point.location(471, 853)};
+  private static final String[] destinationNames = {
+          "Karamja",
+          "Brimhaven",
+          "Port Sarim",
+          "Ardougne",
+          "Port Khazard",
+          "Catherby",
+          "Shilo"
+  };
+  private static final Point[] destinationCoords = {
+          Point.location(324, 713),
+          Point.location(467, 649),
+          Point.location(268, 650),
+          Point.location(538, 616),
+          Point.location(541, 702),
+          Point.location(439, 506),
+          Point.location(471, 853)
+  };
 
   public void handleNpc(final Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "G'day sailor, where would you like to go?", player));

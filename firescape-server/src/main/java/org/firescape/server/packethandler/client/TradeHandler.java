@@ -17,10 +17,6 @@ public class TradeHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  private boolean busy(Player player) {
-    return player.isBusy() || player.isRanging() || player.accessingBank() || player.isDueling();
-  }
-
   public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
@@ -238,6 +234,10 @@ public class TradeHandler implements PacketHandler {
         player.setRequiresOfferUpdate(true);
         break;
     }
+  }
+
+  private boolean busy(Player player) {
+    return player.isBusy() || player.isRanging() || player.accessingBank() || player.isDueling();
   }
 
   private void unsetOptions(Player p) {

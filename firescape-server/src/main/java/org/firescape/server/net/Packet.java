@@ -35,6 +35,17 @@ public class Packet {
   protected long time;
 
   /**
+   * Creates a new packet with the specified parameters. The packet is
+   * considered not to be a bare packet.
+   *
+   * @param session The session to associate with the packet
+   * @param pData   The payload the packet
+   */
+  public Packet(IoSession session, byte[] pData) {
+    this(session, pData, false);
+  }
+
+  /**
    * Creates a new packet with the specified parameters.
    *
    * @param session The session to associate with the packet
@@ -48,17 +59,6 @@ public class Packet {
     this.pLength = pData.length;
     this.bare = bare;
     time = System.currentTimeMillis();
-  }
-
-  /**
-   * Creates a new packet with the specified parameters. The packet is
-   * considered not to be a bare packet.
-   *
-   * @param session The session to associate with the packet
-   * @param pData   The payload the packet
-   */
-  public Packet(IoSession session, byte[] pData) {
-    this(session, pData, false);
   }
 
   /**

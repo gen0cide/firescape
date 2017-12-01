@@ -14,43 +14,374 @@ import java.util.Random;
 
 public class Formulae {
 
-  public static final int[] experienceArray = {83, 174, 276, 388, 512, 650, 801, 969, 1154, 1358, 1584, 1833, 2107,
-          2411, 2746, 3115, 3523, 3973, 4470, 5018, 5624, 6291, 7028, 7842, 8740, 9730, 10824, 12031, 13363, 14833, 16456,
-          18247, 20224, 22406, 24815, 27473, 30408, 33648, 37224, 41171, 45529, 50339, 55649, 61512, 67983, 75127, 83014,
-          91721, 101333, 111945, 123660, 136594, 150872, 166636, 184040, 203254, 224466, 247886, 273742, 302288, 333804,
-          368599, 407015, 449428, 496254, 547953, 605032, 668051, 737627, 814445, 899257, 992895, 1096278, 1210421, 1336443,
-          1475581, 1629200, 1798808, 1986068, 2192818, 2421087, 2673114, 2951373, 3258594, 3597792, 3972294, 4385776,
-          4842295, 5346332, 5902831, 6517253, 7195629, 7944614, 8771558, 9684577, 10692629, 11805606, 13034431, 14391160};
-  public static final int[] eArray = {0, 0, 83, 174, 276, 388, 512, 650, 801, 969, 1154, 1358, 1584, 1833, 2107, 2411,
-          2746, 3115, 3523, 3973, 4470, 5018, 5624, 6291, 7028, 7842, 8740, 9730, 10824, 12031, 13363, 14833, 16456, 18247,
-          20224, 22406, 24815, 27473, 30408, 33648, 37224, 41171, 45529, 50339, 55649, 61512, 67983, 75127, 83014, 91721,
-          101333, 111945, 123660, 136594, 150872, 166636, 184040, 203254, 224466, 247886, 273742, 302288, 333804, 368599,
-          407015, 449428, 496254, 547953, 605032, 668051, 737627, 814445, 899257, 992895, 1096278, 1210421, 1336443,
-          1475581, 1629200, 1798808, 1986068, 2192818, 2421087, 2673114, 2951373, 3258594, 3597792, 3972294, 4385776,
-          4842295, 5346332, 5902831, 6517253, 7195629, 7944614, 8771558, 9684577, 10692629, 11805606, 13034431, 14391160};
-  public static final String[] statArray = {"attack", "defense", "strength", "hits", "ranged", "prayer", "magic",
-          "cooking", "woodcut", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblaw",
-          "agility", "thieving"};
-  public static final int[] woodcuttingAxeIDs = {405, 204, 203, 428, 88, 12, 87};
-  public static final int[] miningAxeIDs = {1262, 1261, 1260, 1259, 1258, 156};
-  public static final int[] arrowIDs = {723, 647, 646, 645, 644, 643, 642, 641, 640, 639, 638, 574, 11};
-  public static final int[] bowIDs = {188, 189, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657};
-  public static final int[] boltIDs = {786, 592, 190};
-  public static final int[] xbowIDs = {59, 60};
-  public static final int[] safePacketIDs = {70, 123, 128, 255};
-  public static final int[] headSprites = {1, 4, 6, 7, 8};
-  public static final int[] bodySprites = {2, 5};
-  public static final int[] runeIDs = {31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 46, 619, 825};
+  public static final int[] experienceArray = {
+          83,
+          174,
+          276,
+          388,
+          512,
+          650,
+          801,
+          969,
+          1154,
+          1358,
+          1584,
+          1833,
+          2107,
+          2411,
+          2746,
+          3115,
+          3523,
+          3973,
+          4470,
+          5018,
+          5624,
+          6291,
+          7028,
+          7842,
+          8740,
+          9730,
+          10824,
+          12031,
+          13363,
+          14833,
+          16456,
+          18247,
+          20224,
+          22406,
+          24815,
+          27473,
+          30408,
+          33648,
+          37224,
+          41171,
+          45529,
+          50339,
+          55649,
+          61512,
+          67983,
+          75127,
+          83014,
+          91721,
+          101333,
+          111945,
+          123660,
+          136594,
+          150872,
+          166636,
+          184040,
+          203254,
+          224466,
+          247886,
+          273742,
+          302288,
+          333804,
+          368599,
+          407015,
+          449428,
+          496254,
+          547953,
+          605032,
+          668051,
+          737627,
+          814445,
+          899257,
+          992895,
+          1096278,
+          1210421,
+          1336443,
+          1475581,
+          1629200,
+          1798808,
+          1986068,
+          2192818,
+          2421087,
+          2673114,
+          2951373,
+          3258594,
+          3597792,
+          3972294,
+          4385776,
+          4842295,
+          5346332,
+          5902831,
+          6517253,
+          7195629,
+          7944614,
+          8771558,
+          9684577,
+          10692629,
+          11805606,
+          13034431,
+          14391160
+  };
+  public static final int[] eArray = {
+          0,
+          0,
+          83,
+          174,
+          276,
+          388,
+          512,
+          650,
+          801,
+          969,
+          1154,
+          1358,
+          1584,
+          1833,
+          2107,
+          2411,
+          2746,
+          3115,
+          3523,
+          3973,
+          4470,
+          5018,
+          5624,
+          6291,
+          7028,
+          7842,
+          8740,
+          9730,
+          10824,
+          12031,
+          13363,
+          14833,
+          16456,
+          18247,
+          20224,
+          22406,
+          24815,
+          27473,
+          30408,
+          33648,
+          37224,
+          41171,
+          45529,
+          50339,
+          55649,
+          61512,
+          67983,
+          75127,
+          83014,
+          91721,
+          101333,
+          111945,
+          123660,
+          136594,
+          150872,
+          166636,
+          184040,
+          203254,
+          224466,
+          247886,
+          273742,
+          302288,
+          333804,
+          368599,
+          407015,
+          449428,
+          496254,
+          547953,
+          605032,
+          668051,
+          737627,
+          814445,
+          899257,
+          992895,
+          1096278,
+          1210421,
+          1336443,
+          1475581,
+          1629200,
+          1798808,
+          1986068,
+          2192818,
+          2421087,
+          2673114,
+          2951373,
+          3258594,
+          3597792,
+          3972294,
+          4385776,
+          4842295,
+          5346332,
+          5902831,
+          6517253,
+          7195629,
+          7944614,
+          8771558,
+          9684577,
+          10692629,
+          11805606,
+          13034431,
+          14391160
+  };
+  public static final String[] statArray = {
+          "attack",
+          "defense",
+          "strength",
+          "hits",
+          "ranged",
+          "prayer",
+          "magic",
+          "cooking",
+          "woodcut",
+          "fletching",
+          "fishing",
+          "firemaking",
+          "crafting",
+          "smithing",
+          "mining",
+          "herblaw",
+          "agility",
+          "thieving"
+  };
+  public static final int[] woodcuttingAxeIDs = {
+          405,
+          204,
+          203,
+          428,
+          88,
+          12,
+          87
+  };
+  public static final int[] miningAxeIDs = {
+          1262,
+          1261,
+          1260,
+          1259,
+          1258,
+          156
+  };
+  public static final int[] arrowIDs = {
+          723,
+          647,
+          646,
+          645,
+          644,
+          643,
+          642,
+          641,
+          640,
+          639,
+          638,
+          574,
+          11
+  };
+  public static final int[] bowIDs = {
+          188,
+          189,
+          648,
+          649,
+          650,
+          651,
+          652,
+          653,
+          654,
+          655,
+          656,
+          657
+  };
+  public static final int[] boltIDs = {
+          786,
+          592,
+          190
+  };
+  public static final int[] xbowIDs = {
+          59,
+          60
+  };
+  public static final int[] safePacketIDs = {
+          70,
+          123,
+          128,
+          255
+  };
+  public static final int[] headSprites = {
+          1,
+          4,
+          6,
+          7,
+          8
+  };
+  public static final int[] bodySprites = {
+          2,
+          5
+  };
+  public static final int[] runeIDs = {
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          46,
+          619,
+          825
+  };
 
-  public static final int[] potionsUnfinished = {454, 455, 456, 457, 458, 459, 460, 461, 462, 463};
-  public static final int[] potions1Dose = {224, 476, 479, 482, 485, 488, 491, 494, 497, 500, 568, 571};
-  public static final int[] potions2Dose = {223, 475, 478, 481, 484, 487, 490, 493, 496, 499, 567, 570};
-  public static final int[] potions3Dose = {222, 474, 477, 480, 483, 486, 489, 492, 495, 498, 566, 569};
+  public static final int[] potionsUnfinished = {
+          454,
+          455,
+          456,
+          457,
+          458,
+          459,
+          460,
+          461,
+          462,
+          463
+  };
+  public static final int[] potions1Dose = {
+          224,
+          476,
+          479,
+          482,
+          485,
+          488,
+          491,
+          494,
+          497,
+          500,
+          568,
+          571
+  };
+  public static final int[] potions2Dose = {
+          223,
+          475,
+          478,
+          481,
+          484,
+          487,
+          490,
+          493,
+          496,
+          499,
+          567,
+          570
+  };
+  public static final int[] potions3Dose = {
+          222,
+          474,
+          477,
+          480,
+          483,
+          486,
+          489,
+          492,
+          495,
+          498,
+          566,
+          569
+  };
   private static Random r = new Random();
-
-  public static int Rand(int low, int high) {
-    return low + r.nextInt(high - low);
-  }
 
   public static int getPotionDose(int id) {
     if (DataConversions.inArray(potions1Dose, id)) {
@@ -113,6 +444,18 @@ public class Formulae {
     // (rand < success ? "success" : "fail"));
 
     return !(rand < success);
+  }
+
+  public static double getMiningFailPercent(double curLvl, double reqLvl) {
+    double dif = curLvl - reqLvl; // Get difference
+    return (3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3)
+            + 0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966;
+    // (3.27 * 10^-6)x^4 + (-5.516 * 10^-4)x^3 + 0.014307x^2 + 1.65560813x +
+    // 18.2095966'
+  }
+
+  public static int Rand(int low, int high) {
+    return low + r.nextInt(high - low);
   }
 
   @SuppressWarnings("unchecked")
@@ -189,6 +532,13 @@ public class Formulae {
   }
 
   /**
+   * Check what height we are currently at on the map
+   */
+  public static int getHeight(int y) {
+    return y / 944;
+  }
+
+  /**
    * Gets the empty jug ID
    */
   public static int getEmptyJug(int fullJug) {
@@ -258,24 +608,19 @@ public class Formulae {
    * Gets the smithing exp for the given amount of the right bars
    */
   public static int getSmithingExp(int barID, int barCount) {
-    int[] exps = {13, 25, 37, 50, 83, 74};
+    int[] exps = {
+            13,
+            25,
+            37,
+            50,
+            83,
+            74
+    };
     int type = getBarType(barID);
     if (type < 0) {
       return 0;
     }
     return exps[type] * barCount;
-  }
-
-  /**
-   * Gets the min level required to smith a bar
-   */
-  public static int minSmithingLevel(int barID) {
-    int[] levels = {1, 15, 30, 50, 70, 85};
-    int type = getBarType(barID);
-    if (type < 0) {
-      return -1;
-    }
-    return levels[type];
   }
 
   /**
@@ -297,6 +642,25 @@ public class Formulae {
         return 5;
     }
     return -1;
+  }
+
+  /**
+   * Gets the min level required to smith a bar
+   */
+  public static int minSmithingLevel(int barID) {
+    int[] levels = {
+            1,
+            15,
+            30,
+            50,
+            70,
+            85
+    };
+    int type = getBarType(barID);
+    if (type < 0) {
+      return -1;
+    }
+    return levels[type];
   }
 
   public static int firemakingExp(int level, int baseExp) {
@@ -345,20 +709,19 @@ public class Formulae {
   }
 
   /**
-   * Adds the prayers together to calculate what perecntage the stat should be
-   * increased
+   * Calculates what one mob should hit on another with range
    */
-  private static double addPrayers(boolean first, boolean second, boolean third) {
-    if (third) {
-      return 1.15D;
+  public static int calcRangeHit(int rangeLvl, int rangeEquip, int armourEquip, int arrowID) {
+    int armourRatio = (int) (60D + (((rangeEquip * 3D) - armourEquip) / 300D) * 40D);
+
+    if (DataConversions.random(0, 100) > armourRatio && DataConversions.random(0, 1) == 0) {
+      return 0;
     }
-    if (second) {
-      return 1.1D;
-    }
-    if (first) {
-      return 1.05D;
-    }
-    return 1.0D;
+
+    int max = (int) (((double) rangeLvl * 0.15D) + 0.85D + arrowPower(arrowID));
+    int peak = (int) (((double) max / 100D) * (double) armourRatio);
+    int dip = (int) (((double) peak / 3D) * 2D);
+    return DataConversions.randomWeighted(0, dip, peak, max);
   }
 
   /**
@@ -436,30 +799,6 @@ public class Formulae {
     }
   }
 
-  public static double getMiningFailPercent(double curLvl, double reqLvl) {
-    double dif = curLvl - reqLvl; // Get difference
-    return (3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3)
-            + 0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966;
-    // (3.27 * 10^-6)x^4 + (-5.516 * 10^-4)x^3 + 0.014307x^2 + 1.65560813x +
-    // 18.2095966'
-  }
-
-  /**
-   * Calculates what one mob should hit on another with range
-   */
-  public static int calcRangeHit(int rangeLvl, int rangeEquip, int armourEquip, int arrowID) {
-    int armourRatio = (int) (60D + (((rangeEquip * 3D) - armourEquip) / 300D) * 40D);
-
-    if (DataConversions.random(0, 100) > armourRatio && DataConversions.random(0, 1) == 0) {
-      return 0;
-    }
-
-    int max = (int) (((double) rangeLvl * 0.15D) + 0.85D + arrowPower(arrowID));
-    int peak = (int) (((double) max / 100D) * (double) armourRatio);
-    int dip = (int) (((double) peak / 3D) * 2D);
-    return DataConversions.randomWeighted(0, dip, peak, max);
-  }
-
   public static int calcGodSpells(Mob attacker, Mob defender) {
     if (attacker instanceof Player) {
       Player owner = (Player) attacker;
@@ -501,12 +840,21 @@ public class Formulae {
     return 0;
   }
 
-  public static int styleBonus(Mob mob, int skill) {
-    int style = mob.getCombatStyle();
-    if (style == 0) {
-      return 1;
+  /**
+   * Adds the prayers together to calculate what perecntage the stat should be
+   * increased
+   */
+  private static double addPrayers(boolean first, boolean second, boolean third) {
+    if (third) {
+      return 1.15D;
     }
-    return (skill == 0 && style == 2) || (skill == 1 && style == 3) || (skill == 2 && style == 1) ? 3 : 0;
+    if (second) {
+      return 1.1D;
+    }
+    if (first) {
+      return 1.05D;
+    }
+    return 1.0D;
   }
 
   /**
@@ -555,6 +903,23 @@ public class Formulae {
     return 0;
   }
 
+  public static int styleBonus(Mob mob, int skill) {
+    int style = mob.getCombatStyle();
+    if (style == 0) {
+      return 1;
+    }
+    return (skill == 0 && style == 2) || (skill == 1 && style == 3) || (skill == 2 && style == 1) ? 3 : 0;
+  }
+
+  /**
+   * Calculate the max hit possible with the given stats
+   */
+  public static int maxHit(int strength, int weaponPower, boolean burst, boolean superhuman, boolean ultimate,
+                           int bonus) {
+    double newStrength = (strength * addPrayers(burst, superhuman, ultimate)) + bonus;
+    return (int) (newStrength * (((double) weaponPower * 0.00175D) + 0.1D) + 1.05D);
+  }
+
   /**
    * Should the web be cut?
    */
@@ -588,10 +953,6 @@ public class Formulae {
     return DataConversions.random(0, levelDiff + 1) == 0;
   }
 
-  private static int offsetToPercent(int levelDiff) {
-    return levelDiff > 40 ? 70 : 30 + levelDiff;
-  }
-
   /**
    * Decide what fish, if any, we should get from the water
    */
@@ -611,6 +972,10 @@ public class Formulae {
       return null;
     }
     return DataConversions.percentChance(offsetToPercent(levelDiff)) ? thisFish : null;
+  }
+
+  private static int offsetToPercent(int levelDiff) {
+    return levelDiff > 40 ? 70 : 30 + levelDiff;
   }
 
   /**
@@ -685,24 +1050,8 @@ public class Formulae {
   /**
    * Check what height we are currently at on the map
    */
-  public static int getHeight(int y) {
-    return y / 944;
-  }
-
-  /**
-   * Check what height we are currently at on the map
-   */
   public static int getHeight(Point location) {
     return getHeight(location.getY());
-  }
-
-  /**
-   * Calculate the max hit possible with the given stats
-   */
-  public static int maxHit(int strength, int weaponPower, boolean burst, boolean superhuman, boolean ultimate,
-                           int bonus) {
-    double newStrength = (strength * addPrayers(burst, superhuman, ultimate)) + bonus;
-    return (int) (newStrength * (((double) weaponPower * 0.00175D) + 0.1D) + 1.05D);
   }
 
   /**

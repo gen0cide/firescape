@@ -20,7 +20,10 @@ public class Doric implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{"Yes, I have them here", "No, sorry. I am still collecting them"};
+          String[] option = new String[]{
+                  "Yes, I have them here",
+                  "No, sorry. I am still collecting them"
+          };
           player.setMenuHandler(new MenuHandler(option) {
             public void handleReply(final int option, final String reply) {
               if (player.isBusy()) {
@@ -78,7 +81,10 @@ public class Doric implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{"What do you need? I'll try find them", "I am too busy to help, sorry"};
+          String[] options = new String[]{
+                  "What do you need? I'll try find them",
+                  "I am too busy to help, sorry"
+          };
           owner.setMenuHandler(new MenuHandler(options) {
             public void handleReply(final int option, final String reply) {
               if (owner.isBusy()) {

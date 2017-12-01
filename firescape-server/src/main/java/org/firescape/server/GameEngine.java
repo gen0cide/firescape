@@ -77,10 +77,31 @@ public final class GameEngine extends Thread {
     lastAdvert = System.currentTimeMillis();
   }
 
-  private static String processAdvert(String advert, Player p) {
-    advert = advert.replaceAll("%name", p.getUsername());
-    advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
-    return advert;
+  /**
+   * Loads the packet handling classes from the persistence manager.
+   */
+  protected void loadPacketHandlers() {
+    PacketHandlerDef[] handlerDefs = (PacketHandlerDef[]) PersistenceManager.load("PacketHandlers.xml");
+    int count = 0;
+    for (PacketHandlerDef handlerDef : handlerDefs) {
+      try {
+        String className = handlerDef.getClassName();
+        Class<?> c = Class.forName(className);
+        if (c != null) {
+          count++;
+
+          PacketHandler handler = (PacketHandler) c.newInstance();
+          for (int packetID : handlerDef.getAssociatedPackets()) {
+
+            packetHandlers.put(packetID, handler);
+          }
+
+        }
+      } catch (Exception e) {
+        Logger.error(e);
+      }
+    }
+    Logger.print(count + " Packet Handlers Loaded.", 3);
   }
 
   public static void kill() {
@@ -150,12 +171,10 @@ public final class GameEngine extends Thread {
     // GUI.resetVars();
   }
 
-  public void emptyWorld() {
-    for (Player p : world.getPlayers()) {
-      p.save();
-      p.getActionSender().sendLogout();
-    }
-    // world.getServer().getLoginConnector().getActionSender().saveProfiles();
+  private static String processAdvert(String advert, Player p) {
+    advert = advert.replaceAll("%name", p.getUsername());
+    advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
+    return advert;
   }
 
   public void processLoginServer() {
@@ -204,6 +223,14 @@ public final class GameEngine extends Thread {
     }
   }
 
+  public void emptyWorld() {
+    for (Player p : world.getPlayers()) {
+      p.save();
+      p.getActionSender().sendLogout();
+    }
+    // world.getServer().getLoginConnector().getActionSender().saveProfiles();
+  }
+
   /**
    * Returns the current packet queue.
    *
@@ -211,33 +238,6 @@ public final class GameEngine extends Thread {
    */
   public PacketQueue<RSCPacket> getPacketQueue() {
     return packetQueue;
-  }
-
-  /**
-   * Loads the packet handling classes from the persistence manager.
-   */
-  protected void loadPacketHandlers() {
-    PacketHandlerDef[] handlerDefs = (PacketHandlerDef[]) PersistenceManager.load("PacketHandlers.xml");
-    int count = 0;
-    for (PacketHandlerDef handlerDef : handlerDefs) {
-      try {
-        String className = handlerDef.getClassName();
-        Class<?> c = Class.forName(className);
-        if (c != null) {
-          count++;
-
-          PacketHandler handler = (PacketHandler) c.newInstance();
-          for (int packetID : handlerDef.getAssociatedPackets()) {
-
-            packetHandlers.put(packetID, handler);
-          }
-
-        }
-      } catch (Exception e) {
-        Logger.error(e);
-      }
-    }
-    Logger.print(count + " Packet Handlers Loaded.", 3);
   }
 
 }

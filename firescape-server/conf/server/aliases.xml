@@ -2,50 +2,50 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
 <properties>
-    <comment>Stores aliases for the XStream engine</comment>
-    <entry key="PacketHandler">org.firescape.server.packethandler.PacketHandlerDef</entry>
-    <entry key="NpcHandler">org.firescape.server.npchandler.NpcHandlerDef</entry>
+  <comment>Stores aliases for the XStream engine</comment>
+  <entry key="PacketHandler">org.firescape.server.packethandler.PacketHandlerDef</entry>
+  <entry key="NpcHandler">org.firescape.server.npchandler.NpcHandlerDef</entry>
 
-    <entry key="Point">org.firescape.server.model.Point</entry>
-    <entry key="TelePoint">org.firescape.server.model.TelePoint</entry>
+  <entry key="Point">org.firescape.server.model.Point</entry>
+  <entry key="TelePoint">org.firescape.server.model.TelePoint</entry>
 
-    <entry key="Shop">org.firescape.server.model.Shop</entry>
-    <entry key="InvItem">org.firescape.server.model.InvItem</entry>
+  <entry key="Shop">org.firescape.server.model.Shop</entry>
+  <entry key="InvItem">org.firescape.server.model.InvItem</entry>
 
-    <entry key="CerterDef">org.firescape.server.entityhandling.defs.extras.CerterDef</entry>
-    <entry key="CertDef">org.firescape.server.entityhandling.defs.extras.CertDef</entry>
+  <entry key="CerterDef">org.firescape.server.entityhandling.defs.extras.CerterDef</entry>
+  <entry key="CertDef">org.firescape.server.entityhandling.defs.extras.CertDef</entry>
 
-    <entry key="GameObjectLoc">org.firescape.server.entityhandling.locs.GameObjectLoc</entry>
-    <entry key="ItemLoc">org.firescape.server.entityhandling.locs.ItemLoc</entry>
-    <entry key="NPCLoc">org.firescape.server.entityhandling.locs.NPCLoc</entry>
+  <entry key="GameObjectLoc">org.firescape.server.entityhandling.locs.GameObjectLoc</entry>
+  <entry key="ItemLoc">org.firescape.server.entityhandling.locs.ItemLoc</entry>
+  <entry key="NPCLoc">org.firescape.server.entityhandling.locs.NPCLoc</entry>
 
-    <entry key="TileDef">org.firescape.server.entityhandling.defs.TileDef</entry>
-    <entry key="GameObjectDef">org.firescape.server.entityhandling.defs.GameObjectDef</entry>
-    <entry key="DoorDef">org.firescape.server.entityhandling.defs.DoorDef</entry>
-    <entry key="ItemDef">org.firescape.server.entityhandling.defs.ItemDef</entry>
-    <entry key="PrayerDef">org.firescape.server.entityhandling.defs.PrayerDef</entry>
-    <entry key="SpellDef">org.firescape.server.entityhandling.defs.SpellDef</entry>
-    <entry key="NPCDef">org.firescape.server.entityhandling.defs.NPCDef</entry>
-    <entry key="AdvertDef">org.firescape.server.entityhandling.defs.extras.AdvertDef</entry>
+  <entry key="TileDef">org.firescape.server.entityhandling.defs.TileDef</entry>
+  <entry key="GameObjectDef">org.firescape.server.entityhandling.defs.GameObjectDef</entry>
+  <entry key="DoorDef">org.firescape.server.entityhandling.defs.DoorDef</entry>
+  <entry key="ItemDef">org.firescape.server.entityhandling.defs.ItemDef</entry>
+  <entry key="PrayerDef">org.firescape.server.entityhandling.defs.PrayerDef</entry>
+  <entry key="SpellDef">org.firescape.server.entityhandling.defs.SpellDef</entry>
+  <entry key="NPCDef">org.firescape.server.entityhandling.defs.NPCDef</entry>
+  <entry key="AdvertDef">org.firescape.server.entityhandling.defs.extras.AdvertDef</entry>
 
-    <entry key="ItemCraftingDef">org.firescape.server.entityhandling.defs.extras.ItemCraftingDef</entry>
-    <entry key="ItemHerbSecond">org.firescape.server.entityhandling.defs.extras.ItemHerbSecond</entry>
-    <entry key="ItemDartTipDef">org.firescape.server.entityhandling.defs.extras.ItemDartTipDef</entry>
-    <entry key="ItemGemDef">org.firescape.server.entityhandling.defs.extras.ItemGemDef</entry>
-    <entry key="ItemLogCutDef">org.firescape.server.entityhandling.defs.extras.ItemLogCutDef</entry>
-    <entry key="ItemBowStringDef">org.firescape.server.entityhandling.defs.extras.ItemBowStringDef</entry>
-    <entry key="ItemArrowHeadDef">org.firescape.server.entityhandling.defs.extras.ItemArrowHeadDef</entry>
-    <entry key="FiremakingDef">org.firescape.server.entityhandling.defs.extras.FiremakingDef</entry>
-    <entry key="ReqOreDef">org.firescape.server.entityhandling.defs.extras.ReqOreDef</entry>
-    <entry key="ItemWieldableDef">org.firescape.server.entityhandling.defs.extras.ItemWieldableDef</entry>
-    <entry key="ItemUnIdentHerbDef">org.firescape.server.entityhandling.defs.extras.ItemUnIdentHerbDef</entry>
-    <entry key="ItemHerbDef">org.firescape.server.entityhandling.defs.extras.ItemHerbDef</entry>
-    <entry key="ItemCookingDef">org.firescape.server.entityhandling.defs.extras.ItemCookingDef</entry>
-    <entry key="ItemSmeltingDef">org.firescape.server.entityhandling.defs.extras.ItemSmeltingDef</entry>
-    <entry key="ItemSmithingDef">org.firescape.server.entityhandling.defs.extras.ItemSmithingDef</entry>
-    <entry key="ObjectMiningDef">org.firescape.server.entityhandling.defs.extras.ObjectMiningDef</entry>
-    <entry key="ObjectWoodcuttingDef">org.firescape.server.entityhandling.defs.extras.ObjectWoodcuttingDef</entry>
-    <entry key="ObjectFishingDef">org.firescape.server.entityhandling.defs.extras.ObjectFishingDef</entry>
-    <entry key="ObjectFishDef">org.firescape.server.entityhandling.defs.extras.ObjectFishDef</entry>
-    <entry key="ItemDropDef">org.firescape.server.entityhandling.defs.extras.ItemDropDef</entry>
+  <entry key="ItemCraftingDef">org.firescape.server.entityhandling.defs.extras.ItemCraftingDef</entry>
+  <entry key="ItemHerbSecond">org.firescape.server.entityhandling.defs.extras.ItemHerbSecond</entry>
+  <entry key="ItemDartTipDef">org.firescape.server.entityhandling.defs.extras.ItemDartTipDef</entry>
+  <entry key="ItemGemDef">org.firescape.server.entityhandling.defs.extras.ItemGemDef</entry>
+  <entry key="ItemLogCutDef">org.firescape.server.entityhandling.defs.extras.ItemLogCutDef</entry>
+  <entry key="ItemBowStringDef">org.firescape.server.entityhandling.defs.extras.ItemBowStringDef</entry>
+  <entry key="ItemArrowHeadDef">org.firescape.server.entityhandling.defs.extras.ItemArrowHeadDef</entry>
+  <entry key="FiremakingDef">org.firescape.server.entityhandling.defs.extras.FiremakingDef</entry>
+  <entry key="ReqOreDef">org.firescape.server.entityhandling.defs.extras.ReqOreDef</entry>
+  <entry key="ItemWieldableDef">org.firescape.server.entityhandling.defs.extras.ItemWieldableDef</entry>
+  <entry key="ItemUnIdentHerbDef">org.firescape.server.entityhandling.defs.extras.ItemUnIdentHerbDef</entry>
+  <entry key="ItemHerbDef">org.firescape.server.entityhandling.defs.extras.ItemHerbDef</entry>
+  <entry key="ItemCookingDef">org.firescape.server.entityhandling.defs.extras.ItemCookingDef</entry>
+  <entry key="ItemSmeltingDef">org.firescape.server.entityhandling.defs.extras.ItemSmeltingDef</entry>
+  <entry key="ItemSmithingDef">org.firescape.server.entityhandling.defs.extras.ItemSmithingDef</entry>
+  <entry key="ObjectMiningDef">org.firescape.server.entityhandling.defs.extras.ObjectMiningDef</entry>
+  <entry key="ObjectWoodcuttingDef">org.firescape.server.entityhandling.defs.extras.ObjectWoodcuttingDef</entry>
+  <entry key="ObjectFishingDef">org.firescape.server.entityhandling.defs.extras.ObjectFishingDef</entry>
+  <entry key="ObjectFishDef">org.firescape.server.entityhandling.defs.extras.ObjectFishDef</entry>
+  <entry key="ItemDropDef">org.firescape.server.entityhandling.defs.extras.ItemDropDef</entry>
 </properties>

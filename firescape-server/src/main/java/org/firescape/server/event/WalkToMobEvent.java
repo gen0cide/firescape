@@ -17,6 +17,8 @@ public abstract class WalkToMobEvent extends DelayedEvent {
     }
   }
 
+  public abstract void arrived();
+
   public final void run() {
     if (owner.withinRange(affectedMob, radius)) {
       arrived();
@@ -27,8 +29,6 @@ public abstract class WalkToMobEvent extends DelayedEvent {
     }
     super.running = false;
   }
-
-  public abstract void arrived();
 
   public void failed() {
   } // Not abstract as isn't required

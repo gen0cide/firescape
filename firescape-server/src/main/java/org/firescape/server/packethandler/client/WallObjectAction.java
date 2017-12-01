@@ -1,6 +1,8 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
+import org.firescape.server.entityhandling.defs.DoorDef;
 import org.firescape.server.event.FightEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.Thieving;
@@ -8,10 +10,8 @@ import org.firescape.server.event.WalkToPointEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
-import org.firescape.server.states.Action;
-import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.DoorDef;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.states.Action;
 
 public class WallObjectAction implements PacketHandler {
   /**
@@ -36,18 +36,6 @@ public class WallObjectAction implements PacketHandler {
       }
       player.setStatus(Action.USING_DOOR);
       world.getDelayedEventHandler().add(new WalkToPointEvent(player, object.getLocation(), 1, false) {
-        private void replaceGameObject(int newID, boolean open) {
-          world
-                  .registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(), object.getType()));
-          owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
-        }
-
-        private void doDoor() {
-          owner.getActionSender().sendSound("opendoor");
-          world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
-          world.delayedSpawnObject(object.getLoc(), 1000);
-        }
-
         public void arrived() {
           owner.resetPath();
           DoorDef def = object.getDoorDef();
@@ -387,6 +375,18 @@ public class WallObjectAction implements PacketHandler {
                 break;
             }
           }
+        }
+
+        private void replaceGameObject(int newID, boolean open) {
+          world
+                  .registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(), object.getType()));
+          owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
+        }
+
+        private void doDoor() {
+          owner.getActionSender().sendSound("opendoor");
+          world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
+          world.delayedSpawnObject(object.getLoc(), 1000);
         }
       });
     } catch (Exception e) {

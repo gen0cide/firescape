@@ -5,8 +5,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
-import org.firescape.server.util.DataConversions;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.util.DataConversions;
 
 public class FriendHandler implements PacketHandler {
   /**

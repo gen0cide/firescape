@@ -1,10 +1,10 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
-import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class BankHandler implements PacketHandler {

@@ -30,6 +30,54 @@ public class RSCConnectionHandler implements IoHandler {
   }
 
   /**
+   * Invoked whenever an IO session is created.
+   *
+   * @param session The session opened
+   */
+  public void sessionCreated(IoSession session) {
+    session.getFilterChain().addFirst("protocolFilter", new ProtocolCodecFilter(new RSCCodecFactory()));
+    Logger.connection(
+            "Connection from: " + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress());
+  }
+
+  /**
+   * Invoked when a new session is opened.
+   *
+   * @param session The session opened
+   */
+  public void sessionOpened(IoSession session) {
+    session.setAttachment(new Player(session));
+    session.setIdleTime(IdleStatus.BOTH_IDLE, 30);
+    session.setWriteTimeout(30);
+  }
+
+  /**
+   * Invoked whenever an IO session is closed. This must handle unregistering
+   * the disconnecting player from the engine.
+   *
+   * @param session The IO session which has been closed
+   */
+  public void sessionClosed(IoSession session) {
+    Player player = (Player) session.getAttachment();
+    if (!player.destroyed()) {
+      player.destroy(false);
+    }
+  }
+
+  /**
+   * Invoked when the idle status of a session changes.
+   *
+   * @param session The session in question
+   * @param status  The new idle status
+   */
+  public void sessionIdle(IoSession session, IdleStatus status) {
+    Player player = (Player) session.getAttachment();
+    if (!player.destroyed()) {
+      player.destroy(false);
+    }
+  }
+
+  /**
    * Invoked whenever an exception is thrown by MINA or this IoHandler.
    *
    * @param session The associated session
@@ -62,53 +110,5 @@ public class RSCConnectionHandler implements IoHandler {
    * @param message The packet sent
    */
   public void messageSent(IoSession session, Object message) {
-  }
-
-  /**
-   * Invoked whenever an IO session is closed. This must handle unregistering
-   * the disconnecting player from the engine.
-   *
-   * @param session The IO session which has been closed
-   */
-  public void sessionClosed(IoSession session) {
-    Player player = (Player) session.getAttachment();
-    if (!player.destroyed()) {
-      player.destroy(false);
-    }
-  }
-
-  /**
-   * Invoked whenever an IO session is created.
-   *
-   * @param session The session opened
-   */
-  public void sessionCreated(IoSession session) {
-    session.getFilterChain().addFirst("protocolFilter", new ProtocolCodecFilter(new RSCCodecFactory()));
-    Logger.connection(
-            "Connection from: " + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress());
-  }
-
-  /**
-   * Invoked when the idle status of a session changes.
-   *
-   * @param session The session in question
-   * @param status  The new idle status
-   */
-  public void sessionIdle(IoSession session, IdleStatus status) {
-    Player player = (Player) session.getAttachment();
-    if (!player.destroyed()) {
-      player.destroy(false);
-    }
-  }
-
-  /**
-   * Invoked when a new session is opened.
-   *
-   * @param session The session opened
-   */
-  public void sessionOpened(IoSession session) {
-    session.setAttachment(new Player(session));
-    session.setIdleTime(IdleStatus.BOTH_IDLE, 30);
-    session.setWriteTimeout(30);
   }
 }

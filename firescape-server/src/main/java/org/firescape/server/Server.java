@@ -1,7 +1,6 @@
 package org.firescape.server;
 
-import jnr.ffi.*;
-import jnr.ffi.types.*;
+import jnr.ffi.LibraryLoader;
 import org.apache.mina.common.IoAcceptor;
 import org.apache.mina.common.IoAcceptorConfig;
 import org.apache.mina.transport.socket.nio.SocketAcceptor;
@@ -30,22 +29,17 @@ public class Server {
    * World instance
    */
   private static final World world = World.getWorld();
-
-  public interface MathLib {
-    long Multiply(long x, long y);
-  }
-
   /**
    * The game engine
    */
   private GameEngine engine;
   /**
-   * The login server connection
-   */
-  /**
    * The SocketAcceptor
    */
   private IoAcceptor acceptor;
+  /**
+   * The login server connection
+   */
   /**
    * Update event - if the server is shutting down
    */
@@ -97,6 +91,32 @@ public class Server {
     GameVars.serverRunning = false;
   }
 
+  public void resetOnline() {
+    try {
+      File files = new File("players/");
+      int count = 0;
+      for (File f : files.listFiles()) {
+
+        if (f.getName().endsWith(".cfg")) {
+          count++;
+          Properties pr = new Properties();
+
+          FileInputStream fis = new FileInputStream(f);
+          pr.load(fis);
+          fis.close();
+          pr.setProperty("loggedin", "false");
+          FileOutputStream fos = new FileOutputStream(f);
+          pr.store(fos, "Character Data.");
+          fos.close();
+        }
+
+      }
+      Logger.print(count + " Accounts exist.", 3);
+    } catch (Exception e) {
+      Logger.print(e.toString(), 1);
+    }
+  }
+
   public static boolean isOnline(String player) {
     Player p = world.getPlayer(DataConversions.usernameToHash(player));
     return p != null;
@@ -141,17 +161,9 @@ public class Server {
     }
   }
 
-  public static void launchServer() {
-    try {
-      new Server();
-    } catch (Exception r) {
-      Logger.print(r.toString(), 1);
-    }
-  }
-
   public static void main(String[] args) {
-    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
-    System.out.println(ml.Multiply(12345, 67890));
+//    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
+//    System.out.println(ml.Multiply(12345, 67890));
     try {
 
       // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -163,6 +175,14 @@ public class Server {
     // GUI.args = args;
     // new Server();
 
+  }
+
+  public static void launchServer() {
+    try {
+      new Server();
+    } catch (Exception r) {
+      Logger.print(r.toString(), 1);
+    }
   }
 
   public boolean running() {
@@ -183,6 +203,16 @@ public class Server {
     };
     world.getDelayedEventHandler().add(updateEvent);
     return true;
+  }
+
+  /**
+   * Kills the game engine and irc engine
+   */
+  public void kill() {
+    // GUI.resetVars();
+    Logger.print("CleanRSC Shutting Down...", 3);
+    running = false;
+    engine.emptyWorld();
   }
 
   /**
@@ -279,32 +309,6 @@ public class Server {
     return duelingEvent.timeTillNextRun();
   }
 
-  public void resetOnline() {
-    try {
-      File files = new File("players/");
-      int count = 0;
-      for (File f : files.listFiles()) {
-
-        if (f.getName().endsWith(".cfg")) {
-          count++;
-          Properties pr = new Properties();
-
-          FileInputStream fis = new FileInputStream(f);
-          pr.load(fis);
-          fis.close();
-          pr.setProperty("loggedin", "false");
-          FileOutputStream fos = new FileOutputStream(f);
-          pr.store(fos, "Character Data.");
-          fos.close();
-        }
-
-      }
-      Logger.print(count + " Accounts exist.", 3);
-    } catch (Exception e) {
-      Logger.print(e.toString(), 1);
-    }
-  }
-
   /**
    * Returns the game engine for this server
    */
@@ -317,16 +321,6 @@ public class Server {
   }
 
   /**
-   * Kills the game engine and irc engine
-   */
-  public void kill() {
-    // GUI.resetVars();
-    Logger.print("CleanRSC Shutting Down...", 3);
-    running = false;
-    engine.emptyWorld();
-  }
-
-  /**
    * Unbinds the socket acceptor
    */
   public void unbind() {
@@ -336,4 +330,8 @@ public class Server {
     } catch (Exception e) {
     }
   }
+
+//  public interface MathLib {
+//    long Multiply(long x, long y);
+//  }
 }

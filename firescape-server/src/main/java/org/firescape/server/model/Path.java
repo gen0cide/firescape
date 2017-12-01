@@ -42,27 +42,10 @@ public class Path {
   }
 
   /**
-   * The length of our path
-   */
-  public int length() {
-    if (waypointXoffsets == null) {
-      return 0;
-    }
-    return waypointXoffsets.length;
-  }
-
-  /**
    * Gets the X coord of the given waypoint
    */
   public int getWaypointX(int wayPoint) {
     return startX + getWaypointXoffset(wayPoint);
-  }
-
-  /**
-   * Gets the Y coord of the given waypoint
-   */
-  public int getWaypointY(int wayPoint) {
-    return startY + getWaypointYoffset(wayPoint);
   }
 
   /**
@@ -73,6 +56,23 @@ public class Path {
       return (byte) 0;
     }
     return waypointXoffsets[wayPoint];
+  }
+
+  /**
+   * The length of our path
+   */
+  public int length() {
+    if (waypointXoffsets == null) {
+      return 0;
+    }
+    return waypointXoffsets.length;
+  }
+
+  /**
+   * Gets the Y coord of the given waypoint
+   */
+  public int getWaypointY(int wayPoint) {
+    return startY + getWaypointYoffset(wayPoint);
   }
 
   /**

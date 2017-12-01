@@ -20,6 +20,8 @@ public abstract class WalkToPointEvent extends DelayedEvent {
     }
   }
 
+  public abstract void arrived();
+
   public final void run() {
     if (stop && owner.withinRange(location, radius)) {
       owner.resetPath();
@@ -31,8 +33,6 @@ public abstract class WalkToPointEvent extends DelayedEvent {
     }
     super.running = false;
   }
-
-  public abstract void arrived();
 
   public Point getLocation() {
     return location;

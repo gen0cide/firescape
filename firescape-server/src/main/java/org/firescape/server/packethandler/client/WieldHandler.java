@@ -1,15 +1,15 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.model.InvItem;
 import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
-import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.packethandler.PacketHandler;
 
 import java.util.ArrayList;
 import java.util.Map.Entry;
@@ -74,9 +74,21 @@ public class WieldHandler implements PacketHandler {
       player.getActionSender().sendMessage("Quit the cross-dressing.");
       return;
     }
-    int[] capeIDs = {1215, 1214, 1213};
-    int[] staffIDs = {1217, 1218, 1216};
-    String[] gods = {"Guthix", "Saradomin", "Zamorak"};
+    int[] capeIDs = {
+            1215,
+            1214,
+            1213
+    };
+    int[] staffIDs = {
+            1217,
+            1218,
+            1216
+    };
+    String[] gods = {
+            "Guthix",
+            "Saradomin",
+            "Zamorak"
+    };
     for (int i = 0; i < 3; i++) {
       if (!DataConversions.inArray(capeIDs, item.getID()) && !DataConversions.inArray(staffIDs, item.getID())) {
         break;

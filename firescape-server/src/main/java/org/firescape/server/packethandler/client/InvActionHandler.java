@@ -1,14 +1,14 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.defs.extras.ItemUnIdentHerbDef;
 import org.firescape.server.event.MiniEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.SingleEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
-import org.firescape.server.util.DataConversions;
-import org.firescape.server.entityhandling.defs.extras.ItemUnIdentHerbDef;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.util.DataConversions;
 
 public class InvActionHandler implements PacketHandler {
   /**
@@ -401,8 +401,15 @@ public class InvActionHandler implements PacketHandler {
           player.getActionSender().sendMessage("You rub the amulet...");
           world.getDelayedEventHandler().add(new MiniEvent(player) {
             public void action() {
-              String[] options = new String[]{"Edgeville", "Karamja", "Draynor Village", "Al Kharid", "Mage Arena",
-                      "Seers", "Yanille"};
+              String[] options = new String[]{
+                      "Edgeville",
+                      "Karamja",
+                      "Draynor Village",
+                      "Al Kharid",
+                      "Mage Arena",
+                      "Seers",
+                      "Yanille"
+              };
               owner.setMenuHandler(new MenuHandler(options) {
                 public void handleReply(final int option, final String reply) {
                   if (owner.isBusy() || owner.getInventory().get(item) == null) {
@@ -492,8 +499,15 @@ public class InvActionHandler implements PacketHandler {
             case 0:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@blu@Yellow", "@ora@Dark Red", "@gre@Orange", "@whi@Blue", "@cya@Cyan",
-                          "@red@Gray", "@mag@White"};
+                  String[] options = new String[]{
+                          "@blu@Yellow",
+                          "@ora@Dark Red",
+                          "@gre@Orange",
+                          "@whi@Blue",
+                          "@cya@Cyan",
+                          "@red@Gray",
+                          "@mag@White"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 4) {
@@ -514,8 +528,15 @@ public class InvActionHandler implements PacketHandler {
             case 1:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@red@Purple", "@yel@White", "@ora@Orange", "@mag@Blue", "@cya@Green",
-                          "@gre@Rainbow", "@blu@Black"};
+                  String[] options = new String[]{
+                          "@red@Purple",
+                          "@yel@White",
+                          "@ora@Orange",
+                          "@mag@Blue",
+                          "@cya@Green",
+                          "@gre@Rainbow",
+                          "@blu@Black"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 2) {
@@ -535,8 +556,15 @@ public class InvActionHandler implements PacketHandler {
             case 2:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@or3@Silver", "@yel@Black", "@ran@Purple", "@blu@Brown", "@whi@Green",
-                          "@mag@Pink", "@dre@White"};
+                  String[] options = new String[]{
+                          "@or3@Silver",
+                          "@yel@Black",
+                          "@ran@Purple",
+                          "@blu@Brown",
+                          "@whi@Green",
+                          "@mag@Pink",
+                          "@dre@White"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 5) {
@@ -556,8 +584,15 @@ public class InvActionHandler implements PacketHandler {
             case 3:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@cya@Brown", "@or2@White", "@red@Orange", "@mag@Purple", "@whi@Gold",
-                          "@gre@Rainbow", "@blu@Black"};
+                  String[] options = new String[]{
+                          "@cya@Brown",
+                          "@or2@White",
+                          "@red@Orange",
+                          "@mag@Purple",
+                          "@whi@Gold",
+                          "@gre@Rainbow",
+                          "@blu@Black"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 3) {
@@ -577,8 +612,15 @@ public class InvActionHandler implements PacketHandler {
             case 4:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@yel@Cyan", "@whi@Brown", "@dre@Black", "@ran@Yellow", "@blu@Blue",
-                          "@mag@Green", "@gre@Red"};
+                  String[] options = new String[]{
+                          "@yel@Cyan",
+                          "@whi@Brown",
+                          "@dre@Black",
+                          "@ran@Yellow",
+                          "@blu@Blue",
+                          "@mag@Green",
+                          "@gre@Red"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 4) {
@@ -598,8 +640,15 @@ public class InvActionHandler implements PacketHandler {
             case 5:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@mag@red", "@or2@Grey", "@yel@Dark Blue", "@whi@White", "@ran@Silver",
-                          "@dre@Rainbow", "@blu@Black"};
+                  String[] options = new String[]{
+                          "@mag@red",
+                          "@or2@Grey",
+                          "@yel@Dark Blue",
+                          "@whi@White",
+                          "@ran@Silver",
+                          "@dre@Rainbow",
+                          "@blu@Black"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 3) {
@@ -619,8 +668,15 @@ public class InvActionHandler implements PacketHandler {
             case 6:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@blu@Black", "@cya@White", "@whi@Teal", "@yel@Red", "@gre@Green",
-                          "@ran@Yellow", "@mag@Rainbow"};
+                  String[] options = new String[]{
+                          "@blu@Black",
+                          "@cya@White",
+                          "@whi@Teal",
+                          "@yel@Red",
+                          "@gre@Green",
+                          "@ran@Yellow",
+                          "@mag@Rainbow"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 4) {
@@ -640,8 +696,15 @@ public class InvActionHandler implements PacketHandler {
             case 7:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@cya@Gold", "@or1@White", "@dre@Green", "@blu@Brown", "@red@Orange",
-                          "@gre@Rainbow", "@yel@Yellow"};
+                  String[] options = new String[]{
+                          "@cya@Gold",
+                          "@or1@White",
+                          "@dre@Green",
+                          "@blu@Brown",
+                          "@red@Orange",
+                          "@gre@Rainbow",
+                          "@yel@Yellow"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 6) {
@@ -661,8 +724,15 @@ public class InvActionHandler implements PacketHandler {
             case 8:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@ora@Blue", "@dre@Yellow", "@ran@Brown", "@mag@Gold", "@gre@Purple",
-                          "@cya@Cyan", "@whi@Black"};
+                  String[] options = new String[]{
+                          "@ora@Blue",
+                          "@dre@Yellow",
+                          "@ran@Brown",
+                          "@mag@Gold",
+                          "@gre@Purple",
+                          "@cya@Cyan",
+                          "@whi@Black"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 5) {
@@ -682,8 +752,15 @@ public class InvActionHandler implements PacketHandler {
             case 9:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@or2@Cyan", "@dre@Rainbow", "@cya@Red", "@blu@White", "@yel@Silver",
-                          "@gre@Yellow", "@mag@Magenta"};
+                  String[] options = new String[]{
+                          "@or2@Cyan",
+                          "@dre@Rainbow",
+                          "@cya@Red",
+                          "@blu@White",
+                          "@yel@Silver",
+                          "@gre@Yellow",
+                          "@mag@Magenta"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 6) {
@@ -704,8 +781,15 @@ public class InvActionHandler implements PacketHandler {
             case 10:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{"@mag@Brown", "@whi@Green", "@ran@Yellow", "@yel@Turquoise", "@red@Red",
-                          "@gre@Orange", "@blu@Purple"};
+                  String[] options = new String[]{
+                          "@mag@Brown",
+                          "@whi@Green",
+                          "@ran@Yellow",
+                          "@yel@Turquoise",
+                          "@red@Red",
+                          "@gre@Orange",
+                          "@blu@Purple"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(final int option, final String reply) {
                       if (option == 4) {
@@ -761,26 +845,6 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void usePrayerPotion(Player player, final InvItem item, final int newItem, final int left) {
-    player.setBusy(true);
-    player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
-    world.getDelayedEventHandler().add(new MiniEvent(player) {
-      public void action() {
-        owner.getActionSender().sendMessage("You have " + left + " doses left.");
-        int newPrayer = owner.getCurStat(5) + 21;
-        if (newPrayer > owner.getMaxStat(5)) {
-          newPrayer = owner.getMaxStat(5);
-        }
-        owner.setCurStat(5, newPrayer);
-        owner.getInventory().remove(item);
-        owner.getInventory().add(new InvItem(newItem));
-        owner.getActionSender().sendStat(5);
-        owner.getActionSender().sendInventory();
-        owner.setBusy(false);
-      }
-    });
-  }
-
   private void useStatRestorePotion(Player player, final InvItem item, final int newItem, final int left) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
@@ -799,6 +863,26 @@ public class InvActionHandler implements PacketHandler {
         }
         owner.getInventory().remove(item);
         owner.getInventory().add(new InvItem(newItem));
+        owner.getActionSender().sendInventory();
+        owner.setBusy(false);
+      }
+    });
+  }
+
+  private void usePrayerPotion(Player player, final InvItem item, final int newItem, final int left) {
+    player.setBusy(true);
+    player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
+    world.getDelayedEventHandler().add(new MiniEvent(player) {
+      public void action() {
+        owner.getActionSender().sendMessage("You have " + left + " doses left.");
+        int newPrayer = owner.getCurStat(5) + 21;
+        if (newPrayer > owner.getMaxStat(5)) {
+          newPrayer = owner.getMaxStat(5);
+        }
+        owner.setCurStat(5, newPrayer);
+        owner.getInventory().remove(item);
+        owner.getInventory().add(new InvItem(newItem));
+        owner.getActionSender().sendStat(5);
         owner.getActionSender().sendInventory();
         owner.setBusy(false);
       }

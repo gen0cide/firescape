@@ -3,9 +3,9 @@ package org.firescape.server.packetbuilder.client;
 import org.firescape.server.model.Npc;
 import org.firescape.server.model.Player;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.StatefulEntityCollection;
-import org.firescape.server.packetbuilder.RSCPacketBuilder;
 
 import java.util.Collection;
 

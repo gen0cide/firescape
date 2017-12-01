@@ -35,7 +35,10 @@ public class Kaqemeex implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{"Fine thank you", "Not too good"};
+          String[] option = new String[]{
+                  "Fine thank you",
+                  "Not too good"
+          };
           player.setMenuHandler(new MenuHandler(option) {
             public void handleReply(final int option, final String reply) {
               if (player.isBusy()) {
@@ -69,7 +72,10 @@ public class Kaqemeex implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{"I am in search of a quest", "Nothing, sorry"};
+          String[] options = new String[]{
+                  "I am in search of a quest",
+                  "Nothing, sorry"
+          };
           owner.setMenuHandler(new MenuHandler(options) {
             public void handleReply(final int option, final String reply) {
               if (owner.isBusy()) {

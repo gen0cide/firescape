@@ -1,6 +1,12 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
+import org.firescape.server.entityhandling.defs.GameObjectDef;
+import org.firescape.server.entityhandling.defs.extras.ObjectFishDef;
+import org.firescape.server.entityhandling.defs.extras.ObjectFishingDef;
+import org.firescape.server.entityhandling.defs.extras.ObjectMiningDef;
+import org.firescape.server.entityhandling.defs.extras.ObjectWoodcuttingDef;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.SingleEvent;
 import org.firescape.server.event.Thieving;
@@ -8,16 +14,10 @@ import org.firescape.server.event.WalkToObjectEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
-import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.GameObjectDef;
-import org.firescape.server.entityhandling.defs.extras.ObjectFishDef;
-import org.firescape.server.entityhandling.defs.extras.ObjectFishingDef;
-import org.firescape.server.entityhandling.defs.extras.ObjectMiningDef;
-import org.firescape.server.entityhandling.defs.extras.ObjectWoodcuttingDef;
-import org.firescape.server.packethandler.PacketHandler;
 
 public class ObjectAction implements PacketHandler {
   /**
@@ -43,39 +43,6 @@ public class ObjectAction implements PacketHandler {
     }
     player.setStatus(Action.USING_OBJECT);
     world.getDelayedEventHandler().add(new WalkToObjectEvent(player, object, false) {
-      private void replaceGameObject(int newID, boolean open) {
-        world.registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(), object.getType()));
-        owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
-      }
-
-      private void doGate() {
-        owner.getActionSender().sendSound("opendoor");
-        world.registerGameObject(new GameObject(object.getLocation(), 181, object.getDirection(), object.getType()));
-        world.delayedSpawnObject(object.getLoc(), 1000);
-      }
-
-      private int[] coordModifier(Player player, boolean up) {
-        if (object.getGameObjectDef().getHeight() <= 1) {
-          return new int[]{player.getX(), Formulae.getNewY(player.getY(), up)};
-        }
-        int[] coords = {object.getX(), Formulae.getNewY(object.getY(), up)};
-        switch (object.getDirection()) {
-          case 0:
-            coords[1] -= (up ? -object.getGameObjectDef().getHeight() : 1);
-            break;
-          case 2:
-            coords[0] -= (up ? -object.getGameObjectDef().getHeight() : 1);
-            break;
-          case 4:
-            coords[1] += (up ? -1 : object.getGameObjectDef().getHeight());
-            break;
-          case 6:
-            coords[0] += (up ? -1 : object.getGameObjectDef().getHeight());
-            break;
-        }
-        return coords;
-      }
-
       public void arrived() {
 
         try {
@@ -551,6 +518,45 @@ public class ObjectAction implements PacketHandler {
         } catch (Exception e) {
           System.out.println(e.getMessage());
         }
+      }
+
+      private int[] coordModifier(Player player, boolean up) {
+        if (object.getGameObjectDef().getHeight() <= 1) {
+          return new int[]{
+                  player.getX(),
+                  Formulae.getNewY(player.getY(), up)
+          };
+        }
+        int[] coords = {
+                object.getX(),
+                Formulae.getNewY(object.getY(), up)
+        };
+        switch (object.getDirection()) {
+          case 0:
+            coords[1] -= (up ? -object.getGameObjectDef().getHeight() : 1);
+            break;
+          case 2:
+            coords[0] -= (up ? -object.getGameObjectDef().getHeight() : 1);
+            break;
+          case 4:
+            coords[1] += (up ? -1 : object.getGameObjectDef().getHeight());
+            break;
+          case 6:
+            coords[0] += (up ? -1 : object.getGameObjectDef().getHeight());
+            break;
+        }
+        return coords;
+      }
+
+      private void replaceGameObject(int newID, boolean open) {
+        world.registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(), object.getType()));
+        owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
+      }
+
+      private void doGate() {
+        owner.getActionSender().sendSound("opendoor");
+        world.registerGameObject(new GameObject(object.getLocation(), 181, object.getDirection(), object.getType()));
+        world.delayedSpawnObject(object.getLoc(), 1000);
       }
 
       private void handleMining(final int click) {

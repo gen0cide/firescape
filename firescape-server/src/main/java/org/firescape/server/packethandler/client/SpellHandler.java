@@ -1,19 +1,19 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
-import org.firescape.server.event.*;
-import org.firescape.server.model.*;
-import org.firescape.server.net.Packet;
-import org.firescape.server.net.RSCPacket;
-import org.firescape.server.states.Action;
-import org.firescape.server.states.CombatState;
-import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Formulae;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.SpellDef;
 import org.firescape.server.entityhandling.defs.extras.ItemSmeltingDef;
 import org.firescape.server.entityhandling.defs.extras.ReqOreDef;
+import org.firescape.server.event.*;
+import org.firescape.server.model.*;
+import org.firescape.server.net.Packet;
+import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.states.Action;
+import org.firescape.server.states.CombatState;
+import org.firescape.server.util.DataConversions;
+import org.firescape.server.util.Formulae;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -26,10 +26,26 @@ public class SpellHandler implements PacketHandler {
   private static TreeMap<Integer, InvItem[]> staffs = new TreeMap<Integer, InvItem[]>();
 
   static {
-    staffs.put(31, new InvItem[]{new InvItem(197), new InvItem(615), new InvItem(682)}); // Fire-Rune
-    staffs.put(32, new InvItem[]{new InvItem(102), new InvItem(616), new InvItem(683)}); // Water-Rune
-    staffs.put(33, new InvItem[]{new InvItem(101), new InvItem(617), new InvItem(684)}); // Air-Rune
-    staffs.put(34, new InvItem[]{new InvItem(103), new InvItem(618), new InvItem(685)}); // Earth-Rune
+    staffs.put(31, new InvItem[]{
+            new InvItem(197),
+            new InvItem(615),
+            new InvItem(682)
+    }); // Fire-Rune
+    staffs.put(32, new InvItem[]{
+            new InvItem(102),
+            new InvItem(616),
+            new InvItem(683)
+    }); // Water-Rune
+    staffs.put(33, new InvItem[]{
+            new InvItem(101),
+            new InvItem(617),
+            new InvItem(684)
+    }); // Air-Rune
+    staffs.put(34, new InvItem[]{
+            new InvItem(103),
+            new InvItem(618),
+            new InvItem(685)
+    }); // Earth-Rune
   }
 
   private Random r = new Random();

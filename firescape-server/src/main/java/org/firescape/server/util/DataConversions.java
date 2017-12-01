@@ -1,8 +1,8 @@
 package org.firescape.server.util;
 
 import com.bombaydigital.vault.HexString;
-import org.firescape.server.net.RSCPacket;
 import org.firescape.server.model.Point;
+import org.firescape.server.net.RSCPacket;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -21,10 +21,69 @@ public final class DataConversions {
   private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
   private static MessageDigest md;
   private static Random rand = new Random();
-  private static char characters[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c',
-          'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!',
-          '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243', '$', '%', '"', '[',
-          ']'};
+  private static char characters[] = {
+          ' ',
+          'e',
+          't',
+          'a',
+          'o',
+          'i',
+          'h',
+          'n',
+          's',
+          'r',
+          'd',
+          'l',
+          'u',
+          'm',
+          'w',
+          'c',
+          'y',
+          'f',
+          'g',
+          'p',
+          'b',
+          'v',
+          'k',
+          'x',
+          'j',
+          'q',
+          'z',
+          '0',
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7',
+          '8',
+          '9',
+          ' ',
+          '!',
+          '?',
+          '.',
+          ',',
+          ':',
+          ';',
+          '(',
+          ')',
+          '-',
+          '&',
+          '*',
+          '\\',
+          '\'',
+          '@',
+          '#',
+          '+',
+          '=',
+          '\243',
+          '$',
+          '%',
+          '"',
+          '[',
+          ']'
+  };
 
   /**
    * Creates an instance of the message digest used for creating md5 hashes
@@ -42,6 +101,61 @@ public final class DataConversions {
       System.out.println(usernameToHash(argv[1]));
     if (argv[0].equals("decode"))
       System.out.println(hashToUsername(Long.parseLong(argv[1])));
+  }
+
+  /**
+   * Converts a username to a unique hash
+   */
+  public static long usernameToHash(String s) {
+    s = s.toLowerCase();
+    String s1 = "";
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if (c >= 'a' && c <= 'z')
+        s1 = s1 + c;
+      else if (c >= '0' && c <= '9')
+        s1 = s1 + c;
+      else
+        s1 = s1 + ' ';
+    }
+
+    s1 = s1.trim();
+    if (s1.length() > 12)
+      s1 = s1.substring(0, 12);
+    long l = 0L;
+    for (int j = 0; j < s1.length(); j++) {
+      char c1 = s1.charAt(j);
+      l *= 37L;
+      if (c1 >= 'a' && c1 <= 'z')
+        l += (1 + c1) - 97;
+      else if (c1 >= '0' && c1 <= '9')
+        l += (27 + c1) - 48;
+    }
+    return l;
+  }
+
+  /**
+   * Converts a usernames hash back to the username
+   */
+  public static String hashToUsername(long l) {
+    if (l < 0L)
+      return "invalid_name";
+    String s = "";
+    while (l != 0L) {
+      int i = (int) (l % 37L);
+      l /= 37L;
+      if (i == 0)
+        s = " " + s;
+      else if (i < 27) {
+        if (l % 37L == 0L)
+          s = (char) ((i + 65) - 1) + s;
+        else
+          s = (char) ((i + 97) - 1) + s;
+      } else {
+        s = (char) ((i + 48) - 27) + s;
+      }
+    }
+    return s;
   }
 
   /**
@@ -128,19 +242,6 @@ public final class DataConversions {
   }
 
   /**
-   * returns the code used to represent the given character in our byte array
-   * encoding methods
-   */
-  private static int getCharCode(char c) {
-    for (int x = 0; x < characters.length; x++) {
-      if (c == characters[x]) {
-        return x;
-      }
-    }
-    return 0;
-  }
-
-  /**
    * Encodes a string into a byte array
    */
   public static byte[] stringToByteArray(String message) {
@@ -175,6 +276,19 @@ public final class DataConversions {
     byte[] string = new byte[length];
     System.arraycopy(buffer, 0, string, 0, length);
     return string;
+  }
+
+  /**
+   * returns the code used to represent the given character in our byte array
+   * encoding methods
+   */
+  private static int getCharCode(char c) {
+    for (int x = 0; x < characters.length; x++) {
+      if (c == characters[x]) {
+        return x;
+      }
+    }
+    return 0;
   }
 
   /**
@@ -241,6 +355,13 @@ public final class DataConversions {
   }
 
   /**
+   * returns a random number within the given bounds
+   */
+  public static int random(int low, int high) {
+    return low + rand.nextInt(high - low + 1);
+  }
+
+  /**
    * Checks if the given int is in the array
    */
   public static boolean inArray(int[] haystack, int needle) {
@@ -264,13 +385,6 @@ public final class DataConversions {
    */
   public static Random getRandom() {
     return rand;
-  }
-
-  /**
-   * returns a random number within the given bounds
-   */
-  public static int random(int low, int high) {
-    return low + rand.nextInt(high - low + 1);
   }
 
   /**
@@ -298,61 +412,6 @@ public final class DataConversions {
       total += probArray[x];
     }
     return 0;
-  }
-
-  /**
-   * Converts a username to a unique hash
-   */
-  public static long usernameToHash(String s) {
-    s = s.toLowerCase();
-    String s1 = "";
-    for (int i = 0; i < s.length(); i++) {
-      char c = s.charAt(i);
-      if (c >= 'a' && c <= 'z')
-        s1 = s1 + c;
-      else if (c >= '0' && c <= '9')
-        s1 = s1 + c;
-      else
-        s1 = s1 + ' ';
-    }
-
-    s1 = s1.trim();
-    if (s1.length() > 12)
-      s1 = s1.substring(0, 12);
-    long l = 0L;
-    for (int j = 0; j < s1.length(); j++) {
-      char c1 = s1.charAt(j);
-      l *= 37L;
-      if (c1 >= 'a' && c1 <= 'z')
-        l += (1 + c1) - 97;
-      else if (c1 >= '0' && c1 <= '9')
-        l += (27 + c1) - 48;
-    }
-    return l;
-  }
-
-  /**
-   * Converts a usernames hash back to the username
-   */
-  public static String hashToUsername(long l) {
-    if (l < 0L)
-      return "invalid_name";
-    String s = "";
-    while (l != 0L) {
-      int i = (int) (l % 37L);
-      l /= 37L;
-      if (i == 0)
-        s = " " + s;
-      else if (i < 27) {
-        if (l % 37L == 0L)
-          s = (char) ((i + 65) - 1) + s;
-        else
-          s = (char) ((i + 97) - 1) + s;
-      } else {
-        s = (char) ((i + 48) - 27) + s;
-      }
-    }
-    return s;
   }
 
   /**

@@ -1,22 +1,22 @@
 package org.firescape.server.model;
 
+import org.firescape.server.ClientUpdater;
+import org.firescape.server.DelayedEventHandler;
+import org.firescape.server.Server;
+import org.firescape.server.entityhandling.locs.GameObjectLoc;
+import org.firescape.server.entityhandling.locs.NPCLoc;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.SingleEvent;
 import org.firescape.server.io.WorldLoader;
+import org.firescape.server.npchandler.NpcHandler;
+import org.firescape.server.npchandler.NpcHandlerDef;
+import org.firescape.server.states.CombatState;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.EntityList;
 import org.firescape.server.util.Logger;
 import org.firescape.server.util.PersistenceManager;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-import org.firescape.server.ClientUpdater;
-import org.firescape.server.DelayedEventHandler;
-import org.firescape.server.Server;
-import org.firescape.server.entityhandling.locs.GameObjectLoc;
-import org.firescape.server.entityhandling.locs.NPCLoc;
-import org.firescape.server.npchandler.NpcHandler;
-import org.firescape.server.npchandler.NpcHandlerDef;
-import org.firescape.server.states.CombatState;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -92,6 +92,20 @@ public final class World {
   private TreeMap<Integer, NpcHandler> npcHandlers = new TreeMap<Integer, NpcHandler>();
 
   /**
+   * returns the associated npc handler
+   */
+  public NpcHandler getNpcHandler(int npcID) {
+    return npcHandlers.get(npcID);
+  }
+
+  public void sendToAll(String s) {
+    World world = World.getWorld();
+    for (Player p : world.getPlayers()) {
+      p.getActionSender().sendMessage(s);
+    }
+  }
+
+  /**
    * returns the only instance of this world, if there is not already one, makes
    * it and loads everything
    */
@@ -110,16 +124,30 @@ public final class World {
   }
 
   /**
-   * returns the associated npc handler
+   * Gets the list of players on the server
    */
-  public NpcHandler getNpcHandler(int npcID) {
-    return npcHandlers.get(npcID);
+  public EntityList<Player> getPlayers() {
+    return players;
   }
 
-  public void sendToAll(String s) {
-    World world = World.getWorld();
-    for (Player p : world.getPlayers()) {
-      p.getActionSender().sendMessage(s);
+  /**
+   * Loads the npc handling classes
+   */
+  private void loadNpcHandlers() {
+    NpcHandlerDef[] handlerDefs = (NpcHandlerDef[]) PersistenceManager.load("NpcHandlers.xml");
+    for (NpcHandlerDef handlerDef : handlerDefs) {
+      try {
+        String className = handlerDef.getClassName();
+        Class<?> c = Class.forName(className);
+        if (c != null) {
+          NpcHandler handler = (NpcHandler) c.newInstance();
+          for (int npcID : handlerDef.getAssociatedNpcs()) {
+            npcHandlers.put(npcID, handler);
+          }
+        }
+      } catch (Exception e) {
+        Logger.error(e);
+      }
     }
   }
 
@@ -132,6 +160,58 @@ public final class World {
     // f.delete();
     // }
     // GUI.populateWorldList();
+  }
+
+  public void banPlayer(String player) {
+    player = player.replaceAll(" ", "_");
+    if (Server.isOnline(player)) {
+      Player p = this.getPlayer(DataConversions.usernameToHash(player));
+      p.rank = 6;
+      kickPlayer(player);
+    } else {
+      Server.writeValue(player, "rank", "6");
+    }
+
+  }
+
+  /**
+   * Gets a player by their username hash
+   */
+  public Player getPlayer(long usernameHash) {
+    for (Player p : players) {
+      if (p.getUsernameHash() == usernameHash) {
+        return p;
+      }
+    }
+    return null;
+  }
+
+  public void kickPlayer(String p) {
+    try {
+      Player player = this.getPlayer(DataConversions.usernameToHash(p));
+      String play = player.getUsername().replaceAll(" ", "_");
+      File f = new File("players/" + play.toLowerCase() + ".cfg");
+      Properties pr = new Properties();
+
+      FileInputStream fis = new FileInputStream(f);
+      pr.load(fis);
+      fis.close();
+
+      FileOutputStream fos = new FileOutputStream(f);
+      pr.setProperty("loggedin", "false");
+      pr.store(fos, "Character Data.");
+      fos.close();
+
+      for (Player pla : this.getPlayers()) {
+        if (pla.isFriendsWith(player.getUsername())) {
+          pla.getActionSender().sendFriendUpdate(player.getUsernameHash(), 0);
+        }
+      }
+      player.save();
+      player.destroy(true);
+    } catch (Exception e) {
+      System.out.println(e);
+    }
   }
 
   public void mutePlayer(String player) {
@@ -179,34 +259,6 @@ public final class World {
     }
   }
 
-  public void kickPlayer(String p) {
-    try {
-      Player player = this.getPlayer(DataConversions.usernameToHash(p));
-      String play = player.getUsername().replaceAll(" ", "_");
-      File f = new File("players/" + play.toLowerCase() + ".cfg");
-      Properties pr = new Properties();
-
-      FileInputStream fis = new FileInputStream(f);
-      pr.load(fis);
-      fis.close();
-
-      FileOutputStream fos = new FileOutputStream(f);
-      pr.setProperty("loggedin", "false");
-      pr.store(fos, "Character Data.");
-      fos.close();
-
-      for (Player pla : this.getPlayers()) {
-        if (pla.isFriendsWith(player.getUsername())) {
-          pla.getActionSender().sendFriendUpdate(player.getUsernameHash(), 0);
-        }
-      }
-      player.save();
-      player.destroy(true);
-    } catch (Exception e) {
-      System.out.println(e);
-    }
-  }
-
   public void unbanPlayer(String player) {
 
     Server.writeValue(player, "rank", "0");
@@ -220,39 +272,6 @@ public final class World {
       Server.writeValue(p, "rank", "5");
     }
 
-  }
-
-  public void banPlayer(String player) {
-    player = player.replaceAll(" ", "_");
-    if (Server.isOnline(player)) {
-      Player p = this.getPlayer(DataConversions.usernameToHash(player));
-      p.rank = 6;
-      kickPlayer(player);
-    } else {
-      Server.writeValue(player, "rank", "6");
-    }
-
-  }
-
-  /**
-   * Loads the npc handling classes
-   */
-  private void loadNpcHandlers() {
-    NpcHandlerDef[] handlerDefs = (NpcHandlerDef[]) PersistenceManager.load("NpcHandlers.xml");
-    for (NpcHandlerDef handlerDef : handlerDefs) {
-      try {
-        String className = handlerDef.getClassName();
-        Class<?> c = Class.forName(className);
-        if (c != null) {
-          NpcHandler handler = (NpcHandler) c.newInstance();
-          for (int npcID : handlerDef.getAssociatedNpcs()) {
-            npcHandlers.put(npcID, handler);
-          }
-        }
-      } catch (Exception e) {
-        Logger.error(e);
-      }
-    }
   }
 
   /**
@@ -319,6 +338,10 @@ public final class World {
     return jackpot;
   }
 
+  /*********************************************
+   ********************* END**********************
+   *********************************************/
+
   public void setJackPot(int i) {
     jackpot = i;
   }
@@ -326,9 +349,6 @@ public final class World {
   public void clearJackPot() {
     jackpot = 0;
   }
-  /*********************************************
-   ********************* END**********************
-   *********************************************/
 
   /**
    * Gets the server instance
@@ -370,65 +390,6 @@ public final class World {
    */
   public void setDelayedEventHandler(DelayedEventHandler delayedEventHandler) {
     this.delayedEventHandler = delayedEventHandler;
-  }
-
-  /**
-   * adds or removes the given entity from the relivant tiles
-   */
-  public void setLocation(Entity entity, Point oldPoint, Point newPoint) {
-    ActiveTile t;
-    if (oldPoint != null) {
-      t = getTile(oldPoint);
-      t.remove(entity);
-    }
-    if (newPoint != null) {
-      t = getTile(newPoint);
-      t.add(entity);
-    }
-  }
-
-  /**
-   * Are the given coords within the world boundaries
-   */
-  public boolean withinWorld(int x, int y) {
-    return x >= 0 && x < MAX_WIDTH && y >= 0 && y < MAX_HEIGHT;
-  }
-
-  /**
-   * Gets the tile value as point x, y
-   */
-  public TileValue getTileValue(int x, int y) {
-    if (!withinWorld(x, y)) {
-      return null;
-    }
-    TileValue t = tileType[x][y];
-    if (t == null) {
-      t = new TileValue();
-      tileType[x][y] = t;
-    }
-    return t;
-  }
-
-  /**
-   * Gets the active tile at point x, y
-   */
-  public ActiveTile getTile(int x, int y) {
-    if (!withinWorld(x, y)) {
-      return null;
-    }
-    ActiveTile t = tiles[x][y];
-    if (t == null) {
-      t = new ActiveTile(x, y);
-      tiles[x][y] = t;
-    }
-    return t;
-  }
-
-  /**
-   * Gets the tile at a point
-   */
-  public ActiveTile getTile(Point p) {
-    return getTile(p.getX(), p.getY());
   }
 
   /**
@@ -475,6 +436,28 @@ public final class World {
               "Fucked Npc: <id>" + npc.id + "</id><startX>" + npc.startX + "</startX><startY>" + npc.startY + "</startY>");
     }
     npcs.add(n);
+  }
+
+  /**
+   * Gets the tile value as point x, y
+   */
+  public TileValue getTileValue(int x, int y) {
+    if (!withinWorld(x, y)) {
+      return null;
+    }
+    TileValue t = tileType[x][y];
+    if (t == null) {
+      t = new TileValue();
+      tileType[x][y] = t;
+    }
+    return t;
+  }
+
+  /**
+   * Are the given coords within the world boundaries
+   */
+  public boolean withinWorld(int x, int y) {
+    return x >= 0 && x < MAX_WIDTH && y >= 0 && y < MAX_HEIGHT;
   }
 
   /**
@@ -655,6 +638,43 @@ public final class World {
   }
 
   /**
+   * adds or removes the given entity from the relivant tiles
+   */
+  public void setLocation(Entity entity, Point oldPoint, Point newPoint) {
+    ActiveTile t;
+    if (oldPoint != null) {
+      t = getTile(oldPoint);
+      t.remove(entity);
+    }
+    if (newPoint != null) {
+      t = getTile(newPoint);
+      t.add(entity);
+    }
+  }
+
+  /**
+   * Gets the tile at a point
+   */
+  public ActiveTile getTile(Point p) {
+    return getTile(p.getX(), p.getY());
+  }
+
+  /**
+   * Gets the active tile at point x, y
+   */
+  public ActiveTile getTile(int x, int y) {
+    if (!withinWorld(x, y)) {
+      return null;
+    }
+    ActiveTile t = tiles[x][y];
+    if (t == null) {
+      t = new ActiveTile(x, y);
+      tiles[x][y] = t;
+    }
+    return t;
+  }
+
+  /**
    * Removes an npc from the server
    */
   public void unregisterNpc(Npc n) {
@@ -662,6 +682,13 @@ public final class World {
       npcs.remove(n);
     }
     setLocation(n, n.getLocation(), null);
+  }
+
+  /**
+   * Checks if the given npc is on the server
+   */
+  public boolean hasNpc(Npc n) {
+    return npcs.contains(n);
   }
 
   /**
@@ -689,13 +716,6 @@ public final class World {
   }
 
   /**
-   * Gets the list of players on the server
-   */
-  public EntityList<Player> getPlayers() {
-    return players;
-  }
-
-  /**
    * Gets the list of npcs on the server
    */
   public EntityList<Npc> getNpcs() {
@@ -717,29 +737,10 @@ public final class World {
   }
 
   /**
-   * Checks if the given npc is on the server
-   */
-  public boolean hasNpc(Npc n) {
-    return npcs.contains(n);
-  }
-
-  /**
    * Checks if the given player is on the server
    */
   public boolean hasPlayer(Player p) {
     return players.contains(p);
-  }
-
-  /**
-   * Gets a player by their username hash
-   */
-  public Player getPlayer(long usernameHash) {
-    for (Player p : players) {
-      if (p.getUsernameHash() == usernameHash) {
-        return p;
-      }
-    }
-    return null;
   }
 
   public Player getPlayer(String username) {

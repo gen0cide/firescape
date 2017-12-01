@@ -27,6 +27,14 @@ public class PathHandler {
   }
 
   /**
+   * Resets the path (stops movement)
+   */
+  protected void resetPath() {
+    path = null;
+    curWaypoint = -1;
+  }
+
+  /**
    * Attempts to create a path to the given coordinates
    */
   public static Path makePath(int startX, int startY, int x1, int y1, int x2, int y2, boolean flag) {
@@ -58,18 +66,27 @@ public class PathHandler {
   }
 
   /**
-   * Resets the path (stops movement)
+   * Checks if we have reached the end of our path
    */
-  protected void resetPath() {
-    path = null;
-    curWaypoint = -1;
+  public boolean finishedPath() {
+    if (path == null) {
+      return true;
+    }
+    if (path.length() > 0) {
+      return atWaypoint(path.length() - 1);
+    } else {
+      return atStart();
+    }
   }
 
   /**
    * Updates our position to the next in the path
    */
   protected void setNextPosition() {
-    int[] newCoords = {-1, -1};
+    int[] newCoords = {
+            -1,
+            -1
+    };
     if (curWaypoint == -1) {
       if (atStart()) {
         curWaypoint = 0;
@@ -93,22 +110,18 @@ public class PathHandler {
     }
   }
 
-  private boolean isBlocking(int x, int y, int bit) {
-    TileValue t = world.getTileValue(x, y);
-    return isBlocking(t.mapValue, (byte) bit) || isBlocking(t.objectValue, (byte) bit);
+  /**
+   * Checks if we are at the given waypoint
+   */
+  protected boolean atWaypoint(int waypoint) {
+    return path.getWaypointX(waypoint) == mob.getX() && path.getWaypointY(waypoint) == mob.getY();
   }
 
-  private boolean isBlocking(byte val, byte bit) {
-    if ((val & bit) != 0) { // There is a wall in the way
-      return true;
-    }
-    if ((val & 16) != 0) { // There is a diagonal wall here: \
-      return true;
-    }
-    if ((val & 32) != 0) { // There is a diagonal wall here: /
-      return true;
-    }
-    return (val & 64) != 0;
+  /**
+   * Are we are the start of the path?
+   */
+  protected boolean atStart() {
+    return mob.getX() == path.getStartX() && mob.getY() == path.getStartY();
   }
 
   /**
@@ -116,7 +129,10 @@ public class PathHandler {
    */
   protected int[] getNextCoords(int startX, int destX, int startY, int destY) {
     try {
-      int[] coords = {startX, startY};
+      int[] coords = {
+              startX,
+              startY
+      };
       boolean myXBlocked = false, myYBlocked = false, newXBlocked = false, newYBlocked = false;
       if (startX > destX) {
         myXBlocked = isBlocking(startX - 1, startY, 8); // Check right tiles
@@ -177,37 +193,30 @@ public class PathHandler {
     }
   }
 
+  private boolean isBlocking(int x, int y, int bit) {
+    TileValue t = world.getTileValue(x, y);
+    return isBlocking(t.mapValue, (byte) bit) || isBlocking(t.objectValue, (byte) bit);
+  }
+
   private int[] cancelCoords() {
     resetPath();
-    return new int[]{-1, -1};
+    return new int[]{
+            -1,
+            -1
+    };
   }
 
-  /**
-   * Checks if we have reached the end of our path
-   */
-  public boolean finishedPath() {
-    if (path == null) {
+  private boolean isBlocking(byte val, byte bit) {
+    if ((val & bit) != 0) { // There is a wall in the way
       return true;
     }
-    if (path.length() > 0) {
-      return atWaypoint(path.length() - 1);
-    } else {
-      return atStart();
+    if ((val & 16) != 0) { // There is a diagonal wall here: \
+      return true;
     }
-  }
-
-  /**
-   * Checks if we are at the given waypoint
-   */
-  protected boolean atWaypoint(int waypoint) {
-    return path.getWaypointX(waypoint) == mob.getX() && path.getWaypointY(waypoint) == mob.getY();
-  }
-
-  /**
-   * Are we are the start of the path?
-   */
-  protected boolean atStart() {
-    return mob.getX() == path.getStartX() && mob.getY() == path.getStartY();
+    if ((val & 32) != 0) { // There is a diagonal wall here: /
+      return true;
+    }
+    return (val & 64) != 0;
   }
 
 }

@@ -16,13 +16,13 @@ public class EntityList<T extends Entity> implements Iterable<T> {
   protected int curIndex = 0;
   protected int capacity;
 
+  public EntityList() {
+    this(DEFAULT_CAPACITY);
+  }
+
   public EntityList(int capacity) {
     entities = new Object[capacity];
     this.capacity = capacity;
-  }
-
-  public EntityList() {
-    this(DEFAULT_CAPACITY);
   }
 
   public void remove(T entity) {

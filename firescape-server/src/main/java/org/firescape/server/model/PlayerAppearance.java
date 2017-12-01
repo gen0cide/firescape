@@ -35,7 +35,20 @@ public class PlayerAppearance {
   }
 
   public int[] getSprites() {
-    return new int[]{head, body, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    return new int[]{
+            head,
+            body,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+    };
   }
 
   public byte getHairColour() {

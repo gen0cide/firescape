@@ -6,8 +6,8 @@ import org.firescape.server.model.World;
 
 public abstract class DelayedEvent {
   public static final World world = World.getWorld();
-  protected final DelayedEventHandler handler = World.getWorld().getDelayedEventHandler();
   protected boolean running = true;
+  protected final DelayedEventHandler handler = World.getWorld().getDelayedEventHandler();
   protected int delay = 500;
   protected Player owner;
   private long lastRun = System.currentTimeMillis();

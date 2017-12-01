@@ -3,9 +3,9 @@ package org.firescape.server.model;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.DuelEvent;
 import org.firescape.server.event.FightEvent;
-import org.firescape.server.util.Logger;
 import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
+import org.firescape.server.util.Logger;
 
 public abstract class Mob extends Entity {
 
@@ -47,7 +47,23 @@ public abstract class Mob extends Entity {
    * Set when the mob has been destroyed to alert players
    */
   protected boolean removed = false;
-  private int[][] mobSprites = new int[][]{{3, 2, 1}, {4, -1, 0}, {5, 6, 7}};
+  private int[][] mobSprites = new int[][]{
+          {
+                  3,
+                  2,
+                  1
+          },
+          {
+                  4,
+                  -1,
+                  0
+          },
+          {
+                  5,
+                  6,
+                  7
+          }
+  };
   /**
    * Used to block new requests when we are in the middle of one
    */
@@ -149,6 +165,10 @@ public abstract class Mob extends Entity {
     lastCombatState = state;
   }
 
+  public void setCombatTimer() {
+    combatTimer = System.currentTimeMillis();
+  }
+
   public CombatState getCombatState() {
     return lastCombatState;
   }
@@ -187,10 +207,6 @@ public abstract class Mob extends Entity {
 
   public boolean warnedToMove() {
     return warnedToMove;
-  }
-
-  public void setLastMoved() {
-    lastMovement = System.currentTimeMillis();
   }
 
   public long getLastMoved() {
@@ -244,6 +260,10 @@ public abstract class Mob extends Entity {
     }
   }
 
+  public void setLastMoved() {
+    lastMovement = System.currentTimeMillis();
+  }
+
   public int getSprite() {
     return mobSprite;
   }
@@ -259,10 +279,6 @@ public abstract class Mob extends Entity {
 
   public void resetSpriteChanged() {
     spriteChanged = false;
-  }
-
-  public void setCombatTimer() {
-    combatTimer = System.currentTimeMillis();
   }
 
   public long getCombatTimer() {

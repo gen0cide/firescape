@@ -61,6 +61,14 @@ public class Inventory {
     return list.size() - 2;
   }
 
+  public boolean full() {
+    return list.size() >= MAX_SIZE;
+  }
+
+  public int remove(InvItem item) {
+    return remove(item.getID(), item.getAmount());
+  }
+
   public int remove(int id, int amount) {
     int size = list.size();
     ListIterator<InvItem> iterator = list.listIterator(size);
@@ -85,16 +93,19 @@ public class Inventory {
     return -1;
   }
 
-  public int remove(InvItem item) {
-    return remove(item.getID(), item.getAmount());
-  }
-
   public void remove(int index) {
     InvItem item = get(index);
     if (item == null) {
       return;
     }
     remove(item.getID(), item.getAmount());
+  }
+
+  public InvItem get(int index) {
+    if (index < 0 || index >= list.size()) {
+      return null;
+    }
+    return list.get(index);
   }
 
   public void sort() {
@@ -114,20 +125,6 @@ public class Inventory {
     return -1;
   }
 
-  public int countId(int id) {
-    int temp = 0;
-    for (InvItem i : list) {
-      if (i.getID() == id) {
-        temp += i.getAmount();
-      }
-    }
-    return temp;
-  }
-
-  public boolean full() {
-    return list.size() >= MAX_SIZE;
-  }
-
   public boolean contains(InvItem i) {
     return list.contains(i);
   }
@@ -139,13 +136,6 @@ public class Inventory {
       }
     }
     return null;
-  }
-
-  public InvItem get(int index) {
-    if (index < 0 || index >= list.size()) {
-      return null;
-    }
-    return list.get(index);
   }
 
   public int size() {
@@ -162,6 +152,16 @@ public class Inventory {
 
   public int getFreedSlots(InvItem item) {
     return (item.getDef().isStackable() && countId(item.getID()) > item.getAmount() ? 0 : 1);
+  }
+
+  public int countId(int id) {
+    int temp = 0;
+    for (InvItem i : list) {
+      if (i.getID() == id) {
+        temp += i.getAmount();
+      }
+    }
+    return temp;
   }
 
   public int getRequiredSlots(List<InvItem> items) {

@@ -30,23 +30,6 @@ public class Entity {
     index = newIndex;
   }
 
-  public final Point getLocation() {
-    return location;
-  }
-
-  public void setLocation(Point p) {
-    world.setLocation(this, location, p);
-    location = p;
-  }
-
-  public final int getX() {
-    return location.getX();
-  }
-
-  public final int getY() {
-    return location.getY();
-  }
-
   public final boolean withinRange(Entity e, int radius) {
     return withinRange(e.getLocation(), radius);
   }
@@ -57,61 +40,20 @@ public class Entity {
     return xDiff <= radius && yDiff <= radius;
   }
 
-  private boolean isBlocking(Entity e, int x, int y, int bit) {
-    return isMapBlocking(e, x, y, (byte) bit) || isObjectBlocking(e, x, y, (byte) bit);
+  public final Point getLocation() {
+    return location;
   }
 
-  private boolean isMapBlocking(Entity e, int x, int y, byte bit) {
-    byte val = world.getTileValue(x, y).mapValue;
-    if ((val & bit) != 0) { // There is a wall in the way
-      return true;
-    }
-    if ((val & 16) != 0) { // There is a diagonal wall here: \
-      return true;
-    }
-    if ((val & 32) != 0) { // There is a diagonal wall here: /
-      return true;
-    }
-    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
-            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
-  }
-
-  private boolean isObjectBlocking(Entity e, int x, int y, byte bit) {
-    byte val = world.getTileValue(x, y).objectValue;
-    if ((val & bit) != 0 && !Formulae.doorAtFacing(e, x, y, Formulae.bitToDoorDir(bit))
-            && !Formulae.objectAtFacing(e, x, y, Formulae.bitToObjectDir(bit))) { // There
-      // is
-      // a
-      // wall
-      // in
-      // the
-      // way
-      return true;
-    }
-    if ((val & 16) != 0 && !Formulae.doorAtFacing(e, x, y, 2) && !Formulae.objectAtFacing(e, x, y, 3)) { // There
-      // is
-      // a
-      // diagonal
-      // wall
-      // here:
-      // \
-      return true;
-    }
-    if ((val & 32) != 0 && !Formulae.doorAtFacing(e, x, y, 3) && !Formulae.objectAtFacing(e, x, y, 1)) { // There
-      // is
-      // a
-      // diagonal
-      // wall
-      // here:
-      // /
-      return true;
-    }
-    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
-            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
+  public void setLocation(Point p) {
+    world.setLocation(this, location, p);
+    location = p;
   }
 
   public final boolean nextTo(Entity e) {
-    int[] currentCoords = {getX(), getY()};
+    int[] currentCoords = {
+            getX(),
+            getY()
+    };
     while (currentCoords[0] != e.getX() || currentCoords[1] != e.getY()) {
       currentCoords = nextStep(currentCoords[0], currentCoords[1], e);
       if (currentCoords == null) {
@@ -121,9 +63,20 @@ public class Entity {
     return true;
   }
 
+  public final int getX() {
+    return location.getX();
+  }
+
+  public final int getY() {
+    return location.getY();
+  }
+
   public int[] nextStep(int myX, int myY, Entity e) {
     if (myX == e.getX() && myY == e.getY()) {
-      return new int[]{myX, myY};
+      return new int[]{
+              myX,
+              myY
+      };
     }
     int newX = myX, newY = myY;
     boolean myXBlocked = false, myYBlocked = false, newXBlocked = false, newYBlocked = false;
@@ -178,7 +131,63 @@ public class Entity {
       return null;
     }
 
-    return new int[]{newX, newY};
+    return new int[]{
+            newX,
+            newY
+    };
+  }
+
+  private boolean isBlocking(Entity e, int x, int y, int bit) {
+    return isMapBlocking(e, x, y, (byte) bit) || isObjectBlocking(e, x, y, (byte) bit);
+  }
+
+  private boolean isMapBlocking(Entity e, int x, int y, byte bit) {
+    byte val = world.getTileValue(x, y).mapValue;
+    if ((val & bit) != 0) { // There is a wall in the way
+      return true;
+    }
+    if ((val & 16) != 0) { // There is a diagonal wall here: \
+      return true;
+    }
+    if ((val & 32) != 0) { // There is a diagonal wall here: /
+      return true;
+    }
+    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
+            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
+  }
+
+  private boolean isObjectBlocking(Entity e, int x, int y, byte bit) {
+    byte val = world.getTileValue(x, y).objectValue;
+    if ((val & bit) != 0 && !Formulae.doorAtFacing(e, x, y, Formulae.bitToDoorDir(bit))
+            && !Formulae.objectAtFacing(e, x, y, Formulae.bitToObjectDir(bit))) { // There
+      // is
+      // a
+      // wall
+      // in
+      // the
+      // way
+      return true;
+    }
+    if ((val & 16) != 0 && !Formulae.doorAtFacing(e, x, y, 2) && !Formulae.objectAtFacing(e, x, y, 3)) { // There
+      // is
+      // a
+      // diagonal
+      // wall
+      // here:
+      // \
+      return true;
+    }
+    if ((val & 32) != 0 && !Formulae.doorAtFacing(e, x, y, 3) && !Formulae.objectAtFacing(e, x, y, 1)) { // There
+      // is
+      // a
+      // diagonal
+      // wall
+      // here:
+      // /
+      return true;
+    }
+    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
+            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
   }
 
 }

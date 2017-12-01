@@ -1,9 +1,9 @@
 package org.firescape.server.event;
 
-import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Formulae;
 import org.firescape.server.model.Player;
 import org.firescape.server.states.CombatState;
+import org.firescape.server.util.DataConversions;
+import org.firescape.server.util.Formulae;
 
 import java.util.ArrayList;
 
@@ -89,15 +89,15 @@ public class DuelEvent extends DelayedEvent {
     }
   }
 
-  public Player getAffectedPlayer() {
-    return affectedPlayer;
-  }
-
   public boolean equals(Object o) {
     if (o instanceof DuelEvent) {
       DuelEvent e = (DuelEvent) o;
       return e.belongsTo(owner) && e.getAffectedPlayer().equals(affectedPlayer);
     }
     return false;
+  }
+
+  public Player getAffectedPlayer() {
+    return affectedPlayer;
   }
 }

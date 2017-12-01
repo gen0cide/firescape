@@ -18,6 +18,8 @@ public abstract class WalkToObjectEvent extends DelayedEvent {
     }
   }
 
+  public abstract void arrived();
+
   public final void run() {
     if (stop && owner.atObject(object)) {
       owner.resetPath();
@@ -29,7 +31,5 @@ public abstract class WalkToObjectEvent extends DelayedEvent {
     }
     super.running = false;
   }
-
-  public abstract void arrived();
 
 }

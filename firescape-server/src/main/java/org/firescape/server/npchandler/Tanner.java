@@ -16,8 +16,11 @@ public class Tanner implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"Can I buy some leather then?",
-                "Here's some cow hides, can I buy some leather now?", "Leather is rather weak stuff"};
+        String[] options = new String[]{
+                "Can I buy some leather then?",
+                "Here's some cow hides, can I buy some leather now?",
+                "Leather is rather weak stuff"
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {

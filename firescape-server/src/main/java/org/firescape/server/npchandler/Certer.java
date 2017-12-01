@@ -1,9 +1,9 @@
 package org.firescape.server.npchandler;
 
-import org.firescape.server.event.ShortEvent;
-import org.firescape.server.model.*;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.extras.CerterDef;
+import org.firescape.server.event.ShortEvent;
+import org.firescape.server.model.*;
 
 public class Certer implements NpcHandler {
   /**
@@ -22,8 +22,10 @@ public class Certer implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"I have some certificates to trade in",
-                "I have some " + certerDef.getType() + " to trade in"};
+        String[] options = new String[]{
+                "I have some certificates to trade in",
+                "I have some " + certerDef.getType() + " to trade in"
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {
@@ -40,7 +42,14 @@ public class Certer implements NpcHandler {
                     owner.setMenuHandler(new MenuHandler(names) {
                       public void handleReply(final int index, String reply) {
                         owner.getActionSender().sendMessage("How many certificates do you wish to trade in?");
-                        String[] options = new String[]{"One", "Two", "Three", "Four", "Five", "All to bank"};
+                        String[] options = new String[]{
+                                "One",
+                                "Two",
+                                "Three",
+                                "Four",
+                                "Five",
+                                "All to bank"
+                        };
                         owner.setMenuHandler(new MenuHandler(options) {
                           public void handleReply(int certAmount, String reply) {
                             owner.resetPath();
@@ -94,8 +103,14 @@ public class Certer implements NpcHandler {
                       public void handleReply(final int index, String reply) {
                         owner.getActionSender()
                                 .sendMessage("How many " + certerDef.getType() + " do you wish to trade in?");
-                        String[] options = new String[]{"Five", "Ten", "Fifteen", "Twenty", "Twentyfive",
-                                "All from bank"};
+                        String[] options = new String[]{
+                                "Five",
+                                "Ten",
+                                "Fifteen",
+                                "Twenty",
+                                "Twentyfive",
+                                "All from bank"
+                        };
                         owner.setMenuHandler(new MenuHandler(options) {
                           public void handleReply(int certAmount, String reply) {
                             owner.resetPath();

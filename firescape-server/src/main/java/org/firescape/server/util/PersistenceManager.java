@@ -1,8 +1,12 @@
 package org.firescape.server.util;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.security.NoTypePermission;
+import com.thoughtworks.xstream.security.NullPermission;
+import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.zip.GZIPInputStream;
@@ -12,6 +16,16 @@ public class PersistenceManager {
   private static final XStream xstream = new XStream();
 
   static {
+    xstream.addPermission(NoTypePermission.NONE);
+    xstream.addPermission(NullPermission.NULL);
+    xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
+    xstream.addPermission(com.thoughtworks.xstream.security.InterfaceTypePermission.INTERFACES);
+    xstream.addPermission(com.thoughtworks.xstream.security.AnyTypePermission.ANY);
+    xstream.allowTypeHierarchy(Collection.class);
+    xstream.allowTypesByWildcard(new String[]{
+            "org.firescape.server.**",
+            "org.firescape.server.entityhandling.defs.**"
+    });
     setupAliases();
   }
 

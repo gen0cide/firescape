@@ -16,7 +16,10 @@ public class Klank implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"Yes, please.", "No, thank you."};
+        String[] options = new String[]{
+                "Yes, please.",
+                "No, thank you."
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {

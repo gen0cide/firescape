@@ -19,6 +19,7 @@ public class Party {
   // Party.
   public Player player;
   public ArrayList<String> playersToGiveTo = new ArrayList<String>();
+
   public Party(Player p) {
     player = p;
   }
@@ -63,6 +64,10 @@ public class Party {
 
   }
 
+  public boolean isPartyFull() {
+    return player.myParty.size() >= MaxPartySize;
+  }
+
   public void acceptPlayer() {
     try {
 
@@ -102,6 +107,32 @@ public class Party {
     }
   }
 
+  public boolean invitedPlayersContains(String name, Player leader) {
+
+    try {
+      for (int i = 0; i < leader.invitedPlayers.size(); i++) {
+        if (leader.invitedPlayers.get(i).equals(name)) {
+          return true;
+        }
+      }
+      return false;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return false;
+    }
+  }
+
+  public void sendPartyMessage(String message) {
+    try {
+      for (int i = 0; i < player.myParty.size(); i++) {
+        Player member = world.getPlayer(player.myParty.get(i));
+        member.getActionSender().sendMessage("@cya@[@whi@Clan Chat@cya@] @whi@" + message);
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public String partyMembersString() {
     try {
       if (!player.inParty) {
@@ -128,17 +159,6 @@ public class Party {
         Player member = world.getPlayer(player.myParty.get(i));
         member.getActionSender().sendMessage(
                 "@say@@cya@[@whi@Clan Chat@cya@] @cya@[@whi@" + player.getUsername() + "@cya@]@whi@: " + message);
-      }
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
-  }
-
-  public void sendPartyMessage(String message) {
-    try {
-      for (int i = 0; i < player.myParty.size(); i++) {
-        Player member = world.getPlayer(player.myParty.get(i));
-        member.getActionSender().sendMessage("@cya@[@whi@Clan Chat@cya@] @whi@" + message);
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -186,6 +206,11 @@ public class Party {
     }
   }
 
+  public void removePlayerParty(int id) {
+
+    player.myParty.remove(id);
+  }
+
   public int getIndex() {
     try {
 
@@ -205,48 +230,6 @@ public class Party {
     return player.myParty.size() + 1;
   }
 
-  public void removePlayerParty(int id) {
-
-    player.myParty.remove(id);
-  }
-
-  public boolean isPartyFull() {
-    return player.myParty.size() >= MaxPartySize;
-  }
-
-  public boolean partyContains(String name) {
-    try {
-      for (int i = 0; i < player.myParty.size(); i++) {
-        if (player.myParty.get(i).equals(name)) {
-          return true;
-        }
-      }
-      return false;
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      return false;
-    }
-  }
-
-  public boolean invitedPlayersContains(String name, Player leader) {
-
-    try {
-      for (int i = 0; i < leader.invitedPlayers.size(); i++) {
-        if (leader.invitedPlayers.get(i).equals(name)) {
-          return true;
-        }
-      }
-      return false;
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      return false;
-    }
-  }
-
-  public boolean isPartyLeader() {
-    return player.myParty.get(0).equals(player.getUsername());
-  }
-
   public void partyMembersInView() // Decided to use a void for this instead,
   // to get the party members in your view,
   // its under the public ArrayList
@@ -261,6 +244,20 @@ public class Party {
       }
     } catch (Exception e) {
       System.out.println("partyMembersInView : " + e.getMessage());
+    }
+  }
+
+  public boolean partyContains(String name) {
+    try {
+      for (int i = 0; i < player.myParty.size(); i++) {
+        if (player.myParty.get(i).equals(name)) {
+          return true;
+        }
+      }
+      return false;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return false;
     }
   }
 
@@ -283,6 +280,10 @@ public class Party {
       }
     }
 
+  }
+
+  public boolean isPartyLeader() {
+    return player.myParty.get(0).equals(player.getUsername());
   }
 
   public void acceptSummon() {

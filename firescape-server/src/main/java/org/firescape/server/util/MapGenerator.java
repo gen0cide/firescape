@@ -7,11 +7,17 @@ import org.firescape.server.model.World;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 public class MapGenerator {
   private static final World world = World.getWorld();
-  private static final String[] labels = {"Ground", "Level-1", "Level-2", "Underground"};
+  private static final String[] labels = {
+          "Ground",
+          "Level-1",
+          "Level-2",
+          "Underground"
+  };
   private static final int WIDTH = World.MAX_WIDTH * 2;
   private static final int HEIGHT = World.MAX_HEIGHT * 2;
 
@@ -45,7 +51,7 @@ public class MapGenerator {
       MapGenerator mapGen = new MapGenerator();
       mapGen.generate();
       mapGen.save(args[0]);
-    } catch(IOException e) {
+    } catch (IOException e) {
       System.out.println("jesus christ");
     }
   }

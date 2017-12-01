@@ -19,8 +19,12 @@ public class Gamble implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"I will Gamble 100k.", "I will Gamble 500k.", "I will Gamble 1m",
-                "No, thank you."};
+        String[] options = new String[]{
+                "I will Gamble 100k.",
+                "I will Gamble 500k.",
+                "I will Gamble 1m",
+                "No, thank you."
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {

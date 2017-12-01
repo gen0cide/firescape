@@ -13,11 +13,24 @@ public class Adventurer implements NpcHandler {
 
   public static final World world = World.getWorld();
 
-  private static final String[] destinationNames = {"Edgeville", "Varrock", "Falador", "Ardougne", "*Castle*",
-          "*Dragon Maze*", "*Mage Arena*"};
-  private static final Point[] destinationCoords = {Point.location(216, 452), Point.location(130, 508),
-          Point.location(313, 541), Point.location(550, 596), Point.location(271, 353), Point.location(268, 197),
-          Point.location(447, 3371)};
+  private static final String[] destinationNames = {
+          "Edgeville",
+          "Varrock",
+          "Falador",
+          "Ardougne",
+          "*Castle*",
+          "*Dragon Maze*",
+          "*Mage Arena*"
+  };
+  private static final Point[] destinationCoords = {
+          Point.location(216, 452),
+          Point.location(130, 508),
+          Point.location(313, 541),
+          Point.location(550, 596),
+          Point.location(271, 353),
+          Point.location(268, 197),
+          Point.location(447, 3371)
+  };
 
   public void handleNpc(final Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Where would you like to be sent?", player));

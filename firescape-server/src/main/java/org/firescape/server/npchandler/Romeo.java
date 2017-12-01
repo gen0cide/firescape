@@ -24,7 +24,10 @@ public class Romeo implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{"Yes, she's with her father", "No, sorry. I am still tracking her down"};
+          String[] option = new String[]{
+                  "Yes, she's with her father",
+                  "No, sorry. I am still tracking her down"
+          };
           player.setMenuHandler(new MenuHandler(option) {
             public void handleReply(final int option, final String reply) {
               if (player.isBusy()) {
@@ -65,7 +68,10 @@ public class Romeo implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{"What seems to be the problem?", "I have other things to do, sorry"};
+          String[] options = new String[]{
+                  "What seems to be the problem?",
+                  "I have other things to do, sorry"
+          };
           owner.setMenuHandler(new MenuHandler(options) {
             public void handleReply(final int option, final String reply) {
               if (owner.isBusy()) {

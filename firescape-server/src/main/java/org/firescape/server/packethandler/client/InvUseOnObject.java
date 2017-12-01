@@ -1,18 +1,18 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
+import org.firescape.server.entityhandling.defs.extras.*;
 import org.firescape.server.event.MiniEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToObjectEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
-import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.extras.*;
-import org.firescape.server.packethandler.PacketHandler;
 
 import java.util.List;
 
@@ -63,6 +63,82 @@ public class InvUseOnObject implements PacketHandler {
     }
   }
 
+  private void handleDoor(final Player player, final ActiveTile tile, final GameObject object, final int dir,
+                          final InvItem item) {
+    player.setStatus(Action.USING_INVITEM_ON_DOOR);
+    world.getDelayedEventHandler().add(new WalkToObjectEvent(player, object, false) {
+      public void arrived() {
+        owner.resetPath();
+        if (owner.isBusy() || owner.isRanging() || !owner.getInventory().contains(item) || !tile.hasGameObject()
+                || !tile.getGameObject().equals(object) || owner.getStatus() != Action.USING_INVITEM_ON_DOOR) {
+          return;
+        }
+        owner.resetAll();
+        switch (object.getID()) {
+          case 24: // Web
+            ItemWieldableDef def = item.getWieldableDef();
+            if ((def == null || def.getWieldPos() != 4) && item.getID() != 13) {
+              owner.getActionSender().sendMessage("Nothing interesting happens.");
+              return;
+            }
+            owner.getActionSender().sendMessage("You try to destroy the web");
+            owner.setBusy(true);
+            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+              public void action() {
+                if (Formulae.cutWeb()) {
+                  owner.getActionSender().sendMessage("You slice through the web.");
+                  world.unregisterGameObject(object);
+                  world.delayedSpawnObject(object.getLoc(), 15000);
+                } else {
+                  owner.getActionSender().sendMessage("You fail to cut through it.");
+                }
+                owner.setBusy(false);
+              }
+            });
+            break;
+          case 23: // Giant place near barb village
+            if (!itemId(new int[]{99})) {
+              owner.getActionSender().sendMessage("Nothing interesting happens.");
+              return;
+            }
+            owner.getActionSender().sendMessage("You unlock the door and go through it");
+            doDoor();
+            if (owner.getY() <= 484) {
+              owner.teleport(owner.getX(), 485, false);
+            } else {
+              owner.teleport(owner.getX(), 484, false);
+            }
+            break;
+          case 60: // Melzars maze
+            if (!itemId(new int[]{421})) {
+              owner.getActionSender().sendMessage("Nothing interesting happens.");
+              return;
+            }
+            owner.getActionSender().sendMessage("You unlock the door and go through it");
+            doDoor();
+            if (owner.getX() <= 337) {
+              owner.teleport(338, owner.getY(), false);
+            }
+            break;
+          default:
+            owner.getActionSender().sendMessage("Nothing interesting happens.");
+            return;
+        }
+        owner.getActionSender().sendInventory();
+      }
+
+      private boolean itemId(int[] ids) {
+        return DataConversions.inArray(ids, item.getID());
+      }
+
+      private void doDoor() {
+        owner.getActionSender().sendSound("opendoor");
+        world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
+        world.delayedSpawnObject(object.getLoc(), 1000);
+      }
+    });
+  }
+
   private void handleObject(final Player player, final ActiveTile tile, final GameObject object, final InvItem item) {
     player.setStatus(Action.USING_INVITEM_ON_OBJECT);
     world.getDelayedEventHandler().add(new WalkToObjectEvent(player, object, false) {
@@ -104,7 +180,11 @@ public class InvUseOnObject implements PacketHandler {
           case 26: // Fountain
           case 86: // Fountain
           case 1130: // Fountain
-            if (!itemId(new int[]{21, 140, 465}) && !itemId(Formulae.potionsUnfinished)
+            if (!itemId(new int[]{
+                    21,
+                    140,
+                    465
+            }) && !itemId(Formulae.potionsUnfinished)
                     && !itemId(Formulae.potions1Dose) && !itemId(Formulae.potions2Dose) && !itemId(Formulae.potions3Dose)) {
               owner.getActionSender().sendMessage("Nothing interesting happens.");
               return;
@@ -208,15 +288,37 @@ public class InvUseOnObject implements PacketHandler {
               world.getDelayedEventHandler().add(new MiniEvent(owner) {
                 public void action() {
                   owner.getActionSender().sendMessage("What would you like to make?");
-                  String[] options = new String[]{"Ring", "Necklace", "Amulet"};
+                  String[] options = new String[]{
+                          "Ring",
+                          "Necklace",
+                          "Amulet"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(int option, String reply) {
                       if (owner.isBusy() || option < 0 || option > 2) {
                         return;
                       }
-                      final int[] moulds = {293, 295, 294};
-                      final int[] gems = {-1, 164, 163, 162, 161, 523};
-                      String[] options = {"Gold", "Sapphire", "Emerald", "Ruby", "Diamond", "Dragonstone"};
+                      final int[] moulds = {
+                              293,
+                              295,
+                              294
+                      };
+                      final int[] gems = {
+                              -1,
+                              164,
+                              163,
+                              162,
+                              161,
+                              523
+                      };
+                      String[] options = {
+                              "Gold",
+                              "Sapphire",
+                              "Emerald",
+                              "Ruby",
+                              "Diamond",
+                              "Dragonstone"
+                      };
                       final int craftType = option;
                       if (owner.getInventory().countId(moulds[craftType]) < 1) {
                         owner.getActionSender().sendMessage("You need a "
@@ -265,14 +367,23 @@ public class InvUseOnObject implements PacketHandler {
               world.getDelayedEventHandler().add(new MiniEvent(owner) {
                 public void action() {
                   owner.getActionSender().sendMessage("What would you like to make?");
-                  String[] options = new String[]{"Holy Symbol of Saradomin", "UnHoly Symbol of Zamorak"};
+                  String[] options = new String[]{
+                          "Holy Symbol of Saradomin",
+                          "UnHoly Symbol of Zamorak"
+                  };
                   owner.setMenuHandler(new MenuHandler(options) {
                     public void handleReply(int option, String reply) {
                       if (owner.isBusy() || option < 0 || option > 1) {
                         return;
                       }
-                      int[] moulds = {386, 1026};
-                      int[] results = {44, 1027};
+                      int[] moulds = {
+                              386,
+                              1026
+                      };
+                      int[] results = {
+                              44,
+                              1027
+                      };
                       if (owner.getInventory().countId(moulds[option]) < 1) {
                         owner.getActionSender().sendMessage(
                                 "You need a " + EntityHandler.getItemDef(moulds[option]).getName() + " to make a " + reply);
@@ -383,7 +494,12 @@ public class InvUseOnObject implements PacketHandler {
                       .sendMessage("You need a smithing level of " + minSmithingLevel + " to use this type of bar");
               return;
             }
-            options = new String[]{"Make Weapon", "Make Armour", "Make Missile Heads", "Cancel"};
+            options = new String[]{
+                    "Make Weapon",
+                    "Make Armour",
+                    "Make Missile Heads",
+                    "Cancel"
+            };
             owner.setMenuHandler(new MenuHandler(options) {
               public void handleReply(int option, String reply) {
                 if (owner.isBusy()) {
@@ -393,7 +509,13 @@ public class InvUseOnObject implements PacketHandler {
                 switch (option) {
                   case 0:
                     owner.getActionSender().sendMessage("Choose a type of weapon to make");
-                    options = new String[]{"Dagger", "Throwing Knife", "Sword", "Axe", "Mace"};
+                    options = new String[]{
+                            "Dagger",
+                            "Throwing Knife",
+                            "Sword",
+                            "Axe",
+                            "Mace"
+                    };
                     owner.setMenuHandler(new MenuHandler(options) {
                       public void handleReply(int option, String reply) {
                         if (owner.isBusy()) {
@@ -409,8 +531,12 @@ public class InvUseOnObject implements PacketHandler {
                             break;
                           case 2:
                             owner.getActionSender().sendMessage("What sort of sword do you want to make?");
-                            options = new String[]{"Short Sword", "Long Sword (2 bars)", "Scimitar (2 bars)",
-                                    "2-handed Sword (3 bars)"};
+                            options = new String[]{
+                                    "Short Sword",
+                                    "Long Sword (2 bars)",
+                                    "Scimitar (2 bars)",
+                                    "2-handed Sword (3 bars)"
+                            };
                             owner.setMenuHandler(new MenuHandler(options) {
                               public void handleReply(int option, String reply) {
                                 if (owner.isBusy()) {
@@ -438,7 +564,11 @@ public class InvUseOnObject implements PacketHandler {
                             break;
                           case 3:
                             owner.getActionSender().sendMessage("What sort of axe do you want to make?");
-                            options = new String[]{"Hatchet", "Pickaxe", "Battle Axe (3 bars)"};
+                            options = new String[]{
+                                    "Hatchet",
+                                    "Pickaxe",
+                                    "Battle Axe (3 bars)"
+                            };
                             owner.setMenuHandler(new MenuHandler(options) {
                               public void handleReply(int option, String reply) {
                                 if (owner.isBusy()) {
@@ -473,7 +603,11 @@ public class InvUseOnObject implements PacketHandler {
                     break;
                   case 1:
                     owner.getActionSender().sendMessage("Choose a type of armour to make");
-                    options = new String[]{"Helmet", "Shield", "Armour"};
+                    options = new String[]{
+                            "Helmet",
+                            "Shield",
+                            "Armour"
+                    };
                     owner.setMenuHandler(new MenuHandler(options) {
                       public void handleReply(int option, String reply) {
                         if (owner.isBusy()) {
@@ -482,7 +616,10 @@ public class InvUseOnObject implements PacketHandler {
                         switch (option) {
                           case 0:
                             owner.getActionSender().sendMessage("What sort of helmet do you want to make?");
-                            options = new String[]{"Medium Helmet", "Large Helmet (2 bars)"};
+                            options = new String[]{
+                                    "Medium Helmet",
+                                    "Large Helmet (2 bars)"
+                            };
                             owner.setMenuHandler(new MenuHandler(options) {
                               public void handleReply(int option, String reply) {
                                 if (owner.isBusy()) {
@@ -504,7 +641,10 @@ public class InvUseOnObject implements PacketHandler {
                             break;
                           case 1:
                             owner.getActionSender().sendMessage("What sort of shield do you want to make?");
-                            options = new String[]{"Square Shield (2 bars)", "Kite Shield (3 bars)"};
+                            options = new String[]{
+                                    "Square Shield (2 bars)",
+                                    "Kite Shield (3 bars)"
+                            };
                             owner.setMenuHandler(new MenuHandler(options) {
                               public void handleReply(int option, String reply) {
                                 if (owner.isBusy()) {
@@ -526,8 +666,12 @@ public class InvUseOnObject implements PacketHandler {
                             break;
                           case 2:
                             owner.getActionSender().sendMessage("What sort of armour do you want to make?");
-                            options = new String[]{"Chain Mail Body (3 bars)", "Plate Mail Body (5 bars)",
-                                    "Plate Mail Legs (3 bars)", "Plated Skirt (3 bars)"};
+                            options = new String[]{
+                                    "Chain Mail Body (3 bars)",
+                                    "Plate Mail Body (5 bars)",
+                                    "Plate Mail Legs (3 bars)",
+                                    "Plated Skirt (3 bars)"
+                            };
                             owner.setMenuHandler(new MenuHandler(options) {
                               public void handleReply(int option, String reply) {
                                 if (owner.isBusy()) {
@@ -561,8 +705,12 @@ public class InvUseOnObject implements PacketHandler {
                     owner.getActionSender().sendMenu(options);
                     break;
                   case 2:
-                    options = new String[]{"Make 10 Arrow Heads", "Make 50 Arrow Heads (5 bars)", "Forge Dart Tips",
-                            "Cancel"};
+                    options = new String[]{
+                            "Make 10 Arrow Heads",
+                            "Make 50 Arrow Heads (5 bars)",
+                            "Forge Dart Tips",
+                            "Cancel"
+                    };
                     owner.setMenuHandler(new MenuHandler(options) {
                       public void handleReply(int option, String reply) {
                         if (owner.isBusy()) {
@@ -805,7 +953,12 @@ public class InvUseOnObject implements PacketHandler {
               return;
             }
             owner.getActionSender().sendMessage("What would you like to make?");
-            options = new String[]{"Pot", "Pie Dish", "Bowl", "Cancel"};
+            options = new String[]{
+                    "Pot",
+                    "Pie Dish",
+                    "Bowl",
+                    "Cancel"
+            };
             owner.setMenuHandler(new MenuHandler(options) {
               public void handleReply(int option, String reply) {
                 if (owner.isBusy()) {
@@ -921,6 +1074,17 @@ public class InvUseOnObject implements PacketHandler {
         }
       }
 
+      private boolean itemId(int[] ids) {
+        return DataConversions.inArray(ids, item.getID());
+      }
+
+      private void showBubble() {
+        Bubble bubble = new Bubble(owner, item.getID());
+        for (Player p : owner.getViewArea().getPlayersInView()) {
+          p.informOfBubble(bubble);
+        }
+      }
+
       private void handleSmithing(int barID, int toMake) {
         ItemSmithingDef def = EntityHandler.getSmithingDef((Formulae.getBarType(barID) * 21) + toMake);
         if (def == null) {
@@ -958,93 +1122,6 @@ public class InvUseOnObject implements PacketHandler {
         owner.incExp(13, Formulae.getSmithingExp(barID, def.getRequiredBars()), true, true);
         owner.getActionSender().sendStat(13);
         owner.getActionSender().sendInventory();
-      }
-
-      private boolean itemId(int[] ids) {
-        return DataConversions.inArray(ids, item.getID());
-      }
-
-      private void showBubble() {
-        Bubble bubble = new Bubble(owner, item.getID());
-        for (Player p : owner.getViewArea().getPlayersInView()) {
-          p.informOfBubble(bubble);
-        }
-      }
-    });
-  }
-
-  private void handleDoor(final Player player, final ActiveTile tile, final GameObject object, final int dir,
-                          final InvItem item) {
-    player.setStatus(Action.USING_INVITEM_ON_DOOR);
-    world.getDelayedEventHandler().add(new WalkToObjectEvent(player, object, false) {
-      private void doDoor() {
-        owner.getActionSender().sendSound("opendoor");
-        world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
-        world.delayedSpawnObject(object.getLoc(), 1000);
-      }
-
-      public void arrived() {
-        owner.resetPath();
-        if (owner.isBusy() || owner.isRanging() || !owner.getInventory().contains(item) || !tile.hasGameObject()
-                || !tile.getGameObject().equals(object) || owner.getStatus() != Action.USING_INVITEM_ON_DOOR) {
-          return;
-        }
-        owner.resetAll();
-        switch (object.getID()) {
-          case 24: // Web
-            ItemWieldableDef def = item.getWieldableDef();
-            if ((def == null || def.getWieldPos() != 4) && item.getID() != 13) {
-              owner.getActionSender().sendMessage("Nothing interesting happens.");
-              return;
-            }
-            owner.getActionSender().sendMessage("You try to destroy the web");
-            owner.setBusy(true);
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
-              public void action() {
-                if (Formulae.cutWeb()) {
-                  owner.getActionSender().sendMessage("You slice through the web.");
-                  world.unregisterGameObject(object);
-                  world.delayedSpawnObject(object.getLoc(), 15000);
-                } else {
-                  owner.getActionSender().sendMessage("You fail to cut through it.");
-                }
-                owner.setBusy(false);
-              }
-            });
-            break;
-          case 23: // Giant place near barb village
-            if (!itemId(new int[]{99})) {
-              owner.getActionSender().sendMessage("Nothing interesting happens.");
-              return;
-            }
-            owner.getActionSender().sendMessage("You unlock the door and go through it");
-            doDoor();
-            if (owner.getY() <= 484) {
-              owner.teleport(owner.getX(), 485, false);
-            } else {
-              owner.teleport(owner.getX(), 484, false);
-            }
-            break;
-          case 60: // Melzars maze
-            if (!itemId(new int[]{421})) {
-              owner.getActionSender().sendMessage("Nothing interesting happens.");
-              return;
-            }
-            owner.getActionSender().sendMessage("You unlock the door and go through it");
-            doDoor();
-            if (owner.getX() <= 337) {
-              owner.teleport(338, owner.getY(), false);
-            }
-            break;
-          default:
-            owner.getActionSender().sendMessage("Nothing interesting happens.");
-            return;
-        }
-        owner.getActionSender().sendInventory();
-      }
-
-      private boolean itemId(int[] ids) {
-        return DataConversions.inArray(ids, item.getID());
       }
     });
   }

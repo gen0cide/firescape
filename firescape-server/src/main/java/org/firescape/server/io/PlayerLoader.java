@@ -1,9 +1,9 @@
 package org.firescape.server.io;
 
+import org.firescape.server.util.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-import org.firescape.server.util.Logger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

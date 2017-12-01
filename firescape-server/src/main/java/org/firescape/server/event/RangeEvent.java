@@ -1,10 +1,10 @@
 package org.firescape.server.event;
 
-import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Formulae;
 import org.firescape.server.GameVars;
 import org.firescape.server.model.*;
 import org.firescape.server.states.Action;
+import org.firescape.server.util.DataConversions;
+import org.firescape.server.util.Formulae;
 
 import java.util.ArrayList;
 
@@ -44,15 +44,6 @@ public class RangeEvent extends DelayedEvent {
     if (newHp <= 0) {
       owner.killedBy(owner);
     }
-  }
-
-  private Item getArrows(int id) {
-    for (Item i : world.getTile(affectedMob.getLocation()).getItems()) {
-      if (i.getID() == id && i.visibleTo(owner) && !i.isRemoved()) {
-        return i;
-      }
-    }
-    return null;
   }
 
   public void run() {
@@ -177,6 +168,15 @@ public class RangeEvent extends DelayedEvent {
       owner.getActionSender().sendStat(4);
       owner.resetRange();
     }
+  }
+
+  private Item getArrows(int id) {
+    for (Item i : world.getTile(affectedMob.getLocation()).getItems()) {
+      if (i.getID() == id && i.visibleTo(owner) && !i.isRemoved()) {
+        return i;
+      }
+    }
+    return null;
   }
 
   public double getArrowMod(int arrowId) {

@@ -36,22 +36,6 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
     return EntityHandler.getItemUnIdentHerbDef(id);
   }
 
-  public ItemWieldableDef getWieldableDef() {
-    return EntityHandler.getItemWieldableDef(id);
-  }
-
-  public ItemDef getDef() {
-    return EntityHandler.getItemDef(id);
-  }
-
-  public boolean isWieldable() {
-    return EntityHandler.getItemWieldableDef(id) != null;
-  }
-
-  public boolean isEdible() {
-    return EntityHandler.getItemEdibleHeals(id) > 0;
-  }
-
   public boolean isWielded() {
     return wielded;
   }
@@ -83,11 +67,23 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
     return false;
   }
 
+  public boolean isWieldable() {
+    return EntityHandler.getItemWieldableDef(id) != null;
+  }
+
+  public ItemWieldableDef getWieldableDef() {
+    return EntityHandler.getItemWieldableDef(id);
+  }
+
   public int eatingHeals() {
     if (!isEdible()) {
       return 0;
     }
     return EntityHandler.getItemEdibleHeals(id);
+  }
+
+  public boolean isEdible() {
+    return EntityHandler.getItemEdibleHeals(id) > 0;
   }
 
   public boolean equals(Object o) {
@@ -106,6 +102,10 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
       return 1;
     }
     return item.getDef().getBasePrice() - getDef().getBasePrice();
+  }
+
+  public ItemDef getDef() {
+    return EntityHandler.getItemDef(id);
   }
 
 }

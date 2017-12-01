@@ -9,7 +9,10 @@ public class PvP implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  private static final String[] options = {"Sure", "No thanks."};
+  private static final String[] options = {
+          "Sure",
+          "No thanks."
+  };
 
   public void handleNpc(final Npc npc, Player player) throws Exception {
     if (!world.getPvpEntry(player)) {

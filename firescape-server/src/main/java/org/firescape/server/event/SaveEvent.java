@@ -1,8 +1,8 @@
 package org.firescape.server.event;
 
-import org.firescape.server.util.Logger;
 import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
+import org.firescape.server.util.Logger;
 
 public class SaveEvent {
 

@@ -15,7 +15,10 @@ public class KebabSeller implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"I think I'll give it a miss", "Yes please"};
+        String[] options = new String[]{
+                "I think I'll give it a miss",
+                "Yes please"
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {

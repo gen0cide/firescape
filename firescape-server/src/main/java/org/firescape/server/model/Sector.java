@@ -47,17 +47,17 @@ public class Sector {
   }
 
   /**
-   * Sets the the Tile at the given coords
-   */
-  public void setTile(int x, int y, Tile t) {
-    setTile(x * Sector.WIDTH + y, t);
-  }
-
-  /**
    * Sets the Tile at the given index
    */
   public void setTile(int i, Tile t) {
     tiles[i] = t;
+  }
+
+  /**
+   * Sets the the Tile at the given coords
+   */
+  public void setTile(int x, int y, Tile t) {
+    setTile(x * Sector.WIDTH + y, t);
   }
 
   /**

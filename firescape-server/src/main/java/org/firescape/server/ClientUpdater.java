@@ -134,23 +134,6 @@ public final class ClientUpdater {
   }
 
   /**
-   * Sends queued packets to each player
-   */
-  public void sendQueuedPackets() {
-    for (Player p : players) {
-      List<RSCPacket> packets = p.getActionSender().getPackets();
-      for (RSCPacket packet : packets) {
-        p.getSession().write(packet);
-      }
-      p.getActionSender().clearPackets();
-      if (p.destroyed()) {
-        p.getSession().close();
-        p.remove();
-      }
-    }
-  }
-
-  /**
    * Checks the player has moved within the last 5mins
    */
   private void updateTimeouts(Player p) {
@@ -172,33 +155,23 @@ public final class ClientUpdater {
   }
 
   /**
+   * Update positions of the given player, and any players they should be aware
+   * of
+   */
+  private void updatePlayerPositions(Player p) {
+    playerPositionBuilder.setPlayer(p);
+    RSCPacket temp = playerPositionBuilder.getPacket();
+    if (temp != null) {
+      p.getSession().write(temp);
+    }
+  }
+
+  /**
    * Sends updates for npcs to the given player
    */
   private void updateNpcPositions(Player p) {
     npcPositionPacketBuilder.setPlayer(p);
     RSCPacket temp = npcPositionPacketBuilder.getPacket();
-    if (temp != null) {
-      p.getSession().write(temp);
-    }
-  }
-
-  /**
-   * Update appearance of any npcs the given player should be aware of
-   */
-  private void updateNpcApperances(Player p) {
-    npcApperanceBuilder.setPlayer(p);
-    RSCPacket temp = npcApperanceBuilder.getPacket();
-    if (temp != null) {
-      p.getSession().write(temp);
-    }
-  }
-
-  /**
-   * Sends updates for wall objects to the given player
-   */
-  private void updateWallObjects(Player p) {
-    wallObjectPositionPacketBuilder.setPlayer(p);
-    RSCPacket temp = wallObjectPositionPacketBuilder.getPacket();
     if (temp != null) {
       p.getSession().write(temp);
     }
@@ -216,23 +189,22 @@ public final class ClientUpdater {
   }
 
   /**
-   * Sends updates for game items to the given player
+   * Sends updates for wall objects to the given player
    */
-  private void updateItems(Player p) {
-    itemPositionBuilder.setPlayer(p);
-    RSCPacket temp = itemPositionBuilder.getPacket();
+  private void updateWallObjects(Player p) {
+    wallObjectPositionPacketBuilder.setPlayer(p);
+    RSCPacket temp = wallObjectPositionPacketBuilder.getPacket();
     if (temp != null) {
       p.getSession().write(temp);
     }
   }
 
   /**
-   * Update positions of the given player, and any players they should be aware
-   * of
+   * Sends updates for game items to the given player
    */
-  private void updatePlayerPositions(Player p) {
-    playerPositionBuilder.setPlayer(p);
-    RSCPacket temp = playerPositionBuilder.getPacket();
+  private void updateItems(Player p) {
+    itemPositionBuilder.setPlayer(p);
+    RSCPacket temp = itemPositionBuilder.getPacket();
     if (temp != null) {
       p.getSession().write(temp);
     }
@@ -245,6 +217,17 @@ public final class ClientUpdater {
   private void updatePlayerApperances(Player p) {
     playerApperanceBuilder.setPlayer(p);
     RSCPacket temp = playerApperanceBuilder.getPacket();
+    if (temp != null) {
+      p.getSession().write(temp);
+    }
+  }
+
+  /**
+   * Update appearance of any npcs the given player should be aware of
+   */
+  private void updateNpcApperances(Player p) {
+    npcApperanceBuilder.setPlayer(p);
+    RSCPacket temp = npcApperanceBuilder.getPacket();
     if (temp != null) {
       p.getSession().write(temp);
     }
@@ -278,6 +261,23 @@ public final class ClientUpdater {
     for (Npc n : npcs) {
       n.resetSpriteChanged();
       n.setAppearnceChanged(false);
+    }
+  }
+
+  /**
+   * Sends queued packets to each player
+   */
+  public void sendQueuedPackets() {
+    for (Player p : players) {
+      List<RSCPacket> packets = p.getActionSender().getPackets();
+      for (RSCPacket packet : packets) {
+        p.getSession().write(packet);
+      }
+      p.getActionSender().clearPackets();
+      if (p.destroyed()) {
+        p.getSession().close();
+        p.remove();
+      }
     }
   }
 }

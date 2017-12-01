@@ -20,7 +20,10 @@ public class WizardMizgog implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{"Yes, I have them here", "No, sorry. I am still trying to get them"};
+          String[] option = new String[]{
+                  "Yes, I have them here",
+                  "No, sorry. I am still trying to get them"
+          };
           player.setMenuHandler(new MenuHandler(option) {
             public void handleReply(final int option, final String reply) {
               if (player.isBusy()) {
@@ -73,7 +76,10 @@ public class WizardMizgog implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{"I will get them. What color are they?", "I'm too busy, sorry"};
+          String[] options = new String[]{
+                  "I will get them. What color are they?",
+                  "I'm too busy, sorry"
+          };
           owner.setMenuHandler(new MenuHandler(options) {
             public void handleReply(final int option, final String reply) {
               if (owner.isBusy()) {

@@ -11,6 +11,22 @@ public class ViewArea {
     this.mob = mob;
   }
 
+  public List<Player> getPlayersInView() {
+    List<Player> players = new ArrayList<Player>();
+    ActiveTile[][] viewArea = getViewedArea(15, 15, 16, 16);
+    for (int x = 0; x < viewArea.length; x++)
+      for (int y = 0; y < viewArea[x].length; y++) {
+        ActiveTile t = viewArea[x][y];
+        if (t != null) {
+          List<Player> temp = t.getPlayers();
+          if (temp != null) {
+            players.addAll(temp);
+          }
+        }
+      }
+    return players;
+  }
+
   public ActiveTile[][] getViewedArea(int x1, int y1, int x2, int y2) {
     int mobX = mob.getX();
     int mobY = mob.getY();
@@ -50,22 +66,6 @@ public class ViewArea {
       }
     }
     return temp;
-  }
-
-  public List<Player> getPlayersInView() {
-    List<Player> players = new ArrayList<Player>();
-    ActiveTile[][] viewArea = getViewedArea(15, 15, 16, 16);
-    for (int x = 0; x < viewArea.length; x++)
-      for (int y = 0; y < viewArea[x].length; y++) {
-        ActiveTile t = viewArea[x][y];
-        if (t != null) {
-          List<Player> temp = t.getPlayers();
-          if (temp != null) {
-            players.addAll(temp);
-          }
-        }
-      }
-    return players;
   }
 
   public List<Item> getItemsInView() {

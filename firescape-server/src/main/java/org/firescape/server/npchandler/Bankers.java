@@ -15,9 +15,14 @@ public class Bankers implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"I'd like to access my bank account please.", "What is this place?"};
-        final String[] options2 = new String[]{"And what do you do?",
-                "Didn't you used to be called the bank of Varrock"};
+        String[] options = new String[]{
+                "I'd like to access my bank account please.",
+                "What is this place?"
+        };
+        final String[] options2 = new String[]{
+                "And what do you do?",
+                "Didn't you used to be called the bank of Varrock"
+        };
         owner.getActionSender().sendMenu(options);
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {

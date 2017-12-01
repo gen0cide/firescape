@@ -1,17 +1,17 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
+import org.firescape.server.entityhandling.defs.extras.FiremakingDef;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToPointEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
-import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.extras.FiremakingDef;
-import org.firescape.server.packethandler.PacketHandler;
 
 public class InvUseOnGroundItem implements PacketHandler {
   /**

@@ -5,8 +5,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
-import org.firescape.server.util.Formulae;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.util.Formulae;
 
 public class SessionRequest implements PacketHandler {
   /**

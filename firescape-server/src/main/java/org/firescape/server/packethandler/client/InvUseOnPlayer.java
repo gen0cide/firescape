@@ -8,9 +8,9 @@ import org.firescape.server.model.InvItem;
 import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
-import org.firescape.server.packethandler.PacketHandler;
 
 public class InvUseOnPlayer implements PacketHandler {
   /**

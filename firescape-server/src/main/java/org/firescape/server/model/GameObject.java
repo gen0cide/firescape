@@ -25,16 +25,16 @@ public class GameObject extends Entity {
    */
   private boolean removed = false;
 
+  public GameObject(Point location, int id, int direction, int type) {
+    this(new GameObjectLoc(id, location.getX(), location.getY(), direction, type));
+  }
+
   public GameObject(GameObjectLoc loc) {
     direction = loc.direction;
     type = loc.type;
     this.loc = loc;
     super.setID(loc.id);
     super.setLocation(Point.location(loc.x, loc.y));
-  }
-
-  public GameObject(Point location, int id, int direction, int type) {
-    this(new GameObjectLoc(id, location.getX(), location.getY(), direction, type));
   }
 
   public boolean getGrainable() {
@@ -57,16 +57,25 @@ public class GameObject extends Entity {
     return loc;
   }
 
-  public GameObjectDef getGameObjectDef() {
-    return EntityHandler.getGameObjectDef(super.getID());
-  }
-
   public DoorDef getDoorDef() {
     return EntityHandler.getDoorDef(super.getID());
   }
 
   public boolean isTelePoint() {
     return EntityHandler.getObjectTelePoint(getLocation(), null) != null;
+  }
+
+  public boolean equals(Object o) {
+    if (o instanceof GameObject) {
+      GameObject go = (GameObject) o;
+      return go.getLocation().equals(getLocation()) && go.getID() == getID() && go.getDirection() == getDirection()
+              && go.getType() == getType();
+    }
+    return false;
+  }
+
+  public int getDirection() {
+    return direction;
   }
 
   public int getType() {
@@ -77,21 +86,13 @@ public class GameObject extends Entity {
     this.type = type;
   }
 
-  public int getDirection() {
-    return direction;
-  }
-
   public void setDirection(int direction) {
     this.direction = direction;
   }
 
-  public boolean equals(Object o) {
-    if (o instanceof GameObject) {
-      GameObject go = (GameObject) o;
-      return go.getLocation().equals(getLocation()) && go.getID() == getID() && go.getDirection() == getDirection()
-              && go.getType() == getType();
-    }
-    return false;
+  public String toString() {
+    return (type == 0 ? "GameObject" : "WallObject") + ":id = " + id + "; dir = " + direction + "; location = "
+            + location.toString() + ";";
   }
 
   public boolean isOn(int x, int y) {
@@ -112,9 +113,8 @@ public class GameObject extends Entity {
     }
   }
 
-  public String toString() {
-    return (type == 0 ? "GameObject" : "WallObject") + ":id = " + id + "; dir = " + direction + "; location = "
-            + location.toString() + ";";
+  public GameObjectDef getGameObjectDef() {
+    return EntityHandler.getGameObjectDef(super.getID());
   }
 
 }

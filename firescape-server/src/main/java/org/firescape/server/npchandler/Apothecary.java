@@ -7,8 +7,11 @@ public class Apothecary implements NpcHandler {
 
   public static final World world = World.getWorld();
 
-  private static final String[] Alts = {"Can you make a strength potion?", "Can I have a some potions for free?",
-          "Have you got any good potions to give away?"};
+  private static final String[] Alts = {
+          "Can you make a strength potion?",
+          "Can I have a some potions for free?",
+          "Have you got any good potions to give away?"
+  };
 
   public void handleNpc(final Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(

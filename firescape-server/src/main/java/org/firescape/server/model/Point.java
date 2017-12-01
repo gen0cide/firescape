@@ -21,6 +21,10 @@ public class Point {
     return new Point(x, y);
   }
 
+  public boolean inWilderness() {
+    return wildernessLevel() > 0;
+  }
+
   public int wildernessLevel() {
     int wild = 2203 - (y + (1776 - (944 * Formulae.getHeight(this))));
     if (x + 2304 >= 2640) {
@@ -32,12 +36,12 @@ public class Point {
     return 0;
   }
 
-  public boolean inWilderness() {
-    return wildernessLevel() > 0;
-  }
-
   public boolean inMageArena() {
     return inBounds(223, 126, 233, 134);
+  }
+
+  public boolean inBounds(int x1, int y1, int x2, int y2) {
+    return x >= x1 && x <= x2 && y >= y1 && y <= y2;
   }
 
   public boolean inWaitingRoom() {
@@ -46,10 +50,6 @@ public class Point {
 
   public boolean inGnomeArea() {
     return inBounds(727, 444, 748, 456);
-  }
-
-  public boolean inModRoom() {
-    return inBounds(64, 1639, 80, 1643);
   }
 
   public boolean inpvpw() {
@@ -80,15 +80,15 @@ public class Point {
     return x;
   }
 
+  public int hashCode() {
+    return x << 16 | y;
+  }
+
   public final boolean equals(Object o) {
     if (o instanceof Point) {
       return this.x == ((Point) o).x && this.y == ((Point) o).y;
     }
     return false;
-  }
-
-  public int hashCode() {
-    return x << 16 | y;
   }
 
   public String toString() {
@@ -106,8 +106,8 @@ public class Point {
     return "Unknown";
   }
 
-  public boolean inBounds(int x1, int y1, int x2, int y2) {
-    return x >= x1 && x <= x2 && y >= y1 && y <= y2;
+  public boolean inModRoom() {
+    return inBounds(64, 1639, 80, 1643);
   }
 
 }

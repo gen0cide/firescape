@@ -20,7 +20,10 @@ public class Cook implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{"Yes, I have them here", "No, sorry. I am still looking for them"};
+          String[] option = new String[]{
+                  "Yes, I have them here",
+                  "No, sorry. I am still looking for them"
+          };
           player.setMenuHandler(new MenuHandler(option) {
             public void handleReply(final int option, final String reply) {
               if (player.isBusy()) {
@@ -70,8 +73,12 @@ public class Cook implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{"I am getting strong and mighty", "I keep on dying", "Nice hat",
-                  "Can I use your range?"};
+          String[] options = new String[]{
+                  "I am getting strong and mighty",
+                  "I keep on dying",
+                  "Nice hat",
+                  "Can I use your range?"
+          };
           owner.setMenuHandler(new MenuHandler(options) {
             public void handleReply(final int option, final String reply) {
               if (owner.isBusy()) {

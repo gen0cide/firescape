@@ -7,8 +7,8 @@ import org.firescape.server.model.Item;
 import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
-import org.firescape.server.states.Action;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.states.Action;
 
 public class DropHandler implements PacketHandler {
   /**

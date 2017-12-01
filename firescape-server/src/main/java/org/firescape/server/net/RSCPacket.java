@@ -11,13 +11,13 @@ public final class RSCPacket extends Packet {
    */
   private int pID;
 
+  public RSCPacket(IoSession session, int pID, byte[] pData) {
+    this(session, pID, pData, false);
+  }
+
   public RSCPacket(IoSession session, int pID, byte[] pData, boolean bare) {
     super(session, pData, bare);
     this.pID = pID;
-  }
-
-  public RSCPacket(IoSession session, int pID, byte[] pData) {
-    this(session, pID, pData, false);
   }
 
   /**

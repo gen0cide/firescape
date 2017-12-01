@@ -5,8 +5,8 @@ import org.firescape.server.event.FightEvent;
 import org.firescape.server.event.WalkToPointEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
-import org.firescape.server.states.Action;
 import org.firescape.server.packethandler.PacketHandler;
+import org.firescape.server.states.Action;
 
 public class PickupItem implements PacketHandler {
   /**

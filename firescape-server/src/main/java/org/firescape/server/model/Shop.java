@@ -82,6 +82,15 @@ public class Shop {
     });
   }
 
+  public int getEquilibrium(int id) {
+    for (int idx = 0; idx < equilibriumIds.length; idx++) {
+      if (equilibriumIds[idx] == id) {
+        return equilibriumAmounts[idx];
+      }
+    }
+    return 0;
+  }
+
   public void updatePlayers() {
     Iterator<Player> iterator = players.iterator();
     while (iterator.hasNext()) {
@@ -94,13 +103,16 @@ public class Shop {
     }
   }
 
-  public int getEquilibrium(int id) {
-    for (int idx = 0; idx < equilibriumIds.length; idx++) {
-      if (equilibriumIds[idx] == id) {
-        return equilibriumAmounts[idx];
-      }
+  public boolean equals(Object o) {
+    if (o instanceof Shop) {
+      Shop shop = (Shop) o;
+      return shop.getName().equals(name);
     }
-    return 0;
+    return false;
+  }
+
+  public String getName() {
+    return name;
   }
 
   public InvItem getFirstById(int id) {
@@ -119,10 +131,6 @@ public class Shop {
       equilibriumIds[idx] = items.get(idx).getID();
       equilibriumAmounts[idx] = items.get(idx).getAmount();
     }
-  }
-
-  public String getName() {
-    return name;
   }
 
   public String getGreeting() {
@@ -210,6 +218,18 @@ public class Shop {
     return buyModifier;
   }
 
+  public boolean canHold(InvItem item) {
+    return (MAX_SIZE - items.size()) >= getRequiredSlots(item);
+  }
+
+  public int getRequiredSlots(InvItem item) {
+    return (items.contains(item) ? 0 : 1);
+  }
+
+  public boolean canHold(ArrayList<InvItem> items) {
+    return (MAX_SIZE - items.size()) >= getRequiredSlots(items);
+  }
+
   public int getRequiredSlots(List<InvItem> items) {
     int requiredSlots = 0;
     for (InvItem item : items) {
@@ -219,26 +239,6 @@ public class Shop {
       requiredSlots++;
     }
     return requiredSlots;
-  }
-
-  public int getRequiredSlots(InvItem item) {
-    return (items.contains(item) ? 0 : 1);
-  }
-
-  public boolean canHold(InvItem item) {
-    return (MAX_SIZE - items.size()) >= getRequiredSlots(item);
-  }
-
-  public boolean canHold(ArrayList<InvItem> items) {
-    return (MAX_SIZE - items.size()) >= getRequiredSlots(items);
-  }
-
-  public boolean equals(Object o) {
-    if (o instanceof Shop) {
-      Shop shop = (Shop) o;
-      return shop.getName().equals(name);
-    }
-    return false;
   }
 
 }

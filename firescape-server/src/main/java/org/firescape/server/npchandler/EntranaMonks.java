@@ -18,7 +18,10 @@ public class EntranaMonks implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = {"Yes okay I'm ready to go", "No thanks"};
+        String[] options = {
+                "Yes okay I'm ready to go",
+                "No thanks"
+        };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
             if (owner.isBusy()) {

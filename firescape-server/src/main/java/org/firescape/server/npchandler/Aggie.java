@@ -15,9 +15,16 @@ public class Aggie implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"Can you turn people into frogs?", "You mad old witch, you can't help me",
-                "Can you make dyes for me please?"};
-        final String[] options2 = new String[]{"Blue Dye", "Red Dye", "Yellow Dye"};
+        String[] options = new String[]{
+                "Can you turn people into frogs?",
+                "You mad old witch, you can't help me",
+                "Can you make dyes for me please?"
+        };
+        final String[] options2 = new String[]{
+                "Blue Dye",
+                "Red Dye",
+                "Yellow Dye"
+        };
         owner.getActionSender().sendMenu(options);
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {

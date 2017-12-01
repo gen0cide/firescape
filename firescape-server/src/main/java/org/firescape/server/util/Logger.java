@@ -8,6 +8,10 @@ public class Logger {
    */
   private static final World world = World.getWorld();
 
+  public static void connection(Object o) {
+    Logger.print(o, 4);
+  }
+
   public static void print(Object o, int i) {
     String type = "";
     if (i == 1) {
@@ -24,10 +28,6 @@ public class Logger {
     }
     System.out.println(type + o.toString());
     // org.firescape.server.GUI.cout(o.toString(), i);
-  }
-
-  public static void connection(Object o) {
-    Logger.print(o, 4);
   }
 
   public static void mod(Object o) {

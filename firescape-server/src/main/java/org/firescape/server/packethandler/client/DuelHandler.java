@@ -10,20 +10,16 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
-import org.firescape.server.packethandler.PacketHandler;
 
 public class DuelHandler implements PacketHandler {
   /**
    * World instance
    */
   public static final World world = World.getWorld();
-
-  private boolean busy(Player player) {
-    return player.isBusy() || player.isRanging() || player.accessingBank() || player.isTrading();
-  }
 
   public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
@@ -333,6 +329,10 @@ public class DuelHandler implements PacketHandler {
       return;
     }
     p.resetDueling();
+  }
+
+  private boolean busy(Player player) {
+    return player.isBusy() || player.isRanging() || player.accessingBank() || player.isTrading();
   }
 
 }

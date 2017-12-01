@@ -25,7 +25,10 @@ public class Kolodion implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{"Yes please", "No, not yet"};
+          String[] option = new String[]{
+                  "Yes please",
+                  "No, not yet"
+          };
           player.setMenuHandler(new MenuHandler(option) {
             public void handleReply(final int option, final String reply) {
               if (player.isBusy()) {
@@ -56,7 +59,10 @@ public class Kolodion implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{"Yes, I want to begin this miniquest", "I will do it later"};
+          String[] options = new String[]{
+                  "Yes, I want to begin this miniquest",
+                  "I will do it later"
+          };
           owner.setMenuHandler(new MenuHandler(options) {
             public void handleReply(final int option, final String reply) {
               if (owner.isBusy()) {

@@ -144,6 +144,7 @@ public class GUI extends JPanel {
   public static DefaultListModel model = new DefaultListModel();
   public static JTextField textField2;
   static String[] args = null;
+
   public GUI() {
     initComponents();
     String configFile = "FireScape.cfg";

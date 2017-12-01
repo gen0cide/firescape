@@ -15,9 +15,41 @@ public class StaticPacketBuilder {
   /**
    * Bitmasks for <code>addBits()</code>
    */
-  protected static int bitmasks[] = {0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff,
-          0x3fff, 0x7fff, 0xffff, 0x1ffff, 0x3ffff, 0x7ffff, 0xfffff, 0x1fffff, 0x3fffff, 0x7fffff, 0xffffff, 0x1ffffff,
-          0x3ffffff, 0x7ffffff, 0xfffffff, 0x1fffffff, 0x3fffffff, 0x7fffffff, -1};
+  protected static int bitmasks[] = {
+          0,
+          0x1,
+          0x3,
+          0x7,
+          0xf,
+          0x1f,
+          0x3f,
+          0x7f,
+          0xff,
+          0x1ff,
+          0x3ff,
+          0x7ff,
+          0xfff,
+          0x1fff,
+          0x3fff,
+          0x7fff,
+          0xffff,
+          0x1ffff,
+          0x3ffff,
+          0x7ffff,
+          0xfffff,
+          0x1fffff,
+          0x3fffff,
+          0x7fffff,
+          0xffffff,
+          0x1ffffff,
+          0x3ffffff,
+          0x7ffffff,
+          0xfffffff,
+          0x1fffffff,
+          0x3fffffff,
+          0x7fffffff,
+          -1
+  };
   /**
    * The payload buffer
    */
@@ -56,42 +88,6 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Ensures that the buffer is at least <code>minimumBytes</code> bytes.
-   *
-   * @param minimumCapacity The size needed
-   */
-  private void ensureCapacity(int minimumCapacity) {
-    if (minimumCapacity >= payload.length)
-      expandCapacity(minimumCapacity);
-  }
-
-  /**
-   * Expands the buffer to the specified size.
-   *
-   * @param minimumCapacity The minimum capacity to which to expand
-   * @see java.lang.AbstractStringBuilder#expandCapacity(int)
-   */
-  private void expandCapacity(int minimumCapacity) {
-    int newCapacity = (payload.length + 1) * 2;
-    if (newCapacity < 0) {
-      newCapacity = Integer.MAX_VALUE;
-    } else if (minimumCapacity > newCapacity) {
-      newCapacity = minimumCapacity;
-    }
-    int oldLength = curLength;
-    if (oldLength > payload.length) {
-      oldLength = payload.length;
-    }
-    byte[] newPayload = new byte[newCapacity];
-    try {
-      System.arraycopy(payload, 0, newPayload, 0, oldLength);
-    } catch (Exception e) {
-      Logger.error(e);
-    }
-    payload = newPayload;
-  }
-
-  /**
    * Sets this packet as bare. A bare packet will contain only the payload data,
    * rather than having the standard packet header prepended.
    *
@@ -125,6 +121,42 @@ public class StaticPacketBuilder {
       payload[bytePos] |= (value & bitmasks[numBits]) << (bitOffset - numBits);
     }
     return this;
+  }
+
+  /**
+   * Ensures that the buffer is at least <code>minimumBytes</code> bytes.
+   *
+   * @param minimumCapacity The size needed
+   */
+  private void ensureCapacity(int minimumCapacity) {
+    if (minimumCapacity >= payload.length)
+      expandCapacity(minimumCapacity);
+  }
+
+  /**
+   * Expands the buffer to the specified size.
+   *
+   * @param minimumCapacity The minimum capacity to which to expand
+   * @see java.lang.AbstractStringBuilder#expandCapacity(int)
+   */
+  private void expandCapacity(int minimumCapacity) {
+    int newCapacity = (payload.length + 1) * 2;
+    if (newCapacity < 0) {
+      newCapacity = Integer.MAX_VALUE;
+    } else if (minimumCapacity > newCapacity) {
+      newCapacity = minimumCapacity;
+    }
+    int oldLength = curLength;
+    if (oldLength > payload.length) {
+      oldLength = payload.length;
+    }
+    byte[] newPayload = new byte[newCapacity];
+    try {
+      System.arraycopy(payload, 0, newPayload, 0, oldLength);
+    } catch (Exception e) {
+      Logger.error(e);
+    }
+    payload = newPayload;
   }
 
   /**
@@ -198,6 +230,19 @@ public class StaticPacketBuilder {
   }
 
   /**
+   * Adds a <code>long</code> to the data stream. The size of this packet will
+   * grow by eight bytes.
+   *
+   * @param val The <code>long</code> value to add
+   * @return A reference to this object
+   */
+  public StaticPacketBuilder addLong(long val) {
+    addInt((int) (val >> 32));
+    addInt((int) (val & -1L));
+    return this;
+  }
+
+  /**
    * Adds a <code>int</code> to the data stream. The size of this packet will
    * grow by four bytes.
    *
@@ -210,19 +255,6 @@ public class StaticPacketBuilder {
     addByte((byte) (val >> 16), false);
     addByte((byte) (val >> 8), false);
     addByte((byte) val, false);
-    return this;
-  }
-
-  /**
-   * Adds a <code>long</code> to the data stream. The size of this packet will
-   * grow by eight bytes.
-   *
-   * @param val The <code>long</code> value to add
-   * @return A reference to this object
-   */
-  public StaticPacketBuilder addLong(long val) {
-    addInt((int) (val >> 32));
-    addInt((int) (val & -1L));
     return this;
   }
 

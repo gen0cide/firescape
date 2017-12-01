@@ -1,9 +1,9 @@
 package org.firescape.server.model;
 
-import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.ItemDef;
 import org.firescape.server.entityhandling.locs.ItemLoc;
+import org.firescape.server.event.DelayedEvent;
 
 public class Item extends Entity {
   /**
@@ -37,6 +37,10 @@ public class Item extends Entity {
     setAmount(loc.amount);
     spawnedTime = System.currentTimeMillis();
     setLocation(Point.location(loc.x, loc.y));
+  }
+
+  public ItemDef getDef() {
+    return EntityHandler.getItemDef(id);
   }
 
   public Item(int id, int x, int y, int amount, Player owner) {
@@ -74,10 +78,6 @@ public class Item extends Entity {
     removed = true;
   }
 
-  public ItemDef getDef() {
-    return EntityHandler.getItemDef(id);
-  }
-
   public boolean equals(Object o) {
     if (o instanceof Item) {
       Item item = (Item) o;
@@ -88,12 +88,16 @@ public class Item extends Entity {
     return false;
   }
 
+  public int getAmount() {
+    return amount;
+  }
+
   public long getSpawnedTime() {
     return spawnedTime;
   }
 
-  public int getAmount() {
-    return amount;
+  public Player getOwner() {
+    return owner;
   }
 
   public void setAmount(int amount) {
@@ -102,10 +106,6 @@ public class Item extends Entity {
     } else {
       this.amount = 1;
     }
-  }
-
-  public Player getOwner() {
-    return owner;
   }
 
   public boolean isOn(int x, int y) {

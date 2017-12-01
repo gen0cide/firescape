@@ -1,15 +1,15 @@
 package org.firescape.server.model;
 
-import org.firescape.server.event.DelayedEvent;
-import org.firescape.server.event.FightEvent;
-import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Formulae;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.NPCDef;
 import org.firescape.server.entityhandling.defs.extras.ItemDropDef;
 import org.firescape.server.entityhandling.locs.NPCLoc;
+import org.firescape.server.event.DelayedEvent;
+import org.firescape.server.event.FightEvent;
 import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
+import org.firescape.server.util.DataConversions;
+import org.firescape.server.util.Formulae;
 
 import java.util.Random;
 
@@ -49,6 +49,11 @@ public class Npc extends Mob {
    * Should this npc respawn once it has been killed?
    **/
   private boolean shouldRespawn = true;
+
+  public Npc(int id, int startX, int startY, int minX, int maxX, int minY, int maxY) {
+    this(new NPCLoc(id, startX, startY, minX, maxX, minY, maxY));
+  }
+
   public Npc(NPCLoc loc) {
     def = EntityHandler.getNpcDef(loc.getId());
     curHits = def.getHits();
@@ -56,10 +61,6 @@ public class Npc extends Mob {
     super.setID(loc.getId());
     super.setLocation(Point.location(loc.startX(), loc.startY()), true);
     super.setCombatLevel(Formulae.getCombatLevel(def.getAtt(), def.getDef(), def.getStr(), def.getHits(), 0, 0, 0));
-  }
-
-  public Npc(int id, int startX, int startY, int minX, int maxX, int minY, int maxY) {
-    this(new NPCLoc(id, startX, startY, minX, maxX, minY, maxY));
   }
 
   public final int Rand(int low, int high) {
@@ -96,7 +97,14 @@ public class Npc extends Mob {
     timeout = null;
   }
 
-  public void remove() {
+  public NPCLoc getLoc() {
+    return loc;
+  }
+
+  public void moveNpc(Path path) {
+    super.setPath(path);
+    super.updatePosition();
+  }  public void remove() {
     if (!removed && shouldRespawn && def.respawnTime() > 0) {
       world.getDelayedEventHandler().add(new DelayedEvent(null, def.respawnTime() * 1000) {
         public void run() {
@@ -106,6 +114,10 @@ public class Npc extends Mob {
       });
     }
     removed = true;
+  }
+
+  public NPCDef getDef() {
+    return EntityHandler.getNpcDef(getID());
   }
 
   public void killedBy(Mob mob, boolean stake) {
@@ -143,6 +155,8 @@ public class Npc extends Mob {
       total += drop.getWeight();
     }
   }
+
+
 
   public int getCombatStyle() {
     return 0;
@@ -267,17 +281,5 @@ public class Npc extends Mob {
     super.updatePosition();
   }
 
-  public NPCLoc getLoc() {
-    return loc;
-  }
-
-  public void moveNpc(Path path) {
-    super.setPath(path);
-    super.updatePosition();
-  }
-
-  public NPCDef getDef() {
-    return EntityHandler.getNpcDef(getID());
-  }
 
 }

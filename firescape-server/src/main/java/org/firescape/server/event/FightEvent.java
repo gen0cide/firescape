@@ -1,11 +1,11 @@
 package org.firescape.server.event;
 
-import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Formulae;
 import org.firescape.server.model.Mob;
 import org.firescape.server.model.Npc;
 import org.firescape.server.model.Player;
 import org.firescape.server.states.CombatState;
+import org.firescape.server.util.DataConversions;
+import org.firescape.server.util.Formulae;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -107,15 +107,15 @@ public class FightEvent extends DelayedEvent {
     }
   }
 
-  public Mob getAffectedMob() {
-    return affectedMob;
-  }
-
   public boolean equals(Object o) {
     if (o instanceof FightEvent) {
       FightEvent e = (FightEvent) o;
       return e.belongsTo(owner) && e.getAffectedMob().equals(affectedMob);
     }
     return false;
+  }
+
+  public Mob getAffectedMob() {
+    return affectedMob;
   }
 }
