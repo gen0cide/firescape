@@ -1,51 +1,78 @@
-<project default="compile" basedir=".">	
-	
-	<property name="src" location="src" />
-	<property name="build" location="build" />
-	<property name="doc" location="../doc" />
-	<property name="lib" location="lib" />
-	<property name="jar" location="rscd.jar" />
-	<property name="settings" location="settings.ini" />
-	
-	<target name="compile">
-		<delete file="${jar}" />
-		<mkdir dir="${build}" />
-		<javac srcdir="${src}" destdir="${build}" debug="on" target="1.8">
-		  <classpath>
-			<pathelement location="${lib}/mina.jar" />
-			<pathelement location="${lib}/xpp3.jar" />
-			<pathelement location="${lib}/slf4j.jar"/>
-			<pathelement location="${lib}/xstream.jar"/>
-			<pathelement location="${lib}/mysql-connector.jar" />
-			<pathelement location="${lib}/hex-string.jar" />
-			<pathelement location="${lib}/jmf.jar" />
-		  	<pathelement location="${lib}/jedis.jar" />
-		  	<pathelement location="${lib}/gson.jar" />
-		  	<pathelement location="${lib}/commons-pool2.jar" />
-			<pathelement path="${java.class.path}/"/>
-		  </classpath>
-		</javac>
-		<jar basedir="${build}" destfile="${jar}" />
-		<delete dir="${build}" />
-	</target>	
-	<target name="runserver">
-		<java classname="org.rscdaemon.server.Server" fork="true">
-			<jvmarg value="-Xms128m" />
-			<jvmarg value="-Xmx512m" />
-			<jvmarg value="-XX:+UseParallelGC" />
-			<arg value="world.xml" />
-			<classpath>
-				<pathelement location="${lib}/mina.jar" />
-				<pathelement location="${lib}/xpp3.jar" />
-				<pathelement location="${lib}/slf4j.jar" />
-				<pathelement location="${lib}/xstream.jar" />
-				<pathelement location="${lib}/jedis.jar" />
-				<pathelement location="${lib}/gson.jar" />
-				<pathelement location="${lib}/hex-string.jar" />
-				<pathelement location="${lib}/commons-pool2.jar" />
-				<pathelement location="quests/" />
-				<pathelement path="${jar}/" />
-			</classpath>
-		</java>
-	</target>
+<project default="compile" basedir=".">
+
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="doc" location="../doc"/>
+    <property name="lib" location="lib"/>
+    <property name="jar" location="rscd.jar"/>
+    <property name="settings" location="settings.ini"/>
+
+    <target name="compile">
+        <delete file="${jar}"/>
+        <mkdir dir="${build}"/>
+        <javac srcdir="${src}" destdir="${build}" debug="on" target="1.8">
+            <classpath>
+                <pathelement location="${lib}/mina.jar"/>
+                <pathelement location="${lib}/xpp3.jar"/>
+                <pathelement location="${lib}/slf4j.jar"/>
+                <pathelement location="${lib}/xstream.jar"/>
+                <pathelement location="${lib}/mysql-connector.jar"/>
+                <pathelement location="${lib}/hex-string.jar"/>
+                <pathelement location="${lib}/jmf.jar"/>
+                <pathelement location="${lib}/jedis.jar"/>
+                <pathelement location="${lib}/gson.jar"/>
+                <pathelement location="${lib}/jffi-1.2.jar"/>
+                <pathelement location="${lib}/jnr-ffi-2.1.7.jar"/>
+                <pathelement location="${lib}/commons-pool2.jar"/>
+                <pathelement location="${lib}/libmath.dylib"/>
+                <pathelement path="${java.class.path}/"/>
+            </classpath>
+        </javac>
+        <jar basedir="${build}" destfile="${jar}"/>
+        <delete dir="${build}"/>
+    </target>
+    <target name="runserver">
+        <java classname="org.firescape.server.Server" fork="true">
+            <jvmarg value="-Xms128m"/>
+            <jvmarg value="-Xmx512m"/>
+            <jvmarg value="-XX:+UseParallelGC"/>
+            <arg value="world.xml"/>
+            <classpath>
+                <pathelement location="${lib}/mina.jar"/>
+                <pathelement location="${lib}/xpp3.jar"/>
+                <pathelement location="${lib}/slf4j.jar"/>
+                <pathelement location="${lib}/xstream.jar"/>
+                <pathelement location="${lib}/jedis.jar"/>
+                <pathelement location="${lib}/gson.jar"/>
+                <pathelement location="${lib}/hex-string.jar"/>
+                <pathelement location="${lib}/commons-pool2.jar"/>
+                <pathelement location="${lib}/jffi-1.2.jar"/>
+                <pathelement location="${lib}/jnr-ffi-2.1.7.jar"/>
+                <pathelement location="${lib}/libmath.dylib"/>
+                <pathelement location="quests/"/>
+                <pathelement path="${jar}/"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="mvnrun">
+        <java classname="org.firescape.server.Server" fork="true">
+            <jvmarg value="-Xms128m"/>
+            <jvmarg value="-Xmx512m"/>
+            <jvmarg value="-XX:+UseParallelGC"/>
+            <arg value="world.xml"/>
+            <classpath>
+                <pathelement location="${lib}/mina.jar"/>
+                <pathelement location="${lib}/xpp3.jar"/>
+                <pathelement location="${lib}/slf4j.jar"/>
+                <pathelement location="${lib}/xstream.jar"/>
+                <pathelement location="${lib}/jedis.jar"/>
+                <pathelement location="${lib}/gson.jar"/>
+                <pathelement location="${lib}/hex-string.jar"/>
+                <pathelement location="${lib}/commons-pool2.jar"/>
+                <pathelement location="${lib}/libmath.dylib"/>
+                <pathelement location="quests/"/>
+                <pathelement path="/Users/flint/Code/firescape/firescape-server/target/firescape-server-1.jar/"/>
+            </classpath>
+        </java>
+    </target>
 </project>

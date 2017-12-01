@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/commons-pool2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hex-string.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xstream.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jnr-ffi-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mina.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jedis.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jffi-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xpp3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jmf.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
