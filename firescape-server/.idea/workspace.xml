@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/run_client.sh" afterPath="$PROJECT_DIR$/../firescape-client/run_client.sh" />
+      <change beforePath="$PROJECT_DIR$/../firescape-client/settings.ini" afterPath="$PROJECT_DIR$/../firescape-client/settings.ini" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
