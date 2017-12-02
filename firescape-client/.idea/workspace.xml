@@ -12,16 +12,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DataOperations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/DataOperations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StreamClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/StreamClass.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,11 +52,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameImage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameImage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameImage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="538">
               <caret line="1308" column="29" lean-forward="false" selection-start-line="1308" selection-start-column="29" selection-end-line="1308" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_client.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_client.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="82" lean-forward="false" selection-start-line="0" selection-start-column="82" selection-end-line="0" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -153,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/GameWindowMiddleMan.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/GameWindow.java" />
+        <option value="$PROJECT_DIR$/run_client.sh" />
       </list>
     </option>
   </component>
@@ -541,6 +542,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
           <caret line="1308" column="29" lean-forward="false" selection-start-line="1308" selection-start-column="29" selection-end-line="1308" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_client.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="82" lean-forward="false" selection-start-line="0" selection-start-column="82" selection-end-line="0" selection-end-column="82" />
           <folding />
         </state>
       </provider>

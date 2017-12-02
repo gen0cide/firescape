@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-client/compile.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-client/run_client.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jruby_jruby_complete_9_1_14_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/jruby-gems.jar" />
       <change beforePath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameWindow.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameWindow.java" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/target/firescape-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/../firescape-client/target/firescape-jar-with-dependencies.jar" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/target/firescape.jar" afterPath="$PROJECT_DIR$/../firescape-client/target/firescape.jar" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/../firescape-client/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/firescape-server.iml" afterPath="$PROJECT_DIR$/firescape-server.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/scripts/server.rb" afterPath="$PROJECT_DIR$/scripts/server.rb" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" />
-      <change beforePath="$PROJECT_DIR$/target/firescape-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/firescape-jar-with-dependencies.jar" />
-      <change beforePath="$PROJECT_DIR$/target/firescape.jar" afterPath="$PROJECT_DIR$/target/firescape.jar" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change beforePath="$PROJECT_DIR$/../firescape-client/run_client.sh" afterPath="$PROJECT_DIR$/../firescape-client/run_client.sh" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
