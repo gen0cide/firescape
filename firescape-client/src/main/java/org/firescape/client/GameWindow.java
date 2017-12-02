@@ -57,8 +57,8 @@ public class GameWindow extends Applet implements Runnable {
   private String loadingBarText;
   private Graphics loadingGraphics;
   public GameWindow() {
-    appletWidth = 512; // was 512
-    appletHeight = 384; // was 384
+    appletWidth = 1280; // was 512
+    appletHeight = 720; // was 384
     threadSleepModifier = 20;
     anInt5 = 1000;
     currentTimeArray = new long[10];
@@ -108,8 +108,8 @@ public class GameWindow extends Applet implements Runnable {
   public final void init() {
     appletMode = true;
     System.out.println("Started applet");
-    appletWidth = 512;
-    appletHeight = 344;
+    appletWidth = 1280;
+    appletHeight = 720;
     loadingScreen = 1;
     startThread(this);
   }

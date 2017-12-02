@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-client/compile.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-client/run_client.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jruby_jruby_complete_9_1_14_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/jruby-gems.jar" />
       <change beforePath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameWindow.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameWindow.java" />
+      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" />
       <change beforePath="$PROJECT_DIR$/../firescape-client/target/firescape-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/../firescape-client/target/firescape-jar-with-dependencies.jar" />
       <change beforePath="$PROJECT_DIR$/../firescape-client/target/firescape.jar" afterPath="$PROJECT_DIR$/../firescape-client/target/firescape.jar" />
       <change beforePath="$PROJECT_DIR$/../firescape-client/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/../firescape-client/target/maven-archiver/pom.properties" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/firescape-server.iml" afterPath="$PROJECT_DIR$/firescape-server.iml" />
       <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/scripts/server.rb" afterPath="$PROJECT_DIR$/scripts/server.rb" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" />
       <change beforePath="$PROJECT_DIR$/target/firescape-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/firescape-jar-with-dependencies.jar" />
       <change beforePath="$PROJECT_DIR$/target/firescape.jar" afterPath="$PROJECT_DIR$/target/firescape.jar" />
@@ -28,17 +35,47 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="175" column="44" lean-forward="false" selection-start-line="175" selection-start-column="40" selection-end-line="175" selection-end-column="44" />
+            <state relative-caret-position="372">
+              <caret line="144" column="20" lean-forward="false" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6108#6109#0" expanded="true" />
-                <element signature="e#6132#6133#0" expanded="true" />
-                <element signature="e#8915#8916#0" expanded="true" />
-                <element signature="e#8938#8939#0" expanded="true" />
-                <element signature="e#8974#8975#0" expanded="true" />
-                <element signature="e#9005#9006#0" expanded="true" />
+                <element signature="e#8242#8243#0" expanded="true" />
+                <element signature="e#8266#8267#0" expanded="true" />
+                <element signature="e#11049#11050#0" expanded="true" />
+                <element signature="e#11072#11073#0" expanded="true" />
+                <element signature="e#11108#11109#0" expanded="true" />
+                <element signature="e#11139#11140#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="2243" column="24" lean-forward="false" selection-start-line="2243" selection-start-column="14" selection-end-line="2243" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/CommandHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-789">
+              <caret line="748" column="60" lean-forward="false" selection-start-line="748" selection-start-column="60" selection-end-line="748" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Adverts.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/server/defs/extras/Adverts.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/util/Formulae.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="876" column="28" lean-forward="true" selection-start-line="876" selection-start-column="28" selection-end-line="876" selection-end-column="28" />
+              <caret line="876" column="28" lean-forward="false" selection-start-line="876" selection-start-column="28" selection-end-line="876" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -67,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/event/DelayedQuestChat.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -76,8 +113,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="86" column="15" lean-forward="false" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
+            <state relative-caret-position="424">
+              <caret line="48" column="51" lean-forward="false" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -86,18 +123,8 @@
       <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="323">
               <caret line="147" column="20" lean-forward="false" selection-start-line="147" selection-start-column="15" selection-end-line="147" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataConversions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/util/DataConversions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3218">
-              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -108,26 +135,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
               <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Trap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/Trap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerLogin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PlayerLogin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -146,6 +153,9 @@
       <find>Player</find>
       <find>sleep</find>
       <find>math</find>
+      <find>launchServer</find>
+      <find>admin</find>
+      <find>rank</find>
     </findStrings>
     <replaceStrings>
       <replace>import org.firescape.server.</replace>
@@ -210,9 +220,9 @@
         <option value="$PROJECT_DIR$/conf/server/PacketHandlers.xml" />
         <option value="$PROJECT_DIR$/FireScape.cfg" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WalkRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/io/WorldLoader.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" />
       </list>
     </option>
   </component>
@@ -329,6 +339,14 @@
               <item name="conf" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="defs" type="462c0819:PsiDirectoryNode" />
+              <item name="extras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="defs" type="462c0819:PsiDirectoryNode" />
               <item name="ItemDef.xml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -388,6 +406,34 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="packethandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="packethandler" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
@@ -569,27 +615,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PacketHandlerDef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PacketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/BankHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/AttackHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -887,22 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="147" column="20" lean-forward="false" selection-start-line="147" selection-start-column="15" selection-end-line="147" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="86" column="15" lean-forward="false" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/io/WorldLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -914,7 +923,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/util/Formulae.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="876" column="28" lean-forward="true" selection-start-line="876" selection-start-column="28" selection-end-line="876" selection-end-column="28" />
+          <caret line="876" column="28" lean-forward="false" selection-start-line="876" selection-start-column="28" selection-end-line="876" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -927,26 +936,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="147" column="20" lean-forward="false" selection-start-line="147" selection-start-column="15" selection-end-line="147" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="48" column="51" lean-forward="false" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/event/DelayedQuestChat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="2243" column="24" lean-forward="false" selection-start-line="2243" selection-start-column="14" selection-end-line="2243" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/CommandHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-789">
+          <caret line="748" column="60" lean-forward="false" selection-start-line="748" selection-start-column="60" selection-end-line="748" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/server/defs/extras/Adverts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="175" column="44" lean-forward="false" selection-start-line="175" selection-start-column="40" selection-end-line="175" selection-end-column="44" />
+        <state relative-caret-position="372">
+          <caret line="144" column="20" lean-forward="false" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6108#6109#0" expanded="true" />
-            <element signature="e#6132#6133#0" expanded="true" />
-            <element signature="e#8915#8916#0" expanded="true" />
-            <element signature="e#8938#8939#0" expanded="true" />
-            <element signature="e#8974#8975#0" expanded="true" />
-            <element signature="e#9005#9006#0" expanded="true" />
+            <element signature="e#8242#8243#0" expanded="true" />
+            <element signature="e#8266#8267#0" expanded="true" />
+            <element signature="e#11049#11050#0" expanded="true" />
+            <element signature="e#11072#11073#0" expanded="true" />
+            <element signature="e#11108#11109#0" expanded="true" />
+            <element signature="e#11139#11140#0" expanded="true" />
           </folding>
         </state>
       </provider>

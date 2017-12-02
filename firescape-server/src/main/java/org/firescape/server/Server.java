@@ -21,6 +21,7 @@ import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 import java.util.UUID;
+import org.jruby.embed.ScriptingContainer;
 
 /**
  * The entry point for RSC server.
@@ -82,6 +83,70 @@ public class Server {
     } catch (Exception e) {
       Logger.error(e);
     }
+  }
+
+  public static final String JRubyEntryPoint = "require 'pry'\n" +
+          "require 'pry-remote'\n" +
+          "require 'redis'\n" +
+          "\n" +
+          "require 'java'\n" +
+          "\n" +
+          "\n" +
+          "server = Java::OrgFirescapeServer::Server.new\n" +
+          "\n" +
+          "class FireScape\n" +
+          "  \n" +
+          "  @@world = Java::OrgFirescapeServerModel::World.get_world\n" +
+          "\n" +
+          "  def enum_players\n" +
+          "    @@world.players\n" +
+          "  end\n" +
+          "\n" +
+          "  def find_player(id)\n" +
+          "    @@world.players.get(id)\n" +
+          "  end\n" +
+          "\n" +
+          "  def give_item(player_id, item_id, quantity = 1)\n" +
+          "    item = Java::OrgFirescapeServerModel::InvItem.new(item_id, quantity)\n" +
+          "    player = find_player(player_id)\n" +
+          "    player.get_inventory.add(item)\n" +
+          "    player.get_action_sender.send_inventory\n" +
+          "  end\n" +
+          "end\n" +
+          "\n" +
+          "slack = Thread.new do  \n" +
+          "  redis = Redis.new\n" +
+          "\n" +
+          "  redis.subscribe('game_chat') do |on|\n" +
+          "    on.message do |channel, msg|\n" +
+          "      # Do something with the channel messages here\n" +
+          "    end\n" +
+          "  end\n" +
+          "end\n" +
+          "\n" +
+          "mgmt = Thread.new do\n" +
+          "  @@is_running = true\n" +
+          "\n" +
+          "  game = FireScape.new\n" +
+          "\n" +
+          "  def kill_serv\n" +
+          "    @@is_running = false\n" +
+          "    exit\n" +
+          "  end\n" +
+          "\n" +
+          "  while(@@is_running)\n" +
+          "    binding.remote_pry('localhost', '9040')\n" +
+          "  end\n" +
+          "end\n" +
+          "\n" +
+          "slack.join\n" +
+          "mgmt.join\n" +
+          "\n" +
+          "abort\n";
+
+  public static void runScriptingEngine() {
+    ScriptingContainer container = new ScriptingContainer();
+    container.runScriptlet(JRubyEntryPoint);
   }
 
   public static void resetVars() {
@@ -166,7 +231,7 @@ public class Server {
     System.out.println("Welcome " + name);
     System.out.println("Entering Firescape Entrypoint");
     try {
-      launchServer();
+      runScriptingEngine();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }

@@ -877,8 +877,8 @@ public final class mudclient extends GameWindowMiddleMan {
     aBooleanArray970 = new boolean[500];
     tradeMyItems = new int[14];
     tradeMyItemsCount = new int[14];
-    windowWidth = 512; // was 512
-    windowHeight = 334;
+    windowWidth = 1280; // was 512
+    windowHeight = 720;
     cameraSizeInt = 9;
     tradeOtherPlayerName = "";
   }
@@ -1423,7 +1423,7 @@ public final class mudclient extends GameWindowMiddleMan {
     if (lastLoadedNull) {
       Graphics g = getGraphics();
       g.setColor(Color.black);
-      g.fillRect(0, 0, 512, 356);
+      g.fillRect(0, 0, 1280, 720);
       g.setFont(new Font("Helvetica", 1, 16));
       g.setColor(Color.yellow);
       int i = 35;
@@ -1449,7 +1449,7 @@ public final class mudclient extends GameWindowMiddleMan {
     if (memoryError) {
       Graphics g2 = getGraphics();
       g2.setColor(Color.black);
-      g2.fillRect(0, 0, 512, 356);
+      g2.fillRect(0, 0, 1280, 720);
       g2.setFont(new Font("Helvetica", 1, 20));
       g2.setColor(Color.white);
       g2.drawString("Error - out of memory!", 50, 50);

@@ -4,7 +4,6 @@ require 'redis'
 
 require 'java'
 
-require './target/firescape-jar-with-dependencies.jar'
 
 server = Java::OrgFirescapeServer::Server.new
 

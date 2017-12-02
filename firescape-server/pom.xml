@@ -42,6 +42,13 @@
       <systemPath>${project.basedir}/lib/hex-string.jar</systemPath>
     </dependency>
     <dependency>
+      <groupId>org.firescape</groupId>
+      <artifactId>jruby-gems</artifactId>
+      <version>2.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/jruby-gems.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
       <version>2.9.0</version>
@@ -80,6 +87,11 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-pool2</artifactId>
       <version>2.4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jruby</groupId>
+      <artifactId>jruby-complete</artifactId>
+      <version>9.1.14.0</version>
     </dependency>
   </dependencies>
   <build>
