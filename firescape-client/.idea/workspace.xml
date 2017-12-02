@@ -67,8 +67,8 @@
       <file leaf-file-name="GameWindowMiddleMan.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameWindowMiddleMan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="25" column="31" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            <state relative-caret-position="-393">
+              <caret line="16" column="165" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="165" />
               <folding />
             </state>
           </provider>
@@ -95,13 +95,6 @@
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fire.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/client/fire.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -493,8 +486,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameWindowMiddleMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="31" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="-393">
+          <caret line="16" column="165" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="165" />
           <folding />
         </state>
       </provider>

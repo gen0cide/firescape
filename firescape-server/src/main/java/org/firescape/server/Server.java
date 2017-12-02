@@ -162,16 +162,26 @@ public class Server {
     }
   }
 
-  public static void main(String[] args) {
-    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
-    for(int x = 0; x < 10000; x++) {
-      System.out.println("JAVA: " + ml.Puts(UUID.randomUUID().toString()));
-      try {
-        Thread.sleep(250);
-      } catch (InterruptedException e) {
-        System.out.println(e.getMessage());
-      }
+  public static void EntryPoint(String name) {
+    System.out.println("Welcome " + name);
+    System.out.println("Entering Firescape Entrypoint");
+    try {
+      launchServer();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
+  }
+
+  public static void main(String[] args) {
+//    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
+//    for(int x = 0; x < 10000; x++) {
+//      System.out.println("JAVA: " + ml.Puts(UUID.randomUUID().toString()));
+//      try {
+//        Thread.sleep(250);
+//      } catch (InterruptedException e) {
+//        System.out.println(e.getMessage());
+//      }
+//    }
     try {
 
       // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
