@@ -2,14 +2,14 @@ package org.firescape.client;
 
 public class Camera {
 
-  public static int anIntArray384[] = new int[2048];
+  public static int anIntArray384[] = new int[4096];
   static int anInt448;
   static int anInt449;
   static int anInt450;
   static int anInt451;
   static int anInt452;
   static int anInt453;
-  private static int anIntArray385[] = new int[512];
+  private static int anIntArray385[] = new int[1024];
   private static long aLong431;
   private static byte aByteArray434[];
   public int lastCameraModelCount;
@@ -99,12 +99,12 @@ public class Camera {
     maxVisibleModelCount = 100;
     visibleModelsArray = new Model[maxVisibleModelCount];
     visibleModelIntArray = new int[maxVisibleModelCount];
-    width = 512; // was 512
-    halfWidth = 256; // was 256
-    halfHeight = 192; // was 192
-    halfWidth2 = 256; // was 256
-    halfHeight2 = 256; // was 256
-    cameraSizeInt = 8;
+    width = 1280; // was 512
+    halfWidth = 640; // was 256
+    halfHeight = 360; // was 192
+    halfWidth2 = 640; // was 256
+    halfHeight2 = 640; // was 256
+    cameraSizeInt = 9;
     anInt402 = 4;
     anIntArray441 = new int[40];
     anIntArray442 = new int[40];
@@ -143,9 +143,9 @@ public class Camera {
     anInt406 = 0;
     anInt407 = 0;
     anInt408 = 0;
-    for (int i1 = 0; i1 < 256; i1++) {
+    for (int i1 = 0; i1 < 512; i1++) {
       anIntArray385[i1] = (int) (Math.sin((double) i1 * 0.02454369D) * 32768D);
-      anIntArray385[i1 + 256] = (int) (Math.cos((double) i1 * 0.02454369D) * 32768D);
+      anIntArray385[i1 + 512] = (int) (Math.cos((double) i1 * 0.02454369D) * 32768D);
     }
 
     for (int j1 = 0; j1 < 1024; j1++) {

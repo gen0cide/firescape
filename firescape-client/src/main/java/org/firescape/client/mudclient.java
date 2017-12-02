@@ -845,7 +845,7 @@ public final class mudclient extends GameWindowMiddleMan {
     tradeOtherItems = new int[14];
     tradeOtherItemsCount = new int[14];
     menuIndexes = new int[250];
-    zoomCamera = false;
+    zoomCamera = true;
     playerStatExperience = new int[18];
     cameraAutoAngleDebug = false;
     npcRecordArray = new Mob[8000];
@@ -4666,10 +4666,10 @@ public final class mudclient extends GameWindowMiddleMan {
           menuX = 0;
         if (menuY < 0)
           menuY = 0;
-        if (menuX + menuWidth > 510)
-          menuX = 510 - menuWidth;
-        if (menuY + menuHeight > 315)
-          menuY = 315 - menuHeight;
+        if (menuX + menuWidth > 1278)
+          menuX = 1278 - menuWidth;
+        if (menuY + menuHeight > 651)
+          menuY = 651 - menuHeight;
         mouseButtonClick = 0;
       }
     }

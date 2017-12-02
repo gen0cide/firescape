@@ -20,7 +20,7 @@ public class GameFrame extends Frame {
     else
       frameOffset = 28;
     setTitle(title);
-    setResizable(resizable);
+    setResizable(true);
     show();
     toFront();
     resize(frameWidth, frameHeight);

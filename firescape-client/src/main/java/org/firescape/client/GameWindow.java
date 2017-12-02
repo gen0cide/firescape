@@ -316,6 +316,7 @@ public class GameWindow extends Applet implements Runnable {
   }
 
   public final synchronized boolean mouseDown(Event event, int i, int j) {
+    System.out.printf("MOUSE DOWN EVENT: x=%d y=%d event=%s\n", i, j, event.toString());
     mouseX = i;
     mouseY = j + yOffset;
     mouseDownButton = event.metaDown() ? 2 : 1;
