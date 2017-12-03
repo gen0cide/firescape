@@ -9,26 +9,26 @@ public class MonkHealer implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc(final Npc npc, Player player) throws Exception {
+  public void handleNpc( Npc npc, Player player ) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Greetings traveller", player));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{"Can you heal me? I'm injured"};
+        String[] options = { "Can you heal me? I'm injured" };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply( int option, String reply ) {
             if (owner.isBusy()) {
               return;
             }
             owner.informOfChatMessage(new ChatMessage(owner, reply, npc));
             owner.setBusy(true);
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 if (option == 0) {
                   owner.informOfNpcMessage(new ChatMessage(npc, "Ok", owner));
                   owner.getActionSender().sendMessage("The monk places his hands on your head");
-                  world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                  DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                     public void action() {
                       owner.setBusy(false);
                       owner.getActionSender().sendMessage("You feel a little better");

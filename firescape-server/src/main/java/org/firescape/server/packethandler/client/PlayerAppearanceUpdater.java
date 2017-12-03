@@ -11,7 +11,7 @@ public class PlayerAppearanceUpdater implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     if (!player.isChangingAppearance()) {
       player.setSuspiciousPlayer(true);
@@ -34,7 +34,7 @@ public class PlayerAppearanceUpdater implements PacketHandler {
     int bodySprite = bodyGender + 1;
 
     PlayerAppearance appearance = new PlayerAppearance(hairColour, topColour, trouserColour, skinColour, headSprite,
-            bodySprite);
+      bodySprite);
     if (!appearance.isValid()) {
       player.setSuspiciousPlayer(true);
       return;
@@ -46,11 +46,11 @@ public class PlayerAppearanceUpdater implements PacketHandler {
       Inventory inv = player.getInventory();
       for (int slot = 0; slot < inv.size(); slot++) {
         InvItem i = inv.get(slot);
-        if (i.isWieldable() && i.getWieldableDef().getWieldPos() == 1 && i.isWielded()
-                && i.getWieldableDef().femaleOnly()) {
+        if (i.isWieldable() && i.getWieldableDef().getWieldPos() == 1 && i.isWielded() && i.getWieldableDef()
+          .femaleOnly()) {
           i.setWield(false);
-          player.updateWornItems(i.getWieldableDef().getWieldPos(),
-                  player.getPlayerAppearance().getSprite(i.getWieldableDef().getWieldPos()));
+          player.updateWornItems(i.getWieldableDef().getWieldPos(), player.getPlayerAppearance().getSprite(i
+            .getWieldableDef().getWieldPos()));
           player.getActionSender().sendUpdateItem(slot);
           break;
         }

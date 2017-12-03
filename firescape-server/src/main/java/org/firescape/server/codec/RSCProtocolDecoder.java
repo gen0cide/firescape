@@ -16,12 +16,13 @@ public class RSCProtocolDecoder extends CumulativeProtocolDecoder {
    * <code>out</code> as a <code>RSCPacket</code>.
    *
    * @param session The IoSession the data was read from
-   * @param in      The buffer
-   * @param out     The decoder output stream to which to write the
-   *                <code>RSCPacket</code>
+   * @param in The buffer
+   * @param out The decoder output stream to which to write the
+   * <code>RSCPacket</code>
+   *
    * @return Whether enough data was available to create a packet
    */
-  protected boolean doDecode(IoSession session, ByteBuffer in, ProtocolDecoderOutput out) {
+  protected boolean doDecode( IoSession session, ByteBuffer in, ProtocolDecoderOutput out ) {
     if (in.remaining() >= 2) {
       int length = in.get();
       if (length >= 160) {
@@ -44,7 +45,9 @@ public class RSCProtocolDecoder extends CumulativeProtocolDecoder {
           id = in.getUnsigned();
           in.get(payload);
         }
-        out.write(new RSCPacket(session, id, payload));
+        RSCPacket outboundPacket = new RSCPacket(session, id, payload);
+        System.out.printf("OUTGOING PACKET: (%d) %s\n", id, outboundPacket.printData());
+        out.write(outboundPacket);
         return true;
       } else {
         in.rewind();
@@ -58,9 +61,10 @@ public class RSCProtocolDecoder extends CumulativeProtocolDecoder {
    * Releases the buffer used by the given session.
    *
    * @param session The session for which to release the buffer
+   *
    * @throws Exception if failed to dispose all resources
    */
-  public void dispose(IoSession session) throws Exception {
+  public void dispose( IoSession session ) throws Exception {
     super.dispose(session);
   }
 }

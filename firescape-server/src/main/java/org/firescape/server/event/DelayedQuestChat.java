@@ -10,7 +10,7 @@ public abstract class DelayedQuestChat extends DelayedEvent {
   public Npc npc;
   public Player owner;
 
-  public DelayedQuestChat(Npc npc, Player owner, String[] messages) {
+  public DelayedQuestChat( Npc npc, Player owner, String[] messages ) {
     super(null, 2200);
     this.owner = owner;
     this.npc = npc;

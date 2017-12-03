@@ -17,7 +17,7 @@ public class TradeHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     Player affectedPlayer;
@@ -30,8 +30,8 @@ public class TradeHandler implements PacketHandler {
     switch (pID) {
       case 166: // Sending trade request
         affectedPlayer = world.getPlayer(p.readShort());
-        if (affectedPlayer == null || !player.withinRange(affectedPlayer, 8) || player.isTrading()
-                || player.tradeDuelThrottling()) {
+        if (affectedPlayer == null || !player.withinRange(affectedPlayer, 8) || player.isTrading() || player
+          .tradeDuelThrottling()) {
           unsetOptions(player);
           return;
         }
@@ -42,21 +42,20 @@ public class TradeHandler implements PacketHandler {
           return;
         }
 
-        if ((affectedPlayer.getPrivacySetting(2) && !affectedPlayer
-                .isFriendsWith(org.firescape.server.util.DataConversions.hashToUsername(player.getUsernameHash())))
-                || affectedPlayer
-                .isIgnoring(org.firescape.server.util.DataConversions.hashToUsername(player.getUsernameHash()))) {
+        if ((affectedPlayer.getPrivacySetting(2) && !affectedPlayer.isFriendsWith(org.firescape.server.util
+          .DataConversions.hashToUsername(player.getUsernameHash()))) || affectedPlayer.isIgnoring(org.firescape
+          .server.util.DataConversions.hashToUsername(player.getUsernameHash()))) {
           player.getActionSender().sendMessage("This player has trade requests blocked.");
           return;
         }
 
         player.setWishToTrade(affectedPlayer);
-        player.getActionSender().sendMessage(affectedPlayer.isTrading()
-                ? affectedPlayer.getUsername() + " is already in a trade" : "Sending trade request");
+        player.getActionSender().sendMessage(affectedPlayer.isTrading() ? affectedPlayer.getUsername() + " is " +
+          "already" + " in a trade" : "Sending trade request");
         affectedPlayer.getActionSender().sendMessage(player.getUsername() + " wishes to trade with you");
 
-        if (!player.isTrading() && affectedPlayer.getWishToTrade() != null
-                && affectedPlayer.getWishToTrade().equals(player) && !affectedPlayer.isTrading()) {
+        if (!player.isTrading() && affectedPlayer.getWishToTrade() != null && affectedPlayer.getWishToTrade().equals
+          (player) && !affectedPlayer.isTrading()) {
           player.setTrading(true);
           player.resetPath();
           player.resetAllExceptTrading();
@@ -70,7 +69,8 @@ public class TradeHandler implements PacketHandler {
         break;
       case 211: // Trade accepted
         affectedPlayer = player.getWishToTrade();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading()) { // This
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading()) {
+          // This
           // shouldn't
           // happen
           player.setSuspiciousPlayer(true);
@@ -91,8 +91,8 @@ public class TradeHandler implements PacketHandler {
         break;
       case 53: // Confirm accepted
         affectedPlayer = player.getWishToTrade();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading()
-                || !player.isTradeOfferAccepted() || !affectedPlayer.isTradeOfferAccepted()) { // This
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading() ||
+          !player.isTradeOfferAccepted() || !affectedPlayer.isTradeOfferAccepted()) { // This
           // shouldn't
           // happen
           player.setSuspiciousPlayer(true);
@@ -110,8 +110,8 @@ public class TradeHandler implements PacketHandler {
           int myAvailableSlots = (30 - player.getInventory().size()) + player.getInventory().getFreedSlots(myOffer);
 
           int theirRequiredSlots = affectedPlayer.getInventory().getRequiredSlots(myOffer);
-          int theirAvailableSlots = (30 - affectedPlayer.getInventory().size())
-                  + affectedPlayer.getInventory().getFreedSlots(theirOffer);
+          int theirAvailableSlots = (30 - affectedPlayer.getInventory().size()) + affectedPlayer.getInventory()
+            .getFreedSlots(theirOffer);
 
           if (theirRequiredSlots > theirAvailableSlots) {
             player.getActionSender().sendMessage("The other player does not have room to accept your items.");
@@ -138,8 +138,8 @@ public class TradeHandler implements PacketHandler {
             }
             if (affectedItem.isWielded()) {
               affectedItem.setWield(false);
-              player.updateWornItems(affectedItem.getWieldableDef().getWieldPos(),
-                      player.getPlayerAppearance().getSprite(affectedItem.getWieldableDef().getWieldPos()));
+              player.updateWornItems(affectedItem.getWieldableDef().getWieldPos(), player.getPlayerAppearance()
+                .getSprite(affectedItem.getWieldableDef().getWieldPos()));
             }
             player.getInventory().remove(item);
           }
@@ -153,8 +153,8 @@ public class TradeHandler implements PacketHandler {
             }
             if (affectedItem.isWielded()) {
               affectedItem.setWield(false);
-              affectedPlayer.updateWornItems(affectedItem.getWieldableDef().getWieldPos(),
-                      affectedPlayer.getPlayerAppearance().getSprite(affectedItem.getWieldableDef().getWieldPos()));
+              affectedPlayer.updateWornItems(affectedItem.getWieldableDef().getWieldPos(), affectedPlayer
+                .getPlayerAppearance().getSprite(affectedItem.getWieldableDef().getWieldPos()));
             }
             affectedPlayer.getInventory().remove(item);
           }
@@ -179,7 +179,8 @@ public class TradeHandler implements PacketHandler {
         break;
       case 216: // Trade declined
         affectedPlayer = player.getWishToTrade();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading()) { // This
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading()) {
+          // This
           // shouldn't
           // happen
           player.setSuspiciousPlayer(true);
@@ -194,9 +195,9 @@ public class TradeHandler implements PacketHandler {
         break;
       case 70: // Receive offered item data
         affectedPlayer = player.getWishToTrade();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading()
-                || (player.isTradeOfferAccepted() && affectedPlayer.isTradeOfferAccepted()) || player.isTradeConfirmAccepted()
-                || affectedPlayer.isTradeConfirmAccepted()) { // This shouldn't happen
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isTrading() || !affectedPlayer.isTrading() ||
+          (player.isTradeOfferAccepted() && affectedPlayer.isTradeOfferAccepted()) || player.isTradeConfirmAccepted()
+          || affectedPlayer.isTradeConfirmAccepted()) { // This shouldn't happen
           player.setSuspiciousPlayer(true);
           unsetOptions(player);
           unsetOptions(affectedPlayer);
@@ -236,11 +237,11 @@ public class TradeHandler implements PacketHandler {
     }
   }
 
-  private boolean busy(Player player) {
+  private boolean busy( Player player ) {
     return player.isBusy() || player.isRanging() || player.accessingBank() || player.isDueling();
   }
 
-  private void unsetOptions(Player p) {
+  private void unsetOptions( Player p ) {
     if (p == null) {
       return;
     }

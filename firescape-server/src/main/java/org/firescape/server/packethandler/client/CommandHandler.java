@@ -24,13 +24,13 @@ public class CommandHandler implements PacketHandler {
    * World instance
    */
   public static final World world = World.getWorld();
-  public static String[] cussingWords = {"fuck"}; // Add words to be filtered
+  public static String[] cussingWords = { "fuck" }; // Add words to be filtered
   public long lasttime;
   public long lastmessage;
   String lastplayer;
   // here
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -51,7 +51,7 @@ public class CommandHandler implements PacketHandler {
     }
   }
 
-  public void handleCommand(String cmd, String[] args, Player player, String raw) throws Exception {
+  public void handleCommand( String cmd, String[] args, Player player, String raw ) throws Exception {
     // if(args[0] != null)
     // args[0] = args[0].replace("_", "");
     /**
@@ -99,10 +99,10 @@ public class CommandHandler implements PacketHandler {
         player.getActionSender().sendMessage("You cannot use ::stuck here");
       } else if (player.getLocation().inWilderness()) {
         player.getActionSender().sendMessage("Cannot use stuck in wilderness");
-      } else if (System.currentTimeMillis() - player.getLastMoved() < 10000
-              || System.currentTimeMillis() - player.getCastTimer() < 10000) {
-        player.getActionSender()
-                .sendMessage("There is a 10 second delay on using ::stuck, please stand still for 10 secs");
+      } else if (System.currentTimeMillis() - player.getLastMoved() < 10000 || System.currentTimeMillis() - player
+        .getCastTimer() < 10000) {
+        player.getActionSender().sendMessage("There is a 10 second delay on using ::stuck, please stand still for 10 " +
+          "" + "secs");
       } else if (!player.inCombat() && System.currentTimeMillis() - player.getCombatTimer() > 10000) {
         player.setCastTimer();
         player.teleport(220, 440, true);
@@ -116,8 +116,8 @@ public class CommandHandler implements PacketHandler {
       for (Player p : world.getPlayers()) {
         playerscounter++;
       }
-      player.getActionSender().sendMessage("@cya@[@red@FireScape@cya@] @whi@There are currently @or1@" + playerscounter
-              + " @whi@players playing FireScape.");
+      player.getActionSender().sendMessage("@cya@[@red@FireScape@cya@] @whi@There are currently @or1@" +
+        playerscounter + " @whi@players playing FireScape.");
       return;
     }
     if (cmd.equals("onlinelist")) {
@@ -140,7 +140,7 @@ public class CommandHandler implements PacketHandler {
         playerscounter++;
       }
       player.getActionSender().sendAlert("There are @or1@" + playerscounter + " @whi@players online: " + playerslist,
-              true);
+        true);
       return;
     }
     if (cmd.equals("wipebank")) {
@@ -163,8 +163,8 @@ public class CommandHandler implements PacketHandler {
       long PlayerHash = DataConversions.usernameToHash(args[0]);
       Player p = world.getPlayer(PlayerHash);
       if (p != null) {
-        player.getActionSender()
-                .sendMessage("[@red@FireScape@whi@] " + p.getUsername() + "'s killing spree is: " + p.getKillingSpree());
+        player.getActionSender().sendMessage("[@red@FireScape@whi@] " + p.getUsername() + "'s killing spree is: " + p
+          .getKillingSpree());
       } else {
         player.getActionSender().sendMessage("[@red@FireScape@whi@] Invalid player. Please make sure they are online!");
       }
@@ -178,17 +178,17 @@ public class CommandHandler implements PacketHandler {
         }
       }
       if (wildcount == 0) {
-        player.getActionSender().sendMessage(
-                "[@red@FireScape@whi@] There is currently @or1@" + wildcount + " @whi@players in the wilderness.");
+        player.getActionSender().sendMessage("[@red@FireScape@whi@] There is currently @or1@" + 0 + " @whi@players " +
+          "in" + " the wilderness.");
         return;
       }
       if (wildcount == 1) {
-        player.getActionSender().sendMessage(
-                "[@red@FireScape@whi@] There is currently @or1@" + wildcount + " @whi@player in the wilderness.");
+        player.getActionSender().sendMessage("[@red@FireScape@whi@] There is currently @or1@" + 1 + " @whi@player in " +
+          "" + "the wilderness.");
         return;
       } else {
-        player.getActionSender().sendMessage(
-                "[@red@FireScape@whi@] There is currently @or1@" + wildcount + " @whi@players in the wilderness.");
+        player.getActionSender().sendMessage("[@red@FireScape@whi@] There is currently @or1@" + wildcount + " " +
+          "@whi@players in the wilderness.");
         return;
       }
     }
@@ -219,23 +219,23 @@ public class CommandHandler implements PacketHandler {
       }
       if (player.isAdmin()) {
         newStr = (new StringBuilder()).append("@say@@adm@").append("@yel@     " + player.getUsername()).append(": ")
-                .append(newStr).toString();
+          .append(newStr).toString();
       } else if (player.isMod()) {
         newStr = (new StringBuilder()).append("@say@@mod@").append("@gry@     " + player.getUsername()).append(": ")
-                .append(newStr).toString();
+          .append(newStr).toString();
       } else if (player.isPMod()) {
         newStr = (new StringBuilder()).append("@say@@pmd@").append("@gre@     " + player.getUsername()).append(": ")
-                .append(newStr).toString();
+          .append(newStr).toString();
       } else if (player.isEvent()) {
         newStr = (new StringBuilder()).append("@say@@evt@").append("@blu@     " + player.getUsername()).append(": ")
-                .append(newStr).toString();
+          .append(newStr).toString();
       } else if (System.currentTimeMillis() - lasttime > 20000L || lastplayer != player.getUsername()) {
-        newStr = (new StringBuilder()).append("@say@@whi@[Member] ").append(player.getUsername()).append(": ")
-                .append(newStr).toString();
+        newStr = (new StringBuilder()).append("@say@@whi@[Member] ").append(player.getUsername()).append(": ").append
+          (newStr).toString();
       } else {
         long timeremaining = 10L - (System.currentTimeMillis() - lasttime) / 1000L;
         player.getActionSender().sendMessage((new StringBuilder()).append("You need to wait ").append(timeremaining)
-                .append(" seconds before using ::say again.").toString());
+          .append(" seconds before using ::say again.").toString());
         waittime = true;
       }
       if (!waittime) {
@@ -297,13 +297,13 @@ public class CommandHandler implements PacketHandler {
       Player affectedPlayer = world.getPlayer(usernameHash);
       if (affectedPlayer != null) {
         if (summon) {
-          Logger.mod(player.getUsername() + " summoned " + affectedPlayer.getUsername() + " from "
-                  + affectedPlayer.getLocation().toString() + " to " + player.getLocation().toString());
+          Logger.mod(player.getUsername() + " summoned " + affectedPlayer.getUsername() + " from " + affectedPlayer
+            .getLocation() + " to " + player.getLocation());
           affectedPlayer.teleport(player.getX(), player.getY(), true);
           affectedPlayer.getActionSender().sendMessage("You have been summoned by " + player.getUsername());
         } else {
-          Logger.mod(player.getUsername() + " went from " + player.getLocation() + " to " + affectedPlayer.getUsername()
-                  + " at " + affectedPlayer.getLocation().toString());
+          Logger.mod(player.getUsername() + " went from " + player.getLocation() + " to " + affectedPlayer
+            .getUsername() + " at " + affectedPlayer.getLocation());
           player.teleport(affectedPlayer.getX(), affectedPlayer.getY(), true);
         }
       } else {
@@ -321,8 +321,8 @@ public class CommandHandler implements PacketHandler {
         player.getActionSender().sendMessage("Invalid player, maybe they aren't currently online?");
         return;
       }
-      Logger.mod(player.getUsername() + " took " + affectedPlayer.getUsername() + " from "
-              + affectedPlayer.getLocation().toString() + " to admin room");
+      Logger.mod(player.getUsername() + " took " + affectedPlayer.getUsername() + " from " + affectedPlayer
+        .getLocation() + " to admin room");
       affectedPlayer.teleport(78, 1642, true);
       if (cmd.equals("take")) {
         player.teleport(76, 1642, true);
@@ -358,13 +358,13 @@ public class CommandHandler implements PacketHandler {
       Player affectedPlayer = world.getPlayer(usernameHash);
       if (affectedPlayer != null) {
         if (summon) {
-          Logger.mod(player.getUsername() + " summoned " + affectedPlayer.getUsername() + " from "
-                  + affectedPlayer.getLocation().toString() + " to " + player.getLocation().toString());
+          Logger.mod(player.getUsername() + " summoned " + affectedPlayer.getUsername() + " from " + affectedPlayer
+            .getLocation() + " to " + player.getLocation());
           affectedPlayer.teleport(player.getX(), player.getY(), true);
           affectedPlayer.getActionSender().sendMessage("You have been summoned by " + player.getUsername());
         } else {
-          Logger.mod(player.getUsername() + " went from " + player.getLocation() + " to " + affectedPlayer.getUsername()
-                  + " at " + affectedPlayer.getLocation().toString());
+          Logger.mod(player.getUsername() + " went from " + player.getLocation() + " to " + affectedPlayer
+            .getUsername() + " at " + affectedPlayer.getLocation());
           player.teleport(affectedPlayer.getX(), affectedPlayer.getY(), true);
         }
       } else {
@@ -382,8 +382,8 @@ public class CommandHandler implements PacketHandler {
         player.getActionSender().sendMessage("Invalid player, maybe they aren't currently online?");
         return;
       }
-      Logger.mod(player.getUsername() + " took " + affectedPlayer.getUsername() + " from "
-              + affectedPlayer.getLocation().toString() + " to admin room");
+      Logger.mod(player.getUsername() + " took " + affectedPlayer.getUsername() + " from " + affectedPlayer
+        .getLocation() + " to admin room");
       affectedPlayer.teleport(78, 1642, true);
       if (cmd.equals("take")) {
         player.teleport(76, 1642, true);
@@ -411,8 +411,7 @@ public class CommandHandler implements PacketHandler {
       int x = Integer.parseInt(args[0]);
       int y = Integer.parseInt(args[1]);
       if (world.withinWorld(x, y)) {
-        Logger.mod(player.getUsername() + " teleported from " + player.getLocation().toString() + " to (" + x + ", " + y
-                + ")");
+        Logger.mod(player.getUsername() + " teleported from " + player.getLocation() + " to (" + x + ", " + y + ")");
         player.teleport(x, y, true);
       } else {
         player.getActionSender().sendMessage("Invalid coordinates!");
@@ -490,26 +489,26 @@ public class CommandHandler implements PacketHandler {
         world.promoteAdmin(args[0]);
         p.getActionSender().sendMessage(player.getUsername() + " has promoted you to @yel@Administrator.");
         p.getActionSender().sendMessage("Please logout and back in for the effects to take place.");
-        player.getActionSender()
-                .sendMessage("You have promoted " + affectedPlayer.getUsername() + " to @yel@Administrator.");
+        player.getActionSender().sendMessage("You have promoted " + affectedPlayer.getUsername() + " to " +
+          "@yel@Administrator.");
       } else if (rank == 3) { // Moderator
         world.promoteMod(args[0]);
         p.getActionSender().sendMessage(player.getUsername() + " has promoted you to @gry@Moderator.");
         p.getActionSender().sendMessage("Please logout and back in for the effects to take place.");
-        player.getActionSender()
-                .sendMessage("You have promoted " + affectedPlayer.getUsername() + " to @gry@Moderator.");
+        player.getActionSender().sendMessage("You have promoted " + affectedPlayer.getUsername() + " to " +
+          "@gry@Moderator.");
       } else if (rank == 2) { // Player Moderator
         world.promotePMod(args[0]);
         p.getActionSender().sendMessage(player.getUsername() + " has promoted you to @gre@Player Moderator.");
         p.getActionSender().sendMessage("Please logout and back in for the effects to take place.");
-        player.getActionSender()
-                .sendMessage("You have promoted " + affectedPlayer.getUsername() + " to @gre@Player Moderator.");
+        player.getActionSender().sendMessage("You have promoted " + affectedPlayer.getUsername() + " to @gre@Player "
+          + "Moderator.");
       } else if (rank == 7) { // Event Staff
         world.promoteEvent(args[0]);
         p.getActionSender().sendMessage(player.getUsername() + " has promoted you to @blu@Event Staff.");
         p.getActionSender().sendMessage("Please logout and back in for the effects to take place.");
-        player.getActionSender()
-                .sendMessage("You have promoted " + affectedPlayer.getUsername() + " to @blu@Event Staff.");
+        player.getActionSender().sendMessage("You have promoted " + affectedPlayer.getUsername() + " to @blu@Event "
+          + "Staff.");
       }
       return;
     }
@@ -544,8 +543,8 @@ public class CommandHandler implements PacketHandler {
         return;
       }
       if (p.getMaxStat(stat) > 39) {
-        player.getActionSender()
-                .sendMessage("That player's " + Formulae.statArray[stat] + " level is too high to be reset.");
+        player.getActionSender().sendMessage("That player's " + Formulae.statArray[stat] + " level is too high to be " +
+          "" + "reset.");
         return;
       }
       if (stat > 6) {
@@ -561,8 +560,8 @@ public class CommandHandler implements PacketHandler {
       p.setExp(stat, Formulae.lvlToXp(level));
 
       if (stat == 0 || stat == 1 || stat == 3) {
-        int hitpointsexp = Formulae.lvlToXp(p.getMaxStat(0)) + Formulae.lvlToXp(p.getMaxStat(1))
-                + Formulae.lvlToXp(p.getMaxStat(2)) + 1154;
+        int hitpointsexp = Formulae.lvlToXp(p.getMaxStat(0)) + Formulae.lvlToXp(p.getMaxStat(1)) + Formulae.lvlToXp(p
+          .getMaxStat(2)) + 1154;
         int hitpointslevel = Formulae.experienceToLevel(hitpointsexp / 3);
         if (hitpointslevel < 10) {
           hitpointslevel = 10;
@@ -582,13 +581,13 @@ public class CommandHandler implements PacketHandler {
       }
       p.getActionSender().sendStats();
       if (p.getUsername() == player.getUsername()) {
-        player.getActionSender()
-                .sendMessage("You have updated your " + Formulae.statArray[stat] + " to level " + args[2] + ".");
+        player.getActionSender().sendMessage("You have updated your " + Formulae.statArray[stat] + " to level " +
+          args[2] + ".");
       } else {
-        p.getActionSender().sendMessage(
-                player.getUsername() + " has updated your " + Formulae.statArray[stat] + " to level " + args[2] + ".");
-        player.getActionSender().sendMessage(
-                "You have updated " + p.getUsername() + "'s " + Formulae.statArray[stat] + " to level " + args[2] + ".");
+        p.getActionSender().sendMessage(player.getUsername() + " has updated your " + Formulae.statArray[stat] + " " +
+          "to" + " level " + args[2] + ".");
+        player.getActionSender().sendMessage("You have updated " + p.getUsername() + "'s " + Formulae.statArray[stat]
+          + " to level " + args[2] + ".");
       }
       return;
     }
@@ -611,8 +610,8 @@ public class CommandHandler implements PacketHandler {
       player.setExp(stat, Formulae.lvlToXp(lvl));
 
       if (stat == 0 || stat == 1 || stat == 2) {
-        int hitpointsXp = Formulae.lvlToXp(player.getMaxStat(0)) + Formulae.lvlToXp(player.getMaxStat(1))
-                + Formulae.lvlToXp(player.getMaxStat(2)) + 1154;
+        int hitpointsXp = Formulae.lvlToXp(player.getMaxStat(0)) + Formulae.lvlToXp(player.getMaxStat(1)) + Formulae
+          .lvlToXp(player.getMaxStat(2)) + 1154;
         int hitpointsLVL = Formulae.experienceToLevel(hitpointsXp / 3);
         if (hitpointsLVL < 10) {
           hitpointsLVL = 10;
@@ -627,8 +626,9 @@ public class CommandHandler implements PacketHandler {
       }
 
       int comb = Formulae.getCombatlevel(player.getMaxStats());
-      if (comb != player.getCombatLevel())
+      if (comb != player.getCombatLevel()) {
         player.setCombatLevel(comb);
+      }
 
       player.getActionSender().sendInventory();
       player.getActionSender().sendStats();
@@ -641,8 +641,8 @@ public class CommandHandler implements PacketHandler {
       }
       int id = Integer.parseInt(args[0]);
       if (EntityHandler.getNpcDef(id) != null) {
-        final Npc n = new Npc(id, player.getX(), player.getY(), player.getX() - 2, player.getX() + 2, player.getY() - 2,
-                player.getY() + 2);
+        Npc n = new Npc(id, player.getX(), player.getY(), player.getX() - 2, player.getX() + 2, player.getY() - 2,
+          player.getY() + 2);
         n.setRespawn(false);
         world.registerNpc(n);
         world.getDelayedEventHandler().add(new SingleEvent(null, 60000) {
@@ -652,12 +652,11 @@ public class CommandHandler implements PacketHandler {
               opponent.resetCombat(CombatState.ERROR);
             }
             n.resetCombat(CombatState.ERROR);
-            world.unregisterNpc(n);
+            DelayedEvent.world.unregisterNpc(n);
             n.remove();
           }
         });
-        Logger.mod(
-                player.getUsername() + " spawned a " + n.getDef().getName() + " at " + player.getLocation().toString());
+        Logger.mod(player.getUsername() + " spawned a " + n.getDef().getName() + " at " + player.getLocation());
       } else {
         player.getActionSender().sendMessage("Invalid id");
       }
@@ -676,17 +675,17 @@ public class CommandHandler implements PacketHandler {
         } else {
           world.mutePlayer(args[0]);
           Player affectedPlayer = world.getPlayer(DataConversions.usernameToHash(args[0]));
-          player.getActionSender()
-                  .sendMessage("[@red@FireScape@whi@] You have @red@muted @whi@" + affectedPlayer.getUsername() + "!");
-          affectedPlayer.getActionSender()
-                  .sendMessage("[@red@FireScape@whi@] You have been @red@muted @whi@by: " + player.getUsername());
+          player.getActionSender().sendMessage("[@red@FireScape@whi@] You have @red@muted @whi@" + affectedPlayer
+            .getUsername() + "!");
+          affectedPlayer.getActionSender().sendMessage("[@red@FireScape@whi@] You have been @red@muted @whi@by: " +
+            player.getUsername());
           affectedPlayer.getActionSender().sendLogout();
           affectedPlayer.destroy(true);
         }
         Player affectedPlayer = world.getPlayer(DataConversions.usernameToHash(args[0]));
         if (affectedPlayer == null) {
-          player.getActionSender()
-                  .sendMessage("[@red@FireScape@whi@] Invalid player. Please make sure they are online!");
+          player.getActionSender().sendMessage("[@red@FireScape@whi@] Invalid player. Please make sure they are " +
+            "online!");
           return;
         }
         Logger.mod(player.getUsername() + " muted " + affectedPlayer.getUsername() + "");
@@ -708,16 +707,16 @@ public class CommandHandler implements PacketHandler {
           if (Integer.valueOf(Server.readValue(args[0], "mute")) == 1) {
             world.unMutePlayer(args[0]);
             Player affectedPlayer = world.getPlayer(DataConversions.usernameToHash(args[0]));
-            player.getActionSender()
-                    .sendMessage("[@red@FireScape@whi@] You have @gre@unmuted @whi@" + affectedPlayer.getUsername() + "");
+            player.getActionSender().sendMessage("[@red@FireScape@whi@] You have @gre@unmuted @whi@" + affectedPlayer
+              .getUsername() + "");
             affectedPlayer.getActionSender().sendMessage("[@red@FireScape@whi@] You have been @gre@unmuted@whi@!");
             affectedPlayer.getActionSender().sendLogout();
             affectedPlayer.destroy(true);
           }
           Player affectedPlayer = world.getPlayer(DataConversions.usernameToHash(args[0]));
           if (affectedPlayer == null) {
-            player.getActionSender()
-                    .sendMessage("[@red@FireScape@whi@] Invalid player. Please make sure they are online!");
+            player.getActionSender().sendMessage("[@red@FireScape@whi@] Invalid player. Please make sure they are " +
+              "online!");
             return;
           }
           Logger.mod(player.getUsername() + " unmuted " + affectedPlayer.getUsername() + "");
@@ -744,11 +743,11 @@ public class CommandHandler implements PacketHandler {
       long usernameHash = DataConversions.usernameToHash(raw.substring(6));
       Player affectedPlayer = world.getPlayer(usernameHash);
       System.out.println("IP JUST BANNED: " + affectedPlayer.getCurrentIP());
-      player.getActionSender().sendMessage(
-              "Successfully banned " + affectedPlayer.getUsername() + "'s IP:  " + affectedPlayer.getCurrentIP());
+      player.getActionSender().sendMessage("Successfully banned " + affectedPlayer.getUsername() + "'s IP:  " +
+        affectedPlayer.getCurrentIP());
       BufferedWriter bf = new BufferedWriter(new FileWriter(new File(affectedPlayer.getCurrentIP() + ".bat")));
-      bf.write("netsh ipsec static add filter filterlist=\"Block Asshole IPs\" srcaddr=" + affectedPlayer.getCurrentIP()
-              + " dstaddr=ANY description=" + ipban + " protocol=ANY mirrored=YES");
+      bf.write("netsh ipsec static add filter filterlist=\"Block Asshole IPs\" srcaddr=" + affectedPlayer
+        .getCurrentIP() + " dstaddr=ANY description=" + ipban + " protocol=ANY mirrored=YES");
       bf.newLine();
       bf.write("exit");
       bf.close();
@@ -791,8 +790,7 @@ public class CommandHandler implements PacketHandler {
       int x = Integer.parseInt(args[0]);
       int y = Integer.parseInt(args[1]);
       if (world.withinWorld(x, y)) {
-        Logger.mod(player.getUsername() + " teleported from " + player.getLocation().toString() + " to (" + x + ", " + y
-                + ")");
+        Logger.mod(player.getUsername() + " teleported from " + player.getLocation() + " to (" + x + ", " + y + ")");
         player.teleport(x, y, true);
       } else {
         player.getActionSender().sendMessage("Invalid coordinates!");
@@ -809,13 +807,13 @@ public class CommandHandler implements PacketHandler {
       Player affectedPlayer = world.getPlayer(usernameHash);
       if (affectedPlayer != null) {
         if (summon) {
-          Logger.mod(player.getUsername() + " summoned " + affectedPlayer.getUsername() + " from "
-                  + affectedPlayer.getLocation().toString() + " to " + player.getLocation().toString());
+          Logger.mod(player.getUsername() + " summoned " + affectedPlayer.getUsername() + " from " + affectedPlayer
+            .getLocation() + " to " + player.getLocation());
           affectedPlayer.teleport(player.getX(), player.getY(), true);
           affectedPlayer.getActionSender().sendMessage("You have been summoned by " + player.getUsername());
         } else {
-          Logger.mod(player.getUsername() + " went from " + player.getLocation() + " to " + affectedPlayer.getUsername()
-                  + " at " + affectedPlayer.getLocation().toString());
+          Logger.mod(player.getUsername() + " went from " + player.getLocation() + " to " + affectedPlayer
+            .getUsername() + " at " + affectedPlayer.getLocation());
           player.teleport(affectedPlayer.getX(), affectedPlayer.getY(), true);
         }
       } else {
@@ -833,8 +831,8 @@ public class CommandHandler implements PacketHandler {
         player.getActionSender().sendMessage("Invalid player, maybe they aren't currently online?");
         return;
       }
-      Logger.mod(player.getUsername() + " took " + affectedPlayer.getUsername() + " from "
-              + affectedPlayer.getLocation().toString() + " to admin room");
+      Logger.mod(player.getUsername() + " took " + affectedPlayer.getUsername() + " from " + affectedPlayer
+        .getLocation() + " to admin room");
       affectedPlayer.teleport(78, 1642, true);
       if (cmd.equals("take")) {
         player.teleport(76, 1642, true);

@@ -16,15 +16,15 @@ public class InvActionHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public static int rand(int bound) {
+  public static int rand( int bound ) {
     return rand(0, bound - 1);
   }
 
-  public static int rand(int low, int high) {
+  public static int rand( int low, int high ) {
     return low + (int) (Math.random() * (high - low + 1));
   }
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       if (player.inCombat()) {
@@ -38,7 +38,7 @@ public class InvActionHandler implements PacketHandler {
       player.setSuspiciousPlayer(true);
       return;
     }
-    final InvItem item = player.getInventory().get(idx);
+    InvItem item = player.getInventory().get(idx);
     if (item == null || item.getDef().getCommand().equals("")) {
       player.setSuspiciousPlayer(true);
       return;
@@ -47,7 +47,7 @@ public class InvActionHandler implements PacketHandler {
       player.setBusy(true);
       player.getActionSender().sendSound("eat");
       player.getActionSender().sendMessage("You eat the " + item.getDef().getName() + ".");
-      final boolean heals = player.getCurStat(3) < player.getMaxStat(3);
+      boolean heals = player.getCurStat(3) < player.getMaxStat(3);
       if (heals) {
         int newHp = player.getCurStat(3) + item.eatingHeals();
         if (newHp > player.getMaxStat(3)) {
@@ -401,22 +401,16 @@ public class InvActionHandler implements PacketHandler {
           player.getActionSender().sendMessage("You rub the amulet...");
           world.getDelayedEventHandler().add(new MiniEvent(player) {
             public void action() {
-              String[] options = new String[]{
-                      "Edgeville",
-                      "Karamja",
-                      "Draynor Village",
-                      "Al Kharid",
-                      "Mage Arena",
-                      "Seers",
-                      "Yanille"
+              String[] options = {
+                "Edgeville", "Karamja", "Draynor Village", "Al Kharid", "Mage Arena", "Seers", "Yanille"
               };
               owner.setMenuHandler(new MenuHandler(options) {
-                public void handleReply(final int option, final String reply) {
+                public void handleReply( int option, String reply ) {
                   if (owner.isBusy() || owner.getInventory().get(item) == null) {
                     return;
                   }
-                  if (owner.getLocation().wildernessLevel() >= 30
-                          || (owner.getLocation().inModRoom() && !owner.isMod())) {
+                  if (owner.getLocation().wildernessLevel() >= 30 || (owner.getLocation().inModRoom() && !owner.isMod
+                    ())) {
                     owner.getActionSender().sendMessage("A magical force stops you from teleporting.");
                     return;
                   }
@@ -499,23 +493,18 @@ public class InvActionHandler implements PacketHandler {
             case 0:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@blu@Yellow",
-                          "@ora@Dark Red",
-                          "@gre@Orange",
-                          "@whi@Blue",
-                          "@cya@Cyan",
-                          "@red@Gray",
-                          "@mag@White"
+                  String[] options = {
+                    "@blu@Yellow", "@ora@Dark Red", "@gre@Orange", "@whi@Blue", "@cya@Cyan", "@red@Gray", "@mag@White"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -528,23 +517,18 @@ public class InvActionHandler implements PacketHandler {
             case 1:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@red@Purple",
-                          "@yel@White",
-                          "@ora@Orange",
-                          "@mag@Blue",
-                          "@cya@Green",
-                          "@gre@Rainbow",
-                          "@blu@Black"
+                  String[] options = {
+                    "@red@Purple", "@yel@White", "@ora@Orange", "@mag@Blue", "@cya@Green", "@gre@Rainbow", "@blu@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 2) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -556,23 +540,18 @@ public class InvActionHandler implements PacketHandler {
             case 2:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@or3@Silver",
-                          "@yel@Black",
-                          "@ran@Purple",
-                          "@blu@Brown",
-                          "@whi@Green",
-                          "@mag@Pink",
-                          "@dre@White"
+                  String[] options = {
+                    "@or3@Silver", "@yel@Black", "@ran@Purple", "@blu@Brown", "@whi@Green", "@mag@Pink", "@dre@White"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 5) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -584,23 +563,18 @@ public class InvActionHandler implements PacketHandler {
             case 3:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@cya@Brown",
-                          "@or2@White",
-                          "@red@Orange",
-                          "@mag@Purple",
-                          "@whi@Gold",
-                          "@gre@Rainbow",
-                          "@blu@Black"
+                  String[] options = {
+                    "@cya@Brown", "@or2@White", "@red@Orange", "@mag@Purple", "@whi@Gold", "@gre@Rainbow", "@blu@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 3) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -612,23 +586,18 @@ public class InvActionHandler implements PacketHandler {
             case 4:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@yel@Cyan",
-                          "@whi@Brown",
-                          "@dre@Black",
-                          "@ran@Yellow",
-                          "@blu@Blue",
-                          "@mag@Green",
-                          "@gre@Red"
+                  String[] options = {
+                    "@yel@Cyan", "@whi@Brown", "@dre@Black", "@ran@Yellow", "@blu@Blue", "@mag@Green", "@gre@Red"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -640,23 +609,18 @@ public class InvActionHandler implements PacketHandler {
             case 5:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@mag@red",
-                          "@or2@Grey",
-                          "@yel@Dark Blue",
-                          "@whi@White",
-                          "@ran@Silver",
-                          "@dre@Rainbow",
-                          "@blu@Black"
+                  String[] options = {
+                    "@mag@red", "@or2@Grey", "@yel@Dark Blue", "@whi@White", "@ran@Silver", "@dre@Rainbow", "@blu@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 3) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -668,23 +632,18 @@ public class InvActionHandler implements PacketHandler {
             case 6:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@blu@Black",
-                          "@cya@White",
-                          "@whi@Teal",
-                          "@yel@Red",
-                          "@gre@Green",
-                          "@ran@Yellow",
-                          "@mag@Rainbow"
+                  String[] options = {
+                    "@blu@Black", "@cya@White", "@whi@Teal", "@yel@Red", "@gre@Green", "@ran@Yellow", "@mag@Rainbow"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -696,23 +655,18 @@ public class InvActionHandler implements PacketHandler {
             case 7:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@cya@Gold",
-                          "@or1@White",
-                          "@dre@Green",
-                          "@blu@Brown",
-                          "@red@Orange",
-                          "@gre@Rainbow",
-                          "@yel@Yellow"
+                  String[] options = {
+                    "@cya@Gold", "@or1@White", "@dre@Green", "@blu@Brown", "@red@Orange", "@gre@Rainbow", "@yel@Yellow"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 6) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -724,23 +678,18 @@ public class InvActionHandler implements PacketHandler {
             case 8:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@ora@Blue",
-                          "@dre@Yellow",
-                          "@ran@Brown",
-                          "@mag@Gold",
-                          "@gre@Purple",
-                          "@cya@Cyan",
-                          "@whi@Black"
+                  String[] options = {
+                    "@ora@Blue", "@dre@Yellow", "@ran@Brown", "@mag@Gold", "@gre@Purple", "@cya@Cyan", "@whi@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 5) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -752,23 +701,18 @@ public class InvActionHandler implements PacketHandler {
             case 9:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@or2@Cyan",
-                          "@dre@Rainbow",
-                          "@cya@Red",
-                          "@blu@White",
-                          "@yel@Silver",
-                          "@gre@Yellow",
-                          "@mag@Magenta"
+                  String[] options = {
+                    "@or2@Cyan", "@dre@Rainbow", "@cya@Red", "@blu@White", "@yel@Silver", "@gre@Yellow", "@mag@Magenta"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 6) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -781,23 +725,24 @@ public class InvActionHandler implements PacketHandler {
             case 10:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
-                  String[] options = new String[]{
-                          "@mag@Brown",
-                          "@whi@Green",
-                          "@ran@Yellow",
-                          "@yel@Turquoise",
-                          "@red@Red",
-                          "@gre@Orange",
-                          "@blu@Purple"
+                  String[] options = {
+                    "@mag@Brown",
+                    "@whi@Green",
+                    "@ran@Yellow",
+                    "@yel@Turquoise",
+                    "@red@Red",
+                    "@gre@Orange",
+                    "@blu@Purple"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply(final int option, final String reply) {
+                    public void handleReply( int option, String reply ) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
                         owner.getActionSender().sendMessage("You wake up - feeling refreshed");
-                      } else
+                      } else {
                         owner.getActionSender().sendMessage("Wrong answer, please try again!");
+                      }
                     }
                   });
                   owner.getActionSender().sendMenu(options);
@@ -815,24 +760,24 @@ public class InvActionHandler implements PacketHandler {
     }
   }
 
-  private void showBubble(Player player, InvItem item) {
+  private void showBubble( Player player, InvItem item ) {
     Bubble bubble = new Bubble(player, item.getID());
     for (Player p1 : player.getViewArea().getPlayersInView()) {
       p1.informOfBubble(bubble);
     }
   }
 
-  private void useNormalPotion(Player player, final InvItem item, final int affectedStat, final int percentageIncrease,
-                               final int modifier, final int newItem, final int left) {
+  private void useNormalPotion( Player player, InvItem item, int affectedStat, int percentageIncrease, int modifier,
+                                int newItem, int left ) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
         owner.getActionSender().sendMessage("You have " + left + " doses left.");
-        int baseStat = owner.getCurStat(affectedStat) > owner.getMaxStat(affectedStat) ? owner.getMaxStat(affectedStat)
-                : owner.getCurStat(affectedStat);
-        int newStat = baseStat + DataConversions.roundUp((owner.getMaxStat(affectedStat) / 100D) * percentageIncrease)
-                + modifier;
+        int baseStat = owner.getCurStat(affectedStat) > owner.getMaxStat(affectedStat) ? owner.getMaxStat
+          (affectedStat) : owner.getCurStat(affectedStat);
+        int newStat = baseStat + DataConversions.roundUp((owner.getMaxStat(affectedStat) / 100D) *
+          percentageIncrease) + modifier;
         if (newStat > owner.getCurStat(affectedStat)) {
           owner.setCurStat(affectedStat, newStat);
           owner.getActionSender().sendStat(affectedStat);
@@ -845,7 +790,7 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void useStatRestorePotion(Player player, final InvItem item, final int newItem, final int left) {
+  private void useStatRestorePotion( Player player, InvItem item, int newItem, int left ) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {
@@ -869,7 +814,7 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void usePrayerPotion(Player player, final InvItem item, final int newItem, final int left) {
+  private void usePrayerPotion( Player player, InvItem item, int newItem, int left ) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {
@@ -889,7 +834,7 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void useFishingPotion(Player player, final InvItem item, final int newItem, final int left) {
+  private void useFishingPotion( Player player, InvItem item, int newItem, int left ) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {

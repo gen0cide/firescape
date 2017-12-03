@@ -11,23 +11,23 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class FightEvent extends DelayedEvent {
-  private Mob affectedMob;
+  private final Mob affectedMob;
+  private final int firstHit;
+  private final Random r = new Random();
   private int hits;
-  private int firstHit;
-  private Random r = new Random();
 
-  public FightEvent(Player owner, Mob affectedMob) {
+  public FightEvent( Player owner, Mob affectedMob ) {
     this(owner, affectedMob, false);
   }
 
-  public FightEvent(Player owner, Mob affectedMob, boolean attacked) {
+  public FightEvent( Player owner, Mob affectedMob, boolean attacked ) {
     super(owner, 1000);
     this.affectedMob = affectedMob;
     firstHit = attacked ? 1 : 0;
     hits = 0;
   }
 
-  public final int Rand(int low, int high) {
+  public final int Rand( int low, int high ) {
     return low + r.nextInt(high - low);
   }
 
@@ -107,7 +107,7 @@ public class FightEvent extends DelayedEvent {
     }
   }
 
-  public boolean equals(Object o) {
+  public boolean equals( Object o ) {
     if (o instanceof FightEvent) {
       FightEvent e = (FightEvent) o;
       return e.belongsTo(owner) && e.getAffectedMob().equals(affectedMob);

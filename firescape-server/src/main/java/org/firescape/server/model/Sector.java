@@ -17,7 +17,7 @@ public class Sector {
   /**
    * An array containing all the tiles within this Sector
    */
-  private Tile[] tiles;
+  private final Tile[] tiles;
 
   /**
    * Creates a new Sector full of blank tiles
@@ -32,7 +32,7 @@ public class Sector {
   /**
    * Create a new Sector from raw data packed into the given ByteBuffer
    */
-  public static Sector unpack(ByteBuffer in) throws IOException {
+  public static Sector unpack( ByteBuffer in ) throws IOException {
     int length = Sector.WIDTH * Sector.HEIGHT;
     if (in.remaining() < (10 * length)) {
       throw new IOException("Provided buffer too short");
@@ -49,28 +49,28 @@ public class Sector {
   /**
    * Sets the Tile at the given index
    */
-  public void setTile(int i, Tile t) {
+  public void setTile( int i, Tile t ) {
     tiles[i] = t;
   }
 
   /**
    * Sets the the Tile at the given coords
    */
-  public void setTile(int x, int y, Tile t) {
+  public void setTile( int x, int y, Tile t ) {
     setTile(x * Sector.WIDTH + y, t);
   }
 
   /**
    * Gets the Tile at the given coords
    */
-  public Tile getTile(int x, int y) {
+  public Tile getTile( int x, int y ) {
     return getTile(x * Sector.WIDTH + y);
   }
 
   /**
    * Gets the Tile at the given index
    */
-  public Tile getTile(int i) {
+  public Tile getTile( int i ) {
     return tiles[i];
   }
 

@@ -11,16 +11,16 @@ import org.firescape.server.util.EntityList;
 import java.util.List;
 
 public final class ClientUpdater {
-  private static World world = World.getWorld();
-  private EntityList<Player> players = world.getPlayers();
-  private EntityList<Npc> npcs = world.getNpcs();
-  private PlayerPositionPacketBuilder playerPositionBuilder = new PlayerPositionPacketBuilder();
-  private PlayerUpdatePacketBuilder playerApperanceBuilder = new PlayerUpdatePacketBuilder();
-  private GameObjectPositionPacketBuilder gameObjectPositionBuilder = new GameObjectPositionPacketBuilder();
-  private WallObjectPositionPacketBuilder wallObjectPositionPacketBuilder = new WallObjectPositionPacketBuilder();
-  private ItemPositionPacketBuilder itemPositionBuilder = new ItemPositionPacketBuilder();
-  private NpcPositionPacketBuilder npcPositionPacketBuilder = new NpcPositionPacketBuilder();
-  private NpcUpdatePacketBuilder npcApperanceBuilder = new NpcUpdatePacketBuilder();
+  private static final World world = World.getWorld();
+  private final EntityList<Player> players = world.getPlayers();
+  private final EntityList<Npc> npcs = world.getNpcs();
+  private final PlayerPositionPacketBuilder playerPositionBuilder = new PlayerPositionPacketBuilder();
+  private final PlayerUpdatePacketBuilder playerApperanceBuilder = new PlayerUpdatePacketBuilder();
+  private final GameObjectPositionPacketBuilder gameObjectPositionBuilder = new GameObjectPositionPacketBuilder();
+  private final WallObjectPositionPacketBuilder wallObjectPositionPacketBuilder = new WallObjectPositionPacketBuilder();
+  private final ItemPositionPacketBuilder itemPositionBuilder = new ItemPositionPacketBuilder();
+  private final NpcPositionPacketBuilder npcPositionPacketBuilder = new NpcPositionPacketBuilder();
+  private final NpcUpdatePacketBuilder npcApperanceBuilder = new NpcUpdatePacketBuilder();
 
   public ClientUpdater() {
     world.setClientUpdater(this);
@@ -136,7 +136,7 @@ public final class ClientUpdater {
   /**
    * Checks the player has moved within the last 5mins
    */
-  private void updateTimeouts(Player p) {
+  private void updateTimeouts( Player p ) {
     if (p.destroyed()) {
       return;
     }
@@ -148,8 +148,8 @@ public final class ClientUpdater {
         p.destroy(false);
       }
     } else if (curTime - p.getLastMoved() >= 900000) {
-      p.getActionSender()
-              .sendMessage("@cya@You have not moved for 15 mins, please move to a new area to avoid logout.");
+      p.getActionSender().sendMessage("@cya@You have not moved for 15 mins, please move to a new area to avoid " +
+        "logout" + ".");
       p.warnToMove();
     }
   }
@@ -158,7 +158,7 @@ public final class ClientUpdater {
    * Update positions of the given player, and any players they should be aware
    * of
    */
-  private void updatePlayerPositions(Player p) {
+  private void updatePlayerPositions( Player p ) {
     playerPositionBuilder.setPlayer(p);
     RSCPacket temp = playerPositionBuilder.getPacket();
     if (temp != null) {
@@ -169,7 +169,7 @@ public final class ClientUpdater {
   /**
    * Sends updates for npcs to the given player
    */
-  private void updateNpcPositions(Player p) {
+  private void updateNpcPositions( Player p ) {
     npcPositionPacketBuilder.setPlayer(p);
     RSCPacket temp = npcPositionPacketBuilder.getPacket();
     if (temp != null) {
@@ -180,7 +180,7 @@ public final class ClientUpdater {
   /**
    * Sends updates for game objects to the given player
    */
-  private void updateGameObjects(Player p) {
+  private void updateGameObjects( Player p ) {
     gameObjectPositionBuilder.setPlayer(p);
     RSCPacket temp = gameObjectPositionBuilder.getPacket();
     if (temp != null) {
@@ -191,7 +191,7 @@ public final class ClientUpdater {
   /**
    * Sends updates for wall objects to the given player
    */
-  private void updateWallObjects(Player p) {
+  private void updateWallObjects( Player p ) {
     wallObjectPositionPacketBuilder.setPlayer(p);
     RSCPacket temp = wallObjectPositionPacketBuilder.getPacket();
     if (temp != null) {
@@ -202,7 +202,7 @@ public final class ClientUpdater {
   /**
    * Sends updates for game items to the given player
    */
-  private void updateItems(Player p) {
+  private void updateItems( Player p ) {
     itemPositionBuilder.setPlayer(p);
     RSCPacket temp = itemPositionBuilder.getPacket();
     if (temp != null) {
@@ -214,7 +214,7 @@ public final class ClientUpdater {
    * Update appearance of the given player, and any players they should be aware
    * of
    */
-  private void updatePlayerApperances(Player p) {
+  private void updatePlayerApperances( Player p ) {
     playerApperanceBuilder.setPlayer(p);
     RSCPacket temp = playerApperanceBuilder.getPacket();
     if (temp != null) {
@@ -225,7 +225,7 @@ public final class ClientUpdater {
   /**
    * Update appearance of any npcs the given player should be aware of
    */
-  private void updateNpcApperances(Player p) {
+  private void updateNpcApperances( Player p ) {
     npcApperanceBuilder.setPlayer(p);
     RSCPacket temp = npcApperanceBuilder.getPacket();
     if (temp != null) {

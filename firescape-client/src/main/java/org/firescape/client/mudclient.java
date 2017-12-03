@@ -3561,10 +3561,10 @@ public final class mudclient extends GameWindowMiddleMan {
           lastAutoCameraRotatePlayerY = ourPlayer.currentY;
         }
       }
-      gameCamera.zoom1 = 3000;
-      gameCamera.zoom2 = 3000;
-      gameCamera.zoom3 = 1;
-      gameCamera.zoom4 = 2800;
+      gameCamera.clipFar3d = 3000;
+      gameCamera.clipFar2d = 3000;
+      gameCamera.fogZFalloff = 20;
+      gameCamera.fogZDistance = 10;
       cameraRotation = cameraAutoAngle * 32;
       int k5 = lastAutoCameraRotatePlayerX + screenRotationX;
       int l7 = lastAutoCameraRotatePlayerY + screenRotationY;
@@ -3573,15 +3573,15 @@ public final class mudclient extends GameWindowMiddleMan {
       if (configAutoCameraAngle && !zoomCamera)
         autoRotateCamera();
       if (!super.keyF1Toggle) {
-        gameCamera.zoom1 = 2400;
-        gameCamera.zoom2 = 2400;
-        gameCamera.zoom3 = 1;
-        gameCamera.zoom4 = 2300;
+        gameCamera.clipFar3d = 2400;
+        gameCamera.clipFar2d = 2400;
+        gameCamera.fogZFalloff = 20;
+        gameCamera.fogZDistance = 10;
       } else {
-        gameCamera.zoom1 = 2200;
-        gameCamera.zoom2 = 2200;
-        gameCamera.zoom3 = 1;
-        gameCamera.zoom4 = 2100;
+        gameCamera.clipFar3d = 2200;
+        gameCamera.clipFar2d = 2200;
+        gameCamera.fogZFalloff = 20;
+        gameCamera.fogZDistance = 10;
       }
       int l5 = lastAutoCameraRotatePlayerX + screenRotationX;
       int i8 = lastAutoCameraRotatePlayerY + screenRotationY;
@@ -3805,7 +3805,7 @@ public final class mudclient extends GameWindowMiddleMan {
       int k1 = ai[j1];
       Model model = models[j1];
       if (model.anIntArray258[k1] <= 65535 || model.anIntArray258[k1] >= 0x30d40 && model.anIntArray258[k1] <= 0x493e0)
-        if (model == gameCamera.aModel_423) {
+        if (model == gameCamera.view) {
           int i2 = model.anIntArray258[k1] % 10000;
           int l2 = model.anIntArray258[k1] / 10000;
           if (l2 == 1) {
@@ -4219,10 +4219,10 @@ public final class mudclient extends GameWindowMiddleMan {
     gameCamera = new Camera(gameGraphics, 15000, 15000, 1000);
     gameCamera.setCameraSize(windowWidth / 2, windowHeight / 2, windowWidth / 2, windowHeight / 2, windowWidth,
             cameraSizeInt);
-    gameCamera.zoom1 = 2400;
-    gameCamera.zoom2 = 2400;
-    gameCamera.zoom3 = 1;
-    gameCamera.zoom4 = 2300;
+    gameCamera.clipFar3d = 2400;
+    gameCamera.clipFar2d = 2400;
+    gameCamera.fogZFalloff = 20;
+    gameCamera.fogZDistance = 10;
     gameCamera.method303(-50, -10, -50);
     engineHandle = new EngineHandle(gameCamera, gameGraphics);
     loadTextures(); // 60%

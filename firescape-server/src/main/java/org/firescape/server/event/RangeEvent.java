@@ -9,15 +9,15 @@ import org.firescape.server.util.Formulae;
 import java.util.ArrayList;
 
 public class RangeEvent extends DelayedEvent {
-  private Mob affectedMob;
+  private final Mob affectedMob;
   private boolean firstRun = true;
 
-  public RangeEvent(Player owner, Mob affectedMob) {
+  public RangeEvent( Player owner, Mob affectedMob ) {
     super(owner, GameVars.rangedDelaySpeed);
     this.affectedMob = affectedMob;
   }
 
-  public static void rangePlayer(int rangeLevel, int arrowID, int rangePoints, Npc affectedMob, Player owner) {
+  public static void rangePlayer( int rangeLevel, int arrowID, int rangePoints, Npc affectedMob, Player owner ) {
 
     // NPC fights back
     int damage = 0;
@@ -37,7 +37,7 @@ public class RangeEvent extends DelayedEvent {
     for (Player p : playersToInform) {
       p.informOfProjectile(projectile);
       p.informOfProjectile(projectile2);
-      p.informOfModifiedHits(((Player) owner));
+      p.informOfModifiedHits(owner);
     }
     owner.getActionSender().sendStat(3);
 
@@ -48,8 +48,8 @@ public class RangeEvent extends DelayedEvent {
 
   public void run() {
     int bowID = owner.getRangeEquip();
-    if (!owner.loggedIn() || (affectedMob instanceof Player && !((Player) affectedMob).loggedIn())
-            || affectedMob.getHits() <= 0 || !owner.checkAttack(affectedMob, true) || bowID < 0) {
+    if (!owner.loggedIn() || (affectedMob instanceof Player && !((Player) affectedMob).loggedIn()) || affectedMob
+      .getHits() <= 0 || !owner.checkAttack(affectedMob, true) || bowID < 0) {
       owner.resetRange();
       return;
     }
@@ -97,11 +97,11 @@ public class RangeEvent extends DelayedEvent {
       return;
     }
     int damage = Formulae.calcRangeHit(owner.getCurStat(4), owner.getRangePoints(), affectedMob.getArmourPoints(),
-            arrowID);
+      arrowID);
     if (!Formulae.looseArrow(damage)) {
       Item arrows = getArrows(arrowID);
       if (arrows == null) {
-        world.registerItem(new Item(arrowID, affectedMob.getX(), affectedMob.getY(), 1, owner));
+        DelayedEvent.world.registerItem(new Item(arrowID, affectedMob.getX(), affectedMob.getY(), 1, owner));
       } else {
         arrows.setAmount(arrows.getAmount() + 1);
       }
@@ -113,10 +113,10 @@ public class RangeEvent extends DelayedEvent {
       }
     }
     if (affectedMob instanceof Npc && owner.withinRange(affectedMob, 6) && !affectedMob.isBusy() && !owner.isBusy()) {
-      final Npc affectedNpc = (Npc) affectedMob;
-      final Player victim = owner;
+      Npc affectedNpc = (Npc) affectedMob;
+      Player victim = owner;
       if (victim != null) {
-        world.getDelayedEventHandler().add(new NpcWalkEvent(owner, affectedNpc, 0) {
+        DelayedEvent.world.getDelayedEventHandler().add(new NpcWalkEvent(owner, affectedNpc, 0) {
           public void arrived() {
             affectedNpc.resetPath();
             victim.resetPath();
@@ -139,7 +139,7 @@ public class RangeEvent extends DelayedEvent {
             affectedNpc.setCombatTimer();
             FightEvent fighting = new FightEvent(victim, affectedNpc, true);
             fighting.setLastRun(0);
-            world.getDelayedEventHandler().add(fighting);
+            DelayedEvent.world.getDelayedEventHandler().add(fighting);
           }
         });
       }
@@ -170,8 +170,8 @@ public class RangeEvent extends DelayedEvent {
     }
   }
 
-  private Item getArrows(int id) {
-    for (Item i : world.getTile(affectedMob.getLocation()).getItems()) {
+  private Item getArrows( int id ) {
+    for (Item i : DelayedEvent.world.getTile(affectedMob.getLocation()).getItems()) {
       if (i.getID() == id && i.visibleTo(owner) && !i.isRemoved()) {
         return i;
       }
@@ -179,7 +179,7 @@ public class RangeEvent extends DelayedEvent {
     return null;
   }
 
-  public double getArrowMod(int arrowId) {
+  public double getArrowMod( int arrowId ) {
     double poisonDmgIncrease = 0.025;
     switch (arrowId) {
       case 11:
@@ -214,7 +214,7 @@ public class RangeEvent extends DelayedEvent {
     }
   }
 
-  public boolean isPoisioned(int arrowId) {
+  public boolean isPoisioned( int arrowId ) {
     switch (arrowId) {
       case 11:
         return false;
@@ -251,7 +251,7 @@ public class RangeEvent extends DelayedEvent {
     return affectedMob;
   }
 
-  public boolean equals(Object o) {
+  public boolean equals( Object o ) {
     if (o instanceof RangeEvent) {
       RangeEvent e = (RangeEvent) o;
       return e.belongsTo(owner);

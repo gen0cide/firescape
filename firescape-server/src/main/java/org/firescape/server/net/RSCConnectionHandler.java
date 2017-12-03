@@ -18,14 +18,14 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * A reference to the game engine's packet queue
    */
-  private PacketQueue<RSCPacket> packets;
+  private final PacketQueue<RSCPacket> packets;
 
   /**
    * Creates a new connection handler for the given engine.
    *
    * @param engine The engine in use
    */
-  public RSCConnectionHandler(GameEngine engine) {
+  public RSCConnectionHandler( GameEngine engine ) {
     packets = engine.getPacketQueue();
   }
 
@@ -34,10 +34,10 @@ public class RSCConnectionHandler implements IoHandler {
    *
    * @param session The session opened
    */
-  public void sessionCreated(IoSession session) {
+  public void sessionCreated( IoSession session ) {
     session.getFilterChain().addFirst("protocolFilter", new ProtocolCodecFilter(new RSCCodecFactory()));
-    Logger.connection(
-            "Connection from: " + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress());
+    Logger.connection("Connection from: " + ((InetSocketAddress) session.getRemoteAddress()).getAddress()
+      .getHostAddress());
   }
 
   /**
@@ -45,7 +45,7 @@ public class RSCConnectionHandler implements IoHandler {
    *
    * @param session The session opened
    */
-  public void sessionOpened(IoSession session) {
+  public void sessionOpened( IoSession session ) {
     session.setAttachment(new Player(session));
     session.setIdleTime(IdleStatus.BOTH_IDLE, 30);
     session.setWriteTimeout(30);
@@ -57,7 +57,7 @@ public class RSCConnectionHandler implements IoHandler {
    *
    * @param session The IO session which has been closed
    */
-  public void sessionClosed(IoSession session) {
+  public void sessionClosed( IoSession session ) {
     Player player = (Player) session.getAttachment();
     if (!player.destroyed()) {
       player.destroy(false);
@@ -68,9 +68,9 @@ public class RSCConnectionHandler implements IoHandler {
    * Invoked when the idle status of a session changes.
    *
    * @param session The session in question
-   * @param status  The new idle status
+   * @param status The new idle status
    */
-  public void sessionIdle(IoSession session, IdleStatus status) {
+  public void sessionIdle( IoSession session, IdleStatus status ) {
     Player player = (Player) session.getAttachment();
     if (!player.destroyed()) {
       player.destroy(false);
@@ -81,9 +81,9 @@ public class RSCConnectionHandler implements IoHandler {
    * Invoked whenever an exception is thrown by MINA or this IoHandler.
    *
    * @param session The associated session
-   * @param cause   The exception thrown
+   * @param cause The exception thrown
    */
-  public void exceptionCaught(IoSession session, Throwable cause) {
+  public void exceptionCaught( IoSession session, Throwable cause ) {
   }
 
   /**
@@ -92,13 +92,13 @@ public class RSCConnectionHandler implements IoHandler {
    * @param session The IO session on which the packet was received
    * @param message The packet
    */
-  public void messageReceived(IoSession session, Object message) {
+  public void messageReceived( IoSession session, Object message ) {
     Player player = (Player) session.getAttachment();
     if (session.isClosing() || player.destroyed()) {
       return;
     }
     RSCPacket p = (RSCPacket) message;
-    System.out.println("[" + player.getUsername() + "] " + p.toString());
+    System.out.println("[" + player.getUsername() + "] " + p);
     player.addPacket(p);
     packets.add(p);
   }
@@ -109,6 +109,6 @@ public class RSCConnectionHandler implements IoHandler {
    * @param session The associated session
    * @param message The packet sent
    */
-  public void messageSent(IoSession session, Object message) {
+  public void messageSent( IoSession session, Object message ) {
   }
 }

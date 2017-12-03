@@ -21,8 +21,7 @@ public class WorldLoader {
   private ZipFile tileArchive;
   // private ZipOutputStream out;
 
-  @SuppressWarnings("unchecked")
-  public void loadWorld(World world) {
+  @SuppressWarnings("unchecked") public void loadWorld( World world ) {
     try {
       tileArchive = new ZipFile(new File(Config.CONF_DIR, "data/Landscape.rscd"));
       // out = new ZipOutputStream(new FileOutputStream(new
@@ -72,7 +71,7 @@ public class WorldLoader {
    * e.printStackTrace(); } return s; }
    */
 
-  private void loadSection(int sectionX, int sectionY, int height, World world, int bigX, int bigY) {
+  private void loadSection( int sectionX, int sectionY, int height, World world, int bigX, int bigY ) {
     Sector s = null;
     try {
       String filename = "h" + height + "x" + sectionX + "y" + sectionY;
@@ -105,27 +104,26 @@ public class WorldLoader {
         }
 
         int verticalWall = s.getTile(x, y).verticalWall & 0xFF;
-        if (verticalWall > 0 && EntityHandler.getDoorDef(verticalWall - 1).getUnknown() == 0
-                && EntityHandler.getDoorDef(verticalWall - 1).getDoorType() != 0) {
+        if (verticalWall > 0 && EntityHandler.getDoorDef(verticalWall - 1).getUnknown() == 0 && EntityHandler
+          .getDoorDef(verticalWall - 1).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 1; // 1
           world.getTileValue(bx, by - 1).mapValue |= 4; // 4
         }
 
         int horizontalWall = s.getTile(x, y).horizontalWall & 0xFF;
-        if (horizontalWall > 0 && EntityHandler.getDoorDef(horizontalWall - 1).getUnknown() == 0
-                && EntityHandler.getDoorDef(horizontalWall - 1).getDoorType() != 0) {
+        if (horizontalWall > 0 && EntityHandler.getDoorDef(horizontalWall - 1).getUnknown() == 0 && EntityHandler
+          .getDoorDef(horizontalWall - 1).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 2; // 2
           world.getTileValue(bx - 1, by).mapValue |= 8; // 8
         }
 
         int diagonalWalls = s.getTile(x, y).diagonalWalls;
-        if (diagonalWalls > 0 && diagonalWalls < 12000 && EntityHandler.getDoorDef(diagonalWalls - 1).getUnknown() == 0
-                && EntityHandler.getDoorDef(diagonalWalls - 1).getDoorType() != 0) {
+        if (diagonalWalls > 0 && diagonalWalls < 12000 && EntityHandler.getDoorDef(diagonalWalls - 1).getUnknown() ==
+          0 && EntityHandler.getDoorDef(diagonalWalls - 1).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 0x20; // 32
         }
-        if (diagonalWalls > 12000 && diagonalWalls < 24000
-                && EntityHandler.getDoorDef(diagonalWalls - 12001).getUnknown() == 0
-                && EntityHandler.getDoorDef(diagonalWalls - 12001).getDoorType() != 0) {
+        if (diagonalWalls > 12000 && diagonalWalls < 24000 && EntityHandler.getDoorDef(diagonalWalls - 12001)
+          .getUnknown() == 0 && EntityHandler.getDoorDef(diagonalWalls - 12001).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 0x10; // 16
         }
         /** end of shit **/

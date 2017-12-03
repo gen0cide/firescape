@@ -928,7 +928,7 @@ public class GameImage implements ImageProducer, ImageObserver {
 
   private void tranScale(int ai[], int ai1[], int i, int j, int k, int l, int i1, int j1, int k1, int l1, int i2,
                          int j2, int k2, int l2) {
-    int i3 = 256 - l2;
+    int i3 = 512 - l2;
     try {
       int j3 = j;
       for (int k3 = -k1; k3 < 0; k3 += k2) {

@@ -4,13 +4,13 @@ public class Bubble {
   /**
    * Who the bubble belongs to
    */
-  private Player owner;
+  private final Player owner;
   /**
    * What to draw in it
    */
-  private int itemID;
+  private final int itemID;
 
-  public Bubble(Player owner, int itemID) {
+  public Bubble( Player owner, int itemID ) {
     this.owner = owner;
     this.itemID = itemID;
   }

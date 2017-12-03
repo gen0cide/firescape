@@ -19,10 +19,10 @@ public class PacketHandlerDef implements Serializable {
    * Constructs a new packet handler definition, entailing that packets with the
    * given IDs are to be handled by the specified class.
    *
-   * @param ids       The IDs of packets to be handled
+   * @param ids The IDs of packets to be handled
    * @param className The name of the packet handler class
    */
-  public PacketHandlerDef(int[] ids, String className) {
+  public PacketHandlerDef( int[] ids, String className ) {
     this.ids = ids;
     this.className = className;
   }

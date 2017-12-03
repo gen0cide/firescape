@@ -26,7 +26,7 @@ public class ObjectAction implements PacketHandler {
   public static final World world = World.getWorld();
 
   // incExp
-  public void handlePacket(Packet p, IoSession session) {
+  public void handlePacket( Packet p, IoSession session ) {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     // getLoginConnector
@@ -35,8 +35,8 @@ public class ObjectAction implements PacketHandler {
       return;
     }
     player.resetAll();
-    final GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
-    final int click = pID == 51 ? 0 : 1;
+    GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
+    int click = pID == 51 ? 0 : 1;
     if (object == null) {
       player.setSuspiciousPlayer(true);
       return;
@@ -48,8 +48,8 @@ public class ObjectAction implements PacketHandler {
         try {
           owner.resetPath();
           GameObjectDef def = object.getGameObjectDef();
-          if (owner.isBusy() || owner.isRanging() || !owner.nextTo(object) || def == null
-                  || owner.getStatus() != Action.USING_OBJECT) {
+          if (owner.isBusy() || owner.isRanging() || !owner.nextTo(object) || def == null || owner.getStatus() !=
+            Action.USING_OBJECT) {
             return;
           }
           owner.resetAll();
@@ -65,12 +65,12 @@ public class ObjectAction implements PacketHandler {
             // Ladder
             if (owner.getMaxStat(5) < 31) {
               owner.setBusy(true);
-              Npc abbot = world.getNpc(174, 249, 252, 458, 468);
+              Npc abbot = DelayedEvent.world.getNpc(174, 249, 252, 458, 468);
               if (abbot != null) {
-                owner.informOfNpcMessage(
-                        new ChatMessage(abbot, "Hello only people with high prayer are allowed in here", owner));
+                owner.informOfNpcMessage(new ChatMessage(abbot, "Hello only people with high prayer are allowed " +
+                  "in here", owner));
               }
-              world.getDelayedEventHandler().add(new ShortEvent(owner) {
+              DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                 public void action() {
                   owner.setBusy(false);
                   owner.getActionSender().sendMessage("You need a prayer level of 31 to enter");
@@ -84,12 +84,12 @@ public class ObjectAction implements PacketHandler {
             // Ladder
             if (owner.getCurStat(14) < 66) {
               owner.setBusy(true);
-              Npc dwarf = world.getNpc(191, 272, 277, 563, 567);
+              Npc dwarf = DelayedEvent.world.getNpc(191, 272, 277, 563, 567);
               if (dwarf != null) {
-                owner
-                        .informOfNpcMessage(new ChatMessage(dwarf, "Hello only the top miners are allowed in here", owner));
+                owner.informOfNpcMessage(new ChatMessage(dwarf, "Hello only the top miners are allowed in here",
+                  owner));
               }
-              world.getDelayedEventHandler().add(new ShortEvent(owner) {
+              DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                 public void action() {
                   owner.setBusy(false);
                   owner.getActionSender().sendMessage("You need a mining level of 66 to enter");
@@ -121,17 +121,17 @@ public class ObjectAction implements PacketHandler {
             thieving.thieveChest();
           } else if (object.getID() == 52 && object.getGrainable()) {
             owner.getActionSender().sendMessage("The grain slides down the hopper and grinds up into flour.");
-            world.registerItem(new Item(23, 166, 599, 1, owner));
+            DelayedEvent.world.registerItem(new Item(23, 166, 599, 1, owner));
             object.setGrainable(false);
 
           } else if (object.getID() == 173 && object.getGrainable()) {
             owner.getActionSender().sendMessage("The grain slides down the hopper and grinds up into flour.");
-            world.registerItem(new Item(23, 179, 481, 1, owner));
+            DelayedEvent.world.registerItem(new Item(23, 179, 481, 1, owner));
             object.setGrainable(false);
 
           } else if (command.equals("rest")) {
             owner.getActionSender().sendMessage("You rest on the bed");
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 owner.setFatigue(0);
                 owner.getActionSender().sendFatigue();
@@ -140,20 +140,20 @@ public class ObjectAction implements PacketHandler {
             });
           } else if (owner.getWitchPotionStatus() == 2) {
             owner.setBusy(true);
-            final Npc hetty = world.getNpc(148);
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            Npc hetty = DelayedEvent.world.getNpc(148);
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 owner.setBusy(false);
-                owner.informOfNpcMessage(
-                        new ChatMessage(hetty, "Hello only people with high prayer are allowed in here", owner));
+                owner.informOfNpcMessage(new ChatMessage(hetty, "Hello only people with high prayer are allowed " +
+                  "in here", owner));
                 owner.isWitchPotionComplete();
                 owner.setQuestPoints(owner.getQuestPoints() + 1);
                 owner.getActionSender().sendQuestPoints();
                 owner.getActionSender().sendWitchPotionComplete();
                 owner.incExp(6, 350, false, false);
                 owner.getActionSender().sendStat(6);
-                owner.getActionSender()
-                        .sendMessage("@gre@Congratulations! You have just completed the: @or1@Witch's Potion @gre@quest!");
+                owner.getActionSender().sendMessage("@gre@Congratulations! You have just completed the: " +
+                  "@or1@Witch's Potion @gre@quest!");
                 owner.getActionSender().sendMessage("@gre@You gained @or1@1 @gre@quest point!");
               }
             });
@@ -171,12 +171,13 @@ public class ObjectAction implements PacketHandler {
                 owner.getActionSender().sendInventory();
                 break;
               case 86:
-                owner.informOfChatMessage(new ChatMessage(owner, "There seems to be pressure gauge in here", owner));
-                world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                owner.informOfChatMessage(new ChatMessage(owner, "There seems to be pressure gauge in " + "here",
+                  owner));
+                DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                   public void action() {
-                    owner.informOfChatMessage(
-                            new ChatMessage(owner, "There are a lot of pirhanas in there though", owner));
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    owner.informOfChatMessage(new ChatMessage(owner, "There are a lot of pirhanas in there " +
+                      "though", owner));
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.informOfChatMessage(new ChatMessage(owner, "I can't get the gauge out", owner));
                       }
@@ -308,13 +309,13 @@ public class ObjectAction implements PacketHandler {
                 } else {
                   if (owner.getCurStat(8) < 70) {
                     owner.setBusy(true);
-                    Npc mcgrubor = world.getNpc(255, 556, 564, 473, 476);
+                    Npc mcgrubor = DelayedEvent.world.getNpc(255, 556, 564, 473, 476);
 
                     if (mcgrubor != null) {
-                      owner.informOfNpcMessage(
-                              new ChatMessage(mcgrubor, "Hello only the top woodcutters are allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(mcgrubor, "Hello only the top woodcutters are " +
+                        "allowed in here", owner));
                     }
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         owner.getActionSender().sendMessage("You need a woodcutting level of 70 to enter");
@@ -414,15 +415,15 @@ public class ObjectAction implements PacketHandler {
             owner.getActionSender().sendInventory();
             owner.getActionSender().sendSound("potato");
             owner.setBusy(true);
-            world.getDelayedEventHandler().add(new SingleEvent(owner, 200) {
+            DelayedEvent.world.getDelayedEventHandler().add(new SingleEvent(owner, 200) {
               public void action() {
                 owner.setBusy(false);
               }
             });
           } else if (command.equals("mine") || command.equals("prospect")) {
             handleMining(click);
-          } else if (command.equals("lure") || command.equals("bait") || command.equals("net")
-                  || command.equals("harpoon") || command.equals("cage")) {
+          } else if (command.equals("lure") || command.equals("bait") || command.equals("net") || command.equals
+            ("harpoon") || command.equals("cage")) {
             handleFishing(click);
           } else if (command.equals("chop")) {
             handleWoodcutting(click);
@@ -430,14 +431,14 @@ public class ObjectAction implements PacketHandler {
             // case 49: Dummy
             if (owner.getCurStat(0) < 7) {
               owner.getActionSender().sendMessage("You swing at the dummy!");
-              world.getDelayedEventHandler().add(new ShortEvent(owner) {
+              DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                 public void action() {
                   owner.incExp(0, 3, true, true);
                 }
               });
             } else {
-              owner.getActionSender()
-                      .sendMessage("You swing at the dummy, but it has no effect because you are too powerful.");
+              owner.getActionSender().sendMessage("You swing at the dummy, but it has no effect because you are " +
+                "too powerful.");
             }
 
           } else if (command.equals("recharge at")) {
@@ -458,7 +459,7 @@ public class ObjectAction implements PacketHandler {
                 }
                 owner.setBusy(true);
                 owner.getActionSender().sendMessage("You search for a way over the cart");
-                world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                   public void action() {
                     owner.getActionSender().sendMessage("You climb across");
                     if (owner.getX() <= 383) {
@@ -476,7 +477,7 @@ public class ObjectAction implements PacketHandler {
                 }
                 owner.setBusy(true);
                 owner.getActionSender().sendMessage("You twist the stone tile to one side");
-                world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                   public void action() {
                     owner.getActionSender().sendMessage("It reveals a ladder, you climb down");
                     owner.teleport(703, 3284, false);
@@ -491,7 +492,7 @@ public class ObjectAction implements PacketHandler {
                 // door
                 owner.setBusy(true);
                 owner.getActionSender().sendMessage("You push the roots");
-                world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                   public void action() {
                     owner.getActionSender().sendMessage("They wrap around you and drag you forwards");
                     owner.teleport(701, 3278, false);
@@ -504,7 +505,7 @@ public class ObjectAction implements PacketHandler {
                 }
                 owner.setBusy(true);
                 owner.getActionSender().sendMessage("You push the roots");
-                world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                   public void action() {
                     owner.getActionSender().sendMessage("They wrap around you and drag you forwards");
                     owner.teleport(701, 3281, false);
@@ -520,16 +521,14 @@ public class ObjectAction implements PacketHandler {
         }
       }
 
-      private int[] coordModifier(Player player, boolean up) {
+      private int[] coordModifier( Player player, boolean up ) {
         if (object.getGameObjectDef().getHeight() <= 1) {
-          return new int[]{
-                  player.getX(),
-                  Formulae.getNewY(player.getY(), up)
+          return new int[] {
+            player.getX(), Formulae.getNewY(player.getY(), up)
           };
         }
         int[] coords = {
-                object.getX(),
-                Formulae.getNewY(object.getY(), up)
+          object.getX(), Formulae.getNewY(object.getY(), up)
         };
         switch (object.getDirection()) {
           case 0:
@@ -548,29 +547,31 @@ public class ObjectAction implements PacketHandler {
         return coords;
       }
 
-      private void replaceGameObject(int newID, boolean open) {
-        world.registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(), object.getType()));
+      private void replaceGameObject( int newID, boolean open ) {
+        DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(),
+          object.getType()));
         owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
       }
 
       private void doGate() {
         owner.getActionSender().sendSound("opendoor");
-        world.registerGameObject(new GameObject(object.getLocation(), 181, object.getDirection(), object.getType()));
-        world.delayedSpawnObject(object.getLoc(), 1000);
+        DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 181, object.getDirection(), object
+          .getType()));
+        DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
       }
 
-      private void handleMining(final int click) {
-        final ObjectMiningDef def = EntityHandler.getObjectMiningDef(object.getID());
+      private void handleMining( int click ) {
+        ObjectMiningDef def = EntityHandler.getObjectMiningDef(object.getID());
         if (def == null) {
           owner.getActionSender().sendMessage("There is currently no ore available in this rock.");
           return;
         }
         if (owner.getCurStat(14) < def.getReqLevel()) {
-          owner.getActionSender()
-                  .sendMessage("You need a mining level of " + def.getReqLevel() + " to mine this rock.");
+          owner.getActionSender().sendMessage("You need a mining level of " + def.getReqLevel() + " to mine this" + "" +
+            " rock.");
           return;
         }
-        final InvItem ore = new InvItem(def.getOreId());
+        InvItem ore = new InvItem(def.getOreId());
         if (click == 1) {
           owner.getActionSender().sendMessage("This rock contains " + ore.getDef().getName() + ".");
           return;
@@ -594,8 +595,8 @@ public class ObjectAction implements PacketHandler {
           p.informOfBubble(bubble);
         }
         owner.getActionSender().sendMessage("You swing your pick at the rock...");
-        final int axeID = axeId;
-        world.getDelayedEventHandler().add(new ShortEvent(owner) {
+        int axeID = axeId;
+        DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
           public void action() {
             if (Formulae.getOre(def, owner.getCurStat(14), axeID)) {
               if (DataConversions.random(0, 200) == 0) {
@@ -607,9 +608,9 @@ public class ObjectAction implements PacketHandler {
                 owner.getActionSender().sendMessage("You manage to obtain some " + ore.getDef().getName() + ".");
                 owner.incExp(14, def.getExp(), true, true);
                 owner.getActionSender().sendStat(14);
-                world.registerGameObject(
-                        new GameObject(object.getLocation(), 98, object.getDirection(), object.getType()));
-                world.delayedSpawnObject(object.getLoc(), def.getRespawnTime() * 1000);
+                DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 98, object.getDirection(),
+                  object.getType()));
+                DelayedEvent.world.delayedSpawnObject(object.getLoc(), def.getRespawnTime() * 1000);
               }
               owner.getActionSender().sendInventory();
             } else {
@@ -620,26 +621,27 @@ public class ObjectAction implements PacketHandler {
         });
       }
 
-      private void handleFishing(final int click) {
-        final ObjectFishingDef def = EntityHandler.getObjectFishingDef(object.getID(), click);
+      private void handleFishing( int click ) {
+        ObjectFishingDef def = EntityHandler.getObjectFishingDef(object.getID(), click);
         if (def == null) { // This shouldn't happen
           return;
         }
         if (owner.getCurStat(10) < def.getReqLevel()) {
-          owner.getActionSender().sendMessage("You need a fishing level of " + def.getReqLevel() + " to fish here.");
+          owner.getActionSender().sendMessage("You need a fishing level of " + def.getReqLevel() + " to fish " +
+            "here.");
           return;
         }
         int netId = def.getNetId();
         if (owner.getInventory().countId(netId) <= 0) {
-          owner.getActionSender()
-                  .sendMessage("You need a " + EntityHandler.getItemDef(netId).getName() + " to catch these fish.");
+          owner.getActionSender().sendMessage("You need a " + EntityHandler.getItemDef(netId).getName() + " to " +
+            "catch these fish.");
           return;
         }
-        final int baitId = def.getBaitId();
+        int baitId = def.getBaitId();
         if (baitId >= 0) {
           if (owner.getInventory().countId(baitId) <= 0) {
-            owner.getActionSender()
-                    .sendMessage("You don't have any " + EntityHandler.getItemDef(baitId).getName() + " left.");
+            owner.getActionSender().sendMessage("You don't have any " + EntityHandler.getItemDef(baitId).getName() +
+              " left.");
             return;
           }
         }
@@ -651,7 +653,7 @@ public class ObjectAction implements PacketHandler {
           p.informOfBubble(bubble);
         }
         owner.getActionSender().sendMessage("You attempt to catch some fish");
-        world.getDelayedEventHandler().add(new ShortEvent(owner) {
+        DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
           public void action() {
             ObjectFishDef def = Formulae.getFish(object.getID(), owner.getCurStat(10), click);
             if (def != null) {
@@ -679,14 +681,14 @@ public class ObjectAction implements PacketHandler {
         });
       }
 
-      private void handleWoodcutting(final int click) {
-        final ObjectWoodcuttingDef def = EntityHandler.getObjectWoodcuttingDef(object.getID());
+      private void handleWoodcutting( int click ) {
+        ObjectWoodcuttingDef def = EntityHandler.getObjectWoodcuttingDef(object.getID());
         if (def == null) { // This shoudln't happen
           return;
         }
         if (owner.getCurStat(8) < def.getReqLevel()) {
-          owner.getActionSender()
-                  .sendMessage("You need a woodcutting level of " + def.getReqLevel() + " to axe this tree.");
+          owner.getActionSender().sendMessage("You need a woodcutting level of " + def.getReqLevel() + " to axe " +
+            "this tree.");
           return;
         }
         int axeId = -1;
@@ -705,10 +707,10 @@ public class ObjectAction implements PacketHandler {
         for (Player p : owner.getViewArea().getPlayersInView()) {
           p.informOfBubble(bubble);
         }
-        owner.getActionSender()
-                .sendMessage("You swing your " + EntityHandler.getItemDef(axeId).getName() + " at the tree...");
-        final int axeID = axeId;
-        world.getDelayedEventHandler().add(new ShortEvent(owner) {
+        owner.getActionSender().sendMessage("You swing your " + EntityHandler.getItemDef(axeId).getName() + " at" + "" +
+          " the tree...");
+        int axeID = axeId;
+        DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
           public void action() {
             if (Formulae.getLog(def, owner.getCurStat(8), axeID)) {
               InvItem log = new InvItem(def.getLogId());
@@ -718,9 +720,9 @@ public class ObjectAction implements PacketHandler {
               owner.incExp(8, def.getExp(), true, true);
               owner.getActionSender().sendStat(8);
               if (DataConversions.random(1, 100) <= def.getFell()) {
-                world.registerGameObject(
-                        new GameObject(object.getLocation(), 4, object.getDirection(), object.getType()));
-                world.delayedSpawnObject(object.getLoc(), def.getRespawnTime() * 1000);
+                DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 4, object.getDirection(),
+                  object.getType()));
+                DelayedEvent.world.delayedSpawnObject(object.getLoc(), def.getRespawnTime() * 1000);
               }
             } else {
               owner.getActionSender().sendMessage("You slip and fail to hit the tree.");

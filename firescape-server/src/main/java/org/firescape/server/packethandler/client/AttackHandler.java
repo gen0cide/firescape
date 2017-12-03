@@ -18,7 +18,7 @@ public class AttackHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     if (player.isBusy()) {
@@ -44,8 +44,8 @@ public class AttackHandler implements PacketHandler {
       world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedMob, 2) {
         public void arrived() {
           owner.resetPath();
-          if (owner.isBusy() || affectedMob.isBusy() || !owner.nextTo(affectedMob)
-                  || !owner.checkAttack(affectedMob, false) || owner.getStatus() != Action.ATTACKING_MOB) {
+          if (owner.isBusy() || affectedMob.isBusy() || !owner.nextTo(affectedMob) || !owner.checkAttack(affectedMob,
+            false) || owner.getStatus() != Action.ATTACKING_MOB) {
             return;
           }
           owner.resetAll();
@@ -74,7 +74,7 @@ public class AttackHandler implements PacketHandler {
           affectedMob.setCombatTimer();
           FightEvent fighting = new FightEvent(owner, affectedMob);
           fighting.setLastRun(0);
-          world.getDelayedEventHandler().add(fighting);
+          DelayedEvent.world.getDelayedEventHandler().add(fighting);
         }
       });
     } else {

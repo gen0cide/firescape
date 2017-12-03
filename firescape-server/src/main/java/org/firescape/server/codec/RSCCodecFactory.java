@@ -11,11 +11,11 @@ public class RSCCodecFactory implements ProtocolCodecFactory {
   /**
    * The protocol encoder in use
    */
-  private static ProtocolEncoder encoder = new RSCProtocolEncoder();
+  private static final ProtocolEncoder encoder = new RSCProtocolEncoder();
   /**
    * The protocol decoder in use
    */
-  private static ProtocolDecoder decoder = new RSCProtocolDecoder();
+  private static final ProtocolDecoder decoder = new RSCProtocolDecoder();
 
   /**
    * Provides the encoder to use to parse incoming data.

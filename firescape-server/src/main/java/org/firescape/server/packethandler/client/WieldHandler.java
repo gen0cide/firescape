@@ -20,7 +20,7 @@ public class WieldHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     if (player.isBusy() && !player.inCombat()) {
@@ -42,12 +42,12 @@ public class WieldHandler implements PacketHandler {
       return;
     }
     switch (pID) {
-      case 181:
+      case 169:
         if (!item.isWielded()) {
           wieldItem(player, item);
         }
         break;
-      case 92:
+      case 170:
         if (item.isWielded()) {
           unWieldItem(player, item, true);
         }
@@ -57,17 +57,16 @@ public class WieldHandler implements PacketHandler {
     player.getActionSender().sendEquipmentStats();
   }
 
-  private void wieldItem(Player player, InvItem item) {
+  private void wieldItem( Player player, InvItem item ) {
     String youNeed = "";
     for (Entry<Integer, Integer> e : item.getWieldableDef().getStatsRequired()) {
       if (player.getMaxStat(e.getKey()) < e.getValue()) {
-        youNeed += e.getValue().intValue() + " " + Formulae.statArray[e.getKey().intValue()]
-                + ", ";
+        youNeed += e.getValue().intValue() + " " + Formulae.statArray[e.getKey().intValue()] + ", ";
       }
     }
     if (!youNeed.equals("")) {
-      player.getActionSender()
-              .sendMessage("You must have at least " + youNeed.substring(0, youNeed.length() - 2) + " to use this item.");
+      player.getActionSender().sendMessage("You must have at least " + youNeed.substring(0, youNeed.length() - 2) +
+        "" + " to use this item.");
       return;
     }
     if (EntityHandler.getItemWieldableDef(item.getID()).femaleOnly() && player.isMale()) {
@@ -75,19 +74,13 @@ public class WieldHandler implements PacketHandler {
       return;
     }
     int[] capeIDs = {
-            1215,
-            1214,
-            1213
+      1215, 1214, 1213
     };
     int[] staffIDs = {
-            1217,
-            1218,
-            1216
+      1217, 1218, 1216
     };
     String[] gods = {
-            "Guthix",
-            "Saradomin",
-            "Zamorak"
+      "Guthix", "Saradomin", "Zamorak"
     };
     for (int i = 0; i < 3; i++) {
       if (!DataConversions.inArray(capeIDs, item.getID()) && !DataConversions.inArray(staffIDs, item.getID())) {
@@ -117,13 +110,13 @@ public class WieldHandler implements PacketHandler {
     player.updateWornItems(item.getWieldableDef().getWieldPos(), item.getWieldableDef().getSprite());
   }
 
-  private void unWieldItem(Player player, InvItem item, boolean sound) {
+  private void unWieldItem( Player player, InvItem item, boolean sound ) {
     item.setWield(false);
     if (sound) {
       player.getActionSender().sendSound("click");
     }
-    player.updateWornItems(item.getWieldableDef().getWieldPos(),
-            player.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos()));
+    player.updateWornItems(item.getWieldableDef().getWieldPos(), player.getPlayerAppearance().getSprite(item
+      .getWieldableDef().getWieldPos()));
   }
 
 }

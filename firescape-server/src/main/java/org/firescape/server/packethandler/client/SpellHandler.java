@@ -23,37 +23,29 @@ public class SpellHandler implements PacketHandler {
    * World instance
    */
   public static final World world = World.getWorld();
-  private static TreeMap<Integer, InvItem[]> staffs = new TreeMap<Integer, InvItem[]>();
+  private static final TreeMap<Integer, InvItem[]> staffs = new TreeMap<Integer, InvItem[]>();
 
   static {
-    staffs.put(31, new InvItem[]{
-            new InvItem(197),
-            new InvItem(615),
-            new InvItem(682)
+    staffs.put(31, new InvItem[] {
+      new InvItem(197), new InvItem(615), new InvItem(682)
     }); // Fire-Rune
-    staffs.put(32, new InvItem[]{
-            new InvItem(102),
-            new InvItem(616),
-            new InvItem(683)
+    staffs.put(32, new InvItem[] {
+      new InvItem(102), new InvItem(616), new InvItem(683)
     }); // Water-Rune
-    staffs.put(33, new InvItem[]{
-            new InvItem(101),
-            new InvItem(617),
-            new InvItem(684)
+    staffs.put(33, new InvItem[] {
+      new InvItem(101), new InvItem(617), new InvItem(684)
     }); // Air-Rune
-    staffs.put(34, new InvItem[]{
-            new InvItem(103),
-            new InvItem(618),
-            new InvItem(685)
+    staffs.put(34, new InvItem[] {
+      new InvItem(103), new InvItem(618), new InvItem(685)
     }); // Earth-Rune
   }
 
-  private Random r = new Random();
+  private final Random r = new Random();
 
-  private static boolean canCast(Player player) {
+  private static boolean canCast( Player player ) {
     if (!player.castTimer()) {
-      player.getActionSender()
-              .sendMessage("You must wait another " + player.getSpellWait() + " seconds to cast another spell.");
+      player.getActionSender().sendMessage("You must wait another " + player.getSpellWait() + " seconds to cast " +
+        "another spell.");
       player.resetPath();
       return false;
     }
@@ -62,10 +54,10 @@ public class SpellHandler implements PacketHandler {
 
   // END WEAKEN SPELLS
 
-  private static boolean checkAndRemoveRunes(Player player, SpellDef spell) {
+  private static boolean checkAndRemoveRunes( Player player, SpellDef spell ) {
     for (Entry<Integer, Integer> e : spell.getRunesRequired()) {
       boolean skipRune = false;
-      for (InvItem staff : getStaffs(e.getKey())) {
+      for (InvItem staff : SpellHandler.getStaffs(e.getKey())) {
         if (player.getInventory().contains(staff)) {
           for (InvItem item : player.getInventory().getItems()) {
             if (item.equals(staff) && item.isWielded()) {
@@ -104,7 +96,7 @@ public class SpellHandler implements PacketHandler {
     return true;
   }
 
-  private static InvItem[] getStaffs(int runeID) {
+  private static InvItem[] getStaffs( int runeID ) {
     InvItem[] items = staffs.get(runeID);
     if (items == null) {
       return new InvItem[0];
@@ -113,11 +105,11 @@ public class SpellHandler implements PacketHandler {
 
   }
 
-  public final int Rand(int low, int high) {
+  public final int Rand( int low, int high ) {
     return low + r.nextInt(high - low);
   }
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     if ((player.isBusy() && !player.inCombat()) || player.isRanging()) {
@@ -265,11 +257,10 @@ public class SpellHandler implements PacketHandler {
     player.getActionSender().sendStat(6);
   }
 
-  private void handleMobCast(Player player, Mob affectedMob, final int spellID) {
-    if (System.currentTimeMillis() - affectedMob.getCombatTimer() < 1000
-            && affectedMob.getCombatState() == CombatState.RUNNING
-            || affectedMob.getCombatState() == CombatState.WAITING
-            && System.currentTimeMillis() - affectedMob.getCombatTimer() < 1000) {
+  private void handleMobCast( Player player, Mob affectedMob, int spellID ) {
+    if (System.currentTimeMillis() - affectedMob.getCombatTimer() < 1000 && affectedMob.getCombatState() ==
+      CombatState.RUNNING || affectedMob.getCombatState() == CombatState.WAITING && System.currentTimeMillis() -
+      affectedMob.getCombatTimer() < 1000) {
       player.resetPath();
       return;
     }
@@ -281,8 +272,8 @@ public class SpellHandler implements PacketHandler {
       public void arrived() {
         owner.resetPath();
         SpellDef spell = EntityHandler.getSpellDef(spellID);
-        if (!canCast(owner) || affectedMob.getHits() <= 0 || !owner.checkAttack(affectedMob, true)
-                || owner.getStatus() != Action.CASTING_MOB) {
+        if (!canCast(owner) || affectedMob.getHits() <= 0 || !owner.checkAttack(affectedMob, true) || owner.getStatus
+          () != Action.CASTING_MOB) {
           return;
         }
         owner.resetAllExceptDueling();
@@ -353,8 +344,8 @@ public class SpellHandler implements PacketHandler {
             ListIterator<?> iterator = owner.getInventory().iterator();
             for (int slot = 0; iterator.hasNext(); slot++) {
               InvItem cape = (InvItem) iterator.next();
-              int[] guthixCape = {1215};
-              int[] guthixStaff = {1217};
+              int[] guthixCape = { 1215 };
+              int[] guthixStaff = { 1217 };
               for (int i = 0; i < 1; i++) {
                 if (owner.wielding(guthixStaff[i]) && owner.wielding(guthixCape[i])) {
                   flag = flag || true;
@@ -364,14 +355,14 @@ public class SpellHandler implements PacketHandler {
             }
             if (owner.getLocation().inMageArena() && owner.getGuthixSpellCast() >= 100) {
               owner.getActionSender().sendMessage("You don't need to cast this in the arena anymore.");
-            } else if (owner.getLocation().inMageArena() && owner.getGuthixSpellCast() >= 0
-                    && owner.getGuthixSpellCast() <= 99) {
+            } else if (owner.getLocation().inMageArena() && owner.getGuthixSpellCast() >= 0 && owner
+              .getGuthixSpellCast() <= 99) {
               owner.getActionSender().sendMessage("You gained @or1@1 @whi@guthix casting point.");
               owner.setGuthixSpellCast(owner.getGuthixSpellCast() + 1);
               owner.getActionSender().sendGuthixSpellCast();
             } else if (owner.getGuthixSpellCast() < 100) {
-              owner.getActionSender()
-                      .sendMessage("You need to learn this spell in the mage arena before casting it outside.");
+              owner.getActionSender().sendMessage("You need to learn this spell in the mage arena before casting" + "" +
+                " it outside.");
               return;
             }
             if (flag) {
@@ -416,7 +407,8 @@ public class SpellHandler implements PacketHandler {
               finalizeSpell(owner, spell);
               break;
             } else {
-              owner.getActionSender().sendMessage("You need to be wearing the Guthix staff & cape to cast this spell!");
+              owner.getActionSender().sendMessage("You need to be wearing the Guthix staff & cape to cast this " +
+                "spell!");
               return;
             }
 
@@ -425,8 +417,8 @@ public class SpellHandler implements PacketHandler {
             ListIterator<?> iterat = owner.getInventory().iterator();
             for (int slot = 0; iterat.hasNext(); slot++) {
               InvItem cape = (InvItem) iterat.next();
-              int[] saradominCape = {1214};
-              int[] saradominStaff = {1218};
+              int[] saradominCape = { 1214 };
+              int[] saradominStaff = { 1218 };
               for (int i = 0; i < 1; i++) {
                 if (owner.wielding(saradominStaff[i]) && owner.wielding(saradominCape[i])) {
                   bool = bool || true;
@@ -436,14 +428,14 @@ public class SpellHandler implements PacketHandler {
             }
             if (owner.getLocation().inMageArena() && owner.getSaradominSpellCast() >= 100) {
               owner.getActionSender().sendMessage("You don't need to cast this in the arena anymore.");
-            } else if (owner.getLocation().inMageArena() && owner.getSaradominSpellCast() >= 0
-                    && owner.getSaradominSpellCast() <= 99) {
+            } else if (owner.getLocation().inMageArena() && owner.getSaradominSpellCast() >= 0 && owner
+              .getSaradominSpellCast() <= 99) {
               owner.getActionSender().sendMessage("You gained @or1@1 @whi@saradomin casting point.");
               owner.setSaradominSpellCast(owner.getSaradominSpellCast() + 1);
               owner.getActionSender().sendSaradominSpellCast();
             } else if (owner.getSaradominSpellCast() < 100) {
-              owner.getActionSender()
-                      .sendMessage("You need to learn this spell in the mage arena before casting it outside.");
+              owner.getActionSender().sendMessage("You need to learn this spell in the mage arena before casting" + "" +
+                " it outside.");
               return;
             }
             if (bool) {
@@ -489,8 +481,8 @@ public class SpellHandler implements PacketHandler {
               finalizeSpell(owner, spell);
               break;
             } else {
-              owner.getActionSender()
-                      .sendMessage("You need to be wearing the Saradomin staff & cape to cast this spell!");
+              owner.getActionSender().sendMessage("You need to be wearing the Saradomin staff & cape to cast " +
+                "this spell!");
               return;
             }
 
@@ -500,8 +492,8 @@ public class SpellHandler implements PacketHandler {
             ListIterator<?> iterato = owner.getInventory().iterator();
             for (int slot = 0; iterato.hasNext(); slot++) {
               InvItem cape = (InvItem) iterato.next();
-              int[] zamorakCape = {1213};
-              int[] zamorakStaff = {1216};
+              int[] zamorakCape = { 1213 };
+              int[] zamorakStaff = { 1216 };
               for (int i = 0; i < 1; i++) {
                 if (owner.wielding(zamorakStaff[i]) && owner.wielding(zamorakCape[i])) {
                   flag2 = flag2 || true;
@@ -511,14 +503,14 @@ public class SpellHandler implements PacketHandler {
             }
             if (owner.getLocation().inMageArena() && owner.getZamorakSpellCast() >= 100) {
               owner.getActionSender().sendMessage("You don't need to cast this in the arena anymore.");
-            } else if (owner.getLocation().inMageArena() && owner.getZamorakSpellCast() >= 0
-                    && owner.getZamorakSpellCast() <= 99) {
+            } else if (owner.getLocation().inMageArena() && owner.getZamorakSpellCast() >= 0 && owner
+              .getZamorakSpellCast() <= 99) {
               owner.getActionSender().sendMessage("You gained @or1@1 @whi@zamorak casting point.");
               owner.setZamorakSpellCast(owner.getZamorakSpellCast() + 1);
               owner.getActionSender().sendZamorakSpellCast();
             } else if (owner.getZamorakSpellCast() < 100) {
-              owner.getActionSender()
-                      .sendMessage("You need to learn this spell in the mage arena before casting it outside.");
+              owner.getActionSender().sendMessage("You need to learn this spell in the mage arena before casting" + "" +
+                " it outside.");
               return;
             }
             if (flag2) {
@@ -563,7 +555,8 @@ public class SpellHandler implements PacketHandler {
               finalizeSpell(owner, spell);
               break;
             } else {
-              owner.getActionSender().sendMessage("You need to be wearing the Zamorak staff & cape to cast this spell");
+              owner.getActionSender().sendMessage("You need to be wearing the Zamorak staff & cape to cast this " +
+                "spell");
               return;
             }
 
@@ -593,8 +586,8 @@ public class SpellHandler implements PacketHandler {
               double stopping = DataConversions.roundUp(stops);
 
               if (affectedPlayer.getCurStat(0) <= stopping) {
-                owner.getActionSender()
-                        .sendMessage(affectedPlayer.getUsername() + " is already fully weakened in Attack.");
+                owner.getActionSender().sendMessage(affectedPlayer.getUsername() + " is already fully weakened " +
+                  "in Attack.");
                 break;
               }
               Projectile projectile = new Projectile(owner, affectedPlayer, 1);
@@ -635,8 +628,8 @@ public class SpellHandler implements PacketHandler {
               double fiveper2 = DataConversions.roundUp(fiveper);
 
               if (affectedPlayer.getCurStat(2) <= stopping || affectedPlayer.getCurStat(2) < fiveper2) {
-                owner.getActionSender()
-                        .sendMessage(affectedPlayer.getUsername() + " is already fully weakened in Strength.");
+                owner.getActionSender().sendMessage(affectedPlayer.getUsername() + " is already fully weakened " +
+                  "in Strength.");
                 break;
               }
               Projectile projectile = new Projectile(owner, affectedPlayer, 1);
@@ -676,8 +669,8 @@ public class SpellHandler implements PacketHandler {
               double stopping = DataConversions.roundUp(stops);
 
               if (affectedPlayer.getCurStat(1) <= stopping) {
-                owner.getActionSender()
-                        .sendMessage(affectedPlayer.getUsername() + " is already fully weakened in Defense.");
+                owner.getActionSender().sendMessage(affectedPlayer.getUsername() + " is already fully weakened " +
+                  "in Defense.");
                 break;
               }
               Projectile projectile = new Projectile(owner, affectedPlayer, 1);
@@ -719,8 +712,8 @@ public class SpellHandler implements PacketHandler {
               double stopping = DataConversions.roundUp(stops);
 
               if (affectedPlayer.getCurStat(1) <= stopping) {
-                owner.getActionSender()
-                        .sendMessage(affectedPlayer.getUsername() + " is already fully weakened in Defense.");
+                owner.getActionSender().sendMessage(affectedPlayer.getUsername() + " is already fully weakened " +
+                  "in Defense.");
                 break;
               }
               Projectile projectile = new Projectile(owner, affectedPlayer, 1);
@@ -761,8 +754,8 @@ public class SpellHandler implements PacketHandler {
               double fiveper2 = DataConversions.roundUp(fiveper);
 
               if (affectedPlayer.getCurStat(2) <= stopping || affectedPlayer.getCurStat(2) < fiveper2) {
-                owner.getActionSender()
-                        .sendMessage(affectedPlayer.getUsername() + " is already fully weakened in Strength.");
+                owner.getActionSender().sendMessage(affectedPlayer.getUsername() + " is already fully weakened " +
+                  "in Strength.");
                 break;
               }
               Projectile projectile = new Projectile(owner, affectedPlayer, 1);
@@ -802,8 +795,8 @@ public class SpellHandler implements PacketHandler {
               double stopping = DataConversions.roundUp(stops);
 
               if (affectedPlayer.getCurStat(0) <= stopping) {
-                owner.getActionSender()
-                        .sendMessage(affectedPlayer.getUsername() + " is already fully weakened in Attack.");
+                owner.getActionSender().sendMessage(affectedPlayer.getUsername() + " is already fully weakened " +
+                  "in Attack.");
                 break;
               }
               Projectile projectile = new Projectile(owner, affectedPlayer, 1);
@@ -821,12 +814,12 @@ public class SpellHandler implements PacketHandler {
 
           default:
 
-            if (affectedMob instanceof Npc && owner.withinRange(affectedMob, 6) && !affectedMob.isBusy()
-                    && !owner.isBusy()) {
-              final Npc affectedNpc = (Npc) affectedMob;
-              final Player victim = owner;
+            if (affectedMob instanceof Npc && owner.withinRange(affectedMob, 6) && !affectedMob.isBusy() && !owner
+              .isBusy()) {
+              Npc affectedNpc = (Npc) affectedMob;
+              Player victim = owner;
               if (victim != null) {
-                world.getDelayedEventHandler().add(new NpcWalkEvent(owner, affectedNpc, 0) {
+                DelayedEvent.world.getDelayedEventHandler().add(new NpcWalkEvent(owner, affectedNpc, 0) {
                   public void arrived() {
                     affectedNpc.resetPath();
                     victim.resetPath();
@@ -849,7 +842,7 @@ public class SpellHandler implements PacketHandler {
                     affectedNpc.setCombatTimer();
                     FightEvent fighting = new FightEvent(victim, affectedNpc, true);
                     fighting.setLastRun(0);
-                    world.getDelayedEventHandler().add(fighting);
+                    DelayedEvent.world.getDelayedEventHandler().add(fighting);
                   }
                 });
               }
@@ -893,7 +886,7 @@ public class SpellHandler implements PacketHandler {
     });
   }
 
-  public void godSpellObject(Mob affectedMob, int spell) {
+  public void godSpellObject( Mob affectedMob, int spell ) {
     switch (spell) {
       case 33:
         GameObject guthix = new GameObject(affectedMob.getLocation(), 1142, 0, 0);
@@ -914,21 +907,20 @@ public class SpellHandler implements PacketHandler {
     }
   }
 
-  private void handleItemCast(Player player, final SpellDef spell, final int id, final Item affectedItem) {
+  private void handleItemCast( Player player, SpellDef spell, int id, Item affectedItem ) {
     player.setStatus(Action.CASTING_GITEM);
     world.getDelayedEventHandler().add(new WalkToPointEvent(player, affectedItem.getLocation(), 5, true) {
       public void arrived() {
         owner.resetPath();
-        ActiveTile tile = world.getTile(location);
+        ActiveTile tile = DelayedEvent.world.getTile(location);
         if (!canCast(owner) || !tile.hasItem(affectedItem) || owner.getStatus() != Action.CASTING_GITEM) {
           return;
         }
         owner.resetAllExceptDueling();
         switch (id) {
           case 16: // Telekinetic grab
-            if (affectedItem.getLocation().inBounds(490, 464, 500, 471)
-                    || affectedItem.getLocation().inBounds(490, 1408, 500, 1415)
-                    || affectedItem.getLocation().inBounds(205, 427, 233, 460)) {
+            if (affectedItem.getLocation().inBounds(490, 464, 500, 471) || affectedItem.getLocation().inBounds(490,
+              1408, 500, 1415) || affectedItem.getLocation().inBounds(205, 427, 233, 460)) {
               owner.getActionSender().sendMessage("Telekinetic grab cannot be used here.");
               return;
             }
@@ -940,7 +932,7 @@ public class SpellHandler implements PacketHandler {
               Player p = ((Player) o);
               p.getActionSender().sendTeleBubble(location.getX(), location.getY(), true);
             }
-            world.unregisterItem(affectedItem);
+            DelayedEvent.world.unregisterItem(affectedItem);
             finalizeSpell(owner, spell);
             owner.getInventory().add(new InvItem(affectedItem.getID(), affectedItem.getAmount()));
             break;
@@ -951,7 +943,7 @@ public class SpellHandler implements PacketHandler {
     });
   }
 
-  private void handleInvItemCast(Player player, SpellDef spell, int id, InvItem affectedItem) {
+  private void handleInvItemCast( Player player, SpellDef spell, int id, InvItem affectedItem ) {
     switch (id) {
       case 3: // Enchant lvl-1 Sapphire amulet
         if (affectedItem.getID() == 302) {
@@ -1003,15 +995,14 @@ public class SpellHandler implements PacketHandler {
               smeltingDef = EntityHandler.getItemSmeltingDef(9999);
               break;
             }
-            player.getActionSender()
-                    .sendMessage("You need " + reqOre.getAmount() + " " + EntityHandler.getItemDef(reqOre.getId()).getName()
-                            + " to smelt a " + affectedItem.getDef().getName() + ".");
+            player.getActionSender().sendMessage("You need " + reqOre.getAmount() + " " + EntityHandler.getItemDef
+              (reqOre.getId()).getName() + " to smelt a " + affectedItem.getDef().getName() + ".");
             return;
           }
         }
         if (player.getCurStat(13) < smeltingDef.getReqLevel()) {
-          player.getActionSender()
-                  .sendMessage("You need a smithing level of " + smeltingDef.getReqLevel() + " to smelt this.");
+          player.getActionSender().sendMessage("You need a smithing level of " + smeltingDef.getReqLevel() + " to " +
+            "smelt this.");
           return;
         }
         if (!checkAndRemoveRunes(player, spell)) {
@@ -1098,13 +1089,13 @@ public class SpellHandler implements PacketHandler {
     if (affectedItem.isWielded()) {
       player.getActionSender().sendSound("click");
       affectedItem.setWield(false);
-      player.updateWornItems(affectedItem.getWieldableDef().getWieldPos(),
-              player.getPlayerAppearance().getSprite(affectedItem.getWieldableDef().getWieldPos()));
+      player.updateWornItems(affectedItem.getWieldableDef().getWieldPos(), player.getPlayerAppearance().getSprite
+        (affectedItem.getWieldableDef().getWieldPos()));
       player.getActionSender().sendEquipmentStats();
     }
   }
 
-  private void handleGroundCast(Player player, SpellDef spell, int id) {
+  private void handleGroundCast( Player player, SpellDef spell, int id ) {
     switch (id) {
       case 7: // Bones to bananas
         if (!checkAndRemoveRunes(player, spell)) {
@@ -1143,7 +1134,7 @@ public class SpellHandler implements PacketHandler {
     }
   }
 
-  private void handleTeleport(Player player, SpellDef spell, int id) {
+  private void handleTeleport( Player player, SpellDef spell, int id ) {
     if (player.inCombat()) {
       player.getActionSender().sendMessage("You cannot teleport while in combat.");
       return;
@@ -1181,7 +1172,7 @@ public class SpellHandler implements PacketHandler {
     finalizeSpell(player, spell);
   }
 
-  private void finalizeSpell(Player player, SpellDef spell) {
+  private void finalizeSpell( Player player, SpellDef spell ) {
     player.getActionSender().sendSound("spellok");
     player.getActionSender().sendMessage("Cast spell successfully");
     player.incExp(6, spell.getExp(), true, true);

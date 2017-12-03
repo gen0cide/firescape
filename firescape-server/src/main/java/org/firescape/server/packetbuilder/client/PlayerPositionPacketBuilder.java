@@ -14,7 +14,7 @@ public class PlayerPositionPacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer(Player p) {
+  public void setPlayer( Player p ) {
     playerToUpdate = p;
   }
 
@@ -23,7 +23,7 @@ public class PlayerPositionPacketBuilder {
     Collection<Player> newPlayers = watchedPlayers.getNewEntities();
     Collection<Player> knownPlayers = watchedPlayers.getKnownEntities();
     RSCPacketBuilder packet = new RSCPacketBuilder();
-    packet.setID(145);
+    packet.setID(191);
     packet.addBits(playerToUpdate.getX(), 11);
     packet.addBits(playerToUpdate.getY(), 13);
     packet.addBits(playerToUpdate.getSprite(), 4);

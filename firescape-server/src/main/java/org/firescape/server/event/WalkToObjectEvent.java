@@ -4,17 +4,17 @@ import org.firescape.server.model.GameObject;
 import org.firescape.server.model.Player;
 
 public abstract class WalkToObjectEvent extends DelayedEvent {
+  private final boolean stop;
   protected GameObject object;
-  private boolean stop;
 
-  public WalkToObjectEvent(Player owner, GameObject object, boolean stop) {
+  public WalkToObjectEvent( Player owner, GameObject object, boolean stop ) {
     super(owner, 500);
     this.object = object;
     this.stop = stop;
     if (stop && owner.atObject(object)) {
       owner.resetPath();
       arrived();
-      super.running = false;
+      this.running = false;
     }
   }
 
@@ -29,7 +29,7 @@ public abstract class WalkToObjectEvent extends DelayedEvent {
     } else if (owner.atObject(object)) {
       arrived();
     }
-    super.running = false;
+    this.running = false;
   }
 
 }

@@ -12,7 +12,7 @@ public class PlayerUpdatePacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer(Player p) {
+  public void setPlayer( Player p ) {
     playerToUpdate = p;
   }
 
@@ -24,11 +24,11 @@ public class PlayerUpdatePacketBuilder {
     List<Projectile> projectilesNeedingDisplayed = playerToUpdate.getProjectilesNeedingDisplayed();
     List<Player> playersNeedingAppearanceUpdate = playerToUpdate.getPlayersRequiringAppearanceUpdate();
 
-    int updateSize = bubblesNeedingDisplayed.size() + chatMessagesNeedingDisplayed.size()
-            + playersNeedingHitsUpdate.size() + projectilesNeedingDisplayed.size() + playersNeedingAppearanceUpdate.size();
+    int updateSize = bubblesNeedingDisplayed.size() + chatMessagesNeedingDisplayed.size() + playersNeedingHitsUpdate
+      .size() + projectilesNeedingDisplayed.size() + playersNeedingAppearanceUpdate.size();
     if (updateSize > 0) {
       RSCPacketBuilder updates = new RSCPacketBuilder();
-      updates.setID(53);
+      updates.setID(234);
       updates.addShort(updateSize);
       for (Bubble b : bubblesNeedingDisplayed) { // 0 - Draws item over players
         // head
@@ -60,12 +60,12 @@ public class PlayerUpdatePacketBuilder {
           updates.addShort(p.getCaster().getIndex());
           updates.addByte((byte) 3);
           updates.addShort(p.getType());
-          updates.addShort(((Npc) victim).getIndex());
+          updates.addShort(victim.getIndex());
         } else if (victim instanceof Player) {
           updates.addShort(p.getCaster().getIndex());
           updates.addByte((byte) 4);
           updates.addShort(p.getType());
-          updates.addShort(((Player) victim).getIndex());
+          updates.addShort(victim.getIndex());
         }
       }
       for (Player p : playersNeedingAppearanceUpdate) { // 5 - Updates players

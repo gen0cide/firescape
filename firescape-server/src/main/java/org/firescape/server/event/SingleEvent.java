@@ -4,13 +4,13 @@ import org.firescape.server.model.Player;
 
 public abstract class SingleEvent extends DelayedEvent {
 
-  public SingleEvent(Player owner, int delay) {
+  public SingleEvent( Player owner, int delay ) {
     super(owner, delay);
   }
 
   public void run() {
     action();
-    super.running = false;
+    this.running = false;
   }
 
   public abstract void action();

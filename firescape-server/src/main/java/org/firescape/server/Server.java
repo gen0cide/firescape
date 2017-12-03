@@ -1,6 +1,5 @@
 package org.firescape.server;
 
-import jnr.ffi.LibraryLoader;
 import org.apache.mina.common.IoAcceptor;
 import org.apache.mina.common.IoAcceptorConfig;
 import org.apache.mina.transport.socket.nio.SocketAcceptor;
@@ -14,19 +13,31 @@ import org.firescape.server.net.RSCConnectionHandler;
 import org.firescape.server.util.Config;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Logger;
+import org.jruby.embed.ScriptingContainer;
 import redis.clients.jedis.Jedis;
 
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
-import java.util.UUID;
-import org.jruby.embed.ScriptingContainer;
 
 /**
  * The entry point for RSC server.
  */
 public class Server {
+  public static final String JRubyEntryPoint = "require 'pry'\n" + "require 'pry-remote'\n" + "require 'redis'\n" +
+    "\n" + "require 'java'\n" + "\n" + "\n" + "server = Java::OrgFirescapeServer::Server.new\n" + "\n" + "class " +
+    "FireScape\n" + "  \n" + "  @@world = Java::OrgFirescapeServerModel::World.get_world\n" + "\n" + "  def " +
+    "enum_players\n" + "    @@world.players\n" + "  end\n" + "\n" + "  def find_player(id)\n" + "    @@world.players"
+    + ".get(id)\n" + "  end\n" + "\n" + "  def give_item(player_id, item_id, quantity = 1)\n" + "    item = " +
+    "Java::OrgFirescapeServerModel::InvItem.new(item_id, quantity)\n" + "    player = find_player(player_id)\n" + "  " +
+    "" + "  player.get_inventory.add(item)\n" + "    player.get_action_sender.send_inventory\n" + "  end\n" + "end\n"
+    + "\n" + "slack = Thread.new do  \n" + "  redis = Redis.new\n" + "\n" + "  redis.subscribe('game_chat') do " +
+    "|on|\n" + "    on.message do |channel, msg|\n" + "      # Do something with the channel messages here\n" + "    " +
+    "end\n" + "  end\n" + "end\n" + "\n" + "mgmt = Thread.new do\n" + "  @@is_running = true\n" + "\n" + "  game = " +
+    "FireScape" + ".new\n" + "\n" + "  def kill_serv\n" + "    @@is_running = false\n" + "    exit\n" + "  end\n" +
+    "\n" + "  while" + "(@@is_running)\n" + "    binding.remote_pry('localhost', '9040')\n" + "  end\n" + "end\n" +
+    "\n" + "slack" + ".join\n" + "mgmt.join\n" + "\n" + "abort\n";
   /**
    * World instance
    */
@@ -36,12 +47,12 @@ public class Server {
    */
   private GameEngine engine;
   /**
+   * The login server connection
+   */
+  /**
    * The SocketAcceptor
    */
   private IoAcceptor acceptor;
-  /**
-   * The login server connection
-   */
   /**
    * Update event - if the server is shutting down
    */
@@ -85,70 +96,6 @@ public class Server {
     }
   }
 
-  public static final String JRubyEntryPoint = "require 'pry'\n" +
-          "require 'pry-remote'\n" +
-          "require 'redis'\n" +
-          "\n" +
-          "require 'java'\n" +
-          "\n" +
-          "\n" +
-          "server = Java::OrgFirescapeServer::Server.new\n" +
-          "\n" +
-          "class FireScape\n" +
-          "  \n" +
-          "  @@world = Java::OrgFirescapeServerModel::World.get_world\n" +
-          "\n" +
-          "  def enum_players\n" +
-          "    @@world.players\n" +
-          "  end\n" +
-          "\n" +
-          "  def find_player(id)\n" +
-          "    @@world.players.get(id)\n" +
-          "  end\n" +
-          "\n" +
-          "  def give_item(player_id, item_id, quantity = 1)\n" +
-          "    item = Java::OrgFirescapeServerModel::InvItem.new(item_id, quantity)\n" +
-          "    player = find_player(player_id)\n" +
-          "    player.get_inventory.add(item)\n" +
-          "    player.get_action_sender.send_inventory\n" +
-          "  end\n" +
-          "end\n" +
-          "\n" +
-          "slack = Thread.new do  \n" +
-          "  redis = Redis.new\n" +
-          "\n" +
-          "  redis.subscribe('game_chat') do |on|\n" +
-          "    on.message do |channel, msg|\n" +
-          "      # Do something with the channel messages here\n" +
-          "    end\n" +
-          "  end\n" +
-          "end\n" +
-          "\n" +
-          "mgmt = Thread.new do\n" +
-          "  @@is_running = true\n" +
-          "\n" +
-          "  game = FireScape.new\n" +
-          "\n" +
-          "  def kill_serv\n" +
-          "    @@is_running = false\n" +
-          "    exit\n" +
-          "  end\n" +
-          "\n" +
-          "  while(@@is_running)\n" +
-          "    binding.remote_pry('localhost', '9040')\n" +
-          "  end\n" +
-          "end\n" +
-          "\n" +
-          "slack.join\n" +
-          "mgmt.join\n" +
-          "\n" +
-          "abort\n";
-
-  public static void runScriptingEngine() {
-    ScriptingContainer container = new ScriptingContainer();
-    container.runScriptlet(JRubyEntryPoint);
-  }
-
   public static void resetVars() {
     GameVars.modsOnline = 0;
     GameVars.adminsOnline = 0;
@@ -183,12 +130,12 @@ public class Server {
     }
   }
 
-  public static boolean isOnline(String player) {
+  public static boolean isOnline( String player ) {
     Player p = world.getPlayer(DataConversions.usernameToHash(player));
     return p != null;
   }
 
-  public static String readValue(String user, String key) {
+  public static String readValue( String user, String key ) {
     String username = user.replaceAll(" ", "_").toLowerCase();
     String redis_key = "players_" + username.toLowerCase();
     try (Jedis jedis = world.redis.getResource()) {
@@ -207,7 +154,7 @@ public class Server {
     return null;
   }
 
-  public static void writeValue(String user, String key, String value) {
+  public static void writeValue( String user, String key, String value ) {
     String username = user.replaceAll(" ", "_").toLowerCase();
     String redis_key = "players_" + username.toLowerCase();
     try (Jedis jedis = world.redis.getResource()) {
@@ -227,7 +174,7 @@ public class Server {
     }
   }
 
-  public static void EntryPoint(String name) {
+  public static void EntryPoint( String name ) {
     System.out.println("Welcome " + name);
     System.out.println("Entering Firescape Entrypoint");
     try {
@@ -237,27 +184,17 @@ public class Server {
     }
   }
 
-  public static void main(String[] args) {
-//    MathLib ml = LibraryLoader.create(MathLib.class).load("math");
-//    for(int x = 0; x < 10000; x++) {
-//      System.out.println("JAVA: " + ml.Puts(UUID.randomUUID().toString()));
-//      try {
-//        Thread.sleep(250);
-//      } catch (InterruptedException e) {
-//        System.out.println(e.getMessage());
-//      }
-//    }
-    try {
+  public static void runScriptingEngine() {
+    ScriptingContainer container = new ScriptingContainer();
+    container.runScriptlet(JRubyEntryPoint);
+  }
 
-      // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-      // UIManager.setLookAndFeel("com.easynth.lookandfeel.EaSynthLookAndFeel");
+  public static void main( String[] args ) {
+    try {
       launchServer();
     } catch (Exception e) {
 
     }
-    // GUI.args = args;
-    // new Server();
-
   }
 
   public static void launchServer() {
@@ -292,8 +229,7 @@ public class Server {
    * Kills the game engine and irc engine
    */
   public void kill() {
-    // GUI.resetVars();
-    Logger.print("CleanRSC Shutting Down...", 3);
+    Logger.print("Firescape Shutting Down...", 3);
     running = false;
     engine.emptyWorld();
   }
@@ -301,15 +237,15 @@ public class Server {
   /**
    * PvP Arena
    **/
-  public boolean pvpTimerStart(int time) {
+  public boolean pvpTimerStart( int time ) {
     if (pvpEvent != null) {
       return false;
     }
     pvpEvent = new SingleEvent(null, time * 1000) {
       public void action() {
-        for (Player p : world.getPlayers()) {
+        for (Player p : DelayedEvent.world.getPlayers()) {
           p.getActionSender().sendMessage("The PvP tournament has started!");
-          if (world.getPvpEntry(p) && p.getLocation().inWaitingRoom()) {
+          if (DelayedEvent.world.getPvpEntry(p) && p.getLocation().inWaitingRoom()) {
             p.teleport(228, 130, false);
           }
         }
@@ -409,12 +345,11 @@ public class Server {
   public void unbind() {
     try {
       acceptor.unbindAll();
-      // GUI.cout("Socket Closed", 3);
     } catch (Exception e) {
     }
   }
 
   public interface MathLib {
-    String Puts(String s);
+    String Puts( String s );
   }
 }

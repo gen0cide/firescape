@@ -12,33 +12,30 @@ public class Gamble implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc(final Npc npc, final Player player) throws Exception {
+  public void handleNpc( Npc npc, Player player ) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Would you like to gamble?", player));
     player.informOfNpcMessage(new ChatMessage(npc, "The more you gamble, the better the prize!", player));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "I will Gamble 100k.",
-                "I will Gamble 500k.",
-                "I will Gamble 1m",
-                "No, thank you."
+        String[] options = {
+          "I will Gamble 100k.", "I will Gamble 500k.", "I will Gamble 1m", "No, thank you."
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply( int option, String reply ) {
             if (owner.isBusy()) {
               return;
             }
             owner.informOfChatMessage(new ChatMessage(owner, reply, npc));
             owner.setBusy(true);
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 owner.setBusy(false);
                 if (option == 0) {
                   if (player.getInventory().countId(10) > 99999) {
                     owner.informOfNpcMessage(new ChatMessage(npc, "Thank you, and good luck!", owner));
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         Random generator = new Random();
@@ -218,14 +215,14 @@ public class Gamble implements NpcHandler {
 
                     });
                   } else {
-                    owner.informOfNpcMessage(new ChatMessage(npc,
-                            "You dont have enought money, come back when your not out of cash!", owner));
+                    owner.informOfNpcMessage(new ChatMessage(npc, "You dont have enought money, come back when " +
+                      "your not out of cash!", owner));
                   }
                 }
                 if (option == 1) {
                   if (player.getInventory().countId(10) > 499999) {
                     owner.informOfNpcMessage(new ChatMessage(npc, "Thank you Sir, Good Luck to you!", owner));
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         Random generator = new Random();
@@ -397,14 +394,14 @@ public class Gamble implements NpcHandler {
 
                     });
                   } else {
-                    owner.informOfNpcMessage(new ChatMessage(npc,
-                            "You dont have enought money, come back when your not out of cash.", owner));
+                    owner.informOfNpcMessage(new ChatMessage(npc, "You dont have enought money, come back when " +
+                      "your not out of cash.", owner));
                   }
                 }
                 if (option == 2) {
                   if (player.getInventory().countId(10) > 999999) {
                     owner.informOfNpcMessage(new ChatMessage(npc, "Thank you Sir, Good Luck to you!", owner));
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         Random generator = new Random();
@@ -490,8 +487,8 @@ public class Gamble implements NpcHandler {
                           // Exp
                           // Certs
                           player.getActionSender().sendInventory();
-                          player.getActionSender()
-                                  .sendMessage("@gre@You won @whi@100 Defense Experience Certificates!");
+                          player.getActionSender().sendMessage("@gre@You won @whi@100 Defense Experience " +
+                            "Certificates!");
                         }
                         if (number == 12) {
                           player.getInventory().remove(10, 1000000);
@@ -701,14 +698,14 @@ public class Gamble implements NpcHandler {
 
                     });
                   } else {
-                    owner.informOfNpcMessage(
-                            new ChatMessage(npc, "You dont have enough money, come back when your have some!", owner));
+                    owner.informOfNpcMessage(new ChatMessage(npc, "You dont have enough money, come back when " +
+                      "your have some!", owner));
                   }
                 }
                 if (option == 3) {
-                  owner.informOfNpcMessage(
-                          new ChatMessage(npc, "Please do come back when you have some more cash!", owner));
-                  world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                  owner.informOfNpcMessage(new ChatMessage(npc, "Please do come back when you have some more " +
+                    "cash!", owner));
+                  DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                     public void action() {
 
                     }

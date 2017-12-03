@@ -11,79 +11,80 @@ import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Random;
 
 public final class DataConversions {
-  private static final BigInteger key = new BigInteger(
-          "730546719878348732291497161314617369560443701473303681965331739205703475535302276087891130348991033265134162275669215460061940182844329219743687403068279");
-  private static final BigInteger modulus = new BigInteger(
-          "1549611057746979844352781944553705273443228154042066840514290174539588436243191882510185738846985723357723362764835928526260868977814405651690121789896823");
-  private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
-  private static MessageDigest md;
-  private static Random rand = new Random();
-  private static char characters[] = {
-          ' ',
-          'e',
-          't',
-          'a',
-          'o',
-          'i',
-          'h',
-          'n',
-          's',
-          'r',
-          'd',
-          'l',
-          'u',
-          'm',
-          'w',
-          'c',
-          'y',
-          'f',
-          'g',
-          'p',
-          'b',
-          'v',
-          'k',
-          'x',
-          'j',
-          'q',
-          'z',
-          '0',
-          '1',
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          ' ',
-          '!',
-          '?',
-          '.',
-          ',',
-          ':',
-          ';',
-          '(',
-          ')',
-          '-',
-          '&',
-          '*',
-          '\\',
-          '\'',
-          '@',
-          '#',
-          '+',
-          '=',
-          '\243',
-          '$',
-          '%',
-          '"',
-          '[',
-          ']'
+  private static final BigInteger key = new BigInteger
+    ("730546719878348732291497161314617369560443701473303681965331739205703475535302276087891130348991033265134162275669215460061940182844329219743687403068279");
+  private static final BigInteger modulus = new BigInteger
+    ("1549611057746979844352781944553705273443228154042066840514290174539588436243191882510185738846985723357723362764835928526260868977814405651690121789896823");
+  private static final SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
+  private static final Random rand = new Random();
+  private static final char[] characters = {
+    ' ',
+    'e',
+    't',
+    'a',
+    'o',
+    'i',
+    'h',
+    'n',
+    's',
+    'r',
+    'd',
+    'l',
+    'u',
+    'm',
+    'w',
+    'c',
+    'y',
+    'f',
+    'g',
+    'p',
+    'b',
+    'v',
+    'k',
+    'x',
+    'j',
+    'q',
+    'z',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    ' ',
+    '!',
+    '?',
+    '.',
+    ',',
+    ':',
+    ';',
+    '(',
+    ')',
+    '-',
+    '&',
+    '*',
+    '\\',
+    '\'',
+    '@',
+    '#',
+    '+',
+    '=',
+    '\243',
+    '$',
+    '%',
+    '"',
+    '[',
+    ']'
   };
+  private static MessageDigest md;
 
   /**
    * Creates an instance of the message digest used for creating md5 hashes
@@ -96,40 +97,45 @@ public final class DataConversions {
     }
   }
 
-  public static void main(String[] argv) {
-    if (argv[0].equals("encode"))
+  public static void main( String[] argv ) {
+    if (argv[0].equals("encode")) {
       System.out.println(usernameToHash(argv[1]));
-    if (argv[0].equals("decode"))
+    }
+    if (argv[0].equals("decode")) {
       System.out.println(hashToUsername(Long.parseLong(argv[1])));
+    }
   }
 
   /**
    * Converts a username to a unique hash
    */
-  public static long usernameToHash(String s) {
+  public static long usernameToHash( String s ) {
     s = s.toLowerCase();
     String s1 = "";
     for (int i = 0; i < s.length(); i++) {
       char c = s.charAt(i);
-      if (c >= 'a' && c <= 'z')
+      if (c >= 'a' && c <= 'z') {
         s1 = s1 + c;
-      else if (c >= '0' && c <= '9')
+      } else if (c >= '0' && c <= '9') {
         s1 = s1 + c;
-      else
+      } else {
         s1 = s1 + ' ';
+      }
     }
 
     s1 = s1.trim();
-    if (s1.length() > 12)
+    if (s1.length() > 12) {
       s1 = s1.substring(0, 12);
+    }
     long l = 0L;
     for (int j = 0; j < s1.length(); j++) {
       char c1 = s1.charAt(j);
       l *= 37L;
-      if (c1 >= 'a' && c1 <= 'z')
+      if (c1 >= 'a' && c1 <= 'z') {
         l += (1 + c1) - 97;
-      else if (c1 >= '0' && c1 <= '9')
+      } else if (c1 >= '0' && c1 <= '9') {
         l += (27 + c1) - 48;
+      }
     }
     return l;
   }
@@ -137,20 +143,22 @@ public final class DataConversions {
   /**
    * Converts a usernames hash back to the username
    */
-  public static String hashToUsername(long l) {
-    if (l < 0L)
+  public static String hashToUsername( long l ) {
+    if (l < 0L) {
       return "invalid_name";
+    }
     String s = "";
     while (l != 0L) {
       int i = (int) (l % 37L);
       l /= 37L;
-      if (i == 0)
+      if (i == 0) {
         s = " " + s;
-      else if (i < 27) {
-        if (l % 37L == 0L)
+      } else if (i < 27) {
+        if (l % 37L == 0L) {
           s = (char) ((i + 65) - 1) + s;
-        else
+        } else {
           s = (char) ((i + 97) - 1) + s;
+        }
       } else {
         s = (char) ((i + 48) - 27) + s;
       }
@@ -162,13 +170,13 @@ public final class DataConversions {
    * Returns a ByteBuffer containing everything available from the given
    * InputStream
    */
-  public static final ByteBuffer streamToBuffer(BufferedInputStream in) throws IOException {
+  public static final ByteBuffer streamToBuffer( BufferedInputStream in ) throws IOException {
     byte[] buffer = new byte[in.available()];
     in.read(buffer, 0, buffer.length);
     return ByteBuffer.wrap(buffer);
   }
 
-  public static String timeSince(long time) {
+  public static String timeSince( long time ) {
     int seconds = (int) ((System.currentTimeMillis() - time) / 1000);
     int minutes = seconds / 60;
     int hours = minutes / 60;
@@ -176,39 +184,39 @@ public final class DataConversions {
     return days + " days " + (hours % 24) + " hours " + (minutes % 60) + " mins";
   }
 
-  public static String timeFormat(long l) {
+  public static String timeFormat( long l ) {
     return formatter.format(l);
   }
 
-  public static int roundUp(double val) {
+  public static int roundUp( double val ) {
     return (int) Math.round(val + 0.5D);
   }
 
-  public static double round(double value, int decimalPlace) {
+  public static double round( double value, int decimalPlace ) {
     BigDecimal bd = new BigDecimal(value);
     bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
     return (bd.doubleValue());
   }
 
-  public static byte[] getObjectPositionOffsets(Point p1, Point p2) {
+  public static byte[] getObjectPositionOffsets( Point p1, Point p2 ) {
     byte[] rv = new byte[2];
     rv[0] = getObjectCoordOffset(p1.getX(), p2.getX());
     rv[1] = getObjectCoordOffset(p1.getY(), p2.getY());
     return rv;
   }
 
-  private static byte getObjectCoordOffset(int coord1, int coord2) {
+  private static byte getObjectCoordOffset( int coord1, int coord2 ) {
     return (byte) (coord1 - coord2);
   }
 
-  public static byte[] getMobPositionOffsets(Point p1, Point p2) {
+  public static byte[] getMobPositionOffsets( Point p1, Point p2 ) {
     byte[] rv = new byte[2];
     rv[0] = getMobCoordOffset(p1.getX(), p2.getX());
     rv[1] = getMobCoordOffset(p1.getY(), p2.getY());
     return rv;
   }
 
-  private static byte getMobCoordOffset(int coord1, int coord2) {
+  private static byte getMobCoordOffset( int coord1, int coord2 ) {
     byte offset = (byte) (coord1 - coord2);
     if (offset < 0) {
       offset += 32;
@@ -219,10 +227,11 @@ public final class DataConversions {
   /**
    * Decrypts an RSA encrypted packet using our private key
    */
-  public static RSCPacket decryptRSA(byte[] pData) {
+  public static RSCPacket decryptRSA( byte[] pData ) {
     try {
       BigInteger bigInteger = new BigInteger(pData);
       pData = bigInteger.modPow(key, modulus).toByteArray();
+      System.out.printf("DECRYPTED PACKET: %s\n", Arrays.toString(pData));
       return new RSCPacket(null, 0, pData, true);
     } catch (Exception e) {
       e.printStackTrace();
@@ -233,7 +242,7 @@ public final class DataConversions {
   /**
    * Calculates the average of all values in the array
    */
-  public static int average(int[] values) {
+  public static int average( int[] values ) {
     int total = 0;
     for (int value : values) {
       total += value;
@@ -244,7 +253,7 @@ public final class DataConversions {
   /**
    * Encodes a string into a byte array
    */
-  public static byte[] stringToByteArray(String message) {
+  public static byte[] stringToByteArray( String message ) {
     byte[] buffer = new byte[100];
     if (message.length() > 80) {
       message = message.substring(0, 80);
@@ -258,10 +267,11 @@ public final class DataConversions {
         code += 195;
       }
       if (j == -1) {
-        if (code < 13)
+        if (code < 13) {
           j = code;
-        else
+        } else {
           buffer[length++] = (byte) code;
+        }
       } else if (code < 13) {
         buffer[length++] = (byte) ((j << 4) + code);
         j = -1;
@@ -282,7 +292,7 @@ public final class DataConversions {
    * returns the code used to represent the given character in our byte array
    * encoding methods
    */
-  private static int getCharCode(char c) {
+  private static int getCharCode( char c ) {
     for (int x = 0; x < characters.length; x++) {
       if (c == characters[x]) {
         return x;
@@ -294,7 +304,7 @@ public final class DataConversions {
   /**
    * Decodes a byte array back into a string
    */
-  public static String byteToString(byte[] data, int offset, int length) {
+  public static String byteToString( byte[] data, int offset, int length ) {
     char[] buffer = new char[100];
     try {
       int k = 0;
@@ -350,21 +360,21 @@ public final class DataConversions {
   /**
    * Returns true percent% of the time
    */
-  public static boolean percentChance(int percent) {
+  public static boolean percentChance( int percent ) {
     return random(1, 100) <= percent;
   }
 
   /**
    * returns a random number within the given bounds
    */
-  public static int random(int low, int high) {
+  public static int random( int low, int high ) {
     return low + rand.nextInt(high - low + 1);
   }
 
   /**
    * Checks if the given int is in the array
    */
-  public static boolean inArray(int[] haystack, int needle) {
+  public static boolean inArray( int[] haystack, int needle ) {
     for (int option : haystack) {
       if (needle == option) {
         return true;
@@ -376,7 +386,7 @@ public final class DataConversions {
   /**
    * returns the max of the 2 values
    */
-  public static int max(int i1, int i2) {
+  public static int max( int i1, int i2 ) {
     return i1 > i2 ? i1 : i2;
   }
 
@@ -391,7 +401,7 @@ public final class DataConversions {
    * returns a random number within the given bounds, but allows for certain
    * values to be weighted
    */
-  public static int randomWeighted(int low, int dip, int peak, int max) {
+  public static int randomWeighted( int low, int dip, int peak, int max ) {
     int total = 0;
     int probability = 100;
     int[] probArray = new int[max + 1];
@@ -417,13 +427,13 @@ public final class DataConversions {
   /**
    * returns the md5 hash of a string
    */
-  public static String md5(String s) {
+  public static String md5( String s ) {
     md.reset();
     md.update(s.getBytes());
     return HexString.bufferToHex(md.digest());
   }
 
-  public static String IPToString(long ip) {
+  public static String IPToString( long ip ) {
     String result = "0.0.0.0";
     for (int x = 0; x < 4; x++) {
       int octet = (int) (ip / Math.pow(256, 3 - x));
@@ -437,7 +447,7 @@ public final class DataConversions {
     return result;
   }
 
-  public static long IPToLong(String ip) {
+  public static long IPToLong( String ip ) {
     String[] octets = ip.split("\\.");
     long result = 0L;
     for (int x = 0; x < 4; x++) {

@@ -14,7 +14,7 @@ public class SessionRequest implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     byte userByte = p.readByte();
     player.setClassName(p.readString().trim());

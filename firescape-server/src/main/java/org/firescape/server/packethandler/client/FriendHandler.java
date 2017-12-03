@@ -14,7 +14,7 @@ public class FriendHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
 
@@ -31,7 +31,7 @@ public class FriendHandler implements PacketHandler {
           return;
         }
         for (int i = 0; i < player.friendCount(); i++) {
-          String s = (String) player.getFriendList().get(i);
+          String s = player.getFriendList().get(i);
           if (s.equals(friend)) {
             player.getActionSender().sendMessage("This person is already in your friends list");
             return;

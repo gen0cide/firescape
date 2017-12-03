@@ -13,14 +13,14 @@ public class Inventory {
   /**
    * World instance
    */
-  private static World world = World.getWorld();
+  private static final World world = World.getWorld();
+  private final ArrayList<InvItem> list = new ArrayList<InvItem>();
   private Player player;
-  private ArrayList<InvItem> list = new ArrayList<InvItem>();
 
   public Inventory() {
   }
 
-  public Inventory(Player player) {
+  public Inventory( Player player ) {
     this.player = player;
   }
 
@@ -28,7 +28,7 @@ public class Inventory {
     return list;
   }
 
-  public boolean wielding(int id) {
+  public boolean wielding( int id ) {
     for (InvItem i : list) {
       if (i.getID() == id && i.isWielded()) {
         return true;
@@ -37,7 +37,7 @@ public class Inventory {
     return false;
   }
 
-  public int add(InvItem item) {
+  public int add( InvItem item ) {
     if (item.getAmount() <= 0) {
       return -1;
     }
@@ -52,8 +52,8 @@ public class Inventory {
       item.setAmount(1);
     }
     if (this.full()) {
-      player.getActionSender()
-              .sendMessage("Your Inventory is full, the " + item.getDef().getName() + " drops to the ground!");
+      player.getActionSender().sendMessage("Your Inventory is full, the " + item.getDef().getName() + " drops to" + "" +
+        " the ground!");
       world.registerItem(new Item(item.getID(), player.getX(), player.getY(), item.getAmount(), player));
       return -1;
     }
@@ -65,11 +65,11 @@ public class Inventory {
     return list.size() >= MAX_SIZE;
   }
 
-  public int remove(InvItem item) {
+  public int remove( InvItem item ) {
     return remove(item.getID(), item.getAmount());
   }
 
-  public int remove(int id, int amount) {
+  public int remove( int id, int amount ) {
     int size = list.size();
     ListIterator<InvItem> iterator = list.listIterator(size);
     for (int index = size - 1; iterator.hasPrevious(); index--) {
@@ -81,8 +81,8 @@ public class Inventory {
           if (i.isWielded()) {
             player.getActionSender().sendSound("click");
             i.setWield(false);
-            player.updateWornItems(i.getWieldableDef().getWieldPos(),
-                    player.getPlayerAppearance().getSprite(i.getWieldableDef().getWieldPos()));
+            player.updateWornItems(i.getWieldableDef().getWieldPos(), player.getPlayerAppearance().getSprite(i
+              .getWieldableDef().getWieldPos()));
             player.getActionSender().sendEquipmentStats();
           }
           iterator.remove();
@@ -93,7 +93,7 @@ public class Inventory {
     return -1;
   }
 
-  public void remove(int index) {
+  public void remove( int index ) {
     InvItem item = get(index);
     if (item == null) {
       return;
@@ -101,7 +101,7 @@ public class Inventory {
     remove(item.getID(), item.getAmount());
   }
 
-  public InvItem get(int index) {
+  public InvItem get( int index ) {
     if (index < 0 || index >= list.size()) {
       return null;
     }
@@ -116,7 +116,7 @@ public class Inventory {
     return list.listIterator();
   }
 
-  public int getLastIndexById(int id) {
+  public int getLastIndexById( int id ) {
     for (int index = list.size() - 1; index >= 0; index--) {
       if (list.get(index).getID() == id) {
         return index;
@@ -125,11 +125,11 @@ public class Inventory {
     return -1;
   }
 
-  public boolean contains(InvItem i) {
+  public boolean contains( InvItem i ) {
     return list.contains(i);
   }
 
-  public InvItem get(InvItem item) {
+  public InvItem get( InvItem item ) {
     for (int index = list.size() - 1; index >= 0; index--) {
       if (list.get(index).equals(item)) {
         return list.get(index);
@@ -142,7 +142,7 @@ public class Inventory {
     return list.size();
   }
 
-  public int getFreedSlots(List<InvItem> items) {
+  public int getFreedSlots( List<InvItem> items ) {
     int freedSlots = 0;
     for (InvItem item : items) {
       freedSlots += getFreedSlots(item);
@@ -150,11 +150,11 @@ public class Inventory {
     return freedSlots;
   }
 
-  public int getFreedSlots(InvItem item) {
+  public int getFreedSlots( InvItem item ) {
     return (item.getDef().isStackable() && countId(item.getID()) > item.getAmount() ? 0 : 1);
   }
 
-  public int countId(int id) {
+  public int countId( int id ) {
     int temp = 0;
     for (InvItem i : list) {
       if (i.getID() == id) {
@@ -164,7 +164,7 @@ public class Inventory {
     return temp;
   }
 
-  public int getRequiredSlots(List<InvItem> items) {
+  public int getRequiredSlots( List<InvItem> items ) {
     int requiredSlots = 0;
     for (InvItem item : items) {
       requiredSlots += getRequiredSlots(item);
@@ -172,11 +172,11 @@ public class Inventory {
     return requiredSlots;
   }
 
-  public int getRequiredSlots(InvItem item) {
+  public int getRequiredSlots( InvItem item ) {
     return (item.getDef().isStackable() && list.contains(item) ? 0 : 1);
   }
 
-  public boolean canHold(InvItem item) {
+  public boolean canHold( InvItem item ) {
     return (MAX_SIZE - list.size()) >= getRequiredSlots(item);
   }
 

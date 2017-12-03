@@ -14,7 +14,7 @@ public class PrivacySettingHandler implements PacketHandler {
   // private PrivacySettingUpdatePacketBuilder builder = new
   // PrivacySettingUpdatePacketBuilder();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     boolean[] newSettings = new boolean[4];
     for (int i = 0; i < 4; i++) {

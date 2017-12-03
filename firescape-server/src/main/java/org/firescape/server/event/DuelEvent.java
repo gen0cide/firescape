@@ -8,10 +8,10 @@ import org.firescape.server.util.Formulae;
 import java.util.ArrayList;
 
 public class DuelEvent extends DelayedEvent {
-  private Player affectedPlayer;
+  private final Player affectedPlayer;
   private int hits;
 
-  public DuelEvent(Player owner, Player affectedPlayer) {
+  public DuelEvent( Player owner, Player affectedPlayer ) {
     super(owner, 1000);
     this.affectedPlayer = affectedPlayer;
     hits = 0;
@@ -89,7 +89,7 @@ public class DuelEvent extends DelayedEvent {
     }
   }
 
-  public boolean equals(Object o) {
+  public boolean equals( Object o ) {
     if (o instanceof DuelEvent) {
       DuelEvent e = (DuelEvent) o;
       return e.belongsTo(owner) && e.getAffectedPlayer().equals(affectedPlayer);

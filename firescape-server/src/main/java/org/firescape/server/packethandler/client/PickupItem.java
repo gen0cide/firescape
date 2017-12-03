@@ -14,7 +14,7 @@ public class PickupItem implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -23,8 +23,8 @@ public class PickupItem implements PacketHandler {
     player.resetAll();
     Point location = Point.location(p.readShort(), p.readShort());
     int id = p.readShort();
-    final ActiveTile tile = world.getTile(location);
-    final Item item = getItem(id, tile, player);
+    ActiveTile tile = world.getTile(location);
+    Item item = getItem(id, tile, player);
     if (item == null) {
       player.setSuspiciousPlayer(true);
       player.resetPath();
@@ -33,18 +33,18 @@ public class PickupItem implements PacketHandler {
     player.setStatus(Action.TAKING_GITEM);
     world.getDelayedEventHandler().add(new WalkToPointEvent(player, location, 1, false) {
       public void arrived() {
-        if (owner.isBusy() || owner.isRanging() || !tile.hasItem(item) || !owner.nextTo(item)
-                || owner.getStatus() != Action.TAKING_GITEM) {
+        if (owner.isBusy() || owner.isRanging() || !tile.hasItem(item) || !owner.nextTo(item) || owner.getStatus() !=
+          Action.TAKING_GITEM) {
           return;
         }
         if (item.getID() == 501 && item.getX() == 333 && item.getY() == 434) {
-          Npc affectedNpc = world.getNpc(140, 328, 333, 433, 438);
-          Npc affectedNpc2 = world.getNpc(140, 328, 333, 433, 438);
-          Npc affectedNpc3 = world.getNpc(140, 328, 333, 433, 438);
-          Npc affectedNpc4 = world.getNpc(140, 328, 333, 433, 438);
-          Npc affectedNpc5 = world.getNpc(140, 328, 333, 433, 438);
-          Npc affectedNpc6 = world.getNpc(140, 328, 333, 433, 438);
-          Npc affectedNpc7 = world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc2 = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc3 = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc4 = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc5 = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc6 = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
+          Npc affectedNpc7 = DelayedEvent.world.getNpc(140, 328, 333, 433, 438);
           if (affectedNpc == null) {
             affectedNpc = affectedNpc2;
             affectedNpc = affectedNpc3;
@@ -78,7 +78,7 @@ public class PickupItem implements PacketHandler {
             affectedNpc.setCombatTimer();
             FightEvent fighting = new FightEvent(owner, affectedNpc, true);
             fighting.setLastRun(0);
-            world.getDelayedEventHandler().add(fighting);
+            DelayedEvent.world.getDelayedEventHandler().add(fighting);
             return;
           }
         }
@@ -88,7 +88,7 @@ public class PickupItem implements PacketHandler {
         }
         if (item.getID() == 1285 && item.getX() == 89 && item.getY() == 516) {
 
-          Npc tseller = world.getNpc(780, 89, 90, 517, 520);
+          Npc tseller = DelayedEvent.world.getNpc(780, 89, 90, 517, 520);
           if (tseller != null) {
             owner.setBusy(true);
             owner.informOfNpcMessage(new ChatMessage(tseller, "Hey ! Get your hands off that tea !", owner));
@@ -104,7 +104,7 @@ public class PickupItem implements PacketHandler {
           owner.getActionSender().sendMessage("You cannot pickup this item, your inventory is full!");
           return;
         }
-        world.unregisterItem(item);
+        DelayedEvent.world.unregisterItem(item);
         owner.getActionSender().sendSound("takeobject");
         owner.getInventory().add(invItem);
         owner.getActionSender().sendInventory();
@@ -112,7 +112,7 @@ public class PickupItem implements PacketHandler {
     });
   }
 
-  private Item getItem(int id, ActiveTile tile, Player player) {
+  private Item getItem( int id, ActiveTile tile, Player player ) {
     for (Item i : tile.getItems()) {
       if (i.getID() == id && i.visibleTo(player)) {
         return i;

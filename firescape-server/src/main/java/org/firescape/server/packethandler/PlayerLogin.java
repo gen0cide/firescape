@@ -16,13 +16,13 @@ public class PlayerLogin implements PacketHandler {
   /**
    * The player to update
    */
-  private Player player;
+  private final Player player;
 
-  public PlayerLogin(Player player) {
+  public PlayerLogin( Player player ) {
     this.player = player;
   }
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     byte loginCode = p.readByte();
     Logger.error("Login code: " + loginCode);
     RSCPacketBuilder pb = new RSCPacketBuilder();
@@ -63,7 +63,7 @@ public class PlayerLogin implements PacketHandler {
       player.setGameSetting(6, p.readByte() == 1);
 
       PlayerAppearance appearance = new PlayerAppearance(p.readShort(), p.readShort(), p.readShort(), p.readShort(),
-              p.readShort(), p.readShort());
+        p.readShort(), p.readShort());
       if (!appearance.isValid()) {
         loginCode = 7;
         player.destroy(true);
@@ -121,24 +121,25 @@ public class PlayerLogin implements PacketHandler {
 
       player.updateViewedPlayers();
       player.updateViewedObjects();
+      player.updateViewedNpcs();
 
       org.firescape.server.packetbuilder.client.MiscPacketBuilder sender = player.getActionSender();
-      sender.sendServerInfo();
-      sender.sendFatigue();
-      sender.sendKills();
-      sender.sendDeaths();
-      sender.sendQuestPoints();
-      sender.sendGuthixSpellCast();
-      sender.sendSaradominSpellCast();
-      sender.sendZamorakSpellCast();
-      sender.sendKillingSpree();
-      sender.sendImpCatcherComplete();
-      sender.sendRomeoJulietComplete();
-      sender.sendSheepShearerComplete();
-      sender.sendWitchPotionComplete();
-      sender.sendDoricsQuestComplete();
-      sender.sendDruidicRitualComplete();
-      sender.sendCooksAssistantComplete();
+      //      sender.sendServerInfo();
+      //      sender.sendFatigue();
+      //      sender.sendKills();
+      //      sender.sendDeaths();
+      //      sender.sendQuestPoints();
+      //      sender.sendGuthixSpellCast();
+      //      sender.sendSaradominSpellCast();
+      //      sender.sendZamorakSpellCast();
+      //      sender.sendKillingSpree();
+      //      sender.sendImpCatcherComplete();
+      //      sender.sendRomeoJulietComplete();
+      //      sender.sendSheepShearerComplete();
+      //      sender.sendWitchPotionComplete();
+      //      sender.sendDoricsQuestComplete();
+      //      sender.sendDruidicRitualComplete();
+      //      sender.sendCooksAssistantComplete();
       sender.sendWorldInfo(); // sends info
       sender.sendInventory();
       sender.sendEquipmentStats();
@@ -150,7 +151,7 @@ public class PlayerLogin implements PacketHandler {
       sender.sendCombatStyle();
       int timeTillShutdown = world.getServer().timeTillShutdown();
       if (timeTillShutdown > -1) {
-        sender.startShutdown((int) (timeTillShutdown / 1000));
+        sender.startShutdown(timeTillShutdown / 1000);
       }
       if (player.getLastLogin() == 0L) {
         player.setChangingAppearance(true);

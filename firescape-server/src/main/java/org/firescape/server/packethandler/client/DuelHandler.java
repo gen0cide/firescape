@@ -21,7 +21,7 @@ public class DuelHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     Player affectedPlayer = player.getWishToDuel();
@@ -50,8 +50,8 @@ public class DuelHandler implements PacketHandler {
     switch (pID) {
       case 222: // Sending duel request
         affectedPlayer = world.getPlayer(p.readShort());
-        if (affectedPlayer == null || affectedPlayer.isDueling() || !player.withinRange(affectedPlayer, 8)
-                || player.isDueling() || player.tradeDuelThrottling()) {
+        if (affectedPlayer == null || affectedPlayer.isDueling() || !player.withinRange(affectedPlayer, 8) || player
+          .isDueling() || player.tradeDuelThrottling()) {
           unsetOptions(player);
           return;
         }
@@ -62,15 +62,14 @@ public class DuelHandler implements PacketHandler {
         }
 
         player.setWishToDuel(affectedPlayer);
-        player.getActionSender().sendMessage(
-                affectedPlayer.isDueling() ? affectedPlayer.getUsername() + " is already in a duel" : "Sending duel request");
-        affectedPlayer.getActionSender()
-                .sendMessage(player.getUsername() + " "
-                        + Formulae.getLvlDiffColour(affectedPlayer.getCombatLevel() - player.getCombatLevel()) + "(level-"
-                        + player.getCombatLevel() + ")@whi@ wishes to duel with you");
+        player.getActionSender().sendMessage(affectedPlayer.isDueling() ? affectedPlayer.getUsername() + " is " +
+          "already" + " in a duel" : "Sending duel request");
+        affectedPlayer.getActionSender().sendMessage(player.getUsername() + " " + Formulae.getLvlDiffColour
+          (affectedPlayer.getCombatLevel() - player.getCombatLevel()) + "(level-" + player.getCombatLevel() + ")" +
+          "@whi@" + " wishes to duel with you");
 
-        if (!player.isDueling() && affectedPlayer.getWishToDuel() != null && affectedPlayer.getWishToDuel().equals(player)
-                && !affectedPlayer.isDueling()) {
+        if (!player.isDueling() && affectedPlayer.getWishToDuel() != null && affectedPlayer.getWishToDuel().equals
+          (player) && !affectedPlayer.isDueling()) {
           player.setDueling(true);
           player.resetPath();
           player.clearDuelOptions();
@@ -86,7 +85,8 @@ public class DuelHandler implements PacketHandler {
         break;
       case 252: // Duel accepted
         affectedPlayer = player.getWishToDuel();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()) { // This
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()) {
+          // This
           // shouldn't
           // happen
           player.setSuspiciousPlayer(true);
@@ -107,8 +107,8 @@ public class DuelHandler implements PacketHandler {
         break;
       case 87: // Confirm accepted
         affectedPlayer = player.getWishToDuel();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()
-                || !player.isDuelOfferAccepted() || !affectedPlayer.isDuelOfferAccepted()) { // This
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling() ||
+          !player.isDuelOfferAccepted() || !affectedPlayer.isDuelOfferAccepted()) { // This
           // shouldn't
           // happen
           player.setSuspiciousPlayer(true);
@@ -136,8 +136,8 @@ public class DuelHandler implements PacketHandler {
             for (InvItem item : player.getInventory().getItems()) {
               if (item.isWielded()) {
                 item.setWield(false);
-                player.updateWornItems(item.getWieldableDef().getWieldPos(),
-                        player.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos()));
+                player.updateWornItems(item.getWieldableDef().getWieldPos(), player.getPlayerAppearance().getSprite
+                  (item.getWieldableDef().getWieldPos()));
               }
             }
             player.getActionSender().sendSound("click");
@@ -147,8 +147,8 @@ public class DuelHandler implements PacketHandler {
             for (InvItem item : affectedPlayer.getInventory().getItems()) {
               if (item.isWielded()) {
                 item.setWield(false);
-                affectedPlayer.updateWornItems(item.getWieldableDef().getWieldPos(),
-                        affectedPlayer.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos()));
+                affectedPlayer.updateWornItems(item.getWieldableDef().getWieldPos(), affectedPlayer
+                  .getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos()));
               }
             }
             affectedPlayer.getActionSender().sendSound("click");
@@ -175,7 +175,7 @@ public class DuelHandler implements PacketHandler {
           player.setFollowing(affectedPlayer);
           WalkToMobEvent walking = new WalkToMobEvent(player, affectedPlayer, 1) {
             public void arrived() {
-              world.getDelayedEventHandler().add(new SingleEvent(owner, 300) {
+              DelayedEvent.world.getDelayedEventHandler().add(new SingleEvent(owner, 300) {
                 public void action() {
                   Player affectedPlayer = (Player) affectedMob;
                   owner.resetPath();
@@ -218,15 +218,17 @@ public class DuelHandler implements PacketHandler {
                   }
                   DuelEvent dueling = new DuelEvent(attacker, opponent);
                   dueling.setLastRun(0);
-                  world.getDelayedEventHandler().add(dueling);
+                  DelayedEvent.world.getDelayedEventHandler().add(dueling);
                 }
               });
             }
 
             public void failed() {
               Player affectedPlayer = (Player) affectedMob;
-              owner.getActionSender().sendMessage("Error walking to " + affectedPlayer.getUsername() + " (known bug)");
-              affectedPlayer.getActionSender().sendMessage("Error walking to " + owner.getUsername() + " (known bug)");
+              owner.getActionSender().sendMessage("Error walking to " + affectedPlayer.getUsername() + " (known " +
+                "bug)");
+              affectedPlayer.getActionSender().sendMessage("Error walking to " + owner.getUsername() + " (known " +
+                "bug)");
               unsetOptions(owner);
               unsetOptions(affectedPlayer);
               owner.setBusy(false);
@@ -239,7 +241,8 @@ public class DuelHandler implements PacketHandler {
         break;
       case 35: // Decline duel
         affectedPlayer = player.getWishToDuel();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()) { // This
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()) {
+          // This
           // shouldn't
           // happen
           player.setSuspiciousPlayer(true);
@@ -254,9 +257,9 @@ public class DuelHandler implements PacketHandler {
         break;
       case 123: // Receive offered item data
         affectedPlayer = player.getWishToDuel();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()
-                || (player.isDuelOfferAccepted() && affectedPlayer.isDuelOfferAccepted()) || player.isDuelConfirmAccepted()
-                || affectedPlayer.isDuelConfirmAccepted()) { // This shouldn't happen
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling() ||
+          (player.isDuelOfferAccepted() && affectedPlayer.isDuelOfferAccepted()) || player.isDuelConfirmAccepted() ||
+          affectedPlayer.isDuelConfirmAccepted()) { // This shouldn't happen
           player.setSuspiciousPlayer(true);
           unsetOptions(player);
           unsetOptions(affectedPlayer);
@@ -295,9 +298,9 @@ public class DuelHandler implements PacketHandler {
 
       case 225: // Set duel options
         affectedPlayer = player.getWishToDuel();
-        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling()
-                || (player.isDuelOfferAccepted() && affectedPlayer.isDuelOfferAccepted()) || player.isDuelConfirmAccepted()
-                || affectedPlayer.isDuelConfirmAccepted()) { // This shouldn't happen
+        if (affectedPlayer == null || busy(affectedPlayer) || !player.isDueling() || !affectedPlayer.isDueling() ||
+          (player.isDuelOfferAccepted() && affectedPlayer.isDuelOfferAccepted()) || player.isDuelConfirmAccepted() ||
+          affectedPlayer.isDuelConfirmAccepted()) { // This shouldn't happen
           player.setSuspiciousPlayer(true);
           unsetOptions(player);
           unsetOptions(affectedPlayer);
@@ -324,14 +327,14 @@ public class DuelHandler implements PacketHandler {
     }
   }
 
-  private void unsetOptions(Player p) {
+  private void unsetOptions( Player p ) {
     if (p == null) {
       return;
     }
     p.resetDueling();
   }
 
-  private boolean busy(Player player) {
+  private boolean busy( Player player ) {
     return player.isBusy() || player.isRanging() || player.accessingBank() || player.isTrading();
   }
 

@@ -6,22 +6,22 @@ public class ChatMessage {
   /**
    * Who sent the message
    */
-  private Mob sender;
+  private final Mob sender;
   /**
    * The message it self, in byte format
    */
-  private byte[] message;
+  private final byte[] message;
   /**
    * Who the message is for
    */
-  private Mob recipient = null;
+  private Mob recipient;
 
-  public ChatMessage(Mob sender, byte[] message) {
+  public ChatMessage( Mob sender, byte[] message ) {
     this.sender = sender;
     this.message = message;
   }
 
-  public ChatMessage(Mob sender, String message, Mob recipient) {
+  public ChatMessage( Mob sender, String message, Mob recipient ) {
     this.sender = sender;
     this.message = DataConversions.stringToByteArray(message);
     this.recipient = recipient;

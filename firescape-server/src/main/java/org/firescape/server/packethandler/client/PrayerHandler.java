@@ -16,7 +16,7 @@ public class PrayerHandler implements PacketHandler {
   public static final World world = World.getWorld();
 
   // loginConnector
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     int prayerID = (int) p.readByte();
@@ -52,7 +52,7 @@ public class PrayerHandler implements PacketHandler {
     player.getActionSender().sendPrayers();
   }
 
-  private boolean activatePrayer(Player player, int prayerID) {
+  private boolean activatePrayer( Player player, int prayerID ) {
     if (!player.isPrayerActivated(prayerID)) {
       if (prayerID == 11) {
         deactivatePrayer(player, 5);
@@ -89,7 +89,7 @@ public class PrayerHandler implements PacketHandler {
     return false;
   }
 
-  private boolean deactivatePrayer(Player player, int prayerID) {
+  private boolean deactivatePrayer( Player player, int prayerID ) {
     if (player.isPrayerActivated(prayerID)) {
       player.removePrayerDrain(prayerID);
       player.setPrayer(prayerID, false);

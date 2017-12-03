@@ -16,19 +16,19 @@ public class DropHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
       return;
     }
     player.resetAll();
-    final int idx = (int) p.readShort();
+    int idx = (int) p.readShort();
     if (idx < 0 || idx >= player.getInventory().size()) {
       player.setSuspiciousPlayer(true);
       return;
     }
-    final InvItem item = player.getInventory().get(idx);
+    InvItem item = player.getInventory().get(idx);
     if (item == null) {
       player.setSuspiciousPlayer(true);
       return;
@@ -46,7 +46,7 @@ public class DropHandler implements PacketHandler {
         owner.getActionSender().sendSound("dropobject");
         owner.getInventory().remove(item);
         owner.getActionSender().sendInventory();
-        world.registerItem(new Item(item.getID(), owner.getX(), owner.getY(), item.getAmount(), owner));
+        DelayedEvent.world.registerItem(new Item(item.getID(), owner.getX(), owner.getY(), item.getAmount(), owner));
         running = false;
       }
     });

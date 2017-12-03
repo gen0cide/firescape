@@ -128,6 +128,7 @@ org/firescape/server/packethandler/client/InvActionHandler$9.class
 org/firescape/server/npchandler/Romeo$1$1$1.class
 org/firescape/server/event/Thieving$1$1.class
 org/firescape/server/packethandler/client/InvActionHandler$22$1.class
+ISAAC.class
 org/firescape/server/npchandler/KebabSeller$1$1.class
 org/firescape/server/model/Player$4.class
 org/firescape/server/entityhandling/defs/extras/ItemHerbDef.class

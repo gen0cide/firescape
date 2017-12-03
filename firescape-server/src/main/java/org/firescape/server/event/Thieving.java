@@ -15,69 +15,283 @@ public class Thieving {
 
   private static final World world = World.getWorld();
   public static String[] StealChats = {
-          "You think i'm going to buy my own items off you? Get out of here.",
-          "You've just stolen from me, I'm not selling you anything.",
-          "How dare you try and buy from me after you have stolen.",
-          "Thief, go away now before i call security",
-          "You have guts, trying to sell my own goods back to me",
-          "Real thiefs don't sell back to their victims",
-          "i know better than to buy my own items from thiefs"
+    "You think i'm going to buy my own items off you? Get out of here.",
+    "You've just stolen from me, I'm not selling you anything.",
+    "How dare you try and buy from me after you have stolen.",
+    "Thief, go away now before i call security",
+    "You have guts, trying to sell my own goods back to me",
+    "Real thiefs don't sell back to their victims",
+    "i know better than to buy my own items from thiefs"
+  };
+  private final Player player;
+  private final int Exp = -1;
+  private final int[] Loot = {
+    -1, -1
+  };
+  private final int[] Amount = {
+    -1, -1
+  };
+  // LvReq, Obj ID, Exp, RespawnTime, LootID(s)
+  private final int[][] Stalls = {
+    {
+      5, 322, 16, 5, 330
+    },
+    // Bakers
+    {
+      20, 323, 24, 11, 200
+    },
+    // Silk
+    {
+      35, 324, 36, 18, 541
+    },
+    // Fur
+    {
+      50, 325, 54, 31, 383
+    },
+    // Silver
+    {
+      65, 326, 81, 45, 707
+    },
+    // Spice
+    {
+      75, 327, 16, 80, 160, 159, 158, 157
+    }
+    // Gem
+  };
+  private final int[][] StallProtectorLvls = {
+    { 28 },
+    // Guards
+    { 28 },
+    // Guards
+    {
+      28, 56
+    },
+    // Guards
+    // +
+    // Knights
+    { 56 },
+    // Knights
+    {
+      56, 71
+    },
+    // Knights
+    // +
+    // Paladins
+    {
+      71, 83
+    }
+    // Paladins
+    // +
+    // Heroes
+  };
+  // Cur X, Cur Y, New X, New Y, Lvl, Exp
+  private final int[][] Doors = {
+    {
+      586, 581, 585, 581, 10, 13
+    },
+    // Nat
+    // rune
+    // West
+    // house
+    // (In)
+    {
+      585, 581, 586, 581, 10, 13
+    },
+    // Nat
+    // rune
+    // West
+    // house
+    // (Out)
+    {
+      539, 598, 539, 599, 10, 13
+    },
+    // Nat
+    // Rune
+    // East
+    // House
+    // (Out)
+    {
+      539, 599, 539, 598, 10, 13
+    },
+    // Nat
+    // Rune
+    // East
+    // House
+    // (Out)
+    {
+      609, 1547, 609, 1548, 61, 43
+    },
+    // Paladin
+    // Door
+    // (In)
+    {
+      609, 1548, 609, 1547, 61, 43
+    },
+    // Paladin
+    // Door
+    // (Out)
+    {
+      537, 3425, 536, 3425, 31, 25
+    },
+    // Ardy
+    // Door
+    {
+      536, 3425, 537, 3425, 31, 25
+    },
+    // Ardy
+    // Door
+    {
+      617, 556, 617, 555, 46, 37
+    },
+    // Blood
+    // rune
+    // door
+    {
+      617, 555, 617, 556, 46, 37
+    },
+    // Blood
+    // rune
+    // door
+    {
+      593, 3590, 593, 3589, 61, 41
+    },
+    // yanile
+    // door
+    {
+      593, 3589, 593, 3590, 61, 41
+    },
+    // yanile
+    // door
+    {
+      266, 100, 266, 99, 39, 35
+    },
+    // pirate
+    // doors
+    // wildy
+    {
+      266, 99, 266, 100, 39, 35
+    },
+    // pirate
+    // doors
+    // wildy
+    {
+      160, 103, 160, 102, 30, 28
+    },
+    // Axe
+    // hut
+    // wildy
+    {
+      160, 102, 160, 103, 30, 28
+    },
+    // Axe
+    // hut
+    // wildy
+    {
+      581, 580, 580, 580, 10, 30
+    }, {
+      580, 580, 581, 580, 10, 30
+    }, {
+      538, 592, 538, 591, 8, 10
+    },
+    // Some
+    // ardy
+    // door
+    {
+      538, 591, 538, 592, 8, 10
+    }
+    // some
+    // ardy
+    // door
+  };
+  private final int[][] StallNpcs = {
+    {
+      325, 543, 546, 597, 602
+    },
+    // Baker
+    {
+      -1, -1, -1, -1, -1
+    }, {
+      -1, -1, -1, -1, -1
+    }, {
+      328, 553, 558, 592, 595
+    },
+    // Silver
+    // merchant
+    {
+      329, 542, 547, 588, 593
+    },
+    // Spice
+    // merchant
+    {
+      330, 549, 553, 597, 602
+    }
+    // Gem
+    // merchant
+  };
+  private final String[] Chats = {
+    "Oi! Get your hands out of there -name-!",
+    "Hey thief! get here!",
+    "Trying to steal from me hmm?",
+    "No one steals from me!",
+    "Take those hands off me Thief",
+    "Are you trying to steal from me -name-?",
+    "Dont you dare touch me",
+    "Thief get back here now!",
+    "Stealing won't get you anywhere",
+    "Bad person! you shall die",
+    "Die evil thief!",
+    "You are going to pay for that",
+    "Ill make you wish you were never born",
+    "-name- i am going to hurt you",
+    "-name- dont steal from me again",
+    "Remove your filthy hands off me",
+    "A real man doesn't need to steal"
+  };
+  private final String[] caughtChats = {
+    "Guards! Guards! Im being Robbed!",
+    "Help Guards i am being Robbed please help!",
+    "Someone help! My items are getting stolen!",
+    "You'll wish you never did that, Thief!",
+    "You are going to pay for that",
+    "-name- how could you steal from me? Guards!",
+    "-name- get your hands out of my stall!",
+    "Hey -name- thats not yours!",
+    "Dont steal from me -name- Im going to go tell a mod",
+    "Oi! -name- you deserve a spanking!"
   };
   public int ExpMultiplier = 1; // Modify
   // ID, LvlReq, Exp, RespawnTime, Loot then(amount)
   public int[][] Chests = {
-          {
-                  340,
-                  59,
-                  250,
-                  15000,
-                  619,
-                  2
-          },
-          // Blood
-          // rune
-          // chest.
-          {
-                  334,
-                  18,
-                  8,
-                  10000,
-                  10,
-                  50
-          },
-          // Next
-          // 2
-          // nature
-          // chest.
-          {
-                  336,
-                  72,
-                  500,
-                  180000,
-                  546,
-                  1,
-                  154,
-                  1,
-                  160,
-                  1,
-                  10,
-                  1000
-          },
-          // Good
-          // chest,
-          // ardy..
-          {339}
-          // Dont
-          // add
-          // anything
-          // to
-          // this,
-          // its
-          // a
-          // dummy
-          // chest.
+    {
+      340, 59, 250, 15000, 619, 2
+    },
+    // Blood
+    // rune
+    // chest.
+    {
+      334, 18, 8, 10000, 10, 50
+    },
+    // Next
+    // 2
+    // nature
+    // chest.
+    {
+      336, 72, 500, 180000, 546, 1, 154, 1, 160, 1, 10, 1000
+    },
+    // Good
+    // chest,
+    // ardy..
+    { 339 }
+    // Dont
+    // add
+    // anything
+    // to
+    // this,
+    // its
+    // a
+    // dummy
+    // chest.
   };
-  private Player player;
   private GameObject object;
   private GameObjectDef def;
   // this
@@ -89,463 +303,71 @@ public class Thieving {
   // given.
   private int curStall = -1;
   private Npc affectedNpc;
-  private int Exp = -1;
   private Mob affectedMob;
-  private int exp = 0;
+  private int exp;
   private int lvl = 1;
   private int npcID;
-  private int Loot[] = {
-          -1,
-          -1
-  };
-  private int Amount[] = {
-          -1,
-          -1
-  };
   private int curDoor = -1;
   private int ourChest = -1;
 
-  // LvReq, Obj ID, Exp, RespawnTime, LootID(s)
-  private int[][] Stalls = {
-          {
-                  5,
-                  322,
-                  16,
-                  5,
-                  330
-          },
-          // Bakers
-          {
-                  20,
-                  323,
-                  24,
-                  11,
-                  200
-          },
-          // Silk
-          {
-                  35,
-                  324,
-                  36,
-                  18,
-                  541
-          },
-          // Fur
-          {
-                  50,
-                  325,
-                  54,
-                  31,
-                  383
-          },
-          // Silver
-          {
-                  65,
-                  326,
-                  81,
-                  45,
-                  707
-          },
-          // Spice
-          {
-                  75,
-                  327,
-                  16,
-                  80,
-                  160,
-                  159,
-                  158,
-                  157
-          }
-          // Gem
-  };
-
-  private int[][] StallProtectorLvls = {
-          {28},
-          // Guards
-          {28},
-          // Guards
-          {
-                  28,
-                  56
-          },
-          // Guards
-          // +
-          // Knights
-          {56},
-          // Knights
-          {
-                  56,
-                  71
-          },
-          // Knights
-          // +
-          // Paladins
-          {
-                  71,
-                  83
-          }
-          // Paladins
-          // +
-          // Heroes
-  };
-
-  // Cur X, Cur Y, New X, New Y, Lvl, Exp
-  private int[][] Doors = {
-          {
-                  586,
-                  581,
-                  585,
-                  581,
-                  10,
-                  13
-          },
-          // Nat
-          // rune
-          // West
-          // house
-          // (In)
-          {
-                  585,
-                  581,
-                  586,
-                  581,
-                  10,
-                  13
-          },
-          // Nat
-          // rune
-          // West
-          // house
-          // (Out)
-          {
-                  539,
-                  598,
-                  539,
-                  599,
-                  10,
-                  13
-          },
-          // Nat
-          // Rune
-          // East
-          // House
-          // (Out)
-          {
-                  539,
-                  599,
-                  539,
-                  598,
-                  10,
-                  13
-          },
-          // Nat
-          // Rune
-          // East
-          // House
-          // (Out)
-          {
-                  609,
-                  1547,
-                  609,
-                  1548,
-                  61,
-                  43
-          },
-          // Paladin
-          // Door
-          // (In)
-          {
-                  609,
-                  1548,
-                  609,
-                  1547,
-                  61,
-                  43
-          },
-          // Paladin
-          // Door
-          // (Out)
-          {
-                  537,
-                  3425,
-                  536,
-                  3425,
-                  31,
-                  25
-          },
-          // Ardy
-          // Door
-          {
-                  536,
-                  3425,
-                  537,
-                  3425,
-                  31,
-                  25
-          },
-          // Ardy
-          // Door
-          {
-                  617,
-                  556,
-                  617,
-                  555,
-                  46,
-                  37
-          },
-          // Blood
-          // rune
-          // door
-          {
-                  617,
-                  555,
-                  617,
-                  556,
-                  46,
-                  37
-          },
-          // Blood
-          // rune
-          // door
-          {
-                  593,
-                  3590,
-                  593,
-                  3589,
-                  61,
-                  41
-          },
-          // yanile
-          // door
-          {
-                  593,
-                  3589,
-                  593,
-                  3590,
-                  61,
-                  41
-          },
-          // yanile
-          // door
-          {
-                  266,
-                  100,
-                  266,
-                  99,
-                  39,
-                  35
-          },
-          // pirate
-          // doors
-          // wildy
-          {
-                  266,
-                  99,
-                  266,
-                  100,
-                  39,
-                  35
-          },
-          // pirate
-          // doors
-          // wildy
-          {
-                  160,
-                  103,
-                  160,
-                  102,
-                  30,
-                  28
-          },
-          // Axe
-          // hut
-          // wildy
-          {
-                  160,
-                  102,
-                  160,
-                  103,
-                  30,
-                  28
-          },
-          // Axe
-          // hut
-          // wildy
-          {
-                  581,
-                  580,
-                  580,
-                  580,
-                  10,
-                  30
-          },
-          {
-                  580,
-                  580,
-                  581,
-                  580,
-                  10,
-                  30
-          },
-          {
-                  538,
-                  592,
-                  538,
-                  591,
-                  8,
-                  10
-          },
-          // Some
-          // ardy
-          // door
-          {
-                  538,
-                  591,
-                  538,
-                  592,
-                  8,
-                  10
-          }
-          // some
-          // ardy
-          // door
-  };
-  private int[][] StallNpcs = {
-          {
-                  325,
-                  543,
-                  546,
-                  597,
-                  602
-          },
-          // Baker
-          {
-                  -1,
-                  -1,
-                  -1,
-                  -1,
-                  -1
-          },
-          {
-                  -1,
-                  -1,
-                  -1,
-                  -1,
-                  -1
-          },
-          {
-                  328,
-                  553,
-                  558,
-                  592,
-                  595
-          },
-          // Silver
-          // merchant
-          {
-                  329,
-                  542,
-                  547,
-                  588,
-                  593
-          },
-          // Spice
-          // merchant
-          {
-                  330,
-                  549,
-                  553,
-                  597,
-                  602
-          }
-          // Gem
-          // merchant
-  };
-  private String[] Chats = {
-          "Oi! Get your hands out of there -name-!",
-          "Hey thief! get here!",
-          "Trying to steal from me hmm?",
-          "No one steals from me!",
-          "Take those hands off me Thief",
-          "Are you trying to steal from me -name-?",
-          "Dont you dare touch me",
-          "Thief get back here now!",
-          "Stealing won't get you anywhere",
-          "Bad person! you shall die",
-          "Die evil thief!",
-          "You are going to pay for that",
-          "Ill make you wish you were never born",
-          "-name- i am going to hurt you",
-          "-name- dont steal from me again",
-          "Remove your filthy hands off me",
-          "A real man doesn't need to steal"
-  };
-  private String[] caughtChats = {
-          "Guards! Guards! Im being Robbed!",
-          "Help Guards i am being Robbed please help!",
-          "Someone help! My items are getting stolen!",
-          "You'll wish you never did that, Thief!",
-          "You are going to pay for that",
-          "-name- how could you steal from me? Guards!",
-          "-name- get your hands out of my stall!",
-          "Hey -name- thats not yours!",
-          "Dont steal from me -name- Im going to go tell a mod",
-          "Oi! -name- you deserve a spanking!"
-  };
-
-  public Thieving(Player p, GameObject obj) {
+  public Thieving( Player p, GameObject obj ) {
     this.player = p;
     this.object = obj;
     this.def = object.getGameObjectDef();
   }
 
-  public Thieving(Player p, Npc np, Mob mb) {
+  public Thieving( Player p, Npc np, Mob mb ) {
     this.player = p;
     this.affectedNpc = np;
     this.affectedMob = mb;
     npcID = affectedNpc.getID();
   }
 
-  public static int Rands(int max) {
+  public static int Rands( int max ) {
     Random r = new Random();
     return r.nextInt(max);
   }
 
-  public static boolean thievingSuccess(int lvl, int reqLevel) {
+  public static boolean thievingSuccess( int lvl, int reqLevel ) {
     Random r = new Random();
     double dif = lvl - reqLevel;
     double rand = ((r.nextDouble() * 100) + 1) / 100;
-    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3)
-            + 0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966) / 100.0;
-    if (success < 0.35)
+    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
+      0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966) / 100.0;
+    if (success < 0.35) {
       success = 0.35;
+    }
     if (reqLevel < 15) {
       if (lvl - reqLevel < 10) {
-        if (Rands(1, 10) == 5)
+        if (Rands(1, 10) == 5) {
           success = 1.0;
+        }
       }
     }
     return !(rand < success);
   }
 
-  public static int Rands(int min, int max) {
+  public static int Rands( int min, int max ) {
     Random r = new Random();
     return r.nextInt(max) + min;
   }
 
-  public static boolean stallSuccess(int lvl, int reqLevel) {
+  public static boolean stallSuccess( int lvl, int reqLevel ) {
     Random r = new Random();
     double dif = lvl - reqLevel;
     double rand = ((r.nextDouble() * 100) + 1) / 100;
-    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3)
-            + 0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966) / 100.0;
-    if (success < 0.35)
+    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
+      0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966) / 100.0;
+    if (success < 0.35) {
       success = 0.35;
-    if (reqLevel < 15)
-      if (lvl - reqLevel < 10)
-        if (Rands(1, 10) == 5)
+    }
+    if (reqLevel < 15) {
+      if (lvl - reqLevel < 10) {
+        if (Rands(1, 10) == 5) {
           success = 1.0;
+        }
+      }
+    }
     success = success * 2;
     return rand < success;
   }
@@ -565,16 +387,18 @@ public class Thieving {
       return;
     }
 
-    for (int i = 0; i < Chests.length; i++)
-      if (object.getID() == Chests[i][0])
+    for (int i = 0; i < Chests.length; i++) {
+      if (object.getID() == Chests[i][0]) {
         ourChest = i;
+      }
+    }
 
     if (ourChest == -1) {
       player.setSpam(false);
       player.setBusy(false);
       player.getActionSender().sendMessage("This chest has not yet been added to the chest Thieving list.");
-      System.out.println("Player " + player.getUsername() + " found a chest not added, ID: " + object.getID()
-              + ", Coords: " + object.getLocation());
+      System.out.println("Player " + player.getUsername() + " found a chest not added, ID: " + object.getID() + ", " +
+        "Coords: " + object.getLocation());
       return;
     }
 
@@ -597,17 +421,17 @@ public class Thieving {
           p.informOfBubble(bubble);
         }
 
-        world.getDelayedEventHandler().add(new MiniEvent(player, 1000) {
+        DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(player, 1000) {
           public void action() {
 
             owner.getActionSender().sendMessage("You disarm the trap");
 
-            world.getDelayedEventHandler().add(new MiniEvent(player, 1000) {
+            DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(player, 1000) {
               public void action() {
                 owner.getActionSender().sendMessage("You open the chest");
                 doChest();
 
-                world.getDelayedEventHandler().add(new MiniEvent(player, 1200) {
+                DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(player, 1200) {
                   public void action() {
                     replaceChest(Chests[ourChest][3]);
                     owner.getActionSender().sendMessage("You find treasure inside!");
@@ -616,8 +440,9 @@ public class Thieving {
                       owner.getInventory().add(loot);
                       i = i + 1;
                     }
-                    if (ourChest == 340)
+                    if (ourChest == 340) {
                       owner.teleport(613, 568, true);
+                    }
                     owner.getActionSender().sendInventory();
                     owner.incExp(17, Chests[ourChest][2], true, true);
                     owner.getActionSender().sendStat(17);
@@ -643,7 +468,7 @@ public class Thieving {
     }
   }
 
-  private void replaceChest(int delay) {
+  private void replaceChest( int delay ) {
     try {
       world.registerGameObject(new GameObject(object.getLocation(), 338, object.getDirection(), object.getType()));
       world.delayedSpawnObject(object.getLoc(), delay);
@@ -696,8 +521,8 @@ public class Thieving {
           curStall = i;
           exist = true;
           if (player.getMaxStat(17) < Stalls[i][0]) {
-            player.getActionSender()
-                    .sendMessage("Sorry, you need a thieving level of " + Stalls[i][0] + " to steal from that");
+            player.getActionSender().sendMessage("Sorry, you need a thieving level of " + Stalls[i][0] + " " + "to " +
+              "steal from that");
             player.setSpam(false);
             return;
           }
@@ -705,8 +530,8 @@ public class Thieving {
       }
       if (!exist) {
         player.getActionSender().sendMessage("Sorry, this stall does not exist.. contact an admin?");
-        System.out.println("Player " + player.getUsername() + " found a stall not added, ID: " + object.getID()
-                + ", Coords: " + object.getLocation());
+        System.out.println("Player " + player.getUsername() + " found a stall not added, ID: " + object.getID() + ", " +
+          "Coords: " + object.getLocation());
         player.setSpam(false);
         return;
       }
@@ -735,8 +560,8 @@ public class Thieving {
             if (Rand(20) <= 3) {
               if (StallNpcs[curStall][0] == -1) {
               } else {
-                Npc person = world.getNpc(StallNpcs[curStall][0], StallNpcs[curStall][1], StallNpcs[curStall][2],
-                        StallNpcs[curStall][3], StallNpcs[curStall][4]);
+                Npc person = DelayedEvent.world.getNpc(StallNpcs[curStall][0], StallNpcs[curStall][1],
+                  StallNpcs[curStall][2], StallNpcs[curStall][3], StallNpcs[curStall][4]);
                 if (person != null) {
                   owner.npcThief[curStall] = true;
                   String str = caughtChats[Rand(caughtChats.length)];
@@ -750,9 +575,9 @@ public class Thieving {
             return;
 
           } else {
-            world
-                    .registerGameObject(new GameObject(object.getLocation(), 341, object.getDirection(), object.getType()));
-            world.delayedSpawnObject(object.getLoc(), Stalls[curStall][3] * 1000);
+            DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 341, object.getDirection(),
+              object.getType()));
+            DelayedEvent.world.delayedSpawnObject(object.getLoc(), Stalls[curStall][3] * 1000);
             owner.getActionSender().sendMessage("You successfully thieved from the " + object.getGameObjectDef().name);
             owner.setSpam(false);
             owner.setBusy(false);
@@ -781,58 +606,21 @@ public class Thieving {
    * levels -xEnt
    */
 
-  public boolean chanceFormulae(int targetLv) {
+  public boolean chanceFormulae( int targetLv ) {
     try {
       int chance[] = {
-              27,
-              33,
-              35,
-              37,
-              40,
-              43,
-              47,
-              51,
-              54,
-              58,
-              62,
-              66,
-              71,
-              74,
-              78,
-              81,
-              84,
-              88,
-              93,
-              95
+        27, 33, 35, 37, 40, 43, 47, 51, 54, 58, 62, 66, 71, 74, 78, 81, 84, 88, 93, 95
       };
       int maxLvl[] = {
-              1,
-              5,
-              10,
-              15,
-              20,
-              25,
-              30,
-              35,
-              40,
-              45,
-              50,
-              55,
-              60,
-              65,
-              70,
-              75,
-              80,
-              85,
-              90,
-              95,
-              100
+        1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100
       };
       int diff = player.getMaxStat(17) - targetLv;
       int index = 0;
-      for (int i = 0; i < maxLvl.length; i++)
-        if (diff >= maxLvl[i] && diff < maxLvl[i] + 5)
+      for (int i = 0; i < maxLvl.length; i++) {
+        if (diff >= maxLvl[i] && diff < maxLvl[i] + 5) {
           index = i;
+        }
+      }
       int Chance = (chance[index] < 27 ? 27 : chance[index]);
       return Rand(100) < Chance;
     } catch (Exception e) {
@@ -841,7 +629,7 @@ public class Thieving {
     }
   }
 
-  public int Rand(int max) {
+  public int Rand( int max ) {
     Random r = new Random();
     return r.nextInt(max);
   }
@@ -885,8 +673,8 @@ public class Thieving {
       }
       if (cont) {
         player.getActionSender().sendMessage("This door has not been added");
-        System.out.println("Player " + player.getUsername() + " found a door(lockpick) not added, ID: " + object.getID()
-                + ", Coords: " + object.getLocation());
+        System.out.println("Player " + player.getUsername() + " found a door(lockpick) not added, ID: " + object
+          .getID() + ", Coords: " + object.getLocation());
         player.setSpam(false);
         player.setBusy(false);
         return;
@@ -1039,7 +827,8 @@ public class Thieving {
           break;
 
         default:
-          player.getActionSender().sendMessage("Sorry, this NPC has not been added to the Pickpocketing list yet.");
+          player.getActionSender().sendMessage("Sorry, this NPC has not been added to the Pickpocketing list yet" + "" +
+            ".");
           System.out.println("Player " + player.getUsername() + " found a NPC (pickpocket) not added, ID: " + npcID);
           ret = true;
       }
@@ -1051,7 +840,7 @@ public class Thieving {
       }
 
       player.setFollowing(affectedMob);
-      world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedMob, 1) {
+      world.getDelayedEventHandler().add(new WalkToMobEvent(player, Thieving.this.affectedMob, 1) {
         public void arrived() {
           if (owner.getSpam()) {
             return;
@@ -1084,8 +873,8 @@ public class Thieving {
             // affectedNpc.blockedBy(player);
             owner.setBusy(true);
             if (owner.getCurStat(17) < lvl) {
-              owner.getActionSender().sendMessage(
-                      "You must be at least " + lvl + " thieving to pick the " + affectedNpc.getDef().name + "'s pocket.");
+              owner.getActionSender().sendMessage("You must be at least " + lvl + " thieving to " + "pick the " +
+                affectedNpc.getDef().name + "'s pocket.");
               owner.setBusy(false);
               // affectedNpc.unblock();
               owner.setBusy(false);
@@ -1097,12 +886,12 @@ public class Thieving {
             for (Player p : owner.getViewArea().getPlayersInView()) {
               p.informOfBubble(bubble);
             }
-            owner.getActionSender()
-                    .sendMessage("You attempt to pick the " + affectedNpc.getDef().name + "'s pocket...");
+            owner.getActionSender().sendMessage("You attempt to pick the " + affectedNpc.getDef().name + "'s " +
+              "pocket...");
             affectedNpc.resetPath();
             owner.setBusy(true);
 
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 owner.setBusy(false);
                 affectedNpc.setBusy(false);
@@ -1120,8 +909,8 @@ public class Thieving {
                 } else {
 
                   owner.setSpam(false);
-                  owner.getActionSender()
-                          .sendMessage("You fail to pick the " + affectedNpc.getDef().name + "'s pocket.");
+                  owner.getActionSender().sendMessage("You fail to pick the " + affectedNpc.getDef().name + "'s " +
+                    "pocket.");
                   int temp = Rand(10);
                   if (temp >= 3) {
                     owner.setBusy(false);
@@ -1143,7 +932,7 @@ public class Thieving {
                   String msg = Chats[Rand(Chats.length)];
                   msg = msg.replace("-name-", owner.getUsername());
                   owner.informOfNpcMessage(new ChatMessage(affectedNpc, msg, owner));
-                  world.getDelayedEventHandler().add(new MiniEvent(owner, 1000) {
+                  DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(owner, 1000) {
                     public void action() {
                       if (affectedNpc == null || affectedNpc.inCombat()) {
                         owner.resetPath();
@@ -1190,7 +979,7 @@ public class Thieving {
 
                       FightEvent fighting = new FightEvent(owner, affectedNpc, true);
                       fighting.setLastRun(0);
-                      world.getDelayedEventHandler().add(fighting);
+                      DelayedEvent.world.getDelayedEventHandler().add(fighting);
                     }
                   });
                 }
@@ -1209,7 +998,7 @@ public class Thieving {
 
   }
 
-  public void setLootArrays(int type) {
+  public void setLootArrays( int type ) {
     try {
       int rand = Rand(100);
       int[] tempArray = {};
@@ -1313,7 +1102,7 @@ public class Thieving {
     }
   }
 
-  public int Rand(int min, int max) {
+  public int Rand( int min, int max ) {
     Random r = new Random();
     return r.nextInt(max) + min;
   }

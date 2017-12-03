@@ -13,37 +13,35 @@ public class EntityList<T extends Entity> implements Iterable<T> {
   public static final int DEFAULT_CAPACITY = 2000;
   protected Object[] entities;
   protected Set<Integer> indicies = new HashSet<Integer>();
-  protected int curIndex = 0;
+  protected int curIndex;
   protected int capacity;
 
   public EntityList() {
     this(DEFAULT_CAPACITY);
   }
 
-  public EntityList(int capacity) {
+  public EntityList( int capacity ) {
     entities = new Object[capacity];
     this.capacity = capacity;
   }
 
-  public void remove(T entity) {
+  public void remove( T entity ) {
     entities[entity.getIndex()] = null;
     indicies.remove(entity.getIndex());
   }
 
-  @SuppressWarnings("unchecked")
-  public T remove(int index) {
+  @SuppressWarnings("unchecked") public T remove( int index ) {
     Object temp = entities[index];
     entities[index] = null;
     indicies.remove(index);
     return (T) temp;
   }
 
-  @SuppressWarnings("unchecked")
-  public T get(int index) {
+  @SuppressWarnings("unchecked") public T get( int index ) {
     return (T) entities[index];
   }
 
-  public void add(T entity) {
+  public void add( T entity ) {
     if (entities[curIndex] != null) {
       increaseIndex();
       add(entity);
@@ -66,11 +64,11 @@ public class EntityList<T extends Entity> implements Iterable<T> {
     }
   }
 
-  public boolean contains(T entity) {
+  public boolean contains( T entity ) {
     return indexOf(entity) > -1;
   }
 
-  public int indexOf(T entity) {
+  public int indexOf( T entity ) {
     for (int index : indicies) {
       if (entities[index].equals(entity)) {
         return index;

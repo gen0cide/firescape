@@ -29,38 +29,34 @@ public final class GameEngine extends Thread {
   private static final World world = World.getWorld();
   private static boolean running = true;
   /**
-   * Whether the engine's thread is running
-   */
-  int curAdvert;
-
-  int tickIdx = 0;
-
-  int[] tickTimings = new int[20];
-
-  long lastTickTime = 0;
-
-  long currTickTime = 0;
-  /**
    * The packet queue to be processed
    */
-  private PacketQueue<RSCPacket> packetQueue;
-  private long lastAdvert;
+  private final PacketQueue<RSCPacket> packetQueue;
   /**
    * The mapping of packet IDs to their handler
    */
-  private TreeMap<Integer, PacketHandler> packetHandlers = new TreeMap<Integer, PacketHandler>();
+  private final TreeMap<Integer, PacketHandler> packetHandlers = new TreeMap<Integer, PacketHandler>();
   /**
    * Responsible for updating all connected clients
    */
-  private ClientUpdater clientUpdater = new ClientUpdater();
+  private final ClientUpdater clientUpdater = new ClientUpdater();
   /**
    * Handles delayed events rather than events to be ran every iteration
    */
-  private DelayedEventHandler eventHandler = new DelayedEventHandler();
+  private final DelayedEventHandler eventHandler = new DelayedEventHandler();
+  /**
+   * Whether the engine's thread is running
+   */
+  int curAdvert;
+  int tickIdx;
+  int[] tickTimings = new int[20];
+  long lastTickTime;
+  long currTickTime;
+  private long lastAdvert;
   /**
    * When the update loop was last ran, required for throttle
    */
-  private long lastSentClientUpdate = 0;
+  private long lastSentClientUpdate;
 
   /**
    * Constructs a new game engine with an empty packet queue.
@@ -107,8 +103,6 @@ public final class GameEngine extends Thread {
   public static void kill() {
     Logger.print("Terminating GameEngine", 1);
     GameVars.serverRunning = false;
-    // GUI.resetVars();
-    // GUI.repaintVars();
     running = false;
 
   }
@@ -138,8 +132,8 @@ public final class GameEngine extends Thread {
         AdvertDef advertDef = EntityHandler.getAdverts()[curAdvert];
         String advert = advertDef.getMessage();
         Player p;
-        for (Iterator i$ = world.getPlayers().iterator(); i$.hasNext(); p.getActionSender().sendMessage(
-                (new StringBuilder()).append("@cya@[Server Message] @whi@").append(processAdvert(advert, p)).toString())) {
+        for (Iterator i$ = world.getPlayers().iterator(); i$.hasNext(); p.getActionSender().sendMessage((new
+          StringBuilder()).append("@cya@[Server Message] @whi@").append(processAdvert(advert, p)).toString())) {
           p = (Player) i$.next();
         }
 
@@ -148,41 +142,19 @@ public final class GameEngine extends Thread {
         Thread.sleep(50);
       } catch (InterruptedException ie) {
       }
-      processLoginServer();
       processIncomingPackets();
       processEvents();
       processClients();
-      // currTickTime = System.currentTimeMillis();
-      // if (lastTickTime == 0) {
-      // lastTickTime = currTickTime;
-      // } else {
-      // if (tickIdx > 19) {
-      // int avg = DataConversions.average(tickTimings);
-      // tickIdx = 0;
-      // System.out.println("Average Tick Speed: " + avg + "ms");
-      // }
-      // tickTimings[tickIdx] = (int) ((int) currTickTime - lastTickTime);
-      // lastTickTime = currTickTime;
-      // tickIdx++;
-      // }
     }
-    if (!running)
+    if (!running) {
       world.getServer().unbind();
-    // GUI.resetVars();
+    }
   }
 
-  private static String processAdvert(String advert, Player p) {
+  private static String processAdvert( String advert, Player p ) {
     advert = advert.replaceAll("%name", p.getUsername());
     advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
     return advert;
-  }
-
-  public void processLoginServer() {
-    // LoginConnector connector = world.getServer().getLoginConnector();
-    // if(connector != null) {
-    // connector.processIncomingPackets();
-    // connector.sendQueuedPackets();
-    // }
   }
 
   /**
@@ -198,8 +170,8 @@ public final class GameEngine extends Thread {
         try {
           handler.handlePacket(p, session);
         } catch (Exception e) {
-          Logger.error("Exception with p[" + p.getID() + "] from " + player.getUsername() + " [" + player.getCurrentIP()
-                  + "]: " + e.getMessage());
+          Logger.error("Exception with p[" + p.getID() + "] from " + player.getUsername() + " [" + player
+            .getCurrentIP() + "]: " + e.getMessage());
           player.getActionSender().sendLogout();
           player.destroy(false);
         }

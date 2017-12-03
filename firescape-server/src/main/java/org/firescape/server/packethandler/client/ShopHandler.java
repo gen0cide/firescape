@@ -12,14 +12,14 @@ public class ShopHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     if (player.isBusy()) {
       player.resetShop();
       return;
     }
-    final Shop shop = player.getShop();
+    Shop shop = player.getShop();
     if (shop == null) {
       player.setSuspiciousPlayer(true);
       player.resetShop();
@@ -41,9 +41,8 @@ public class ShopHandler implements PacketHandler {
           player.getActionSender().sendMessage("You don't have enough money to buy that!");
           return;
         }
-        if ((Inventory.MAX_SIZE - player.getInventory().size())
-                + player.getInventory().getFreedSlots(new InvItem(10, value)) < player.getInventory()
-                .getRequiredSlots(item)) {
+        if ((Inventory.MAX_SIZE - player.getInventory().size()) + player.getInventory().getFreedSlots(new InvItem(10,
+          value)) < player.getInventory().getRequiredSlots(item)) {
           player.getActionSender().sendMessage("You don't have room for that in your inventory");
           return;
         }
@@ -58,8 +57,8 @@ public class ShopHandler implements PacketHandler {
       case 255: // Sell item
         item = new InvItem(p.readShort(), 1);
         value = p.readInt();
-        if (value != ((shop.getSellModifier() * item.getDef().getBasePrice()) / 100)
-                || player.getInventory().countId(item.getID()) < 1) {
+        if (value != ((shop.getSellModifier() * item.getDef().getBasePrice()) / 100) || player.getInventory().countId
+          (item.getID()) < 1) {
           return;
         }
         if (!shop.shouldStock(item.getID())) {

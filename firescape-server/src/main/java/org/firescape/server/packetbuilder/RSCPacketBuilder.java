@@ -1,19 +1,21 @@
 package org.firescape.server.packetbuilder;
 
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.util.Logger;
 
 public class RSCPacketBuilder extends StaticPacketBuilder {
   /**
    * ID of the packet
    */
-  private int pID = 0;
+  private int pID;
 
   /**
    * Sets the ID for this packet.
    *
    * @param id The ID of the packet
    */
-  public RSCPacketBuilder setID(int pID) {
+  public RSCPacketBuilder setID( int pID ) {
+    Logger.event(String.format("Creating Packet of ID %d", pID));
     this.pID = pID;
     return this;
   }

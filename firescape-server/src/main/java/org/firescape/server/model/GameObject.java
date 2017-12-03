@@ -7,6 +7,10 @@ import org.firescape.server.entityhandling.locs.GameObjectLoc;
 
 public class GameObject extends Entity {
   /**
+   * Location definition of the object
+   */
+  private final GameObjectLoc loc;
+  /**
    * The direction the object points in
    */
   private int direction;
@@ -14,34 +18,29 @@ public class GameObject extends Entity {
    * The type of object
    */
   private int type;
-
-  private boolean grainable = false;
-  /**
-   * Location definition of the object
-   */
-  private GameObjectLoc loc = null;
+  private boolean grainable;
   /**
    * Set when the item has been destroyed to alert players
    */
-  private boolean removed = false;
+  private boolean removed;
 
-  public GameObject(Point location, int id, int direction, int type) {
+  public GameObject( Point location, int id, int direction, int type ) {
     this(new GameObjectLoc(id, location.getX(), location.getY(), direction, type));
   }
 
-  public GameObject(GameObjectLoc loc) {
+  public GameObject( GameObjectLoc loc ) {
     direction = loc.direction;
     type = loc.type;
     this.loc = loc;
-    super.setID(loc.id);
-    super.setLocation(Point.location(loc.x, loc.y));
+    this.setID(loc.id);
+    this.setLocation(Point.location(loc.x, loc.y));
   }
 
   public boolean getGrainable() {
     return grainable;
   }
 
-  public void setGrainable(boolean b) {
+  public void setGrainable( boolean b ) {
     grainable = b;
   }
 
@@ -58,18 +57,18 @@ public class GameObject extends Entity {
   }
 
   public DoorDef getDoorDef() {
-    return EntityHandler.getDoorDef(super.getID());
+    return EntityHandler.getDoorDef(this.getID());
   }
 
   public boolean isTelePoint() {
     return EntityHandler.getObjectTelePoint(getLocation(), null) != null;
   }
 
-  public boolean equals(Object o) {
+  public boolean equals( Object o ) {
     if (o instanceof GameObject) {
       GameObject go = (GameObject) o;
       return go.getLocation().equals(getLocation()) && go.getID() == getID() && go.getDirection() == getDirection()
-              && go.getType() == getType();
+        && go.getType() == getType();
     }
     return false;
   }
@@ -82,20 +81,20 @@ public class GameObject extends Entity {
     return type;
   }
 
-  public void setType(int type) {
+  public void setType( int type ) {
     this.type = type;
   }
 
-  public void setDirection(int direction) {
+  public void setDirection( int direction ) {
     this.direction = direction;
   }
 
   public String toString() {
-    return (type == 0 ? "GameObject" : "WallObject") + ":id = " + id + "; dir = " + direction + "; location = "
-            + location.toString() + ";";
+    return (type == 0 ? "GameObject" : "WallObject") + ":id = " + id + "; dir = " + direction + "; " + "location = "
+      + location + ";";
   }
 
-  public boolean isOn(int x, int y) {
+  public boolean isOn( int x, int y ) {
     int width, height;
     if (type == 1) {
       width = height = 1;
@@ -114,7 +113,7 @@ public class GameObject extends Entity {
   }
 
   public GameObjectDef getGameObjectDef() {
-    return EntityHandler.getGameObjectDef(super.getID());
+    return EntityHandler.getGameObjectDef(this.getID());
   }
 
 }

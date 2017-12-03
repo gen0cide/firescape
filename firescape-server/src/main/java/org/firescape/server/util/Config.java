@@ -26,9 +26,10 @@ public class Config {
    * Called to load config settings from the given file
    *
    * @param file the xml file to load settings from
+   *
    * @throws IOException if an i/o error occurs
    */
-  public static void initConfig(String file) throws IOException {
+  public static void initConfig( String file ) throws IOException {
     START_TIME = System.currentTimeMillis();
 
     Properties props = new Properties();

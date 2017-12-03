@@ -19,7 +19,7 @@ public class PlayerLogoutRequest implements PacketHandler {
   public static final World world = World.getWorld();
 
   // has logged
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     Player player = (Player) session.getAttachment();
 
     if (player.canLogout()) {

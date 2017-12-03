@@ -24,7 +24,7 @@ public class Packet {
   /**
    * The current index into the payload buffer for reading
    */
-  protected int caret = 0;
+  protected int caret;
   /**
    * Whether this packet is without the standard packet header
    */
@@ -39,9 +39,9 @@ public class Packet {
    * considered not to be a bare packet.
    *
    * @param session The session to associate with the packet
-   * @param pData   The payload the packet
+   * @param pData The payload the packet
    */
-  public Packet(IoSession session, byte[] pData) {
+  public Packet( IoSession session, byte[] pData ) {
     this(session, pData, false);
   }
 
@@ -49,11 +49,11 @@ public class Packet {
    * Creates a new packet with the specified parameters.
    *
    * @param session The session to associate with the packet
-   * @param pData   The payload of the packet
-   * @param bare    Whether this packet is bare, which means that it does not include
-   *                the standard packet header
+   * @param pData The payload of the packet
+   * @param bare Whether this packet is bare, which means that it does not include
+   * the standard packet header
    */
-  public Packet(IoSession session, byte[] pData, boolean bare) {
+  public Packet( IoSession session, byte[] pData, boolean bare ) {
     this.session = session;
     this.pData = pData;
     this.pLength = pData.length;
@@ -82,8 +82,6 @@ public class Packet {
 
   /**
    * Returns the time the packet was created.
-   *
-   * @ return the time the packet was created
    */
   public long getCreated() {
     return time;
@@ -112,7 +110,7 @@ public class Packet {
    *
    * @return The payload <code>byte</code> array
    */
-  public byte[] readBytes(int length) {
+  public byte[] readBytes( int length ) {
     byte[] data = new byte[length];
     try {
       for (int i = 0; i < length; i++) {
@@ -170,8 +168,8 @@ public class Packet {
    */
   public int readInt() {
     try {
-      return ((pData[caret++] & 0xff) << 24) | ((pData[caret++] & 0xff) << 16) | ((pData[caret++] & 0xff) << 8)
-              | (pData[caret++] & 0xff);
+      return ((pData[caret++] & 0xff) << 24) | ((pData[caret++] & 0xff) << 16) | ((pData[caret++] & 0xff) << 8) |
+        (pData[caret++] & 0xff);
     } catch (Exception e) {
       Logger.error(e.getMessage());
       return 0;
@@ -185,10 +183,9 @@ public class Packet {
    */
   public long readLong() {
     try {
-      return (long) (pData[caret++] & 0xff) << 56 | ((long) (pData[caret++] & 0xff) << 48)
-              | ((long) (pData[caret++] & 0xff) << 40) | ((long) (pData[caret++] & 0xff) << 32)
-              | ((long) (pData[caret++] & 0xff) << 24) | ((long) (pData[caret++] & 0xff) << 16)
-              | ((long) (pData[caret++] & 0xff) << 8) | ((long) (pData[caret++] & 0xff));
+      return (long) (pData[caret++] & 0xff) << 56 | ((long) (pData[caret++] & 0xff) << 48) | ((long) (pData[caret++]
+        & 0xff) << 40) | ((long) (pData[caret++] & 0xff) << 32) | ((long) (pData[caret++] & 0xff) << 24) | ((long)
+        (pData[caret++] & 0xff) << 16) | ((long) (pData[caret++] & 0xff) << 8) | ((long) (pData[caret++] & 0xff));
     } catch (Exception e) {
       Logger.error(e.getMessage());
       return 0;
@@ -208,9 +205,10 @@ public class Packet {
    * Reads a string of the specified length from the payload.
    *
    * @param length The length of the string to be read
+   *
    * @return A <code>String</code>
    */
-  public String readString(int length) {
+  public String readString( int length ) {
     String rv = new String(pData, caret, length);
     caret += length;
     return rv;
@@ -221,7 +219,7 @@ public class Packet {
    *
    * @param x The number of bytes to be skipped
    */
-  public void skip(int x) {
+  public void skip( int x ) {
     caret += x;
   }
 
@@ -246,8 +244,8 @@ public class Packet {
    * @return A <code>String</code> representing this packet
    */
   public String toString() {
-    String origin = session == null ? "this"
-            : ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress();
+    String origin = session == null ? "this" : ((InetSocketAddress) session.getRemoteAddress()).getAddress()
+      .getHostAddress();
     return "origin = " + origin + " length = " + pLength;
   }
 

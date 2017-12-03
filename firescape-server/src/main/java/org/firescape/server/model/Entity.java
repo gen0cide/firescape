@@ -18,7 +18,7 @@ public class Entity {
     return id;
   }
 
-  public final void setID(int newid) {
+  public final void setID( int newid ) {
     id = newid;
   }
 
@@ -26,15 +26,15 @@ public class Entity {
     return index;
   }
 
-  public final void setIndex(int newIndex) {
+  public final void setIndex( int newIndex ) {
     index = newIndex;
   }
 
-  public final boolean withinRange(Entity e, int radius) {
+  public final boolean withinRange( Entity e, int radius ) {
     return withinRange(e.getLocation(), radius);
   }
 
-  public final boolean withinRange(Point p, int radius) {
+  public final boolean withinRange( Point p, int radius ) {
     int xDiff = Math.abs(location.getX() - p.getX());
     int yDiff = Math.abs(location.getY() - p.getY());
     return xDiff <= radius && yDiff <= radius;
@@ -44,15 +44,14 @@ public class Entity {
     return location;
   }
 
-  public void setLocation(Point p) {
+  public void setLocation( Point p ) {
     world.setLocation(this, location, p);
     location = p;
   }
 
-  public final boolean nextTo(Entity e) {
+  public final boolean nextTo( Entity e ) {
     int[] currentCoords = {
-            getX(),
-            getY()
+      getX(), getY()
     };
     while (currentCoords[0] != e.getX() || currentCoords[1] != e.getY()) {
       currentCoords = nextStep(currentCoords[0], currentCoords[1], e);
@@ -71,11 +70,10 @@ public class Entity {
     return location.getY();
   }
 
-  public int[] nextStep(int myX, int myY, Entity e) {
+  public int[] nextStep( int myX, int myY, Entity e ) {
     if (myX == e.getX() && myY == e.getY()) {
-      return new int[]{
-              myX,
-              myY
+      return new int[] {
+        myX, myY
       };
     }
     int newX = myX, newY = myY;
@@ -131,17 +129,16 @@ public class Entity {
       return null;
     }
 
-    return new int[]{
-            newX,
-            newY
+    return new int[] {
+      newX, newY
     };
   }
 
-  private boolean isBlocking(Entity e, int x, int y, int bit) {
+  private boolean isBlocking( Entity e, int x, int y, int bit ) {
     return isMapBlocking(e, x, y, (byte) bit) || isObjectBlocking(e, x, y, (byte) bit);
   }
 
-  private boolean isMapBlocking(Entity e, int x, int y, byte bit) {
+  private boolean isMapBlocking( Entity e, int x, int y, byte bit ) {
     byte val = world.getTileValue(x, y).mapValue;
     if ((val & bit) != 0) { // There is a wall in the way
       return true;
@@ -152,14 +149,14 @@ public class Entity {
     if ((val & 32) != 0) { // There is a diagonal wall here: /
       return true;
     }
-    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
-            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
+    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x,
+      y)) || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
   }
 
-  private boolean isObjectBlocking(Entity e, int x, int y, byte bit) {
+  private boolean isObjectBlocking( Entity e, int x, int y, byte bit ) {
     byte val = world.getTileValue(x, y).objectValue;
-    if ((val & bit) != 0 && !Formulae.doorAtFacing(e, x, y, Formulae.bitToDoorDir(bit))
-            && !Formulae.objectAtFacing(e, x, y, Formulae.bitToObjectDir(bit))) { // There
+    if ((val & bit) != 0 && !Formulae.doorAtFacing(e, x, y, Formulae.bitToDoorDir(bit)) && !Formulae.objectAtFacing
+      (e, x, y, Formulae.bitToObjectDir(bit))) { // There
       // is
       // a
       // wall
@@ -186,8 +183,8 @@ public class Entity {
       // /
       return true;
     }
-    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
-            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
+    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x,
+      y)) || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
   }
 
 }

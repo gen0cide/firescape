@@ -22,14 +22,14 @@ public class CerterDef {
     return names;
   }
 
-  public int getCertID(int index) {
+  public int getCertID( int index ) {
     if (index < 0 || index >= certs.length) {
       return -1;
     }
     return certs[index].getCertID();
   }
 
-  public int getItemID(int index) {
+  public int getItemID( int index ) {
     if (index < 0 || index >= certs.length) {
       return -1;
     }

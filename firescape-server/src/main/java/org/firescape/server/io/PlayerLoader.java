@@ -19,7 +19,7 @@ public class PlayerLoader {
   static Properties props = new Properties();
   static Properties baseProps = new Properties();
 
-  public static int getLogin(String user, String pass) {
+  public static int getLogin( String user, String pass ) {
     try {
 
       // user = user.replaceAll("_", " ");
@@ -67,7 +67,7 @@ public class PlayerLoader {
     }
   }
 
-  static void copy(File src, File dst) {
+  static void copy( File src, File dst ) {
     try {
       InputStream in = new FileInputStream(src);
       OutputStream out = new FileOutputStream(dst);

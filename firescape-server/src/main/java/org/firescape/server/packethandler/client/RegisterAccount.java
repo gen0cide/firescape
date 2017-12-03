@@ -11,7 +11,7 @@ public class RegisterAccount implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
 
     String username = p.readString(20).trim();
     String password = p.readString(20).trim();

@@ -79,7 +79,7 @@ public class NPCDef extends EntityDef {
     return command;
   }
 
-  public int getSprite(int index) {
+  public int getSprite( int index ) {
     return sprites[index];
   }
 
@@ -136,10 +136,8 @@ public class NPCDef extends EntityDef {
   }
 
   public int[] getStats() {
-    return new int[]{
-            attack,
-            defense,
-            strength
+    return new int[] {
+      attack, defense, strength
     };
   }
 

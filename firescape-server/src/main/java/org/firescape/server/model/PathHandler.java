@@ -6,6 +6,10 @@ public class PathHandler {
    */
   private static final World world = World.getWorld();
   /**
+   * The mob that this path belongs to
+   */
+  private final Mob mob;
+  /**
    * The path we are walking
    */
   private Path path;
@@ -13,15 +17,11 @@ public class PathHandler {
    * The waypoint in the path we are currently at
    */
   private int curWaypoint;
-  /**
-   * The mob that this path belongs to
-   */
-  private Mob mob;
 
   /**
    * Constructs a new PathHandler belonging to the given Mob
    */
-  public PathHandler(Mob m) {
+  public PathHandler( Mob m ) {
     mob = m;
     resetPath();
   }
@@ -37,21 +37,21 @@ public class PathHandler {
   /**
    * Attempts to create a path to the given coordinates
    */
-  public static Path makePath(int startX, int startY, int x1, int y1, int x2, int y2, boolean flag) {
+  public static Path makePath( int startX, int startY, int x1, int y1, int x2, int y2, boolean flag ) {
     return null;
   }
 
   /**
    * Creates a new path and sets us walking it
    */
-  public void setPath(int startX, int startY, byte[] waypointXoffsets, byte[] waypointYoffsets) {
+  public void setPath( int startX, int startY, byte[] waypointXoffsets, byte[] waypointYoffsets ) {
     setPath(new Path(startX, startY, waypointXoffsets, waypointYoffsets));
   }
 
   /**
    * Sets us on the given path
    */
-  public void setPath(Path path) {
+  public void setPath( Path path ) {
     curWaypoint = -1;
     this.path = path;
   }
@@ -84,8 +84,7 @@ public class PathHandler {
    */
   protected void setNextPosition() {
     int[] newCoords = {
-            -1,
-            -1
+      -1, -1
     };
     if (curWaypoint == -1) {
       if (atStart()) {
@@ -99,8 +98,8 @@ public class PathHandler {
         curWaypoint++;
       }
       if (curWaypoint < path.length()) {
-        newCoords = getNextCoords(mob.getX(), path.getWaypointX(curWaypoint), mob.getY(),
-                path.getWaypointY(curWaypoint));
+        newCoords = getNextCoords(mob.getX(), path.getWaypointX(curWaypoint), mob.getY(), path.getWaypointY
+          (curWaypoint));
       } else {
         resetPath();
       }
@@ -113,7 +112,7 @@ public class PathHandler {
   /**
    * Checks if we are at the given waypoint
    */
-  protected boolean atWaypoint(int waypoint) {
+  protected boolean atWaypoint( int waypoint ) {
     return path.getWaypointX(waypoint) == mob.getX() && path.getWaypointY(waypoint) == mob.getY();
   }
 
@@ -127,11 +126,10 @@ public class PathHandler {
   /**
    * Gets the next coordinate in the right direction
    */
-  protected int[] getNextCoords(int startX, int destX, int startY, int destY) {
+  protected int[] getNextCoords( int startX, int destX, int startY, int destY ) {
     try {
       int[] coords = {
-              startX,
-              startY
+        startX, startY
       };
       boolean myXBlocked = false, myYBlocked = false, newXBlocked = false, newYBlocked = false;
       if (startX > destX) {
@@ -193,20 +191,19 @@ public class PathHandler {
     }
   }
 
-  private boolean isBlocking(int x, int y, int bit) {
+  private boolean isBlocking( int x, int y, int bit ) {
     TileValue t = world.getTileValue(x, y);
     return isBlocking(t.mapValue, (byte) bit) || isBlocking(t.objectValue, (byte) bit);
   }
 
   private int[] cancelCoords() {
     resetPath();
-    return new int[]{
-            -1,
-            -1
+    return new int[] {
+      -1, -1
     };
   }
 
-  private boolean isBlocking(byte val, byte bit) {
+  private boolean isBlocking( byte val, byte bit ) {
     if ((val & bit) != 0) { // There is a wall in the way
       return true;
     }

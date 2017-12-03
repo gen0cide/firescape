@@ -18,15 +18,16 @@ public class RSCProtocolEncoder implements ProtocolEncoder {
    *
    * @param session The IO session associated with the packet
    * @param message A <code>RSCPacket</code> to encode
-   * @param out     The output stream to which to write the data
+   * @param out The output stream to which to write the data
    */
-  public void encode(IoSession session, Object message, ProtocolEncoderOutput out) {
+  public void encode( IoSession session, Object message, ProtocolEncoderOutput out ) {
     if (!(message instanceof RSCPacket)) {
-      Logger.error(new Exception("Wrong packet type! " + message.toString()));
+      Logger.error(new Exception("Wrong packet type! " + message));
       return;
     }
     RSCPacket p = (RSCPacket) message;
     byte[] data = p.getData();
+    System.out.printf("OUTGOING PACKET: (%d) %s\n", p.getID(), p.printData());
     int packetLength = data.length;
     int dataLength = data.length;
     ByteBuffer buffer;
@@ -57,6 +58,6 @@ public class RSCProtocolEncoder implements ProtocolEncoder {
    *
    * @param session The IO session
    */
-  public void dispose(IoSession session) {
+  public void dispose( IoSession session ) {
   }
 }

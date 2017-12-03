@@ -13,22 +13,22 @@ public class Camera {
   private static long aLong431;
   private static byte aByteArray434[];
   public int lastCameraModelCount;
-  public int anInt379;
-  public int zoom1;
-  public int zoom2;
-  public int zoom3;
-  public int zoom4;
-  public boolean aBoolean386;
+  public int clipNear;
+  public int clipFar3d;
+  public int clipFar2d;
+  public int fogZFalloff;
+  public int fogZDistance;
+  public boolean wideBand;
   public double aDouble387;
   public int anInt388;
   public int modelCount;
   public int maxModelCount;
-  public Model modelArray[];
-  public Model aModel_423;
-  public int anIntArray437[];
-  int anInt374;
-  int anIntArray375[];
-  int anIntArrayArray376[][];
+  public Model models[];
+  public Model view;
+  public int raster[];
+  int rampCount;
+  int gradientBase[];
+  int gradientRamps[][];
   int anIntArray377[];
   int anInt424;
   byte aByteArrayArray425[][];
@@ -43,109 +43,109 @@ public class Camera {
   CameraVariables cameraVariables[];
   int modelLeftY;
   int modelRightY;
-  int anIntArray441[];
-  int anIntArray442[];
-  int anIntArray443[];
-  int anIntArray444[];
-  int anIntArray445[];
-  int anIntArray446[];
-  boolean f1Toggle;
+  int planeX[];
+  int planeY[];
+  int vertexShade[];
+  int vertexX[];
+  int vertexY[];
+  int vertexZ[];
+  boolean interlace;
   int anInt454;
   int anInt455;
-  private boolean aBoolean389;
+  private boolean mousePickingActive;
   private int mouseX;
   private int mouseY;
   private int currentVisibleModelCount;
-  private int maxVisibleModelCount;
-  private Model visibleModelsArray[];
-  private int visibleModelIntArray[];
+  private int mousePickedMax;
+  private Model mousePickedModels[];
+  private int mousePickedFaces[];
   private int width;
-  private int halfWidth;
-  private int halfHeight;
-  private int halfWidth2;
-  private int halfHeight2;
-  private int cameraSizeInt;
-  private int anInt402;
-  private int anInt403;
-  private int anInt404;
-  private int anInt405;
-  private int anInt406;
-  private int anInt407;
-  private int anInt408;
-  private int modelIntArray[];
-  private int cameraModelCount;
-  private CameraModel cameraModels[];
-  private int anInt415;
-  private int anIntArray416[];
-  private int anIntArray417[];
-  private int anIntArray418[];
-  private int anIntArray419[];
-  private int anIntArray420[];
-  private int anIntArray421[];
-  private int anIntArray422[];
+  private int clipX;
+  private int clipY;
+  private int baseX;
+  private int baseY;
+  private int viewDistance;
+  private int normalMagnitude;
+  private int cameraX;
+  private int cameraY;
+  private int cameraZ;
+  private int cameraYaw;
+  private int cameraPitch;
+  private int cameraRoll;
+  private int modelState[];
+  private int visiblePolygonsCount;
+  private CameraModel visiblePolygons[];
+  private int spriteCount;
+  private int spriteId[];
+  private int spriteX[];
+  private int spriteZ[];
+  private int spriteY[];
+  private int spriteWidth[];
+  private int spriteHeight[];
+  private int spriteTranslateX[];
   public Camera(GameImage gameImage, int maxModels, int maxCameraModels, int k) {
-    anInt374 = 50;
-    anIntArray375 = new int[anInt374];
-    anIntArrayArray376 = new int[anInt374][256];
-    anInt379 = 5;
-    zoom1 = 1000;
-    zoom2 = 1000;
-    zoom3 = 20;
-    zoom4 = 10;
-    aBoolean386 = false;
+    rampCount = 50;
+    gradientBase = new int[rampCount];
+    gradientRamps = new int[rampCount][256];
+    clipNear = 5;
+    clipFar3d = 1000;
+    clipFar2d = 1000;
+    fogZFalloff = 200;
+    fogZDistance = 100;
+    wideBand = false;
     aDouble387 = 1.1000000000000001D;
     anInt388 = 1;
-    aBoolean389 = false;
-    maxVisibleModelCount = 100;
-    visibleModelsArray = new Model[maxVisibleModelCount];
-    visibleModelIntArray = new int[maxVisibleModelCount];
+    mousePickingActive = false;
+    mousePickedMax = 100;
+    mousePickedModels = new Model[mousePickedMax];
+    mousePickedFaces = new int[mousePickedMax];
     width = 1280; // was 512
-    halfWidth = 640; // was 256
-    halfHeight = 360; // was 192
-    halfWidth2 = 640; // was 256
-    halfHeight2 = 640; // was 256
-    cameraSizeInt = 9;
-    anInt402 = 4;
-    anIntArray441 = new int[40];
-    anIntArray442 = new int[40];
-    anIntArray443 = new int[40];
-    anIntArray444 = new int[40];
-    anIntArray445 = new int[40];
-    anIntArray446 = new int[40];
-    f1Toggle = false;
+    clipX = 640; // was 256
+    clipY = 360; // was 192
+    baseX = 640; // was 256
+    baseY = 640; // was 256
+    viewDistance = 9;
+    normalMagnitude = 4;
+    planeX = new int[40];
+    planeY = new int[40];
+    vertexShade = new int[40];
+    vertexX = new int[40];
+    vertexY = new int[40];
+    vertexZ = new int[40];
+    interlace = false;
     this.gameImage = gameImage;
-    halfWidth = gameImage.menuDefaultWidth / 2;
-    halfHeight = gameImage.menuDefaultHeight / 2;
-    anIntArray437 = gameImage.imagePixelArray;
+    clipX = gameImage.menuDefaultWidth / 2;
+    clipY = gameImage.menuDefaultHeight / 2;
+    raster = gameImage.imagePixelArray;
     modelCount = 0;
     maxModelCount = maxModels;
-    modelArray = new Model[maxModelCount];
-    modelIntArray = new int[maxModelCount];
-    cameraModelCount = 0;
-    cameraModels = new CameraModel[maxCameraModels];
+    models = new Model[maxModelCount];
+    modelState = new int[maxModelCount];
+    visiblePolygonsCount = 0;
+    visiblePolygons = new CameraModel[maxCameraModels];
     for (int l = 0; l < maxCameraModels; l++)
-      cameraModels[l] = new CameraModel();
+      visiblePolygons[l] = new CameraModel();
 
-    anInt415 = 0;
-    aModel_423 = new Model(k * 2, k);
-    anIntArray416 = new int[k];
-    anIntArray420 = new int[k];
-    anIntArray421 = new int[k];
-    anIntArray417 = new int[k];
-    anIntArray418 = new int[k];
-    anIntArray419 = new int[k];
-    anIntArray422 = new int[k];
+    spriteCount = 0;
+    view = new Model(k * 2, k);
+    spriteId = new int[k];
+    spriteWidth = new int[k];
+    spriteHeight = new int[k];
+    spriteX = new int[k];
+    spriteZ = new int[k];
+    spriteY = new int[k];
+    spriteTranslateX = new int[k];
     if (aByteArray434 == null)
       aByteArray434 = new byte[17691];
-    anInt403 = 0;
-    anInt404 = 0;
-    anInt405 = 0;
-    anInt406 = 0;
-    anInt407 = 0;
-    anInt408 = 0;
-    for (int i1 = 0; i1 < 512; i1++) {
+    cameraX = 0;
+    cameraY = 0;
+    cameraZ = 0;
+    cameraYaw = 0;
+    cameraPitch = 0;
+    cameraRoll = 0;
+    for (int i1 = 0; i1 < 256; i1++) {
       anIntArray385[i1] = (int) (Math.sin((double) i1 * 0.02454369D) * 32768D);
-      anIntArray385[i1 + 512] = (int) (Math.cos((double) i1 * 0.02454369D) * 32768D);
+      anIntArray385[i1 + 256] = (int) (Math.cos((double) i1 * 0.02454369D) * 32768D);
     }
 
     for (int j1 = 0; j1 < 1024; j1++) {
@@ -1021,18 +1021,18 @@ public class Camera {
     if (model == null)
       System.out.println("Warning tried to add null object!");
     if (modelCount < maxModelCount) {
-      modelIntArray[modelCount] = 0;
-      modelArray[modelCount++] = model;
+      modelState[modelCount] = 0;
+      models[modelCount++] = model;
     }
   }
 
   public void removeModel(Model model) {
     for (int i = 0; i < modelCount; i++)
-      if (modelArray[i] == model) {
+      if (models[i] == model) {
         modelCount--;
         for (int j = i; j < modelCount; j++) {
-          modelArray[j] = modelArray[j + 1];
-          modelIntArray[j] = modelIntArray[j + 1];
+          models[j] = models[j + 1];
+          modelState[j] = modelState[j + 1];
         }
 
       }
@@ -1042,56 +1042,56 @@ public class Camera {
   public void cleanupModels() {
     method266();
     for (int i = 0; i < modelCount; i++)
-      modelArray[i] = null;
+      models[i] = null;
 
     modelCount = 0;
   }
 
   public void method266() {
-    anInt415 = 0;
-    aModel_423.method176();
+    spriteCount = 0;
+    view.method176();
   }
 
   public void updateFightCount(int i) {
-    anInt415 -= i;
-    aModel_423.method177(i, i * 2);
-    if (anInt415 < 0)
-      anInt415 = 0;
+    spriteCount -= i;
+    view.method177(i, i * 2);
+    if (spriteCount < 0)
+      spriteCount = 0;
   }
 
   public int method268(int i, int j, int k, int l, int i1, int j1, int k1) {
-    anIntArray416[anInt415] = i;
-    anIntArray417[anInt415] = j;
-    anIntArray418[anInt415] = k;
-    anIntArray419[anInt415] = l;
-    anIntArray420[anInt415] = i1;
-    anIntArray421[anInt415] = j1;
-    anIntArray422[anInt415] = 0;
-    int l1 = aModel_423.method180(j, k, l);
-    int i2 = aModel_423.method180(j, k - j1, l);
+    spriteId[spriteCount] = i;
+    spriteX[spriteCount] = j;
+    spriteZ[spriteCount] = k;
+    spriteY[spriteCount] = l;
+    spriteWidth[spriteCount] = i1;
+    spriteHeight[spriteCount] = j1;
+    spriteTranslateX[spriteCount] = 0;
+    int l1 = view.method180(j, k, l);
+    int i2 = view.method180(j, k - j1, l);
     int ai[] = {
             l1,
             i2
     };
-    aModel_423.method181(2, ai, 0, 0);
-    aModel_423.anIntArray258[anInt415] = k1;
-    aModel_423.aByteArray259[anInt415++] = 0;
-    return anInt415 - 1;
+    view.method181(2, ai, 0, 0);
+    view.anIntArray258[spriteCount] = k1;
+    view.aByteArray259[spriteCount++] = 0;
+    return spriteCount - 1;
   }
 
   public void setOurPlayer(int i) {
-    aModel_423.aByteArray259[i] = 1;
+    view.aByteArray259[i] = 1;
   }
 
   public void setCombat(int i, int j) {
-    anIntArray422[i] = j;
+    spriteTranslateX[i] = j;
   }
 
   public void updateMouseCoords(int x, int y) {
-    mouseX = x - halfWidth2;
+    mouseX = x - baseX;
     mouseY = y;
     currentVisibleModelCount = 0;
-    aBoolean389 = true;
+    mousePickingActive = true;
   }
 
   public int method272() {
@@ -1099,21 +1099,21 @@ public class Camera {
   }
 
   public int[] method273() {
-    return visibleModelIntArray;
+    return mousePickedFaces;
   }
 
   public Model[] getVisibleModels() {
-    return visibleModelsArray;
+    return mousePickedModels;
   }
 
   public void setCameraSize(int halfWindowWidth, int halfWindowHeight, int halfWindowWidth2, int halfWindowHeight2,
                             int windowWidth, int camSizeInt) {
-    halfWidth = halfWindowWidth2;
-    halfHeight = halfWindowHeight2;
-    halfWidth2 = halfWindowWidth;
-    halfHeight2 = halfWindowHeight;
+    clipX = halfWindowWidth2;
+    clipY = halfWindowHeight2;
+    baseX = halfWindowWidth;
+    baseY = halfWindowHeight;
     width = windowWidth;
-    cameraSizeInt = camSizeInt;
+    viewDistance = camSizeInt;
     cameraVariables = new CameraVariables[halfWindowHeight2 + halfWindowHeight];
     for (int k1 = 0; k1 < halfWindowHeight2 + halfWindowHeight; k1++)
       cameraVariables[k1] = new CameraVariables();
@@ -1229,9 +1229,9 @@ public class Camera {
   }
 
   public void method279(int i, int j, int k) {
-    int l = -anInt406 + 1024 & 0x3ff;
-    int i1 = -anInt407 + 1024 & 0x3ff;
-    int j1 = -anInt408 + 1024 & 0x3ff;
+    int l = -cameraYaw + 1024 & 0x3ff;
+    int i1 = -cameraPitch + 1024 & 0x3ff;
+    int j1 = -cameraRoll + 1024 & 0x3ff;
     if (j1 != 0) {
       int k1 = anIntArray384[j1];
       int j2 = anIntArray384[j1 + 1024];
@@ -1268,39 +1268,39 @@ public class Camera {
   }
 
   public void finishCamera() {
-    f1Toggle = gameImage.f1Toggle;
-    int i3 = halfWidth * zoom1 >> cameraSizeInt;
-    int j3 = halfHeight * zoom1 >> cameraSizeInt;
+    interlace = gameImage.f1Toggle;
+    int i3 = clipX * clipFar3d >> viewDistance;
+    int j3 = clipY * clipFar3d >> viewDistance;
     anInt448 = 0;
     anInt449 = 0;
     anInt450 = 0;
     anInt451 = 0;
     anInt452 = 0;
     anInt453 = 0;
-    method279(-i3, -j3, zoom1);
-    method279(-i3, j3, zoom1);
-    method279(i3, -j3, zoom1);
-    method279(i3, j3, zoom1);
-    method279(-halfWidth, -halfHeight, 0);
-    method279(-halfWidth, halfHeight, 0);
-    method279(halfWidth, -halfHeight, 0);
-    method279(halfWidth, halfHeight, 0);
-    anInt448 += anInt403;
-    anInt449 += anInt403;
-    anInt450 += anInt404;
-    anInt451 += anInt404;
-    anInt452 += anInt405;
-    anInt453 += anInt405;
-    modelArray[modelCount] = aModel_423;
-    aModel_423.anInt246 = 2;
+    method279(-i3, -j3, clipFar3d);
+    method279(-i3, j3, clipFar3d);
+    method279(i3, -j3, clipFar3d);
+    method279(i3, j3, clipFar3d);
+    method279(-clipX, -clipY, 0);
+    method279(-clipX, clipY, 0);
+    method279(clipX, -clipY, 0);
+    method279(clipX, clipY, 0);
+    anInt448 += cameraX;
+    anInt449 += cameraX;
+    anInt450 += cameraY;
+    anInt451 += cameraY;
+    anInt452 += cameraZ;
+    anInt453 += cameraZ;
+    models[modelCount] = view;
+    view.anInt246 = 2;
     for (int i = 0; i < modelCount; i++)
-      modelArray[i].method201(anInt403, anInt404, anInt405, anInt406, anInt407, anInt408, cameraSizeInt, anInt379);
+      models[i].method201(cameraX, cameraY, cameraZ, cameraYaw, cameraPitch, cameraRoll, viewDistance, clipNear);
 
-    modelArray[modelCount].method201(anInt403, anInt404, anInt405, anInt406, anInt407, anInt408, cameraSizeInt,
-            anInt379);
-    cameraModelCount = 0;
+    models[modelCount].method201(cameraX, cameraY, cameraZ, cameraYaw, cameraPitch, cameraRoll, viewDistance,
+            clipNear);
+    visiblePolygonsCount = 0;
     for (int k3 = 0; k3 < modelCount; k3++) {
-      Model model = modelArray[k3];
+      Model model = models[k3];
       if (model.aBoolean247) {
         for (int j = 0; j < model.anInt234; j++) {
           int l3 = model.anIntArray235[j];
@@ -1308,7 +1308,7 @@ public class Camera {
           boolean flag = false;
           for (int k4 = 0; k4 < l3; k4++) {
             int i1 = model.anIntArray229[ai1[k4]];
-            if (i1 <= anInt379 || i1 >= zoom1)
+            if (i1 <= clipNear || i1 >= clipFar3d)
               continue;
             flag = true;
             break;
@@ -1318,9 +1318,9 @@ public class Camera {
             int l1 = 0;
             for (int k5 = 0; k5 < l3; k5++) {
               int j1 = model.anIntArray230[ai1[k5]];
-              if (j1 > -halfWidth)
+              if (j1 > -clipX)
                 l1 |= 1;
-              if (j1 < halfWidth)
+              if (j1 < clipX)
                 l1 |= 2;
               if (l1 == 3)
                 break;
@@ -1330,19 +1330,19 @@ public class Camera {
               int i2 = 0;
               for (int l6 = 0; l6 < l3; l6++) {
                 int k1 = model.anIntArray231[ai1[l6]];
-                if (k1 > -halfHeight)
+                if (k1 > -clipY)
                   i2 |= 1;
-                if (k1 < halfHeight)
+                if (k1 < clipY)
                   i2 |= 2;
                 if (i2 == 3)
                   break;
               }
 
               if (i2 == 3) {
-                CameraModel cameraModel_1 = cameraModels[cameraModelCount];
+                CameraModel cameraModel_1 = visiblePolygons[visiblePolygonsCount];
                 cameraModel_1.aModel_359 = model;
                 cameraModel_1.anInt360 = j;
-                method293(cameraModelCount);
+                method293(visiblePolygonsCount);
                 int l8;
                 if (cameraModel_1.anInt365 < 0)
                   l8 = model.anIntArray237[j];
@@ -1355,7 +1355,7 @@ public class Camera {
 
                   cameraModel_1.anInt361 = j2 / l3 + model.anInt245;
                   cameraModel_1.anInt366 = l8;
-                  cameraModelCount++;
+                  visiblePolygonsCount++;
                 }
               }
             }
@@ -1365,7 +1365,7 @@ public class Camera {
       }
     }
 
-    Model model_1 = aModel_423;
+    Model model_1 = view;
     if (model_1.aBoolean247) {
       for (int k = 0; k < model_1.anInt234; k++) {
         int ai[] = model_1.anIntArrayArray236[k];
@@ -1373,50 +1373,50 @@ public class Camera {
         int l4 = model_1.anIntArray230[j4];
         int l5 = model_1.anIntArray231[j4];
         int i7 = model_1.anIntArray229[j4];
-        if (i7 > anInt379 && i7 < zoom2) {
-          int i8 = (anIntArray420[k] << cameraSizeInt) / i7;
-          int i9 = (anIntArray421[k] << cameraSizeInt) / i7;
-          if (l4 - i8 / 2 <= halfWidth && l4 + i8 / 2 >= -halfWidth && l5 - i9 <= halfHeight && l5 >= -halfHeight) {
-            CameraModel cameraModel_2 = cameraModels[cameraModelCount];
+        if (i7 > clipNear && i7 < clipFar2d) {
+          int i8 = (spriteWidth[k] << viewDistance) / i7;
+          int i9 = (spriteHeight[k] << viewDistance) / i7;
+          if (l4 - i8 / 2 <= clipX && l4 + i8 / 2 >= -clipX && l5 - i9 <= clipY && l5 >= -clipY) {
+            CameraModel cameraModel_2 = visiblePolygons[visiblePolygonsCount];
             cameraModel_2.aModel_359 = model_1;
             cameraModel_2.anInt360 = k;
-            method294(cameraModelCount);
+            method294(visiblePolygonsCount);
             cameraModel_2.anInt361 = (i7 + model_1.anIntArray229[ai[1]]) / 2;
-            cameraModelCount++;
+            visiblePolygonsCount++;
           }
         }
       }
 
     }
-    if (cameraModelCount == 0)
+    if (visiblePolygonsCount == 0)
       return;
-    lastCameraModelCount = cameraModelCount;
-    method276(cameraModels, 0, cameraModelCount - 1);
-    method277(100, cameraModels, cameraModelCount);
-    for (int i4 = 0; i4 < cameraModelCount; i4++) {
-      CameraModel cameraModel = cameraModels[i4];
+    lastCameraModelCount = visiblePolygonsCount;
+    method276(visiblePolygons, 0, visiblePolygonsCount - 1);
+    method277(100, visiblePolygons, visiblePolygonsCount);
+    for (int i4 = 0; i4 < visiblePolygonsCount; i4++) {
+      CameraModel cameraModel = visiblePolygons[i4];
       Model model_2 = cameraModel.aModel_359;
       int l = cameraModel.anInt360;
-      if (model_2 == aModel_423) {
+      if (model_2 == view) {
         int ai2[] = model_2.anIntArrayArray236[l];
         int i6 = ai2[0];
         int j7 = model_2.anIntArray230[i6];
         int j8 = model_2.anIntArray231[i6];
         int j9 = model_2.anIntArray229[i6];
-        int i10 = (anIntArray420[l] << cameraSizeInt) / j9;
-        int k10 = (anIntArray421[l] << cameraSizeInt) / j9;
+        int i10 = (spriteWidth[l] << viewDistance) / j9;
+        int k10 = (spriteHeight[l] << viewDistance) / j9;
         int i11 = j8 - model_2.anIntArray231[ai2[1]];
         int j11 = ((model_2.anIntArray230[ai2[1]] - j7) * i11) / k10;
         j11 = model_2.anIntArray230[ai2[1]] - j7;
         int l11 = j7 - i10 / 2;
-        int j12 = (halfHeight2 + j8) - k10;
-        gameImage.method245(l11 + halfWidth2, j12, i10, k10, anIntArray416[l], j11, (256 << cameraSizeInt) / j9);
-        if (aBoolean389 && currentVisibleModelCount < maxVisibleModelCount) {
-          l11 += (anIntArray422[l] << cameraSizeInt) / j9;
+        int j12 = (baseY + j8) - k10;
+        gameImage.method245(l11 + baseX, j12, i10, k10, spriteId[l], j11, (256 << viewDistance) / j9);
+        if (mousePickingActive && currentVisibleModelCount < mousePickedMax) {
+          l11 += (spriteTranslateX[l] << viewDistance) / j9;
           if (mouseY >= j12 && mouseY <= j12 + k10 && mouseX >= l11 && mouseX <= l11 + i10 && !model_2.aBoolean263
                   && model_2.aByteArray259[l] == 0) {
-            visibleModelsArray[currentVisibleModelCount] = model_2;
-            visibleModelIntArray[currentVisibleModelCount] = l;
+            mousePickedModels[currentVisibleModelCount] = model_2;
+            mousePickedFaces[currentVisibleModelCount] = l;
             currentVisibleModelCount++;
           }
         }
@@ -1432,20 +1432,20 @@ public class Camera {
             j10 = model_2.anInt308 + model_2.anIntArray241[l];
         for (int k11 = 0; k11 < l10; k11++) {
           int k2 = ai3[k11];
-          anIntArray444[k11] = model_2.anIntArray227[k2];
-          anIntArray445[k11] = model_2.anIntArray228[k2];
-          anIntArray446[k11] = model_2.anIntArray229[k2];
+          vertexX[k11] = model_2.anIntArray227[k2];
+          vertexY[k11] = model_2.anIntArray228[k2];
+          vertexZ[k11] = model_2.anIntArray229[k2];
           if (model_2.anIntArray241[l] == 0xbc614e)
             if (cameraModel.anInt365 < 0)
               j10 = (model_2.anInt308 - model_2.anIntArray232[k2]) + model_2.aByteArray233[k2];
             else
               j10 = model_2.anInt308 + model_2.anIntArray232[k2] + model_2.aByteArray233[k2];
-          if (model_2.anIntArray229[k2] >= anInt379) {
-            anIntArray441[k8] = model_2.anIntArray230[k2];
-            anIntArray442[k8] = model_2.anIntArray231[k2];
-            anIntArray443[k8] = j10;
-            if (model_2.anIntArray229[k2] > zoom4)
-              anIntArray443[k8] += (model_2.anIntArray229[k2] - zoom4) / zoom3;
+          if (model_2.anIntArray229[k2] >= clipNear) {
+            planeX[k8] = model_2.anIntArray230[k2];
+            planeY[k8] = model_2.anIntArray231[k2];
+            vertexShade[k8] = j10;
+            if (model_2.anIntArray229[k2] > fogZDistance)
+              vertexShade[k8] += (model_2.anIntArray229[k2] - fogZDistance) / fogZFalloff;
             k8++;
           } else {
             int k9;
@@ -1453,72 +1453,72 @@ public class Camera {
               k9 = ai3[l10 - 1];
             else
               k9 = ai3[k11 - 1];
-            if (model_2.anIntArray229[k9] >= anInt379) {
+            if (model_2.anIntArray229[k9] >= clipNear) {
               int k7 = model_2.anIntArray229[k2] - model_2.anIntArray229[k9];
               int i5 = model_2.anIntArray227[k2]
-                      - ((model_2.anIntArray227[k2] - model_2.anIntArray227[k9]) * (model_2.anIntArray229[k2] - anInt379))
+                      - ((model_2.anIntArray227[k2] - model_2.anIntArray227[k9]) * (model_2.anIntArray229[k2] - clipNear))
                       / k7;
               int j6 = model_2.anIntArray228[k2]
-                      - ((model_2.anIntArray228[k2] - model_2.anIntArray228[k9]) * (model_2.anIntArray229[k2] - anInt379))
+                      - ((model_2.anIntArray228[k2] - model_2.anIntArray228[k9]) * (model_2.anIntArray229[k2] - clipNear))
                       / k7;
-              anIntArray441[k8] = (i5 << cameraSizeInt) / anInt379;
-              anIntArray442[k8] = (j6 << cameraSizeInt) / anInt379;
-              anIntArray443[k8] = j10;
+              planeX[k8] = (i5 << viewDistance) / clipNear;
+              planeY[k8] = (j6 << viewDistance) / clipNear;
+              vertexShade[k8] = j10;
               k8++;
             }
             if (k11 == l10 - 1)
               k9 = ai3[0];
             else
               k9 = ai3[k11 + 1];
-            if (model_2.anIntArray229[k9] >= anInt379) {
+            if (model_2.anIntArray229[k9] >= clipNear) {
               int l7 = model_2.anIntArray229[k2] - model_2.anIntArray229[k9];
               int j5 = model_2.anIntArray227[k2]
-                      - ((model_2.anIntArray227[k2] - model_2.anIntArray227[k9]) * (model_2.anIntArray229[k2] - anInt379))
+                      - ((model_2.anIntArray227[k2] - model_2.anIntArray227[k9]) * (model_2.anIntArray229[k2] - clipNear))
                       / l7;
               int k6 = model_2.anIntArray228[k2]
-                      - ((model_2.anIntArray228[k2] - model_2.anIntArray228[k9]) * (model_2.anIntArray229[k2] - anInt379))
+                      - ((model_2.anIntArray228[k2] - model_2.anIntArray228[k9]) * (model_2.anIntArray229[k2] - clipNear))
                       / l7;
-              anIntArray441[k8] = (j5 << cameraSizeInt) / anInt379;
-              anIntArray442[k8] = (k6 << cameraSizeInt) / anInt379;
-              anIntArray443[k8] = j10;
+              planeX[k8] = (j5 << viewDistance) / clipNear;
+              planeY[k8] = (k6 << viewDistance) / clipNear;
+              vertexShade[k8] = j10;
               k8++;
             }
           }
         }
 
         for (int i12 = 0; i12 < l10; i12++) {
-          if (anIntArray443[i12] < 0)
-            anIntArray443[i12] = 0;
-          else if (anIntArray443[i12] > 255)
-            anIntArray443[i12] = 255;
+          if (vertexShade[i12] < 0)
+            vertexShade[i12] = 0;
+          else if (vertexShade[i12] > 255)
+            vertexShade[i12] = 255;
           if (cameraModel.anInt366 >= 0)
             if (anIntArray427[cameraModel.anInt366] == 1)
-              anIntArray443[i12] <<= 9;
+              vertexShade[i12] <<= 9;
             else
-              anIntArray443[i12] <<= 6;
+              vertexShade[i12] <<= 6;
         }
 
-        method281(0, 0, 0, 0, k8, anIntArray441, anIntArray442, anIntArray443, model_2, l);
+        method281(0, 0, 0, 0, k8, planeX, planeY, vertexShade, model_2, l);
         if (modelRightY > modelLeftY)
-          method282(0, 0, l10, anIntArray444, anIntArray445, anIntArray446, cameraModel.anInt366, model_2);
+          method282(0, 0, l10, vertexX, vertexY, vertexZ, cameraModel.anInt366, model_2);
       }
     }
 
-    aBoolean389 = false;
+    mousePickingActive = false;
   }
 
   private void method281(int i, int j, int k, int l, int i1, int ai[], int ai1[], int ai2[], Model model, int j1) {
     if (i1 == 3) {
-      int k1 = ai1[0] + halfHeight2;
-      int k2 = ai1[1] + halfHeight2;
-      int k3 = ai1[2] + halfHeight2;
+      int k1 = ai1[0] + baseY;
+      int k2 = ai1[1] + baseY;
+      int k3 = ai1[2] + baseY;
       int k4 = ai[0];
       int l5 = ai[1];
       int j7 = ai[2];
       int l8 = ai2[0];
       int j10 = ai2[1];
       int j11 = ai2[2];
-      int j12 = (halfHeight2 + halfHeight) - 1;
+      int j12 = (baseY + clipY) - 1;
       int l12 = 0;
       int j13 = 0;
       int l13 = 0;
@@ -1655,13 +1655,13 @@ public class Camera {
         cameraVariables_6.anInt373 = l21;
       }
 
-      if (modelLeftY < halfHeight2 - halfHeight)
-        modelLeftY = halfHeight2 - halfHeight;
+      if (modelLeftY < baseY - clipY)
+        modelLeftY = baseY - clipY;
     } else if (i1 == 4) {
-      int l1 = ai1[0] + halfHeight2;
-      int l2 = ai1[1] + halfHeight2;
-      int l3 = ai1[2] + halfHeight2;
-      int l4 = ai1[3] + halfHeight2;
+      int l1 = ai1[0] + baseY;
+      int l2 = ai1[1] + baseY;
+      int l3 = ai1[2] + baseY;
+      int l4 = ai1[3] + baseY;
       int i6 = ai[0];
       int k7 = ai[1];
       int i9 = ai[2];
@@ -1670,7 +1670,7 @@ public class Camera {
       int k12 = ai2[1];
       int i13 = ai2[2];
       int k13 = ai2[3];
-      int i14 = (halfHeight2 + halfHeight) - 1;
+      int i14 = (baseY + clipY) - 1;
       int k14 = 0;
       int i15 = 0;
       int k15 = 0;
@@ -1851,22 +1851,22 @@ public class Camera {
         cameraVariables_7.anInt373 = j24;
       }
 
-      if (modelLeftY < halfHeight2 - halfHeight)
-        modelLeftY = halfHeight2 - halfHeight;
+      if (modelLeftY < baseY - clipY)
+        modelLeftY = baseY - clipY;
     } else {
-      modelRightY = modelLeftY = ai1[0] += halfHeight2;
+      modelRightY = modelLeftY = ai1[0] += baseY;
       for (k = 1; k < i1; k++) {
         int i2;
-        if ((i2 = ai1[k] += halfHeight2) < modelLeftY)
+        if ((i2 = ai1[k] += baseY) < modelLeftY)
           modelLeftY = i2;
         else if (i2 > modelRightY)
           modelRightY = i2;
       }
 
-      if (modelLeftY < halfHeight2 - halfHeight)
-        modelLeftY = halfHeight2 - halfHeight;
-      if (modelRightY >= halfHeight2 + halfHeight)
-        modelRightY = (halfHeight2 + halfHeight) - 1;
+      if (modelLeftY < baseY - clipY)
+        modelLeftY = baseY - clipY;
+      if (modelRightY >= baseY + clipY)
+        modelRightY = (baseY + clipY) - 1;
       if (modelLeftY >= modelRightY)
         return;
       for (k = modelLeftY; k < modelRightY; k++) {
@@ -1978,17 +1978,17 @@ public class Camera {
         }
       }
 
-      if (modelLeftY < halfHeight2 - halfHeight)
-        modelLeftY = halfHeight2 - halfHeight;
+      if (modelLeftY < baseY - clipY)
+        modelLeftY = baseY - clipY;
     }
-    if (aBoolean389 && currentVisibleModelCount < maxVisibleModelCount && mouseY >= modelLeftY
+    if (mousePickingActive && currentVisibleModelCount < mousePickedMax && mouseY >= modelLeftY
             && mouseY < modelRightY) {
       CameraVariables cameraVariables_1 = cameraVariables[mouseY];
       if (mouseX >= cameraVariables_1.leftX >> 8 && mouseX <= cameraVariables_1.rightX >> 8
               && cameraVariables_1.leftX <= cameraVariables_1.rightX && !model.aBoolean263
               && model.aByteArray259[j1] == 0) {
-        visibleModelsArray[currentVisibleModelCount] = model;
-        visibleModelIntArray[currentVisibleModelCount] = j1;
+        mousePickedModels[currentVisibleModelCount] = model;
+        mousePickedFaces[currentVisibleModelCount] = j1;
         currentVisibleModelCount++;
       }
     }
@@ -2013,25 +2013,25 @@ public class Camera {
       int k8 = ai2[k] - j2;
       if (anIntArray427[l] == 1) {
         int l9 = i6 * k1 - j7 * i1 << 12;
-        int k10 = j7 * j2 - k8 * k1 << (5 - cameraSizeInt) + 7 + 4;
-        int i11 = k8 * i1 - i6 * j2 << (5 - cameraSizeInt) + 7;
+        int k10 = j7 * j2 - k8 * k1 << (5 - viewDistance) + 7 + 4;
+        int i11 = k8 * i1 - i6 * j2 << (5 - viewDistance) + 7;
         int k11 = i3 * k1 - k3 * i1 << 12;
-        int i12 = k3 * j2 - i4 * k1 << (5 - cameraSizeInt) + 7 + 4;
-        int k12 = i4 * i1 - i3 * j2 << (5 - cameraSizeInt) + 7;
+        int i12 = k3 * j2 - i4 * k1 << (5 - viewDistance) + 7 + 4;
+        int k12 = i4 * i1 - i3 * j2 << (5 - viewDistance) + 7;
         int i13 = k3 * i6 - i3 * j7 << 5;
-        int k13 = i4 * j7 - k3 * k8 << (5 - cameraSizeInt) + 4;
-        int i14 = i3 * k8 - i4 * i6 >> cameraSizeInt - 5;
+        int k13 = i4 * j7 - k3 * k8 << (5 - viewDistance) + 4;
+        int i14 = i3 * k8 - i4 * i6 >> viewDistance - 5;
         int k14 = k10 >> 4;
         int i15 = i12 >> 4;
         int k15 = k13 >> 4;
-        int i16 = modelLeftY - halfHeight2;
+        int i16 = modelLeftY - baseY;
         int k16 = width;
-        int i17 = halfWidth2 + modelLeftY * k16;
+        int i17 = baseX + modelLeftY * k16;
         byte byte1 = 1;
         l9 += i11 * i16;
         k11 += k12 * i16;
         i13 += i14 * i16;
-        if (f1Toggle) {
+        if (interlace) {
           if ((modelLeftY & 1) == 1) {
             modelLeftY++;
             l9 += i11;
@@ -2059,16 +2059,16 @@ public class Camera {
             } else {
               int i22 = cameraVariables_3.anInt372;
               int k23 = (cameraVariables_3.anInt373 - i22) / k20;
-              if (j < -halfWidth) {
-                i22 += (-halfWidth - j) * k23;
-                j = -halfWidth;
+              if (j < -clipX) {
+                i22 += (-clipX - j) * k23;
+                j = -clipX;
                 k20 = k17 - j;
               }
-              if (k17 > halfWidth) {
-                int l17 = halfWidth;
+              if (k17 > clipX) {
+                int l17 = clipX;
                 k20 = l17 - j;
               }
-              method284(anIntArray437, anIntArrayArray429[l], 0, 0, l9 + k14 * j, k11 + i15 * j, i13 + k15 * j, k10,
+              method284(raster, anIntArrayArray429[l], 0, 0, l9 + k14 * j, k11 + i15 * j, i13 + k15 * j, k10,
                       i12, k13, k20, i17 + j, i22, k23 << 2);
               l9 += i11;
               k11 += k12;
@@ -2093,16 +2093,16 @@ public class Camera {
             } else {
               int j22 = cameraVariables_4.anInt372;
               int l23 = (cameraVariables_4.anInt373 - j22) / l20;
-              if (j < -halfWidth) {
-                j22 += (-halfWidth - j) * l23;
-                j = -halfWidth;
+              if (j < -clipX) {
+                j22 += (-clipX - j) * l23;
+                j = -clipX;
                 l20 = i18 - j;
               }
-              if (i18 > halfWidth) {
-                int j18 = halfWidth;
+              if (i18 > clipX) {
+                int j18 = clipX;
                 l20 = j18 - j;
               }
-              method283(anIntArray437, anIntArrayArray429[l], 0, 0, l9 + k14 * j, k11 + i15 * j, i13 + k15 * j, k10,
+              method283(raster, anIntArrayArray429[l], 0, 0, l9 + k14 * j, k11 + i15 * j, i13 + k15 * j, k10,
                       i12, k13, l20, i17 + j, j22, l23 << 2);
               l9 += i11;
               k11 += k12;
@@ -2126,16 +2126,16 @@ public class Camera {
           } else {
             int k22 = cameraVariables_5.anInt372;
             int i24 = (cameraVariables_5.anInt373 - k22) / i21;
-            if (j < -halfWidth) {
-              k22 += (-halfWidth - j) * i24;
-              j = -halfWidth;
+            if (j < -clipX) {
+              k22 += (-clipX - j) * i24;
+              j = -clipX;
               i21 = k18 - j;
             }
-            if (k18 > halfWidth) {
-              int l18 = halfWidth;
+            if (k18 > clipX) {
+              int l18 = clipX;
               i21 = l18 - j;
             }
-            method285(anIntArray437, 0, 0, 0, anIntArrayArray429[l], l9 + k14 * j, k11 + i15 * j, i13 + k15 * j, k10,
+            method285(raster, 0, 0, 0, anIntArrayArray429[l], l9 + k14 * j, k11 + i15 * j, i13 + k15 * j, k10,
                     i12, k13, i21, i17 + j, k22, i24);
             l9 += i11;
             k11 += k12;
@@ -2147,25 +2147,25 @@ public class Camera {
         return;
       }
       int i10 = i6 * k1 - j7 * i1 << 11;
-      int l10 = j7 * j2 - k8 * k1 << (5 - cameraSizeInt) + 6 + 4;
-      int j11 = k8 * i1 - i6 * j2 << (5 - cameraSizeInt) + 6;
+      int l10 = j7 * j2 - k8 * k1 << (5 - viewDistance) + 6 + 4;
+      int j11 = k8 * i1 - i6 * j2 << (5 - viewDistance) + 6;
       int l11 = i3 * k1 - k3 * i1 << 11;
-      int j12 = k3 * j2 - i4 * k1 << (5 - cameraSizeInt) + 6 + 4;
-      int l12 = i4 * i1 - i3 * j2 << (5 - cameraSizeInt) + 6;
+      int j12 = k3 * j2 - i4 * k1 << (5 - viewDistance) + 6 + 4;
+      int l12 = i4 * i1 - i3 * j2 << (5 - viewDistance) + 6;
       int j13 = k3 * i6 - i3 * j7 << 5;
-      int l13 = i4 * j7 - k3 * k8 << (5 - cameraSizeInt) + 4;
-      int j14 = i3 * k8 - i4 * i6 >> cameraSizeInt - 5;
+      int l13 = i4 * j7 - k3 * k8 << (5 - viewDistance) + 4;
+      int j14 = i3 * k8 - i4 * i6 >> viewDistance - 5;
       int l14 = l10 >> 4;
       int j15 = j12 >> 4;
       int l15 = l13 >> 4;
-      int j16 = modelLeftY - halfHeight2;
+      int j16 = modelLeftY - baseY;
       int l16 = width;
-      int j17 = halfWidth2 + modelLeftY * l16;
+      int j17 = baseX + modelLeftY * l16;
       byte byte2 = 1;
       i10 += j11 * j16;
       l11 += l12 * j16;
       j13 += j14 * j16;
-      if (f1Toggle) {
+      if (interlace) {
         if ((modelLeftY & 1) == 1) {
           modelLeftY++;
           i10 += j11;
@@ -2193,16 +2193,16 @@ public class Camera {
           } else {
             int l22 = cameraVariables_6.anInt372;
             int j24 = (cameraVariables_6.anInt373 - l22) / j21;
-            if (j < -halfWidth) {
-              l22 += (-halfWidth - j) * j24;
-              j = -halfWidth;
+            if (j < -clipX) {
+              l22 += (-clipX - j) * j24;
+              j = -clipX;
               j21 = i19 - j;
             }
-            if (i19 > halfWidth) {
-              int j19 = halfWidth;
+            if (i19 > clipX) {
+              int j19 = clipX;
               j21 = j19 - j;
             }
-            method287(anIntArray437, anIntArrayArray429[l], 0, 0, i10 + l14 * j, l11 + j15 * j, j13 + l15 * j, l10, j12,
+            method287(raster, anIntArrayArray429[l], 0, 0, i10 + l14 * j, l11 + j15 * j, j13 + l15 * j, l10, j12,
                     l13, j21, j17 + j, l22, j24);
             i10 += j11;
             l11 += l12;
@@ -2227,16 +2227,16 @@ public class Camera {
           } else {
             int i23 = cameraVariables_7.anInt372;
             int k24 = (cameraVariables_7.anInt373 - i23) / k21;
-            if (j < -halfWidth) {
-              i23 += (-halfWidth - j) * k24;
-              j = -halfWidth;
+            if (j < -clipX) {
+              i23 += (-clipX - j) * k24;
+              j = -clipX;
               k21 = k19 - j;
             }
-            if (k19 > halfWidth) {
-              int l19 = halfWidth;
+            if (k19 > clipX) {
+              int l19 = clipX;
               k21 = l19 - j;
             }
-            method286(anIntArray437, anIntArrayArray429[l], 0, 0, i10 + l14 * j, l11 + j15 * j, j13 + l15 * j, l10, j12,
+            method286(raster, anIntArrayArray429[l], 0, 0, i10 + l14 * j, l11 + j15 * j, j13 + l15 * j, l10, j12,
                     l13, k21, j17 + j, i23, k24);
             i10 += j11;
             l11 += l12;
@@ -2260,16 +2260,16 @@ public class Camera {
         } else {
           int j23 = cameraVariables_8.anInt372;
           int l24 = (cameraVariables_8.anInt373 - j23) / l21;
-          if (j < -halfWidth) {
-            j23 += (-halfWidth - j) * l24;
-            j = -halfWidth;
+          if (j < -clipX) {
+            j23 += (-clipX - j) * l24;
+            j = -clipX;
             l21 = i20 - j;
           }
-          if (i20 > halfWidth) {
-            int j20 = halfWidth;
+          if (i20 > clipX) {
+            int j20 = clipX;
             l21 = j20 - j;
           }
-          method288(anIntArray437, 0, 0, 0, anIntArrayArray429[l], i10 + l14 * j, l11 + j15 * j, j13 + l15 * j, l10,
+          method288(raster, 0, 0, 0, anIntArrayArray429[l], i10 + l14 * j, l11 + j15 * j, j13 + l15 * j, l10,
                   j12, l13, l21, j17 + j, j23, l24);
           i10 += j11;
           l11 += l12;
@@ -2280,14 +2280,14 @@ public class Camera {
 
       return;
     }
-    for (int j1 = 0; j1 < anInt374; j1++) {
-      if (anIntArray375[j1] == l) {
-        anIntArray377 = anIntArrayArray376[j1];
+    for (int j1 = 0; j1 < rampCount; j1++) {
+      if (gradientBase[j1] == l) {
+        anIntArray377 = gradientRamps[j1];
         break;
       }
-      if (j1 == anInt374 - 1) {
-        int l1 = (int) (Math.random() * (double) anInt374);
-        anIntArray375[l1] = l;
+      if (j1 == rampCount - 1) {
+        int l1 = (int) (Math.random() * (double) rampCount);
+        gradientBase[l1] = l;
         l = -1 - l;
         int k2 = (l >> 10 & 0x1f) * 8;
         int j3 = (l >> 5 & 0x1f) * 8;
@@ -2297,17 +2297,17 @@ public class Camera {
           int k7 = (k2 * j6) / 0x10000;
           int l8 = (j3 * j6) / 0x10000;
           int j10 = (l3 * j6) / 0x10000;
-          anIntArrayArray376[l1][255 - j4] = (k7 << 16) + (l8 << 8) + j10;
+          gradientRamps[l1][255 - j4] = (k7 << 16) + (l8 << 8) + j10;
         }
 
-        anIntArray377 = anIntArrayArray376[l1];
+        anIntArray377 = gradientRamps[l1];
       }
     }
 
     int i2 = width;
-    int l2 = halfWidth2 + modelLeftY * i2;
+    int l2 = baseX + modelLeftY * i2;
     byte byte0 = 1;
-    if (f1Toggle) {
+    if (interlace) {
       if ((modelLeftY & 1) == 1) {
         modelLeftY++;
         l2 += i2;
@@ -2326,23 +2326,23 @@ public class Camera {
         } else {
           int l7 = cameraVariables.anInt372;
           int i9 = (cameraVariables.anInt373 - l7) / k6;
-          if (j < -halfWidth) {
-            l7 += (-halfWidth - j) * i9;
-            j = -halfWidth;
+          if (j < -clipX) {
+            l7 += (-clipX - j) * i9;
+            j = -clipX;
             k6 = k4 - j;
           }
-          if (k4 > halfWidth) {
-            int l4 = halfWidth;
+          if (k4 > clipX) {
+            int l4 = clipX;
             k6 = l4 - j;
           }
-          method290(anIntArray437, -k6, l2 + j, 0, anIntArray377, l7, i9);
+          method290(raster, -k6, l2 + j, 0, anIntArray377, l7, i9);
           l2 += i2;
         }
       }
 
       return;
     }
-    if (aBoolean386) {
+    if (wideBand) {
       for (i = modelLeftY; i < modelRightY; i += byte0) {
         CameraVariables cameraVariables_1 = cameraVariables[i];
         j = cameraVariables_1.leftX >> 8;
@@ -2353,16 +2353,16 @@ public class Camera {
         } else {
           int i8 = cameraVariables_1.anInt372;
           int j9 = (cameraVariables_1.anInt373 - i8) / l6;
-          if (j < -halfWidth) {
-            i8 += (-halfWidth - j) * j9;
-            j = -halfWidth;
+          if (j < -clipX) {
+            i8 += (-clipX - j) * j9;
+            j = -clipX;
             l6 = i5 - j;
           }
-          if (i5 > halfWidth) {
-            int j5 = halfWidth;
+          if (i5 > clipX) {
+            int j5 = clipX;
             l6 = j5 - j;
           }
-          method289(anIntArray437, -l6, l2 + j, 0, anIntArray377, i8, j9);
+          method289(raster, -l6, l2 + j, 0, anIntArray377, i8, j9);
           l2 += i2;
         }
       }
@@ -2379,16 +2379,16 @@ public class Camera {
       } else {
         int j8 = cameraVariables_2.anInt372;
         int k9 = (cameraVariables_2.anInt373 - j8) / i7;
-        if (j < -halfWidth) {
-          j8 += (-halfWidth - j) * k9;
-          j = -halfWidth;
+        if (j < -clipX) {
+          j8 += (-clipX - j) * k9;
+          j = -clipX;
           i7 = k5 - j;
         }
-        if (k5 > halfWidth) {
-          int l5 = halfWidth;
+        if (k5 > clipX) {
+          int l5 = clipX;
           i7 = l5 - j;
         }
-        method291(anIntArray437, -i7, l2 + j, 0, anIntArray377, j8, k9);
+        method291(raster, -i7, l2 + j, 0, anIntArray377, j8, k9);
         l2 += i2;
       }
     }
@@ -2399,9 +2399,9 @@ public class Camera {
     l &= 0x3ff;
     i1 &= 0x3ff;
     j1 &= 0x3ff;
-    anInt406 = 1024 - l & 0x3ff;
-    anInt407 = 1024 - i1 & 0x3ff;
-    anInt408 = 1024 - j1 & 0x3ff;
+    cameraYaw = 1024 - l & 0x3ff;
+    cameraPitch = 1024 - i1 & 0x3ff;
+    cameraRoll = 1024 - j1 & 0x3ff;
     int l1 = 0;
     int i2 = 0;
     int j2 = k1;
@@ -2426,13 +2426,13 @@ public class Camera {
       i2 = i2 * l3 - l1 * i3 >> 15;
       l1 = k4;
     }
-    anInt403 = i - l1;
-    anInt404 = j - i2;
-    anInt405 = k - j2;
+    cameraX = i - l1;
+    cameraY = j - i2;
+    cameraZ = k - j2;
   }
 
   private void method293(int i) {
-    CameraModel cameraModel = cameraModels[i];
+    CameraModel cameraModel = visiblePolygons[i];
     Model model = cameraModel.aModel_359;
     int j = cameraModel.anInt360;
     int ai[] = model.anIntArrayArray236[j];
@@ -2459,7 +2459,7 @@ public class Camera {
       }
 
       model.anIntArray240[j] = l;
-      model.anIntArray239[j] = (int) ((double) anInt402 * Math.sqrt(k3 * k3 + l3 * l3 + i4 * i4));
+      model.anIntArray239[j] = (int) ((double) normalMagnitude * Math.sqrt(k3 * k3 + l3 * l3 + i4 * i4));
     } else {
       k3 >>= l;
       l3 >>= l;
@@ -2502,7 +2502,7 @@ public class Camera {
   }
 
   private void method294(int i) {
-    CameraModel cameraModel = cameraModels[i];
+    CameraModel cameraModel = visiblePolygons[i];
     Model model = cameraModel.aModel_359;
     int j = cameraModel.anInt360;
     int ai[] = model.anIntArrayArray236[j];
@@ -2862,7 +2862,7 @@ public class Camera {
     if (i == 0 && j == 0 && k == 0)
       i = 32;
     for (int l = 0; l < modelCount; l++)
-      modelArray[l].method186(i, j, k);
+      models[l].method186(i, j, k);
 
   }
 
@@ -2870,7 +2870,7 @@ public class Camera {
     if (k == 0 && l == 0 && i1 == 0)
       k = 32;
     for (int j1 = 0; j1 < modelCount; j1++)
-      modelArray[j1].method185(i, j, k, l, i1);
+      models[j1].method185(i, j, k, l, i1);
 
   }
 

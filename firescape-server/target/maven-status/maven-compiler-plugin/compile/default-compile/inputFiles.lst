@@ -113,6 +113,7 @@
 /Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/PvP.java
 /Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/codec/RSCProtocolDecoder.java
 /Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/packethandler/client/InvActionHandler.java
+/Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/util/ISAAC.java
 /Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/util/EntityListIterator.java
 /Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/packethandler/client/TalkToNpcHandler.java
 /Users/flint/Code/firescape/firescape-server/src/main/java/org/firescape/server/event/WalkToObjectEvent.java

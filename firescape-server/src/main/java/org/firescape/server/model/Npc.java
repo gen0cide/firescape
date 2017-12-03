@@ -21,15 +21,15 @@ public class Npc extends Mob {
   /**
    * Random
    */
-  private Random r = new Random();
+  private final Random r = new Random();
   /**
    * The location of this npc
    */
-  private NPCLoc loc;
+  private final NPCLoc loc;
   /**
    * The definition of this npc
    */
-  private NPCDef def;
+  private final NPCDef def;
   /**
    * The npcs hitpoints
    */
@@ -40,38 +40,38 @@ public class Npc extends Mob {
   /**
    * DelayedEvent used for unblocking an npc after set time
    */
-  private DelayedEvent timeout = null;
+  private DelayedEvent timeout;
   /**
    * The player currently blocking this npc
    */
-  private Player blocker = null;
+  private Player blocker;
   /**
    * Should this npc respawn once it has been killed?
    **/
   private boolean shouldRespawn = true;
 
-  public Npc(int id, int startX, int startY, int minX, int maxX, int minY, int maxY) {
+  public Npc( int id, int startX, int startY, int minX, int maxX, int minY, int maxY ) {
     this(new NPCLoc(id, startX, startY, minX, maxX, minY, maxY));
   }
 
-  public Npc(NPCLoc loc) {
+  public Npc( NPCLoc loc ) {
     def = EntityHandler.getNpcDef(loc.getId());
     curHits = def.getHits();
     this.loc = loc;
-    super.setID(loc.getId());
-    super.setLocation(Point.location(loc.startX(), loc.startY()), true);
-    super.setCombatLevel(Formulae.getCombatLevel(def.getAtt(), def.getDef(), def.getStr(), def.getHits(), 0, 0, 0));
+    this.setID(loc.getId());
+    this.setLocation(Point.location(loc.startX(), loc.startY()), true);
+    this.setCombatLevel(Formulae.getCombatLevel(def.getAtt(), def.getDef(), def.getStr(), def.getHits(), 0, 0, 0));
   }
 
-  public final int Rand(int low, int high) {
+  public final int Rand( int low, int high ) {
     return low + r.nextInt(high - low);
   }
 
-  public void setRespawn(boolean respawn) {
+  public void setRespawn( boolean respawn ) {
     shouldRespawn = respawn;
   }
 
-  public void blockedBy(Player player) {
+  public void blockedBy( Player player ) {
     blocker = player;
     player.setNpc(this);
     setBusy(true);
@@ -101,14 +101,20 @@ public class Npc extends Mob {
     return loc;
   }
 
-  public void moveNpc(Path path) {
-    super.setPath(path);
+  public void moveNpc( Path path ) {
+    this.setPath(path);
     super.updatePosition();
-  }  public void remove() {
+  }
+
+  public NPCDef getDef() {
+    return EntityHandler.getNpcDef(getID());
+  }
+
+  public void remove() {
     if (!removed && shouldRespawn && def.respawnTime() > 0) {
       world.getDelayedEventHandler().add(new DelayedEvent(null, def.respawnTime() * 1000) {
         public void run() {
-          world.registerNpc(new Npc(loc));
+          DelayedEvent.world.registerNpc(new Npc(loc));
           running = false;
         }
       });
@@ -116,16 +122,13 @@ public class Npc extends Mob {
     removed = true;
   }
 
-  public NPCDef getDef() {
-    return EntityHandler.getNpcDef(getID());
-  }
 
-  public void killedBy(Mob mob, boolean stake) {
+  public void killedBy( Mob mob, boolean stake ) {
     if (mob instanceof Player) {
       Player player = (Player) mob;
       player.getActionSender().sendSound("victory");
     }
-    Mob opponent = super.getOpponent();
+    Mob opponent = this.getOpponent();
     if (opponent != null) {
       opponent.resetCombat(CombatState.WON);
     }
@@ -157,7 +160,6 @@ public class Npc extends Mob {
   }
 
 
-
   public int getCombatStyle() {
     return 0;
   }
@@ -178,7 +180,7 @@ public class Npc extends Mob {
     return def.getAtt();
   }
 
-  public void setAttack(int lvl) {
+  public void setAttack( int lvl ) {
     if (lvl <= 0) {
       lvl = 0;
     }
@@ -189,7 +191,7 @@ public class Npc extends Mob {
     return def.getDef();
   }
 
-  public void setDefense(int lvl) {
+  public void setDefense( int lvl ) {
     if (lvl <= 0) {
       lvl = 0;
     }
@@ -200,7 +202,7 @@ public class Npc extends Mob {
     return def.getStr();
   }
 
-  public void setStrength(int lvl) {
+  public void setStrength( int lvl ) {
     if (lvl <= 0) {
       lvl = 0;
     }
@@ -211,7 +213,7 @@ public class Npc extends Mob {
     return curHits;
   }
 
-  public void setHits(int lvl) {
+  public void setHits( int lvl ) {
     if (lvl <= 0) {
       lvl = 0;
     }
@@ -226,11 +228,9 @@ public class Npc extends Mob {
         ActiveTile t = tiles[x][y];
         if (t != null) {
           for (Player p : t.getPlayers()) {
-            if (p.isBusy()
-                    || now - p.getCombatTimer() < (p.getCombatState() == CombatState.RUNNING
-                    || p.getCombatState() == CombatState.WAITING ? 3000 : 500)
-                    || !p.nextTo(this)
-                    || !p.getLocation().inBounds(loc.minX - 4, loc.minY - 4, loc.maxX + 4, loc.maxY + 4)) {
+            if (p.isBusy() || now - p.getCombatTimer() < (p.getCombatState() == CombatState.RUNNING || p
+              .getCombatState() == CombatState.WAITING ? 3000 : 500) || !p.nextTo(this) || !p.getLocation().inBounds
+              (loc.minX - 4, loc.minY - 4, loc.maxX + 4, loc.maxY + 4)) {
               continue;
             }
             if (getLocation().inWilderness() || p.getCombatLevel() < (getCombatLevel() * 2) + 1) {
@@ -274,8 +274,8 @@ public class Npc extends Mob {
     if (now - lastMovement > 6000) {
       lastMovement = now;
       if (!isBusy() && finishedPath() && DataConversions.random(0, 2) == 1) {
-        super.setPath(new Path(getX(), getY(), DataConversions.random(loc.minX(), loc.maxX()),
-                DataConversions.random(loc.minY(), loc.maxY())));
+        this.setPath(new Path(getX(), getY(), DataConversions.random(loc.minX(), loc.maxX()), DataConversions.random
+          (loc.minY(), loc.maxY())));
       }
     }
     super.updatePosition();

@@ -9,7 +9,7 @@ public class Juliet implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc(final Npc npc, final Player player) throws Exception {
+  public void handleNpc( Npc npc, Player player ) throws Exception {
     if (player.getRomeoJulietStatus() == 3) {
       player.informOfNpcMessage(new ChatMessage(npc, "Thanks again!", player));
       return;
@@ -19,24 +19,23 @@ public class Juliet implements NpcHandler {
       return;
     }
     if (player.getRomeoJulietStatus() == 2) {
-      player
-              .informOfNpcMessage(new ChatMessage(npc, "Did you go and tell Romeo I am fine and with my father?", player));
+      player.informOfNpcMessage(new ChatMessage(npc, "Did you go and tell Romeo I am fine and with my father?",
+        player));
       player.setBusy(true);
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           player.setBusy(false);
-          String[] option = new String[]{
-                  "Yes, I have told him",
-                  "No, not yet"
+          String[] option = {
+            "Yes, I have told him", "No, not yet"
           };
           player.setMenuHandler(new MenuHandler(option) {
-            public void handleReply(final int option, final String reply) {
+            public void handleReply( int option, String reply ) {
               if (player.isBusy()) {
                 return;
               }
               player.informOfChatMessage(new ChatMessage(player, reply, npc));
               player.setBusy(true);
-              world.getDelayedEventHandler().add(new ShortEvent(player) {
+              DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
                   player.setBusy(false);
                   if (option == 1) {
@@ -44,10 +43,11 @@ public class Juliet implements NpcHandler {
                     return;
                   }
                   if (option == 0 && player.getRomeoJulietStatus() == 2) {
-                    player.informOfNpcMessage(
-                            new ChatMessage(npc, "It doesn't seem you have told him yet! Go tell him please!", player));
-                  } else
+                    player.informOfNpcMessage(new ChatMessage(npc, "It doesn't seem you have told him yet! Go tell "
+                      + "him please!", player));
+                  } else {
                     player.informOfNpcMessage(new ChatMessage(npc, "Thank you! You are very kind!", player));
+                  }
                 }
               });
             }
@@ -61,30 +61,29 @@ public class Juliet implements NpcHandler {
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
           owner.setBusy(false);
-          String[] options = new String[]{
-                  "I know where he is",
-                  "I have no idea, sorry"
+          String[] options = {
+            "I know where he is", "I have no idea, sorry"
           };
           owner.setMenuHandler(new MenuHandler(options) {
-            public void handleReply(final int option, final String reply) {
+            public void handleReply( int option, String reply ) {
               if (owner.isBusy()) {
                 return;
               }
               owner.informOfChatMessage(new ChatMessage(owner, reply, npc));
               owner.setBusy(true);
-              world.getDelayedEventHandler().add(new ShortEvent(owner) {
+              DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                 public void action() {
                   owner.setBusy(false);
                   if (option == 0) {
                     owner.informOfNpcMessage(new ChatMessage(npc, "Please tell me of his whereabouts!", owner));
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
-                        owner.informOfChatMessage(
-                                new ChatMessage(owner, "He's in Varrock. He's worried about you!", npc));
-                        world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                        owner.informOfChatMessage(new ChatMessage(owner, "He's in Varrock. He's worried " + "about " +
+                          "you!", npc));
+                        DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                           public void action() {
-                            owner.informOfNpcMessage(
-                                    new ChatMessage(npc, "Please tell him i'm with my father and i'm fine", owner));
+                            owner.informOfNpcMessage(new ChatMessage(npc, "Please tell him i'm with my father " +
+                              "and i'm fine", owner));
                             owner.setRomeoJulietStatus(2);
                             npc.unblock();
                           }

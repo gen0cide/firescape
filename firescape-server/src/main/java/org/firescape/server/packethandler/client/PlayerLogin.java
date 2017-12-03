@@ -11,13 +11,16 @@ import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Logger;
 
+import java.util.Arrays;
+
 public class PlayerLogin implements PacketHandler {
   /**
    * World instance
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
+    System.out.printf("LOGIN PACKET: %s\n", p.printData());
     Player player = (Player) session.getAttachment();
     byte loginCode = 22;
     try {
@@ -39,7 +42,7 @@ public class PlayerLogin implements PacketHandler {
       if (username.trim().length() < 3 || password.trim().length() < 3) {
         RSCPacketBuilder pb = new RSCPacketBuilder();
         pb.setBare(true);
-        pb.addByte((byte) loginCode);
+        pb.addByte(loginCode);
         session.write(pb.toPacket());
         player.destroy(true);
         loginCode = 7;
@@ -53,6 +56,7 @@ public class PlayerLogin implements PacketHandler {
         loginCode = 4;
       } else if (!player.setSessionKeys(sessionKeys)) {
         loginCode = 5;
+        System.out.println("SESSION KEYS: " + Arrays.toString(sessionKeys));
         player.bad_login = true;
       } else if (res == 0) {
         loginCode = 2; // invalid username/pass.
@@ -61,8 +65,9 @@ public class PlayerLogin implements PacketHandler {
       } else if (res == 6) {
         loginCode = 6;
       } else {
-        if (loginCode != 5)
+        if (loginCode != 5) {
           player.bad_login = false;
+        }
 
         if (loginCode != 5 || loginCode != 3) {
           player.load(username, password, uid, reconnecting);
@@ -77,7 +82,7 @@ public class PlayerLogin implements PacketHandler {
     if (loginCode != 22) {
       RSCPacketBuilder pb = new RSCPacketBuilder();
       pb.setBare(true);
-      pb.addByte((byte) loginCode);
+      pb.addByte(loginCode);
       session.write(pb.toPacket());
       player.destroy(true);
     }

@@ -13,10 +13,7 @@ import java.io.IOException;
 public class MapGenerator {
   private static final World world = World.getWorld();
   private static final String[] labels = {
-          "Ground",
-          "Level-1",
-          "Level-2",
-          "Underground"
+    "Ground", "Level-1", "Level-2", "Underground"
   };
   private static final int WIDTH = World.MAX_WIDTH * 2;
   private static final int HEIGHT = World.MAX_HEIGHT * 2;
@@ -26,15 +23,15 @@ public class MapGenerator {
   private static final int BLACK = new Color(0, 0, 0).getRGB();
   private static final int PURPLE = new Color(150, 0, 255).getRGB();
 
-  private BufferedImage image;
-  private Graphics gfx;
+  private final BufferedImage image;
+  private final Graphics gfx;
 
   public MapGenerator() {
     image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
     gfx = image.getGraphics();
   }
 
-  public static void main(String[] args) {
+  public static void main( String[] args ) {
     if (args.length < 1) {
       System.out.println("Invalid args");
       return;
@@ -56,11 +53,11 @@ public class MapGenerator {
     }
   }
 
-  private void drawDot(int xCoord, int yCoord, int colour) {
+  private void drawDot( int xCoord, int yCoord, int colour ) {
     image.setRGB(WIDTH - xCoord - 1, yCoord, colour);
   }
 
-  private void fillTile(int xCoord, int yCoord, int colour) {
+  private void fillTile( int xCoord, int yCoord, int colour ) {
     for (int xOff = 0; xOff < 2; xOff++) {
       for (int yOff = 0; yOff < 2; yOff++) {
         drawDot(xCoord + xOff, yCoord + yOff, colour);
@@ -78,7 +75,7 @@ public class MapGenerator {
             gfx.setColor(Color.GREEN);
             gfx.drawLine(0, y, WIDTH, y);
             gfx.drawLine(0, y + 1, WIDTH, y + 1);
-            gfx.drawString(labels[label++], x + 10, y + 20);
+            gfx.drawString(labels[label++], 0 + 10, y + 20);
           }
           continue;
         }
@@ -99,12 +96,12 @@ public class MapGenerator {
     }
   }
 
-  private void handleTile(int xImg, int yImg, TileValue tile) {
+  private void handleTile( int xImg, int yImg, TileValue tile ) {
     handleTile(xImg, yImg, tile.mapValue);
     handleTile(xImg, yImg, tile.objectValue);
   }
 
-  private void handleTile(int xImg, int yImg, byte type) {
+  private void handleTile( int xImg, int yImg, byte type ) {
     if ((type & 1) != 0) { // Top Wall
       drawDot(xImg, yImg, BLACK);
       drawDot(xImg + 1, yImg, BLACK);
@@ -134,7 +131,7 @@ public class MapGenerator {
     }
   }
 
-  public boolean save(String filename) {
+  public boolean save( String filename ) {
     try {
       File file = new File(filename);
       ImageIO.write(image, "png", file);

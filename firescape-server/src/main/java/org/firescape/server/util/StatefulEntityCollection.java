@@ -23,30 +23,30 @@ import java.util.Set;
 
 public class StatefulEntityCollection<T extends Entity> {
 
-  private Set<T> newEntities = new HashSet<T>();
-  private Set<T> knownEntities = new HashSet<T>();
-  private Set<T> entitiesToRemove = new HashSet<T>();
+  private final Set<T> newEntities = new HashSet<T>();
+  private final Set<T> knownEntities = new HashSet<T>();
+  private final Set<T> entitiesToRemove = new HashSet<T>();
 
   // We need to keep these in the order they logged in, currently it doesn't
   // seem to?
 
-  public void add(T entity) {
+  public void add( T entity ) {
     newEntities.add(entity);
   }
 
-  public void add(Collection<T> entities) {
+  public void add( Collection<T> entities ) {
     newEntities.addAll(entities);
   }
 
-  public boolean contains(T entity) {
+  public boolean contains( T entity ) {
     return newEntities.contains(entity) || knownEntities.contains(entity);
   }
 
-  public void remove(T entity) {
+  public void remove( T entity ) {
     entitiesToRemove.add(entity);
   }
 
-  public boolean isRemoving(T entity) {
+  public boolean isRemoving( T entity ) {
     return entitiesToRemove.contains(entity);
   }
 

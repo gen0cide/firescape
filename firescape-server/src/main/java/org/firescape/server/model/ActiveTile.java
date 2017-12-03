@@ -7,32 +7,33 @@ public class ActiveTile {
   /**
    * World instance
    */
-  private static World world = World.getWorld();
+  private static final World world = World.getWorld();
   /**
    * A list of all players currently on this tile
    */
-  private List<Player> players = new ArrayList<Player>();
+  private final List<Player> players = new ArrayList<Player>();
   /**
    * A list of all npcs currently on this tile
    */
-  private List<Npc> npcs = new ArrayList<Npc>();
+  private final List<Npc> npcs = new ArrayList<Npc>();
   /**
    * A list of all items currently on this tile
    */
-  private List<Item> items = new ArrayList<Item>();
-  /**
-   * The object currently on this tile (can only have 1 at a time)
-   */
-  private GameObject object = null;
+  private final List<Item> items = new ArrayList<Item>();
   /**
    * The x and y coordinates of this tile
    */
-  private int x, y;
+  private final int x;
+  private final int y;
+  /**
+   * The object currently on this tile (can only have 1 at a time)
+   */
+  private GameObject object;
 
   /**
    * Constructs a new tile at the given coordinates
    */
-  public ActiveTile(int x, int y) {
+  public ActiveTile( int x, int y ) {
     this.x = x;
     this.y = y;
   }
@@ -40,7 +41,7 @@ public class ActiveTile {
   /**
    * Add an entity to the tile
    */
-  public void add(Entity entity) {
+  public void add( Entity entity ) {
     if (entity instanceof Player) {
       players.add((Player) entity);
     } else if (entity instanceof Npc) {
@@ -68,7 +69,7 @@ public class ActiveTile {
   /**
    * Remove an entity from the tile
    */
-  public void remove(Entity entity) {
+  public void remove( Entity entity ) {
     if (entity instanceof Player) {
       players.remove(entity);
     } else if (entity instanceof Npc) {
@@ -100,7 +101,7 @@ public class ActiveTile {
     return items;
   }
 
-  public boolean hasItem(Item item) {
+  public boolean hasItem( Item item ) {
     return items.contains(item);
   }
 

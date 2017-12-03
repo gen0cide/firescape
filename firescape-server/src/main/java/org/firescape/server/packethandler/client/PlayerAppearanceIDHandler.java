@@ -12,7 +12,7 @@ public class PlayerAppearanceIDHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket(Packet p, IoSession session) throws Exception {
+  public void handlePacket( Packet p, IoSession session ) throws Exception {
     int mobCount = p.readShort();
     int[] indicies = new int[mobCount];
     int[] appearanceIDs = new int[mobCount];

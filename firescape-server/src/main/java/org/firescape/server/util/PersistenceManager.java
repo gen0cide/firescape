@@ -22,9 +22,8 @@ public class PersistenceManager {
     xstream.addPermission(com.thoughtworks.xstream.security.InterfaceTypePermission.INTERFACES);
     xstream.addPermission(com.thoughtworks.xstream.security.AnyTypePermission.ANY);
     xstream.allowTypeHierarchy(Collection.class);
-    xstream.allowTypesByWildcard(new String[]{
-            "org.firescape.server.**",
-            "org.firescape.server.entityhandling.defs.**"
+    xstream.allowTypesByWildcard(new String[] {
+      "org.firescape.server.**", "org.firescape.server.entityhandling.defs.**"
     });
     setupAliases();
   }
@@ -44,7 +43,7 @@ public class PersistenceManager {
     }
   }
 
-  public static Object load(String filename) {
+  public static Object load( String filename ) {
     try {
       InputStream is = new FileInputStream(new File(Config.CONF_DIR, filename));
       if (filename.endsWith(".gz")) {
@@ -58,7 +57,7 @@ public class PersistenceManager {
     return null;
   }
 
-  public static void write(String filename, Object o) {
+  public static void write( String filename, Object o ) {
     try {
       OutputStream os = new FileOutputStream(new File(Config.CONF_DIR, filename));
       if (filename.endsWith(".gz")) {

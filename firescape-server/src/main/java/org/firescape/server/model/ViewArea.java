@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewArea {
-  private static World world = World.getWorld();
-  private Mob mob;
+  private static final World world = World.getWorld();
+  private final Mob mob;
 
-  public ViewArea(Mob mob) {
+  public ViewArea( Mob mob ) {
     this.mob = mob;
   }
 
   public List<Player> getPlayersInView() {
     List<Player> players = new ArrayList<Player>();
     ActiveTile[][] viewArea = getViewedArea(15, 15, 16, 16);
-    for (int x = 0; x < viewArea.length; x++)
+    for (int x = 0; x < viewArea.length; x++) {
       for (int y = 0; y < viewArea[x].length; y++) {
         ActiveTile t = viewArea[x][y];
         if (t != null) {
@@ -24,10 +24,11 @@ public class ViewArea {
           }
         }
       }
+    }
     return players;
   }
 
-  public ActiveTile[][] getViewedArea(int x1, int y1, int x2, int y2) {
+  public ActiveTile[][] getViewedArea( int x1, int y1, int x2, int y2 ) {
     int mobX = mob.getX();
     int mobY = mob.getY();
     int startX, startY, endX, endY;
@@ -101,7 +102,7 @@ public class ViewArea {
   public List<Npc> getNpcsInView() {
     List<Npc> npcs = new ArrayList<Npc>();
     ActiveTile[][] viewArea = getViewedArea(15, 15, 16, 16);
-    for (int x = 0; x < viewArea.length; x++)
+    for (int x = 0; x < viewArea.length; x++) {
       for (int y = 0; y < viewArea[x].length; y++) {
         ActiveTile t = viewArea[x][y];
         if (t != null) {
@@ -111,6 +112,7 @@ public class ViewArea {
           }
         }
       }
+    }
     return npcs;
   }
 

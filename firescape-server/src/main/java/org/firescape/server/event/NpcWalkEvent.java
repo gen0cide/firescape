@@ -5,18 +5,18 @@ import org.firescape.server.model.Path;
 import org.firescape.server.model.Player;
 
 public abstract class NpcWalkEvent extends DelayedEvent {
+  private final int radius;
   protected Npc affectedMob;
-  private int radius;
 
-  public NpcWalkEvent(Player owner, Npc affectedMob, int radius) {
+  public NpcWalkEvent( Player owner, Npc affectedMob, int radius ) {
     super(owner, 500);
     this.affectedMob = affectedMob;
     this.radius = radius;
-    affectedMob.moveNpc(
-            new Path(affectedMob.getX(), affectedMob.getY(), owner.getLocation().getX(), owner.getLocation().getY()));
+    affectedMob.moveNpc(new Path(affectedMob.getX(), affectedMob.getY(), owner.getLocation().getX(), owner
+      .getLocation().getY()));
     if (affectedMob.withinRange(owner, radius)) {
       arrived();
-      super.running = false;
+      this.running = false;
     }
   }
 
@@ -30,7 +30,7 @@ public abstract class NpcWalkEvent extends DelayedEvent {
     } else {
       failed();
     }
-    super.running = false;
+    this.running = false;
   }
 
   public void failed() {

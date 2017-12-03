@@ -14,7 +14,7 @@ public class NpcUpdatePacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer(Player p) {
+  public void setPlayer( Player p ) {
     playerToUpdate = p;
   }
 
@@ -25,7 +25,7 @@ public class NpcUpdatePacketBuilder {
     int updateSize = npcMessagesNeedingDisplayed.size() + npcsNeedingHitsUpdate.size();
     if (updateSize > 0) {
       RSCPacketBuilder updates = new RSCPacketBuilder();
-      updates.setID(190);
+      updates.setID(104);
       updates.addShort(updateSize);
       for (ChatMessage cm : npcMessagesNeedingDisplayed) {
         updates.addShort(cm.getSender().getIndex());

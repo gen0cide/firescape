@@ -9,7 +9,20 @@ import org.firescape.server.util.Logger;
 
 public abstract class Mob extends Entity {
 
-  public boolean inDuel = false;
+  private final int[][] mobSprites = {
+    {
+      3, 2, 1
+    }, {
+      4, -1, 0
+    }, {
+      5, 6, 7
+    }
+  };
+  /**
+   * The path we are walking
+   */
+  private final PathHandler pathHandler = new PathHandler(this);
+  public boolean inDuel;
   protected int mobSprite = 1;
   /**
    * Have we moved since last update?
@@ -26,7 +39,7 @@ public abstract class Mob extends Entity {
   /**
    * ID for our current appearance, used client side to detect changed
    */
-  protected int appearanceID = 0;
+  protected int appearanceID;
   /**
    * Time of last movement, used for timeout
    */
@@ -34,7 +47,7 @@ public abstract class Mob extends Entity {
   /**
    * If we are warned to move
    */
-  protected boolean warnedToMove = false;
+  protected boolean warnedToMove;
   /**
    * Tiles around us that we can see
    */
@@ -46,52 +59,31 @@ public abstract class Mob extends Entity {
   /**
    * Set when the mob has been destroyed to alert players
    */
-  protected boolean removed = false;
-  private int[][] mobSprites = new int[][]{
-          {
-                  3,
-                  2,
-                  1
-          },
-          {
-                  4,
-                  -1,
-                  0
-          },
-          {
-                  5,
-                  6,
-                  7
-          }
-  };
+  protected boolean removed;
   /**
    * Used to block new requests when we are in the middle of one
    */
-  private boolean busy = false;
+  private boolean busy;
   /**
    * Has the sprite changed?
    */
-  private boolean spriteChanged = false;
+  private boolean spriteChanged;
   /**
    * Who they are in combat with
    */
-  private Mob combatWith = null;
+  private Mob combatWith;
   /**
    * Timer used to track start and end of combat
    */
-  private long combatTimer = 0;
-  /**
-   * The path we are walking
-   */
-  private PathHandler pathHandler = new PathHandler(this);
+  private long combatTimer;
   /**
    * Amount of damage last dealt to the player
    */
-  private int lastDamage = 0;
+  private int lastDamage;
   /**
    * How many times we have hit our opponent
    */
-  private int hitsMade = 0;
+  private int hitsMade;
   /**
    * The end state of the last combat encounter
    */
@@ -115,21 +107,21 @@ public abstract class Mob extends Entity {
 
   public abstract int getHits();
 
-  public abstract void setHits(int lvl);
+  public abstract void setHits( int lvl );
 
   public abstract int getAttack();
 
-  public abstract void setAttack(int lvl);
+  public abstract void setAttack( int lvl );
 
   public abstract int getDefense();
 
-  public abstract void setDefense(int lvl);
+  public abstract void setDefense( int lvl );
 
   public abstract int getStrength();
 
-  public abstract void setStrength(int lvl);
+  public abstract void setStrength( int lvl );
 
-  public abstract void killedBy(Mob mob, boolean stake);
+  public abstract void killedBy( Mob mob, boolean stake );
 
   public abstract int getWeaponPowerPoints();
 
@@ -137,8 +129,8 @@ public abstract class Mob extends Entity {
 
   public abstract int getArmourPoints();
 
-  public void resetCombat(CombatState state) {
-    for (DelayedEvent event : world.getDelayedEventHandler().getEvents()) {
+  public void resetCombat( CombatState state ) {
+    for (DelayedEvent event : Entity.world.getDelayedEventHandler().getEvents()) {
       if (event instanceof FightEvent) {
         FightEvent fighting = (FightEvent) event;
         if (fighting.getOwner().equals(this) || fighting.getAffectedMob().equals(this)) {
@@ -173,14 +165,6 @@ public abstract class Mob extends Entity {
     return lastCombatState;
   }
 
-  public boolean isPrayerActivated(int pID) {
-    return activatedPrayers[pID];
-  }
-
-  public void setPrayer(int pID, boolean b) {
-    activatedPrayers[pID] = b;
-  }
-
   public ViewArea getViewArea() {
     return viewArea;
   }
@@ -189,7 +173,7 @@ public abstract class Mob extends Entity {
     return lastDamage;
   }
 
-  public void setLastDamage(int d) {
+  public void setLastDamage( int d ) {
     lastDamage = d;
   }
 
@@ -197,8 +181,12 @@ public abstract class Mob extends Entity {
     return busy;
   }
 
-  public void setBusy(boolean busy) {
+  public void setBusy( boolean busy ) {
     this.busy = busy;
+  }
+
+  public boolean isPrayerActivated( int pID ) {
+    return activatedPrayers[pID];
   }
 
   public void warnToMove() {
@@ -217,13 +205,13 @@ public abstract class Mob extends Entity {
     return combatLevel;
   }
 
-  public void setCombatLevel(int level) {
+  public void setCombatLevel( int level ) {
     combatLevel = level;
     ourAppearanceChanged = true;
   }
 
-  public void setAppearnceChanged(boolean b) {
-    ourAppearanceChanged = b;
+  public void setPrayer( int pID, boolean b ) {
+    activatedPrayers[pID] = b;
   }
 
   public void updateAppearanceID() {
@@ -236,11 +224,15 @@ public abstract class Mob extends Entity {
     return appearanceID;
   }
 
-  public void setLocation(Point p) {
+  public void setAppearnceChanged( boolean b ) {
+    ourAppearanceChanged = b;
+  }
+
+  public void setLocation( Point p ) {
     setLocation(p, false);
   }
 
-  public void setLocation(Point p, boolean teleported) {
+  public void setLocation( Point p, boolean teleported ) {
     if (!teleported) {
       updateSprite(p);
       hasMoved = true;
@@ -250,7 +242,7 @@ public abstract class Mob extends Entity {
     super.setLocation(p);
   }
 
-  protected void updateSprite(Point newLocation) {
+  protected void updateSprite( Point newLocation ) {
     try {
       int xIndex = getLocation().getX() - newLocation.getX() + 1;
       int yIndex = getLocation().getY() - newLocation.getY() + 1;
@@ -268,7 +260,7 @@ public abstract class Mob extends Entity {
     return mobSprite;
   }
 
-  public void setSprite(int x) {
+  public void setSprite( int x ) {
     spriteChanged = true;
     mobSprite = x;
   }
@@ -289,7 +281,7 @@ public abstract class Mob extends Entity {
     return combatWith;
   }
 
-  public void setOpponent(Mob opponent) {
+  public void setOpponent( Mob opponent ) {
     combatWith = opponent;
   }
 
@@ -317,11 +309,11 @@ public abstract class Mob extends Entity {
     pathHandler.resetPath();
   }
 
-  public void setPath(Path path) {
+  public void setPath( Path path ) {
     pathHandler.setPath(path);
   }
 
-  public final boolean atObject(GameObject o) {
+  public final boolean atObject( GameObject o ) {
     int dir = o.getDirection();
     int width, height;
     if (o.getType() == 1) {

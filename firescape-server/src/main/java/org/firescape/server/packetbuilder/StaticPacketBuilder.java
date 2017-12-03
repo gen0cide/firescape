@@ -16,39 +16,39 @@ public class StaticPacketBuilder {
    * Bitmasks for <code>addBits()</code>
    */
   protected static int bitmasks[] = {
-          0,
-          0x1,
-          0x3,
-          0x7,
-          0xf,
-          0x1f,
-          0x3f,
-          0x7f,
-          0xff,
-          0x1ff,
-          0x3ff,
-          0x7ff,
-          0xfff,
-          0x1fff,
-          0x3fff,
-          0x7fff,
-          0xffff,
-          0x1ffff,
-          0x3ffff,
-          0x7ffff,
-          0xfffff,
-          0x1fffff,
-          0x3fffff,
-          0x7fffff,
-          0xffffff,
-          0x1ffffff,
-          0x3ffffff,
-          0x7ffffff,
-          0xfffffff,
-          0x1fffffff,
-          0x3fffffff,
-          0x7fffffff,
-          -1
+    0,
+    0x1,
+    0x3,
+    0x7,
+    0xf,
+    0x1f,
+    0x3f,
+    0x7f,
+    0xff,
+    0x1ff,
+    0x3ff,
+    0x7ff,
+    0xfff,
+    0x1fff,
+    0x3fff,
+    0x7fff,
+    0xffff,
+    0x1ffff,
+    0x3ffff,
+    0x7ffff,
+    0xfffff,
+    0x1fffff,
+    0x3fffff,
+    0x7fffff,
+    0xffffff,
+    0x1ffffff,
+    0x3ffffff,
+    0x7ffffff,
+    0xfffffff,
+    0x1fffffff,
+    0x3fffffff,
+    0x7fffffff,
+    -1
   };
   /**
    * The payload buffer
@@ -61,11 +61,11 @@ public class StaticPacketBuilder {
   /**
    * Current index into the buffer by bits
    */
-  protected int bitPosition = 0;
+  protected int bitPosition;
   /**
    * Whether this packet does not use the standard packet header
    */
-  protected boolean bare = false;
+  protected boolean bare;
 
   /**
    * Constructs a packet builder with no data and an initial capacity of
@@ -83,7 +83,7 @@ public class StaticPacketBuilder {
    *
    * @param capacity The initial capacity of the buffer
    */
-  public StaticPacketBuilder(int capacity) {
+  public StaticPacketBuilder( int capacity ) {
     payload = new byte[capacity];
   }
 
@@ -93,7 +93,7 @@ public class StaticPacketBuilder {
    *
    * @param bare Whether this packet is to be sent bare
    */
-  public StaticPacketBuilder setBare(boolean bare) {
+  public StaticPacketBuilder setBare( boolean bare ) {
     this.bare = bare;
     return this;
   }
@@ -101,7 +101,7 @@ public class StaticPacketBuilder {
   /**
    * TODO needs a proper description.
    */
-  public StaticPacketBuilder addBits(int value, int numBits) {
+  public StaticPacketBuilder addBits( int value, int numBits ) {
     int bytePos = bitPosition >> 3;
     int bitOffset = 8 - (bitPosition & 7);
     bitPosition += numBits;
@@ -128,18 +128,20 @@ public class StaticPacketBuilder {
    *
    * @param minimumCapacity The size needed
    */
-  private void ensureCapacity(int minimumCapacity) {
-    if (minimumCapacity >= payload.length)
+  private void ensureCapacity( int minimumCapacity ) {
+    if (minimumCapacity >= payload.length) {
       expandCapacity(minimumCapacity);
+    }
   }
 
   /**
    * Expands the buffer to the specified size.
    *
    * @param minimumCapacity The minimum capacity to which to expand
+   *
    * @see java.lang.AbstractStringBuilder#expandCapacity(int)
    */
-  private void expandCapacity(int minimumCapacity) {
+  private void expandCapacity( int minimumCapacity ) {
     int newCapacity = (payload.length + 1) * 2;
     if (newCapacity < 0) {
       newCapacity = Integer.MAX_VALUE;
@@ -165,9 +167,10 @@ public class StaticPacketBuilder {
    * array.
    *
    * @param data The bytes to add to this packet
+   *
    * @return A reference to this object
    */
-  public StaticPacketBuilder addBytes(byte[] data) {
+  public StaticPacketBuilder addBytes( byte[] data ) {
     return addBytes(data, 0, data.length);
   }
 
@@ -176,12 +179,13 @@ public class StaticPacketBuilder {
    * index <code>offset</code>. The size of this packet will grow by
    * <code>len</code> bytes.
    *
-   * @param data   The bytes to add to this packet
+   * @param data The bytes to add to this packet
    * @param offset The index of the first byte to append
-   * @param len    The number of bytes to append
+   * @param len The number of bytes to append
+   *
    * @return A reference to this object
    */
-  public StaticPacketBuilder addBytes(byte[] data, int offset, int len) {
+  public StaticPacketBuilder addBytes( byte[] data, int offset, int len ) {
     int newLength = curLength + len;
     ensureCapacity(newLength);
     System.arraycopy(data, offset, payload, curLength, len);
@@ -194,9 +198,10 @@ public class StaticPacketBuilder {
    * grow by one byte.
    *
    * @param val The <code>byte</code> value to add
+   *
    * @return A reference to this object
    */
-  public StaticPacketBuilder addByte(byte val) {
+  public StaticPacketBuilder addByte( byte val ) {
     return addByte(val, true);
   }
 
@@ -204,13 +209,15 @@ public class StaticPacketBuilder {
    * Adds a <code>byte</code> to the data buffer. The size of this packet will
    * grow by one byte.
    *
-   * @param val           The <code>byte</code> value to add
+   * @param val The <code>byte</code> value to add
    * @param checkCapacity Whether the buffer capacity should be checked
+   *
    * @return A reference to this object
    */
-  private StaticPacketBuilder addByte(byte val, boolean checkCapacity) {
-    if (checkCapacity)
+  private StaticPacketBuilder addByte( byte val, boolean checkCapacity ) {
+    if (checkCapacity) {
       ensureCapacity(curLength + 1);
+    }
     payload[curLength++] = val;
     return this;
   }
@@ -220,9 +227,10 @@ public class StaticPacketBuilder {
    * grow by two bytes.
    *
    * @param val The <code>short</code> value to add
+   *
    * @return A reference to this object
    */
-  public StaticPacketBuilder addShort(int val) {
+  public StaticPacketBuilder addShort( int val ) {
     ensureCapacity(curLength + 2);
     addByte((byte) (val >> 8), false);
     addByte((byte) val, false);
@@ -234,9 +242,10 @@ public class StaticPacketBuilder {
    * grow by eight bytes.
    *
    * @param val The <code>long</code> value to add
+   *
    * @return A reference to this object
    */
-  public StaticPacketBuilder addLong(long val) {
+  public StaticPacketBuilder addLong( long val ) {
     addInt((int) (val >> 32));
     addInt((int) (val & -1L));
     return this;
@@ -247,9 +256,10 @@ public class StaticPacketBuilder {
    * grow by four bytes.
    *
    * @param val The <code>int</code> value to add
+   *
    * @return A reference to this object
    */
-  public StaticPacketBuilder addInt(int val) {
+  public StaticPacketBuilder addInt( int val ) {
     ensureCapacity(curLength + 4);
     addByte((byte) (val >> 24), false);
     addByte((byte) (val >> 16), false);

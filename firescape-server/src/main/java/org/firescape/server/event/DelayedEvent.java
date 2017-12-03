@@ -12,12 +12,12 @@ public abstract class DelayedEvent {
   protected Player owner;
   private long lastRun = System.currentTimeMillis();
 
-  public DelayedEvent(Player owner, int delay) {
+  public DelayedEvent( Player owner, int delay ) {
     this.owner = owner;
     this.delay = delay;
   }
 
-  public void setDelay(int delay) {
+  public void setDelay( int delay ) {
     this.delay = delay;
   }
 
@@ -25,7 +25,7 @@ public abstract class DelayedEvent {
     return running;
   }
 
-  public void setLastRun(long time) {
+  public void setLastRun( long time ) {
     lastRun = time;
   }
 
@@ -52,7 +52,7 @@ public abstract class DelayedEvent {
     return !running;
   }
 
-  public boolean belongsTo(Player player) {
+  public boolean belongsTo( Player player ) {
     return owner != null && owner.equals(player);
   }
 
