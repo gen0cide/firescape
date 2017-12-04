@@ -1,0 +1,15 @@
+new 233 opcodes
+
+client
+84 - skip tutorial
+59 - weird action thing that only happens when you contrl+shift click on the world (admin teleport walk?)
+
+server
+165 - asks client to close connection (ie, without sending logout packet)
+237 - ignore display name change packet
+87 - some sort of (chat?) message
+189 - the value the client should write to random.dat file
+111 - if we're inside the tutorial, 1 byte true/false
+213 - unknown
+
+get rekt

@@ -1,0 +1,55 @@
+filename mPXXYY
+
+filename.jm
+================
+for tile = 0 to 2304
+    unsigned byte terrain height
+for tile = 0 to 2304
+    unsigned byte terrain colour
+for tile = 0 to 2304
+    byte walls vertical
+for tile = 0 to 2304
+    byte walls horizontal
+for tile = 0 to 2304
+    short walls diagonal
+for tile = 0 to 2304
+    byte roof
+for tile = 0 to 2304
+    byte tile decoration
+for tile = 0 to 2304
+    byte tile direction
+================
+
+
+filename.hei (landscape pack)
+================
+for tile = 0 to 2304
+    unsigned byte terrain height
+for tile = 0 to 2304
+    unsigned byte terrain colour
+================
+
+
+filename.dat (maps pack)
+================
+for tile = 0 to 2304
+    byte walls vertical
+for tile = 0 to 2304
+    byte walls horizontal
+for tile = 0 to 2304
+    unsigned byte walls diagonal
+for tile = 0 to 2304
+    unsigned byte walls diagonal extra
+for tile = 0 to 2304
+    unsigned byte roof
+for tile = 0 to 2304
+    unsigned byte tile decoration
+for tile = 0 to 2304
+    unsigned byte tile direction
+================
+
+filename.loc (maps pack) todo
+================
+for tile = 0 to 2304
+    unsigned byte walls diagonal
+================
