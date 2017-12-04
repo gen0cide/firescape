@@ -61,4 +61,4 @@ A list of folks that have inspired/taught me a lot over the years (inb4 shoutout
  * p0t
  
  # World
- Default settings will connect you to the [FireScape World](http://www.firescape.online/)
+ Default client settings will connect you to the [FireScape World](http://www.firescape.online/)
