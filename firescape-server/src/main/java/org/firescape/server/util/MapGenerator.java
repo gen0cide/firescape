@@ -31,7 +31,7 @@ public class MapGenerator {
     gfx = image.getGraphics();
   }
 
-  public static void main( String[] args ) {
+  public static void main(String[] args) {
     if (args.length < 1) {
       System.out.println("Invalid args");
       return;
@@ -53,11 +53,11 @@ public class MapGenerator {
     }
   }
 
-  private void drawDot( int xCoord, int yCoord, int colour ) {
+  private void drawDot(int xCoord, int yCoord, int colour) {
     image.setRGB(WIDTH - xCoord - 1, yCoord, colour);
   }
 
-  private void fillTile( int xCoord, int yCoord, int colour ) {
+  private void fillTile(int xCoord, int yCoord, int colour) {
     for (int xOff = 0; xOff < 2; xOff++) {
       for (int yOff = 0; yOff < 2; yOff++) {
         drawDot(xCoord + xOff, yCoord + yOff, colour);
@@ -96,12 +96,12 @@ public class MapGenerator {
     }
   }
 
-  private void handleTile( int xImg, int yImg, TileValue tile ) {
+  private void handleTile(int xImg, int yImg, TileValue tile) {
     handleTile(xImg, yImg, tile.mapValue);
     handleTile(xImg, yImg, tile.objectValue);
   }
 
-  private void handleTile( int xImg, int yImg, byte type ) {
+  private void handleTile(int xImg, int yImg, byte type) {
     if ((type & 1) != 0) { // Top Wall
       drawDot(xImg, yImg, BLACK);
       drawDot(xImg + 1, yImg, BLACK);
@@ -131,7 +131,7 @@ public class MapGenerator {
     }
   }
 
-  public boolean save( String filename ) {
+  public boolean save(String filename) {
     try {
       File file = new File(filename);
       ImageIO.write(image, "png", file);

@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -22,14 +23,14 @@ public class Boat implements NpcHandler {
     Point.location(471, 853)
   };
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "G'day sailor, where would you like to go?", player));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
         owner.setMenuHandler(new MenuHandler(destinationNames) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy() || option < 0 || option >= destinationNames.length) {
               npc.unblock();
               return;

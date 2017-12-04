@@ -14,12 +14,12 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
   private int amount;
   private boolean wielded;
 
-  public InvItem( int id ) {
+  public InvItem(int id) {
     setID(id);
     setAmount(1);
   }
 
-  public InvItem( int id, int amount ) {
+  public InvItem(int id, int amount) {
     setID(id);
     setAmount(amount);
   }
@@ -44,18 +44,18 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
     return amount;
   }
 
-  public void setAmount( int amount ) {
+  public void setAmount(int amount) {
     if (amount < 0) {
       amount = 0;
     }
     this.amount = amount;
   }
 
-  public void setWield( boolean wielded ) {
+  public void setWield(boolean wielded) {
     this.wielded = wielded;
   }
 
-  public boolean wieldingAffectsItem( InvItem i ) {
+  public boolean wieldingAffectsItem(InvItem i) {
     if (!i.isWieldable() || !isWieldable()) {
       return false;
     }
@@ -86,7 +86,7 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
     return EntityHandler.getItemEdibleHeals(id) > 0;
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof InvItem) {
       InvItem item = (InvItem) o;
       return item.getID() == getID();
@@ -94,7 +94,7 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
     return false;
   }
 
-  public int compareTo( InvItem item ) {
+  public int compareTo(InvItem item) {
     if (item.getDef().isStackable()) {
       return -1;
     }

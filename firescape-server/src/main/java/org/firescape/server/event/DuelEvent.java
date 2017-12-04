@@ -11,7 +11,7 @@ public class DuelEvent extends DelayedEvent {
   private final Player affectedPlayer;
   private int hits;
 
-  public DuelEvent( Player owner, Player affectedPlayer ) {
+  public DuelEvent(Player owner, Player affectedPlayer) {
     super(owner, 1000);
     this.affectedPlayer = affectedPlayer;
     hits = 0;
@@ -38,7 +38,6 @@ public class DuelEvent extends DelayedEvent {
     }
     attacker.incHitsMade();
     attacker.setLastMoved();
-
     int damage = Formulae.calcFightHit(attacker, opponent);
     opponent.setLastDamage(damage);
     int newHp = opponent.getHits() - damage;
@@ -50,11 +49,9 @@ public class DuelEvent extends DelayedEvent {
       p.informOfModifiedHits(opponent);
     }
     String combatSound = damage > 0 ? "combat1b" : "combat1a";
-
     opponent.getActionSender().sendStat(3);
     opponent.getActionSender().sendSound(combatSound);
     attacker.getActionSender().sendSound(combatSound);
-
     if (newHp <= 0) {
       opponent.killedBy(attacker, true);
       int exp = DataConversions.roundUp(Formulae.combatExperience(opponent) / 4D);
@@ -80,16 +77,14 @@ public class DuelEvent extends DelayedEvent {
       }
       attacker.incExp(3, exp, true, true);
       attacker.getActionSender().sendStat(3);
-
       attacker.resetCombat(CombatState.WON);
       opponent.resetCombat(CombatState.LOST);
-
       attacker.resetDueling();
       opponent.resetDueling();
     }
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof DuelEvent) {
       DuelEvent e = (DuelEvent) o;
       return e.belongsTo(owner) && e.getAffectedPlayer().equals(affectedPlayer);

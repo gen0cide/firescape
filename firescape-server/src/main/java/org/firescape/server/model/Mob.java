@@ -107,21 +107,21 @@ public abstract class Mob extends Entity {
 
   public abstract int getHits();
 
-  public abstract void setHits( int lvl );
+  public abstract void setHits(int lvl);
 
   public abstract int getAttack();
 
-  public abstract void setAttack( int lvl );
+  public abstract void setAttack(int lvl);
 
   public abstract int getDefense();
 
-  public abstract void setDefense( int lvl );
+  public abstract void setDefense(int lvl);
 
   public abstract int getStrength();
 
-  public abstract void setStrength( int lvl );
+  public abstract void setStrength(int lvl);
 
-  public abstract void killedBy( Mob mob, boolean stake );
+  public abstract void killedBy(Mob mob, boolean stake);
 
   public abstract int getWeaponPowerPoints();
 
@@ -129,7 +129,7 @@ public abstract class Mob extends Entity {
 
   public abstract int getArmourPoints();
 
-  public void resetCombat( CombatState state ) {
+  public void resetCombat(CombatState state) {
     for (DelayedEvent event : Entity.world.getDelayedEventHandler().getEvents()) {
       if (event instanceof FightEvent) {
         FightEvent fighting = (FightEvent) event;
@@ -173,7 +173,7 @@ public abstract class Mob extends Entity {
     return lastDamage;
   }
 
-  public void setLastDamage( int d ) {
+  public void setLastDamage(int d) {
     lastDamage = d;
   }
 
@@ -181,11 +181,11 @@ public abstract class Mob extends Entity {
     return busy;
   }
 
-  public void setBusy( boolean busy ) {
+  public void setBusy(boolean busy) {
     this.busy = busy;
   }
 
-  public boolean isPrayerActivated( int pID ) {
+  public boolean isPrayerActivated(int pID) {
     return activatedPrayers[pID];
   }
 
@@ -205,12 +205,12 @@ public abstract class Mob extends Entity {
     return combatLevel;
   }
 
-  public void setCombatLevel( int level ) {
+  public void setCombatLevel(int level) {
     combatLevel = level;
     ourAppearanceChanged = true;
   }
 
-  public void setPrayer( int pID, boolean b ) {
+  public void setPrayer(int pID, boolean b) {
     activatedPrayers[pID] = b;
   }
 
@@ -224,15 +224,15 @@ public abstract class Mob extends Entity {
     return appearanceID;
   }
 
-  public void setAppearnceChanged( boolean b ) {
+  public void setAppearnceChanged(boolean b) {
     ourAppearanceChanged = b;
   }
 
-  public void setLocation( Point p ) {
+  public void setLocation(Point p) {
     setLocation(p, false);
   }
 
-  public void setLocation( Point p, boolean teleported ) {
+  public void setLocation(Point p, boolean teleported) {
     if (!teleported) {
       updateSprite(p);
       hasMoved = true;
@@ -242,7 +242,7 @@ public abstract class Mob extends Entity {
     super.setLocation(p);
   }
 
-  protected void updateSprite( Point newLocation ) {
+  protected void updateSprite(Point newLocation) {
     try {
       int xIndex = getLocation().getX() - newLocation.getX() + 1;
       int yIndex = getLocation().getY() - newLocation.getY() + 1;
@@ -260,7 +260,7 @@ public abstract class Mob extends Entity {
     return mobSprite;
   }
 
-  public void setSprite( int x ) {
+  public void setSprite(int x) {
     spriteChanged = true;
     mobSprite = x;
   }
@@ -281,7 +281,7 @@ public abstract class Mob extends Entity {
     return combatWith;
   }
 
-  public void setOpponent( Mob opponent ) {
+  public void setOpponent(Mob opponent) {
     combatWith = opponent;
   }
 
@@ -309,11 +309,11 @@ public abstract class Mob extends Entity {
     pathHandler.resetPath();
   }
 
-  public void setPath( Path path ) {
+  public void setPath(Path path) {
     pathHandler.setPath(path);
   }
 
-  public final boolean atObject( GameObject o ) {
+  public final boolean atObject(GameObject o) {
     int dir = o.getDirection();
     int width, height;
     if (o.getType() == 1) {

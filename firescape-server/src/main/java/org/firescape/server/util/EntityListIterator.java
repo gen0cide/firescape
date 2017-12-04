@@ -11,7 +11,7 @@ public class EntityListIterator<E extends Entity> implements Iterator<E> {
   private final EntityList<E> entityList;
   private int curIndex;
 
-  public EntityListIterator( Object[] entities, Set<Integer> indicies, EntityList<E> entityList ) {
+  public EntityListIterator(Object[] entities, Set<Integer> indicies, EntityList<E> entityList) {
     this.entities = entities;
     this.indicies = indicies.toArray(new Integer[0]);
     this.entityList = entityList;
@@ -21,7 +21,8 @@ public class EntityListIterator<E extends Entity> implements Iterator<E> {
     return indicies.length != curIndex;
   }
 
-  @SuppressWarnings("unchecked") public E next() {
+  @SuppressWarnings("unchecked")
+  public E next() {
     Object temp = entities[indicies[curIndex]];
     curIndex++;
     return (E) temp;

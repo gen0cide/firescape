@@ -8,11 +8,11 @@ public class Logger {
    */
   private static final World world = World.getWorld();
 
-  public static void connection( Object o ) {
+  public static void connection(Object o) {
     Logger.print(o, 4);
   }
 
-  public static void print( Object o, int i ) {
+  public static void print(Object o, int i) {
     String type = "";
     if (i == 1) {
       type = "[Error] ";
@@ -30,15 +30,14 @@ public class Logger {
     // org.firescape.server.GUI.cout(o.toString(), i);
   }
 
-  public static void mod( Object o ) {
+  public static void mod(Object o) {
     Logger.print(o.toString(), 2);
   }
 
-  public static void event( Object o ) {
-
+  public static void event(Object o) {
   }
 
-  public static void error( Object o ) {
+  public static void error(Object o) {
     if (o instanceof Exception) {
       Exception e = (Exception) o;
       e.printStackTrace();

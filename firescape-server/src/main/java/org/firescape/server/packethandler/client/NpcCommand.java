@@ -15,7 +15,7 @@ public class NpcCommand implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     int serverIndex = p.readShort();
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {

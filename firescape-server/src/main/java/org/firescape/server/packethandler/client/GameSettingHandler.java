@@ -14,7 +14,7 @@ public class GameSettingHandler implements PacketHandler {
   // private GameSettingUpdatePacketBuilder builder = new
   // GameSettingUpdatePacketBuilder();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     int idx = (int) p.readByte();
     if (idx < 0 || idx > 6) {
@@ -23,11 +23,9 @@ public class GameSettingHandler implements PacketHandler {
     }
     boolean on = p.readByte() == 1;
     player.setGameSetting(idx, on);
-
     // builder.setPlayer(player);
     // builder.setIndex(idx);
     // builder.setOn(on);
-
   }
 
 }

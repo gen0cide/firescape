@@ -15,7 +15,7 @@ public class PacketQueue<T extends Packet> {
   /**
    * Adds a packet to the queue
    */
-  public void add( T p ) {
+  public void add(T p) {
     synchronized (packets) {
       packets.add(p);
     }
@@ -29,10 +29,10 @@ public class PacketQueue<T extends Packet> {
   }
 
   /**
-   * Returns the packets currently in the list and removes them from the backing
-   * store
+   * Returns the packets currently in the list and removes them from the backing store
    */
-  @SuppressWarnings("unchecked") public List<T> getPackets() {
+  @SuppressWarnings("unchecked")
+  public List<T> getPackets() {
     List<T> tmpList;
     synchronized (packets) {
       tmpList = (List<T>) packets.clone();

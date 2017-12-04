@@ -310,30 +310,33 @@ public class Thieving {
   private int curDoor = -1;
   private int ourChest = -1;
 
-  public Thieving( Player p, GameObject obj ) {
+  public Thieving(Player p, GameObject obj) {
     this.player = p;
     this.object = obj;
     this.def = object.getGameObjectDef();
   }
 
-  public Thieving( Player p, Npc np, Mob mb ) {
+  public Thieving(Player p, Npc np, Mob mb) {
     this.player = p;
     this.affectedNpc = np;
     this.affectedMob = mb;
     npcID = affectedNpc.getID();
   }
 
-  public static int Rands( int max ) {
+  public static int Rands(int max) {
     Random r = new Random();
     return r.nextInt(max);
   }
 
-  public static boolean thievingSuccess( int lvl, int reqLevel ) {
+  public static boolean thievingSuccess(int lvl, int reqLevel) {
     Random r = new Random();
     double dif = lvl - reqLevel;
     double rand = ((r.nextDouble() * 100) + 1) / 100;
-    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
-      0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966) / 100.0;
+    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) +
+                      (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
+                      0.014307 * Math.pow(dif, 2) +
+                      1.65560813 * dif +
+                      18.2095966) / 100.0;
     if (success < 0.35) {
       success = 0.35;
     }
@@ -347,17 +350,20 @@ public class Thieving {
     return !(rand < success);
   }
 
-  public static int Rands( int min, int max ) {
+  public static int Rands(int min, int max) {
     Random r = new Random();
     return r.nextInt(max) + min;
   }
 
-  public static boolean stallSuccess( int lvl, int reqLevel ) {
+  public static boolean stallSuccess(int lvl, int reqLevel) {
     Random r = new Random();
     double dif = lvl - reqLevel;
     double rand = ((r.nextDouble() * 100) + 1) / 100;
-    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
-      0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966) / 100.0;
+    double success = ((3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) +
+                      (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
+                      0.014307 * Math.pow(dif, 2) +
+                      1.65560813 * dif +
+                      18.2095966) / 100.0;
     if (success < 0.35) {
       success = 0.35;
     }
@@ -373,64 +379,57 @@ public class Thieving {
   }
 
   public void thieveChest() {
-
     if (object == null) {
       player.setSpam(false);
       player.setBusy(false);
       return;
     }
-
     if (object.getID() == 338) {
       player.getActionSender().sendMessage("It looks like that chest has already been looted.");
       player.setSpam(false);
       player.setBusy(false);
       return;
     }
-
     for (int i = 0; i < Chests.length; i++) {
       if (object.getID() == Chests[i][0]) {
         ourChest = i;
       }
     }
-
     if (ourChest == -1) {
       player.setSpam(false);
       player.setBusy(false);
       player.getActionSender().sendMessage("This chest has not yet been added to the chest Thieving list.");
-      System.out.println("Player " + player.getUsername() + " found a chest not added, ID: " + object.getID() + ", " +
-        "Coords: " + object.getLocation());
+      System.out.println("Player " +
+                         player.getUsername() +
+                         " found a chest not added, ID: " +
+                         object.getID() +
+                         ", " +
+                         "Coords: " +
+                         object.getLocation());
       return;
     }
-
     if (player.getMaxStat(17) < Chests[ourChest][1]) {
       player.setSpam(false);
       player.setBusy(false);
       player.getActionSender().sendMessage("You are not high enough level to Steal from this chest.");
       return;
     }
-
     player.getActionSender().sendMessage("You search for traps on the chest");
     player.setBusy(true);
-
     world.getDelayedEventHandler().add(new MiniEvent(player, 300) {
       public void action() {
-
         owner.getActionSender().sendMessage("You find a trap on the chest..");
         Bubble bubble = new Bubble(player, 549);
         for (Player p : owner.getViewArea().getPlayersInView()) {
           p.informOfBubble(bubble);
         }
-
         DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(player, 1000) {
           public void action() {
-
             owner.getActionSender().sendMessage("You disarm the trap");
-
             DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(player, 1000) {
               public void action() {
                 owner.getActionSender().sendMessage("You open the chest");
                 doChest();
-
                 DelayedEvent.world.getDelayedEventHandler().add(new MiniEvent(player, 1200) {
                   public void action() {
                     replaceChest(Chests[ourChest][3]);
@@ -460,7 +459,6 @@ public class Thieving {
 
   private void doChest() {
     try {
-
       world.registerGameObject(new GameObject(object.getLocation(), 339, object.getDirection(), object.getType()));
       world.delayedSpawnObject(object.getLoc(), 900);
     } catch (Exception e) {
@@ -468,7 +466,7 @@ public class Thieving {
     }
   }
 
-  private void replaceChest( int delay ) {
+  private void replaceChest(int delay) {
     try {
       world.registerGameObject(new GameObject(object.getLocation(), 338, object.getDirection(), object.getType()));
       world.delayedSpawnObject(object.getLoc(), delay);
@@ -478,7 +476,6 @@ public class Thieving {
   }
 
   public void openThievedChest() {
-
     if (player.getCurStat(3) <= 2) {
       player.getActionSender().sendMessage("Go away Emo kid.");
       player.setSpam(false);
@@ -492,11 +489,9 @@ public class Thieving {
     ArrayList<Player> playersToInform = new ArrayList<Player>();
     playersToInform.addAll(player.getViewArea().getPlayersInView());
     player.getActionSender().sendStat(3);
-
     for (Player p : playersToInform) {
       p.informOfModifiedHits(player);
     }
-
     world.getDelayedEventHandler().add(new MiniEvent(player, 1200) {
       public void action() {
         owner.setSpam(false);
@@ -506,23 +501,20 @@ public class Thieving {
   }
 
   public void thieveStall() {
-
     try {
-
       if (object == null) {
         player.setSpam(false);
         // owner.packetSpam
         return;
       }
       boolean exist = false;
-
       for (int i = 0; i < Stalls.length; i++) {
         if (object.getID() == Stalls[i][1]) {
           curStall = i;
           exist = true;
           if (player.getMaxStat(17) < Stalls[i][0]) {
-            player.getActionSender().sendMessage("Sorry, you need a thieving level of " + Stalls[i][0] + " " + "to " +
-              "steal from that");
+            player.getActionSender()
+                  .sendMessage("Sorry, you need a thieving level of " + Stalls[i][0] + " " + "to " + "steal from that");
             player.setSpam(false);
             return;
           }
@@ -530,8 +522,13 @@ public class Thieving {
       }
       if (!exist) {
         player.getActionSender().sendMessage("Sorry, this stall does not exist.. contact an admin?");
-        System.out.println("Player " + player.getUsername() + " found a stall not added, ID: " + object.getID() + ", " +
-          "Coords: " + object.getLocation());
+        System.out.println("Player " +
+                           player.getUsername() +
+                           " found a stall not added, ID: " +
+                           object.getID() +
+                           ", " +
+                           "Coords: " +
+                           object.getLocation());
         player.setSpam(false);
         return;
       }
@@ -541,10 +538,8 @@ public class Thieving {
       }
       player.getActionSender().sendMessage("You attempt to steal from the " + object.getGameObjectDef().name);
       player.setBusy(true);
-
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
-
           owner.setSpam(false);
           if (object == null) {
             owner.getActionSender().sendMessage("There are nothing to steal as this current time");
@@ -553,15 +548,18 @@ public class Thieving {
             return;
           }
           if (!chanceFormulae(Stalls[curStall][0])) {
-
             owner.getActionSender().sendMessage("You failed to steal from the " + object.getGameObjectDef().name);
             owner.setSpam(false);
             owner.setBusy(false);
             if (Rand(20) <= 3) {
               if (StallNpcs[curStall][0] == -1) {
               } else {
-                Npc person = DelayedEvent.world.getNpc(StallNpcs[curStall][0], StallNpcs[curStall][1],
-                  StallNpcs[curStall][2], StallNpcs[curStall][3], StallNpcs[curStall][4]);
+                Npc person = DelayedEvent.world.getNpc(StallNpcs[curStall][0],
+                                                       StallNpcs[curStall][1],
+                                                       StallNpcs[curStall][2],
+                                                       StallNpcs[curStall][3],
+                                                       StallNpcs[curStall][4]
+                );
                 if (person != null) {
                   owner.npcThief[curStall] = true;
                   String str = caughtChats[Rand(caughtChats.length)];
@@ -575,13 +573,15 @@ public class Thieving {
             return;
 
           } else {
-            DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 341, object.getDirection(),
-              object.getType()));
+            DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                                 341,
+                                                                 object.getDirection(),
+                                                                 object.getType()
+            ));
             DelayedEvent.world.delayedSpawnObject(object.getLoc(), Stalls[curStall][3] * 1000);
             owner.getActionSender().sendMessage("You successfully thieved from the " + object.getGameObjectDef().name);
             owner.setSpam(false);
             owner.setBusy(false);
-
             if (curStall == 5) {
               InvItem loot = new InvItem(thieveGem(), 1);
               owner.getInventory().add(loot);
@@ -602,11 +602,10 @@ public class Thieving {
   }
 
   /**
-   * I don't have the best Maths, but this is a tweak-able formula for every 5
-   * levels -xEnt
+   * I don't have the best Maths, but this is a tweak-able formula for every 5 levels -xEnt
    */
 
-  public boolean chanceFormulae( int targetLv ) {
+  public boolean chanceFormulae(int targetLv) {
     try {
       int chance[] = {
         27, 33, 35, 37, 40, 43, 47, 51, 54, 58, 62, 66, 71, 74, 78, 81, 84, 88, 93, 95
@@ -629,7 +628,7 @@ public class Thieving {
     }
   }
 
-  public int Rand( int max ) {
+  public int Rand(int max) {
     Random r = new Random();
     return r.nextInt(max);
   }
@@ -654,16 +653,13 @@ public class Thieving {
   }
 
   public void lockpick() {
-
     try {
-
       if (player.isBusy() || player.inCombat() || player == null || object == null) {
         player.setSpam(false);
         player.setBusy(false);
         return;
       }
       player.setBusy(true);
-
       boolean cont = true;
       for (int i = 0; i < Doors.length; i++) {
         if (player.getX() == Doors[i][0] && player.getY() == Doors[i][1]) {
@@ -673,14 +669,17 @@ public class Thieving {
       }
       if (cont) {
         player.getActionSender().sendMessage("This door has not been added");
-        System.out.println("Player " + player.getUsername() + " found a door(lockpick) not added, ID: " + object
-          .getID() + ", Coords: " + object.getLocation());
+        System.out.println("Player " +
+                           player.getUsername() +
+                           " found a door(lockpick) not added, ID: " +
+                           object.getID() +
+                           ", Coords: " +
+                           object.getLocation());
         player.setSpam(false);
         player.setBusy(false);
         return;
       }
       if (player.getMaxStat(17) < Doors[curDoor][4]) {
-
         player.getActionSender().sendMessage("Sorry, you don't have a high enough thieving level to unlock this");
         player.setSpam(false);
         player.setBusy(false);
@@ -744,9 +743,7 @@ public class Thieving {
   public void beginPickpocket() {
     try {
       boolean ret = false;
-
       switch (npcID) {
-
         case 318:
         case 11:
           exp = 8;
@@ -754,14 +751,12 @@ public class Thieving {
           Loot[0] = 10;
           Amount[0] = 100;
           break;
-
         case 63:
           exp = 12;
           lvl = 10;
           Loot[0] = 10;
           Amount[0] = 200;
           break;
-
         case 159:
         case 320:
           exp = 26;
@@ -769,13 +764,11 @@ public class Thieving {
           Loot[0] = 10;
           Amount[0] = 300;
           break;
-
         case 342:
           exp = 36;
           lvl = 32;
           setLootArrays(0);
           break;
-
         case 65:
         case 100:
         case 321:
@@ -784,14 +777,12 @@ public class Thieving {
           Loot[0] = 10;
           Amount[0] = 400;
           break;
-
         case 322:
           exp = 85;
           lvl = 55;
           Loot[0] = 10;
           Amount[0] = 500;
           break;
-
         case 574:
         case 685:
           exp = 138;
@@ -801,7 +792,6 @@ public class Thieving {
           Amount[0] = 600;
           Amount[1] = 1;
           break;
-
         case 323:
           exp = 152;
           lvl = 70;
@@ -810,7 +800,6 @@ public class Thieving {
           Amount[0] = 700;
           Amount[1] = 1;
           break;
-
         case 581:
         case 582:
         case 583:
@@ -819,39 +808,33 @@ public class Thieving {
           lvl = 75;
           setLootArrays(1);
           break;
-
         case 324:
           exp = 274;
           lvl = 80;
           setLootArrays(2);
           break;
-
         default:
-          player.getActionSender().sendMessage("Sorry, this NPC has not been added to the Pickpocketing list yet" + "" +
-            ".");
+          player.getActionSender()
+                .sendMessage("Sorry, this NPC has not been added to the Pickpocketing list yet" + "" + ".");
           System.out.println("Player " + player.getUsername() + " found a NPC (pickpocket) not added, ID: " + npcID);
           ret = true;
       }
-
       if (ret) {
         player.setBusy(false);
         player.setSpam(false);
         return;
       }
-
       player.setFollowing(affectedMob);
       world.getDelayedEventHandler().add(new WalkToMobEvent(player, Thieving.this.affectedMob, 1) {
         public void arrived() {
           if (owner.getSpam()) {
             return;
           } else {
-
             if (affectedMob.inCombat() || owner.isBusy()) {
               owner.setSpam(false);
               owner.setBusy(false);
               return;
             }
-
             if (affectedNpc == null || affectedNpc.inCombat()) {
               owner.resetPath();
               owner.setBusy(false);
@@ -861,36 +844,37 @@ public class Thieving {
               affectedNpc.unblock();
               return;
             }
-
             if (!owner.nextTo(affectedMob)) {
               owner.setSpam(false);
               affectedMob.setBusy(false);
               owner.setBusy(false);
               return;
             }
-
             owner.setSpam(true);
             // affectedNpc.blockedBy(player);
             owner.setBusy(true);
             if (owner.getCurStat(17) < lvl) {
-              owner.getActionSender().sendMessage("You must be at least " + lvl + " thieving to " + "pick the " +
-                affectedNpc.getDef().name + "'s pocket.");
+              owner.getActionSender()
+                   .sendMessage("You must be at least " +
+                                lvl +
+                                " thieving to " +
+                                "pick the " +
+                                affectedNpc.getDef().name +
+                                "'s pocket.");
               owner.setBusy(false);
               // affectedNpc.unblock();
               owner.setBusy(false);
               owner.setSpam(false);
               return;
             }
-
             Bubble bubble = new Bubble(player, 16);
             for (Player p : owner.getViewArea().getPlayersInView()) {
               p.informOfBubble(bubble);
             }
-            owner.getActionSender().sendMessage("You attempt to pick the " + affectedNpc.getDef().name + "'s " +
-              "pocket...");
+            owner.getActionSender()
+                 .sendMessage("You attempt to pick the " + affectedNpc.getDef().name + "'s " + "pocket...");
             affectedNpc.resetPath();
             owner.setBusy(true);
-
             DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 owner.setBusy(false);
@@ -907,17 +891,15 @@ public class Thieving {
                   owner.setBusy(false);
                   affectedNpc.unblock();
                 } else {
-
                   owner.setSpam(false);
-                  owner.getActionSender().sendMessage("You fail to pick the " + affectedNpc.getDef().name + "'s " +
-                    "pocket.");
+                  owner.getActionSender()
+                       .sendMessage("You fail to pick the " + affectedNpc.getDef().name + "'s " + "pocket.");
                   int temp = Rand(10);
                   if (temp >= 3) {
                     owner.setBusy(false);
                     affectedNpc.unblock();
                     return;
                   }
-
                   affectedNpc.resetPath();
                   owner.setBusy(true);
                   if (affectedNpc == null || affectedNpc.inCombat()) {
@@ -946,17 +928,14 @@ public class Thieving {
                       owner.setBusy(false);
                       // affectedNpc.unblock();
                       affectedNpc.resetPath();
-
                       owner.resetPath();
                       owner.resetAll();
                       owner.setStatus(Action.FIGHTING_MOB);
                       owner.getActionSender().sendMessage("You are under attack!");
-
                       affectedNpc.resetPath();
                       affectedNpc.setLocation(owner.getLocation(), true);
                       affectedNpc.resetPath();
                       affectedNpc.setBusy(true);
-
                       for (Player p : affectedNpc.getViewArea().getPlayersInView()) {
                         p.removeWatchedNpc(affectedNpc);
                       }
@@ -966,17 +945,14 @@ public class Thieving {
                         affectedNpc.setBusy(false); // untick this
                         return;
                       }
-
                       owner.setBusy(true);
                       owner.setSprite(9);
                       owner.setOpponent(affectedNpc);
                       owner.setCombatTimer();
-
                       affectedNpc.setBusy(true);
                       affectedNpc.setSprite(8);
                       affectedNpc.setOpponent(owner);
                       affectedNpc.setCombatTimer();
-
                       FightEvent fighting = new FightEvent(owner, affectedNpc, true);
                       fighting.setLastRun(0);
                       DelayedEvent.world.getDelayedEventHandler().add(fighting);
@@ -998,7 +974,7 @@ public class Thieving {
 
   }
 
-  public void setLootArrays( int type ) {
+  public void setLootArrays(int type) {
     try {
       int rand = Rand(100);
       int[] tempArray = {};
@@ -1102,7 +1078,7 @@ public class Thieving {
     }
   }
 
-  public int Rand( int min, int max ) {
+  public int Rand(int min, int max) {
     Random r = new Random();
     return r.nextInt(max) + min;
   }

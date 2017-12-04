@@ -6,6 +6,7 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.Shop;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
+import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
 
@@ -25,7 +26,7 @@ public class MiscPacketBuilder {
   /**
    * Constructs a new MiscPacketBuilder
    */
-  public MiscPacketBuilder( Player player ) {
+  public MiscPacketBuilder(Player player) {
     this.player = player;
   }
 
@@ -47,8 +48,8 @@ public class MiscPacketBuilder {
    * Tells the client to save a screenshot
    */
   public void sendScreenshot() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -60,8 +61,8 @@ public class MiscPacketBuilder {
    * Sends the players combat style
    */
   public void sendCombatStyle() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -84,8 +85,8 @@ public class MiscPacketBuilder {
    * Druidic Ritual @author Yong Min
    */
   public void sendDruidicRitualComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -102,8 +103,8 @@ public class MiscPacketBuilder {
    * Romeo & Juliet @author Yong Min
    */
   public void sendRomeoJulietComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -120,8 +121,8 @@ public class MiscPacketBuilder {
    * Sheep Shearer @author Yong Min
    */
   public void sendSheepShearerComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -138,8 +139,8 @@ public class MiscPacketBuilder {
    * Imp Catcher @author Yong Min
    */
   public void sendImpCatcherComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -156,8 +157,8 @@ public class MiscPacketBuilder {
    * Witches Potion @author Yong Min
    */
   public void sendWitchPotionComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -174,8 +175,8 @@ public class MiscPacketBuilder {
    * Doric's Quest @author Yong Min
    */
   public void sendDoricsQuestComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -192,8 +193,8 @@ public class MiscPacketBuilder {
    * Cook's Assistant @author Yong Min
    */
   public void sendCooksAssistantComplete() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -210,8 +211,8 @@ public class MiscPacketBuilder {
    * Mute System
    */
   public void sendMute() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -224,8 +225,8 @@ public class MiscPacketBuilder {
    * Updates the quest points @author Yong Min
    */
   public void sendQuestPoints() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -238,8 +239,8 @@ public class MiscPacketBuilder {
    * Updates the kills @author Yong Min
    */
   public void sendKills() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -252,8 +253,8 @@ public class MiscPacketBuilder {
    * Updates the deaths @author Yong Min
    */
   public void sendDeaths() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -266,8 +267,8 @@ public class MiscPacketBuilder {
    * Updates the killing spree @author Yong Min
    */
   public void sendKillingSpree() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -280,8 +281,8 @@ public class MiscPacketBuilder {
    * Updates the guthix casts @author Yong Min
    */
   public void sendGuthixSpellCast() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -294,8 +295,8 @@ public class MiscPacketBuilder {
    * Updates the saradomin casts @author Yong Min
    */
   public void sendSaradominSpellCast() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -308,8 +309,8 @@ public class MiscPacketBuilder {
    * Updates the zamorak casts @author Yong Min
    */
   public void sendZamorakSpellCast() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -330,7 +331,7 @@ public class MiscPacketBuilder {
   /**
    * Shows a question menu
    */
-  public void sendMenu( String[] options ) {
+  public void sendMenu(String[] options) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(245);
     s.addByte((byte) options.length);
@@ -368,7 +369,7 @@ public class MiscPacketBuilder {
   /**
    * Updates the id and amount of an item in the bank
    */
-  public void updateBankItem( int slot, int newId, int amount ) {
+  public void updateBankItem(int slot, int newId, int amount) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(249);
     s.addByte((byte) slot);
@@ -380,7 +381,7 @@ public class MiscPacketBuilder {
   /**
    * Show the bank window
    */
-  public void showShop( Shop shop ) {
+  public void showShop(Shop shop) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(101);
     s.addByte((byte) shop.size());
@@ -406,7 +407,7 @@ public class MiscPacketBuilder {
   /**
    * Sends a system update message
    */
-  public void startShutdown( int seconds ) {
+  public void startShutdown(int seconds) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(52);
     s.addShort((int) (((double) seconds / 32D) * 50));
@@ -416,9 +417,9 @@ public class MiscPacketBuilder {
   /**
    * PvP tournament timer.
    */
-  public void startPvp( int seconds ) {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+  public void startPvp(int seconds) {
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -433,7 +434,7 @@ public class MiscPacketBuilder {
   /**
    * Sends a message box
    */
-  public void sendAlert( String message, boolean big ) {
+  public void sendAlert(String message, boolean big) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(big ? 89 : 222);
     s.addBytes(message.getBytes());
@@ -443,7 +444,7 @@ public class MiscPacketBuilder {
   /**
    * Sends a sound effect
    */
-  public void sendSound( String soundName ) {
+  public void sendSound(String soundName) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(204);
     s.addBytes(soundName.getBytes());
@@ -462,7 +463,7 @@ public class MiscPacketBuilder {
   /**
    * Send a private message
    */
-  public void sendPrivateMessage( long usernameHash, byte[] message ) {
+  public void sendPrivateMessage(long usernameHash, byte[] message) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(120);
     s.addLong(usernameHash);
@@ -474,7 +475,7 @@ public class MiscPacketBuilder {
   /**
    * Updates a friends login status
    */
-  public void sendFriendUpdate( long usernameHash, int world ) {
+  public void sendFriendUpdate(long usernameHash, int world) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(149);
     s.addLong(usernameHash);
@@ -490,7 +491,6 @@ public class MiscPacketBuilder {
     s.setID(71);
     s.addByte((byte) this.player.getFriendList().size());
     for (String friend : this.player.getFriendList()) {
-
       s.addLong(org.firescape.server.util.DataConversions.usernameToHash(friend));
       s.addByte((byte) 99);
     }
@@ -549,7 +549,6 @@ public class MiscPacketBuilder {
       s.addShort(item.getID());
       s.addInt(item.getAmount());
     }
-
     s.addByte((byte) (this.player.getDuelSetting(0) ? 1 : 0)); // duelCantRetreat =
     // data[i7++] & 0xff;
     s.addByte((byte) (this.player.getDuelSetting(1) ? 1 : 0)); // duelUseMagic =
@@ -558,7 +557,6 @@ public class MiscPacketBuilder {
     // data[i7++] & 0xff;
     s.addByte((byte) (this.player.getDuelSetting(3) ? 1 : 0)); // duelUseWeapons =
     // data[i7++] & 0xff;
-
     this.packets.add(s.toPacket());
   }
 
@@ -571,7 +569,6 @@ public class MiscPacketBuilder {
     s1.setID(15);
     s1.addByte((byte) (this.player.isTradeOfferAccepted() ? 1 : 0));
     this.packets.add(s1.toPacket());
-
     RSCPacketBuilder s2 = new RSCPacketBuilder();
     s2.setID(162);
     s2.addByte((byte) (with.isTradeOfferAccepted() ? 1 : 0));
@@ -587,7 +584,6 @@ public class MiscPacketBuilder {
     s1.setID(210);
     s1.addByte((byte) (this.player.isDuelOfferAccepted() ? 1 : 0));
     this.packets.add(s1.toPacket());
-
     RSCPacketBuilder s2 = new RSCPacketBuilder();
     s2.setID(253);
     s2.addByte((byte) (with.isDuelOfferAccepted() ? 1 : 0));
@@ -677,8 +673,8 @@ public class MiscPacketBuilder {
   }
 
   public void sendServerInfo() {
-    String packetMethod = Thread.currentThread().getStackTrace()[1].getMethodName();
-    String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String packetMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
+    String callerMethod = Thread.currentThread().getStackTrace()[3].getMethodName();
     Logger.error(String.format("Invalid Server Packet packetMethod=%s callerMethod=%s", packetMethod, callerMethod));
     return;
     //    RSCPacketBuilder s = new RSCPacketBuilder();
@@ -688,7 +684,7 @@ public class MiscPacketBuilder {
     //    packets.add(s.toPacket());
   }
 
-  public void sendTeleBubble( int x, int y, boolean grab ) {
+  public void sendTeleBubble(int x, int y, boolean grab) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(36);
     s.addByte((byte) (grab ? 1 : 0));
@@ -697,21 +693,21 @@ public class MiscPacketBuilder {
     this.packets.add(s.toPacket());
   }
 
-  public void sendMessage( String message ) {
+  public void sendMessage(String message) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(131);
-    s.addBytes(message.getBytes());
+    s.addBytes(DataConversions.stringToByteArray(message));
     this.packets.add(s.toPacket());
   }
 
-  public void sendRemoveItem( int slot ) {
+  public void sendRemoveItem(int slot) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(123);
     s.addByte((byte) slot);
     this.packets.add(s.toPacket());
   }
 
-  public void sendUpdateItem( int slot ) {
+  public void sendUpdateItem(int slot) {
     InvItem item = this.player.getInventory().get(slot);
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(90);
@@ -754,7 +750,7 @@ public class MiscPacketBuilder {
   /**
    * Updates just one stat
    */
-  public void sendStat( int stat ) {
+  public void sendStat(int stat) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(159);
     s.addByte((byte) stat);

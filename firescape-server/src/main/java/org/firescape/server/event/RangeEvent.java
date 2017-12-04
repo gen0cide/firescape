@@ -12,13 +12,12 @@ public class RangeEvent extends DelayedEvent {
   private final Mob affectedMob;
   private boolean firstRun = true;
 
-  public RangeEvent( Player owner, Mob affectedMob ) {
+  public RangeEvent(Player owner, Mob affectedMob) {
     super(owner, GameVars.rangedDelaySpeed);
     this.affectedMob = affectedMob;
   }
 
-  public static void rangePlayer( int rangeLevel, int arrowID, int rangePoints, Npc affectedMob, Player owner ) {
-
+  public static void rangePlayer(int rangeLevel, int arrowID, int rangePoints, Npc affectedMob, Player owner) {
     // NPC fights back
     int damage = 0;
     try {
@@ -40,7 +39,6 @@ public class RangeEvent extends DelayedEvent {
       p.informOfModifiedHits(owner);
     }
     owner.getActionSender().sendStat(3);
-
     if (newHp <= 0) {
       owner.killedBy(owner);
     }
@@ -48,8 +46,11 @@ public class RangeEvent extends DelayedEvent {
 
   public void run() {
     int bowID = owner.getRangeEquip();
-    if (!owner.loggedIn() || (affectedMob instanceof Player && !((Player) affectedMob).loggedIn()) || affectedMob
-      .getHits() <= 0 || !owner.checkAttack(affectedMob, true) || bowID < 0) {
+    if (!owner.loggedIn() ||
+        (affectedMob instanceof Player && !((Player) affectedMob).loggedIn()) ||
+        affectedMob.getHits() <= 0 ||
+        !owner.checkAttack(affectedMob, true) ||
+        bowID < 0) {
       owner.resetRange();
       return;
     }
@@ -96,8 +97,11 @@ public class RangeEvent extends DelayedEvent {
       owner.resetRange();
       return;
     }
-    int damage = Formulae.calcRangeHit(owner.getCurStat(4), owner.getRangePoints(), affectedMob.getArmourPoints(),
-      arrowID);
+    int damage = Formulae.calcRangeHit(owner.getCurStat(4),
+                                       owner.getRangePoints(),
+                                       affectedMob.getArmourPoints(),
+                                       arrowID
+    );
     if (!Formulae.looseArrow(damage)) {
       Item arrows = getArrows(arrowID);
       if (arrows == null) {
@@ -123,16 +127,13 @@ public class RangeEvent extends DelayedEvent {
             victim.resetAll();
             victim.setStatus(Action.FIGHTING_MOB);
             victim.getActionSender().sendMessage("You are under attack!");
-
             for (Player p : affectedNpc.getViewArea().getPlayersInView()) {
               p.removeWatchedNpc(affectedNpc);
             }
-
             victim.setBusy(true);
             victim.setSprite(9);
             victim.setOpponent(affectedNpc);
             victim.setCombatTimer();
-
             affectedNpc.setBusy(true);
             affectedNpc.setSprite(8);
             affectedNpc.setOpponent(victim);
@@ -170,7 +171,7 @@ public class RangeEvent extends DelayedEvent {
     }
   }
 
-  private Item getArrows( int id ) {
+  private Item getArrows(int id) {
     for (Item i : DelayedEvent.world.getTile(affectedMob.getLocation()).getItems()) {
       if (i.getID() == id && i.visibleTo(owner) && !i.isRemoved()) {
         return i;
@@ -179,7 +180,7 @@ public class RangeEvent extends DelayedEvent {
     return null;
   }
 
-  public double getArrowMod( int arrowId ) {
+  public double getArrowMod(int arrowId) {
     double poisonDmgIncrease = 0.025;
     switch (arrowId) {
       case 11:
@@ -214,7 +215,7 @@ public class RangeEvent extends DelayedEvent {
     }
   }
 
-  public boolean isPoisioned( int arrowId ) {
+  public boolean isPoisioned(int arrowId) {
     switch (arrowId) {
       case 11:
         return false;
@@ -251,7 +252,7 @@ public class RangeEvent extends DelayedEvent {
     return affectedMob;
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof RangeEvent) {
       RangeEvent e = (RangeEvent) o;
       return e.belongsTo(owner);

@@ -14,7 +14,7 @@ public class Projectile {
    */
   private final int type;
 
-  public Projectile( Mob caster, Mob victim, int type ) {
+  public Projectile(Mob caster, Mob victim, int type) {
     this.caster = caster;
     this.victim = victim;
     this.type = type;

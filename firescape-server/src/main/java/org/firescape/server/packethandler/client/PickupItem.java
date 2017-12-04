@@ -1,6 +1,7 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.FightEvent;
 import org.firescape.server.event.WalkToPointEvent;
 import org.firescape.server.model.*;
@@ -14,7 +15,7 @@ public class PickupItem implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -33,8 +34,11 @@ public class PickupItem implements PacketHandler {
     player.setStatus(Action.TAKING_GITEM);
     world.getDelayedEventHandler().add(new WalkToPointEvent(player, location, 1, false) {
       public void arrived() {
-        if (owner.isBusy() || owner.isRanging() || !tile.hasItem(item) || !owner.nextTo(item) || owner.getStatus() !=
-          Action.TAKING_GITEM) {
+        if (owner.isBusy() ||
+            owner.isRanging() ||
+            !tile.hasItem(item) ||
+            !owner.nextTo(item) ||
+            owner.getStatus() != Action.TAKING_GITEM) {
           return;
         }
         if (item.getID() == 501 && item.getX() == 333 && item.getY() == 434) {
@@ -53,7 +57,6 @@ public class PickupItem implements PacketHandler {
             affectedNpc = affectedNpc6;
             affectedNpc = affectedNpc7;
           }
-          System.out.println(owner.getLocation().getX() + " " + owner.getLocation().getY());
           if (affectedNpc != null && item.getX() == 333 && item.getY() == 434) {
             owner.getActionSender().sendMessage("STOP!");
             affectedNpc.resetPath();
@@ -61,17 +64,14 @@ public class PickupItem implements PacketHandler {
             owner.resetAll();
             owner.setStatus(Action.FIGHTING_MOB);
             owner.getActionSender().sendMessage("You are under attack!");
-
             affectedNpc.setLocation(owner.getLocation(), true);
             for (Player p : affectedNpc.getViewArea().getPlayersInView()) {
               p.removeWatchedNpc(affectedNpc);
             }
-
             owner.setBusy(true);
             owner.setSprite(9);
             owner.setOpponent(affectedNpc);
             owner.setCombatTimer();
-
             affectedNpc.setBusy(true);
             affectedNpc.setSprite(8);
             affectedNpc.setOpponent(owner);
@@ -87,7 +87,6 @@ public class PickupItem implements PacketHandler {
           return;
         }
         if (item.getID() == 1285 && item.getX() == 89 && item.getY() == 516) {
-
           Npc tseller = DelayedEvent.world.getNpc(780, 89, 90, 517, 520);
           if (tseller != null) {
             owner.setBusy(true);
@@ -112,7 +111,7 @@ public class PickupItem implements PacketHandler {
     });
   }
 
-  private Item getItem( int id, ActiveTile tile, Player player ) {
+  private Item getItem(int id, ActiveTile tile, Player player) {
     for (Item i : tile.getItems()) {
       if (i.getID() == id && i.visibleTo(player)) {
         return i;

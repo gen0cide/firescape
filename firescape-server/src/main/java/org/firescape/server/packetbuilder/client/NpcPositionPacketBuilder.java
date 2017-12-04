@@ -15,7 +15,7 @@ public class NpcPositionPacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer( Player p ) {
+  public void setPlayer(Player p) {
     playerToUpdate = p;
   }
 
@@ -28,7 +28,6 @@ public class NpcPositionPacketBuilder {
     packet.addBits(knownNpcs.size(), 8);
     for (Npc n : knownNpcs) {
       packet.addBits(n.getIndex(), 16);
-      System.out.printf("NPC Update: id=%d name=%s\n", n.getIndex(), n.getDef().name);
       if (watchedNpcs.isRemoving(n)) {
         packet.addBits(1, 1);
         packet.addBits(1, 1);
@@ -46,7 +45,6 @@ public class NpcPositionPacketBuilder {
       }
     }
     for (Npc n : newNpcs) {
-      System.out.printf("NEW NPC: id=%d name=%s\n", n.getIndex(), n.getDef().name);
       byte[] offsets = DataConversions.getMobPositionOffsets(n.getLocation(), playerToUpdate.getLocation());
       packet.addBits(n.getIndex(), 16);
       packet.addBits(offsets[0], 5);

@@ -3,10 +3,7 @@ package org.firescape.server.packethandler.client;
 import org.apache.mina.common.IoSession;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.DoorDef;
-import org.firescape.server.event.FightEvent;
-import org.firescape.server.event.ShortEvent;
-import org.firescape.server.event.Thieving;
-import org.firescape.server.event.WalkToPointEvent;
+import org.firescape.server.event.*;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
@@ -19,7 +16,7 @@ public class WallObjectAction implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     try {
       Player player = (Player) session.getAttachment();
       int pID = ((RSCPacket) p).getID();
@@ -39,18 +36,19 @@ public class WallObjectAction implements PacketHandler {
         public void arrived() {
           owner.resetPath();
           DoorDef def = object.getDoorDef();
-          if (owner.isBusy() || owner.isRanging() || !owner.nextTo(object) || def == null || owner.getStatus() !=
-            Action.USING_DOOR) {
+          if (owner.isBusy() ||
+              owner.isRanging() ||
+              !owner.nextTo(object) ||
+              def == null ||
+              owner.getStatus() != Action.USING_DOOR) {
             return;
           }
           owner.resetAll();
           String command = (click == 0 ? def.getCommand1() : def.getCommand2()).toLowerCase();
           Point telePoint = EntityHandler.getObjectTelePoint(object.getLocation(), command);
-
           if (telePoint != null) {
             owner.teleport(telePoint.getX(), telePoint.getY(), false);
           } else {
-
             if (command.equals("pick lock")) {
               if (owner.getSpam()) {
                 return;
@@ -60,7 +58,6 @@ public class WallObjectAction implements PacketHandler {
               thiev.lockpick();
               return;
             }
-
             switch (object.getID()) {
               case 1:
                 replaceGameObject(2, false);
@@ -71,7 +68,6 @@ public class WallObjectAction implements PacketHandler {
               case 8:
                 replaceGameObject(9, true);
                 break;
-
               case 94:
               case 23:
                 owner.getActionSender().sendMessage("The door is locked");
@@ -85,8 +81,10 @@ public class WallObjectAction implements PacketHandler {
                     owner.setBusy(true);
                     Npc masterFisher = DelayedEvent.world.getNpc(368, 582, 588, 524, 527);
                     if (masterFisher != null) {
-                      owner.informOfNpcMessage(new ChatMessage(masterFisher, "Hello only the top fishers are " +
-                        "allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(masterFisher,
+                                                               "Hello only the top fishers are " + "allowed in here",
+                                                               owner
+                      ));
                     }
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
@@ -112,8 +110,10 @@ public class WallObjectAction implements PacketHandler {
                     owner.setBusy(true);
                     Npc dwarf = DelayedEvent.world.getNpc(191, 265, 270, 3379, 3380);
                     if (dwarf != null) {
-                      owner.informOfNpcMessage(new ChatMessage(dwarf, "Hello only the top miners are allowed in " +
-                        "here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(dwarf,
+                                                               "Hello only the top miners are allowed in " + "here",
+                                                               owner
+                      ));
                     }
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
@@ -139,8 +139,10 @@ public class WallObjectAction implements PacketHandler {
                     owner.setBusy(true);
                     Npc master = DelayedEvent.world.getNpc(231, 341, 349, 599, 612);
                     if (master != null) {
-                      owner.informOfNpcMessage(new ChatMessage(master, "Hello only the top crafters are allowed " +
-                        "in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(master,
+                                                               "Hello only the top crafters are allowed " + "in here",
+                                                               owner
+                      ));
                     }
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
@@ -171,8 +173,10 @@ public class WallObjectAction implements PacketHandler {
                     owner.setBusy(true);
                     Npc chef = DelayedEvent.world.getNpc(133, 176, 181, 480, 487);
                     if (chef != null) {
-                      owner.informOfNpcMessage(new ChatMessage(chef, "Hello only the top cooks are allowed in " +
-                        "here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(chef,
+                                                               "Hello only the top cooks are allowed in " + "here",
+                                                               owner
+                      ));
                     }
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
@@ -203,8 +207,10 @@ public class WallObjectAction implements PacketHandler {
                     owner.setBusy(true);
                     Npc wizard = DelayedEvent.world.getNpc(513, 596, 597, 755, 758);
                     if (wizard != null) {
-                      owner.informOfNpcMessage(new ChatMessage(wizard, "Hello only the top wizards are allowed " +
-                        "in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(wizard,
+                                                               "Hello only the top wizards are allowed " + "in here",
+                                                               owner
+                      ));
                     }
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
@@ -332,17 +338,14 @@ public class WallObjectAction implements PacketHandler {
                     owner.resetAll();
                     owner.setStatus(Action.FIGHTING_MOB);
                     owner.getActionSender().sendMessage("You are under attack!");
-
                     affectedNpc.setLocation(owner.getLocation(), true);
                     for (Player p : affectedNpc.getViewArea().getPlayersInView()) {
                       p.removeWatchedNpc(affectedNpc);
                     }
-
                     owner.setBusy(true);
                     owner.setSprite(9);
                     owner.setOpponent(affectedNpc);
                     owner.setCombatTimer();
-
                     affectedNpc.setBusy(true);
                     affectedNpc.setSprite(8);
                     affectedNpc.setOpponent(owner);
@@ -351,17 +354,25 @@ public class WallObjectAction implements PacketHandler {
                     fighting.setLastRun(0);
                     DelayedEvent.world.getDelayedEventHandler().add(fighting);
                   }
-                  if (affectedNpc == null && affectedNpc2 == null && owner.getLocation().getX() == 374 && owner
-                    .getLocation().getY() == 3332) {
+                  if (affectedNpc == null &&
+                      affectedNpc2 == null &&
+                      owner.getLocation().getX() == 374 &&
+                      owner.getLocation().getY() == 3332) {
                     // replaceGameObject(1, true);
-                    DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 1, object.getDirection
-                      (), object.getType()));
+                    DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                                         1,
+                                                                         object.getDirection(),
+                                                                         object.getType()
+                    ));
                     owner.teleport(373, 3332, false);
                     DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
                   } else if (owner.getLocation().getX() == 373 && owner.getLocation().getY() == 3332) {
                     // owner.teleport(374, 3332, false);
-                    DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 1, object.getDirection
-                      (), object.getType()));
+                    DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                                         1,
+                                                                         object.getDirection(),
+                                                                         object.getType()
+                    ));
                     owner.teleport(374, 3332, false);
                     DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
                   }
@@ -377,16 +388,22 @@ public class WallObjectAction implements PacketHandler {
           }
         }
 
-        private void replaceGameObject( int newID, boolean open ) {
-          DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(),
-            object.getType()));
+        private void replaceGameObject(int newID, boolean open) {
+          DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                               newID,
+                                                               object.getDirection(),
+                                                               object.getType()
+          ));
           owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
         }
 
         private void doDoor() {
           owner.getActionSender().sendSound("opendoor");
-          DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(),
-            object.getType()));
+          DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                               11,
+                                                               object.getDirection(),
+                                                               object.getType()
+          ));
           DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
         }
       });

@@ -8,7 +8,7 @@ public abstract class WalkToPointEvent extends DelayedEvent {
   private final boolean stop;
   protected Point location;
 
-  public WalkToPointEvent( Player owner, Point location, int radius, boolean stop ) {
+  public WalkToPointEvent(Player owner, Point location, int radius, boolean stop) {
     super(owner, 500);
     this.location = location;
     this.radius = radius;

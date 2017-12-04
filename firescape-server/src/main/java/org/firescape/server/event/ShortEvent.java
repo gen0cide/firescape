@@ -4,7 +4,7 @@ import org.firescape.server.model.Player;
 
 public abstract class ShortEvent extends SingleEvent {
 
-  public ShortEvent( Player owner ) {
+  public ShortEvent(Player owner) {
     super(owner, 1500);
   }
 

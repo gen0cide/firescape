@@ -7,7 +7,6 @@ import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.StatefulEntityCollection;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 public class GameObjectPositionPacketBuilder {
@@ -16,7 +15,7 @@ public class GameObjectPositionPacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer( Player p ) {
+  public void setPlayer(Player p) {
     playerToUpdate = p;
   }
 
@@ -38,9 +37,6 @@ public class GameObjectPositionPacketBuilder {
           packet.addByte(offsets[0]);
           packet.addByte(offsets[1]);
           packet.addByte((byte) o.getDirection());
-          System.out.printf("SENDING REMOVE OBJECT id=%d name=%s coords=%s\n", o.getID(), o.getGameObjectDef().name,
-            Arrays.toString(offsets));
-
         }
       }
       for (GameObject o : newObjects) {
@@ -52,8 +48,6 @@ public class GameObjectPositionPacketBuilder {
         packet.addByte(offsets[0]);
         packet.addByte(offsets[1]);
         packet.addByte((byte) o.getDirection());
-        System.out.printf("SENDING NEW OBJECT id=%d name=%s coords=%s\n", o.getID(), o.getGameObjectDef().name,
-          Arrays.toString(offsets));
       }
       return packet.toPacket();
     }

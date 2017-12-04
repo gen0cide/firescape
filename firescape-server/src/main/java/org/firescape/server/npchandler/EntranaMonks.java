@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,10 +10,13 @@ public class EntranaMonks implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     boolean toEntrana = !player.getLocation().inBounds(390, 530, 440, 580);
-    player.informOfNpcMessage(new ChatMessage(npc, toEntrana ? "Are you looking to take passage to our holy island?"
-      : "Are you ready to go back to the mainland?", player));
+    player.informOfNpcMessage(new ChatMessage(
+      npc,
+      toEntrana ? "Are you looking to take passage to our holy island?" : "Are you ready to go back to the mainland?",
+      player
+    ));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
@@ -21,7 +25,7 @@ public class EntranaMonks implements NpcHandler {
           "Yes okay I'm ready to go", "No thanks"
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy()) {
               npc.unblock();
               return;
@@ -39,8 +43,8 @@ public class EntranaMonks implements NpcHandler {
                       } else {
                         owner.teleport(263, 659, false);
                       }
-                      owner.getActionSender().sendMessage("The ship arrives at " + (toEntrana ? "Entrana" : "Port " +
-                        "Sarim"));
+                      owner.getActionSender()
+                           .sendMessage("The ship arrives at " + (toEntrana ? "Entrana" : "Port " + "Sarim"));
                       owner.setBusy(false);
                       npc.unblock();
                     }

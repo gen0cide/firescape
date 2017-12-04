@@ -9,7 +9,7 @@ import java.util.zip.GZIPOutputStream;
 
 public class DefCompressor {
 
-  public static void main( String[] argv ) throws Exception {
+  public static void main(String[] argv) throws Exception {
     if (argv[0].equals("compress")) {
       compressFile(new File(argv[1]));
     }
@@ -18,7 +18,7 @@ public class DefCompressor {
     }
   }
 
-  public static void compressFile( File f ) throws IOException {
+  public static void compressFile(File f) throws IOException {
     File target = new File(f + ".gz");
     System.out.print("Compressing: " + f.getName() + ".. ");
     long initialSize = f.length();
@@ -36,7 +36,7 @@ public class DefCompressor {
     System.out.println("Initial size: " + initialSize + "; Compressed size: " + endSize);
   }
 
-  public static void decompressFile( File f ) throws IOException {
+  public static void decompressFile(File f) throws IOException {
     File target = new File(f.toString().substring(0, f.toString().length() - 3));
     System.out.print("Decompressing: " + f.getName() + ".. ");
     long initialSize = f.length();

@@ -16,13 +16,13 @@ public class PacketHandlerDef implements Serializable {
   public String className;
 
   /**
-   * Constructs a new packet handler definition, entailing that packets with the
-   * given IDs are to be handled by the specified class.
+   * Constructs a new packet handler definition, entailing that packets with the given IDs are to be handled by the
+   * specified class.
    *
    * @param ids The IDs of packets to be handled
    * @param className The name of the packet handler class
    */
-  public PacketHandlerDef( int[] ids, String className ) {
+  public PacketHandlerDef(int[] ids, String className) {
     this.ids = ids;
     this.className = className;
   }
@@ -39,8 +39,7 @@ public class PacketHandlerDef implements Serializable {
   /**
    * Returns the IDs of packets to be handled.
    *
-   * @return An <code>int</code> array containing the IDs of packets to be
-   * handled.
+   * @return An <code>int</code> array containing the IDs of packets to be handled.
    */
   public int[] getAssociatedPackets() {
     return ids;

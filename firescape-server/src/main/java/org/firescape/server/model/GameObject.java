@@ -24,11 +24,11 @@ public class GameObject extends Entity {
    */
   private boolean removed;
 
-  public GameObject( Point location, int id, int direction, int type ) {
+  public GameObject(Point location, int id, int direction, int type) {
     this(new GameObjectLoc(id, location.getX(), location.getY(), direction, type));
   }
 
-  public GameObject( GameObjectLoc loc ) {
+  public GameObject(GameObjectLoc loc) {
     direction = loc.direction;
     type = loc.type;
     this.loc = loc;
@@ -40,7 +40,7 @@ public class GameObject extends Entity {
     return grainable;
   }
 
-  public void setGrainable( boolean b ) {
+  public void setGrainable(boolean b) {
     grainable = b;
   }
 
@@ -64,11 +64,13 @@ public class GameObject extends Entity {
     return EntityHandler.getObjectTelePoint(getLocation(), null) != null;
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof GameObject) {
       GameObject go = (GameObject) o;
-      return go.getLocation().equals(getLocation()) && go.getID() == getID() && go.getDirection() == getDirection()
-        && go.getType() == getType();
+      return go.getLocation().equals(getLocation()) &&
+             go.getID() == getID() &&
+             go.getDirection() == getDirection() &&
+             go.getType() == getType();
     }
     return false;
   }
@@ -81,20 +83,27 @@ public class GameObject extends Entity {
     return type;
   }
 
-  public void setType( int type ) {
+  public void setType(int type) {
     this.type = type;
   }
 
-  public void setDirection( int direction ) {
+  public void setDirection(int direction) {
     this.direction = direction;
   }
 
   public String toString() {
-    return (type == 0 ? "GameObject" : "WallObject") + ":id = " + id + "; dir = " + direction + "; " + "location = "
-      + location + ";";
+    return (type == 0 ? "GameObject" : "WallObject") +
+           ":id = " +
+           id +
+           "; dir = " +
+           direction +
+           "; " +
+           "location = " +
+           location +
+           ";";
   }
 
-  public boolean isOn( int x, int y ) {
+  public boolean isOn(int x, int y) {
     int width, height;
     if (type == 1) {
       width = height = 1;

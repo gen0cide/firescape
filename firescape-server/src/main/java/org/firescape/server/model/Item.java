@@ -31,7 +31,7 @@ public class Item extends Entity {
    */
   private ItemLoc loc;
 
-  public Item( ItemLoc loc ) {
+  public Item(ItemLoc loc) {
     this.loc = loc;
     setID(loc.id);
     setAmount(loc.amount);
@@ -43,7 +43,7 @@ public class Item extends Entity {
     return EntityHandler.getItemDef(id);
   }
 
-  public Item( int id, int x, int y, int amount, Player owner ) {
+  public Item(int id, int x, int y, int amount, Player owner) {
     setID(id);
     setAmount(amount);
     this.owner = owner;
@@ -59,7 +59,7 @@ public class Item extends Entity {
     return removed;
   }
 
-  public boolean visibleTo( Player p ) {
+  public boolean visibleTo(Player p) {
     if (owner == null || p.equals(owner)) {
       return true;
     }
@@ -78,11 +78,14 @@ public class Item extends Entity {
     removed = true;
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof Item) {
       Item item = (Item) o;
-      return item.getID() == getID() && item.getAmount() == getAmount() && item.getSpawnedTime() == getSpawnedTime()
-        && (item.getOwner() == null || item.getOwner().equals(getOwner())) && item.getLocation().equals(getLocation());
+      return item.getID() == getID() &&
+             item.getAmount() == getAmount() &&
+             item.getSpawnedTime() == getSpawnedTime() &&
+             (item.getOwner() == null || item.getOwner().equals(getOwner())) &&
+             item.getLocation().equals(getLocation());
     }
     return false;
   }
@@ -91,7 +94,7 @@ public class Item extends Entity {
     return amount;
   }
 
-  public void setAmount( int amount ) {
+  public void setAmount(int amount) {
     if (getDef().isStackable()) {
       this.amount = amount;
     } else {
@@ -107,7 +110,7 @@ public class Item extends Entity {
     return owner;
   }
 
-  public boolean isOn( int x, int y ) {
+  public boolean isOn(int x, int y) {
     return x == getX() && y == getY();
   }
 

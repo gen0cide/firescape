@@ -8,7 +8,7 @@ public class ObjectRemover extends DelayedEvent {
   public static final World world = World.getWorld();
   private final GameObject object;
 
-  public ObjectRemover( GameObject object, int delay ) {
+  public ObjectRemover(GameObject object, int delay) {
     super(null, delay);
     this.object = object;
   }
@@ -24,7 +24,7 @@ public class ObjectRemover extends DelayedEvent {
     this.running = false;
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof ObjectRemover) {
       return ((ObjectRemover) o).getObject().equals(getObject());
     }

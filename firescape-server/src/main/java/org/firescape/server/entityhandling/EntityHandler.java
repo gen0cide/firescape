@@ -10,10 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class handles the loading of entities from the conf files, and provides
- * methods for relaying these entities to the user.
+ * This class handles the loading of entities from the conf files, and provides methods for relaying these entities to
+ * the user.
  */
-@SuppressWarnings("unchecked") public class EntityHandler {
+@SuppressWarnings("unchecked")
+public class EntityHandler {
 
   private static final DoorDef[] doors;
   private static final GameObjectDef[] gameObjects;
@@ -58,7 +59,6 @@ import java.util.List;
     items = (ItemDef[]) PersistenceManager.load("defs/ItemDef.xml.gz");
     spells = (SpellDef[]) PersistenceManager.load("defs/SpellDef.xml.gz");
     tiles = (TileDef[]) PersistenceManager.load("defs/TileDef.xml.gz");
-
     keyChestLoots = (List[]) PersistenceManager.load("defs/extras/KeyChestLoot.xml.gz");
     herbSeconds = (ItemHerbSecond[]) PersistenceManager.load("defs/extras/ItemHerbSecond.xml");
     dartTips = (HashMap<Integer, ItemDartTipDef>) PersistenceManager.load("defs/extras/ItemDartTipDef" + ".xml");
@@ -70,7 +70,7 @@ import java.util.List;
     itemAffectedTypes = (HashMap<Integer, int[]>) PersistenceManager.load("defs/extras/ItemAffectedTypes.xml");
     itemWieldable = (HashMap<Integer, ItemWieldableDef>) PersistenceManager.load("defs/extras/ItemWieldableDef.xml");
     itemUnIdentHerb = (HashMap<Integer, ItemUnIdentHerbDef>) PersistenceManager.load("defs/extras/ItemUnIdentHerbDef" +
-      ".xml");
+                                                                                     ".xml");
     itemHerb = (HashMap<Integer, ItemHerbDef>) PersistenceManager.load("defs/extras/ItemHerbDef.xml");
     itemEdibleHeals = (HashMap<Integer, Integer>) PersistenceManager.load("defs/extras/ItemEdibleHeals" + ".xml");
     itemCooking = (HashMap<Integer, ItemCookingDef>) PersistenceManager.load("defs/extras/ItemCookingDef.xml");
@@ -78,12 +78,11 @@ import java.util.List;
     itemSmithing = (ItemSmithingDef[]) PersistenceManager.load("defs/extras/ItemSmithingDef.xml");
     itemCrafting = (ItemCraftingDef[]) PersistenceManager.load("defs/extras/ItemCraftingDef.xml");
     objectMining = (HashMap<Integer, ObjectMiningDef>) PersistenceManager.load("defs/extras/ObjectMining.xml");
-    objectWoodcutting = (HashMap<Integer, ObjectWoodcuttingDef>) PersistenceManager.load
-      ("defs/extras/ObjectWoodcutting.xml");
+    objectWoodcutting = (HashMap<Integer, ObjectWoodcuttingDef>) PersistenceManager.load(
+      "defs/extras/ObjectWoodcutting.xml");
     objectFishing = (HashMap<Integer, ObjectFishingDef[]>) PersistenceManager.load("defs/extras/ObjectFishing.xml");
     spellAggressiveLvl = (HashMap<Integer, Integer>) PersistenceManager.load("defs/extras/SpellAggressiveLvl.xml.gz");
     adverts = (AdvertDef[]) PersistenceManager.load("defs/extras/Adverts.xml");
-
     objectTelePoints = (HashMap<Point, TelePoint>) PersistenceManager.load("locs/extras/ObjectTelePoints.xml.gz");
     certers = (HashMap<Integer, CerterDef>) PersistenceManager.load("defs/extras/NpcCerters.xml.gz");
   }
@@ -99,7 +98,7 @@ import java.util.List;
   /**
    * @return the ItemHerbSecond for the given second ingredient
    */
-  public static ItemHerbSecond getItemHerbSecond( int secondID, int unfinishedID ) {
+  public static ItemHerbSecond getItemHerbSecond(int secondID, int unfinishedID) {
     for (ItemHerbSecond def : herbSeconds) {
       if (def.getSecondID() == secondID && def.getUnfinishedID() == unfinishedID) {
         return def;
@@ -111,49 +110,49 @@ import java.util.List;
   /**
    * @return the ItemDartTipDef for the given tip
    */
-  public static ItemDartTipDef getItemDartTipDef( int id ) {
+  public static ItemDartTipDef getItemDartTipDef(int id) {
     return dartTips.get(id);
   }
 
   /**
    * @return the ItemGemDef for the given gem
    */
-  public static ItemGemDef getItemGemDef( int id ) {
+  public static ItemGemDef getItemGemDef(int id) {
     return gems.get(id);
   }
 
   /**
    * @return the ItemArrowHeadDef for the given arrow
    */
-  public static ItemArrowHeadDef getItemArrowHeadDef( int id ) {
+  public static ItemArrowHeadDef getItemArrowHeadDef(int id) {
     return arrowHeads.get(id);
   }
 
   /**
    * @return the ItemLogCutDef for the given log
    */
-  public static ItemLogCutDef getItemLogCutDef( int id ) {
+  public static ItemLogCutDef getItemLogCutDef(int id) {
     return logCut.get(id);
   }
 
   /**
    * @return the ItemBowStringDef for the given bow
    */
-  public static ItemBowStringDef getItemBowStringDef( int id ) {
+  public static ItemBowStringDef getItemBowStringDef(int id) {
     return bowString.get(id);
   }
 
   /**
    * @return the FiremakingDef for the given log
    */
-  public static FiremakingDef getFiremakingDef( int id ) {
+  public static FiremakingDef getFiremakingDef(int id) {
     return firemaking.get(id);
   }
 
   /**
    * @return the ItemCraftingDef for the requested item
    */
-  public static ItemCraftingDef getCraftingDef( int id ) {
+  public static ItemCraftingDef getCraftingDef(int id) {
     if (id < 0 || id >= itemCrafting.length) {
       return null;
     }
@@ -163,7 +162,7 @@ import java.util.List;
   /**
    * @return the ItemSmithingDef for the requested item
    */
-  public static ItemSmithingDef getSmithingDef( int id ) {
+  public static ItemSmithingDef getSmithingDef(int id) {
     if (id < 0 || id >= itemSmithing.length) {
       return null;
     }
@@ -175,7 +174,7 @@ import java.util.List;
    *
    * @return the CerterDef for the given npc
    */
-  public static CerterDef getCerterDef( int id ) {
+  public static CerterDef getCerterDef(int id) {
     return certers.get(id);
   }
 
@@ -184,7 +183,7 @@ import java.util.List;
    *
    * @return the ItemSmeltingDef with the given ID
    */
-  public static ItemSmeltingDef getItemSmeltingDef( int id ) {
+  public static ItemSmeltingDef getItemSmeltingDef(int id) {
     return itemSmelting.get(id);
   }
 
@@ -193,7 +192,7 @@ import java.util.List;
    *
    * @return the ItemCookingDef with the given ID
    */
-  public static ItemCookingDef getItemCookingDef( int id ) {
+  public static ItemCookingDef getItemCookingDef(int id) {
     return itemCooking.get(id);
   }
 
@@ -202,7 +201,7 @@ import java.util.List;
    *
    * @return the ObjectFishingDef with the given ID
    */
-  public static ObjectFishingDef getObjectFishingDef( int id, int click ) {
+  public static ObjectFishingDef getObjectFishingDef(int id, int click) {
     ObjectFishingDef[] defs = objectFishing.get(id);
     if (defs == null) {
       return null;
@@ -215,7 +214,7 @@ import java.util.List;
    *
    * @return the ObjectMiningDef with the given ID
    */
-  public static ObjectMiningDef getObjectMiningDef( int id ) {
+  public static ObjectMiningDef getObjectMiningDef(int id) {
     return objectMining.get(id);
   }
 
@@ -224,7 +223,7 @@ import java.util.List;
    *
    * @return the ObjectWoodcuttingDef with the given ID
    */
-  public static ObjectWoodcuttingDef getObjectWoodcuttingDef( int id ) {
+  public static ObjectWoodcuttingDef getObjectWoodcuttingDef(int id) {
     return objectWoodcutting.get(id);
   }
 
@@ -233,7 +232,7 @@ import java.util.List;
    *
    * @return the ItemHerbDef with the given ID
    */
-  public static ItemHerbDef getItemHerbDef( int id ) {
+  public static ItemHerbDef getItemHerbDef(int id) {
     return itemHerb.get(id);
   }
 
@@ -242,7 +241,7 @@ import java.util.List;
    *
    * @return the point we should be teleported to
    */
-  public static Point getObjectTelePoint( Point location, String command ) {
+  public static Point getObjectTelePoint(Point location, String command) {
     TelePoint point = objectTelePoints.get(location);
     if (point == null) {
       return null;
@@ -258,7 +257,7 @@ import java.util.List;
    *
    * @return the lvl of the spell (for calculating what it hits)
    */
-  public static int getSpellAggressiveLvl( int id ) {
+  public static int getSpellAggressiveLvl(int id) {
     Integer lvl = spellAggressiveLvl.get(id);
     if (lvl != null) {
       return lvl.intValue();
@@ -271,7 +270,7 @@ import java.util.List;
    *
    * @return the amount eating the item should heal
    */
-  public static int getItemEdibleHeals( int id ) {
+  public static int getItemEdibleHeals(int id) {
     Integer heals = itemEdibleHeals.get(id);
     if (heals != null) {
       return heals.intValue();
@@ -284,7 +283,7 @@ import java.util.List;
    *
    * @return the types of items affected
    */
-  public static int[] getItemAffectedTypes( int type ) {
+  public static int[] getItemAffectedTypes(int type) {
     return itemAffectedTypes.get(type);
   }
 
@@ -293,7 +292,7 @@ import java.util.List;
    *
    * @return the ItemUnIdentHerbDef with the given ID
    */
-  public static ItemUnIdentHerbDef getItemUnIdentHerbDef( int id ) {
+  public static ItemUnIdentHerbDef getItemUnIdentHerbDef(int id) {
     return itemUnIdentHerb.get(id);
   }
 
@@ -302,7 +301,7 @@ import java.util.List;
    *
    * @return the ItemWieldableDef with the given ID
    */
-  public static ItemWieldableDef getItemWieldableDef( int id ) {
+  public static ItemWieldableDef getItemWieldableDef(int id) {
     return itemWieldable.get(id);
   }
 
@@ -311,7 +310,7 @@ import java.util.List;
    *
    * @return the DoorDef with the given ID
    */
-  public static DoorDef getDoorDef( int id ) {
+  public static DoorDef getDoorDef(int id) {
     if (id < 0 || id >= doors.length) {
       return null;
     }
@@ -323,7 +322,7 @@ import java.util.List;
    *
    * @return the GameObjectDef with the given ID
    */
-  public static GameObjectDef getGameObjectDef( int id ) {
+  public static GameObjectDef getGameObjectDef(int id) {
     if (id < 0 || id >= gameObjects.length) {
       return null;
     }
@@ -335,7 +334,7 @@ import java.util.List;
    *
    * @return the ItemDef with the given ID
    */
-  public static ItemDef getItemDef( int id ) {
+  public static ItemDef getItemDef(int id) {
     if (id < 0 || id >= items.length) {
       return null;
     }
@@ -347,7 +346,7 @@ import java.util.List;
    *
    * @return the TileDef with the given ID
    */
-  public static TileDef getTileDef( int id ) {
+  public static TileDef getTileDef(int id) {
     if (id < 0 || id >= tiles.length) {
       return null;
     }
@@ -359,7 +358,7 @@ import java.util.List;
    *
    * @return the NPCDef with the given ID
    */
-  public static NPCDef getNpcDef( int id ) {
+  public static NPCDef getNpcDef(int id) {
     if (id < 0 || id >= npcs.length) {
       return null;
     }
@@ -371,7 +370,7 @@ import java.util.List;
    *
    * @return the PrayerDef with the given ID
    */
-  public static PrayerDef getPrayerDef( int id ) {
+  public static PrayerDef getPrayerDef(int id) {
     if (id < 0 || id >= prayers.length) {
       return null;
     }
@@ -383,7 +382,7 @@ import java.util.List;
    *
    * @return the SpellDef with the given ID
    */
-  public static SpellDef getSpellDef( int id ) {
+  public static SpellDef getSpellDef(int id) {
     if (id < 0 || id >= spells.length) {
       return null;
     }

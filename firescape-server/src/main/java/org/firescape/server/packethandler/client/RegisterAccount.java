@@ -11,14 +11,10 @@ public class RegisterAccount implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
-
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     String username = p.readString(20).trim();
     String password = p.readString(20).trim();
     String email = p.readString(20).trim();
-    System.out.println(username);
-    System.out.println(password);
-    System.out.println(email);
     /*
      * Player player = (Player)session.getAttachment(); byte loginCode = 22; try
      * { boolean reconnecting = (p.readByte() == 1); int clientVersion =

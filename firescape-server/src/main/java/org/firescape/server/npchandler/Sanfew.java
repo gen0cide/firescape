@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,7 +10,7 @@ public class Sanfew implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     if (player.getDruidicRitualStatus() == 3) {
       player.informOfNpcMessage(new ChatMessage(npc, "Go speak to Kaqemeex to gain the ability of Herblaw", player));
       return;
@@ -24,7 +25,7 @@ public class Sanfew implements NpcHandler {
             "Yes, I have them right here", "No sorry. I am still searching for them"
           };
           player.setMenuHandler(new MenuHandler(option) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (player.isBusy()) {
                 return;
               }
@@ -37,10 +38,16 @@ public class Sanfew implements NpcHandler {
                     player.informOfNpcMessage(new ChatMessage(npc, "Ok, come back when you have them!", player));
                     return;
                   }
-                  if (option == 0 && player.getInventory().countId(505) > 0 && player.getInventory().countId(506) > 0
-                    && player.getInventory().countId(507) > 0 && player.getInventory().countId(508) > 0) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "Ah, thank you! Kaqemeex will now teach you the "
-                      + "art of Herblaw", player));
+                  if (option == 0 &&
+                      player.getInventory().countId(505) > 0 &&
+                      player.getInventory().countId(506) > 0 &&
+                      player.getInventory().countId(507) > 0 &&
+                      player.getInventory().countId(508) > 0) {
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "Ah, thank you! Kaqemeex will now teach you the " +
+                                                              "art of Herblaw",
+                                                              player
+                    ));
                     player.setDruidicRitualStatus(3);
                     player.getInventory().remove(505, 1);
                     player.getInventory().remove(506, 1);
@@ -68,7 +75,7 @@ public class Sanfew implements NpcHandler {
             "I am in search of a quest", "Nothing, sorry"
           };
           owner.setMenuHandler(new MenuHandler(options) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (owner.isBusy()) {
                 return;
               }
@@ -78,16 +85,25 @@ public class Sanfew implements NpcHandler {
                 public void action() {
                   owner.setBusy(false);
                   if (option == 0) {
-                    owner.informOfNpcMessage(new ChatMessage(npc, "Ah! Then I am the person to speak to! I need " +
-                      "4 types of raw meat", owner));
+                    owner.informOfNpcMessage(new ChatMessage(npc,
+                                                             "Ah! Then I am the person to speak to! I need " +
+                                                             "4 types of raw meat",
+                                                             owner
+                    ));
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
-                        owner.informOfNpcMessage(new ChatMessage(npc, "I need the meat of a Rat, Chicken, Bear " +
-                          "and a Cow. It also must,", owner));
+                        owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                 "I need the meat of a Rat, Chicken, Bear " +
+                                                                 "and a Cow. It also must,",
+                                                                 owner
+                        ));
                         DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                           public void action() {
-                            owner.informOfNpcMessage(new ChatMessage(npc, "be dipped into the Cauldron of " +
-                              "Thunder to enchant it! Good luck on your quest!", owner));
+                            owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                     "be dipped into the Cauldron of " +
+                                                                     "Thunder to enchant it! Good luck on your quest!",
+                                                                     owner
+                            ));
                             owner.setDruidicRitualStatus(2);
                             npc.unblock();
                           }

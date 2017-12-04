@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,7 +10,7 @@ public class Romeo implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     if (player.getRomeoJulietStatus() == 3) {
       player.informOfNpcMessage(new ChatMessage(npc, "Thanks again for all your help!", player));
       return;
@@ -28,7 +29,7 @@ public class Romeo implements NpcHandler {
             "Yes, she's with her father", "No, sorry. I am still tracking her down"
           };
           player.setMenuHandler(new MenuHandler(option) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (player.isBusy()) {
                 return;
               }
@@ -38,19 +39,24 @@ public class Romeo implements NpcHandler {
                 public void action() {
                   player.setBusy(false);
                   if (option == 1) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "Keep looking! I am very worried about her!",
-                      player));
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "Keep looking! I am very worried about her!",
+                                                              player
+                    ));
                     return;
                   }
                   if (option == 0 && player.getRomeoJulietStatus() == 2) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "As long as she's safe. Thanks for helping me",
-                      player));
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "As long as she's safe. Thanks for helping me",
+                                                              player
+                    ));
                     player.isRomeoJulietComplete();
                     player.setQuestPoints(player.getQuestPoints() + 5);
                     player.getActionSender().sendQuestPoints();
                     player.getActionSender().sendRomeoJulietComplete();
-                    player.getActionSender().sendMessage("@gre@Congratulations! You have just completed the: " +
-                      "@or1@Romeo & Juliet @gre@quest!");
+                    player.getActionSender()
+                          .sendMessage("@gre@Congratulations! You have just completed the: " +
+                                       "@or1@Romeo & Juliet @gre@quest!");
                     player.getActionSender().sendMessage("@gre@You gained @or1@5 @gre@quest points!");
                   } else {
                     player.informOfNpcMessage(new ChatMessage(npc, "Stop wasting time and go find my Juliet!", player));
@@ -72,7 +78,7 @@ public class Romeo implements NpcHandler {
             "What seems to be the problem?", "I have other things to do, sorry"
           };
           owner.setMenuHandler(new MenuHandler(options) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (owner.isBusy()) {
                 return;
               }

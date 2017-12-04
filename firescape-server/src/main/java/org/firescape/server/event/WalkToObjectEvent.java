@@ -7,7 +7,7 @@ public abstract class WalkToObjectEvent extends DelayedEvent {
   private final boolean stop;
   protected GameObject object;
 
-  public WalkToObjectEvent( Player owner, GameObject object, boolean stop ) {
+  public WalkToObjectEvent(Player owner, GameObject object, boolean stop) {
     super(owner, 500);
     this.object = object;
     this.stop = stop;

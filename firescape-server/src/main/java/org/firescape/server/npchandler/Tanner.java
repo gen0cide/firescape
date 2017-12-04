@@ -10,7 +10,7 @@ public class Tanner implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Greeting friend i'm a manufacturer of leather", player));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
@@ -22,7 +22,7 @@ public class Tanner implements NpcHandler {
           "Leather is rather weak stuff"
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy()) {
               return;
             }
@@ -36,8 +36,12 @@ public class Tanner implements NpcHandler {
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
-                        owner.informOfNpcMessage(new ChatMessage(npc, "Bring me some of them and a gold coin per" + "" +
-                          " hide", owner));
+                        owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                 "Bring me some of them and a gold coin per" +
+                                                                 "" +
+                                                                 " hide",
+                                                                 owner
+                        ));
                         npc.unblock();
                       }
                     });
@@ -68,8 +72,11 @@ public class Tanner implements NpcHandler {
                     break;
                   case 2:
                     owner.setBusy(false);
-                    owner.informOfNpcMessage(new ChatMessage(npc, "Well yes if all you're concerned with is how " +
-                      "much it will protect you in a fight", owner));
+                    owner.informOfNpcMessage(new ChatMessage(npc,
+                                                             "Well yes if all you're concerned with is how " +
+                                                             "much it will protect you in a fight",
+                                                             owner
+                    ));
                     npc.unblock();
                     break;
                   default:

@@ -19,7 +19,7 @@ public class Bank {
     return list;
   }
 
-  public int add( InvItem item ) {
+  public int add(InvItem item) {
     if (item.getAmount() <= 0) {
       return -1;
     }
@@ -33,11 +33,11 @@ public class Bank {
     return list.size() - 2;
   }
 
-  public int remove( InvItem item ) {
+  public int remove(InvItem item) {
     return remove(item.getID(), item.getAmount());
   }
 
-  public int remove( int id, int amount ) {
+  public int remove(int id, int amount) {
     Iterator<InvItem> iterator = list.iterator();
     for (int index = 0; iterator.hasNext(); index++) {
       InvItem i = iterator.next();
@@ -53,7 +53,7 @@ public class Bank {
     return -1;
   }
 
-  public void remove( int index ) {
+  public void remove(int index) {
     InvItem item = get(index);
     if (item == null) {
       return;
@@ -61,7 +61,7 @@ public class Bank {
     remove(item.getID(), item.getAmount());
   }
 
-  public InvItem get( int index ) {
+  public InvItem get(int index) {
     if (index < 0 || index >= list.size()) {
       return null;
     }
@@ -72,7 +72,7 @@ public class Bank {
     return list.listIterator();
   }
 
-  public int getFirstIndexById( int id ) {
+  public int getFirstIndexById(int id) {
     for (int index = 0; index < list.size(); index++) {
       if (list.get(index).getID() == id) {
         return index;
@@ -81,7 +81,7 @@ public class Bank {
     return -1;
   }
 
-  public int countId( int id ) {
+  public int countId(int id) {
     for (InvItem i : list) {
       if (i.getID() == id) {
         return i.getAmount();
@@ -94,11 +94,11 @@ public class Bank {
     return list.size() >= MAX_SIZE;
   }
 
-  public boolean contains( InvItem i ) {
+  public boolean contains(InvItem i) {
     return list.contains(i);
   }
 
-  public InvItem get( InvItem item ) {
+  public InvItem get(InvItem item) {
     for (InvItem i : list) {
       if (item.equals(i)) {
         return i;
@@ -111,19 +111,19 @@ public class Bank {
     return list.size();
   }
 
-  public boolean canHold( InvItem item ) {
+  public boolean canHold(InvItem item) {
     return (MAX_SIZE - list.size()) >= getRequiredSlots(item);
   }
 
-  public int getRequiredSlots( InvItem item ) {
+  public int getRequiredSlots(InvItem item) {
     return (list.contains(item) ? 0 : 1);
   }
 
-  public boolean canHold( ArrayList<InvItem> items ) {
+  public boolean canHold(ArrayList<InvItem> items) {
     return (MAX_SIZE - list.size()) >= getRequiredSlots(items);
   }
 
-  public int getRequiredSlots( List<InvItem> items ) {
+  public int getRequiredSlots(List<InvItem> items) {
     int requiredSlots = 0;
     for (InvItem item : items) {
       if (list.contains(item)) {

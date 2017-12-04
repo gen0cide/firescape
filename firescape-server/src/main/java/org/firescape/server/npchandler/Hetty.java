@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,7 +10,7 @@ public class Hetty implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     if (player.getWitchPotionStatus() == 3) {
       player.informOfNpcMessage(new ChatMessage(npc, "Thank you again for your help!", player));
       return;
@@ -28,7 +29,7 @@ public class Hetty implements NpcHandler {
             "Yes, I have them all here", "I am still trying to find them"
           };
           player.setMenuHandler(new MenuHandler(option) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (player.isBusy()) {
                 return;
               }
@@ -38,12 +39,17 @@ public class Hetty implements NpcHandler {
                 public void action() {
                   player.setBusy(false);
                   if (option == 1) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "Ok. Come back when you have found my supplies!",
-                      player));
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "Ok. Come back when you have found my supplies!",
+                                                              player
+                    ));
                     return;
                   }
-                  if (option == 0 && player.getInventory().countId(134) > 0 && player.getInventory().countId(241) > 0
-                    && player.getInventory().countId(271) > 0 && player.getInventory().countId(270) > 0) {
+                  if (option == 0 &&
+                      player.getInventory().countId(134) > 0 &&
+                      player.getInventory().countId(241) > 0 &&
+                      player.getInventory().countId(271) > 0 &&
+                      player.getInventory().countId(270) > 0) {
                     player.informOfNpcMessage(new ChatMessage(npc, "Thank you! I can now begin my evil brew!", player));
                     player.getInventory().remove(134, 1);
                     player.getInventory().remove(241, 1);
@@ -63,8 +69,12 @@ public class Hetty implements NpcHandler {
         }
       });
     } else if (player.getWitchPotionStatus() == 0) {
-      player.informOfNpcMessage(new ChatMessage(npc, "I need some supplies to finish my witches evil brew. Can you " +
-        "go" + " get them for me?", player));
+      player.informOfNpcMessage(new ChatMessage(npc,
+                                                "I need some supplies to finish my witches evil brew. Can you " +
+                                                "go" +
+                                                " get them for me?",
+                                                player
+      ));
       player.setBusy(true);
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
@@ -73,7 +83,7 @@ public class Hetty implements NpcHandler {
             "Yes, what do you need?", "I'm too busy, sorry"
           };
           owner.setMenuHandler(new MenuHandler(options) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (owner.isBusy()) {
                 return;
               }
@@ -86,12 +96,17 @@ public class Hetty implements NpcHandler {
                     owner.informOfNpcMessage(new ChatMessage(npc, "Thank you. I need the following items:", owner));
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
-                        owner.informOfNpcMessage(new ChatMessage(npc, "1 Burnt Meat, 1 Onion, 1 Rat's Tail and " +
-                          "the Eye of a Newt.", owner));
+                        owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                 "1 Burnt Meat, 1 Onion, 1 Rat's Tail and " +
+                                                                 "the Eye of a Newt.",
+                                                                 owner
+                        ));
                         DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                           public void action() {
-                            owner.informOfNpcMessage(new ChatMessage(npc, "I will wait here for you to return!",
-                              owner));
+                            owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                     "I will wait here for you to return!",
+                                                                     owner
+                            ));
                             owner.setWitchPotionStatus(1);
                             npc.unblock();
                           }

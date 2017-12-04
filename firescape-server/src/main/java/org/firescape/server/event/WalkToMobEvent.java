@@ -7,7 +7,7 @@ public abstract class WalkToMobEvent extends DelayedEvent {
   private final int radius;
   protected Mob affectedMob;
 
-  public WalkToMobEvent( Player owner, Mob affectedMob, int radius ) {
+  public WalkToMobEvent(Player owner, Mob affectedMob, int radius) {
     super(owner, 500);
     this.affectedMob = affectedMob;
     this.radius = radius;

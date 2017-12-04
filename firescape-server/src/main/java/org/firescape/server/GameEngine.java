@@ -19,8 +19,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
- * The central motor of the game. This class is responsible for the primary
- * operation of the entire game.
+ * The central motor of the game. This class is responsible for the primary operation of the entire game.
  */
 public final class GameEngine extends Thread {
   /**
@@ -65,7 +64,6 @@ public final class GameEngine extends Thread {
     curAdvert = 0;
     lastAdvert = 0;
     packetQueue = new PacketQueue<RSCPacket>();
-
     loadPacketHandlers();
     for (Shop shop : world.getShops()) {
       shop.initRestock();
@@ -85,10 +83,8 @@ public final class GameEngine extends Thread {
         Class<?> c = Class.forName(className);
         if (c != null) {
           count++;
-
           PacketHandler handler = (PacketHandler) c.newInstance();
           for (int packetID : handlerDef.getAssociatedPackets()) {
-
             packetHandlers.put(packetID, handler);
           }
 
@@ -116,7 +112,6 @@ public final class GameEngine extends Thread {
     Logger.print(GameVars.serverName + " is now Online!", 3);
     GameVars.serverRunning = true;
     running = true;
-
     eventHandler.add(new DelayedEvent(null, GameVars.saveAll * 60000) {
       public void run() {
         SaveEvent.saveAll();
@@ -132,8 +127,15 @@ public final class GameEngine extends Thread {
         AdvertDef advertDef = EntityHandler.getAdverts()[curAdvert];
         String advert = advertDef.getMessage();
         Player p;
-        for (Iterator i$ = world.getPlayers().iterator(); i$.hasNext(); p.getActionSender().sendMessage((new
-          StringBuilder()).append("@cya@[Server Message] @whi@").append(processAdvert(advert, p)).toString())) {
+        for (Iterator i$ = world.getPlayers().iterator(); i$.hasNext(); p.getActionSender()
+                                                                         .sendMessage((new StringBuilder()).append(
+                                                                           "@cya@[Server Message] @whi@")
+                                                                                                           .append(
+                                                                                                             processAdvert(
+                                                                                                               advert,
+                                                                                                               p
+                                                                                                             ))
+                                                                                                           .toString())) {
           p = (Player) i$.next();
         }
 
@@ -151,7 +153,7 @@ public final class GameEngine extends Thread {
     }
   }
 
-  private static String processAdvert( String advert, Player p ) {
+  private static String processAdvert(String advert, Player p) {
     advert = advert.replaceAll("%name", p.getUsername());
     advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
     return advert;
@@ -170,8 +172,14 @@ public final class GameEngine extends Thread {
         try {
           handler.handlePacket(p, session);
         } catch (Exception e) {
-          Logger.error("Exception with p[" + p.getID() + "] from " + player.getUsername() + " [" + player
-            .getCurrentIP() + "]: " + e.getMessage());
+          Logger.error("Exception with p[" +
+                       p.getID() +
+                       "] from " +
+                       player.getUsername() +
+                       " [" +
+                       player.getCurrentIP() +
+                       "]: " +
+                       e.getMessage());
           player.getActionSender().sendLogout();
           player.destroy(false);
         }
@@ -187,7 +195,6 @@ public final class GameEngine extends Thread {
 
   private void processClients() {
     clientUpdater.sendQueuedPackets();
-
     long now = System.currentTimeMillis();
     if (now - lastSentClientUpdate >= 600) {
       lastSentClientUpdate = now;

@@ -16,12 +16,12 @@ public class ChatMessage {
    */
   private Mob recipient;
 
-  public ChatMessage( Mob sender, byte[] message ) {
+  public ChatMessage(Mob sender, byte[] message) {
     this.sender = sender;
     this.message = message;
   }
 
-  public ChatMessage( Mob sender, String message, Mob recipient ) {
+  public ChatMessage(Mob sender, String message, Mob recipient) {
     this.sender = sender;
     this.message = DataConversions.stringToByteArray(message);
     this.recipient = recipient;

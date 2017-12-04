@@ -24,7 +24,7 @@ public class GameObjectLoc implements Serializable {
    */
   public int type;
 
-  public GameObjectLoc( int id, int x, int y, int direction, int type ) {
+  public GameObjectLoc(int id, int x, int y, int direction, int type) {
     this.id = id;
     this.x = x;
     this.y = y;

@@ -14,16 +14,13 @@ public class FriendHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
-
     player.getUsernameHash();
     long f = p.readLong();
     boolean isOnline = world.getPlayers().contains(world.getPlayer(f));
-
     String friend = DataConversions.hashToUsername(f);
-
     switch (pID) {
       case 168: // Add friend
         if (player.friendCount() >= 50) {
@@ -42,12 +39,9 @@ public class FriendHandler implements PacketHandler {
         } else {
           player.getActionSender().sendFriendUpdate(f, 0);
         }
-
         player.addFriend(friend);
-
         break;
       case 52: // Remove friend
-
         player.removeFriend(friend);
         break;
       case 25: // Add ignore
@@ -58,7 +52,6 @@ public class FriendHandler implements PacketHandler {
         player.addIgnore(friend);
         break;
       case 108: // Remove ignore
-
         player.removeIgnore(friend);
         break;
       case 254: // Send PM

@@ -16,15 +16,15 @@ public class InvActionHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public static int rand( int bound ) {
+  public static int rand(int bound) {
     return rand(0, bound - 1);
   }
 
-  public static int rand( int low, int high ) {
+  public static int rand(int low, int high) {
     return low + (int) (Math.random() * (high - low + 1));
   }
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       if (player.inCombat()) {
@@ -405,12 +405,12 @@ public class InvActionHandler implements PacketHandler {
                 "Edgeville", "Karamja", "Draynor Village", "Al Kharid", "Mage Arena", "Seers", "Yanille"
               };
               owner.setMenuHandler(new MenuHandler(options) {
-                public void handleReply( int option, String reply ) {
+                public void handleReply(int option, String reply) {
                   if (owner.isBusy() || owner.getInventory().get(item) == null) {
                     return;
                   }
-                  if (owner.getLocation().wildernessLevel() >= 30 || (owner.getLocation().inModRoom() && !owner.isMod
-                    ())) {
+                  if (owner.getLocation().wildernessLevel() >= 30 ||
+                      (owner.getLocation().inModRoom() && !owner.isMod())) {
                     owner.getActionSender().sendMessage("A magical force stops you from teleporting.");
                     return;
                   }
@@ -497,7 +497,7 @@ public class InvActionHandler implements PacketHandler {
                     "@blu@Yellow", "@ora@Dark Red", "@gre@Orange", "@whi@Blue", "@cya@Cyan", "@red@Gray", "@mag@White"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -513,7 +513,6 @@ public class InvActionHandler implements PacketHandler {
 
               });
               break;
-
             case 1:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
@@ -521,7 +520,7 @@ public class InvActionHandler implements PacketHandler {
                     "@red@Purple", "@yel@White", "@ora@Orange", "@mag@Blue", "@cya@Green", "@gre@Rainbow", "@blu@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 2) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -544,7 +543,7 @@ public class InvActionHandler implements PacketHandler {
                     "@or3@Silver", "@yel@Black", "@ran@Purple", "@blu@Brown", "@whi@Green", "@mag@Pink", "@dre@White"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 5) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -567,7 +566,7 @@ public class InvActionHandler implements PacketHandler {
                     "@cya@Brown", "@or2@White", "@red@Orange", "@mag@Purple", "@whi@Gold", "@gre@Rainbow", "@blu@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 3) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -590,7 +589,7 @@ public class InvActionHandler implements PacketHandler {
                     "@yel@Cyan", "@whi@Brown", "@dre@Black", "@ran@Yellow", "@blu@Blue", "@mag@Green", "@gre@Red"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -613,7 +612,7 @@ public class InvActionHandler implements PacketHandler {
                     "@mag@red", "@or2@Grey", "@yel@Dark Blue", "@whi@White", "@ran@Silver", "@dre@Rainbow", "@blu@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 3) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -636,7 +635,7 @@ public class InvActionHandler implements PacketHandler {
                     "@blu@Black", "@cya@White", "@whi@Teal", "@yel@Red", "@gre@Green", "@ran@Yellow", "@mag@Rainbow"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -659,7 +658,7 @@ public class InvActionHandler implements PacketHandler {
                     "@cya@Gold", "@or1@White", "@dre@Green", "@blu@Brown", "@red@Orange", "@gre@Rainbow", "@yel@Yellow"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 6) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -682,7 +681,7 @@ public class InvActionHandler implements PacketHandler {
                     "@ora@Blue", "@dre@Yellow", "@ran@Brown", "@mag@Gold", "@gre@Purple", "@cya@Cyan", "@whi@Black"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 5) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -705,7 +704,7 @@ public class InvActionHandler implements PacketHandler {
                     "@or2@Cyan", "@dre@Rainbow", "@cya@Red", "@blu@White", "@yel@Silver", "@gre@Yellow", "@mag@Magenta"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 6) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -721,7 +720,6 @@ public class InvActionHandler implements PacketHandler {
 
               });
               break;
-
             case 10:
               world.getDelayedEventHandler().add(new ShortEvent(player) {
                 public void action() {
@@ -735,7 +733,7 @@ public class InvActionHandler implements PacketHandler {
                     "@blu@Purple"
                   };
                   owner.setMenuHandler(new MenuHandler(options) {
-                    public void handleReply( int option, String reply ) {
+                    public void handleReply(int option, String reply) {
                       if (option == 4) {
                         owner.setFatigue(0);
                         owner.getActionSender().sendFatigue();
@@ -760,24 +758,26 @@ public class InvActionHandler implements PacketHandler {
     }
   }
 
-  private void showBubble( Player player, InvItem item ) {
+  private void showBubble(Player player, InvItem item) {
     Bubble bubble = new Bubble(player, item.getID());
     for (Player p1 : player.getViewArea().getPlayersInView()) {
       p1.informOfBubble(bubble);
     }
   }
 
-  private void useNormalPotion( Player player, InvItem item, int affectedStat, int percentageIncrease, int modifier,
-                                int newItem, int left ) {
+  private void useNormalPotion(
+    Player player, InvItem item, int affectedStat, int percentageIncrease, int modifier, int newItem, int left
+  ) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
         owner.getActionSender().sendMessage("You have " + left + " doses left.");
-        int baseStat = owner.getCurStat(affectedStat) > owner.getMaxStat(affectedStat) ? owner.getMaxStat
-          (affectedStat) : owner.getCurStat(affectedStat);
-        int newStat = baseStat + DataConversions.roundUp((owner.getMaxStat(affectedStat) / 100D) *
-          percentageIncrease) + modifier;
+        int baseStat = owner.getCurStat(affectedStat) >
+                       owner.getMaxStat(affectedStat) ? owner.getMaxStat(affectedStat) : owner.getCurStat(affectedStat);
+        int newStat = baseStat +
+                      DataConversions.roundUp((owner.getMaxStat(affectedStat) / 100D) * percentageIncrease) +
+                      modifier;
         if (newStat > owner.getCurStat(affectedStat)) {
           owner.setCurStat(affectedStat, newStat);
           owner.getActionSender().sendStat(affectedStat);
@@ -790,7 +790,7 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void useStatRestorePotion( Player player, InvItem item, int newItem, int left ) {
+  private void useStatRestorePotion(Player player, InvItem item, int newItem, int left) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {
@@ -814,7 +814,7 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void usePrayerPotion( Player player, InvItem item, int newItem, int left ) {
+  private void usePrayerPotion(Player player, InvItem item, int newItem, int left) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {
@@ -834,7 +834,7 @@ public class InvActionHandler implements PacketHandler {
     });
   }
 
-  private void useFishingPotion( Player player, InvItem item, int newItem, int left ) {
+  private void useFishingPotion(Player player, InvItem item, int newItem, int left) {
     player.setBusy(true);
     player.getActionSender().sendMessage("You drink some of your " + item.getDef().getName() + ".");
     world.getDelayedEventHandler().add(new MiniEvent(player) {

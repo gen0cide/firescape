@@ -9,9 +9,6 @@ import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Logger;
-
-import java.util.Arrays;
 
 public class PlayerLogin implements PacketHandler {
   /**
@@ -19,8 +16,7 @@ public class PlayerLogin implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
-    System.out.printf("LOGIN PACKET: %s\n", p.printData());
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     byte loginCode = 22;
     try {
@@ -52,23 +48,20 @@ public class PlayerLogin implements PacketHandler {
       if (world.countPlayers() >= org.firescape.server.GameVars.maxUsers) {
         loginCode = 10;
       } else if (clientVersion != GameVars.clientVersion) {
-        Logger.print("Client versions is " + clientVersion + " but should be " + GameVars.clientVersion, 4);
         loginCode = 4;
       } else if (!player.setSessionKeys(sessionKeys)) {
         loginCode = 5;
-        System.out.println("SESSION KEYS: " + Arrays.toString(sessionKeys));
         player.bad_login = true;
       } else if (res == 0) {
         loginCode = 2; // invalid username/pass.
       } else if (res == 2) {
-        loginCode = 3; // user logged in.
+        loginCode = 3;
       } else if (res == 6) {
         loginCode = 6;
       } else {
         if (loginCode != 5) {
           player.bad_login = false;
         }
-
         if (loginCode != 5 || loginCode != 3) {
           player.load(username, password, uid, reconnecting);
           return;

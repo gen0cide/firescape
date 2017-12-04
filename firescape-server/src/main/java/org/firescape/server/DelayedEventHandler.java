@@ -16,7 +16,7 @@ public final class DelayedEventHandler {
     world.setDelayedEventHandler(this);
   }
 
-  public boolean contains( DelayedEvent event ) {
+  public boolean contains(DelayedEvent event) {
     return events.contains(event);
   }
 
@@ -24,17 +24,17 @@ public final class DelayedEventHandler {
     return events;
   }
 
-  public void add( DelayedEvent event ) {
+  public void add(DelayedEvent event) {
     if (!events.contains(event)) {
       toAdd.add(event);
     }
   }
 
-  public void remove( DelayedEvent event ) {
+  public void remove(DelayedEvent event) {
     events.remove(event);
   }
 
-  public void removePlayersEvents( Player player ) {
+  public void removePlayersEvents(Player player) {
     Iterator<DelayedEvent> iterator = events.iterator();
     while (iterator.hasNext()) {
       DelayedEvent event = iterator.next();

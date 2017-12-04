@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,7 +10,7 @@ public class Klank implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Would you like me to put your shield together?", player));
     player.informOfNpcMessage(new ChatMessage(npc, "I can do it for a small fee of 1 million coins.", player));
     player.setBusy(true);
@@ -20,7 +21,7 @@ public class Klank implements NpcHandler {
           "Yes, please.", "No, thank you."
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy()) {
               return;
             }

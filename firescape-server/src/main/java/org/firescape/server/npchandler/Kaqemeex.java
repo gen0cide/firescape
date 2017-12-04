@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,18 +10,21 @@ public class Kaqemeex implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     if (player.getDruidicRitualStatus() == 3) {
-      player.informOfNpcMessage(new ChatMessage(npc, "Sanfew informed me of your help. May you be blessed with the "
-        + "art of Herblaw!", player));
+      player.informOfNpcMessage(new ChatMessage(npc,
+                                                "Sanfew informed me of your help. May you be blessed with the " +
+                                                "art of Herblaw!",
+                                                player
+      ));
       player.setQuestPoints(player.getQuestPoints() + 4);
       player.getActionSender().sendQuestPoints();
       player.isDruidicRitualComplete();
       player.getActionSender().sendDruidicRitualComplete();
       player.incExp(15, 250, false, false);
       player.getActionSender().sendStat(15);
-      player.getActionSender().sendMessage("@gre@Congratulations! You have just completed the: @or1@Druidic Ritual "
-        + "@gre@quest!");
+      player.getActionSender()
+            .sendMessage("@gre@Congratulations! You have just completed the: @or1@Druidic Ritual " + "@gre@quest!");
       player.getActionSender().sendMessage("@gre@You gained @or1@4 @gre@quest points!");
       player.getActionSender().sendMessage("@gre@You now have access to the Herblaw skill!");
       return;
@@ -39,7 +43,7 @@ public class Kaqemeex implements NpcHandler {
             "Fine thank you", "Not too good"
           };
           player.setMenuHandler(new MenuHandler(option) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (player.isBusy()) {
                 return;
               }
@@ -49,13 +53,17 @@ public class Kaqemeex implements NpcHandler {
                 public void action() {
                   player.setBusy(false);
                   if (option == 1) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "Practice makes perfect! Don't give it up!",
-                      player));
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "Practice makes perfect! Don't give it up!",
+                                                              player
+                    ));
                     return;
                   }
                   if (option == 0) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "That's good to hear! My teachings paid off on " +
-                      "you!", player));
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "That's good to hear! My teachings paid off on " + "you!",
+                                                              player
+                    ));
 
                   }
                 }
@@ -75,7 +83,7 @@ public class Kaqemeex implements NpcHandler {
             "I am in search of a quest", "Nothing, sorry"
           };
           owner.setMenuHandler(new MenuHandler(options) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (owner.isBusy()) {
                 return;
               }
@@ -85,15 +93,19 @@ public class Kaqemeex implements NpcHandler {
                 public void action() {
                   owner.setBusy(false);
                   if (option == 0) {
-                    owner.informOfNpcMessage(new ChatMessage(npc, "As it happens, Sanfew is in need of a little " +
-                      "help!", owner));
+                    owner.informOfNpcMessage(new ChatMessage(npc,
+                                                             "As it happens, Sanfew is in need of a little " + "help!",
+                                                             owner
+                    ));
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.informOfNpcMessage(new ChatMessage(npc, "Head south into the town of Taverly.", owner));
                         DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                           public void action() {
-                            owner.informOfNpcMessage(new ChatMessage(npc, "Sanfew will be wandering around there" + "" +
-                              ".", owner));
+                            owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                     "Sanfew will be wandering around there" + "" + ".",
+                                                                     owner
+                            ));
                             owner.setDruidicRitualStatus(1);
                             npc.unblock();
                           }

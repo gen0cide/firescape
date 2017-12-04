@@ -12,7 +12,7 @@ public class PlayerAppearance {
   public int head;
   public int body;
 
-  public PlayerAppearance( int hairColour, int topColour, int trouserColour, int skinColour, int head, int body ) {
+  public PlayerAppearance(int hairColour, int topColour, int trouserColour, int skinColour, int head, int body) {
     this.hairColour = (byte) hairColour;
     this.topColour = (byte) topColour;
     this.trouserColour = (byte) trouserColour;
@@ -21,7 +21,7 @@ public class PlayerAppearance {
     this.body = body;
   }
 
-  public int getSprite( int pos ) {
+  public int getSprite(int pos) {
     switch (pos) {
       case 0:
         return head;

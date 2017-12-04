@@ -8,12 +8,15 @@ public abstract class NpcWalkEvent extends DelayedEvent {
   private final int radius;
   protected Npc affectedMob;
 
-  public NpcWalkEvent( Player owner, Npc affectedMob, int radius ) {
+  public NpcWalkEvent(Player owner, Npc affectedMob, int radius) {
     super(owner, 500);
     this.affectedMob = affectedMob;
     this.radius = radius;
-    affectedMob.moveNpc(new Path(affectedMob.getX(), affectedMob.getY(), owner.getLocation().getX(), owner
-      .getLocation().getY()));
+    affectedMob.moveNpc(new Path(affectedMob.getX(),
+                                 affectedMob.getY(),
+                                 owner.getLocation().getX(),
+                                 owner.getLocation().getY()
+    ));
     if (affectedMob.withinRange(owner, radius)) {
       arrived();
       this.running = false;

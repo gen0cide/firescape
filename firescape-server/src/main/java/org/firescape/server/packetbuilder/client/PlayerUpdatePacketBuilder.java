@@ -12,7 +12,7 @@ public class PlayerUpdatePacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer( Player p ) {
+  public void setPlayer(Player p) {
     playerToUpdate = p;
   }
 
@@ -20,12 +20,13 @@ public class PlayerUpdatePacketBuilder {
     List<Bubble> bubblesNeedingDisplayed = playerToUpdate.getBubblesNeedingDisplayed();
     List<ChatMessage> chatMessagesNeedingDisplayed = playerToUpdate.getChatMessagesNeedingDisplayed();
     List<Player> playersNeedingHitsUpdate = playerToUpdate.getPlayersRequiringHitsUpdate();
-
     List<Projectile> projectilesNeedingDisplayed = playerToUpdate.getProjectilesNeedingDisplayed();
     List<Player> playersNeedingAppearanceUpdate = playerToUpdate.getPlayersRequiringAppearanceUpdate();
-
-    int updateSize = bubblesNeedingDisplayed.size() + chatMessagesNeedingDisplayed.size() + playersNeedingHitsUpdate
-      .size() + projectilesNeedingDisplayed.size() + playersNeedingAppearanceUpdate.size();
+    int updateSize = bubblesNeedingDisplayed.size() +
+                     chatMessagesNeedingDisplayed.size() +
+                     playersNeedingHitsUpdate.size() +
+                     projectilesNeedingDisplayed.size() +
+                     playersNeedingAppearanceUpdate.size();
     if (updateSize > 0) {
       RSCPacketBuilder updates = new RSCPacketBuilder();
       updates.setID(234);
@@ -40,7 +41,6 @@ public class PlayerUpdatePacketBuilder {
         // talking
         updates.addShort(cm.getSender().getIndex());
         updates.addByte((byte) (cm.getRecipient() == null ? 1 : 6));
-        System.out.println(cm.getRecipient() == null);
         updates.addByte((byte) cm.getLength());
         updates.addBytes(cm.getMessage());
       }
@@ -86,7 +86,6 @@ public class PlayerUpdatePacketBuilder {
         updates.addByte(appearance.getSkinColour());
         updates.addByte((byte) p.getCombatLevel());
         updates.addByte((byte) (p.isSkulled() ? 1 : 0));
-        updates.addByte((byte) (p.isAdmin() ? 3 : (p.isMod() ? 2 : (p.isPMod() ? 1 : (p.isEvent() ? 4 : 0)))));
       }
       return updates.toPacket();
     }

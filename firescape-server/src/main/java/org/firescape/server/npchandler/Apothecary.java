@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -13,20 +14,21 @@ public class Apothecary implements NpcHandler {
     "Have you got any good potions to give away?"
   };
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
-    player.informOfNpcMessage(new ChatMessage(npc, "Hello there, I am the Apothecary, What can I do for you " +
-      "stranger?", player));
+  public void handleNpc(Npc npc, Player player) throws Exception {
+    player.informOfNpcMessage(new ChatMessage(npc,
+                                              "Hello there, I am the Apothecary, What can I do for you " + "stranger?",
+                                              player
+    ));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
         owner.setMenuHandler(new MenuHandler(Alts) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy() || option < 0 || option >= Alts.length) {
               npc.unblock();
               return;
             }
-
             owner.setBusy(true);
             DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
@@ -41,8 +43,10 @@ public class Apothecary implements NpcHandler {
                             InvItem redEggs = owner.getInventory().get(owner.getInventory().getLastIndexById(219));
                             InvItem limps = owner.getInventory().get(owner.getInventory().getLastIndexById(220));
                             if (redEggs == null || limps == null || owner.getInventory().countId(10) < 5) {
-                              owner.informOfNpcMessage(new ChatMessage(npc, "But you don't have the right " +
-                                "ingredients.", owner));
+                              owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                       "But you don't have the right " + "ingredients.",
+                                                                       owner
+                              ));
                               running = false;
                               owner.setBusy(false);
                               npc.unblock();
@@ -50,8 +54,8 @@ public class Apothecary implements NpcHandler {
                               owner.getInventory().remove(219, 1);
                               owner.getInventory().remove(10, 300);
                               owner.getInventory().remove(220, 1);
-                              owner.getActionSender().sendMessage("@whi@You hand the ingredients over to the " +
-                                "Apothecary");
+                              owner.getActionSender()
+                                   .sendMessage("@whi@You hand the ingredients over to the " + "Apothecary");
                               owner.getInventory().add(new InvItem(221, 1));
                               owner.getActionSender().sendInventory();
                               owner.getActionSender().sendMessage("@whi@You recive a strength potion.");

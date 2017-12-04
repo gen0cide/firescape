@@ -14,15 +14,14 @@ public class RSCPacketBuilder extends StaticPacketBuilder {
    *
    * @param id The ID of the packet
    */
-  public RSCPacketBuilder setID( int pID ) {
+  public RSCPacketBuilder setID(int pID) {
     Logger.event(String.format("Creating Packet of ID %d", pID));
     this.pID = pID;
     return this;
   }
 
   /**
-   * Returns a <code>RSCPacket</code> object for the data contained in this
-   * builder.
+   * Returns a <code>RSCPacket</code> object for the data contained in this builder.
    *
    * @return A <code>RSCPacket</code> object
    */

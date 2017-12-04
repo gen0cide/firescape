@@ -32,7 +32,7 @@ public class NPCLoc implements Serializable {
    */
   public int maxY;
 
-  public NPCLoc( int id, int startX, int startY, int minX, int maxX, int minY, int maxY ) {
+  public NPCLoc(int id, int startX, int startY, int minX, int maxX, int minY, int maxY) {
     this.id = id;
     this.startX = startX;
     this.startY = startY;

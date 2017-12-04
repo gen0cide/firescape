@@ -1,6 +1,7 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToMobEvent;
 import org.firescape.server.model.Bubble;
@@ -18,7 +19,7 @@ public class InvUseOnPlayer implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -35,8 +36,11 @@ public class InvUseOnPlayer implements PacketHandler {
     world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedPlayer, 1) {
       public void arrived() {
         owner.resetPath();
-        if (!owner.getInventory().contains(item) || !owner.nextTo(affectedPlayer) || owner.isBusy() || owner
-          .isRanging() || owner.getStatus() != Action.USING_INVITEM_ON_PLAYER) {
+        if (!owner.getInventory().contains(item) ||
+            !owner.nextTo(affectedPlayer) ||
+            owner.isBusy() ||
+            owner.isRanging() ||
+            owner.getStatus() != Action.USING_INVITEM_ON_PLAYER) {
           return;
         }
         owner.resetAll();
@@ -51,8 +55,8 @@ public class InvUseOnPlayer implements PacketHandler {
               p.informOfBubble(crackerBubble);
             }
             owner.getActionSender().sendMessage("You pull the cracker with " + affectedPlayer.getUsername() + "...");
-            affectedPlayer.getActionSender().sendMessage(owner.getUsername() + " is pulling a cracker with " +
-              "you...");
+            affectedPlayer.getActionSender()
+                          .sendMessage(owner.getUsername() + " is pulling a cracker with " + "you...");
             DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 InvItem phat = new InvItem(DataConversions.random(576, 581));
@@ -80,13 +84,17 @@ public class InvUseOnPlayer implements PacketHandler {
               owner.getActionSender().sendMessage("You have passed the gnome ball to " + affectedPlayer.getUsername());
               affectedPlayer.getInventory().add(new InvItem(981));
               affectedPlayer.getActionSender().sendInventory();
-              affectedPlayer.getActionSender().sendMessage(owner.getUsername() + " has passed you the gnome ball" + "" +
-                ".");
+              affectedPlayer.getActionSender()
+                            .sendMessage(owner.getUsername() + " has passed you the gnome ball" + "" + ".");
             } else {
-              owner.getActionSender().sendMessage("You have tried to pass the gnome ball to " + affectedPlayer
-                .getUsername() + " but they can't hold it.");
-              affectedPlayer.getActionSender().sendMessage(owner.getUsername() + " tried to pass you the gnome " +
-                "ball, but you can't hold it.");
+              owner.getActionSender()
+                   .sendMessage("You have tried to pass the gnome ball to " +
+                                affectedPlayer.getUsername() +
+                                " but they can't hold it.");
+              affectedPlayer.getActionSender()
+                            .sendMessage(owner.getUsername() +
+                                         " tried to pass you the gnome " +
+                                         "ball, but you can't hold it.");
             }
             break;
           default:

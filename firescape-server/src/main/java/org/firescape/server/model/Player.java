@@ -51,8 +51,7 @@ public final class Player extends Mob {
   /**
    * Nearby game objects that we should be aware of
    */
-  private final transient StatefulEntityCollection<GameObject> watchedObjects = new
-    StatefulEntityCollection<GameObject>();
+  private final transient StatefulEntityCollection<GameObject> watchedObjects = new StatefulEntityCollection<GameObject>();
   /**
    * Nearby items that we should be aware of
    */
@@ -114,8 +113,7 @@ public final class Player extends Mob {
    */
   private final transient ArrayList<Bubble> bubblesNeedingDisplayed = new ArrayList<Bubble>();
   /**
-   * Players we have been attacked by signed login, used to check if we should
-   * get a skull for attacking back
+   * Players we have been attacked by signed login, used to check if we should get a skull for attacking back
    */
   private final transient HashMap<Long, Long> attackedBy = new HashMap<Long, Long>();
   /**
@@ -430,8 +428,7 @@ public final class Player extends Mob {
   // Gem.
   private boolean packetSpam;
 
-  public Player( IoSession ios ) {
-
+  public Player(IoSession ios) {
     ioSession = ios;
     currentIP = ((InetSocketAddress) ios.getRemoteAddress()).getAddress().getHostAddress();
     currentLogin = System.currentTimeMillis();
@@ -439,7 +436,7 @@ public final class Player extends Mob {
     setBusy(true);
   }
 
-  public void setSEvent( ShortEvent sEvent ) {
+  public void setSEvent(ShortEvent sEvent) {
     Entity.world.getDelayedEventHandler().add(sEvent);
   }
 
@@ -452,7 +449,7 @@ public final class Player extends Mob {
     return summoner;
   }
 
-  public void setSummoner( Player summoner ) {
+  public void setSummoner(Player summoner) {
     this.summoner = summoner;
   }
 
@@ -460,7 +457,7 @@ public final class Player extends Mob {
     return summonTime;
   }
 
-  public void setSummonTime( long newTime ) {
+  public void setSummonTime(long newTime) {
     summonTime = newTime;
   }
 
@@ -486,7 +483,7 @@ public final class Player extends Mob {
     return isInvisible;
   }
 
-  public void setInvisible( boolean invisible ) {
+  public void setInvisible(boolean invisible) {
     isInvisible = invisible;
   }
 
@@ -518,7 +515,7 @@ public final class Player extends Mob {
     return impcatcherstatus = 2;
   }
 
-  public void setRequiresOfferUpdate( boolean b ) {
+  public void setRequiresOfferUpdate(boolean b) {
     requiresOfferUpdate = b;
   }
 
@@ -530,7 +527,7 @@ public final class Player extends Mob {
     return status;
   }
 
-  public void setStatus( Action a ) {
+  public void setStatus(Action a) {
     status = a;
   }
 
@@ -538,7 +535,7 @@ public final class Player extends Mob {
     return className;
   }
 
-  public void setClassName( String className ) {
+  public void setClassName(String className) {
     this.className = className;
   }
 
@@ -546,7 +543,7 @@ public final class Player extends Mob {
     return packetSpam;
   }
 
-  public void setSpam( boolean spam ) {
+  public void setSpam(boolean spam) {
     packetSpam = spam;
   }
 
@@ -559,7 +556,7 @@ public final class Player extends Mob {
     return true;
   }
 
-  public void addMessageToChatQueue( byte[] messageData ) {
+  public void addMessageToChatQueue(byte[] messageData) {
     try (Jedis jedis = Entity.world.redis.getResource()) {
       String chat_message = DataConversions.byteToString(messageData, 0, messageData.length);
       jedis.publish("game_chat", "(" + this.getUsername() + ") " + chat_message);
@@ -578,7 +575,7 @@ public final class Player extends Mob {
     lastArrow = System.currentTimeMillis();
   }
 
-  public void setRangeEvent( RangeEvent event ) {
+  public void setRangeEvent(RangeEvent event) {
     if (isRanging()) {
       resetRange();
     }
@@ -603,7 +600,7 @@ public final class Player extends Mob {
     return !isBusy() && System.currentTimeMillis() - getCombatTimer() > 10000;
   }
 
-  public boolean isFollowing( Mob mob ) {
+  public boolean isFollowing(Mob mob) {
     return isFollowing() && mob.equals(following);
   }
 
@@ -611,11 +608,11 @@ public final class Player extends Mob {
     return followEvent != null && following != null;
   }
 
-  public void setFollowing( Mob mob ) {
+  public void setFollowing(Mob mob) {
     setFollowing(mob, 0);
   }
 
-  public void setFollowing( Mob mob, int radius ) {
+  public void setFollowing(Mob mob, int radius) {
     if (isFollowing()) {
       resetFollowing();
     }
@@ -643,7 +640,7 @@ public final class Player extends Mob {
     resetPath();
   }
 
-  public boolean withinRange( Entity e ) {
+  public boolean withinRange(Entity e) {
     int xDiff = location.getX() - e.getLocation().getX();
     int yDiff = location.getY() - e.getLocation().getY();
     return xDiff <= 16 && xDiff >= -15 && yDiff <= 16 && yDiff >= -15;
@@ -653,22 +650,22 @@ public final class Player extends Mob {
     return isDueling;
   }
 
-  public void setDueling( boolean b ) {
+  public void setDueling(boolean b) {
     isDueling = b;
   }
 
-  public void setSkulledOn( Player player ) {
+  public void setSkulledOn(Player player) {
     player.addAttackedBy(this);
     if (System.currentTimeMillis() - lastAttackedBy(player) > 1200000) {
       addSkull(1200000);
     }
   }
 
-  public void addAttackedBy( Player p ) {
+  public void addAttackedBy(Player p) {
     attackedBy.put(p.getUsernameHash(), System.currentTimeMillis());
   }
 
-  public long lastAttackedBy( Player p ) {
+  public long lastAttackedBy(Player p) {
     Long time = attackedBy.get(p.getUsernameHash());
     if (time != null) {
       return time;
@@ -677,7 +674,7 @@ public final class Player extends Mob {
   }
 
   // destroy
-  public void addSkull( long timeLeft ) {
+  public void addSkull(long timeLeft) {
     if (!isSkulled()) {
       skullEvent = new DelayedEvent(this, 1200000) {
         public void run() {
@@ -707,7 +704,7 @@ public final class Player extends Mob {
     skullEvent = null;
   }
 
-  public void setSubscriptionExpires( long expires ) {
+  public void setSubscriptionExpires(long expires) {
     subscriptionExpires = expires;
   }
 
@@ -719,7 +716,7 @@ public final class Player extends Mob {
     return (int) ((subscriptionExpires - now) / 86400);
   }
 
-  public void addPacket( RSCPacket p ) {
+  public void addPacket(RSCPacket p) {
     long now = System.currentTimeMillis();
     if (now - lastCount > 3000) {
       lastCount = now;
@@ -746,7 +743,7 @@ public final class Player extends Mob {
     return owner;
   }
 
-  public void setOwner( int owner ) {
+  public void setOwner(int owner) {
     this.owner = owner;
   }
 
@@ -754,7 +751,7 @@ public final class Player extends Mob {
     return interactingNpc;
   }
 
-  public void setNpc( Npc npc ) {// System.out.println
+  public void setNpc(Npc npc) {
     interactingNpc = npc;
   }
 
@@ -762,27 +759,30 @@ public final class Player extends Mob {
     removed = true;
   }
 
-  public int getCombatStyle() {
-    return combatStyle;
-  }
-
-  public void setCombatStyle( int style ) {
-    combatStyle = style;
-  }
-
   public int getHits() {
     return getCurStat(3);
   }
 
-  public void setHits( int lvl ) {
+  public void setHits(int lvl) {
     setCurStat(3, lvl);
+  }
+
+  public void setCurStat(int id, int lvl) {
+    if (lvl <= 0) {
+      lvl = 0;
+    }
+    curStat[id] = lvl;
+  }
+
+  public int getCurStat(int id) {
+    return curStat[id];
   }
 
   public int getAttack() {
     return getCurStat(0);
   }
 
-  public void setAttack( int lvl ) {
+  public void setAttack(int lvl) {
     setCurStat(0, lvl);
   }
 
@@ -790,7 +790,7 @@ public final class Player extends Mob {
     return getCurStat(1);
   }
 
-  public void setDefense( int lvl ) {
+  public void setDefense(int lvl) {
     setCurStat(1, lvl);
   }
 
@@ -798,168 +798,8 @@ public final class Player extends Mob {
     return getCurStat(2);
   }
 
-  public void setStrength( int lvl ) {
+  public void setStrength(int lvl) {
     setCurStat(2, lvl);
-  }
-
-  public void killedBy( Mob mob, boolean stake ) {
-    boolean drop = true;
-    if (!loggedIn) {
-      Logger.error(username + " not logged in, but killed!");
-      return;
-    }
-    if (mob instanceof Player) {
-      Player player = (Player) mob;
-      player.getActionSender().sendMessage("You have defeated " + getUsername() + "!");
-      player.incKills();
-      actionSender.sendKills();
-      player.incKillingSpree();
-      actionSender.sendKillingSpree();
-      player.getActionSender().sendSound("victory");
-
-      ArrayList<Player> playersToSend = new ArrayList<Player>();
-
-      for (Player p : Entity.world.getPlayers()) {
-        playersToSend.add(p);
-      }
-
-      for (Player pl : playersToSend) {
-        if (player.getKillingSpree() == 1) {
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ has just " +
-            "gained the " + killingSpreeRank[1] + " killing spree rank!");
-        } else if (player.getKillingSpree() == 5) {
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ now has a "
-            + "killing spree of: @or1@" + player.getKillingSpree());
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ has just " +
-            "gained the " + killingSpreeRank[2] + " killing spree rank!");
-        } else if (player.getKillingSpree() == 10) {
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ now has a "
-            + "killing spree of: @or1@" + player.getKillingSpree());
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ has just " +
-            "gained the " + killingSpreeRank[3] + " killing spree rank!");
-        } else if (player.getKillingSpree() == 15) {
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ now has a "
-            + "killing spree of: @or1@" + player.getKillingSpree());
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ has just " +
-            "gained the " + killingSpreeRank[4] + " killing spree rank!");
-        } else if (player.getKillingSpree() == 20) {
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ now has a "
-            + "killing spree of: @or1@" + player.getKillingSpree());
-          pl.getActionSender().sendMessage("[@red@FireScape@whi@] @or1@" + player.getUsername() + "@whi@ has just " +
-            "gained the " + killingSpreeRank[5] + " killing spree rank!");
-        } else {
-          pl.getActionSender().sendMessage("@or1@" + player.getUsername() + "@whi@ has just @red@owned @or1@" +
-            getUsername() + "@whi@ !");
-          pl.getActionSender().sendMessage("@or1@" + getUsername() + "@whi@'s killing spree of " + getKillingSpree()
-            + " has now ended.");
-        }
-      }
-      Entity.world.getDelayedEventHandler().add(new MiniEvent(player) {
-        public void action() {
-          owner.getActionSender().sendScreenshot();
-          owner.actionSender.sendKills();
-          owner.actionSender.sendKillingSpree();
-        }
-      });// setNpc
-      // world.getServer().getLoginConnector().getActionSender().logKill(player.getUsernameHash(),
-      // usernameHash, stake);
-      if (Entity.world.getServer().pvpIsRunning() && Entity.world.getPvpSize() == 2 && Entity.world.getPvpEntry(this)) {
-        Entity.world.setWinner(player);
-        Entity.world.removePvpEntry(player);
-        Entity.world.removePvpEntry(this);
-        player.getInventory().add(new InvItem(10, Entity.world.getJackPot()));
-        player.getActionSender().sendInventory();
-        Entity.world.getServer().stopDuel();
-        Entity.world.clearJackPot();
-        player.teleport(220, 445, false);
-        drop = false;
-      } else if (Entity.world.getServer().pvpIsRunning()) {
-        Entity.world.removePvpEntry(this);
-        drop = false;
-      }
-    }
-    Mob opponent = this.getOpponent();
-    if (opponent != null) {
-      opponent.resetCombat(CombatState.WON);
-    }
-    actionSender.sendDied();
-    for (int i = 0; i < 18; i++) {
-      curStat[i] = maxStat[i];
-      actionSender.sendStat(i);
-    }
-
-    Player player = mob instanceof Player ? (Player) mob : null;
-    if (stake) {
-      for (InvItem item : duelOffer) {
-        InvItem affectedItem = getInventory().get(item);
-        if (affectedItem == null) {
-          setSuspiciousPlayer(true);
-          Logger.error("Missing staked item [" + item.getID() + ", " + item.getAmount() + "] from = " + usernameHash
-            + "; to = " + player.getUsernameHash() + ";");
-          continue;
-        }
-        if (affectedItem.isWielded()) {
-          affectedItem.setWield(false);
-          updateWornItems(affectedItem.getWieldableDef().getWieldPos(), getPlayerAppearance().getSprite(affectedItem
-            .getWieldableDef().getWieldPos()));
-        }
-        getInventory().remove(item);
-        Entity.world.registerItem(new Item(item.getID(), getX(), getY(), item.getAmount(), player));
-      }
-    } else {
-      inventory.sort();
-      ListIterator<InvItem> iterator = inventory.iterator();
-      if (!isSkulled()) {
-        for (int i = 0; i < 3 && iterator.hasNext(); i++) {
-          if ((iterator.next()).getDef().isStackable()) {
-            iterator.previous();
-            break;
-          }
-        }
-      }
-      if (activatedPrayers[8] && iterator.hasNext()) {
-        if (iterator.next().getDef().isStackable()) {
-          iterator.previous();
-        }
-      }
-      for (int slot = 0; iterator.hasNext(); slot++) {
-        InvItem item = iterator.next();
-        if (item.isWielded()) {
-          item.setWield(false);
-          updateWornItems(item.getWieldableDef().getWieldPos(), appearance.getSprite(item.getWieldableDef()
-            .getWieldPos()));
-        }
-        iterator.remove();
-        Entity.world.registerItem(new Item(item.getID(), getX(), getY(), item.getAmount(), player));
-      }
-      removeSkull();
-    }
-    Entity.world.registerItem(new Item(20, getX(), getY(), 1, player));
-
-    for (int x = 0; x < activatedPrayers.length; x++) {
-      if (activatedPrayers[x]) {
-        removePrayerDrain(x);
-        activatedPrayers[x] = false;
-      }
-    }
-    actionSender.sendPrayers();
-
-    setLocation(Point.location(122, 647), true);
-    Player affectedPlayer = Entity.world.getPlayer(usernameHash);
-    Collection<Player> allWatched = watchedPlayers.getAllEntities();
-    for (Player p : allWatched) {
-      p.removeWatchedPlayer(this);
-    }
-
-    resetPath();
-    resetCombat(CombatState.LOST);
-    actionSender.sendWorldInfo();
-    actionSender.sendEquipmentStats();
-    actionSender.sendInventory();
-    affectedPlayer.incDeaths();
-    affectedPlayer.actionSender.sendDeaths();
-    affectedPlayer.setKillingSpree(affectedPlayer.getKillingSpree() - affectedPlayer.getKillingSpree());
-    affectedPlayer.actionSender.sendKillingSpree();
   }
 
   public int getWeaponPowerPoints() {
@@ -992,17 +832,6 @@ public final class Player extends Mob {
     return points < 1 ? 1 : points;
   }
 
-  public void setCurStat( int id, int lvl ) {
-    if (lvl <= 0) {
-      lvl = 0;
-    }
-    curStat[id] = lvl;
-  }
-
-  public int getCurStat( int id ) {
-    return curStat[id];
-  }
-
   public boolean initialized() {
     return initialized;
   }
@@ -1015,14 +844,15 @@ public final class Player extends Mob {
     return drainRate;
   }
 
-  public void setDrainRate( int rate ) {
+  public void setDrainRate(int rate) {
     drainRate = rate;
   }
 
   public int getRangeEquip() {
     for (InvItem item : inventory.getItems()) {
-      if (item.isWielded() && (DataConversions.inArray(Formulae.bowIDs, item.getID()) || DataConversions.inArray
-        (Formulae.xbowIDs, item.getID()))) {
+      if (item.isWielded() &&
+          (DataConversions.inArray(Formulae.bowIDs, item.getID()) ||
+           DataConversions.inArray(Formulae.xbowIDs, item.getID()))) {
         return item.getID();
       }
     }
@@ -1137,7 +967,7 @@ public final class Player extends Mob {
     clearDuelOptions();
   }
 
-  public void setAccessingBank( boolean b ) {
+  public void setAccessingBank(boolean b) {
     inBank = b;
   }
 
@@ -1145,7 +975,7 @@ public final class Player extends Mob {
     return isTrading;
   }
 
-  public void setTrading( boolean b ) {
+  public void setTrading(boolean b) {
     isTrading = b;
   }
 
@@ -1164,20 +994,20 @@ public final class Player extends Mob {
     }
   }
 
-  public void setWishToDuel( Player p ) {
+  public void setWishToDuel(Player p) {
     wishToDuel = p;
   }
 
-  public void setWishToTrade( Player p ) {
+  public void setWishToTrade(Player p) {
     wishToTrade = p;
   }
 
-  public void setMenuHandler( MenuHandler menuHandler ) {
+  public void setMenuHandler(MenuHandler menuHandler) {
     menuHandler.setOwner(this);
     this.menuHandler = menuHandler;
   }
 
-  public void setQuestMenuHandler( MenuHandler menuHandler ) {
+  public void setQuestMenuHandler(MenuHandler menuHandler) {
     this.menuHandler = menuHandler;
     menuHandler.setOwner(this);
     actionSender.sendMenu(menuHandler.getOptions());
@@ -1193,14 +1023,14 @@ public final class Player extends Mob {
     resetTrade();
   }
 
-  public void setAccessingShop( Shop shop ) {
+  public void setAccessingShop(Shop shop) {
     this.shop = shop;
     if (shop != null) {
       shop.addPlayer(this);
     }
   }
 
-  public void setServerKey( long key ) {
+  public void setServerKey(long key) {
     sessionKeys[2] = (int) (key >> 32);
     sessionKeys[3] = (int) key;
   }
@@ -1209,15 +1039,13 @@ public final class Player extends Mob {
     return shop;
   }
 
-  public boolean setSessionKeys( int[] keys ) {
-    System.out.println("CLIENT KEYS: " + Arrays.toString(keys));
-    System.out.println("OUR KEYS: " + Arrays.toString(sessionKeys));
+  public boolean setSessionKeys(int[] keys) {
     boolean valid = (sessionKeys[2] == keys[2] && sessionKeys[3] == keys[3]);
     sessionKeys = keys;
     return valid;
   }
 
-  public void destroy( boolean force ) {
+  public void destroy(boolean force) {
     if (destroy) {
       return;
     }
@@ -1240,8 +1068,8 @@ public final class Player extends Mob {
       long startDestroy = System.currentTimeMillis();
       Entity.world.getDelayedEventHandler().add(new DelayedEvent(this, 3000) {
         public void run() {
-          if (owner.canLogout() || (!(owner.inCombat() && owner.isDueling()) && System.currentTimeMillis() -
-            startDestroy > 60000)) {
+          if (owner.canLogout() ||
+              (!(owner.inCombat() && owner.isDueling()) && System.currentTimeMillis() - startDestroy > 60000)) {
             owner.destroy(true);
             running = false;
           }
@@ -1255,7 +1083,7 @@ public final class Player extends Mob {
     return destroy;
   }
 
-  public void load( String username, String password, int uid, boolean reconnecting ) {
+  public void load(String username, String password, int uid, boolean reconnecting) {
     try {
       InputStream ios = null;
       String redis_key = "players_" + username.toLowerCase();
@@ -1273,7 +1101,6 @@ public final class Player extends Mob {
       this.reconnecting = reconnecting;
       usernameHash = DataConversions.usernameToHash(username);
       this.username = DataConversions.hashToUsername(usernameHash);
-
       Entity.world.getDelayedEventHandler().add(new DelayedEvent(this, 60000) {
         public void run() {
           for (int statIndex = 0; statIndex < 18; statIndex++) {
@@ -1294,10 +1121,10 @@ public final class Player extends Mob {
           }
         }
 
-        private void checkStat( int statIndex ) {
+        private void checkStat(int statIndex) {
           if (statIndex != 3 && owner.getCurStat(statIndex) == owner.getMaxStat(statIndex)) {
-            owner.getActionSender().sendMessage("Your " + Formulae.statArray[statIndex] + " ability has returned" + "" +
-              " to normal.");
+            owner.getActionSender()
+                 .sendMessage("Your " + Formulae.statArray[statIndex] + " ability has returned" + "" + " to normal.");
           }
         }
       });
@@ -1323,11 +1150,9 @@ public final class Player extends Mob {
       Entity.world.getDelayedEventHandler().add(drainer);
       Properties props = new Properties();
       props.load(ios);
-
       setSubscriptionExpires(0); // No sub atm.
       setLastIP(props.getProperty("ip"));
       setLastLogin(Long.parseLong(props.getProperty("ll"))); // Temporary.
-
       rank = Integer.parseInt(props.getProperty("rank"));
       if (this.isAdmin()) {
         GameVars.adminsOnline++;
@@ -1335,8 +1160,8 @@ public final class Player extends Mob {
         GameVars.modsOnline++;
       }
       setLocation(Point.location(Integer.parseInt(props.getProperty("x")), Integer.parseInt(props.getProperty("y"))),
-        true);
-
+                  true
+      );
       setFatigue(Integer.parseInt(props.getProperty("fat")));
       impcatcherstatus = Integer.parseInt(props.getProperty("impcatcherstatus"));
       doricsqueststatus = Integer.parseInt(props.getProperty("doricsqueststatus"));
@@ -1358,33 +1183,30 @@ public final class Player extends Mob {
       setPrivacySetting(1, Integer.parseInt(props.getProperty("ps1")) == 1);
       setPrivacySetting(2, Integer.parseInt(props.getProperty("ps2")) == 1);
       setPrivacySetting(3, Integer.parseInt(props.getProperty("ps3")) == 1);
-
       setGameSetting(0, Integer.parseInt(props.getProperty("gs0")) == 1);
       setGameSetting(2, Integer.parseInt(props.getProperty("gs2")) == 1);
       setGameSetting(3, Integer.parseInt(props.getProperty("gs3")) == 1);
       setGameSetting(4, Integer.parseInt(props.getProperty("gs4")) == 1);
       setGameSetting(5, Integer.parseInt(props.getProperty("gs5")) == 1);
       setGameSetting(6, Integer.parseInt(props.getProperty("gs6")) == 1);
-
-      PlayerAppearance appearance = new PlayerAppearance(Integer.parseInt(props.getProperty("a1")), Integer.parseInt
-        (props.getProperty("a2")), Integer.parseInt(props.getProperty("a3")), Integer.parseInt(props.getProperty
-        ("a4")), Integer.parseInt(props.getProperty("a5")), Integer.parseInt(props.getProperty("a6")));
-
+      PlayerAppearance appearance = new PlayerAppearance(Integer.parseInt(props.getProperty("a1")),
+                                                         Integer.parseInt(props.getProperty("a2")),
+                                                         Integer.parseInt(props.getProperty("a3")),
+                                                         Integer.parseInt(props.getProperty("a4")),
+                                                         Integer.parseInt(props.getProperty("a5")),
+                                                         Integer.parseInt(props.getProperty("a6"))
+      );
       if (!appearance.isValid()) {
         destroy(true);
         getSession().close();
       }
-
       setAppearance(appearance);
       setWornItems(getPlayerAppearance().getSprites());
-
       setMale(Integer.parseInt(props.getProperty("male")) == 1);
-
       long skull = Long.parseLong(props.getProperty("skull"));
       if (skull > 0L) {
         addSkull(skull);
       }
-
       for (int i = 0; i < 18; i++) {
         int exp = Integer.parseInt(props.getProperty("e" + (i + 1)));
         setExp(i, exp);
@@ -1392,7 +1214,6 @@ public final class Player extends Mob {
         setCurStat(i, Integer.parseInt(props.getProperty("c" + (i + 1))));
       }
       setCombatLevel(Formulae.getCombatlevel(getMaxStats()));
-
       int count = Integer.parseInt(props.getProperty("fcount"));
       for (int i = 0; i < count; i++) {
         this.getFriendList().add(props.getProperty("f" + i));
@@ -1414,7 +1235,6 @@ public final class Player extends Mob {
         }
       }
       setInventory(inventory);
-
       Bank bank = new Bank();
       int bnkCount = Integer.parseInt(props.getProperty("bcount"));
       for (int i = 0; i < bnkCount; i++) {
@@ -1424,9 +1244,7 @@ public final class Player extends Mob {
           bank.add(new InvItem(id, amount));
         }
       }
-
       setBank(bank);
-
       if (!this.bad_login) {
         ios.close();
         try (Jedis jedis = Entity.world.redis.getResource()) {
@@ -1441,29 +1259,22 @@ public final class Player extends Mob {
       }
 
       /* End of loading methods */
-
       Entity.world.registerPlayer(this);
-
       MiscPacketBuilder sender = getActionSender();
-
       if (getLastLogin() == 0L) {
         setChangingAppearance(true);
         sender.sendAppearanceScreen();
       }
-
       setLastLogin(System.currentTimeMillis());
       sender.sendLoginBox();
-
       setLoggedIn(true);
       setBusy(false);
       RSCPacketBuilder pb = new RSCPacketBuilder();
       pb.setBare(true);
       pb.addByte((byte) 0);
       getSession().write(pb.toPacket());
-
       updateViewedPlayers();
       updateViewedObjects();
-
       //      sender.sendServerInfo();
       //      sender.sendFatigue();
       //      sender.sendImpCatcherComplete();
@@ -1490,7 +1301,6 @@ public final class Player extends Mob {
       sender.sendFriendList();
       sender.sendIgnoreList();
       sender.sendCombatStyle();
-
       // GUI.populateWorldList();
       for (Player p : Entity.world.getPlayers()) {
         if (p.isFriendsWith(this.getUsername())) {
@@ -1505,16 +1315,6 @@ public final class Player extends Mob {
           sender.sendFriendUpdate(DataConversions.usernameToHash(player), 0);
         }
       }
-
-      sender.sendMessage("    "); // ROFL at this, its to stop the stupid
-      // friends list saying xx logged out when
-      // someone logs in, ill fix it up later
-      sender.sendMessage("    ");
-      sender.sendMessage("    ");
-      sender.sendMessage("@yel@Welcome to @whi@" + GameVars.serverName);
-      sender.sendMessage("@yel@Powered by: @whi@" + "FireScape Emulator v" + GameVars.projectVersion);
-      sender.sendMessage("@yel@Online Players: @whi@" + (GameVars.usersOnline + 1) + "  @yel@Peak: @whi@" + (GameVars
-        .userPeak + 1));
       int timeTillShutdown = Entity.world.getServer().timeTillShutdown();
       if (timeTillShutdown > -1) {
         sender.startShutdown(timeTillShutdown / 1000);
@@ -1529,7 +1329,6 @@ public final class Player extends Mob {
 
   public void save() {
     try {
-
       if (!this.bad_login) {
         Properties pr = new Properties();
         String username = this.getUsername().replaceAll(" ", "_");
@@ -1552,7 +1351,6 @@ public final class Player extends Mob {
           jedis.set("players_" + username.toLowerCase(), bos.toString());
 
         }
-
         pr.setProperty("rank", "" + this.rank);
         pr.setProperty("x", "" + this.getLocation().getX());
         pr.setProperty("y", "" + this.getLocation().getY());
@@ -1583,7 +1381,6 @@ public final class Player extends Mob {
         pr.setProperty("gs2", "" + (this.getGameSetting(2) ? 1 : 0));
         pr.setProperty("gs3", "" + (this.getGameSetting(3) ? 1 : 0));
         pr.setProperty("gs4", "" + (this.getGameSetting(4) ? 1 : 0));
-
         pr.setProperty("gs5", "" + (this.getGameSetting(5) ? 1 : 0));
         pr.setProperty("gs6", "" + (this.getGameSetting(6) ? 1 : 0));
         pr.setProperty("a1", "" + this.appearance.getHairColour());
@@ -1594,12 +1391,10 @@ public final class Player extends Mob {
         pr.setProperty("a6", "" + this.appearance.body);
         pr.setProperty("male", "" + (this.isMale() ? 1 : 0));
         pr.setProperty("skull", "" + (this.getSkullTime() > 0 ? this.getSkullTime() : 0));
-
         for (int i = 0; i < 18; i++) {
           pr.setProperty("c" + (i + 1), "" + this.getCurStat(i));
           pr.setProperty("e" + (i + 1), "" + this.getExp(i));
         }
-
         int count = this.getInventory().size();
         pr.setProperty("icount", "" + count);
         for (int i = 0; i < count; i++) {
@@ -1608,13 +1403,11 @@ public final class Player extends Mob {
           pr.setProperty("ia" + i, "" + item.getAmount());
           pr.setProperty("iw" + i, "" + (item.isWielded() ? 1 : 0));
         }
-
         count = this.getFriendList().size();
         pr.setProperty("fcount", "" + count);
         for (int i = 0; i < count; i++) {
           pr.setProperty("f" + i, "" + this.getFriendList().get(i));
         }
-
         count = this.getBank().size();
         pr.setProperty("bcount", "" + count);
         for (int i = 0; i < count; i++) {
@@ -1622,11 +1415,9 @@ public final class Player extends Mob {
           pr.setProperty("b" + i, "" + item.getID());
           pr.setProperty("ba" + i, "" + item.getAmount());
         }
-
         // FileOutputStream fos = new FileOutputStream(f);
         // pr.store(fos, "Character Data.");
         // fos.close();
-
         try (Jedis jedis = Entity.world.redis.getResource()) {
           ByteArrayOutputStream bos = new ByteArrayOutputStream();
           pr.store(bos, "Redis backed character data");
@@ -1636,7 +1427,6 @@ public final class Player extends Mob {
 
       }
     } catch (IOException e) {
-
       System.out.println(e);
     }
   }
@@ -1717,11 +1507,19 @@ public final class Player extends Mob {
     return lastLogin;
   }
 
-  public boolean getPrivacySetting( int i ) {
+  public int getCombatStyle() {
+    return combatStyle;
+  }
+
+  public void setCombatStyle(int style) {
+    combatStyle = style;
+  }
+
+  public boolean getPrivacySetting(int i) {
     return privacySettings[i];
   }
 
-  public boolean getGameSetting( int i ) {
+  public boolean getGameSetting(int i) {
     return gameSettings[i];
   }
 
@@ -1736,7 +1534,7 @@ public final class Player extends Mob {
     return 0;
   }
 
-  public int getExp( int id ) {
+  public int getExp(int id) {
     return exp[id];
   }
 
@@ -1752,91 +1550,91 @@ public final class Player extends Mob {
     return bank;
   }
 
-  public void setBank( Bank b ) {
+  public void setBank(Bank b) {
     bank = b;
   }
 
-  public void setInventory( Inventory i ) {
+  public void setInventory(Inventory i) {
     inventory = i;
   }
 
-  public void setMale( boolean male ) {
+  public void setMale(boolean male) {
     maleGender = male;
   }
 
-  public void setLastLogin( long l ) {
+  public void setLastLogin(long l) {
     lastLogin = l;
   }
 
-  public void setLastIP( String ip ) {
+  public void setLastIP(String ip) {
     lastIP = ip;
   }
 
-  public void setQuestPoints( int i ) {
+  public void setQuestPoints(int i) {
     questpoints = i;
     actionSender.sendQuestPoints();
   }
 
-  public void setDeaths( int i ) {
+  public void setDeaths(int i) {
     deaths = i;
   }
 
-  public void setKills( int i ) {
+  public void setKills(int i) {
     kills = i;
   }
 
-  public void setMute( int i ) {
+  public void setMute(int i) {
     mute = i;
   }
 
-  public void setKillingSpree( int i ) {
+  public void setKillingSpree(int i) {
     killingspree = i;
   }
 
-  public void setZamorakSpellCast( int i ) {
+  public void setZamorakSpellCast(int i) {
     zamorakspellcast = i;
     actionSender.sendZamorakSpellCast();
   }
 
-  public void setSaradominSpellCast( int i ) {
+  public void setSaradominSpellCast(int i) {
     saradominspellcast = i;
     actionSender.sendSaradominSpellCast();
   }
 
-  public void setGuthixSpellCast( int i ) {
+  public void setGuthixSpellCast(int i) {
     guthixspellcast = i;
     actionSender.sendGuthixSpellCast();
   }
 
-  public void setDruidicRitualStatus( int druidicritualstatus ) {
+  public void setDruidicRitualStatus(int druidicritualstatus) {
     this.druidicritualstatus = druidicritualstatus;
   }
 
-  public void setCooksAssistantStatus( int cooksassisstatus ) {
+  public void setCooksAssistantStatus(int cooksassisstatus) {
     this.cooksassisstatus = cooksassisstatus;
   }
 
-  public void setDoricsQuestStatus( int doricsqueststatus ) {
+  public void setDoricsQuestStatus(int doricsqueststatus) {
     this.doricsqueststatus = doricsqueststatus;
   }
 
-  public void setWitchPotionStatus( int witchpotstatus ) {
+  public void setWitchPotionStatus(int witchpotstatus) {
     this.witchpotstatus = witchpotstatus;
   }
 
-  public void setSheepShearerStatus( int shearerstatus ) {
+  public void setSheepShearerStatus(int shearerstatus) {
     this.shearerstatus = shearerstatus;
   }
 
-  public void setRomeoJulietStatus( int romeostatus ) {
+  public void setRomeoJulietStatus(int romeostatus) {
     this.romeostatus = romeostatus;
   }
 
-  public void setImpCatcherStatus( int impcatcherstatus ) {
+  public void setImpCatcherStatus(int impcatcherstatus) {
     this.impcatcherstatus = impcatcherstatus;
   }
 
-  public void setFatigue( int fatigue ) {
+  public void setFatigue(int fatigue) {
     this.fatigue = fatigue;
   }
 
@@ -1846,7 +1644,7 @@ public final class Player extends Mob {
     return json;
   }
 
-  public boolean wielding( int id ) {
+  public boolean wielding(int id) {
     ListIterator iterator = getInventory().iterator();
     for (int slot = 0; iterator.hasNext(); slot++) {
       InvItem item = (InvItem) iterator.next();
@@ -1865,8 +1663,215 @@ public final class Player extends Mob {
     return System.currentTimeMillis() - lastCharge > 600000;
   }
 
-  public void killedBy( Mob mob ) {
+  public void killedBy(Mob mob) {
     killedBy(mob, false);
+  }
+
+  public void killedBy(Mob mob, boolean stake) {
+    boolean drop = true;
+    if (!loggedIn) {
+      Logger.error(username + " not logged in, but killed!");
+      return;
+    }
+    if (mob instanceof Player) {
+      Player player = (Player) mob;
+      player.getActionSender().sendMessage("You have defeated " + getUsername() + "!");
+      player.incKills();
+      actionSender.sendKills();
+      player.incKillingSpree();
+      actionSender.sendKillingSpree();
+      player.getActionSender().sendSound("victory");
+      ArrayList<Player> playersToSend = new ArrayList<Player>();
+      for (Player p : Entity.world.getPlayers()) {
+        playersToSend.add(p);
+      }
+      for (Player pl : playersToSend) {
+        if (player.getKillingSpree() == 1) {
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ has just " +
+                         "gained the " +
+                         killingSpreeRank[1] +
+                         " killing spree rank!");
+        } else if (player.getKillingSpree() == 5) {
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ now has a " +
+                         "killing spree of: @or1@" +
+                         player.getKillingSpree());
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ has just " +
+                         "gained the " +
+                         killingSpreeRank[2] +
+                         " killing spree rank!");
+        } else if (player.getKillingSpree() == 10) {
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ now has a " +
+                         "killing spree of: @or1@" +
+                         player.getKillingSpree());
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ has just " +
+                         "gained the " +
+                         killingSpreeRank[3] +
+                         " killing spree rank!");
+        } else if (player.getKillingSpree() == 15) {
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ now has a " +
+                         "killing spree of: @or1@" +
+                         player.getKillingSpree());
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ has just " +
+                         "gained the " +
+                         killingSpreeRank[4] +
+                         " killing spree rank!");
+        } else if (player.getKillingSpree() == 20) {
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ now has a " +
+                         "killing spree of: @or1@" +
+                         player.getKillingSpree());
+          pl.getActionSender()
+            .sendMessage("[@red@FireScape@whi@] @or1@" +
+                         player.getUsername() +
+                         "@whi@ has just " +
+                         "gained the " +
+                         killingSpreeRank[5] +
+                         " killing spree rank!");
+        } else {
+          pl.getActionSender()
+            .sendMessage("@or1@" +
+                         player.getUsername() +
+                         "@whi@ has just @red@owned @or1@" +
+                         getUsername() +
+                         "@whi@ !");
+          pl.getActionSender()
+            .sendMessage("@or1@" + getUsername() + "@whi@'s killing spree of " + getKillingSpree() + " has now ended.");
+        }
+      }
+      Entity.world.getDelayedEventHandler().add(new MiniEvent(player) {
+        public void action() {
+          owner.getActionSender().sendScreenshot();
+          owner.actionSender.sendKills();
+          owner.actionSender.sendKillingSpree();
+        }
+      });// setNpc
+      // world.getServer().getLoginConnector().getActionSender().logKill(player.getUsernameHash(),
+      // usernameHash, stake);
+      if (Entity.world.getServer().pvpIsRunning() && Entity.world.getPvpSize() == 2 && Entity.world.getPvpEntry(this)) {
+        Entity.world.setWinner(player);
+        Entity.world.removePvpEntry(player);
+        Entity.world.removePvpEntry(this);
+        player.getInventory().add(new InvItem(10, Entity.world.getJackPot()));
+        player.getActionSender().sendInventory();
+        Entity.world.getServer().stopDuel();
+        Entity.world.clearJackPot();
+        player.teleport(220, 445, false);
+        drop = false;
+      } else if (Entity.world.getServer().pvpIsRunning()) {
+        Entity.world.removePvpEntry(this);
+        drop = false;
+      }
+    }
+    Mob opponent = this.getOpponent();
+    if (opponent != null) {
+      opponent.resetCombat(CombatState.WON);
+    }
+    actionSender.sendDied();
+    for (int i = 0; i < 18; i++) {
+      curStat[i] = maxStat[i];
+      actionSender.sendStat(i);
+    }
+    Player player = mob instanceof Player ? (Player) mob : null;
+    if (stake) {
+      for (InvItem item : duelOffer) {
+        InvItem affectedItem = getInventory().get(item);
+        if (affectedItem == null) {
+          setSuspiciousPlayer(true);
+          Logger.error("Missing staked item [" +
+                       item.getID() +
+                       ", " +
+                       item.getAmount() +
+                       "] from = " +
+                       usernameHash +
+                       "; to = " +
+                       player.getUsernameHash() +
+                       ";");
+          continue;
+        }
+        if (affectedItem.isWielded()) {
+          affectedItem.setWield(false);
+          updateWornItems(affectedItem.getWieldableDef().getWieldPos(),
+                          getPlayerAppearance().getSprite(affectedItem.getWieldableDef().getWieldPos())
+          );
+        }
+        getInventory().remove(item);
+        Entity.world.registerItem(new Item(item.getID(), getX(), getY(), item.getAmount(), player));
+      }
+    } else {
+      inventory.sort();
+      ListIterator<InvItem> iterator = inventory.iterator();
+      if (!isSkulled()) {
+        for (int i = 0; i < 3 && iterator.hasNext(); i++) {
+          if ((iterator.next()).getDef().isStackable()) {
+            iterator.previous();
+            break;
+          }
+        }
+      }
+      if (activatedPrayers[8] && iterator.hasNext()) {
+        if (iterator.next().getDef().isStackable()) {
+          iterator.previous();
+        }
+      }
+      for (int slot = 0; iterator.hasNext(); slot++) {
+        InvItem item = iterator.next();
+        if (item.isWielded()) {
+          item.setWield(false);
+          updateWornItems(item.getWieldableDef().getWieldPos(),
+                          appearance.getSprite(item.getWieldableDef().getWieldPos())
+          );
+        }
+        iterator.remove();
+        Entity.world.registerItem(new Item(item.getID(), getX(), getY(), item.getAmount(), player));
+      }
+      removeSkull();
+    }
+    Entity.world.registerItem(new Item(20, getX(), getY(), 1, player));
+    for (int x = 0; x < activatedPrayers.length; x++) {
+      if (activatedPrayers[x]) {
+        removePrayerDrain(x);
+        activatedPrayers[x] = false;
+      }
+    }
+    actionSender.sendPrayers();
+    setLocation(Point.location(122, 647), true);
+    Player affectedPlayer = Entity.world.getPlayer(usernameHash);
+    Collection<Player> allWatched = watchedPlayers.getAllEntities();
+    for (Player p : allWatched) {
+      p.removeWatchedPlayer(this);
+    }
+    resetPath();
+    resetCombat(CombatState.LOST);
+    actionSender.sendWorldInfo();
+    actionSender.sendEquipmentStats();
+    actionSender.sendInventory();
+    affectedPlayer.incDeaths();
+    affectedPlayer.actionSender.sendDeaths();
+    affectedPlayer.setKillingSpree(affectedPlayer.getKillingSpree() - affectedPlayer.getKillingSpree());
+    affectedPlayer.actionSender.sendKillingSpree();
   }
 
   public MiscPacketBuilder getActionSender() {
@@ -1881,7 +1886,7 @@ public final class Player extends Mob {
     killingspree++;
   }
 
-  public void teleport( int x, int y, boolean bubble ) {
+  public void teleport(int x, int y, boolean bubble) {
     Mob opponent = this.getOpponent();
     if (inCombat()) {
       resetCombat(CombatState.ERROR);
@@ -1904,11 +1909,11 @@ public final class Player extends Mob {
     actionSender.sendWorldInfo();
   }
 
-  public void setSuspiciousPlayer( boolean suspicious ) {
+  public void setSuspiciousPlayer(boolean suspicious) {
     this.suspicious = suspicious;
   }
 
-  public void updateWornItems( int index, int id ) {
+  public void updateWornItems(int index, int id) {
     wornItems[index] = id;
     this.ourAppearanceChanged = true;
   }
@@ -1917,7 +1922,7 @@ public final class Player extends Mob {
     return appearance;
   }
 
-  public void removePrayerDrain( int prayerID ) {
+  public void removePrayerDrain(int prayerID) {
     PrayerDef prayer = EntityHandler.getPrayerDef(prayerID);
     drainRate -= prayer.getDrainRate();
     if (drainRate <= 0) {
@@ -1928,7 +1933,7 @@ public final class Player extends Mob {
     }
   }
 
-  public void removeWatchedPlayer( Player p ) {
+  public void removeWatchedPlayer(Player p) {
     watchedPlayers.remove(p);
   }
 
@@ -1969,7 +1974,7 @@ public final class Player extends Mob {
   }
 
   // destroy
-  public boolean checkAttack( Mob mob, boolean missile ) {
+  public boolean checkAttack(Mob mob, boolean missile) {
     if (mob instanceof Player) {
       Player victim = (Player) mob;
       if ((inCombat() && isDueling()) && (victim.inCombat() && victim.isDueling())) {
@@ -1978,8 +1983,9 @@ public final class Player extends Mob {
           return true;
         }
       }
-      if (System.currentTimeMillis() - mob.getCombatTimer() < (mob.getCombatState() == CombatState.RUNNING || mob
-        .getCombatState() == CombatState.WAITING ? 3000 : 500) && !mob.inCombat()) {
+      if (System.currentTimeMillis() - mob.getCombatTimer() <
+          (mob.getCombatState() == CombatState.RUNNING || mob.getCombatState() == CombatState.WAITING ? 3000 : 500) &&
+          !mob.inCombat()) {
         return false;
       }
       int myWildLvl = getLocation().wildernessLevel();
@@ -1990,8 +1996,11 @@ public final class Player extends Mob {
       }
       int combDiff = Math.abs(getCombatLevel() - victim.getCombatLevel());
       if (combDiff > myWildLvl) {
-        actionSender.sendMessage("You must move to at least level " + combDiff + " wilderness to attack " + victim
-          .getUsername() + "!");
+        actionSender.sendMessage("You must move to at least level " +
+                                 combDiff +
+                                 " wilderness to attack " +
+                                 victim.getUsername() +
+                                 "!");
         return false;
       }
       if (combDiff > victimWildLvl) {
@@ -2010,7 +2019,7 @@ public final class Player extends Mob {
     return true;
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof Player) {
       Player p = (Player) o;
       return usernameHash == p.getUsernameHash();
@@ -2018,7 +2027,7 @@ public final class Player extends Mob {
     return false;
   }
 
-  public void informOfBubble( Bubble b ) {
+  public void informOfBubble(Bubble b) {
     bubblesNeedingDisplayed.add(b);
   }
 
@@ -2030,16 +2039,16 @@ public final class Player extends Mob {
     bubblesNeedingDisplayed.clear();
   }
 
-  public void informOfChatMessage( ChatMessage cm ) {
+  public void informOfChatMessage(ChatMessage cm) {
     chatMessagesNeedingDisplayed.add(cm);
   }
 
-  public void sayMessage( String msg, Mob to ) {
+  public void sayMessage(String msg, Mob to) {
     ChatMessage cm = new ChatMessage(this, msg, to);
     chatMessagesNeedingDisplayed.add(cm);
   }
 
-  public void informOfNpcMessage( ChatMessage cm ) {
+  public void informOfNpcMessage(ChatMessage cm) {
     npcMessagesNeedingDisplayed.add(cm);
   }
 
@@ -2059,7 +2068,7 @@ public final class Player extends Mob {
     chatMessagesNeedingDisplayed.clear();
   }
 
-  public void informOfModifiedHits( Mob mob ) {
+  public void informOfModifiedHits(Mob mob) {
     if (mob instanceof Player) {
       playersNeedingHitsUpdate.add((Player) mob);
     } else if (mob instanceof Npc) {
@@ -2083,7 +2092,7 @@ public final class Player extends Mob {
     npcsNeedingHitsUpdate.clear();
   }
 
-  public void informOfProjectile( Projectile p ) {
+  public void informOfProjectile(Projectile p) {
     projectilesNeedingDisplayed.add(p);
   }
 
@@ -2095,17 +2104,17 @@ public final class Player extends Mob {
     projectilesNeedingDisplayed.clear();
   }
 
-  public void addPrayerDrain( int prayerID ) {
+  public void addPrayerDrain(int prayerID) {
     PrayerDef prayer = EntityHandler.getPrayerDef(prayerID);
     drainRate += prayer.getDrainRate();
     drainer.setDelay(240000 / drainRate);
   }
 
-  public boolean isFriendsWith( String username ) {
+  public boolean isFriendsWith(String username) {
     return friendList.contains(username);
   }
 
-  public boolean isIgnoring( String user ) {
+  public boolean isIgnoring(String user) {
     return ignoreList.contains(user);
   }
 
@@ -2113,15 +2122,15 @@ public final class Player extends Mob {
     return ignoreList;
   }
 
-  public void removeFriend( String user ) {
+  public void removeFriend(String user) {
     friendList.remove(user);
   }
 
-  public void removeIgnore( String user ) {
+  public void removeIgnore(String user) {
     ignoreList.remove(user);
   }
 
-  public void addFriend( String name ) {
+  public void addFriend(String name) {
     if (friendList.size() >= 50) {
       getActionSender().sendMessage("Sorry your friends list is Full.");
     } else {
@@ -2129,7 +2138,7 @@ public final class Player extends Mob {
     }
   }
 
-  public void addIgnore( String user ) {
+  public void addIgnore(String user) {
     ignoreList.add(user);
   }
 
@@ -2145,7 +2154,7 @@ public final class Player extends Mob {
     return tradeConfirmAccepted;
   }
 
-  public void setTradeConfirmAccepted( boolean b ) {
+  public void setTradeConfirmAccepted(boolean b) {
     tradeConfirmAccepted = b;
   }
 
@@ -2153,7 +2162,7 @@ public final class Player extends Mob {
     return duelConfirmAccepted;
   }
 
-  public void setDuelConfirmAccepted( boolean b ) {
+  public void setDuelConfirmAccepted(boolean b) {
     duelConfirmAccepted = b;
   }
 
@@ -2161,7 +2170,7 @@ public final class Player extends Mob {
     return tradeOfferAccepted;
   }
 
-  public void setTradeOfferAccepted( boolean b ) {
+  public void setTradeOfferAccepted(boolean b) {
     tradeOfferAccepted = b;
   }
 
@@ -2169,15 +2178,15 @@ public final class Player extends Mob {
     return duelOfferAccepted;
   }
 
-  public void setDuelOfferAccepted( boolean b ) {
+  public void setDuelOfferAccepted(boolean b) {
     duelOfferAccepted = b;
   }
 
-  public void addToTradeOffer( InvItem item ) {
+  public void addToTradeOffer(InvItem item) {
     tradeOffer.add(item);
   }
 
-  public void addToDuelOffer( InvItem item ) {
+  public void addToDuelOffer(InvItem item) {
     duelOffer.add(item);
   }
 
@@ -2185,7 +2194,7 @@ public final class Player extends Mob {
     return tradeOffer;
   }
 
-  public boolean getDuelSetting( int i ) {
+  public boolean getDuelSetting(int i) {
     try {
       for (InvItem item : duelOffer) {
         if (DataConversions.inArray(Formulae.runeIDs, item.getID())) {
@@ -2205,7 +2214,7 @@ public final class Player extends Mob {
   }
 
   // IoSession
-  public void setDuelSetting( int i, boolean b ) {
+  public void setDuelSetting(int i, boolean b) {
     duelOptions[i] = b;
   }
 
@@ -2217,7 +2226,7 @@ public final class Player extends Mob {
     return changingAppearance;
   }
 
-  public void setChangingAppearance( boolean b ) {
+  public void setChangingAppearance(boolean b) {
     changingAppearance = b;
   }
 
@@ -2242,7 +2251,7 @@ public final class Player extends Mob {
     return rank;
   }
 
-  public void setGroupID( int id ) {
+  public void setGroupID(int id) {
     rank = id;
   }
 
@@ -2300,16 +2309,16 @@ public final class Player extends Mob {
     return wornItems;
   }
 
-  public void setWornItems( int[] worn ) {
+  public void setWornItems(int[] worn) {
     wornItems = worn;
     this.ourAppearanceChanged = true;
   }
 
-  public void setGameSetting( int i, boolean b ) {
+  public void setGameSetting(int i, boolean b) {
     gameSettings[i] = b;
   }
 
-  public void setPrivacySetting( int i, boolean b ) {
+  public void setPrivacySetting(int i, boolean b) {
     privacySettings[i] = b;
   }
 
@@ -2321,13 +2330,12 @@ public final class Player extends Mob {
     return ioSession;
   }
 
-  public void setLoggedIn( boolean loggedIn ) {
+  public void setLoggedIn(boolean loggedIn) {
     if (loggedIn) {
       currentLogin = System.currentTimeMillis();
     }
     this.loggedIn = loggedIn;
   }
-
   // destroy
 
   public String getPassword() {
@@ -2338,11 +2346,11 @@ public final class Player extends Mob {
     lastPing = System.currentTimeMillis();
   }
 
-  public void setAppearance( PlayerAppearance appearance ) {
+  public void setAppearance(PlayerAppearance appearance) {
     this.appearance = appearance;
   }
 
-  public void addPlayersAppearanceIDs( int[] indicies, int[] appearanceIDs ) {
+  public void addPlayersAppearanceIDs(int[] indicies, int[] appearanceIDs) {
     for (int x = 0; x < indicies.length; x++) {
       knownPlayersAppearanceIDs.put(indicies[x], appearanceIDs[x]);
     }
@@ -2362,7 +2370,7 @@ public final class Player extends Mob {
     return needingUpdates;
   }
 
-  private boolean needsAppearanceUpdateFor( Player p ) {
+  private boolean needsAppearanceUpdateFor(Player p) {
     int playerServerIndex = p.getIndex();
     if (knownPlayersAppearanceIDs.containsKey(playerServerIndex)) {
       int knownPlayerAppearanceID = knownPlayersAppearanceIDs.get(playerServerIndex);
@@ -2414,11 +2422,10 @@ public final class Player extends Mob {
   /**
    * This is a 'another player has tapped us on the shoulder' method.
    * <p>
-   * If we are in another players viewArea, they should in theory be in ours. So
-   * they will call this method to let the player know they should probably be
-   * informed of them.
+   * If we are in another players viewArea, they should in theory be in ours. So they will call this method to let the
+   * player know they should probably be informed of them.
    */
-  public void informOfPlayer( Player p ) {
+  public void informOfPlayer(Player p) {
     if ((!watchedPlayers.contains(p) || watchedPlayers.isRemoving(p)) && withinRange(p)) {
       watchedPlayers.add(p);
     }
@@ -2436,7 +2443,7 @@ public final class Player extends Mob {
     return watchedNpcs;
   }
 
-  public void removeWatchedNpc( Npc n ) {
+  public void removeWatchedNpc(Npc n) {
     watchedNpcs.remove(n);
   }
 
@@ -2481,11 +2488,11 @@ public final class Player extends Mob {
     return curStat;
   }
 
-  public int getMaxStat( int id ) {
+  public int getMaxStat(int id) {
     return maxStat[id];
   }
 
-  public void setMaxStat( int id, int lvl ) {
+  public void setMaxStat(int id, int lvl) {
     if (lvl < 0) {
       lvl = 0;
     }
@@ -2504,7 +2511,7 @@ public final class Player extends Mob {
     return total;
   }
 
-  public void incExp( int i, int amount, boolean useFatigue, boolean multiplied ) {
+  public void incExp(int i, int amount, boolean useFatigue, boolean multiplied) {
     if (GameVars.useFatigue) {
       if (useFatigue) {
         if (fatigue >= 100) {
@@ -2547,14 +2554,14 @@ public final class Player extends Mob {
     }
   }
 
-  public void incCurStat( int i, int amount ) {
+  public void incCurStat(int i, int amount) {
     curStat[i] += amount;
     if (curStat[i] < 0) {
       curStat[i] = 0;
     }
   }
 
-  public void incMaxStat( int i, int amount ) {
+  public void incMaxStat(int i, int amount) {
     maxStat[i] += amount;
     if (maxStat[i] < 0) {
       maxStat[i] = 0;
@@ -2566,16 +2573,15 @@ public final class Player extends Mob {
     return exp;
   }
 
-  public void setExp( int id, int lvl ) {
+  public void setExp(int id, int lvl) {
     if (lvl < 0) {
       lvl = 0;
     }
     exp[id] = lvl;
   }
 
-  public void setExp( int[] lvls ) {
+  public void setExp(int[] lvls) {
     exp = lvls;
   }
-
 
 }

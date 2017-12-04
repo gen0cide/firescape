@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,7 +10,7 @@ public class MonkHealer implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Greetings traveller", player));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
@@ -17,7 +18,7 @@ public class MonkHealer implements NpcHandler {
         owner.setBusy(false);
         String[] options = { "Can you heal me? I'm injured" };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy()) {
               return;
             }

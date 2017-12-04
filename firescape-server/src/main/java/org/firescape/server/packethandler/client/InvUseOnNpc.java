@@ -1,6 +1,7 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToMobEvent;
 import org.firescape.server.model.*;
@@ -15,7 +16,7 @@ public class InvUseOnNpc implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -32,8 +33,12 @@ public class InvUseOnNpc implements PacketHandler {
     world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedNpc, 1) {
       public void arrived() {
         owner.resetPath();
-        if (!owner.getInventory().contains(item) || owner.isBusy() || owner.isRanging() || !owner.nextTo(affectedNpc)
-          || affectedNpc.isBusy() || owner.getStatus() != Action.USING_INVITEM_ON_NPC) {
+        if (!owner.getInventory().contains(item) ||
+            owner.isBusy() ||
+            owner.isRanging() ||
+            !owner.nextTo(affectedNpc) ||
+            affectedNpc.isBusy() ||
+            owner.getStatus() != Action.USING_INVITEM_ON_NPC) {
           return;
         }
         owner.resetAll();
@@ -187,7 +192,7 @@ public class InvUseOnNpc implements PacketHandler {
         }
       }
 
-      private boolean itemId( int[] ids ) {
+      private boolean itemId(int[] ids) {
         return DataConversions.inArray(ids, item.getID());
       }
 

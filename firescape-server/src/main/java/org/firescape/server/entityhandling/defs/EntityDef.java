@@ -1,8 +1,7 @@
 package org.firescape.server.entityhandling.defs;
 
 /**
- * The abstract class EntityDef implements methods for return values which are
- * shared between entities.
+ * The abstract class EntityDef implements methods for return values which are shared between entities.
  */
 public abstract class EntityDef {
 

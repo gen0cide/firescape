@@ -19,7 +19,7 @@ public class InvUseOnGroundItem implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -44,8 +44,11 @@ public class InvUseOnGroundItem implements PacketHandler {
     player.setStatus(Action.USING_INVITEM_ON_GITEM);
     world.getDelayedEventHandler().add(new WalkToPointEvent(player, location, 1, false) {
       public void arrived() {
-        if (owner.isBusy() || owner.isRanging() || !tile.hasItem(item) || !owner.nextTo(item) || owner.getStatus() !=
-          Action.USING_INVITEM_ON_GITEM) {
+        if (owner.isBusy() ||
+            owner.isRanging() ||
+            !tile.hasItem(item) ||
+            !owner.nextTo(item) ||
+            owner.getStatus() != Action.USING_INVITEM_ON_GITEM) {
           return;
         }
         switch (item.getID()) {
@@ -61,8 +64,11 @@ public class InvUseOnGroundItem implements PacketHandler {
               return;
             }
             if (owner.getCurStat(11) < def.getRequiredLevel()) {
-              owner.getActionSender().sendMessage("You need at least " + def.getRequiredLevel() + " firemaking " +
-                "to light these logs.");
+              owner.getActionSender()
+                   .sendMessage("You need at least " +
+                                def.getRequiredLevel() +
+                                " firemaking " +
+                                "to light these logs.");
               return;
             }
             owner.setBusy(true);
@@ -102,13 +108,13 @@ public class InvUseOnGroundItem implements PacketHandler {
         }
       }
 
-      private boolean itemId( int[] ids ) {
+      private boolean itemId(int[] ids) {
         return DataConversions.inArray(ids, myItem.getID());
       }
     });
   }
 
-  private Item getItem( int id, ActiveTile tile, Player player ) {
+  private Item getItem(int id, ActiveTile tile, Player player) {
     for (Item i : tile.getItems()) {
       if (i.getID() == id && i.visibleTo(player)) {
         return i;

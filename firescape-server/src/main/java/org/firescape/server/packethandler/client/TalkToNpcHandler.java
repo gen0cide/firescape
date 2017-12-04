@@ -1,6 +1,7 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.WalkToMobEvent;
 import org.firescape.server.model.Npc;
 import org.firescape.server.model.Player;
@@ -17,7 +18,7 @@ public class TalkToNpcHandler implements PacketHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handlePacket( Packet p, IoSession session ) throws Exception {
+  public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       player.resetPath();
@@ -33,8 +34,10 @@ public class TalkToNpcHandler implements PacketHandler {
     world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedNpc, 1) {
       public void arrived() {
         owner.resetPath();
-        if (owner.isBusy() || owner.isRanging() || !owner.nextTo(affectedNpc) || owner.getStatus() != Action
-          .TALKING_MOB) {
+        if (owner.isBusy() ||
+            owner.isRanging() ||
+            !owner.nextTo(affectedNpc) ||
+            owner.getStatus() != Action.TALKING_MOB) {
           return;
         }
         owner.resetAll();
@@ -45,44 +48,56 @@ public class TalkToNpcHandler implements PacketHandler {
         affectedNpc.resetPath();
         NpcHandler handler = DelayedEvent.world.getNpcHandler(affectedNpc.getID());
         int sprite = 0;
-
-        sprite = getSprite(owner.getLocation().getX(), owner.getLocation().getY(), affectedNpc.getLocation().getX(),
-          affectedNpc.getLocation().getY());
+        sprite = getSprite(
+          owner.getLocation().getX(),
+          owner.getLocation().getY(),
+          affectedNpc.getLocation().getX(),
+          affectedNpc.getLocation().getY()
+        );
         if (sprite != -1) {
           owner.setSprite(sprite);
         }
         // owner.setNeedsUpdate(true);
-
         // NPC sprite
-        sprite = getSprite(affectedNpc.getLocation().getX(), affectedNpc.getLocation().getY(), owner.getLocation()
-          .getX(), owner.getLocation().getY());
+        sprite = getSprite(
+          affectedNpc.getLocation().getX(),
+          affectedNpc.getLocation().getY(),
+          owner.getLocation().getX(),
+          owner.getLocation().getY()
+        );
         if (sprite != -1) {
           affectedNpc.setSprite(sprite);
         }
-
         affectedNpc.resetPath();
         if (handler != null) {
           try {
             handler.handleNpc(affectedNpc, owner);
           } catch (Exception e) {
-            Logger.error("Exception with npc[" + affectedNpc.getIndex() + "] from " + owner.getUsername() + " [" +
-              owner.getCurrentIP() + "]: " + e.getMessage());
+            Logger.error("Exception with npc[" +
+                         affectedNpc.getIndex() +
+                         "] from " +
+                         owner.getUsername() +
+                         " [" +
+                         owner.getCurrentIP() +
+                         "]: " +
+                         e.getMessage());
             owner.getActionSender().sendLogout();
             owner.destroy(false);
           }
         } else {
-          owner.getActionSender().sendMessage("The " + affectedNpc.getDef().getName() + " does not appear " +
-            "interested in talking to you.");
+          owner.getActionSender()
+               .sendMessage("The " +
+                            affectedNpc.getDef().getName() +
+                            " does not appear " +
+                            "interested in talking to you.");
         }
       }
     });
   }
 
-  public static int getSprite( int x1, int y1, int x2, int y2 ) {
-
+  public static int getSprite(int x1, int y1, int x2, int y2) {
     int newx = x1 - x2;
     int newy = y1 - y2;
-
     if (newx == -1 && newy == -1) {
       // TURN SOUTHWEST
       return 3;
@@ -108,7 +123,6 @@ public class TalkToNpcHandler implements PacketHandler {
       // TURN SOUTH
       return 4;
     }
-
     return -1;
   }
 }

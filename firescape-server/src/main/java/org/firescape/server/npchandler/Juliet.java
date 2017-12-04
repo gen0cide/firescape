@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -9,7 +10,7 @@ public class Juliet implements NpcHandler {
    */
   public static final World world = World.getWorld();
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     if (player.getRomeoJulietStatus() == 3) {
       player.informOfNpcMessage(new ChatMessage(npc, "Thanks again!", player));
       return;
@@ -19,8 +20,10 @@ public class Juliet implements NpcHandler {
       return;
     }
     if (player.getRomeoJulietStatus() == 2) {
-      player.informOfNpcMessage(new ChatMessage(npc, "Did you go and tell Romeo I am fine and with my father?",
-        player));
+      player.informOfNpcMessage(new ChatMessage(npc,
+                                                "Did you go and tell Romeo I am fine and with my father?",
+                                                player
+      ));
       player.setBusy(true);
       world.getDelayedEventHandler().add(new ShortEvent(player) {
         public void action() {
@@ -29,7 +32,7 @@ public class Juliet implements NpcHandler {
             "Yes, I have told him", "No, not yet"
           };
           player.setMenuHandler(new MenuHandler(option) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (player.isBusy()) {
                 return;
               }
@@ -43,8 +46,11 @@ public class Juliet implements NpcHandler {
                     return;
                   }
                   if (option == 0 && player.getRomeoJulietStatus() == 2) {
-                    player.informOfNpcMessage(new ChatMessage(npc, "It doesn't seem you have told him yet! Go tell "
-                      + "him please!", player));
+                    player.informOfNpcMessage(new ChatMessage(npc,
+                                                              "It doesn't seem you have told him yet! Go tell " +
+                                                              "him please!",
+                                                              player
+                    ));
                   } else {
                     player.informOfNpcMessage(new ChatMessage(npc, "Thank you! You are very kind!", player));
                   }
@@ -65,7 +71,7 @@ public class Juliet implements NpcHandler {
             "I know where he is", "I have no idea, sorry"
           };
           owner.setMenuHandler(new MenuHandler(options) {
-            public void handleReply( int option, String reply ) {
+            public void handleReply(int option, String reply) {
               if (owner.isBusy()) {
                 return;
               }
@@ -78,12 +84,17 @@ public class Juliet implements NpcHandler {
                     owner.informOfNpcMessage(new ChatMessage(npc, "Please tell me of his whereabouts!", owner));
                     DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
-                        owner.informOfChatMessage(new ChatMessage(owner, "He's in Varrock. He's worried " + "about " +
-                          "you!", npc));
+                        owner.informOfChatMessage(new ChatMessage(owner,
+                                                                  "He's in Varrock. He's worried " + "about " + "you!",
+                                                                  npc
+                        ));
                         DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                           public void action() {
-                            owner.informOfNpcMessage(new ChatMessage(npc, "Please tell him i'm with my father " +
-                              "and i'm fine", owner));
+                            owner.informOfNpcMessage(new ChatMessage(npc,
+                                                                     "Please tell him i'm with my father " +
+                                                                     "and i'm fine",
+                                                                     owner
+                            ));
                             owner.setRomeoJulietStatus(2);
                             npc.unblock();
                           }

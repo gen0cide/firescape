@@ -21,7 +21,7 @@ public class PathHandler {
   /**
    * Constructs a new PathHandler belonging to the given Mob
    */
-  public PathHandler( Mob m ) {
+  public PathHandler(Mob m) {
     mob = m;
     resetPath();
   }
@@ -37,21 +37,21 @@ public class PathHandler {
   /**
    * Attempts to create a path to the given coordinates
    */
-  public static Path makePath( int startX, int startY, int x1, int y1, int x2, int y2, boolean flag ) {
+  public static Path makePath(int startX, int startY, int x1, int y1, int x2, int y2, boolean flag) {
     return null;
   }
 
   /**
    * Creates a new path and sets us walking it
    */
-  public void setPath( int startX, int startY, byte[] waypointXoffsets, byte[] waypointYoffsets ) {
+  public void setPath(int startX, int startY, byte[] waypointXoffsets, byte[] waypointYoffsets) {
     setPath(new Path(startX, startY, waypointXoffsets, waypointYoffsets));
   }
 
   /**
    * Sets us on the given path
    */
-  public void setPath( Path path ) {
+  public void setPath(Path path) {
     curWaypoint = -1;
     this.path = path;
   }
@@ -98,8 +98,11 @@ public class PathHandler {
         curWaypoint++;
       }
       if (curWaypoint < path.length()) {
-        newCoords = getNextCoords(mob.getX(), path.getWaypointX(curWaypoint), mob.getY(), path.getWaypointY
-          (curWaypoint));
+        newCoords = getNextCoords(mob.getX(),
+                                  path.getWaypointX(curWaypoint),
+                                  mob.getY(),
+                                  path.getWaypointY(curWaypoint)
+        );
       } else {
         resetPath();
       }
@@ -112,7 +115,7 @@ public class PathHandler {
   /**
    * Checks if we are at the given waypoint
    */
-  protected boolean atWaypoint( int waypoint ) {
+  protected boolean atWaypoint(int waypoint) {
     return path.getWaypointX(waypoint) == mob.getX() && path.getWaypointY(waypoint) == mob.getY();
   }
 
@@ -126,7 +129,7 @@ public class PathHandler {
   /**
    * Gets the next coordinate in the right direction
    */
-  protected int[] getNextCoords( int startX, int destX, int startY, int destY ) {
+  protected int[] getNextCoords(int startX, int destX, int startY, int destY) {
     try {
       int[] coords = {
         startX, startY
@@ -141,7 +144,6 @@ public class PathHandler {
         // right wall
         coords[0] = startX + 1;
       }
-
       if (startY > destY) {
         myYBlocked = isBlocking(startX, startY - 1, 4); // Check top tiles
         // bottom wall
@@ -151,13 +153,11 @@ public class PathHandler {
         // top wall
         coords[1] = startY + 1;
       }
-
       // If both directions are blocked OR we are going straight and the
       // direction is blocked
       if ((myXBlocked && myYBlocked) || (myXBlocked && startY == destY) || (myYBlocked && startX == destX)) {
         return cancelCoords();
       }
-
       if (coords[0] > startX) {
         newXBlocked = isBlocking(coords[0], coords[1], 2); // Check dest tiles
         // right wall
@@ -165,7 +165,6 @@ public class PathHandler {
         newXBlocked = isBlocking(coords[0], coords[1], 8); // Check dest tiles
         // left wall
       }
-
       if (coords[1] > startY) {
         newYBlocked = isBlocking(coords[0], coords[1], 1); // Check dest tiles
         // top wall
@@ -173,25 +172,22 @@ public class PathHandler {
         newYBlocked = isBlocking(coords[0], coords[1], 4); // Check dest tiles
         // bottom wall
       }
-
       // If both directions are blocked OR we are going straight and the
       // direction is blocked
       if ((newXBlocked && newYBlocked) || (newXBlocked && startY == coords[1]) || (myYBlocked && startX == coords[0])) {
         return cancelCoords();
       }
-
       // If only one direction is blocked, but it blocks both tiles
       if ((myXBlocked && newXBlocked) || (myYBlocked && newYBlocked)) {
         return cancelCoords();
       }
-
       return coords;
     } catch (Exception e) {
       return cancelCoords();
     }
   }
 
-  private boolean isBlocking( int x, int y, int bit ) {
+  private boolean isBlocking(int x, int y, int bit) {
     TileValue t = world.getTileValue(x, y);
     return isBlocking(t.mapValue, (byte) bit) || isBlocking(t.objectValue, (byte) bit);
   }
@@ -203,7 +199,7 @@ public class PathHandler {
     };
   }
 
-  private boolean isBlocking( byte val, byte bit ) {
+  private boolean isBlocking(byte val, byte bit) {
     if ((val & bit) != 0) { // There is a wall in the way
       return true;
     }

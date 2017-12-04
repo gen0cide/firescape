@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -13,7 +14,7 @@ public class PvP implements NpcHandler {
     "Sure", "No thanks."
   };
 
-  public void handleNpc( Npc npc, Player player ) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     if (!world.getPvpEntry(player)) {
       player.informOfNpcMessage(new ChatMessage(npc, "Would you like to be entered into the PvP tournament?", player));
     } else {
@@ -24,7 +25,7 @@ public class PvP implements NpcHandler {
       public void action() {
         owner.setBusy(false);
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply( int option, String reply ) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy() || option < 0) {
               npc.unblock();
               return;
@@ -34,16 +35,23 @@ public class PvP implements NpcHandler {
             DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 if (DelayedEvent.world.getServer().pvpIsRunning()) {
-                  owner.informOfNpcMessage(new ChatMessage(npc, "Sorry, this event has already started. Please " +
-                    "wait for it to finish.", owner));
+                  owner.informOfNpcMessage(new ChatMessage(npc,
+                                                           "Sorry, this event has already started. Please " +
+                                                           "wait for it to finish.",
+                                                           owner
+                  ));
                   owner.setBusy(false);
                   npc.unblock();
                   return;
                 }
                 if (option == 0 && !DelayedEvent.world.getPvpEntry(owner)) {
                   if (owner.getInventory().countId(10) < 50000) {
-                    owner.informOfChatMessage(new ChatMessage(owner, "I'll just go get my cash to pay for " + "the " +
-                      "entry fee.", npc));
+                    owner.informOfChatMessage(new ChatMessage(owner,
+                                                              "I'll just go get my cash to pay for " +
+                                                              "the " +
+                                                              "entry fee.",
+                                                              npc
+                    ));
                     owner.setBusy(false);
                     npc.unblock();
                   } else if (owner.getInventory().remove(10, 50000) > -1) {
@@ -60,8 +68,8 @@ public class PvP implements NpcHandler {
 
                       }
                       DelayedEvent.world.getServer().pvpTimerStart(126);
-                    } else if (DelayedEvent.world.getPvpSize() > 2 && DelayedEvent.world.getServer().waitingIsRunning
-                      ()) {
+                    } else if (DelayedEvent.world.getPvpSize() > 2 &&
+                               DelayedEvent.world.getServer().waitingIsRunning()) {
                       int timeTillPvp = DelayedEvent.world.getServer().timeTillPvp();
                       if (timeTillPvp > -1) {
                         owner.getActionSender().startPvp(timeTillPvp / 1000);

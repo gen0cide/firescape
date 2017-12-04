@@ -33,7 +33,7 @@ public class ActiveTile {
   /**
    * Constructs a new tile at the given coordinates
    */
-  public ActiveTile( int x, int y ) {
+  public ActiveTile(int x, int y) {
     this.x = x;
     this.y = y;
   }
@@ -41,7 +41,7 @@ public class ActiveTile {
   /**
    * Add an entity to the tile
    */
-  public void add( Entity entity ) {
+  public void add(Entity entity) {
     if (entity instanceof Player) {
       players.add((Player) entity);
     } else if (entity instanceof Npc) {
@@ -69,7 +69,7 @@ public class ActiveTile {
   /**
    * Remove an entity from the tile
    */
-  public void remove( Entity entity ) {
+  public void remove(Entity entity) {
     if (entity instanceof Player) {
       players.remove(entity);
     } else if (entity instanceof Npc) {
@@ -101,7 +101,7 @@ public class ActiveTile {
     return items;
   }
 
-  public boolean hasItem( Item item ) {
+  public boolean hasItem(Item item) {
     return items.contains(item);
   }
 

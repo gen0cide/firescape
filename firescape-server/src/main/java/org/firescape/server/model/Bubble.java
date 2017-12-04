@@ -10,7 +10,7 @@ public class Bubble {
    */
   private final int itemID;
 
-  public Bubble( Player owner, int itemID ) {
+  public Bubble(Player owner, int itemID) {
     this.owner = owner;
     this.itemID = itemID;
   }

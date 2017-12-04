@@ -9,12 +9,12 @@ public class Point {
   protected Point() {
   }
 
-  private Point( int x, int y ) {
+  private Point(int x, int y) {
     this.x = x;
     this.y = y;
   }
 
-  public static Point location( int x, int y ) {
+  public static Point location(int x, int y) {
     if (x < 0 || y < 0) {
       throw new IllegalArgumentException("Point may not contain non negative values x:" + x + " y:" + y);
     }
@@ -40,7 +40,7 @@ public class Point {
     return inBounds(223, 126, 233, 134);
   }
 
-  public boolean inBounds( int x1, int y1, int x2, int y2 ) {
+  public boolean inBounds(int x1, int y1, int x2, int y2) {
     return x >= x1 && x <= x2 && y >= y1 && y <= y2;
   }
 
@@ -84,7 +84,7 @@ public class Point {
     return x << 16 | y;
   }
 
-  public final boolean equals( Object o ) {
+  public final boolean equals(Object o) {
     if (o instanceof Point) {
       return this.x == ((Point) o).x && this.y == ((Point) o).y;
     }

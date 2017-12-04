@@ -7,13 +7,12 @@ public class ISAAC {
   private int b;
   private int c;
 
-  public ISAAC( int seed[] ) {
+  public ISAAC(int seed[]) {
     memory = new int[256];
     results = new int[256];
     for (int i = 0; i < seed.length; i++) {
       results[i] = seed[i];
     }
-
     init();
   }
 
@@ -52,7 +51,6 @@ public class ISAAC {
       j1 += k2;
       l += i1;
     }
-
     for (int j = 0; j < 256; j += 8) {
       l += results[j];
       i1 += results[j + 1];
@@ -95,7 +93,6 @@ public class ISAAC {
       memory[j + 6] = j2;
       memory[j + 7] = k2;
     }
-
     for (int k = 0; k < 256; k += 8) {
       l += memory[k];
       i1 += memory[k + 1];
@@ -138,7 +135,6 @@ public class ISAAC {
       memory[k + 6] = j2;
       memory[k + 7] = k2;
     }
-
     isaac();
     count = 256;
   }
@@ -151,15 +147,12 @@ public class ISAAC {
         case 0: // '\0'
           a ^= a << 13;
           break;
-
         case 1: // '\001'
           a ^= a >>> 6;
           break;
-
         case 2: // '\002'
           a ^= a << 2;
           break;
-
         case 3: // '\003'
           a ^= a >>> 16;
           break;

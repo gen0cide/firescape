@@ -283,7 +283,7 @@ public class Formulae {
   };
   private static final Random r = new Random();
 
-  public static int getPotionDose( int id ) {
+  public static int getPotionDose(int id) {
     if (DataConversions.inArray(potions1Dose, id)) {
       return 1;
     }
@@ -296,7 +296,7 @@ public class Formulae {
     return 0;
   }
 
-  public static String getLvlDiffColour( int lvlDiff ) {
+  public static String getLvlDiffColour(int lvlDiff) {
     if (lvlDiff < -9) {
       return "@red@";
     } else if (lvlDiff < -6) {
@@ -317,7 +317,7 @@ public class Formulae {
     return "@whi@";
   }
 
-  public static int getStat( String stat ) {
+  public static int getStat(String stat) {
     for (int i = 0; i < statArray.length; i++) {
       if (statArray[i].equalsIgnoreCase(stat)) {
         return i;
@@ -326,14 +326,12 @@ public class Formulae {
     return -1;
   }
 
-  public static boolean catchThief( int lvl, int reqLevel ) {
+  public static boolean catchThief(int lvl, int reqLevel) {
     double rand = ((r.nextDouble() * 100) + 1) / 100;
     double success = getMiningFailPercent((double) lvl, (double) reqLevel) / 100.0;
-
     if (success < 0.35) {
       success = 0.35;
     }
-
     if (reqLevel < 15) {
       if (lvl - reqLevel < 10) {
         if (Rand(1, 10) == 5) {
@@ -341,31 +339,33 @@ public class Formulae {
         }
       }
     }
-
     // System.out.println("Rand: " + rand + "%, success: " + success + "% - " +
     // (rand < success ? "success" : "fail"));
-
     return !(rand < success);
   }
 
-  public static double getMiningFailPercent( double curLvl, double reqLvl ) {
+  public static double getMiningFailPercent(double curLvl, double reqLvl) {
     double dif = curLvl - reqLvl; // Get difference
-    return (3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) + 0.014307 *
-      Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966;
+    return (3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) +
+           (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
+           0.014307 * Math.pow(dif, 2) +
+           1.65560813 * dif +
+           18.2095966;
     // (3.27 * 10^-6)x^4 + (-5.516 * 10^-4)x^3 + 0.014307x^2 + 1.65560813x +
     // 18.2095966'
   }
 
-  public static int Rand( int low, int high ) {
+  public static int Rand(int low, int high) {
     return low + r.nextInt(high - low);
   }
 
-  @SuppressWarnings("unchecked") public static List<InvItem> getKeyChestLoot() {
+  @SuppressWarnings("unchecked")
+  public static List<InvItem> getKeyChestLoot() {
     List<InvItem>[] possibleLoots = (List<InvItem>[]) EntityHandler.getKeyChestLoots();
     return possibleLoots[DataConversions.random(0, possibleLoots.length - 1)];
   }
 
-  public static boolean doorAtFacing( Entity e, int x, int y, int dir ) {
+  public static boolean doorAtFacing(Entity e, int x, int y, int dir) {
     if (dir >= 0 && e instanceof GameObject) {
       GameObject obj = (GameObject) e;
       return obj.getType() == 1 && obj.getDirection() == dir && obj.isOn(x, y);
@@ -373,7 +373,7 @@ public class Formulae {
     return false;
   }
 
-  public static boolean objectAtFacing( Entity e, int x, int y, int dir ) {
+  public static boolean objectAtFacing(Entity e, int x, int y, int dir) {
     if (dir >= 0 && e instanceof GameObject) {
       GameObject obj = (GameObject) e;
       return obj.getType() == 0 && obj.getDirection() == dir && obj.isOn(x, y);
@@ -381,7 +381,7 @@ public class Formulae {
     return false;
   }
 
-  public static int bitToDoorDir( int bit ) {
+  public static int bitToDoorDir(int bit) {
     switch (bit) {
       case 1:
         return 0;
@@ -395,7 +395,7 @@ public class Formulae {
     return -1;
   }
 
-  public static int bitToObjectDir( int bit ) {
+  public static int bitToObjectDir(int bit) {
     switch (bit) {
       case 1:
         return 6;
@@ -409,7 +409,7 @@ public class Formulae {
     return -1;
   }
 
-  public static int getNewY( int currentY, boolean up ) {
+  public static int getNewY(int currentY, boolean up) {
     int height = getHeight(currentY);
     int newHeight;
     if (up) {
@@ -435,14 +435,14 @@ public class Formulae {
   /**
    * Check what height we are currently at on the map
    */
-  public static int getHeight( int y ) {
+  public static int getHeight(int y) {
     return y / 944;
   }
 
   /**
    * Gets the empty jug ID
    */
-  public static int getEmptyJug( int fullJug ) {
+  public static int getEmptyJug(int fullJug) {
     switch (fullJug) {
       case 50:
         return 21;
@@ -473,7 +473,7 @@ public class Formulae {
   /*
    * Should the pot crack?
    */
-  public static boolean crackPot( int requiredLvl, int craftingLvl ) {
+  public static boolean crackPot(int requiredLvl, int craftingLvl) {
     int levelDiff = craftingLvl - requiredLvl;
     if (levelDiff < 0) {
       return true;
@@ -487,7 +487,7 @@ public class Formulae {
   /**
    * Should the spell cast or fail?
    */
-  public static boolean castSpell( SpellDef def, int magicLevel, int magicEquip ) {
+  public static boolean castSpell(SpellDef def, int magicLevel, int magicEquip) {
     int levelDiff = magicLevel - def.getReqLevel();
     if (levelDiff < 0) {
       return false;
@@ -501,14 +501,14 @@ public class Formulae {
   /**
    * Should the arrow be dropped or disappear
    */
-  public static boolean looseArrow( int damage ) {
+  public static boolean looseArrow(int damage) {
     return DataConversions.random(0, 6) == 0;
   }
 
   /**
    * Gets the smithing exp for the given amount of the right bars
    */
-  public static int getSmithingExp( int barID, int barCount ) {
+  public static int getSmithingExp(int barID, int barCount) {
     int[] exps = {
       13, 25, 37, 50, 83, 74
     };
@@ -522,7 +522,7 @@ public class Formulae {
   /**
    * Gets the type of bar we have
    */
-  public static int getBarType( int barID ) {
+  public static int getBarType(int barID) {
     switch (barID) {
       case 169:
         return 0;
@@ -543,7 +543,7 @@ public class Formulae {
   /**
    * Gets the min level required to smith a bar
    */
-  public static int minSmithingLevel( int barID ) {
+  public static int minSmithingLevel(int barID) {
     int[] levels = {
       1, 15, 30, 50, 70, 85
     };
@@ -554,14 +554,14 @@ public class Formulae {
     return levels[type];
   }
 
-  public static int firemakingExp( int level, int baseExp ) {
+  public static int firemakingExp(int level, int baseExp) {
     return DataConversions.roundUp(baseExp + (level * 1.75D));
   }
 
   /**
    * Should the fire light or fail?
    */
-  public static boolean lightLogs( FiremakingDef def, int firemakingLvl ) {
+  public static boolean lightLogs(FiremakingDef def, int firemakingLvl) {
     int levelDiff = firemakingLvl - def.getRequiredLevel();
     if (levelDiff < 0) {
       return false;
@@ -575,14 +575,14 @@ public class Formulae {
   /**
    * Generates a session id
    */
-  public static long generateSessionKey( byte userByte ) {
+  public static long generateSessionKey(byte userByte) {
     return DataConversions.getRandom().nextLong();
   }
 
   /**
    * Given a stat string get its index returns -1 on failure
    */
-  public static int getStatIndex( String stat ) {
+  public static int getStatIndex(String stat) {
     for (int index = 0; index < statArray.length; index++) {
       if (stat.equalsIgnoreCase(statArray[index])) {
         return index;
@@ -594,7 +594,7 @@ public class Formulae {
   /**
    * Calculate how much experience a Mob gives
    */
-  public static int combatExperience( Mob mob ) {
+  public static int combatExperience(Mob mob) {
     double exp = ((mob.getCombatLevel() * 10) + 10) * 0.22D;
     return (int) (mob instanceof Player ? (exp / 4D) : exp);
   }
@@ -602,13 +602,11 @@ public class Formulae {
   /**
    * Calculates what one mob should hit on another with range
    */
-  public static int calcRangeHit( int rangeLvl, int rangeEquip, int armourEquip, int arrowID ) {
+  public static int calcRangeHit(int rangeLvl, int rangeEquip, int armourEquip, int arrowID) {
     int armourRatio = (int) (60D + (((rangeEquip * 3D) - armourEquip) / 300D) * 40D);
-
     if (DataConversions.random(0, 100) > armourRatio && DataConversions.random(0, 1) == 0) {
       return 0;
     }
-
     int max = (int) (((double) rangeLvl * 0.15D) + 0.85D + arrowPower(arrowID));
     int peak = (int) (((double) max / 100D) * (double) armourRatio);
     int dip = (int) (((double) peak / 3D) * 2D);
@@ -618,7 +616,7 @@ public class Formulae {
   /**
    * Returns a power to assosiate with each arrow
    */
-  private static double arrowPower( int arrowID ) {
+  private static double arrowPower(int arrowID) {
     switch (arrowID) {
       case 11: // bronze arrows
       case 574: // poison bronze arrows
@@ -690,31 +688,30 @@ public class Formulae {
     }
   }
 
-  public static int calcGodSpells( Mob attacker, Mob defender ) {
+  public static int calcGodSpells(Mob attacker, Mob defender) {
     if (attacker instanceof Player) {
       Player owner = (Player) attacker;
       int newAtt = (owner.getMagicPoints()) + owner.getCurStat(6);
-      int newDef = (int) ((addPrayers(defender.isPrayerActivated(0), defender.isPrayerActivated(3), defender
-        .isPrayerActivated(9)) * defender.getDefense() / 4D) + (defender.getArmourPoints() / 4D));
+      int newDef = (int) ((addPrayers(defender.isPrayerActivated(0),
+                                      defender.isPrayerActivated(3),
+                                      defender.isPrayerActivated(9)
+      ) *
+                           defender.getDefense() / 4D) + (defender.getArmourPoints() / 4D));
       int hitChance = DataConversions.random(0, 150 + (newAtt - newDef));
       // int hitChance = (int)(50D + (double)owner.getMagicPoints() - newDef);
-
       if (hitChance > (defender instanceof Npc ? 50 : 60)) {
         int max = owner.isCharged() ? Rand(15, 25) : Rand(0, 10);
         int maxProb = 5; // 5%
         int nearMaxProb = 10; // 10%
         int avProb = 80; // 80%
         int lowHit = 5; // 5%
-
         // Probablities are shifted up/down based on armour
         int shiftValue = (int) Math.round(defender.getArmourPoints() * 0.02D);
         maxProb -= shiftValue;
         nearMaxProb -= (int) Math.round(shiftValue * 1.5);
         avProb -= (int) Math.round(shiftValue * 2.0);
         lowHit += (int) Math.round(shiftValue * 3.5);
-
         int hitRange = DataConversions.random(0, 100);
-
         if (hitRange >= (100 - maxProb)) {
           return max;
         } else if (hitRange >= (100 - nearMaxProb)) {
@@ -732,10 +729,9 @@ public class Formulae {
   }
 
   /**
-   * Adds the prayers together to calculate what perecntage the stat should be
-   * increased
+   * Adds the prayers together to calculate what perecntage the stat should be increased
    */
-  private static double addPrayers( boolean first, boolean second, boolean third ) {
+  private static double addPrayers(boolean first, boolean second, boolean third) {
     if (third) {
       return 1.15D;
     }
@@ -751,32 +747,37 @@ public class Formulae {
   /**
    * Calulates what one mob should hit on another with meelee
    */
-  public static int calcFightHit( Mob attacker, Mob defender ) {
-    int newAtt = (int) ((addPrayers(attacker.isPrayerActivated(2), attacker.isPrayerActivated(5), attacker
-      .isPrayerActivated(11)) * attacker.getAttack()) + (attacker.getWeaponAimPoints() / 4D) + styleBonus(attacker, 0));
-    int newDef = (int) ((addPrayers(defender.isPrayerActivated(0), defender.isPrayerActivated(3), defender
-      .isPrayerActivated(9)) * defender.getDefense()) + (defender.getArmourPoints() / 4D) + styleBonus(attacker, 1));
-
+  public static int calcFightHit(Mob attacker, Mob defender) {
+    int newAtt = (int) ((addPrayers(attacker.isPrayerActivated(2),
+                                    attacker.isPrayerActivated(5),
+                                    attacker.isPrayerActivated(11)
+    ) *
+                         attacker.getAttack()) + (attacker.getWeaponAimPoints() / 4D) + styleBonus(attacker, 0));
+    int newDef = (int) ((addPrayers(defender.isPrayerActivated(0),
+                                    defender.isPrayerActivated(3),
+                                    defender.isPrayerActivated(9)
+    ) *
+                         defender.getDefense()) + (defender.getArmourPoints() / 4D) + styleBonus(attacker, 1));
     int hitChance = DataConversions.random(0, 100) + (newAtt - newDef);
-
     if (hitChance > (defender instanceof Npc ? 50 : 60)) {
-      int max = maxHit(attacker.getStrength(), attacker.getWeaponPowerPoints(), attacker.isPrayerActivated(1),
-        attacker.isPrayerActivated(4), attacker.isPrayerActivated(10), styleBonus(attacker, 2));
-
+      int max = maxHit(attacker.getStrength(),
+                       attacker.getWeaponPowerPoints(),
+                       attacker.isPrayerActivated(1),
+                       attacker.isPrayerActivated(4),
+                       attacker.isPrayerActivated(10),
+                       styleBonus(attacker, 2)
+      );
       int maxProb = 5; // 5%
       int nearMaxProb = 10; // 10%
       int avProb = 80; // 80%
       int lowHit = 5; // 5%
-
       // Probablities are shifted up/down based on armour
       int shiftValue = (int) Math.round(defender.getArmourPoints() * 0.02D);
       maxProb -= shiftValue;
       nearMaxProb -= (int) Math.round(shiftValue * 1.5);
       avProb -= (int) Math.round(shiftValue * 2.0);
       lowHit += (int) Math.round(shiftValue * 3.5);
-
       int hitRange = DataConversions.random(0, 100);
-
       if (hitRange >= (100 - maxProb)) {
         return max;
       } else if (hitRange >= (100 - nearMaxProb)) {
@@ -792,7 +793,7 @@ public class Formulae {
     return 0;
   }
 
-  public static int styleBonus( Mob mob, int skill ) {
+  public static int styleBonus(Mob mob, int skill) {
     int style = mob.getCombatStyle();
     if (style == 0) {
       return 1;
@@ -803,8 +804,9 @@ public class Formulae {
   /**
    * Calculate the max hit possible with the given stats
    */
-  public static int maxHit( int strength, int weaponPower, boolean burst, boolean superhuman, boolean ultimate, int
-    bonus ) {
+  public static int maxHit(
+    int strength, int weaponPower, boolean burst, boolean superhuman, boolean ultimate, int bonus
+  ) {
     double newStrength = (strength * addPrayers(burst, superhuman, ultimate)) + bonus;
     return (int) (newStrength * (((double) weaponPower * 0.00175D) + 0.1D) + 1.05D);
   }
@@ -817,10 +819,9 @@ public class Formulae {
   }
 
   /**
-   * Calculates what a spell should hit based on its strength and the magic
-   * equipment stats of the caster
+   * Calculates what a spell should hit based on its strength and the magic equipment stats of the caster
    */
-  public static int calcSpellHit( int spellStr, int magicEquip ) {
+  public static int calcSpellHit(int spellStr, int magicEquip) {
     int mageRatio = (int) (50D + (double) magicEquip);
     int max = (int) (((double) spellStr / 100D) * 70) + 1;
     int peak = (int) (((double) spellStr / 100D) * (double) mageRatio);
@@ -831,7 +832,7 @@ public class Formulae {
   /**
    * Decide if the food we are cooking should be burned or not
    */
-  public static boolean burnFood( int foodId, int cookingLevel ) {
+  public static boolean burnFood(int foodId, int cookingLevel) {
     int levelDiff = cookingLevel - EntityHandler.getItemCookingDef(foodId).getReqLevel();
     if (levelDiff < 0) {
       return true;
@@ -845,7 +846,7 @@ public class Formulae {
   /**
    * Decide what fish, if any, we should get from the water
    */
-  public static ObjectFishDef getFish( int waterId, int fishingLevel, int click ) {
+  public static ObjectFishDef getFish(int waterId, int fishingLevel, int click) {
     ArrayList<ObjectFishDef> fish = new ArrayList<ObjectFishDef>();
     for (ObjectFishDef def : EntityHandler.getObjectFishingDef(waterId, click).getFishDefs()) {
       if (fishingLevel >= def.getReqLevel()) {
@@ -863,14 +864,14 @@ public class Formulae {
     return DataConversions.percentChance(offsetToPercent(levelDiff)) ? thisFish : null;
   }
 
-  private static int offsetToPercent( int levelDiff ) {
+  private static int offsetToPercent(int levelDiff) {
     return levelDiff > 40 ? 70 : 30 + levelDiff;
   }
 
   /**
    * Should we get a log from the tree?
    */
-  public static boolean getLog( ObjectWoodcuttingDef def, int woodcutLevel, int axeId ) {
+  public static boolean getLog(ObjectWoodcuttingDef def, int woodcutLevel, int axeId) {
     int levelDiff = woodcutLevel - def.getReqLevel();
     if (levelDiff < 0) {
       return false;
@@ -907,7 +908,7 @@ public class Formulae {
   /**
    * Should we can get an ore from the rock?
    */
-  public static boolean getOre( ObjectMiningDef def, int miningLevel, int axeId ) {
+  public static boolean getOre(ObjectMiningDef def, int miningLevel, int axeId) {
     int levelDiff = miningLevel - def.getReqLevel();
     if (levelDiff < 0) {
       return false;
@@ -939,14 +940,14 @@ public class Formulae {
   /**
    * Check what height we are currently at on the map
    */
-  public static int getHeight( Point location ) {
+  public static int getHeight(Point location) {
     return getHeight(location.getY());
   }
 
   /**
    * Check what level the given experience corresponds to
    */
-  public static int experienceToLevel( int exp ) {
+  public static int experienceToLevel(int exp) {
     for (int level = 0; level < 98; level++) {
       if (exp >= experienceArray[level]) {
         continue;
@@ -956,26 +957,25 @@ public class Formulae {
     return 99;
   }
 
-  public static int lvlToXp( int level ) {
+  public static int lvlToXp(int level) {
     return eArray[level];
   }
 
   /**
    * Calculate a mobs combat level based on their stats
    */
-  public static int getCombatlevel( int[] stats ) {
+  public static int getCombatlevel(int[] stats) {
     return getCombatLevel(stats[0], stats[1], stats[2], stats[3], stats[6], stats[5], stats[4]);
   }
 
   /**
    * Calculate a mobs combat level based on their stats
    */
-  public static int getCombatLevel( int att, int def, int str, int hits, int magic, int pray, int range ) {
+  public static int getCombatLevel(int att, int def, int str, int hits, int magic, int pray, int range) {
     double attack = att + str;
     double defense = def + hits;
     double mage = pray + magic;
     mage /= 8D;
-
     if (attack < ((double) range * 1.5D)) {
       return (int) ((defense / 4D) + ((double) range * 0.375D) + mage);
     } else {

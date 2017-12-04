@@ -94,11 +94,11 @@ public final class World {
   /**
    * returns the associated npc handler
    */
-  public NpcHandler getNpcHandler( int npcID ) {
+  public NpcHandler getNpcHandler(int npcID) {
     return npcHandlers.get(npcID);
   }
 
-  public void sendToAll( String s ) {
+  public void sendToAll(String s) {
     World world = World.getWorld();
     for (Player p : world.getPlayers()) {
       p.getActionSender().sendMessage(s);
@@ -106,8 +106,7 @@ public final class World {
   }
 
   /**
-   * returns the only instance of this world, if there is not already one, makes
-   * it and loads everything
+   * returns the only instance of this world, if there is not already one, makes it and loads everything
    */
   public static synchronized World getWorld() {
     if (worldInstance == null) {
@@ -135,7 +134,6 @@ public final class World {
    */
   private void loadNpcHandlers() {
     NpcHandlerDef[] handlerDefs = (NpcHandlerDef[]) PersistenceManager.load("NpcHandlers.xml");
-
     for (NpcHandlerDef handlerDef : handlerDefs) {
       try {
         String className = handlerDef.getClassName();
@@ -152,7 +150,7 @@ public final class World {
     }
   }
 
-  public void deletePlayer( String player ) {
+  public void deletePlayer(String player) {
     if (Server.isOnline(player)) {
       this.banPlayer(player);
     }
@@ -163,7 +161,7 @@ public final class World {
     // GUI.populateWorldList();
   }
 
-  public void banPlayer( String player ) {
+  public void banPlayer(String player) {
     player = player.replaceAll(" ", "_");
     if (Server.isOnline(player)) {
       Player p = this.getPlayer(DataConversions.usernameToHash(player));
@@ -178,7 +176,7 @@ public final class World {
   /**
    * Gets a player by their username hash
    */
-  public Player getPlayer( long usernameHash ) {
+  public Player getPlayer(long usernameHash) {
     for (Player p : players) {
       if (p.getUsernameHash() == usernameHash) {
         return p;
@@ -187,22 +185,19 @@ public final class World {
     return null;
   }
 
-  public void kickPlayer( String p ) {
+  public void kickPlayer(String p) {
     try {
       Player player = this.getPlayer(DataConversions.usernameToHash(p));
       String play = player.getUsername().replaceAll(" ", "_");
       File f = new File("players/" + play.toLowerCase() + ".cfg");
       Properties pr = new Properties();
-
       FileInputStream fis = new FileInputStream(f);
       pr.load(fis);
       fis.close();
-
       FileOutputStream fos = new FileOutputStream(f);
       pr.setProperty("loggedin", "false");
       pr.store(fos, "Character Data.");
       fos.close();
-
       for (Player pla : this.getPlayers()) {
         if (pla.isFriendsWith(player.getUsername())) {
           pla.getActionSender().sendFriendUpdate(player.getUsernameHash(), 0);
@@ -215,7 +210,7 @@ public final class World {
     }
   }
 
-  public void mutePlayer( String player ) {
+  public void mutePlayer(String player) {
     Player p = this.getPlayer(DataConversions.usernameToHash(player));
     if (p != null) {
       p.mute = 1;
@@ -224,7 +219,7 @@ public final class World {
     }
   }
 
-  public void promotePMod( String player ) {
+  public void promotePMod(String player) {
     Player p = this.getPlayer(DataConversions.usernameToHash(player));
     if (p != null) {
       p.rank = 2;
@@ -233,7 +228,7 @@ public final class World {
     }
   }
 
-  public void promoteMod( String player ) {
+  public void promoteMod(String player) {
     Player p = this.getPlayer(DataConversions.usernameToHash(player));
     if (p != null) {
       p.rank = 3;
@@ -242,7 +237,7 @@ public final class World {
     }
   }
 
-  public void promoteAdmin( String player ) {
+  public void promoteAdmin(String player) {
     Player p = this.getPlayer(DataConversions.usernameToHash(player));
     if (p != null) {
       p.rank = 4;
@@ -251,7 +246,7 @@ public final class World {
     }
   }
 
-  public void promoteEvent( String player ) {
+  public void promoteEvent(String player) {
     Player p = this.getPlayer(DataConversions.usernameToHash(player));
     if (p != null) {
       p.rank = 7;
@@ -260,12 +255,11 @@ public final class World {
     }
   }
 
-  public void unbanPlayer( String player ) {
-
+  public void unbanPlayer(String player) {
     Server.writeValue(player, "rank", "0");
   }
 
-  public void unMutePlayer( String p ) {
+  public void unMutePlayer(String p) {
     Player player = this.getPlayer(DataConversions.usernameToHash(p));
     if (player != null) {
       player.rank = 0;
@@ -278,7 +272,7 @@ public final class World {
   /**
    * Inserts a new shop into the world
    */
-  public void registerShop( Shop shop ) {
+  public void registerShop(Shop shop) {
     shop.setEquilibrium();
     shops.add(shop);
   }
@@ -290,7 +284,7 @@ public final class World {
   /**
    * Gets a list of all shops
    */
-  public Shop getShop( Point location ) {
+  public Shop getShop(Point location) {
     for (Shop shop : shops) {
       if (shop.withinShop(location)) {
         return shop;
@@ -302,16 +296,16 @@ public final class World {
   /*********************************************
    ************* PvP Tournament*******************
    *********************************************/
-  public void addPvpEntry( Player p ) {
+  public void addPvpEntry(Player p) {
     list.add(p);
     System.out.println(p.getUsername() + "=" + list.indexOf(p));
   }
 
-  public void removePvpEntry( Player p ) {
+  public void removePvpEntry(Player p) {
     list.remove(p);
   }
 
-  public boolean getPvpEntry( Player p ) {
+  public boolean getPvpEntry(Player p) {
     return list.contains(p);
   }
 
@@ -323,7 +317,7 @@ public final class World {
     return winner;
   }
 
-  public void setWinner( Player p ) {
+  public void setWinner(Player p) {
     winner = p;
   }
 
@@ -331,7 +325,7 @@ public final class World {
     return autoer;
   }
 
-  public void setautoer( Player p ) {
+  public void setautoer(Player p) {
     autoer = p;
   }
 
@@ -343,7 +337,7 @@ public final class World {
    ********************* END**********************
    *********************************************/
 
-  public void setJackPot( int i ) {
+  public void setJackPot(int i) {
     jackpot = i;
   }
 
@@ -361,7 +355,7 @@ public final class World {
   /**
    * Sets the instance of the server
    */
-  public void setServer( Server server ) {
+  public void setServer(Server server) {
     this.server = server;
   }
 
@@ -375,7 +369,7 @@ public final class World {
   /**
    * Sets the ClientUpdater instance
    */
-  public void setClientUpdater( ClientUpdater clientUpdater ) {
+  public void setClientUpdater(ClientUpdater clientUpdater) {
     this.clientUpdater = clientUpdater;
   }
 
@@ -389,14 +383,14 @@ public final class World {
   /**
    * Sets the DelayedEventHandler instance
    */
-  public void setDelayedEventHandler( DelayedEventHandler delayedEventHandler ) {
+  public void setDelayedEventHandler(DelayedEventHandler delayedEventHandler) {
     this.delayedEventHandler = delayedEventHandler;
   }
 
   /**
    * Adds a DelayedEvent that will spawn a GameObject
    */
-  public void delayedSpawnObject( GameObjectLoc loc, int respawnTime ) {
+  public void delayedSpawnObject(GameObjectLoc loc, int respawnTime) {
     delayedEventHandler.add(new SingleEvent(null, respawnTime) {
       public void action() {
         registerGameObject(new GameObject(loc));
@@ -407,7 +401,7 @@ public final class World {
   /**
    * Adds a DelayedEvent that will remove a GameObject
    */
-  public void delayedRemoveObject( GameObject object, int delay ) {
+  public void delayedRemoveObject(GameObject object, int delay) {
     delayedEventHandler.add(new SingleEvent(null, delay) {
       public void action() {
         ActiveTile tile = getTile(object.getLocation());
@@ -421,7 +415,7 @@ public final class World {
   /**
    * Registers a player with the world and informs other players on their login
    */
-  public void registerPlayer( Player p ) {
+  public void registerPlayer(Player p) {
     p.setInitialized();
     players.add(p);
   }
@@ -429,12 +423,20 @@ public final class World {
   /**
    * Registers an npc with the world
    */
-  public void registerNpc( Npc n ) {
+  public void registerNpc(Npc n) {
     NPCLoc npc = n.getLoc();
-    if (npc.startX < npc.minX || npc.startX > npc.maxX || npc.startY < npc.minY || npc.startY > npc.maxY ||
-      (getTileValue(npc.startX, npc.startY).mapValue & 64) != 0) {
-      System.out.println("Fucked Npc: <id>" + npc.id + "</id><startX>" + npc.startX + "</startX><startY>" + npc
-        .startY + "</startY>");
+    if (npc.startX < npc.minX ||
+        npc.startX > npc.maxX ||
+        npc.startY < npc.minY ||
+        npc.startY > npc.maxY ||
+        (getTileValue(npc.startX, npc.startY).mapValue & 64) != 0) {
+      System.out.println("Fucked Npc: <id>" +
+                         npc.id +
+                         "</id><startX>" +
+                         npc.startX +
+                         "</startX><startY>" +
+                         npc.startY +
+                         "</startY>");
     }
     npcs.add(n);
   }
@@ -442,7 +444,7 @@ public final class World {
   /**
    * Gets the tile value as point x, y
    */
-  public TileValue getTileValue( int x, int y ) {
+  public TileValue getTileValue(int x, int y) {
     if (!withinWorld(x, y)) {
       return null;
     }
@@ -457,14 +459,14 @@ public final class World {
   /**
    * Are the given coords within the world boundaries
    */
-  public boolean withinWorld( int x, int y ) {
+  public boolean withinWorld(int x, int y) {
     return x >= 0 && x < MAX_WIDTH && y >= 0 && y < MAX_HEIGHT;
   }
 
   /**
    * Checks if the given player is logged in
    */
-  public boolean isLoggedIn( long usernameHash ) {
+  public boolean isLoggedIn(long usernameHash) {
     Player friend = getPlayer(usernameHash);
     if (friend != null) {
       return friend.loggedIn();
@@ -475,7 +477,7 @@ public final class World {
   /**
    * Registers an object with the world
    */
-  public void registerGameObject( GameObject o ) {
+  public void registerGameObject(GameObject o) {
     switch (o.getType()) {
       case 0:
         registerObject(o);
@@ -489,7 +491,7 @@ public final class World {
   /**
    * Updates the map to include a new object
    */
-  public void registerObject( GameObject o ) {
+  public void registerObject(GameObject o) {
     if (o.getGameObjectDef().getType() != 1 && o.getGameObjectDef().getType() != 2) {
       return;
     }
@@ -526,7 +528,7 @@ public final class World {
   /**
    * Updates the map to include a new door
    */
-  public void registerDoor( GameObject o ) {
+  public void registerDoor(GameObject o) {
     if (o.getDoorDef().getDoorType() != 1) {
       return;
     }
@@ -548,7 +550,7 @@ public final class World {
   /**
    * Removes an object from the map
    */
-  public void unregisterObject( GameObject o ) {
+  public void unregisterObject(GameObject o) {
     if (o.getGameObjectDef().getType() != 1 && o.getGameObjectDef().getType() != 2) {
       return;
     }
@@ -585,7 +587,7 @@ public final class World {
   /**
    * Removes a door from the map
    */
-  public void unregisterDoor( GameObject o ) {
+  public void unregisterDoor(GameObject o) {
     if (o.getDoorDef().getDoorType() != 1) {
       return;
     }
@@ -607,7 +609,7 @@ public final class World {
   /**
    * Registers an item to be removed after 3 minutes
    */
-  public void registerItem( Item i ) {
+  public void registerItem(Item i) {
     if (i.getLoc() == null) {
       delayedEventHandler.add(new DelayedEvent(null, 180000) {
         public void run() {
@@ -624,7 +626,7 @@ public final class World {
   /**
    * Removes a player from the server and saves their account
    */
-  public void unregisterPlayer( Player p ) {
+  public void unregisterPlayer(Player p) {
     p.setLoggedIn(false);
     p.resetAll();
     p.save();
@@ -641,7 +643,7 @@ public final class World {
   /**
    * adds or removes the given entity from the relivant tiles
    */
-  public void setLocation( Entity entity, Point oldPoint, Point newPoint ) {
+  public void setLocation(Entity entity, Point oldPoint, Point newPoint) {
     ActiveTile t;
     if (oldPoint != null) {
       t = getTile(oldPoint);
@@ -656,14 +658,14 @@ public final class World {
   /**
    * Gets the tile at a point
    */
-  public ActiveTile getTile( Point p ) {
+  public ActiveTile getTile(Point p) {
     return getTile(p.getX(), p.getY());
   }
 
   /**
    * Gets the active tile at point x, y
    */
-  public ActiveTile getTile( int x, int y ) {
+  public ActiveTile getTile(int x, int y) {
     if (!withinWorld(x, y)) {
       return null;
     }
@@ -678,7 +680,7 @@ public final class World {
   /**
    * Removes an npc from the server
    */
-  public void unregisterNpc( Npc n ) {
+  public void unregisterNpc(Npc n) {
     if (hasNpc(n)) {
       npcs.remove(n);
     }
@@ -688,14 +690,14 @@ public final class World {
   /**
    * Checks if the given npc is on the server
    */
-  public boolean hasNpc( Npc n ) {
+  public boolean hasNpc(Npc n) {
     return npcs.contains(n);
   }
 
   /**
    * Removes an object from the server
    */
-  public void unregisterGameObject( GameObject o ) {
+  public void unregisterGameObject(GameObject o) {
     o.remove();
     setLocation(o, o.getLocation(), null);
     switch (o.getType()) {
@@ -711,7 +713,7 @@ public final class World {
   /**
    * Removes an item from the server
    */
-  public void unregisterItem( Item i ) {
+  public void unregisterItem(Item i) {
     i.remove();
     setLocation(i, i.getLocation(), null);
   }
@@ -740,25 +742,25 @@ public final class World {
   /**
    * Checks if the given player is on the server
    */
-  public boolean hasPlayer( Player p ) {
+  public boolean hasPlayer(Player p) {
     return players.contains(p);
   }
 
-  public Player getPlayer( String username ) {
+  public Player getPlayer(String username) {
     return getPlayer(DataConversions.usernameToHash(username));
   }
 
   /**
    * Gets an Npc by their server index
    */
-  public Npc getNpc( int idx ) {
+  public Npc getNpc(int idx) {
     return npcs.get(idx);
   }
 
   /**
    * Gets an npc by their coords and id]
    */
-  public Npc getNpc( int id, int minX, int maxX, int minY, int maxY ) {
+  public Npc getNpc(int id, int minX, int maxX, int minY, int maxY) {
     for (Npc npc : npcs) {
       if (npc.getID() == id && npc.getX() >= minX && npc.getX() <= maxX && npc.getY() >= minY && npc.getY() <= maxY) {
         return npc;
@@ -770,7 +772,7 @@ public final class World {
   /**
    * Gets a Player by their server index
    */
-  public Player getPlayer( int idx ) {
+  public Player getPlayer(int idx) {
     return players.get(idx);
   }
 }

@@ -21,7 +21,7 @@ public enum Action {
 
   private final String description;
 
-  Action( String description ) {
+  Action(String description) {
     this.description = description;
   }
 

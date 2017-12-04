@@ -1,8 +1,7 @@
 package org.firescape.server;
 
 /**
- * @author Ent All Game variables that may be tweaked by the Control Panel will
- * be stored here.
+ * @author Ent All Game variables that may be tweaked by the Control Panel will be stored here.
  */
 public class GameVars {
   /**
@@ -14,13 +13,11 @@ public class GameVars {
    */
   public static boolean serverRunning;
   /**
-   * the Amount of minutes the server saves all profiles (Default) is 15
-   * minutes.
+   * the Amount of minutes the server saves all profiles (Default) is 15 minutes.
    */
   public static int saveAll = 15;
   /**
-   * the Server name, will be used when logging in, and anything else that needs
-   * to print the server's name.
+   * the Server name, will be used when logging in, and anything else that needs to print the server's name.
    */
   public static String serverName = "FireScape Test Bed";
   /**

@@ -31,7 +31,7 @@ public class Shop {
   private ArrayList<Player> players;
   private int respawnRate;
 
-  public boolean shouldStock( int id ) {
+  public boolean shouldStock(int id) {
     if (general) {
       return true;
     }
@@ -43,11 +43,11 @@ public class Shop {
     return false;
   }
 
-  public void addPlayer( Player player ) {
+  public void addPlayer(Player player) {
     players.add(player);
   }
 
-  public void removePlayer( Player player ) {
+  public void removePlayer(Player player) {
     players.remove(player);
   }
 
@@ -82,7 +82,7 @@ public class Shop {
     });
   }
 
-  public int getEquilibrium( int id ) {
+  public int getEquilibrium(int id) {
     for (int idx = 0; idx < equilibriumIds.length; idx++) {
       if (equilibriumIds[idx] == id) {
         return equilibriumAmounts[idx];
@@ -103,7 +103,7 @@ public class Shop {
     }
   }
 
-  public boolean equals( Object o ) {
+  public boolean equals(Object o) {
     if (o instanceof Shop) {
       Shop shop = (Shop) o;
       return shop.getName().equals(name);
@@ -115,7 +115,7 @@ public class Shop {
     return name;
   }
 
-  public InvItem getFirstById( int id ) {
+  public InvItem getFirstById(int id) {
     for (int index = 0; index < items.size(); index++) {
       if (items.get(index).getID() == id) {
         return items.get(index);
@@ -141,7 +141,7 @@ public class Shop {
     return options;
   }
 
-  public boolean withinShop( Point p ) {
+  public boolean withinShop(Point p) {
     return p.getX() >= minX && p.getX() <= maxX && p.getY() >= minY && p.getY() <= maxY;
   }
 
@@ -149,11 +149,11 @@ public class Shop {
     return items;
   }
 
-  public boolean contains( InvItem i ) {
+  public boolean contains(InvItem i) {
     return items.contains(i);
   }
 
-  public int add( InvItem item ) {
+  public int add(InvItem item) {
     if (item.getAmount() <= 0) {
       return -1;
     }
@@ -167,7 +167,7 @@ public class Shop {
     return items.size() - 2;
   }
 
-  public int remove( InvItem item ) {
+  public int remove(InvItem item) {
     Iterator<InvItem> iterator = items.iterator();
     for (int index = 0; iterator.hasNext(); index++) {
       InvItem i = iterator.next();
@@ -189,7 +189,7 @@ public class Shop {
     return items.listIterator();
   }
 
-  public int countId( int id ) {
+  public int countId(int id) {
     for (InvItem i : items) {
       if (i.getID() == id) {
         return i.getAmount();
@@ -218,19 +218,19 @@ public class Shop {
     return buyModifier;
   }
 
-  public boolean canHold( InvItem item ) {
+  public boolean canHold(InvItem item) {
     return (MAX_SIZE - items.size()) >= getRequiredSlots(item);
   }
 
-  public int getRequiredSlots( InvItem item ) {
+  public int getRequiredSlots(InvItem item) {
     return (items.contains(item) ? 0 : 1);
   }
 
-  public boolean canHold( ArrayList<InvItem> items ) {
+  public boolean canHold(ArrayList<InvItem> items) {
     return (MAX_SIZE - items.size()) >= getRequiredSlots(items);
   }
 
-  public int getRequiredSlots( List<InvItem> items ) {
+  public int getRequiredSlots(List<InvItem> items) {
     int requiredSlots = 0;
     for (InvItem item : items) {
       if (items.contains(item)) {

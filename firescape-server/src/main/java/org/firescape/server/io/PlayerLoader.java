@@ -19,9 +19,8 @@ public class PlayerLoader {
   static Properties props = new Properties();
   static Properties baseProps = new Properties();
 
-  public static int getLogin( String user, String pass ) {
+  public static int getLogin(String user, String pass) {
     try {
-
       // user = user.replaceAll("_", " ");
       InputStream ios = null;
       String username = user.replaceAll(" ", "_").toLowerCase();
@@ -67,11 +66,10 @@ public class PlayerLoader {
     }
   }
 
-  static void copy( File src, File dst ) {
+  static void copy(File src, File dst) {
     try {
       InputStream in = new FileInputStream(src);
       OutputStream out = new FileOutputStream(dst);
-
       byte[] buffer = new byte[1024];
       int len;
       while ((len = in.read(buffer)) > 0) {

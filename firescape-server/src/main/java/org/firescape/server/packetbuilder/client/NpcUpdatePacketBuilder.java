@@ -14,14 +14,13 @@ public class NpcUpdatePacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer( Player p ) {
+  public void setPlayer(Player p) {
     playerToUpdate = p;
   }
 
   public RSCPacket getPacket() {
     List<Npc> npcsNeedingHitsUpdate = playerToUpdate.getNpcsRequiringHitsUpdate();
     List<ChatMessage> npcMessagesNeedingDisplayed = playerToUpdate.getNpcMessagesNeedingDisplayed();
-
     int updateSize = npcMessagesNeedingDisplayed.size() + npcsNeedingHitsUpdate.size();
     if (updateSize > 0) {
       RSCPacketBuilder updates = new RSCPacketBuilder();

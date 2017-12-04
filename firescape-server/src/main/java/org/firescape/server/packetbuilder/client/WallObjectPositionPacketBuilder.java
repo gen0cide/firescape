@@ -15,7 +15,7 @@ public class WallObjectPositionPacketBuilder {
   /**
    * Sets the player to update
    */
-  public void setPlayer( Player p ) {
+  public void setPlayer(Player p) {
     playerToUpdate = p;
   }
 

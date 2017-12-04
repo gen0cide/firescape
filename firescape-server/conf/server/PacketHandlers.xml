@@ -20,7 +20,7 @@
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>129</int>
+      <int>102</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PlayerLogoutRequest</className>
   </PacketHandler>
@@ -88,8 +88,8 @@
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>170</int>
       <int>169</int>
+      <int>170</int>
     </ids>
     <className>org.firescape.server.packethandler.client.WieldHandler</className>
   </PacketHandler>
