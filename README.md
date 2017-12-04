@@ -3,8 +3,8 @@
 This is a [r]unescape classic private server. It is strictly for research and learning purposes and serves absolutely no commercial value.
 
 # Building
- 1. If you're on Windows, go home.
- 2. Make sure Java 1.8 is installed on your system:
+ 1. Now on Windoze!
+ 2. Make sure Java 1.8 JDK is installed on your system:
  3. Make sure `JAVA_HOME` exists in your path.
  
 ## Java 1.8 on Ubuntu
@@ -16,7 +16,7 @@ This is a [r]unescape classic private server. It is strictly for research and le
 ## Client
  1. Download and install Apache Maven
  2. CD into `./firescape/firescape-client/`
- 2. Run `mvn clean && mvn package`
+ 2. Run `mvn clean package`
  3. Run `java -cp target/firescape-jar-with-dependencies.jar org.firescape.client.mudclient`
  4. Enjoy!
  
@@ -24,7 +24,7 @@ This is a [r]unescape classic private server. It is strictly for research and le
  1. Download and start Redis-Server locally
  2. Download and install Apache Maven
  3. CD into `./firescape/firescape-server/`
- 4. Run `mvn clean && mvn package`
+ 4. Run `mvn clean package`
  5. Run `java -cp target/firescape-jar-with-dependencies.jar org.firescape.server.Server`
  6. Enjoy!
  
@@ -59,3 +59,6 @@ A list of folks that have inspired/taught me a lot over the years (inb4 shoutout
  * dubaholic
  * DuelShark
  * p0t
+ 
+ # World
+ Default settings will connect you to the [FireScape World](http://www.firescape.online/)
