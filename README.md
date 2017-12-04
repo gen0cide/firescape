@@ -5,12 +5,10 @@ This is a [r]unescape classic private server. It is strictly for research and le
 # Building
  1. If you're on Windows, go home.
  2. Make sure Java 1.8 is installed on your system:
-  2.1. Oracle Java works best on Ubuntu:
-   2.2. Run `sudo add-apt-repository ppa:webupd8team/java`
-   2.3. Run `sudo apt-get update`
-   2.4. Run `sudo apt-get install oracle-java8-installer`
-
- 
+ 2.1. Oracle Java works best on Ubuntu:
+ 2.2. Run `sudo add-apt-repository ppa:webupd8team/java`
+ 2.3. Run `sudo apt-get update`
+ 2.4. Run `sudo apt-get install oracle-java8-installer`
  3. Make sure `JAVA_HOME` exists in your path.
  
 ## Client
@@ -22,7 +20,7 @@ This is a [r]unescape classic private server. It is strictly for research and le
  
 ## Server
  1. You will need to download and start Redis-Server locally:
-  1.1 On Ubuntu run: `sudo apt install redis-server && sudo service redis-server start`
+ 1.1. On Ubuntu run: `sudo apt install redis-server && sudo service redis-server start`
  2. Download and install Apache Maven
  3. CD into `./firescape/firescape-server/`
  4. Run `mvn clean && mvn package`
