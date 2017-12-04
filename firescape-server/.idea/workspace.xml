@@ -6,169 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../firescape-204" afterPath="$PROJECT_DIR$/../firescape-204" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ant_bootstrap.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/conf/server/PacketHandlers.xml" afterPath="$PROJECT_DIR$/conf/server/PacketHandlers.xml" />
-      <change beforePath="$PROJECT_DIR$/conf/server/defs/GameObjectDef.xml.gz" afterPath="$PROJECT_DIR$/conf/server/defs/GameObjectDef.xml.gz" />
-      <change beforePath="$PROJECT_DIR$/conf/server/locs/GameObjectLoc.xml.gz" afterPath="$PROJECT_DIR$/conf/server/locs/GameObjectLoc.xml.gz" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/ClientUpdater.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/ClientUpdater.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/DelayedEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/DelayedEventHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/GUI.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/GUI.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/GameVars.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/GameVars.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/clan/Party.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/clan/Party.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/codec/RSCProtocolDecoder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/codec/RSCProtocolDecoder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/codec/RSCProtocolEncoder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/codec/RSCProtocolEncoder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/EntityHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/EntityHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/EntityDef.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/EntityDef.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/GameObjectDef.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/GameObjectDef.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/NPCDef.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/NPCDef.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/extras/CerterDef.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/defs/extras/CerterDef.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/locs/GameObjectLoc.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/locs/GameObjectLoc.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/locs/NPCLoc.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/entityhandling/locs/NPCLoc.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/DelayedEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/DelayedEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/DelayedQuestChat.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/DelayedQuestChat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/DuelEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/DuelEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/FightEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/FightEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/MiniEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/MiniEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/NpcWalkEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/NpcWalkEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/ObjectRemover.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/ObjectRemover.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/RangeEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/RangeEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/ShortEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/ShortEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/SingleEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/SingleEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/Thieving.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/Thieving.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/WalkToMobEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/WalkToMobEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/WalkToObjectEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/WalkToObjectEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/WalkToPointEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/event/WalkToPointEvent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/io/PlayerLoader.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/io/PlayerLoader.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/io/WorldLoader.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/io/WorldLoader.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ActiveTile.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ActiveTile.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Bank.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Bank.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Bubble.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Bubble.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ChatMessage.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ChatMessage.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Entity.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Entity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/GameObject.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/GameObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/InvItem.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/InvItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Inventory.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Inventory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Item.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Item.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/MenuHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/MenuHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Mob.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Mob.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Npc.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Npc.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Path.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Path.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/PathHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/PathHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/PlayerAppearance.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/PlayerAppearance.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Point.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Point.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Projectile.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Projectile.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Sector.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Sector.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Shop.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Shop.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Tile.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Tile.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ViewArea.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ViewArea.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/World.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/World.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/Packet.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/Packet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/PacketQueue.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/PacketQueue.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCConnectionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCConnectionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCPacket.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCPacket.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Adventurer.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Adventurer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Aggie.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Aggie.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Apothecary.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Apothecary.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Bankers.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Bankers.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Boat.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Boat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Certer.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Certer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Cook.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Cook.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Doric.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Doric.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/EntranaMonks.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/EntranaMonks.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/FarmerFred.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/FarmerFred.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Gamble.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Gamble.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Hetty.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Hetty.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Juliet.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Juliet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Kaqemeex.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Kaqemeex.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/KebabSeller.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/KebabSeller.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Klank.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Klank.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Kolodion.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Kolodion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/MakeOverMage.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/MakeOverMage.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/MasterFisher.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/MasterFisher.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/MonkHealer.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/MonkHealer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/NpcHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/NpcHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/NpcHandlerDef.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/NpcHandlerDef.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/PvP.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/PvP.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Romeo.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Romeo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Sanfew.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Sanfew.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/ShopKeeper.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/ShopKeeper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Tanner.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Tanner.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Thrander.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Thrander.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/WizardMizgog.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/WizardMizgog.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Wyson.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Wyson.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/StaticPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/StaticPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/GameObjectPositionPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/GameObjectPositionPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/ItemPositionPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/ItemPositionPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/NpcPositionPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/NpcPositionPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/NpcUpdatePacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/NpcUpdatePacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerUpdatePacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerUpdatePacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/WallObjectPositionPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/WallObjectPositionPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PacketHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PacketHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PacketHandlerDef.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PacketHandlerDef.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PlayerLogin.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/PlayerLogin.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/AttackHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/AttackHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/BankHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/BankHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ChatHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ChatHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/CommandHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/CommandHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DropHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DropHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ExceptionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FollowRequest.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FollowRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FriendHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FriendHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/GameSettingHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/GameSettingHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvActionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvActionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnGroundItem.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnGroundItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnItem.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnNpc.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnNpc.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnObject.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnPlayer.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnPlayer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/MenuReplyHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/MenuReplyHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/NpcCommand.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/NpcCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ObjectAction.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ObjectAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PickupItem.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PickupItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/Ping.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/Ping.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerAppearanceIDHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerAppearanceIDHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerAppearanceUpdater.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerAppearanceUpdater.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerLogin.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerLogin.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerLogout.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerLogout.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerLogoutRequest.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerLogoutRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PrayerHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PrayerHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PrivacySettingHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PrivacySettingHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/RegisterAccount.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/RegisterAccount.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/SessionRequest.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/SessionRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/SpellHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/SpellHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/StyleHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/StyleHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/TalkToNpcHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/TalkToNpcHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/TradeHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/TradeHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/Trap.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/Trap.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WalkRequest.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WalkRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WallObjectAction.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WallObjectAction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WieldHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/WieldHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/states/Action.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/states/Action.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/Config.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/Config.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/DataConversions.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/DataConversions.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/DefCompressor.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/DefCompressor.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/EntityList.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/EntityList.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/EntityListIterator.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/EntityListIterator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/Formulae.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/Formulae.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/ISAAC.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/ISAAC.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/Logger.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/Logger.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/MapGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/MapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/ObjectLoader.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/ObjectLoader.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/PersistenceManager.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/PersistenceManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/StatefulEntityCollection.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/util/StatefulEntityCollection.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/defs/GameObjectDef.xml.gz" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -224,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/GameObjectPositionPacketBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="576">
-              <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+              <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -780,12 +617,12 @@
       <option name="presentableId" value="Default" />
       <updated>1512111931178</updated>
       <workItem from="1512343214834" duration="2245000" />
-      <workItem from="1512348597306" duration="20000000" />
+      <workItem from="1512348597306" duration="20086000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22245000" />
+    <option name="totallyTimeSpent" value="22331000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -807,7 +644,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5027069" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12576313" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.4972931" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30470347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30470347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20857699" sideWeight="0.49423394" order="0" side_tool="false" content_ui="combo" />
@@ -1282,7 +1119,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/GameObjectPositionPacketBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
-          <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
           <folding />
         </state>
       </provider>
