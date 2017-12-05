@@ -23,7 +23,7 @@ public class ChatMessage {
 
   public ChatMessage(Mob sender, String message, Mob recipient) {
     this.sender = sender;
-    this.message = new byte[]{};
+    this.message = new byte[] {};
     try {
       this.message = message.getBytes("UTF-8");
     } catch (UnsupportedEncodingException e) {

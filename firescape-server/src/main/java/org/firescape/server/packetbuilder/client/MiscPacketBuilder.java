@@ -397,6 +397,7 @@ public class MiscPacketBuilder {
     for (InvItem i : shop.getItems()) {
       s.addShort(i.getID());
       s.addShort(i.getAmount());
+      s.addShort(i.getDef().basePrice);
     }
     this.packets.add(s.toPacket());
   }
