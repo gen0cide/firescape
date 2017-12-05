@@ -12,6 +12,15 @@
     <className>org.firescape.server.npchandler.Bankers</className>
   </NpcHandler>
 
+
+    <NpcHandler>
+    <ids>
+      <int>11</int>
+    </ids>
+    <className>org.firescape.server.npchandler.ManMeatSeller</className>
+  </NpcHandler>
+
+
   <NpcHandler>
     <ids>
       <int>172</int>
