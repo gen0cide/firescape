@@ -45,6 +45,7 @@
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/packethandler/client/NpcCommand.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/Aggie.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/Server.java
+/root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/CorruptGuard.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/entityhandling/defs/extras/ItemArrowHeadDef.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/entityhandling/defs/extras/ReqOreDef.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/model/Mob.java

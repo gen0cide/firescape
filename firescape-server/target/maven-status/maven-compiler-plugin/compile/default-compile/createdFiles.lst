@@ -209,6 +209,7 @@ org/firescape/server/packethandler/client/InvActionHandler$6.class
 org/firescape/server/model/Player$7.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$7.class
 org/firescape/server/npchandler/WizardMizgog$2$1$1.class
+org/firescape/server/npchandler/CorruptGuard$1.class
 org/firescape/server/model/ActiveTile.class
 org/firescape/server/packethandler/client/DropHandler.class
 org/firescape/server/packethandler/client/InvUseOnItem$1.class
@@ -232,6 +233,7 @@ org/firescape/server/npchandler/MonkHealer$1$1$1.class
 org/firescape/server/npchandler/FarmerFred$2$1$1$1$1.class
 org/firescape/server/net/RSCPacket.class
 org/firescape/server/packethandler/client/InvActionHandler$13.class
+org/firescape/server/npchandler/CorruptGuard$1$1$1$1.class
 org/firescape/server/event/FightEvent.class
 org/firescape/server/npchandler/Certer$1$1$1.class
 org/firescape/server/packethandler/client/ObjectAction$1$13.class
@@ -280,6 +282,7 @@ org/firescape/server/event/Thieving$5$1.class
 org/firescape/server/packethandler/client/SessionRequest.class
 org/firescape/server/npchandler/Hetty$2$1.class
 org/firescape/server/packethandler/client/InvActionHandler$14$1.class
+org/firescape/server/npchandler/CorruptGuard$1$1.class
 org/firescape/server/event/NpcWalkEvent.class
 org/firescape/server/codec/RSCProtocolEncoder.class
 org/firescape/server/packethandler/client/InvUseOnItem$5.class
@@ -385,6 +388,7 @@ org/firescape/server/npchandler/Juliet$2$1$1.class
 org/firescape/server/npchandler/FarmerFred$2$1$1$1.class
 org/firescape/server/entityhandling/defs/extras/ItemCookingDef.class
 org/firescape/server/npchandler/Klank$1$1.class
+org/firescape/server/npchandler/CorruptGuard.class
 org/firescape/server/packethandler/client/ShopHandler.class
 org/firescape/server/packethandler/client/InvActionHandler$16$1.class
 org/firescape/server/packethandler/client/WallObjectAction.class
@@ -477,6 +481,7 @@ org/firescape/server/npchandler/MonkHealer$1$1.class
 org/firescape/server/packethandler/client/InvActionHandler$28.class
 org/firescape/server/npchandler/Adventurer$1$1$1.class
 org/firescape/server/model/Player$1.class
+org/firescape/server/npchandler/CorruptGuard$1$1$1.class
 org/firescape/server/codec/RSCProtocolDecoder.class
 org/firescape/server/npchandler/Aggie$1$1$1$4$1.class
 org/firescape/server/packethandler/client/InvUseOnPlayer$1.class
