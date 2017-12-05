@@ -5,11 +5,13 @@ import org.firescape.server.model.InvItem;
 import org.firescape.server.model.Player;
 import org.firescape.server.model.Shop;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
-import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +78,7 @@ public class MiscPacketBuilder {
    */
   public void sendFatigue() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(114);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PLAYER_STAT_FATIGUE));
     s.addShort(this.player.getFatigue());
     this.packets.add(s.toPacket());
   }
@@ -324,7 +326,7 @@ public class MiscPacketBuilder {
    */
   public void hideMenu() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(252);
+    s.setID(Opcode.getServer(204, Command.Server.SV_OPTION_LIST_CLOSE));
     this.packets.add(s.toPacket());
   }
 
@@ -333,11 +335,15 @@ public class MiscPacketBuilder {
    */
   public void sendMenu(String[] options) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(245);
+    s.setID(Opcode.getServer(204, Command.Server.SV_OPTION_LIST));
     s.addByte((byte) options.length);
     for (String option : options) {
       s.addInt(option.length());
-      s.addBytes(option.getBytes());
+      try {
+        s.addBytes(option.getBytes("UTF-8"));
+      } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+      }
     }
     this.packets.add(s.toPacket());
   }
@@ -347,7 +353,7 @@ public class MiscPacketBuilder {
    */
   public void showBank() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(42);
+    s.setID(Opcode.getServer(204, Command.Server.SV_BANK_OPEN));
     s.addByte((byte) this.player.getBank().size());
     s.addByte((byte) Bank.MAX_SIZE);
     for (InvItem i : this.player.getBank().getItems()) {
@@ -362,7 +368,7 @@ public class MiscPacketBuilder {
    */
   public void hideBank() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(203);
+    s.setID(Opcode.getServer(204, Command.Server.SV_BANK_CLOSE));
     this.packets.add(s.toPacket());
   }
 
@@ -371,10 +377,10 @@ public class MiscPacketBuilder {
    */
   public void updateBankItem(int slot, int newId, int amount) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(249);
+    s.setID(Opcode.getServer(204, Command.Server.SV_BANK_UPDATE));
     s.addByte((byte) slot);
     s.addShort(newId);
-    s.addShort((short) amount);
+    s.addInt(amount);
     this.packets.add(s.toPacket());
   }
 
@@ -383,7 +389,7 @@ public class MiscPacketBuilder {
    */
   public void showShop(Shop shop) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(101);
+    s.setID(Opcode.getServer(204, Command.Server.SV_SHOP_OPEN));
     s.addByte((byte) shop.size());
     s.addByte((byte) (shop.isGeneral() ? 1 : 0));
     s.addByte((byte) shop.getSellModifier());
@@ -400,7 +406,7 @@ public class MiscPacketBuilder {
    */
   public void hideShop() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(137);
+    s.setID(Opcode.getServer(204, Command.Server.SV_SHOP_CLOSE));
     this.packets.add(s.toPacket());
   }
 
@@ -409,7 +415,7 @@ public class MiscPacketBuilder {
    */
   public void startShutdown(int seconds) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(52);
+    s.setID(Opcode.getServer(204, Command.Server.SV_SYSTEM_UPDATE));
     s.addShort((int) (((double) seconds / 32D) * 50));
     this.packets.add(s.toPacket());
   }
@@ -436,8 +442,14 @@ public class MiscPacketBuilder {
    */
   public void sendAlert(String message, boolean big) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(big ? 89 : 222);
-    s.addBytes(message.getBytes());
+    s.setID(big ? Opcode.getServer(204, Command.Server.SV_SERVER_MESSAGE) : Opcode.getServer(204,
+                                                                                             Command.Server.SV_SERVER_MESSAGE_ONTOP
+    ));
+    try {
+      s.addBytes(message.getBytes("UTF-8"));
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
     this.packets.add(s.toPacket());
   }
 
@@ -446,8 +458,12 @@ public class MiscPacketBuilder {
    */
   public void sendSound(String soundName) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(204);
-    s.addBytes(soundName.getBytes());
+    s.setID(Opcode.getServer(204, Command.Server.SV_SOUND));
+    try {
+      s.addBytes(soundName.getBytes("UTF-8"));
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
     this.packets.add(s.toPacket());
   }
 
@@ -456,7 +472,7 @@ public class MiscPacketBuilder {
    */
   public void sendDied() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(83);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PLAYER_DIED));
     this.packets.add(s.toPacket());
   }
 
@@ -465,7 +481,7 @@ public class MiscPacketBuilder {
    */
   public void sendPrivateMessage(long usernameHash, byte[] message) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(120);
+    s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_MESSAGE));
     s.addLong(usernameHash);
     s.addInt(0);
     s.addBytes(message);
@@ -477,7 +493,7 @@ public class MiscPacketBuilder {
    */
   public void sendFriendUpdate(long usernameHash, int world) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(149);
+    s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_STATUS_CHANGE));
     s.addLong(usernameHash);
     //    s.addByte((byte) (world == Config.SERVER_NUM ? 99 : world));
     this.packets.add(s.toPacket());
@@ -488,7 +504,7 @@ public class MiscPacketBuilder {
    */
   public void sendFriendList() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(71);
+    s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_LIST));
     s.addByte((byte) this.player.getFriendList().size());
     for (String friend : this.player.getFriendList()) {
       s.addLong(org.firescape.server.util.DataConversions.usernameToHash(friend));
@@ -502,7 +518,7 @@ public class MiscPacketBuilder {
    */
   public void sendIgnoreList() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(109);
+    s.setID(Opcode.getServer(204, Command.Server.SV_IGNORE_LIST));
     s.addByte((byte) this.player.getIgnoreList().size());
     for (String user : this.player.getIgnoreList()) {
       s.addLong(org.firescape.server.util.DataConversions.usernameToHash(user));
@@ -668,7 +684,7 @@ public class MiscPacketBuilder {
 
   public void sendAppearanceScreen() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(59);
+    s.setID(Opcode.getServer(204, Command.Server.SV_APPEARANCE));
     this.packets.add(s.toPacket());
   }
 
@@ -686,7 +702,7 @@ public class MiscPacketBuilder {
 
   public void sendTeleBubble(int x, int y, boolean grab) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(36);
+    s.setID(Opcode.getServer(204, Command.Server.SV_TELEPORT_BUBBLE));
     s.addByte((byte) (grab ? 1 : 0));
     s.addByte((byte) (x - this.player.getX()));
     s.addByte((byte) (y - this.player.getY()));
@@ -695,14 +711,18 @@ public class MiscPacketBuilder {
 
   public void sendMessage(String message) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(131);
-    s.addBytes(DataConversions.stringToByteArray(message));
+    s.setID(Opcode.getServer(204, Command.Server.SV_MESSAGE));
+    try {
+      s.addBytes(message.getBytes("UTF-8"));
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
     this.packets.add(s.toPacket());
   }
 
   public void sendRemoveItem(int slot) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(123);
+    s.setID(Opcode.getServer(204, Command.Server.SV_INVENTORY_ITEM_REMOVE));
     s.addByte((byte) slot);
     this.packets.add(s.toPacket());
   }
@@ -710,7 +730,7 @@ public class MiscPacketBuilder {
   public void sendUpdateItem(int slot) {
     InvItem item = this.player.getInventory().get(slot);
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(90);
+    s.setID(Opcode.getServer(204, Command.Server.SV_INVENTORY_ITEM_UPDATE));
     s.addByte((byte) slot);
     s.addShort(item.getID() + (item.isWielded() ? 32768 : 0));
     if (item.getDef().isStackable()) {
@@ -721,7 +741,7 @@ public class MiscPacketBuilder {
 
   public void sendInventory() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(53);
+    s.setID(Opcode.getServer(204, Command.Server.SV_INVENTORY_ITEMS));
     s.addByte((byte) this.player.getInventory().size());
     for (InvItem item : this.player.getInventory().getItems()) {
       s.addShort(item.getID() + (item.isWielded() ? 32768 : 0));
@@ -737,7 +757,7 @@ public class MiscPacketBuilder {
    */
   public void sendEquipmentStats() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(153);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PLAYER_STAT_EQUIPMENT_BONUS));
     s.addShort(this.player.getArmourPoints());
     s.addShort(this.player.getWeaponAimPoints());
     s.addShort(this.player.getWeaponPowerPoints());
@@ -752,7 +772,7 @@ public class MiscPacketBuilder {
    */
   public void sendStat(int stat) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(159);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PLAYER_STAT_UPDATE));
     s.addByte((byte) stat);
     s.addByte((byte) this.player.getCurStat(stat));
     s.addByte((byte) this.player.getMaxStat(stat));
@@ -765,7 +785,7 @@ public class MiscPacketBuilder {
    */
   public void sendStats() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(156);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PLAYER_STAT_LIST));
     for (int lvl : this.player.getCurStats()) {
       s.addByte((byte) lvl);
     }
@@ -784,7 +804,7 @@ public class MiscPacketBuilder {
    */
   public void sendWorldInfo() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(25);
+    s.setID(Opcode.getServer(204, Command.Server.SV_WORLD_INFO));
     s.addShort(this.player.getIndex());
     s.addShort(2304);
     s.addShort(1776);
@@ -798,7 +818,7 @@ public class MiscPacketBuilder {
    */
   public void sendPrayers() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(206);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PRAYER_STATUS));
     for (int x = 0; x < 14; x++) { // was 14
       s.addByte((byte) (this.player.isPrayerActivated(x) ? 1 : 0));
     }
@@ -810,7 +830,7 @@ public class MiscPacketBuilder {
    */
   public void sendGameSettings() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(240);
+    s.setID(Opcode.getServer(204, Command.Server.SV_GAME_SETTINGS));
     s.addByte((byte) (this.player.getGameSetting(0) ? 1 : 0));
     s.addByte((byte) (this.player.getGameSetting(2) ? 1 : 0));
     s.addByte((byte) (this.player.getGameSetting(3) ? 1 : 0));
@@ -825,7 +845,7 @@ public class MiscPacketBuilder {
    */
   public void sendPrivacySettings() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(51);
+    s.setID(Opcode.getServer(204, Command.Server.SV_PRIVACY_SETTINGS));
     s.addByte((byte) (this.player.getPrivacySetting(0) ? 1 : 0));
     s.addByte((byte) (this.player.getPrivacySetting(1) ? 1 : 0));
     s.addByte((byte) (this.player.getPrivacySetting(2) ? 1 : 0));
@@ -838,7 +858,7 @@ public class MiscPacketBuilder {
    */
   public RSCPacket sendLogout() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(4);
+    s.setID(Opcode.getServer(204, Command.Server.SV_CLOSE_CONNECTION));
     RSCPacket packet = s.toPacket();
     this.packets.add(packet);
     return packet;
@@ -849,7 +869,7 @@ public class MiscPacketBuilder {
    */
   public void sendCantLogout() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(183);
+    s.setID(Opcode.getServer(204, Command.Server.SV_LOGOUT_DENY));
     this.packets.add(s.toPacket());
   }
 
@@ -858,7 +878,7 @@ public class MiscPacketBuilder {
    */
   public void sendLoginBox() {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(182);
+    s.setID(Opcode.getServer(204, Command.Server.SV_WELCOME));
     s.addInt(2130706433);
     s.addShort(this.player.getDaysSinceLastLogin());
     s.addByte((byte) 0);

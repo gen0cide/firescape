@@ -113,6 +113,8 @@ public class InvActionHandler implements PacketHandler {
           owner.getInventory().remove(item);
           switch (item.getID()) {
             case 20: // Bones
+              owner.incExp(5, 25, true, true);
+              break;
             case 604: // Bat bones
               owner.incExp(5, 150, true, true);
               break;

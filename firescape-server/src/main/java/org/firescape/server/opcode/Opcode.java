@@ -24,6 +24,22 @@ public class Opcode {
     return Command.Server.UNKNOWN;
   }
 
+  public static int getServer(int version, Command.Server opcode) {
+    try {
+      Map<Command.Server, Integer> m;
+      if (version == 202) {
+        m = v202.server;
+      } else if (version == 234) {
+        m = v234.server;
+      } else {
+        m = v204.server;
+      }
+      return m.entrySet().stream().filter(e -> e.getKey().equals(opcode)).findFirst().get().getValue();
+    } catch (Exception ignored) {
+    }
+    return -1;
+  }
+
   public static int getClient(int version, Command.Client opcode) {
     try {
       Map<Command.Client, Integer> m;

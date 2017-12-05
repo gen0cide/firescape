@@ -558,7 +558,7 @@ public final class Player extends Mob {
 
   public void addMessageToChatQueue(byte[] messageData) {
     try (Jedis jedis = Entity.world.redis.getResource()) {
-      String chat_message = DataConversions.byteToString(messageData, 0, messageData.length);
+      String chat_message = new String(Arrays.copyOfRange(messageData, 0, messageData.length));
       jedis.publish("game_chat", "(" + this.getUsername() + ") " + chat_message);
     }
     chatQueue.add(new ChatMessage(this, messageData));

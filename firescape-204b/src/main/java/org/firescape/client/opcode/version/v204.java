@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class v204 {
 
-  public static HashMap<Command.Client, Integer> client = new HashMap<Command.Client, Integer>() {{
+  public final static HashMap<Command.Client, Integer> client = new HashMap<Command.Client, Integer>() {{
     put(Command.Client.CL_TRADE_CONFIRM_ACCEPT, 104);
     put(Command.Client.CL_APPEARANCE, 235);
     put(Command.Client.CL_BANK_CLOSE, 212);

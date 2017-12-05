@@ -1,8 +1,8 @@
 package org.firescape.client.opcode;
 
-public class Command {
+public final class Command {
 
-  public enum Client {
+  public static enum Client {
     CL_APPEARANCE,
     CL_BANK_CLOSE,
     CL_BANK_DEPOSIT,

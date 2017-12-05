@@ -3,6 +3,7 @@ package org.firescape.client;
 import org.firescape.client.opcode.Opcode;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 public class Packet {
@@ -184,8 +185,15 @@ public class Packet {
   }
 
   public void putString(String s) {
-    System.arraycopy(s.getBytes(), 0, packetData, packetEnd, s.length());
-    packetEnd += s.length();
+    try {
+      byte[] msg = s.getBytes("UTF-8");
+      for (int i = 0; i < msg.length; i++) {
+        putByte(msg[i]);
+      }
+      packetEnd += msg.length;
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
   }
 
   public int isaacCommand(int i) {

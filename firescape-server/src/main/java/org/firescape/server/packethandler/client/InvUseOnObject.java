@@ -10,6 +10,8 @@ import org.firescape.server.event.WalkToObjectEvent;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
@@ -39,28 +41,26 @@ public class InvUseOnObject implements PacketHandler {
     }
     GameObject object = tile.getGameObject();
     InvItem item;
-    switch (pID) {
-      case 36: // Use Item on Door
-        int dir = p.readByte();
-        item = player.getInventory().get(p.readShort());
-        if (object == null || object.getType() == 0 || item == null) { // This
-          // shoudln't
-          // happen
-          player.setSuspiciousPlayer(true);
-          return;
-        }
-        handleDoor(player, tile, object, dir, item);
-        break;
-      case 94: // Use Item on GameObject
-        item = player.getInventory().get(p.readShort());
-        if (object == null || object.getType() == 1 || item == null) { // This
-          // shoudln't
-          // happen
-          player.setSuspiciousPlayer(true);
-          return;
-        }
-        handleObject(player, tile, object, item);
-        break;
+    if (pID == Opcode.getClient(204, Command.Client.CL_USEWITH_WALLOBJECT)) { // Use Item on Door
+      int dir = p.readByte();
+      item = player.getInventory().get(p.readShort());
+      if (object == null || object.getType() == 0 || item == null) { // This
+        // shoudln't
+        // happen
+        player.setSuspiciousPlayer(true);
+        return;
+      }
+      handleDoor(player, tile, object, dir, item);
+      return;
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_USEWITH_OBJECT)) { // Use Item on GameObject
+      item = player.getInventory().get(p.readShort());
+      if (object == null || object.getType() == 1 || item == null) { // This
+        // shoudln't
+        // happen
+        player.setSuspiciousPlayer(true);
+        return;
+      }
+      handleObject(player, tile, object, item);
     }
   }
 
@@ -74,7 +74,7 @@ public class InvUseOnObject implements PacketHandler {
             !owner.getInventory().contains(item) ||
             !tile.hasGameObject() ||
             !tile.getGameObject().equals(object) ||
-            owner.getStatus() != Action.USING_INVITEM_ON_DOOR) {
+            (owner.getStatus() != Action.USING_INVITEM_ON_DOOR)) {
           return;
         }
         owner.resetAll();

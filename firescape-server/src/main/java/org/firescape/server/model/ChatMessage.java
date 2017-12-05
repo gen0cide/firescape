@@ -1,6 +1,6 @@
 package org.firescape.server.model;
 
-import org.firescape.server.util.DataConversions;
+import java.io.UnsupportedEncodingException;
 
 public class ChatMessage {
   /**
@@ -10,7 +10,7 @@ public class ChatMessage {
   /**
    * The message it self, in byte format
    */
-  private final byte[] message;
+  private byte[] message;
   /**
    * Who the message is for
    */
@@ -23,7 +23,12 @@ public class ChatMessage {
 
   public ChatMessage(Mob sender, String message, Mob recipient) {
     this.sender = sender;
-    this.message = DataConversions.stringToByteArray(message);
+    this.message = new byte[]{};
+    try {
+      this.message = message.getBytes("UTF-8");
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
     this.recipient = recipient;
   }
 

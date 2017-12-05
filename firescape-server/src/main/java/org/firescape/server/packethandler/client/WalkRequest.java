@@ -7,6 +7,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
@@ -21,7 +23,7 @@ public class WalkRequest implements PacketHandler {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     if (player.inCombat()) {
-      if (pID == 132) {
+      if (pID == Opcode.getClient(204, Command.Client.CL_WALK)) {
         Mob opponent = player.getOpponent();
         if (opponent == null) { // This shouldn't happen
           player.setSuspiciousPlayer(true);

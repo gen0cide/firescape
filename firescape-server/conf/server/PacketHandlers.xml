@@ -186,7 +186,7 @@
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>9</int>
+      <int>29</int>
     </ids>
     <className>org.firescape.server.packethandler.client.StyleHandler</className>
   </PacketHandler>

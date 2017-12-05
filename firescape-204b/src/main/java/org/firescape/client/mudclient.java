@@ -7,10 +7,12 @@ import org.firescape.client.script.Manager;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class mudclient extends GameConnection {
 
@@ -1092,7 +1094,6 @@ public class mudclient extends GameConnection {
           clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
           clientStream.putShort(item);
           clientStream.putInt(amount);
-          clientStream.putInt(0x12345678);
           clientStream.sendPacket();
         } catch (NumberFormatException nex) {
         }
@@ -1108,7 +1109,6 @@ public class mudclient extends GameConnection {
           clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
           clientStream.putShort(item);
           clientStream.putInt(amount);
-          clientStream.putInt(-0x789abcdf);
           clientStream.sendPacket();
         } catch (NumberFormatException nex) {
         }
@@ -4064,12 +4064,7 @@ public class mudclient extends GameConnection {
               super.mouseY <= mouseY + 249) {
             super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
             super.clientStream.putShort(slot);
-            if (Version.CLIENT > 204) {
-              super.clientStream.putInt(1);
-            } else {
-              super.clientStream.putShort(1);
-            }
-            super.clientStream.putInt(0x12345678);
+            super.clientStream.putInt(1);
             super.clientStream.sendPacket();
           }
           if (bankCount >= 5 &&
@@ -4079,117 +4074,50 @@ public class mudclient extends GameConnection {
               super.mouseY <= mouseY + 249) {
             super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
             super.clientStream.putShort(slot);
-            if (Version.CLIENT > 204) {
-              super.clientStream.putInt(5);
-            } else {
-              super.clientStream.putShort(5);
-            }
-            super.clientStream.putInt(0x12345678);
+            super.clientStream.putInt(5);
             super.clientStream.sendPacket();
           }
-          if (Version.CLIENT > 204) {
-            if (bankCount >= 10 &&
-                super.mouseX >= mouseX + 280 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 305 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              super.clientStream.putInt(10);
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
-            if (bankCount >= 50 &&
-                super.mouseX >= mouseX + 305 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 335 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              super.clientStream.putInt(50);
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
-            if (super.mouseX >= mouseX + 335 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 368 &&
-                super.mouseY <= mouseY + 249) {
-              showInputPopup(3, new String[] {
-                "Please enter the number of items to withdraw", "and press enter"
-              }, true);
-            }
-            if (super.mouseX >= mouseX + 370 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 400 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              super.clientStream.putInt(bankCount);
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
-          } else {
-            if (bankCount >= 25 &&
-                super.mouseX >= mouseX + 280 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 305 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(25);
-              } else {
-                super.clientStream.putShort(25);
-              }
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
-            if (bankCount >= 100 &&
-                super.mouseX >= mouseX + 305 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 335 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(100);
-              } else {
-                super.clientStream.putShort(100);
-              }
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
-            if (bankCount >= 500 &&
-                super.mouseX >= mouseX + 335 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 368 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(500);
-              } else {
-                super.clientStream.putShort(500);
-              }
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
-            if (bankCount >= 2500 &&
-                super.mouseX >= mouseX + 370 &&
-                super.mouseY >= mouseY + 238 &&
-                super.mouseX < mouseX + 400 &&
-                super.mouseY <= mouseY + 249) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(2500);
-              } else {
-                super.clientStream.putShort(2500);
-              }
-              super.clientStream.putInt(0x12345678);
-              super.clientStream.sendPacket();
-            }
+          if (bankCount >= 25 &&
+              super.mouseX >= mouseX + 280 &&
+              super.mouseY >= mouseY + 238 &&
+              super.mouseX < mouseX + 305 &&
+              super.mouseY <= mouseY + 249) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(25);
+            super.clientStream.sendPacket();
           }
+          if (bankCount >= 100 &&
+              super.mouseX >= mouseX + 305 &&
+              super.mouseY >= mouseY + 238 &&
+              super.mouseX < mouseX + 335 &&
+              super.mouseY <= mouseY + 249) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(100);
+            super.clientStream.sendPacket();
+          }
+          if (bankCount >= 500 &&
+              super.mouseX >= mouseX + 335 &&
+              super.mouseY >= mouseY + 238 &&
+              super.mouseX < mouseX + 368 &&
+              super.mouseY <= mouseY + 249) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(500);
+            super.clientStream.sendPacket();
+          }
+          if (bankCount >= 2500 &&
+              super.mouseX >= mouseX + 370 &&
+              super.mouseY >= mouseY + 238 &&
+              super.mouseX < mouseX + 400 &&
+              super.mouseY <= mouseY + 249) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_WITHDRAW));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(2500);
+            super.clientStream.sendPacket();
+          }
+
           if (getInventoryCount(slot) >= 1 &&
               super.mouseX >= mouseX + 220 &&
               super.mouseY >= mouseY + 263 &&
@@ -4197,12 +4125,7 @@ public class mudclient extends GameConnection {
               super.mouseY <= mouseY + 274) {
             super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
             super.clientStream.putShort(slot);
-            if (Version.CLIENT > 204) {
-              super.clientStream.putInt(1);
-            } else {
-              super.clientStream.putShort(1);
-            }
-            super.clientStream.putInt(-0x789abcdf);
+            super.clientStream.putInt(1);
             super.clientStream.sendPacket();
           }
           if (getInventoryCount(slot) >= 5 &&
@@ -4212,117 +4135,50 @@ public class mudclient extends GameConnection {
               super.mouseY <= mouseY + 274) {
             super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
             super.clientStream.putShort(slot);
-            if (Version.CLIENT > 204) {
-              super.clientStream.putInt(5);
-            } else {
-              super.clientStream.putShort(5);
-            }
-            super.clientStream.putInt(-0x789abcdf);
+            super.clientStream.putInt(5);
             super.clientStream.sendPacket();
           }
-          if (Version.CLIENT > 204) {
-            if (getInventoryCount(slot) >= 10 &&
-                super.mouseX >= mouseX + 280 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 305 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              super.clientStream.putInt(10);
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
-            if (getInventoryCount(slot) >= 50 &&
-                super.mouseX >= mouseX + 305 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 335 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              super.clientStream.putInt(50);
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
-            if (super.mouseX >= mouseX + 335 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 368 &&
-                super.mouseY <= mouseY + 274) {
-              showInputPopup(4, new String[] {
-                "Please enter the number of items to deposit", "and press enter"
-              }, true);
-            }
-            if (super.mouseX >= mouseX + 370 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 400 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              super.clientStream.putInt(getInventoryCount(slot));
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
-          } else {
-            if (getInventoryCount(slot) >= 25 &&
-                super.mouseX >= mouseX + 280 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 305 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(25);
-              } else {
-                super.clientStream.putShort(25);
-              }
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
-            if (getInventoryCount(slot) >= 100 &&
-                super.mouseX >= mouseX + 305 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 335 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(100);
-              } else {
-                super.clientStream.putShort(100);
-              }
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
-            if (getInventoryCount(slot) >= 500 &&
-                super.mouseX >= mouseX + 335 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 368 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(500);
-              } else {
-                super.clientStream.putShort(500);
-              }
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
-            if (getInventoryCount(slot) >= 2500 &&
-                super.mouseX >= mouseX + 370 &&
-                super.mouseY >= mouseY + 263 &&
-                super.mouseX < mouseX + 400 &&
-                super.mouseY <= mouseY + 274) {
-              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
-              super.clientStream.putShort(slot);
-              if (Version.CLIENT > 204) {
-                super.clientStream.putInt(2500);
-              } else {
-                super.clientStream.putShort(2500);
-              }
-              super.clientStream.putInt(-0x789abcdf);
-              super.clientStream.sendPacket();
-            }
+          if (getInventoryCount(slot) >= 25 &&
+              super.mouseX >= mouseX + 280 &&
+              super.mouseY >= mouseY + 263 &&
+              super.mouseX < mouseX + 305 &&
+              super.mouseY <= mouseY + 274) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(25);
+            super.clientStream.sendPacket();
           }
+          if (getInventoryCount(slot) >= 100 &&
+              super.mouseX >= mouseX + 305 &&
+              super.mouseY >= mouseY + 263 &&
+              super.mouseX < mouseX + 335 &&
+              super.mouseY <= mouseY + 274) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(100);
+            super.clientStream.sendPacket();
+          }
+          if (getInventoryCount(slot) >= 500 &&
+              super.mouseX >= mouseX + 335 &&
+              super.mouseY >= mouseY + 263 &&
+              super.mouseX < mouseX + 368 &&
+              super.mouseY <= mouseY + 274) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(500);
+            super.clientStream.sendPacket();
+          }
+          if (getInventoryCount(slot) >= 2500 &&
+              super.mouseX >= mouseX + 370 &&
+              super.mouseY >= mouseY + 263 &&
+              super.mouseX < mouseX + 400 &&
+              super.mouseY <= mouseY + 274) {
+            super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_BANK_DEPOSIT));
+            super.clientStream.putShort(slot);
+            super.clientStream.putInt(2500);
+            super.clientStream.sendPacket();
+          }
+
         }
       } else if (bankItemCount > 48 && mouseX >= 50 && mouseX <= 115 && mouseY <= 12) {
         bankActivePage = 0;
@@ -9136,7 +8992,8 @@ public class mudclient extends GameConnection {
           } else if (Version.CLIENT <= 204 && updateType == 1) {
             byte messageLength = pdata[offset++];
             if (player != null) {
-              String filtered = WordFilter.filter(Utility.byteToString(pdata, offset, messageLength));
+              String msg = new String(Arrays.copyOfRange(pdata, offset, offset+(int)messageLength));
+              String filtered = WordFilter.filter(msg);
               boolean ignored = false;
               for (int i = 0; i < super.ignoreListCount; i++) {
                 if (super.ignoreListHashes[i] == player.hash) {
@@ -9260,7 +9117,7 @@ public class mudclient extends GameConnection {
             byte mLen = pdata[offset];
             offset++;
             if (player != null) {
-              String msg = Utility.byteToString(pdata, offset, mLen);
+              String msg = new String(Arrays.copyOfRange(pdata, offset, offset+mLen));
               player.messageTimeout = 150;
               player.message = msg;
               if (player == localPlayer) {
@@ -9482,7 +9339,7 @@ public class mudclient extends GameConnection {
               byte messageLength = pdata[offset];
               offset++;
               if (npc != null) {
-                String s4 = Utility.byteToString(pdata, offset, messageLength);
+                String s4 = new String(Arrays.copyOfRange(pdata, offset, offset+messageLength));
                 npc.messageTimeout = 150;
                 npc.message = s4;
                 if (playerServerIndex == localPlayer.serverIndex) {
@@ -9510,20 +9367,12 @@ public class mudclient extends GameConnection {
         showOptionMenu = true;
         int count = Utility.getUnsignedByte(pdata[offset++]);
         optionMenuCount = count;
-        if (Version.CLIENT > 204) {
-          for (int i = 0; i < count; i++) {
-            Utility.Gjstr2 g1 = Utility.gjstr2(pdata, offset);
-            offset = g1.newOffset;
-            optionMenuEntry[i] = g1.result;
-          }
-        } else {
-          for (int i = 0; i < count; i++) {
-            int length = Utility.getUnsignedByte(pdata[offset++]);
-            optionMenuEntry[i] = Utility.byteToString(pdata, offset, length);
-            offset += length;
-          }
+        for (int i = 0; i < count; i++) {
+          int length = Utility.getUnsignedInt(pdata, offset);
+          offset += 4;
+          optionMenuEntry[i] = new String(Arrays.copyOfRange(pdata, offset, offset+length));
+          offset += length;
         }
-
         return;
       }
       if (opcode == Command.Server.SV_OPTION_LIST_CLOSE) {
@@ -9921,19 +9770,8 @@ public class mudclient extends GameConnection {
         int itemsCountOld = Utility.getUnsignedByte(pdata[offset++]);
         int item = Utility.getUnsignedShort(pdata, offset);
         offset += 2;
-        int itemCount;
-        if (Version.CLIENT > 204) {
-          Utility.UInt3 u = Utility.getUnsignedInt3(pdata, offset);
-          offset = u.newOffset;
-          itemCount = u.result;
-        } else {
-          itemCount = Utility.getUnsignedInt(pdata, offset);
-          if (itemCount >= 128 || Version.CLIENT > 204) {
-            offset += 4;
-          } else {
-            offset++;
-          }
-        }
+        int itemCount = Utility.getUnsignedInt(pdata, offset);
+        offset += 4;
         if (itemCount == 0) {
           newBankItemCount--;
           for (int index = itemsCountOld; index < newBankItemCount; index++) {
@@ -10052,14 +9890,7 @@ public class mudclient extends GameConnection {
         return;
       }
       if (opcode == Command.Server.SV_SOUND) {
-        String s;
-        if (Version.CLIENT > 204) {
-          Utility.Gjstr2 g1 = Utility.gjstr2(pdata, offset);
-          offset = g1.newOffset;
-          s = g1.result;
-        } else {
-          s = Utility.byteToString(pdata, offset, psize - 1);
-        }
+        String s = new String(Arrays.copyOfRange(pdata, offset, offset+(psize - 1)));
         playSoundFile(s);
         return;
       }
@@ -10092,25 +9923,13 @@ public class mudclient extends GameConnection {
         return;
       }
       if (opcode == Command.Server.SV_SERVER_MESSAGE) {
-        if (Version.CLIENT > 204) {
-          Utility.Gjstr2 g1 = Utility.gjstr2(pdata, offset);
-          offset = g1.newOffset;
-          serverMessage = g1.result;
-        } else {
-          serverMessage = Utility.byteToString(pdata, offset, psize - 1);
-        }
+        serverMessage = new String(Arrays.copyOfRange(pdata, offset, offset+(psize - 1)));
         showDialogServermessage = true;
         serverMessageBoxTop = false;
         return;
       }
       if (opcode == Command.Server.SV_SERVER_MESSAGE_ONTOP) {
-        if (Version.CLIENT > 204) {
-          Utility.Gjstr2 g1 = Utility.gjstr2(pdata, offset);
-          offset = g1.newOffset;
-          serverMessage = g1.result;
-        } else {
-          serverMessage = Utility.byteToString(pdata, offset, psize - 1);
-        }
+        serverMessage = new String(Arrays.copyOfRange(pdata, offset, offset+(psize - 1)));
         showDialogServermessage = true;
         serverMessageBoxTop = true;
         return;
@@ -10666,16 +10485,18 @@ public class mudclient extends GameConnection {
           }
         }
       } else {
-        if (Version.CLIENT > 204) {
-          sendChatMessage(s);
-        } else {
-          byte[] msg = Utility.stringToByteArray(s);
+        byte[] msg = new byte[0];
+        try {
+          msg = s.getBytes("UTF-8");
           sendChatMessage(msg, msg.length);
           s = WordFilter.filter(s);
           localPlayer.messageTimeout = 150;
           localPlayer.message = s;
           showMessage(localPlayer.name + ": " + s, 2);
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
         }
+
       }
     }
     if (messageTabSelected == 0) {

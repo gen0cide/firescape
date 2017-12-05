@@ -141,7 +141,7 @@ public final class GameEngine extends Thread {
 
       }
       try {
-        Thread.sleep(50);
+        Thread.sleep(200);
       } catch (InterruptedException ie) {
       }
       processIncomingPackets();

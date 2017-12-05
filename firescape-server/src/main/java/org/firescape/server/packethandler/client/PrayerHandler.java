@@ -7,6 +7,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class PrayerHandler implements PacketHandler {
@@ -31,23 +33,22 @@ public class PrayerHandler implements PacketHandler {
       return;
     }
     PrayerDef prayer = EntityHandler.getPrayerDef(prayerID);
-    switch (pID) {
-      case 56:
-        if (player.getMaxStat(5) < prayer.getReqLevel()) {
-          player.setSuspiciousPlayer(true);
-          player.getActionSender().sendMessage("Your prayer ability is not high enough to use this prayer");
-          break;
-        }
-        if (player.getCurStat(5) <= 0) {
-          player.setPrayer(prayerID, false);
-          player.getActionSender().sendMessage("You have run out of prayer points. Return to a church to recharge");
-          break;
-        }
-        activatePrayer(player, prayerID);
-        break;
-      case 248:
-        deactivatePrayer(player, prayerID);
-        break;
+    if (pID == Opcode.getClient(204, Command.Client.CL_PRAYER_ON)) {
+      if (player.getMaxStat(5) < prayer.getReqLevel()) {
+        player.setSuspiciousPlayer(true);
+        player.getActionSender().sendMessage("Your prayer ability is not high enough to use this prayer");
+        player.getActionSender().sendPrayers();
+        return;
+      }
+      if (player.getCurStat(5) <= 0) {
+        player.setPrayer(prayerID, false);
+        player.getActionSender().sendMessage("You have run out of prayer points. Return to a church to recharge");
+        player.getActionSender().sendPrayers();
+        return;
+      }
+      activatePrayer(player, prayerID);
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_PRAYER_OFF)) {
+      deactivatePrayer(player, prayerID);
     }
     player.getActionSender().sendPrayers();
   }

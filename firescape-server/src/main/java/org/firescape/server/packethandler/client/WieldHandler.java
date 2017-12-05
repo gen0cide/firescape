@@ -7,6 +7,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
@@ -41,23 +43,21 @@ public class WieldHandler implements PacketHandler {
       player.setSuspiciousPlayer(true);
       return;
     }
-    switch (pID) {
-      case 169:
-        System.out.println(String.format("WIELD ATTEMPT: player=%s item=%s item_id=%d inv_slot=%d",
-                                         player.getUsername(),
-                                         item.getDef().name,
-                                         item.getID(),
-                                         idx
-        ));
-        if (!item.isWielded()) {
-          wieldItem(player, item);
-        }
-        break;
-      case 170:
-        if (item.isWielded()) {
-          unWieldItem(player, item, true);
-        }
-        break;
+    if (pID == Opcode.getClient(204, Command.Client.CL_INV_WEAR)) {
+      System.out.println(String.format(
+        "WIELD ATTEMPT: player=%s item=%s item_id=%d inv_slot=%d",
+        player.getUsername(),
+        item.getDef().name,
+        item.getID(),
+        idx
+      ));
+      if (!item.isWielded()) {
+        wieldItem(player, item);
+      }
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_INV_UNEQUIP)) {
+      if (item.isWielded()) {
+        unWieldItem(player, item, true);
+      }
     }
     player.getActionSender().sendInventory();
     player.getActionSender().sendEquipmentStats();
@@ -124,8 +124,9 @@ public class WieldHandler implements PacketHandler {
     if (sound) {
       player.getActionSender().sendSound("click");
     }
-    player.updateWornItems(item.getWieldableDef().getWieldPos(),
-                           player.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos())
+    player.updateWornItems(
+      item.getWieldableDef().getWieldPos(),
+      player.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos())
     );
   }
 

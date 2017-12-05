@@ -10,6 +10,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 
@@ -29,9 +31,9 @@ public class AttackHandler implements PacketHandler {
     player.resetAll();
     Mob affectedMob = null;
     int serverIndex = p.readShort();
-    if (pID == 171) {
+    if (pID == Opcode.getClient(204, Command.Client.CL_PLAYER_ATTACK)) {
       affectedMob = world.getPlayer(serverIndex);
-    } else if (pID == 190) {
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_NPC_ATTACK)) {
       affectedMob = world.getNpc(serverIndex);
     }
     if (affectedMob == null || affectedMob.equals(player)) { // This shouldn't

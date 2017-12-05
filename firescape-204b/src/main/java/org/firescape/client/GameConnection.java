@@ -426,7 +426,7 @@ public class GameConnection extends GameShell {
                     false
         );
       } else {
-        String s = Utility.byteToString(incomingPacket, 1, psize - 1);
+        String s = new String(Arrays.copyOfRange(incomingPacket, 1, 1+(psize-1)));
         showServerMessage(s);
       }
       return;
@@ -654,7 +654,8 @@ public class GameConnection extends GameShell {
 
         friendListUnknown[friendListUnknown2] = k1;
         friendListUnknown2 = (friendListUnknown2 + 1) % maxSocialListSize;
-        String msg = WordFilter.filter(Utility.byteToString(incomingPacket, 13, psize - 13));
+        String rawMessage = new String(Arrays.copyOfRange(incomingPacket, 13, 13 + (psize - 13)));
+        String msg = WordFilter.filter(rawMessage);
         showServerMessage("@pri@" + Utility.hash2username(from) + ": tells you " + msg);
       }
       return;
@@ -936,11 +937,7 @@ public class GameConnection extends GameShell {
 
   protected void sendCommandString(String s) {
     clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_COMMAND));
-    if (Version.CLIENT > 204) {
-      clientStream.pjstr2(s);
-    } else {
-      clientStream.putString(s);
-    }
+    clientStream.putString(s);
     clientStream.sendPacket();
   }
 

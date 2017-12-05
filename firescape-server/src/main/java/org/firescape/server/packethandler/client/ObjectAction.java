@@ -11,6 +11,8 @@ import org.firescape.server.event.*;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
@@ -33,7 +35,7 @@ public class ObjectAction implements PacketHandler {
     }
     player.resetAll();
     GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
-    int click = pID == 51 ? 0 : 1;
+    int click = pID == Opcode.getClient(204, Command.Client.CL_OBJECT_CMD1) ? 0 : 1;
     if (object == null) {
       player.setSuspiciousPlayer(true);
       return;
