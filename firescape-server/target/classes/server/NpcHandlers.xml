@@ -20,6 +20,18 @@
     <className>org.firescape.server.npchandler.ManMeatSeller</className>
   </NpcHandler>
 
+    <NpcHandler>
+    <ids>
+      <int>65</int>
+      <int>100</int>
+      <int>373</int>
+      <int>374</int>
+      <int>375</int>
+      <int>376</int>
+    </ids>
+    <className>org.firescape.server.npchandler.CorruptGuard</className>
+  </NpcHandler>
+
 
   <NpcHandler>
     <ids>
