@@ -9,3 +9,5 @@ firescape-server/players/*.cfg
 *.pem
 .env
 .lst
+client/target
+Server/target
