@@ -33,7 +33,7 @@ public class BarbarianGear implements NpcHandler {
                 if (option == 1) {
                   if (owner.getInventory().remove(10, 20) > -1) {
                     owner.getActionSender().sendMessage("You buy a steel axe");
-                    owner.getInventory().add(new InvItem(89, 1));
+                    owner.getInventory().add(new InvItem(90, 1));
                     owner.getActionSender().sendInventory();
                     npc.unblock();
                   } else {

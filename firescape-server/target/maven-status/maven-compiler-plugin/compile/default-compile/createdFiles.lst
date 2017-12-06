@@ -9,12 +9,14 @@ org/firescape/server/packetbuilder/StaticPacketBuilder.class
 org/firescape/server/packethandler/client/Ping.class
 org/firescape/server/entityhandling/defs/PrayerDef.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$12$1.class
+org/firescape/server/npchandler/GoblinPoison$1$1$1$1.class
 org/firescape/server/packethandler/client/WallObjectAction$1$5.class
 org/firescape/server/npchandler/Gamble$1$1$1.class
 org/firescape/server/npchandler/WizardMizgog$2.class
 org/firescape/server/packethandler/client/InvActionHandler$15$1.class
 org/firescape/server/npchandler/Thrander.class
 org/firescape/server/entityhandling/defs/NPCDef.class
+org/firescape/server/npchandler/GoblinPoison$1$1$1.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$5.class
 org/firescape/server/packethandler/client/InvActionHandler$18$1.class
 org/firescape/server/packethandler/client/InvActionHandler$4.class
@@ -194,11 +196,13 @@ org/firescape/server/packethandler/client/InvActionHandler$7.class
 org/firescape/server/packethandler/client/InvActionHandler$22.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$13.class
 org/firescape/server/npchandler/Hetty.class
+org/firescape/server/npchandler/BarbarianUpgrade$1$1.class
 org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$9$2$1.class
 org/firescape/server/packethandler/client/ObjectAction$1$8.class
 org/firescape/server/npchandler/Juliet$1$1.class
 org/firescape/server/npchandler/Aggie$1$1$1$4$1$1$2.class
+org/firescape/server/npchandler/GoblinPoison$1.class
 org/firescape/server/event/Thieving.class
 org/firescape/server/npchandler/Aggie$1.class
 org/firescape/server/npchandler/Aggie$1$1$1$1.class
@@ -274,6 +278,7 @@ org/firescape/server/npchandler/Gamble$1$1$1$2.class
 org/firescape/server/packethandler/client/InvActionHandler$10.class
 org/firescape/server/npchandler/Apothecary$1$1$1$1.class
 org/firescape/server/entityhandling/locs/ItemLoc.class
+org/firescape/server/npchandler/BarbarianUpgrade$1$1$1$1.class
 org/firescape/server/packetbuilder/client/MiscPacketBuilder.class
 org/firescape/server/npchandler/Klank.class
 org/firescape/server/npchandler/PvP$1$1.class
@@ -296,6 +301,7 @@ org/firescape/server/packethandler/client/InvActionHandler$11.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$11$1.class
 org/firescape/server/entityhandling/defs/extras/ItemArrowHeadDef.class
 org/firescape/server/GameVars.class
+org/firescape/server/npchandler/BarbarianUpgrade$1.class
 org/firescape/server/event/Thieving$5$1.class
 org/firescape/server/packethandler/client/SessionRequest.class
 org/firescape/server/npchandler/Hetty$2$1.class
@@ -367,6 +373,7 @@ org/firescape/server/npchandler/FarmerFred$1.class
 org/firescape/server/packethandler/client/InvUseOnObject.class
 org/firescape/server/npchandler/PvP$1$1$1.class
 org/firescape/server/packethandler/client/InvActionHandler$5.class
+org/firescape/server/npchandler/GoblinPoison$1$1.class
 org/firescape/server/npchandler/ManMeatSeller$1.class
 org/firescape/server/npchandler/Juliet.class
 org/firescape/server/packethandler/client/InvUseOnObject$2$6.class
@@ -375,6 +382,7 @@ org/firescape/server/npchandler/Bankers$1$1$1$2$2$1.class
 org/firescape/server/npchandler/MasterFisher$1$1$1.class
 org/firescape/server/npchandler/HansSay$1$1$1$2.class
 org/firescape/server/event/Thieving$5$1$1.class
+org/firescape/server/npchandler/BarbarianUpgrade$1$1$1.class
 org/firescape/server/packethandler/client/ObjectAction$1$1.class
 org/firescape/server/npchandler/Bankers$1$1$1$2$2.class
 org/firescape/server/npchandler/Wyson$1$1$1$1$1$1.class
@@ -406,6 +414,7 @@ org/firescape/server/packethandler/client/DuelHandler.class
 org/firescape/server/npchandler/Kaqemeex$1$1.class
 org/firescape/server/npchandler/Doric$2$1.class
 org/firescape/server/model/Player$3.class
+org/firescape/server/npchandler/GoblinPoison.class
 org/firescape/server/npchandler/Aggie$1$1$1$4$1$1.class
 org/firescape/server/npchandler/Juliet$2$1$1.class
 org/firescape/server/opcode/version/v202$1.class
@@ -560,6 +569,7 @@ org/firescape/server/packethandler/client/WallObjectAction$1$3.class
 org/firescape/server/packethandler/client/BankHandler.class
 org/firescape/server/npchandler/EntranaMonks$1$1$1$1.class
 org/firescape/server/npchandler/MakeOverMage$1$1$1.class
+org/firescape/server/npchandler/BarbarianUpgrade.class
 org/firescape/server/packethandler/client/InvActionHandler$23$1.class
 org/firescape/server/entityhandling/defs/extras/ItemHerbSecond.class
 org/firescape/server/npchandler/BarbarianGear$1$1$1$2.class

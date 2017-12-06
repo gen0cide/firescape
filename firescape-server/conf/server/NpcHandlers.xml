@@ -19,11 +19,28 @@
     <className>org.firescape.server.npchandler.DwarfMinner</className>
   </NpcHandler>
 
+    <NpcHandler>
+    <ids>
+      <int>4</int>
+      <int>62</int>
+      <int>153</int>
+      <int>154</int>
+    </ids>
+    <className>org.firescape.server.npchandler.GoblinPoison</className>
+  </NpcHandler>
+
   <NpcHandler>
     <ids>
       <int>76</int>
     </ids>
     <className>org.firescape.server.npchandler.BarbarianGear</className>
+  </NpcHandler>
+  
+  <NpcHandler>
+    <ids>
+      <int>78</int>
+    </ids>
+    <className>org.firescape.server.npchandler.BarbarianUpgrade</className>
   </NpcHandler>
 
   <NpcHandler>
