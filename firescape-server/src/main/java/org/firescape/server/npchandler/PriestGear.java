@@ -3,7 +3,7 @@ package org.firescape.server.npchandler;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
-public class CorruptGuard implements NpcHandler {
+public class PriestGear implements NpcHandler {
   /**
    * World instance
    */
