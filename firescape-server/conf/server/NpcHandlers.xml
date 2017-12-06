@@ -12,6 +12,26 @@
     <className>org.firescape.server.npchandler.Bankers</className>
   </NpcHandler>
 
+  <NpcHandler>
+    <ids>
+      <int>94</int>
+    </ids>
+    <className>org.firescape.server.npchandler.DwarfMinner</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>76</int>
+    </ids>
+    <className>org.firescape.server.npchandler.BarbarianGear</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>9</int>
+    </ids>
+    <className>org.firescape.server.npchandler.PriestGear</className>
+  </NpcHandler>
 
     <NpcHandler>
     <ids>
