@@ -1,0 +1,616 @@
+Message out {
+    # 132
+    byte messageType
+    byte mod
+    jstr2 message
+    optional ClanMessage # ??
+    optional ColorMessage # ??
+    ClanMessage {
+        jstr2 sender
+        jstr2 senderClan
+    }
+    ColorMessage {
+        jstr2 colour
+    }
+}
+
+CloseConnectionAck out {
+    # 4
+    # empty
+}
+
+CantLogout out {
+    # 183
+    # empty
+}
+
+WriteFile out {
+    # 189
+    # todo
+}
+
+CloseConnection out {
+    # 165
+    # empty
+}
+
+FriendLogged out {
+    # 149
+    jstr2 displayName
+    jstr2 accountName
+    byte online
+    optional jstr2 worldName
+}
+
+IgnoreNameChange out {
+    # 237
+    # todo
+    jstr2 unknown1
+    jstr2 unknown2
+    jstr2 unknown3
+    jstr2 unknown4
+    bool unknown5
+}
+
+IgnoreList out {
+    # 109
+    # todo
+    repeated [byte] Ignores ignores
+    Ignores {
+        jstr2 displayName
+        jstr2 accountName
+        jstr2 oldDisplayName # referred to as "formery xxx"
+        jstr2 unknown
+    }
+}
+
+PrivacySettings out {
+    # 51
+    bool blockPublicChat
+    bool blockPrivateChat
+    bool blockTrades
+    bool blockDuels
+}
+
+PlayerSentMessage out {
+    # 87
+    jstr2 displayName
+    string message # "string" ?? todo
+}
+
+PlayerRecvMessage out {
+    # 120
+    # todo
+    jstr2 displayName
+    jstr2 accountName
+    byte crownId
+    long unknown
+    string message # again
+}
+
+PlayerMovement out {
+    # 191
+    @bits #turn on bit reading -- no more non-bit reads/writes can be done after this!
+          # (afaik reading/writing non-bits after doing a bitread/write would not work anyway?
+          # so this is just to help ppl avoid making a mistake...)
+    bit11 regionX
+    bit13 regionY
+    bit4 animId
+    repeated [bit8] PlayersUpd players
+    optional repeated PlayersLoc newPlayers # if there is data available
+    PlayersUpd {
+        bit1 update #if update==0, ignore the next bit
+        optional bit1 updateType #required if update==1
+        optional UnknownAnimUpdate unknownAnimNextId #if updateType==1
+        optional bit3 animUpdate #if updateType #if updateType==0
+    }
+    PlayersLoc {
+        bit11 serverIndex 11
+        bit5 areaX
+        bit5 areaY
+        bit4 animId
+    }
+    UnknownAnimUpdate {
+        bit2 unknown
+        bit2 animNextId
+    }
+}
+
+GroundItems out {
+    # 99
+    byte remove
+    optional short itemId #only if we are adding
+    ItemLocation location
+
+    ItemLocation {
+        byte areaX
+        byte areaY
+    }
+}
+
+Objects out {
+    # 48
+    byte remove
+    optional short id #if remove!=255
+    ObjectLocation location
+
+    ObjectLocation {
+        byte areaX
+        byte areaY
+    }
+}
+
+InsideTutorial out {
+    # 111
+    bool insideTutorial
+}
+
+Inventory out {
+    # 53
+    repeated [byte] Items items
+    Items {
+        short mod
+        # item id = mod & 32767
+        # is equipped = mod / 32768
+        optional int2 stackSize # lllliterally getUnsignedInt2 ## SHORT?!?!?!?
+    }
+}
+
+PlayerUpdate out {
+    # 234
+    repeated [short] Players players
+    Players {
+        short serverIndex
+        byte updateType
+        # only do one of the following optional thingies!
+        optional short itemId #if updateType==0 -- bubble action
+        optional ChatMessage chatthing #if updateType==1
+        optional Damaged damage #type=2
+        optional NpcProjectile npcProjectile #type=3
+        optional PlayerProjectile playerProjectile #type=4
+        optional AppearanceUpdate appearance #type=5
+        optional NpcMessage npcMessage #type=6
+        optional UnknownPlayer unknownPlayer #idk
+
+        ChatMessage {
+            byte modStatus # unsure
+            string message # again
+        }
+        Damaged {
+            # taking damage
+            byte damageTaken
+            byte healthCurrent
+            byte healthMax
+        }
+        NpcProjectile {
+            # incoming projectile from npc
+            short sprite
+            short serverIndex
+        }
+        PlayerProjectile {
+            # incoming projectile from player
+            short sprite
+            short serverIndex
+        }
+        AppearanceUpdate {
+            # appearance
+            short unused # whats this
+            jstr2 displayName
+            jstr2 accountName
+            repeated [byte] byte itemIds
+            byte colourHair
+            byte colourTop
+            byte colourBottom
+            byte colourSkin
+            byte level
+            byte skullVisible
+        }
+        NpcMessage {
+            # npc message to ``our'' player?
+            string message
+        }
+        UnknownPlayer {
+            short unknown1
+            jstr2 unknown2
+            jstr2 unknown3
+            byte unknown4
+        }
+    }
+}
+
+WallObjects out {
+    # 91
+    byte remove
+    optional short id # if remove != 255
+    WallObjectLocation location
+    optional byte direction #if remove != 255
+    WallObjectLocation {
+        byte areaX
+        byte areaY
+    }
+}
+
+
+
+
+
+## VVVVV TODO VVVVV
+
+
+
+
+
+
+
+
+
+NpcMovement out {
+    # 79
+    repeated [bitmask 8] NpcsUpd npcs
+    NpcsUpd {
+        bitmask update 1
+        if update not 0 {
+            bitmask updateType 1
+            if updateType not 0 {
+                bitmask unknown 2
+                if unknown not 3 {
+                    bitmask animNextId 2
+                }
+            }
+            if updateType is 0 {
+                bitmask animNextId 3
+            }
+        }
+    }
+    repeated NpcsLoc newNpcs # if there is data available
+    NpcLoc {
+        bitmask serverIndex 11
+        bitmask areaX 5
+        bitmask areaY 5
+        bitmask sprite 4
+        bitmask id 10
+    }
+}
+
+NpcUpdate out {
+    # 104
+    repeated [short] Npcs npcs
+    Npcs {
+        short serverIndex
+        byte updateType
+        if updateType is 1 {
+            # talking to a player
+            short talkingToPlayerIndex
+        }
+        if updateType is 2 {
+            # taking damage
+            byte damageTaken
+            byte healthCurrent
+            byte healthMax
+        }
+    }
+}
+
+Options out {
+    # 245
+    repeated [byte] Options options
+    Options {
+        jstr2 option
+    }
+}
+
+OptionsClose out {
+    # 252
+    # empty
+}
+
+LoadArea out {
+    # 25
+    short playerServerIndex
+    short planeWidth
+    short planeHeight
+    short planeIndex
+    short planeMultiplier
+}
+
+PlayerSkills out {
+    # 156
+    repeat to 18 {
+        byte skillLevelCurrent
+    }
+    repeat to 18 {
+        byte skillLevelMax
+    }
+    repeat to 18 {
+        byte skillExperience
+    }
+    byte questPoints
+}
+
+PlayerEquipment out {
+    # 153
+    repeat to 5 {
+        byte equipment
+    }
+}
+
+Death out {
+    # 83
+    # empty
+}
+
+WorldObjects out {
+    # 211
+    # todo
+    signedshort areaX
+    signedshort areaY
+}
+
+DisplayMakeover out {
+    # 59
+    # empty
+}
+
+OpenTrade out {
+    # 92
+    short recipientServerIndex
+}
+
+CloseTrade out {
+    # 128
+    # empty
+}
+
+UpdateTrade out {
+    # 97
+    repeated [byte] Items recipientItems
+    Items {
+        short itemId
+        int count
+    }
+}
+
+UpdateTradeStatusRecipient out {
+    # 162
+    bool recipientAccepted
+}
+
+OpenShop out {
+    # 101
+    repeated [byte] Items itemsCount
+    byte shopType
+    byte sellPriceMod
+    byte buyPriceMod
+    byte priceMultiplier
+    Items {
+        short itemId
+        short count
+        short price
+    }
+}
+
+CloseShop out {
+    # 137
+    # empty
+}
+
+UpdateTradeStatus out {
+    # 15
+    bool accepted
+}
+
+GameSettings out {
+    # 240
+    bool cameraModeAuto
+    bool oneMouseButton
+    bool soundsDisabled
+}
+
+Prayer out {
+    # 206
+    # todo
+    repeated [packetSize] Prayers prayers
+    Prayers {
+        bool on
+    }
+}
+
+Quests out {
+    # 5
+    repeat to 50 {
+        bool questComplete
+    }
+}
+
+OpenBank out {
+    # 42
+    repeated [byte] Items itemsCount
+    byte itemsCountMax
+    Items {
+        short itemId
+        int2 stackSize
+    }
+}
+
+CloseBank out {
+    # 203
+    # empty
+}
+
+SkillExperience out {
+    # 33
+    byte skill
+    int experience
+}
+
+OpenStake out {
+    # 176
+    short opponentServerIndex
+}
+
+CloseStake out {
+    # 225
+    # empty
+}
+
+OpenTradeConfirm out {
+    # 20
+    jstr2 recipientDisplayName
+    repeated [byte] ItemsRecp recipientItemsCount
+    ItemsRecp {
+        short itemId
+        int count
+    }
+    repeated [byte] Items itemsCount
+    Items {
+        short itemId
+        int count
+    }
+}
+
+UpdateStake out {
+    # 6
+    repeated [byte] Items itemsCount
+    Items {
+        short itemId
+        int count
+    }
+}
+
+OptionsStake out {
+    # 30
+    bool noRetreat
+    bool noMagic
+    bool noPrayer
+    bool noWeapons
+}
+
+UpdateBank out {
+    # 249
+    byte itemIndex
+    short itemId
+    short count
+}
+
+InventoryUpdateItem out {
+    # 90
+    byte itemIndex
+    short mod
+    # item id = mod & 32767
+    # is equipped = mod / 32768
+    if is stackable {
+        int2 stackSize # lllliterally getUnsignedInt2
+    }
+}
+
+InventoryRemoveItem out {
+    # 123
+    byte itemIndex
+}
+
+SkillUpdate out {
+    # 159
+    byte skillId
+    byte levelCurrent
+    byte levelMax
+    int experience
+}
+
+UpdateStakeStatusRecipient {
+    # 253
+    bool recipientAccepted
+}
+
+UpdateStakeStatus {
+    # 210
+    bool accepted
+}
+
+OpenStakeConfirm out {
+    # 172
+    jstr2 recipientDisplayName
+    repeated [byte] ItemsRecp recipientItemsCount
+    ItemsRecp {
+        short itemId
+        int count
+    }
+    repeated [byte] Items itemsCount
+    Items {
+        short itemId
+        int count
+    }
+    byte noRetreat
+    byte noMagic
+    byte noPrayer
+    byte noWeapons
+}
+
+PlaySound out {
+    # 204
+    jstr2 filename
+}
+
+Teleport out {
+    # 36
+    byte bubbleType
+    byte areaX
+    byte areaY
+}
+
+Welcome out {
+    # 182
+    int lastIp
+    short daysSinceLastLogin
+    byte daysSinceRecoveriesSet
+    short unreadMessagesCount
+}
+
+MessageBox out {
+    # 89
+    jstr2 message
+}
+
+MessageBoxTop out {
+    # 222
+    jstr2 message
+}
+
+Fatigue out {
+    # 114
+    short fatigue
+    # fatigue% = fatigue * 100 / 750
+}
+
+SleepWord out {
+    # 117
+    byte[] sprite
+}
+
+FatigueSleeping out {
+    # 244
+    short fakefatigue
+    # fakefatigue% = fakefatigue * 100 / 750
+}
+
+Awake out {
+    # 84
+    # empty
+}
+
+SleepWordIncorrect out {
+    # 194
+    # empty
+}
+
+SystemUpdate out {
+    # 52
+    short time
+    # seconds = time * 32 / 50
+}
+
+Unused out {
+    # 213
+    # empty
+    # todo
+    # yolo
+}

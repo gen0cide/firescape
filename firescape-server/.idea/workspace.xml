@@ -5,441 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/.idea/libraries/Maven__com_github_jnr_jffi_1_2_16.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/.idea/libraries/Maven__com_github_jnr_jffi_native_1_2_16.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/.idea/libraries/Maven__com_github_jnr_jnr_ffi_2_1_7.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/.idea/libraries/Maven__org_jruby_jruby_complete_9_1_14_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/Buffer.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/Command.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/Convert.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/Math.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/Opcode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/Packet.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/ServerPacketBuilder.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../firescape-core/src/main/java/org/firescape/core/version/V204.java" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/compiler.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/dictionaries/flint.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/encodings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/findbugs-idea.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/inspectionProfiles/test.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/scopes/scope_settings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/uiDesigner.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/204.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/README.MD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/config85.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/entity24.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/entity24.mem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/filter2.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/fonts1.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/jagex.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/land63.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/land63.mem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/land64.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/land64.mem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/maps63.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/maps63.mem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/maps64.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/maps64.mem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/media58.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/media59.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/models36.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/sounds1.mem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/data/textures17.jag" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/scripts/helper.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/scripts/hud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/scripts/login.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/conf/scripts/test.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/204 - 233 data files.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/204-Client2Server.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/204-Server2Client.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/233-params.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/OB3.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/Sounds.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/in.233.pd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/map.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/boundary.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/entity.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/floor.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/location.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/npc.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/objects.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/projectile.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/roof.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/shop.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/mc40 conf18/spells.txt.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/out.233.pd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/opcodes.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/replacer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/test.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v202_c.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v202_s.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v204_c.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v204_new_c.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v204_new_s.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v204_s.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/packetmap/v233_opcode_list.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/docs/wordfilter.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/firescape-client.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pom.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/jag_unpack.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/jaglib/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/jaglib/archive.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/jaglib/file.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/jaglib/map.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/jaglib/util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/pyshit/pyshit.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/sources/applet/Launcher.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/sources/org/BZLib.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/sources/org/BZState.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/sources/org/DumpMaps.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/BZLib.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/BZState.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Buffer.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/ChatMessage.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Class11.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/ClientStream.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/GameCharacter.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/GameConnection.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/GameData.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/GameFrame.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/GameModel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/GameShell.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/ISAAC.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Packet.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Panel.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Polygon.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Scanline.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Scene.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/StreamAudioPlayer.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Surface.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/SurfaceSprite.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Utility.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/Version.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/WordFilter.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/World.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/mudclient.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/opcode/Command.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/opcode/Keys.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/opcode/Opcode.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/opcode/version/v202.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/opcode/version/v204.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/opcode/version/v234.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/script/Manager.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/src/main/java/org/firescape/client/script/Script.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/target/firescape-jar-with-dependencies.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/target/firescape.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/target/maven-archiver/pom.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-204b/test.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/.classpath" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/.externalToolBuilders/Bot_Ant.launch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/.project" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/INSTALL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/KEYS" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/LICENSE" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/LICENSE.dom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/LICENSE.sax" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/LICENSE.xerces" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/NOTICE" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/README" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/WHATSNEW" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/ant" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/ant.bat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/ant.cmd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/antRun" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/antRun.bat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/antRun.pl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/antenv.cmd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/complete-ant-cmd.pl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/envset.cmd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/lcp.bat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/runant.pl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/runant.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/bin/runrc.cmd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/ant-bootstrap.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/changelog.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/checkstyle/checkstyle-frames.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/checkstyle/checkstyle-text.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/checkstyle/checkstyle-xdoc.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/coverage-frames.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/jdepend-frames.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/jdepend.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/junit-frames-xalan1.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/junit-frames.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/junit-noframes.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/log.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/maudit-frames.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/mmetrics-frames.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/etc/tagdiff.xsl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/fetch.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/get-m2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/README" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-antlr-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-antlr-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-antlr-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-antlr.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bcel-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bcel-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bcel-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bcel.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bsf-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bsf-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bsf-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-bsf.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-log4j-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-log4j-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-log4j-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-log4j.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-oro-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-oro-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-oro-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-oro.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-regexp-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-regexp-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-regexp-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-regexp.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-resolver-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-resolver-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-resolver-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-apache-resolver.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-logging-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-logging-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-logging-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-logging.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-net-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-net-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-net-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-commons-net.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jai-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jai-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jai-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jai.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-javamail-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-javamail-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-javamail-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-javamail.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jdepend-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jdepend-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jdepend-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jdepend.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jmf-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jmf-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jmf-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jmf.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jsch-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jsch-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jsch-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-jsch.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-junit-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-junit-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-junit-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-junit.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-launcher-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-launcher-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-launcher-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-launcher.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-netrexx-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-netrexx-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-netrexx-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-netrexx.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-nodeps-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-nodeps-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-nodeps-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-nodeps.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-parent-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-parent-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-parent-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-starteam-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-starteam-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-starteam-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-starteam.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-stylebook-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-stylebook-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-stylebook-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-stylebook.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-swing-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-swing-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-swing-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-swing.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-testutil-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-testutil-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-testutil-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-testutil.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-trax-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-trax-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-trax-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-trax.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-weblogic-1.7.0.pom" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-weblogic-1.7.0.pom.md5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-weblogic-1.7.0.pom.sha1" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant-weblogic.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/ant.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/libraries.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/xercesImpl.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/ant/lib/xml-apis.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/build.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/conf/aliases.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/conf/defs/PacketHandlers.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/conf/defs/incoming_packet_defs.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/commons-io.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/gson.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/hex-string.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/jmf.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/junit.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/mina.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/slf4j.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/xpp3.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/xstream.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/lib/yaml.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/settings.ini" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/Bot.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/GameConnector.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/codec/RSCCodecFactory.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/codec/RSCProtocolDecoder.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/codec/RSCProtocolEncoder.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/EntityHandler.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/DoorDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/ElevationDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/EntityDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/GameObjectDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/ItemDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/NPCDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/PrayerDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/SpellDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/entityhandling/defs/TileDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/io/WorldLoader.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/model/Player.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/net/EncryptedPayload.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/net/Packet.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/net/PacketQueue.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/net/RSCConnectionHandler.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/net/RSCPacket.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/RSCPacketBuilder.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/StaticPacketBuilder.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/server/ChatMessage.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/server/PlayerLogin.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/server/ServerPacket.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/server/SessionRequest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packetbuilder/server/TestServerPacket.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packethandler/PacketHandler.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packethandler/PacketHandlerDef.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packethandler/server/LoginResponse.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packethandler/server/SessionResponse.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/packethandler/server/TestPacket.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/util/Config.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/util/DataConversions.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/util/Logger.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/util/LoginHelper.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/util/PersistenceManager.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-bot/src/org/rscdaemon/bot/util/Utils.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/.ruby-gemset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/.ruby-version" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/DEV_SETUP.sh" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/Gemfile" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/Gemfile.lock" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/Procfile" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/Rakefile" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/assets/config/manifest.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/assets/images/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/assets/javascripts/application.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/assets/javascripts/cable.coffee" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/assets/javascripts/channels/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/assets/stylesheets/application.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/channels/application_cable/channel.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/channels/application_cable/connection.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/controllers/application_controller.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/controllers/concerns/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/helpers/application_helper.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/jobs/application_job.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/mailers/application_mailer.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/models/application_record.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/models/concerns/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/views/layouts/application.html.erb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/views/layouts/mailer.html.erb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/app/views/layouts/mailer.text.erb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/bin/bundle" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/bin/rails" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/bin/rake" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/bin/setup" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/bin/update" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config.ru" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/application.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/boot.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/cable.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/database.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/environment.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/environments/development.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/environments/production.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/environments/test.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/active_record_belongs_to_required_by_default.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/application_controller_renderer.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/assets.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/backtrace_silencers.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/callback_terminator.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/cookies_serializer.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/filter_parameter_logging.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/inflections.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/mime_types.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/per_form_csrf_tokens.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/request_forgery_protection.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/session_store.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/initializers/wrap_parameters.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/locales/en.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/puma.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/routes.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/config/secrets.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/db/schema.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/db/seeds.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/lib/assets/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/lib/tasks/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/log/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/.gitkeep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/backend.nginx" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/crypto/.gitkeep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/oauth2_proxy.upstart.template" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/ssl.nginx" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/templates/.gitkeep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/templates/error.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/proxy/templates/sign_in.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/404.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/422.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/500.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/apple-touch-icon-precomposed.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/apple-touch-icon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/favicon.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/public/robots.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/controllers/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/fixtures/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/fixtures/files/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/helpers/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/integration/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/mailers/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/models/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/test/test_helper.rb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/tmp/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/tmp/restart.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/vendor/assets/javascripts/.keep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-data/vendor/assets/stylesheets/.keep" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ChatMessage.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ChatMessage.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -472,32 +38,12 @@
     <favorites_list name="firescape-server" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PlayerPositionPacketBuilder.java" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PlayerPositionPacketBuilder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RSCPacket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCPacket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RSCConnectionHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCConnectionHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="352">
+              <caret line="32" column="41" lean-forward="false" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -506,18 +52,28 @@
       <file leaf-file-name="PacketQueue.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/net/PacketQueue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="432">
+              <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RSCPacketBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java">
+      <file leaf-file-name="DuelHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="175">
+              <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PacketHandlers.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/server/PacketHandlers.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="245" column="9" lean-forward="false" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -526,8 +82,18 @@
       <file leaf-file-name="MiscPacketBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="387" column="25" lean-forward="true" selection-start-line="387" selection-start-column="25" selection-end-line="387" selection-end-column="25" />
+            <state relative-caret-position="9856">
+              <caret line="616" column="35" lean-forward="false" selection-start-line="616" selection-start-column="35" selection-end-line="616" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15456">
+              <caret line="966" column="20" lean-forward="false" selection-start-line="966" selection-start-column="9" selection-end-line="966" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -536,7 +102,7 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="416">
               <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding />
             </state>
@@ -553,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="152" column="5" lean-forward="true" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+            <state relative-caret-position="2272">
+              <caret line="142" column="11" lean-forward="false" selection-start-line="142" selection-start-column="11" selection-end-line="142" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -566,7 +132,7 @@
       <file leaf-file-name="StaticPacketBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/StaticPacketBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
+            <state relative-caret-position="3856">
               <caret line="241" column="3" lean-forward="false" selection-start-line="241" selection-start-column="3" selection-end-line="241" selection-end-column="3" />
               <folding />
             </state>
@@ -577,9 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Stat</find>
-      <find>welcome to</find>
-      <find>emulator</find>
       <find>chatQueue</find>
       <find>chat</find>
       <find>getNextChatMessage</find>
@@ -607,6 +170,9 @@
       <find>addBits</find>
       <find>shop</find>
       <find>tick</find>
+      <find>getDuelSetting</find>
+      <find>duelOptions</find>
+      <find>Duel</find>
     </findStrings>
     <replaceStrings>
       <replace>import org.firescape.server.</replace>
@@ -629,8 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Kaqemeex.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Romeo.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Kolodion.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/Gamble.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/npchandler/KebabSeller.java" />
@@ -678,8 +242,10 @@
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ChatMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/idea.vmoptions" />
+        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java" />
       </list>
     </option>
   </component>
@@ -718,7 +284,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="797" />
+    <option name="x" value="751" />
     <option name="width" value="1022" />
     <option name="height" value="1050" />
   </component>
@@ -753,7 +319,9 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages ProjectPane="false" />
@@ -769,9 +337,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -783,6 +348,12 @@
               <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
               <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
               <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
@@ -952,6 +523,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -959,7 +533,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -1090,12 +664,14 @@
       <workItem from="1512348597306" duration="20086000" />
       <workItem from="1512424401719" duration="14908000" />
       <workItem from="1512446112905" duration="687000" />
-      <workItem from="1512447700394" duration="6042000" />
+      <workItem from="1512447700394" duration="9277000" />
+      <workItem from="1512501176082" duration="471000" />
+      <workItem from="1512501707708" duration="4590000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43968000" />
+    <option name="totallyTimeSpent" value="52264000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1107,7 +683,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="797" y="0" width="1022" height="1050" extended-state="0" />
+    <frame x="751" y="0" width="1022" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1116,16 +692,16 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5027069" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12576313" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30366492" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.4972931" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30366492" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21836735" sideWeight="0.49423394" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22653061" sideWeight="0.49423394" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15384616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39895287" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17478731" sideWeight="0.50576603" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1176,7 +752,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="6" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1215,27 +791,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnGroundItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnNpc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1243,7 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1251,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1267,7 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1290,7 +845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="25" column="63" lean-forward="false" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1306,7 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,7 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1330,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1338,15 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
           <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1354,7 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="470">
           <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1370,7 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1394,15 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="236" column="42" lean-forward="false" selection-start-line="236" selection-start-column="35" selection-end-line="236" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="565" column="21" lean-forward="true" selection-start-line="565" selection-start-column="21" selection-end-line="565" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1410,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1418,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-422">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1426,7 +955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1442,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1450,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1458,7 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1466,7 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="191" column="2" lean-forward="false" selection-start-line="191" selection-start-column="2" selection-end-line="193" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1474,7 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1482,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1490,7 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1498,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1514,7 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="851">
           <caret line="142" column="5" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="142" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1530,7 +1049,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1558,14 +1076,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/net/PacketQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/net/RSCConnectionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1574,33 +1084,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/StaticPacketBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="241" column="3" lean-forward="false" selection-start-line="241" selection-start-column="3" selection-end-line="241" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="387" column="25" lean-forward="true" selection-start-line="387" selection-start-column="25" selection-end-line="387" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
+        <state relative-caret-position="416">
           <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
         </state>
@@ -1616,8 +1102,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="152" column="5" lean-forward="true" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+        <state relative-caret-position="2272">
+          <caret line="142" column="11" lean-forward="false" selection-start-line="142" selection-start-column="11" selection-end-line="142" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15456">
+          <caret line="966" column="20" lean-forward="false" selection-start-line="966" selection-start-column="9" selection-end-line="966" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/StaticPacketBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3856">
+          <caret line="241" column="3" lean-forward="false" selection-start-line="241" selection-start-column="3" selection-end-line="241" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9856">
+          <caret line="616" column="35" lean-forward="false" selection-start-line="616" selection-start-column="35" selection-end-line="616" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/idea.vmoptions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/net/PacketQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/server/PacketHandlers.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="245" column="9" lean-forward="false" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="32" column="41" lean-forward="false" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
           <folding />
         </state>
       </provider>

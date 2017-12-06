@@ -29,49 +29,8 @@
       <artifactId>gson</artifactId>
       <version>2.8.2</version>
     </dependency>
-    <dependency>
-      <groupId>com.bombaydigital</groupId>
-      <artifactId>hex-string</artifactId>
-      <version>2.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/hex-string.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.8.0-beta0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>1.8.0-beta0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.ogce</groupId>
-      <artifactId>xpp3</artifactId>
-      <version>1.1.6</version>
-    </dependency>
-    <dependency>
-      <groupId>com.thoughtworks.xstream</groupId>
-      <artifactId>xstream</artifactId>
-      <version>1.4.10</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.5</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.media</groupId>
-      <artifactId>jmf</artifactId>
-      <version>2.1.1e</version>
-    </dependency>
   </dependencies>
+
   <build>
     <finalName>firescape</finalName>
     <plugins>
