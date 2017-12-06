@@ -89,10 +89,12 @@
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/opcode/version/v202.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/model/Path.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/codec/RSCProtocolDecoder.java
+/root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/GoblinPoison.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/entityhandling/defs/SpellDef.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/opcode/Command.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/model/Npc.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/entityhandling/defs/EntityDef.java
+/root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/BarbarianUpgrade.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/util/MapGenerator.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/net/RSCConnectionHandler.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/ManMeatSeller.java
