@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="28777d59-117d-4e0e-9041-d33f311aa38a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" />
       <change beforePath="$PROJECT_DIR$/../firescape-server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-server/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/defs/ItemDef.xml/ItemDef.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/ItemLoc.xml/ItemLoc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/NpcLoc.xml/NpcLoc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/Shops.xml.gz" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/Shops.xml/Shops.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" afterPath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" afterPath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,16 +30,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="SurfaceSprite.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/SurfaceSprite.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="Surface.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/Surface.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -82,21 +80,31 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Manager.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/script/Manager.java">
+          <file leaf-file-name="mudclient.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="784">
-                  <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+                <state relative-caret-position="169">
+                  <caret line="4678" column="92" lean-forward="false" selection-start-line="4678" selection-start-column="92" selection-end-line="4678" selection-end-column="92" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mudclient.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java">
+          <file leaf-file-name="GameConnection.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="281">
-                  <caret line="8083" column="24" lean-forward="true" selection-start-line="8083" selection-start-column="24" selection-end-line="8083" selection-end-column="24" />
+                <state relative-caret-position="256">
+                  <caret line="371" column="59" lean-forward="false" selection-start-line="371" selection-start-column="59" selection-end-line="371" selection-end-column="59" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="v204.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/opcode/version/v204.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="267">
+                  <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
@@ -139,8 +147,8 @@
           <file leaf-file-name="Sprite.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="684">
-                  <caret line="69" column="18" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="18" />
+                <state relative-caret-position="169">
+                  <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -199,13 +207,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SV_DUEL_</find>
-      <find>CL_DUEL_ITEM_UPDATE</find>
-      <find>SV_DUEL_UPDATE</find>
-      <find>CL_DUEL</find>
-      <find>lx:</find>
-      <find>rx:</find>
-      <find>mouseX</find>
       <find>trade</find>
       <find>CL_DUEL_</find>
       <find>gameHeight</find>
@@ -229,6 +230,13 @@
       <find>parseSprite</find>
       <find>load</find>
       <find>loadData</find>
+      <find>CL_SHOP_BUY</find>
+      <find>shopBuy</find>
+      <find>shopSell</find>
+      <find>CL_SHOP</find>
+      <find>CL_MESSAGE</find>
+      <find>CL_PM</find>
+      <find>SV_FRIEND_LIST</find>
     </findStrings>
     <replaceStrings>
       <replace>Utility.byteToString</replace>
@@ -276,7 +284,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/Utility.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/ClientStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/Packet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/Scanline.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/Buffer.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/BZLib.java" />
@@ -301,6 +308,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/Surface.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" />
       </list>
     </option>
   </component>
@@ -343,9 +351,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="28" />
+    <option name="y" value="37" />
     <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -376,6 +386,19 @@
               <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
               <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
               <item name="org.firescape.client" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
+              <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
+              <item name="org.firescape.client" type="1f31426a:PackageElementNode" />
+              <item name="opcode" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
+              <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
+              <item name="org.firescape.client" type="1f31426a:PackageElementNode" />
+              <item name="opcode" type="1f31426a:PackageElementNode" />
+              <item name="version" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -561,15 +584,15 @@
       <workItem from="1512521141143" duration="4000" />
       <workItem from="1512521316566" duration="5472000" />
       <workItem from="1512528868258" duration="3017000" />
-      <workItem from="1512536293912" duration="666000" />
+      <workItem from="1512536293912" duration="4666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70849000" />
+    <option name="totallyTimeSpent" value="74849000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="28" y="37" width="1680" height="964" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -578,15 +601,16 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33193716" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3314154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13736264" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24928367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39790577" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39790577" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -594,7 +618,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -626,15 +649,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java</url>
-          <line>4850</line>
+          <line>4736</line>
           <properties />
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="40" />
+      <option name="time" value="41" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -704,22 +727,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="177" lean-forward="false" selection-start-line="16" selection-start-column="177" selection-end-line="16" selection-end-column="177" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1072">
-          <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/SurfaceSprite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1014,14 +1021,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="69" column="18" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -1086,10 +1085,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="57" column="16" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/opcode/version/v204.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="8083" column="24" lean-forward="true" selection-start-line="8083" selection-start-column="24" selection-end-line="8083" selection-end-column="24" />
+        <state relative-caret-position="169">
+          <caret line="4678" column="92" lean-forward="false" selection-start-line="4678" selection-start-column="92" selection-end-line="4678" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="371" column="59" lean-forward="false" selection-start-line="371" selection-start-column="59" selection-end-line="371" selection-end-column="59" />
           <folding />
         </state>
       </provider>

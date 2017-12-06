@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameConnection.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameConnection.java" />
       <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/conf/server/defs/ItemDef.xml/ItemDef.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/conf/server/locs/ItemLoc.xml/ItemLoc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/conf/server/locs/NpcLoc.xml/NpcLoc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/conf/server/locs/Shops.xml.gz" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/conf/server/locs/Shops.xml/Shops.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,31 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayerPositionPacketBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="32" column="41" lean-forward="false" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FireScape.cfg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FireScape.cfg">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/server.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="43" />
+            <state relative-caret-position="358">
+              <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -96,9 +84,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="293">
               <caret line="1052" column="26" lean-forward="false" selection-start-line="1052" selection-start-column="20" selection-end-line="1052" selection-end-column="26" />
-              <folding>
-                <marker date="1512534603055" expanded="true" signature="69741:71104" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,31 +99,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiscPacketBuilder.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="747" column="64" lean-forward="true" selection-start-line="747" selection-start-column="64" selection-end-line="747" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DuelHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4176">
-              <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PacketHandlers.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/server/PacketHandlers.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3920">
-              <caret line="245" column="9" lean-forward="false" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
+            <state relative-caret-position="437">
+              <caret line="241" column="10" lean-forward="false" selection-start-line="241" selection-start-column="10" selection-end-line="241" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiscPacketBuilder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13">
+              <caret line="474" column="48" lean-forward="true" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FriendHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FriendHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="848">
+              <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Shops.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/server/locs/Shops.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="1784" column="23" lean-forward="true" selection-start-line="1784" selection-start-column="23" selection-end-line="1784" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -147,11 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inform</find>
-      <find>chatMessages</find>
-      <find>characters</find>
-      <find>processAdver</find>
-      <find>combat</find>
       <find>CON</find>
       <find>&lt;int&gt;29</find>
       <find>pID</find>
@@ -168,7 +169,6 @@
       <find>SV_CHAT</find>
       <find>message</find>
       <find>addBits</find>
-      <find>shop</find>
       <find>tick</find>
       <find>getDuelSetting</find>
       <find>duelOptions</find>
@@ -176,7 +176,13 @@
       <find>rank</find>
       <find>incExp</find>
       <find>.get_action_sender.send_inventory</find>
+      <find>sendIn</find>
+      <find>Shop</find>
+      <find>Armor</find>
       <find>logout</find>
+      <find>236</find>
+      <find>shop</find>
+      <find>sendFriend</find>
     </findStrings>
     <replaceStrings>
       <replace>import org.firescape.server.</replace>
@@ -237,7 +243,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PrayerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/TradeHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/InvUseOnObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/BankHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/model/ChatMessage.java" />
@@ -249,6 +254,7 @@
         <option value="$PROJECT_DIR$/scripts/server.rb" />
         <option value="$PROJECT_DIR$/conf/server/defs/extras/Adverts.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
       </list>
     </option>
@@ -288,8 +294,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="28" />
+    <option name="y" value="37" />
     <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -357,6 +365,28 @@
               <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
               <item name="conf" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="defs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="defs" type="462c0819:PsiDirectoryNode" />
+              <item name="extras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="firescape-server" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="locs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="firescape-server" type="b2602c69:ProjectViewProjectNode" />
@@ -672,12 +702,12 @@
       <workItem from="1512501707708" duration="4590000" />
       <workItem from="1512521308533" duration="588000" />
       <workItem from="1512533398531" duration="618000" />
-      <workItem from="1512535715841" duration="1235000" />
+      <workItem from="1512535715841" duration="4417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54705000" />
+    <option name="totallyTimeSpent" value="57887000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -797,13 +827,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/PlayerAppearanceIDHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/TalkToNpcHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -823,14 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="25" column="63" lean-forward="false" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FriendHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,13 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1101,14 +1109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/server/PacketHandlers.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3920">
-          <caret line="245" column="9" lean-forward="false" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/DuelHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4176">
@@ -1133,18 +1133,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/server/defs/extras/Adverts.xml">
+    <entry file="file://$PROJECT_DIR$/conf/server/locs/Shops.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/server/Conf.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="463">
+          <caret line="1784" column="23" lean-forward="true" selection-start-line="1784" selection-start-column="23" selection-end-line="1784" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1157,28 +1149,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/server.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="1052" column="26" lean-forward="false" selection-start-line="1052" selection-start-column="20" selection-end-line="1052" selection-end-column="26" />
-          <folding>
-            <marker date="1512534603055" expanded="true" signature="69741:71104" ph="{...}" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/server/Conf.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/server/defs/extras/Adverts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/server/PacketHandlers.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="241" column="10" lean-forward="false" selection-start-line="241" selection-start-column="10" selection-end-line="241" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/FriendHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="747" column="64" lean-forward="true" selection-start-line="747" selection-start-column="64" selection-end-line="747" selection-end-column="64" />
+        <state relative-caret-position="13">
+          <caret line="474" column="48" lean-forward="true" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/server.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="54" />
           <folding />
         </state>
       </provider>

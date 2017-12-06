@@ -34,7 +34,8 @@ public class ShopHandler implements PacketHandler {
       return;
     } else if (pID == Opcode.getClient(204, Command.Client.CL_SHOP_BUY)) { // Buy item
       item = new InvItem(p.readShort(), 1);
-      value = p.readInt();
+      value = p.readInt(); //
+      // 3840 * 100 / 100
       if (value != ((shop.getBuyModifier() * item.getDef().getBasePrice()) / 100) || shop.countId(item.getID()) < 1) {
         return;
       }

@@ -1114,8 +1114,7 @@ public class mudclient extends GameConnection {
             int amount = Integer.parseInt(input);
             clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_BUY));
             clientStream.putShort(item);
-            clientStream.putShort(shopItemCount[shopSelectedItemIndex]);
-            clientStream.putShort(amount);
+            clientStream.putInt(amount);
             clientStream.sendPacket();
           }
         } catch (NumberFormatException nex) {
@@ -1124,11 +1123,14 @@ public class mudclient extends GameConnection {
         try {
           int item = shopItem[shopSelectedItemIndex];
           if (item != -1) {
-            int amount = Integer.parseInt(input);
+            int priceMod = shopBuyPriceMod;
+            if (priceMod < 10) {
+              priceMod = 10;
+            }
+            int itemPrice = (priceMod * GameData.itemBasePrice[item]) / 100;
             clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_SELL));
-            clientStream.putShort(shopItem[shopSelectedItemIndex]);
-            clientStream.putShort(shopItemCount[shopSelectedItemIndex]);
-            clientStream.putShort(amount);
+            clientStream.putShort(item);
+            clientStream.putInt(itemPrice);
             clientStream.sendPacket();
           }
         } catch (NumberFormatException nex) {
@@ -4721,94 +4723,31 @@ public class mudclient extends GameConnection {
         if (shopSelectedItemIndex >= 0) {
           int itemType = shopItem[shopSelectedItemIndex];
           if (itemType != -1) {
-            if (Version.CLIENT > 204) {
-              int shopCount = shopItemCount[shopSelectedItemIndex];
-              if (shopCount > 0 && mouseY >= 204 && mouseY <= 215) {
-                // buy item
-                byte count = 0;
-                if (mouseX > 318 && mouseX < 330) {
-                  count = 1;
-                }
-                if (shopCount >= 5 && mouseX > 333 && mouseX < 345) {
-                  count = 5;
-                }
-                if (shopCount >= 10 && mouseX > 348 && mouseX < 365) {
-                  count = 10;
-                }
-                if (shopCount >= 50 && mouseX > 368 && mouseX < 385) {
-                  count = 50;
-                }
-                if (mouseX > 388 && mouseX < 400) {
-                  showInputPopup(5, new String[] { "Type the number of items to buy and press enter" }, true);
-                }
-                if (count > 0) {
-                  super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_BUY));
-                  super.clientStream.putShort(shopItem[shopSelectedItemIndex]);
-                  super.clientStream.putShort(shopCount);
-                  super.clientStream.putShort(count);
-                  super.clientStream.sendPacket();
-                }
+            if (shopItemCount[shopSelectedItemIndex] > 0 &&
+                mouseX > 298 &&
+                mouseY >= 204 &&
+                mouseX < 408 &&
+                mouseY <= 215) {
+              int priceMod = shopBuyPriceMod;
+              if (priceMod < 10) {
+                priceMod = 10;
               }
-
-              int invCount = getInventoryCount(itemType);
-              if (invCount > 0 && mouseY >= 229 && mouseY <= 240) {
-                // sell item
-                byte count = 0;
-                if (mouseX > 318 && mouseX < 330) {
-                  count = 1;
-                }
-
-                if (invCount >= 5 && mouseX > 333 && mouseX < 345) {
-                  count = 5;
-                }
-
-                if (invCount >= 10 && mouseX > 348 && mouseX < 365) {
-                  count = 10;
-                }
-
-                if (mouseX > 388 && mouseX < 400) {
-                  showInputPopup(6, new String[] { "Type the number of items to sell and press enter" }, true);
-                }
-
-                if (invCount >= 50 && mouseX > 368 && mouseX < 385) {
-                  count = 50;
-                }
-
-                if (count > 0) {
-                  super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_SELL));
-                  super.clientStream.putShort(shopItem[shopSelectedItemIndex]);
-                  super.clientStream.putShort(shopCount);
-                  super.clientStream.putShort(count);
-                  super.clientStream.sendPacket();
-                }
+              int itemPrice = (priceMod * GameData.itemBasePrice[itemType]) / 100;
+              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_BUY));
+              super.clientStream.putShort(shopItem[shopSelectedItemIndex]);
+              super.clientStream.putInt(itemPrice);
+              super.clientStream.sendPacket();
+            }
+            if (getInventoryCount(itemType) > 0 && mouseX > 2 && mouseY >= 229 && mouseX < 112 && mouseY <= 240) {
+              int priceMod = shopSellPriceMod;
+              if (priceMod < 10) {
+                priceMod = 10;
               }
-            } else {
-              if (shopItemCount[shopSelectedItemIndex] > 0 &&
-                  mouseX > 298 &&
-                  mouseY >= 204 &&
-                  mouseX < 408 &&
-                  mouseY <= 215) {
-                int priceMod = shopBuyPriceMod + shopItemPrice[shopSelectedItemIndex];
-                if (priceMod < 10) {
-                  priceMod = 10;
-                }
-                int itemPrice = (priceMod * GameData.itemBasePrice[itemType]) / 100;
-                super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_BUY));
-                super.clientStream.putShort(shopItem[shopSelectedItemIndex]);
-                super.clientStream.putInt(itemPrice);
-                super.clientStream.sendPacket();
-              }
-              if (getInventoryCount(itemType) > 0 && mouseX > 2 && mouseY >= 229 && mouseX < 112 && mouseY <= 240) {
-                int priceMod = shopSellPriceMod + shopItemPrice[shopSelectedItemIndex];
-                if (priceMod < 10) {
-                  priceMod = 10;
-                }
-                int itemPrice = (priceMod * GameData.itemBasePrice[itemType]) / 100;
-                super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_SELL));
-                super.clientStream.putShort(shopItem[shopSelectedItemIndex]);
-                super.clientStream.putInt(itemPrice);
-                super.clientStream.sendPacket();
-              }
+              int itemPrice = (priceMod * GameData.itemBasePrice[itemType]) / 100;
+              super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_SHOP_SELL));
+              super.clientStream.putShort(shopItem[shopSelectedItemIndex]);
+              super.clientStream.putInt(itemPrice);
+              super.clientStream.sendPacket();
             }
           }
         }
@@ -4880,7 +4819,7 @@ public class mudclient extends GameConnection {
     if (selectedItemType != -1) {
       int count = shopItemCount[shopSelectedItemIndex];
       if (count > 0) {
-        int priceMod = shopBuyPriceMod + shopItemPrice[shopSelectedItemIndex];
+        int priceMod = shopBuyPriceMod;
         if (priceMod < 10) {
           priceMod = 10;
         }
@@ -4908,7 +4847,7 @@ public class mudclient extends GameConnection {
         );
       }
       if (getInventoryCount(selectedItemType) > 0) {
-        int priceMod = shopSellPriceMod + shopItemPrice[shopSelectedItemIndex];
+        int priceMod = shopSellPriceMod;
         if (priceMod < 10) {
           priceMod = 10;
         }

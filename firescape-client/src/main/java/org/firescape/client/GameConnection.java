@@ -380,13 +380,14 @@ public class GameConnection extends GameShell {
     }
     if (opcode == Command.Server.SV_FRIEND_STATUS_CHANGE) {
       long hash = Utility.getUnsignedLong(incomingPacket, 1);
-      int online = incomingPacket[9] & 0xff;
+      int online = 0;
       for (int i2 = 0; i2 < friendListCount; i2++) {
         if (friendListHashes[i2] == hash) {
-          if (friendListOnline[i2] == 0 && online != 0) {
+          if (friendListOnline[i2] == 0) {
             showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged in");
+            online = 1;
           }
-          if (friendListOnline[i2] != 0 && online == 0) {
+          if (friendListOnline[i2] != 0) {
             showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged out");
           }
           friendListOnline[i2] = online;

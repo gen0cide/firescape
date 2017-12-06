@@ -397,7 +397,7 @@ public class MiscPacketBuilder {
     for (InvItem i : shop.getItems()) {
       s.addShort(i.getID());
       s.addShort(i.getAmount());
-      s.addShort(i.getDef().basePrice);
+      s.addShort(i.getDef().getBasePrice());
     }
     this.packets.add(s.toPacket());
   }
@@ -496,7 +496,6 @@ public class MiscPacketBuilder {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_STATUS_CHANGE));
     s.addLong(usernameHash);
-    //    s.addByte((byte) (world == Config.SERVER_NUM ? 99 : world));
     this.packets.add(s.toPacket());
   }
 
@@ -509,7 +508,7 @@ public class MiscPacketBuilder {
     s.addByte((byte) this.player.getFriendList().size());
     for (String friend : this.player.getFriendList()) {
       s.addLong(org.firescape.server.util.DataConversions.usernameToHash(friend));
-      s.addByte((byte) 99);
+      s.addByte((byte) 1);
     }
     this.packets.add(s.toPacket());
   }
