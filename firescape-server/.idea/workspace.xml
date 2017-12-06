@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35bb7ce9-9462-4b88-8b37-164d48ae73ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-client/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameConnection.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/GameConnection.java" />
-      <change beforePath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/../firescape-client/src/main/java/org/firescape/client/mudclient.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/conf/server/defs/ItemDef.xml/ItemDef.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/conf/server/locs/ItemLoc.xml/ItemLoc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/conf/server/locs/NpcLoc.xml/NpcLoc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/conf/server/locs/Shops.xml.gz" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/conf/server/locs/Shops.xml/Shops.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
+      <change beforePath="$PROJECT_DIR$/scripts/server.rb" afterPath="$PROJECT_DIR$/scripts/server.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,8 +43,8 @@
       <file leaf-file-name="server.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/server.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="54" />
+            <state relative-caret-position="454">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="13">
-              <caret line="474" column="48" lean-forward="true" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+              <caret line="474" column="48" lean-forward="false" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -123,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="21">
-              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+              <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -134,16 +125,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="848">
               <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Shops.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/server/locs/Shops.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="1784" column="23" lean-forward="true" selection-start-line="1784" selection-start-column="23" selection-end-line="1784" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -251,11 +232,11 @@
         <option value="$APPLICATION_CONFIG_DIR$/idea.vmoptions" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/PlayerPositionPacketBuilder.java" />
         <option value="$PROJECT_DIR$/FireScape.cfg" />
-        <option value="$PROJECT_DIR$/scripts/server.rb" />
         <option value="$PROJECT_DIR$/conf/server/defs/extras/Adverts.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
+        <option value="$PROJECT_DIR$/scripts/server.rb" />
       </list>
     </option>
   </component>
@@ -702,12 +683,12 @@
       <workItem from="1512501707708" duration="4590000" />
       <workItem from="1512521308533" duration="588000" />
       <workItem from="1512533398531" duration="618000" />
-      <workItem from="1512535715841" duration="4417000" />
+      <workItem from="1512535715841" duration="4524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57887000" />
+    <option name="totallyTimeSpent" value="57994000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1184,7 +1165,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
-          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1200,15 +1181,15 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13">
-          <caret line="474" column="48" lean-forward="true" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
+          <caret line="474" column="48" lean-forward="false" selection-start-line="474" selection-start-column="48" selection-end-line="474" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/server.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="54" />
+        <state relative-caret-position="454">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>

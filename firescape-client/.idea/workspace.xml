@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28777d59-117d-4e0e-9041-d33f311aa38a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" />
       <change beforePath="$PROJECT_DIR$/../firescape-server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-server/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/defs/ItemDef.xml/ItemDef.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/ItemLoc.xml/ItemLoc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/NpcLoc.xml/NpcLoc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/Shops.xml.gz" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/locs/Shops.xml/Shops.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" afterPath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packetbuilder/client/MiscPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" afterPath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packethandler/client/ShopHandler.java" />
+      <change beforePath="$PROJECT_DIR$/../firescape-server/scripts/server.rb" afterPath="$PROJECT_DIR$/../firescape-server/scripts/server.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -584,12 +575,12 @@
       <workItem from="1512521141143" duration="4000" />
       <workItem from="1512521316566" duration="5472000" />
       <workItem from="1512528868258" duration="3017000" />
-      <workItem from="1512536293912" duration="4666000" />
+      <workItem from="1512536293912" duration="4773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74849000" />
+    <option name="totallyTimeSpent" value="74956000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="28" y="37" width="1680" height="964" extended-state="0" />

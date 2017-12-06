@@ -19,7 +19,7 @@ class FireScape
   end
 
   def find_player(id)
-    @@world.players.get(id)
+    world.players.get(id)
   end
 
   def give_item(player_id, item_id, quantity = 1)
