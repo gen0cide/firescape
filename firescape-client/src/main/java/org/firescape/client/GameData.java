@@ -98,6 +98,7 @@ public class GameData {
   public static int npcWalkModel[];
   public static int npcCombatModel[];
   public static int npcCombatAnimation[];
+  
   public static List<Animation> animationPack = new ArrayList<Animation>();
   public static List<Item> itemPack = new ArrayList<Item>();
   public static List<NPC> npcPack = new ArrayList<NPC>();
@@ -110,6 +111,7 @@ public class GameData {
   public static List<Tile> tilePack = new ArrayList<Tile>();
   public static List<WallObject> wallObjectPack = new ArrayList<WallObject>();
   public static Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+  
   static byte dataString[];
   static byte dataInteger[];
   static int stringOffset;
@@ -194,26 +196,29 @@ public class GameData {
       }
     }
 
-    for (i = 0; i < itemCount; i++) {
-      itemPack.add(new Item(i,
-                            itemName[i],
-                            itemDescription[i],
-                            itemCommand[i],
-                            itemPicture[i],
-                            itemBasePrice[i],
-                            itemStackable[i],
-                            itemUnused[i],
-                            itemWearable[i],
-                            itemMask[i],
-                            itemSpecial[i],
-                            itemMembers[i]
-      ));
-    }
+    String assetDumpEnabled = System.getenv("FIRESCAPE_DUMP_ASSETS");
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < itemCount; i++) {
+        itemPack.add(new Item(i,
+                              itemName[i],
+                              itemDescription[i],
+                              itemCommand[i],
+                              itemPicture[i],
+                              itemBasePrice[i],
+                              itemStackable[i],
+                              itemUnused[i],
+                              itemWearable[i],
+                              itemMask[i],
+                              itemSpecial[i],
+                              itemMembers[i]
+        ));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/items.json")) {
-      out.println(gson.toJson(itemPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/items.json")) {
+        out.println(gson.toJson(itemPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     npcCount = getUnsignedShort();
@@ -313,33 +318,35 @@ public class GameData {
       npcCommand[i] = getString();
     }
 
-    for (i = 0; i < npcCount; i++) {
-      npcPack.add(new NPC(i,
-                          npcName[i],
-                          npcDescription[i],
-                          npcCommand[i],
-                          npcAttack[i],
-                          npcStrength[i],
-                          npcHits[i],
-                          npcDefense[i],
-                          npcAttackable[i],
-                          npcSprite[i],
-                          npcColourHair[i],
-                          npcColourTop[i],
-                          npcColorBottom[i],
-                          npcColourSkin[i],
-                          npcWidth[i],
-                          npcHeight[i],
-                          npcWalkModel[i],
-                          npcCombatModel[i],
-                          npcCombatAnimation[i]
-      ));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < npcCount; i++) {
+        npcPack.add(new NPC(i,
+                            npcName[i],
+                            npcDescription[i],
+                            npcCommand[i],
+                            npcAttack[i],
+                            npcStrength[i],
+                            npcHits[i],
+                            npcDefense[i],
+                            npcAttackable[i],
+                            npcSprite[i],
+                            npcColourHair[i],
+                            npcColourTop[i],
+                            npcColorBottom[i],
+                            npcColourSkin[i],
+                            npcWidth[i],
+                            npcHeight[i],
+                            npcWalkModel[i],
+                            npcCombatModel[i],
+                            npcCombatAnimation[i]
+        ));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/npcs.json")) {
-      out.println(gson.toJson(npcPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/npcs.json")) {
+        out.println(gson.toJson(npcPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     textureCount = getUnsignedShort();
@@ -354,14 +361,16 @@ public class GameData {
       textureSubtypeName[i] = getString();
     }
 
-    for (i = 0; i < textureCount; i++) {
-      texturePack.add(new Texture(i, textureName[i], textureSubtypeName[i]));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < textureCount; i++) {
+        texturePack.add(new Texture(i, textureName[i], textureSubtypeName[i]));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/textures.json")) {
-      out.println(gson.toJson(texturePack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/textures.json")) {
+        out.println(gson.toJson(texturePack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     animationCount = getUnsignedShort();
@@ -395,21 +404,23 @@ public class GameData {
       animationNumber[i] = getUnsignedByte();
     }
 
-    for (i = 0; i < animationCount; i++) {
-      animationPack.add(new Animation(i,
-                                      animationName[i],
-                                      animationCharacterColour[i],
-                                      animationSomething[i],
-                                      animationHasA[i],
-                                      animationHasF[i],
-                                      animationNumber[i]
-      ));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < animationCount; i++) {
+        animationPack.add(new Animation(i,
+                                        animationName[i],
+                                        animationCharacterColour[i],
+                                        animationSomething[i],
+                                        animationHasA[i],
+                                        animationHasF[i],
+                                        animationNumber[i]
+        ));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/animations.json")) {
-      out.println(gson.toJson(animationPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/animations.json")) {
+        out.println(gson.toJson(animationPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     objectCount = getUnsignedShort();
@@ -458,24 +469,26 @@ public class GameData {
       objectElevation[i] = getUnsignedByte();
     }
 
-    for (i = 0; i < objectCount; i++) {
-      gameObjectPack.add(new GameObject(i,
-                                        objectName[i],
-                                        objectDescription[i],
-                                        objectCommand1[i],
-                                        objectCommand2[i],
-                                        objectModelIndex[i],
-                                        objectWidth[i],
-                                        objectHeight[i],
-                                        objectType[i],
-                                        objectElevation[i]
-      ));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < objectCount; i++) {
+        gameObjectPack.add(new GameObject(i,
+                                          objectName[i],
+                                          objectDescription[i],
+                                          objectCommand1[i],
+                                          objectCommand2[i],
+                                          objectModelIndex[i],
+                                          objectWidth[i],
+                                          objectHeight[i],
+                                          objectType[i],
+                                          objectElevation[i]
+        ));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/game_objects.json")) {
-      out.println(gson.toJson(gameObjectPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/game_objects.json")) {
+        out.println(gson.toJson(gameObjectPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     wallObjectCount = getUnsignedShort();
@@ -524,24 +537,26 @@ public class GameData {
       wallObjectInvisible[i] = getUnsignedByte();// value is 0 if visible
     }
 
-    for (i = 0; i < wallObjectCount; i++) {
-      wallObjectPack.add(new WallObject(i,
-                                        wallObjectName[i],
-                                        wallObjectDescription[i],
-                                        wallObjectCommand1[i],
-                                        wallObjectCommand2[i],
-                                        wallObjectHeight[i],
-                                        wallObjectTextureFront[i],
-                                        wallObjectTextureBack[i],
-                                        wallObjectAdjacent[i],
-                                        wallObjectInvisible[i]
-      ));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < wallObjectCount; i++) {
+        wallObjectPack.add(new WallObject(i,
+                                          wallObjectName[i],
+                                          wallObjectDescription[i],
+                                          wallObjectCommand1[i],
+                                          wallObjectCommand2[i],
+                                          wallObjectHeight[i],
+                                          wallObjectTextureFront[i],
+                                          wallObjectTextureBack[i],
+                                          wallObjectAdjacent[i],
+                                          wallObjectInvisible[i]
+        ));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/wall_objects.json")) {
-      out.println(gson.toJson(wallObjectPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/wall_objects.json")) {
+        out.println(gson.toJson(wallObjectPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     roofCount = getUnsignedShort();// the World class does something with these
@@ -555,14 +570,16 @@ public class GameData {
       roofNumVertices[i] = getUnsignedByte();
     }
 
-    for (i = 0; i < roofCount; i++) {
-      roofTilePack.add(new RoofTile(i, roofHeight[i], roofNumVertices[i]));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < roofCount; i++) {
+        roofTilePack.add(new RoofTile(i, roofHeight[i], roofNumVertices[i]));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/roof_tiles.json")) {
-      out.println(gson.toJson(roofTilePack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/roof_tiles.json")) {
+        out.println(gson.toJson(roofTilePack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     tileCount = getUnsignedShort();// and these
@@ -581,21 +598,26 @@ public class GameData {
       tileAdjacent[i] = getUnsignedByte();
     }
 
-    for (i = 0; i < tileCount; i++) {
-      tilePack.add(new Tile(i, tileDecoration[i], tileType[i], tileAdjacent[i]));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < tileCount; i++) {
+        tilePack.add(new Tile(i, tileDecoration[i], tileType[i], tileAdjacent[i]));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/tiles.json")) {
-      out.println(gson.toJson(tilePack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/tiles.json")) {
+        out.println(gson.toJson(tilePack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     projectileSprite = getUnsignedShort();
-    try (PrintWriter out = new PrintWriter("conf/json/projectile_sprite.json")) {
-      out.println(gson.toJson(new ProjectileSprite(projectileSprite)));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+    
+    if (assetDumpEnabled != null) {
+      try (PrintWriter out = new PrintWriter("conf/json/projectile_sprite.json")) {
+        out.println(gson.toJson(new ProjectileSprite(projectileSprite)));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     spellCount = getUnsignedShort();
@@ -643,22 +665,24 @@ public class GameData {
       }
     }
 
-    for (i = 0; i < spellCount; i++) {
-      spellPack.add(new Spell(i,
-                              spellName[i],
-                              spellDescription[i],
-                              spellLevel[i],
-                              spellRunesRequired[i],
-                              spellType[i],
-                              spellRunesId[i],
-                              spellRunesCount[i]
-      ));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < spellCount; i++) {
+        spellPack.add(new Spell(i,
+                                spellName[i],
+                                spellDescription[i],
+                                spellLevel[i],
+                                spellRunesRequired[i],
+                                spellType[i],
+                                spellRunesId[i],
+                                spellRunesCount[i]
+        ));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/spells.json")) {
-      out.println(gson.toJson(spellPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/spells.json")) {
+        out.println(gson.toJson(spellPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     prayerCount = getUnsignedShort();
@@ -682,14 +706,16 @@ public class GameData {
       prayerDrain[i] = getUnsignedByte();
     }
 
-    for (i = 0; i < prayerCount; i++) {
-      prayerPack.add(new Prayer(i, prayerName[i], prayerDescription[i], prayerLevel[i], prayerDrain[i]));
-    }
+    if (assetDumpEnabled != null) {
+      for (i = 0; i < prayerCount; i++) {
+        prayerPack.add(new Prayer(i, prayerName[i], prayerDescription[i], prayerLevel[i], prayerDrain[i]));
+      }
 
-    try (PrintWriter out = new PrintWriter("conf/json/prayers.json")) {
-      out.println(gson.toJson(prayerPack));
-    } catch (FileNotFoundException e) {
-      System.out.println("Nope!");
+      try (PrintWriter out = new PrintWriter("conf/json/prayers.json")) {
+        out.println(gson.toJson(prayerPack));
+      } catch (FileNotFoundException e) {
+        System.out.println("Nope!");
+      }
     }
 
     dataString = null;
