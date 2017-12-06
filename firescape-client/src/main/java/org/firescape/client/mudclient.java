@@ -8079,13 +8079,9 @@ public class mudclient extends GameConnection {
           inventoryItemId[i] = (mod & 0x7fff);// 0x7fff
           inventoryEquipped[i] = mod / 32768;
 
-          if (GameData.itemStackable[mod & 0x7fff] == 0) {// 0x7fff
+          if (GameData.itemStackable[inventoryItemId[i]] == 0) {// 0x7fff
             inventoryItemStackCount[i] = Utility.getUnsignedInt(pdata, offset);
-            if (inventoryItemStackCount[i] >= 128) {
-              offset += 4;
-            } else {
-              offset++;
-            }
+            offset += 4;
           } else {
             inventoryItemStackCount[i] = 1;
           }

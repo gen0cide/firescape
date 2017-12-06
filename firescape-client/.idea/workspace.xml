@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28777d59-117d-4e0e-9041-d33f311aa38a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/Buffer.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/Buffer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameConnection.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameData.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/GameData.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/Scanline.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/Scanline.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/Surface.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/Surface.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/ProjectileSprite.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/ProjectileSprite.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/WallObject.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/assets/WallObject.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" afterPath="$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java" />
       <change beforePath="$PROJECT_DIR$/../firescape-server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-server/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/FireScape.cfg" afterPath="$PROJECT_DIR$/../firescape-server/FireScape.cfg" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/defs/extras/Adverts.xml" afterPath="$PROJECT_DIR$/../firescape-server/conf/server/defs/extras/Adverts.xml" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/conf/server/defs/extras/Adverts.xml.gz" afterPath="$PROJECT_DIR$/../firescape-server/conf/server/defs/extras/Adverts.xml.gz" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/scripts/server.rb" afterPath="$PROJECT_DIR$/../firescape-server/scripts/server.rb" />
-      <change beforePath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" afterPath="$PROJECT_DIR$/../firescape-server/src/main/java/org/firescape/server/packetbuilder/RSCPacketBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/../firescape-spriteeditor/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../firescape-spriteeditor/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,7 +25,7 @@
           <file leaf-file-name="SurfaceSprite.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/SurfaceSprite.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
+                <state relative-caret-position="192">
                   <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
                   <folding />
                 </state>
@@ -48,7 +35,7 @@
           <file leaf-file-name="Surface.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/Surface.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="188">
+                <state relative-caret-position="7392">
                   <caret line="462" column="0" lean-forward="false" selection-start-line="462" selection-start-column="0" selection-end-line="462" selection-end-column="0" />
                   <folding />
                 </state>
@@ -58,7 +45,7 @@
           <file leaf-file-name="Utility.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/Utility.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-128">
+                <state relative-caret-position="7392">
                   <caret line="462" column="12" lean-forward="false" selection-start-line="462" selection-start-column="12" selection-end-line="462" selection-end-column="12" />
                   <folding />
                 </state>
@@ -78,7 +65,7 @@
           <file leaf-file-name="GameShell.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameShell.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="16">
+                <state relative-caret-position="240">
                   <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
                   <folding />
                 </state>
@@ -88,7 +75,7 @@
           <file leaf-file-name="GameData.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameData.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2083">
+                <state relative-caret-position="3168">
                   <caret line="198" column="40" lean-forward="false" selection-start-line="198" selection-start-column="40" selection-end-line="198" selection-end-column="40" />
                   <folding />
                 </state>
@@ -108,8 +95,8 @@
           <file leaf-file-name="mudclient.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="13744">
-                  <caret line="859" column="19" lean-forward="false" selection-start-line="859" selection-start-column="19" selection-end-line="859" selection-end-column="19" />
+                <state relative-caret-position="281">
+                  <caret line="8083" column="24" lean-forward="true" selection-start-line="8083" selection-start-column="24" selection-end-line="8083" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -118,7 +105,7 @@
           <file leaf-file-name="BZLib.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/BZLib.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-7951">
+                <state relative-caret-position="32">
                   <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
                   <folding />
                 </state>
@@ -128,7 +115,7 @@
           <file leaf-file-name="BZState.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/BZState.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-609">
+                <state relative-caret-position="32">
                   <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
                   <folding />
                 </state>
@@ -152,7 +139,7 @@
           <file leaf-file-name="Sprite.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="626">
+                <state relative-caret-position="684">
                   <caret line="69" column="18" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="18" />
                   <folding />
                 </state>
@@ -378,6 +365,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
+              <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
+              <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
+              <item name="org.firescape.client" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -415,23 +419,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
-              <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="firescape-client" type="58d84e3e:PackageViewProjectNode" />
-              <item name="firescape-client" type="616d4139:PackageViewModuleNode" />
-              <item name="org.firescape.client" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -464,13 +451,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Firescape Production">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="Firescape Production" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.firescape.client.mudclient" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="firescape-client" />
+      <envs />
     </configuration>
     <configuration name="Firescape204Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.firescape.client.mudclient" />
@@ -534,6 +534,10 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Firescape204Client" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Firescape Production" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -557,11 +561,12 @@
       <workItem from="1512521141143" duration="4000" />
       <workItem from="1512521316566" duration="5472000" />
       <workItem from="1512528868258" duration="3017000" />
+      <workItem from="1512536293912" duration="666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70183000" />
+    <option name="totallyTimeSpent" value="70849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -573,16 +578,15 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33193716" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33193716" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13614164" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13736264" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24928367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39815763" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39790577" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -590,6 +594,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -629,7 +634,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="37" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -646,6 +651,21 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>mod &amp; 0x7fff</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>mod</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Utility.getUnsignedInt(pdata, offset);</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>this.pixels[6303]</expression-string>
         <language-id>JAVA</language-id>
@@ -679,17 +699,6 @@
       <expression>
         <expression-string>new String(Arrays.copyOfRange(pdata, offset, offset+(int)messageLength))</expression-string>
         <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Arrays.copyOfRange(pdata, offset, offset+(int)messageLength)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>ChatMessage.descramble(pdata, offset, length)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>java.util.Arrays</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
@@ -747,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -755,7 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4160">
           <caret line="260" column="12" lean-forward="false" selection-start-line="260" selection-start-column="12" selection-end-line="260" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -787,7 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,7 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,7 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,7 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,7 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4160">
           <caret line="260" column="12" lean-forward="false" selection-start-line="260" selection-start-column="12" selection-end-line="260" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,7 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,7 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -923,7 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="35" column="25" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -931,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +972,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/SurfaceSprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="192">
           <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding />
         </state>
@@ -1021,7 +1016,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/assets/Sprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
+        <state relative-caret-position="684">
           <caret line="69" column="18" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="18" />
           <folding />
         </state>
@@ -1037,7 +1032,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameShell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
+        <state relative-caret-position="240">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
@@ -1045,7 +1040,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/GameData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2083">
+        <state relative-caret-position="3168">
           <caret line="198" column="40" lean-forward="false" selection-start-line="198" selection-start-column="40" selection-end-line="198" selection-end-column="40" />
           <folding />
         </state>
@@ -1061,7 +1056,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/BZLib.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7951">
+        <state relative-caret-position="32">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
@@ -1069,7 +1064,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/BZState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-609">
+        <state relative-caret-position="32">
           <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
           <folding />
         </state>
@@ -1077,7 +1072,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/Surface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="7392">
           <caret line="462" column="0" lean-forward="false" selection-start-line="462" selection-start-column="0" selection-end-line="462" selection-end-column="0" />
           <folding />
         </state>
@@ -1085,7 +1080,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
+        <state relative-caret-position="7392">
           <caret line="462" column="12" lean-forward="false" selection-start-line="462" selection-start-column="12" selection-end-line="462" selection-end-column="12" />
           <folding />
         </state>
@@ -1093,8 +1088,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/client/mudclient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13744">
-          <caret line="859" column="19" lean-forward="false" selection-start-line="859" selection-start-column="19" selection-end-line="859" selection-end-column="19" />
+        <state relative-caret-position="281">
+          <caret line="8083" column="24" lean-forward="true" selection-start-line="8083" selection-start-column="24" selection-end-line="8083" selection-end-column="24" />
           <folding />
         </state>
       </provider>
