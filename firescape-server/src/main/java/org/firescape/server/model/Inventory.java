@@ -13,9 +13,9 @@ public class Inventory {
   /**
    * World instance
    */
-  private static World world = World.getWorld();
+  private static final World world = World.getWorld();
+  private final ArrayList<InvItem> list = new ArrayList<InvItem>();
   private Player player;
-  private ArrayList<InvItem> list = new ArrayList<InvItem>();
 
   public Inventory() {
   }
@@ -53,7 +53,7 @@ public class Inventory {
     }
     if (this.full()) {
       player.getActionSender()
-              .sendMessage("Your Inventory is full, the " + item.getDef().getName() + " drops to the ground!");
+            .sendMessage("Your Inventory is full, the " + item.getDef().getName() + " drops to" + "" + " the ground!");
       world.registerItem(new Item(item.getID(), player.getX(), player.getY(), item.getAmount(), player));
       return -1;
     }
@@ -81,8 +81,10 @@ public class Inventory {
           if (i.isWielded()) {
             player.getActionSender().sendSound("click");
             i.setWield(false);
-            player.updateWornItems(i.getWieldableDef().getWieldPos(),
-                    player.getPlayerAppearance().getSprite(i.getWieldableDef().getWieldPos()));
+            player.updateWornItems(
+              i.getWieldableDef().getWieldPos(),
+              player.getPlayerAppearance().getSprite(i.getWieldableDef().getWieldPos())
+            );
             player.getActionSender().sendEquipmentStats();
           }
           iterator.remove();

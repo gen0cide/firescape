@@ -1,5 +1,6 @@
 package org.firescape.server.npchandler;
 
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
@@ -14,32 +15,26 @@ public class Adventurer implements NpcHandler {
   public static final World world = World.getWorld();
 
   private static final String[] destinationNames = {
-          "Edgeville",
-          "Varrock",
-          "Falador",
-          "Ardougne",
-          "*Castle*",
-          "*Dragon Maze*",
-          "*Mage Arena*"
+    "Edgeville", "Varrock", "Falador", "Ardougne", "*Castle*", "*Dragon Maze*", "*Mage Arena*"
   };
   private static final Point[] destinationCoords = {
-          Point.location(216, 452),
-          Point.location(130, 508),
-          Point.location(313, 541),
-          Point.location(550, 596),
-          Point.location(271, 353),
-          Point.location(268, 197),
-          Point.location(447, 3371)
+    Point.location(216, 452),
+    Point.location(130, 508),
+    Point.location(313, 541),
+    Point.location(550, 596),
+    Point.location(271, 353),
+    Point.location(268, 197),
+    Point.location(447, 3371)
   };
 
-  public void handleNpc(final Npc npc, Player player) throws Exception {
+  public void handleNpc(Npc npc, Player player) throws Exception {
     player.informOfNpcMessage(new ChatMessage(npc, "Where would you like to be sent?", player));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
         owner.setMenuHandler(new MenuHandler(destinationNames) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply(int option, String reply) {
             if (owner.isBusy() || option < 0 || option >= destinationNames.length) {
               npc.unblock();
               return;
@@ -47,9 +42,9 @@ public class Adventurer implements NpcHandler {
             // owner.informOfChatMessage(new ChatMessage(owner, reply + ".",
             // npc));
             owner.setBusy(true);
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
-                world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                   public void action() {
                     Point p = destinationCoords[option];
                     owner.teleport(p.getX(), p.getY(), false);

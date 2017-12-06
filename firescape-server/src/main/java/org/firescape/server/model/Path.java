@@ -4,11 +4,13 @@ public class Path {
   /**
    * The starting coordinates for the path
    */
-  private int startX, startY;
+  private final int startX;
+  private final int startY;
   /**
    * Offsets for the coordinates to follow
    */
-  private byte[] waypointXoffsets, waypointYoffsets;
+  private final byte[] waypointXoffsets;
+  private final byte[] waypointYoffsets;
 
   /**
    * Constructs a new path with the given coords and offsets

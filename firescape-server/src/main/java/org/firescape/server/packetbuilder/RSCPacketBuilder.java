@@ -6,7 +6,7 @@ public class RSCPacketBuilder extends StaticPacketBuilder {
   /**
    * ID of the packet
    */
-  private int pID = 0;
+  private int pID;
 
   /**
    * Sets the ID for this packet.
@@ -19,8 +19,7 @@ public class RSCPacketBuilder extends StaticPacketBuilder {
   }
 
   /**
-   * Returns a <code>RSCPacket</code> object for the data contained in this
-   * builder.
+   * Returns a <code>RSCPacket</code> object for the data contained in this builder.
    *
    * @return A <code>RSCPacket</code> object
    */

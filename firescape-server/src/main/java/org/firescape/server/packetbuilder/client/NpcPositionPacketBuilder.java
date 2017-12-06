@@ -24,7 +24,7 @@ public class NpcPositionPacketBuilder {
     Collection<Npc> newNpcs = watchedNpcs.getNewEntities();
     Collection<Npc> knownNpcs = watchedNpcs.getKnownEntities();
     RSCPacketBuilder packet = new RSCPacketBuilder();
-    packet.setID(77);
+    packet.setID(79);
     packet.addBits(knownNpcs.size(), 8);
     for (Npc n : knownNpcs) {
       packet.addBits(n.getIndex(), 16);

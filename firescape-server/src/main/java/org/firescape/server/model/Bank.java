@@ -10,7 +10,7 @@ public class Bank {
    * The maximum size of a bank
    */
   public static final int MAX_SIZE = 192;
-  private ArrayList<InvItem> list = new ArrayList<InvItem>();
+  private final ArrayList<InvItem> list = new ArrayList<InvItem>();
 
   public Bank() {
   }

@@ -7,6 +7,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
@@ -41,17 +43,21 @@ public class WieldHandler implements PacketHandler {
       player.setSuspiciousPlayer(true);
       return;
     }
-    switch (pID) {
-      case 181:
-        if (!item.isWielded()) {
-          wieldItem(player, item);
-        }
-        break;
-      case 92:
-        if (item.isWielded()) {
-          unWieldItem(player, item, true);
-        }
-        break;
+    if (pID == Opcode.getClient(204, Command.Client.CL_INV_WEAR)) {
+      System.out.println(String.format(
+        "WIELD ATTEMPT: player=%s item=%s item_id=%d inv_slot=%d",
+        player.getUsername(),
+        item.getDef().name,
+        item.getID(),
+        idx
+      ));
+      if (!item.isWielded()) {
+        wieldItem(player, item);
+      }
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_INV_UNEQUIP)) {
+      if (item.isWielded()) {
+        unWieldItem(player, item, true);
+      }
     }
     player.getActionSender().sendInventory();
     player.getActionSender().sendEquipmentStats();
@@ -61,13 +67,15 @@ public class WieldHandler implements PacketHandler {
     String youNeed = "";
     for (Entry<Integer, Integer> e : item.getWieldableDef().getStatsRequired()) {
       if (player.getMaxStat(e.getKey()) < e.getValue()) {
-        youNeed += e.getValue().intValue() + " " + Formulae.statArray[e.getKey().intValue()]
-                + ", ";
+        youNeed += e.getValue().intValue() + " " + Formulae.statArray[e.getKey().intValue()] + ", ";
       }
     }
     if (!youNeed.equals("")) {
       player.getActionSender()
-              .sendMessage("You must have at least " + youNeed.substring(0, youNeed.length() - 2) + " to use this item.");
+            .sendMessage("You must have at least " +
+                         youNeed.substring(0, youNeed.length() - 2) +
+                         "" +
+                         " to use this item.");
       return;
     }
     if (EntityHandler.getItemWieldableDef(item.getID()).femaleOnly() && player.isMale()) {
@@ -75,19 +83,13 @@ public class WieldHandler implements PacketHandler {
       return;
     }
     int[] capeIDs = {
-            1215,
-            1214,
-            1213
+      1215, 1214, 1213
     };
     int[] staffIDs = {
-            1217,
-            1218,
-            1216
+      1217, 1218, 1216
     };
     String[] gods = {
-            "Guthix",
-            "Saradomin",
-            "Zamorak"
+      "Guthix", "Saradomin", "Zamorak"
     };
     for (int i = 0; i < 3; i++) {
       if (!DataConversions.inArray(capeIDs, item.getID()) && !DataConversions.inArray(staffIDs, item.getID())) {
@@ -122,8 +124,10 @@ public class WieldHandler implements PacketHandler {
     if (sound) {
       player.getActionSender().sendSound("click");
     }
-    player.updateWornItems(item.getWieldableDef().getWieldPos(),
-            player.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos()));
+    player.updateWornItems(
+      item.getWieldableDef().getWieldPos(),
+      player.getPlayerAppearance().getSprite(item.getWieldableDef().getWieldPos())
+    );
   }
 
 }

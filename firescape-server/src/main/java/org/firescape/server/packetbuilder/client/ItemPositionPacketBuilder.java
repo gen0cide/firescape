@@ -25,7 +25,7 @@ public class ItemPositionPacketBuilder {
       Collection<Item> newItems = watchedItems.getNewEntities();
       Collection<Item> knownItems = watchedItems.getKnownEntities();
       RSCPacketBuilder packet = new RSCPacketBuilder();
-      packet.setID(109);
+      packet.setID(99);
       for (Item i : knownItems) {
         if (watchedItems.isRemoving(i)) {
           byte[] offsets = DataConversions.getObjectPositionOffsets(i.getLocation(), playerToUpdate.getLocation());

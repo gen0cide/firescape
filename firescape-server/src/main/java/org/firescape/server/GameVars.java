@@ -1,8 +1,7 @@
 package org.firescape.server;
 
 /**
- * @author Ent All Game variables that may be tweaked by the Control Panel will
- * be stored here.
+ * @author Ent All Game variables that may be tweaked by the Control Panel will be stored here.
  */
 public class GameVars {
   /**
@@ -12,15 +11,13 @@ public class GameVars {
   /**
    * if the server is running or not.
    */
-  public static boolean serverRunning = false;
+  public static boolean serverRunning;
   /**
-   * the Amount of minutes the server saves all profiles (Default) is 15
-   * minutes.
+   * the Amount of minutes the server saves all profiles (Default) is 15 minutes.
    */
   public static int saveAll = 15;
   /**
-   * the Server name, will be used when logging in, and anything else that needs
-   * to print the server's name.
+   * the Server name, will be used when logging in, and anything else that needs to print the server's name.
    */
   public static String serverName = "FireScape Test Bed";
   /**
@@ -30,15 +27,15 @@ public class GameVars {
   /**
    * the amount of Users Online.
    */
-  public static int usersOnline = 0;
+  public static int usersOnline;
   /**
    * the Moderators that are currently Online.
    */
-  public static int modsOnline = 0;
+  public static int modsOnline;
   /**
    * the Admin's that are currently online.
    */
-  public static int adminsOnline = 0;
+  public static int adminsOnline;
   /**
    * the Maximum amount of users allowed on this server
    */
@@ -46,7 +43,7 @@ public class GameVars {
   /**
    * User Peak (Since last Shutdown) the most users that have been online.
    */
-  public static int userPeak = 0;
+  public static int userPeak;
   /**
    * Experience multiplier - name says it all.
    */

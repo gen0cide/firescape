@@ -13,7 +13,7 @@ public class EntityList<T extends Entity> implements Iterable<T> {
   public static final int DEFAULT_CAPACITY = 2000;
   protected Object[] entities;
   protected Set<Integer> indicies = new HashSet<Integer>();
-  protected int curIndex = 0;
+  protected int curIndex;
   protected int capacity;
 
   public EntityList() {

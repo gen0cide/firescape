@@ -33,11 +33,11 @@ public class InvUseOnItem implements PacketHandler {
       return;
     }
     ItemHerbSecond secondDef = null;
-    if ((secondDef = EntityHandler.getItemHerbSecond(item1.getID(), item2.getID())) != null
-            && doHerbSecond(player, item1, item2, secondDef)) {
+    if ((secondDef = EntityHandler.getItemHerbSecond(item1.getID(), item2.getID())) != null &&
+        doHerbSecond(player, item1, item2, secondDef)) {
       return;
-    } else if ((secondDef = EntityHandler.getItemHerbSecond(item2.getID(), item1.getID())) != null
-            && doHerbSecond(player, item2, item1, secondDef)) {
+    } else if ((secondDef = EntityHandler.getItemHerbSecond(item2.getID(), item1.getID())) != null &&
+               doHerbSecond(player, item2, item1, secondDef)) {
       return;
     } else if (item1.getID() == 381 && attachFeathers(player, item1, item2)) {
       return;
@@ -75,11 +75,11 @@ public class InvUseOnItem implements PacketHandler {
       return;
     } else if (item2.getID() == 468 && doGrind(player, item2, item1)) {
       return;
-    } else if ((item1.getID() == 50 || item1.getID() == 141 || item1.getID() == 342)
-            && useWater(player, item1, item2)) {
+    } else if ((item1.getID() == 50 || item1.getID() == 141 || item1.getID() == 342) &&
+               useWater(player, item1, item2)) {
       return;
-    } else if ((item2.getID() == 50 || item2.getID() == 141 || item2.getID() == 342)
-            && useWater(player, item2, item1)) {
+    } else if ((item2.getID() == 50 || item2.getID() == 141 || item2.getID() == 342) &&
+               useWater(player, item2, item1)) {
       return;
     } else if (item1.getID() == 621 && doGlassBlowing(player, item1, item2)) {
       return;
@@ -146,8 +146,7 @@ public class InvUseOnItem implements PacketHandler {
     }
   }
 
-  private boolean doHerbSecond(Player player, final InvItem second, final InvItem unfinished,
-                               final ItemHerbSecond def) {
+  private boolean doHerbSecond(Player player, InvItem second, InvItem unfinished, ItemHerbSecond def) {
     if (unfinished.getID() != def.getUnfinishedID()) {
       return false;
     }
@@ -157,7 +156,7 @@ public class InvUseOnItem implements PacketHandler {
     }
     if (player.getInventory().remove(second) > -1 && player.getInventory().remove(unfinished) > -1) {
       player.getActionSender()
-              .sendMessage("You mix the " + second.getDef().getName() + " with the " + unfinished.getDef().getName());
+            .sendMessage("You mix the " + second.getDef().getName() + " with the " + unfinished.getDef().getName());
       player.getInventory().add(new InvItem(def.getPotionID(), 1));
       player.incExp(15, def.getExp(), true, true);
       player.getActionSender().sendStat(15);
@@ -166,7 +165,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean attachFeathers(Player player, final InvItem feathers, final InvItem item) {
+  private boolean attachFeathers(Player player, InvItem feathers, InvItem item) {
     int amount = 10;
     if (feathers.getAmount() < amount) {
       amount = feathers.getAmount();
@@ -186,13 +185,13 @@ public class InvUseOnItem implements PacketHandler {
     } else {
       return false;
     }
-    final int amt = amount;
-    final int xp = exp;
-    final InvItem newItm = newItem;
+    int amt = amount;
+    int xp = exp;
+    InvItem newItm = newItem;
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
-        if (owner.getInventory().remove(feathers.getID(), amt) > -1
-                && owner.getInventory().remove(item.getID(), amt) > -1) {
+        if (owner.getInventory().remove(feathers.getID(), amt) > -1 &&
+            owner.getInventory().remove(item.getID(), amt) > -1) {
           owner.getActionSender().sendMessage("You attach the feathers to the " + item.getDef().getName());
           owner.getInventory().add(newItm);
           owner.incExp(9, xp, true, true);
@@ -204,8 +203,8 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doCutGem(Player player, final InvItem chisel, final InvItem gem) {
-    final ItemGemDef gemDef = EntityHandler.getItemGemDef(gem.getID());
+  private boolean doCutGem(Player player, InvItem chisel, InvItem gem) {
+    ItemGemDef gemDef = EntityHandler.getItemGemDef(gem.getID());
     if (gemDef == null) {
       return false;
     }
@@ -229,8 +228,8 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doHerblaw(Player player, final InvItem vial, final InvItem herb) {
-    final ItemHerbDef herbDef = EntityHandler.getItemHerbDef(herb.getID());
+  private boolean doHerblaw(Player player, InvItem vial, InvItem herb) {
+    ItemHerbDef herbDef = EntityHandler.getItemHerbDef(herb.getID());
     if (herbDef == null) {
       return false;
     }
@@ -252,21 +251,18 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doLogCut(Player player, final InvItem knife, final InvItem log) {
-    final ItemLogCutDef cutDef = EntityHandler.getItemLogCutDef(log.getID());
+  private boolean doLogCut(Player player, InvItem knife, InvItem log) {
+    ItemLogCutDef cutDef = EntityHandler.getItemLogCutDef(log.getID());
     if (cutDef == null) {
       return false;
     }
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
-        String[] options = new String[]{
-                "Arrow shafts",
-                "Shortbow",
-                "Longbow",
-                "Cancel"
+        String[] options = {
+          "Arrow shafts", "Shortbow", "Longbow", "Cancel"
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply(int option, String reply) {
             InvItem result;
             int reqLvl, exp;
             switch (option) {
@@ -307,8 +303,8 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doBowString(Player player, final InvItem bowString, final InvItem bow) {
-    final ItemBowStringDef stringDef = EntityHandler.getItemBowStringDef(bow.getID());
+  private boolean doBowString(Player player, InvItem bowString, InvItem bow) {
+    ItemBowStringDef stringDef = EntityHandler.getItemBowStringDef(bow.getID());
     if (stringDef == null) {
       return false;
     }
@@ -330,14 +326,14 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doArrowHeads(Player player, final InvItem headlessArrows, final InvItem arrowHeads) {
-    final ItemArrowHeadDef headDef = EntityHandler.getItemArrowHeadDef(arrowHeads.getID());
+  private boolean doArrowHeads(Player player, InvItem headlessArrows, InvItem arrowHeads) {
+    ItemArrowHeadDef headDef = EntityHandler.getItemArrowHeadDef(arrowHeads.getID());
     if (headDef == null) {
       return false;
     }
     if (player.getCurStat(9) < headDef.getReqLevel()) {
       player.getActionSender()
-              .sendMessage("You need a fletching level of " + headDef.getReqLevel() + " to attach those.");
+            .sendMessage("You need a fletching level of " + headDef.getReqLevel() + " to attach " + "those.");
       return true;
     }
     int amount = 10;
@@ -347,11 +343,11 @@ public class InvUseOnItem implements PacketHandler {
     if (arrowHeads.getAmount() < amount) {
       amount = arrowHeads.getAmount();
     }
-    final int amt = amount;
+    int amt = amount;
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
-        if (owner.getInventory().remove(headlessArrows.getID(), amt) > -1
-                && owner.getInventory().remove(arrowHeads.getID(), amt) > -1) {
+        if (owner.getInventory().remove(headlessArrows.getID(), amt) > -1 &&
+            owner.getInventory().remove(arrowHeads.getID(), amt) > -1) {
           owner.getActionSender().sendMessage("You attach the heads to the arrows");
           owner.getInventory().add(new InvItem(headDef.getArrowID(), amt));
           owner.incExp(9, (int) (headDef.getExp() * (double) amt), true, true);
@@ -363,7 +359,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean useWool(Player player, final InvItem woolBall, final InvItem item) {
+  private boolean useWool(Player player, InvItem woolBall, InvItem item) {
     int newID;
     switch (item.getID()) {
       case 44: // Holy Symbol of saradomin
@@ -393,7 +389,7 @@ public class InvUseOnItem implements PacketHandler {
       default:
         return false;
     }
-    final int newId = newID;
+    int newId = newID;
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
         if (owner.getInventory().remove(woolBall) > -1 && owner.getInventory().remove(item) > -1) {
@@ -406,7 +402,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean makeLeather(Player player, final InvItem needle, final InvItem leather) {
+  private boolean makeLeather(Player player, InvItem needle, InvItem leather) {
     if (leather.getID() != 148) {
       return false;
     }
@@ -419,14 +415,11 @@ public class InvUseOnItem implements PacketHandler {
     }
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
-        String[] options = new String[]{
-                "Armour",
-                "Gloves",
-                "Boots",
-                "Cancel"
+        String[] options = {
+          "Armour", "Gloves", "Boots", "Cancel"
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply(int option, String reply) {
             InvItem result;
             int reqLvl, exp;
             switch (option) {
@@ -449,8 +442,12 @@ public class InvUseOnItem implements PacketHandler {
                 return;
             }
             if (owner.getCurStat(12) < reqLvl) {
-              owner.getActionSender().sendMessage(
-                      "You need a crafting level of " + reqLvl + " to make " + result.getDef().getName() + ".");
+              owner.getActionSender()
+                   .sendMessage("You need a crafting level of " +
+                                reqLvl +
+                                " to make " +
+                                result.getDef().getName() +
+                                ".");
               return;
             }
             if (owner.getInventory().remove(leather) > -1) {
@@ -468,7 +465,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doGrind(Player player, final InvItem mortar, final InvItem item) {
+  private boolean doGrind(Player player, InvItem mortar, InvItem item) {
     int newID;
     switch (item.getID()) {
       case 466: // Unicorn Horn
@@ -488,7 +485,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean useWater(Player player, final InvItem water, final InvItem item) {
+  private boolean useWater(Player player, InvItem water, InvItem item) {
     int jugID = Formulae.getEmptyJug(water.getID());
     if (jugID == -1) { // This shouldn't happen
       return false;
@@ -508,20 +505,17 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean doGlassBlowing(Player player, final InvItem pipe, final InvItem glass) {
+  private boolean doGlassBlowing(Player player, InvItem pipe, InvItem glass) {
     if (glass.getID() != 623) {
       return false;
     }
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
-        String[] options = new String[]{
-                "Beer Glass",
-                "Vial",
-                "Orb",
-                "Cancel"
+        String[] options = {
+          "Beer Glass", "Vial", "Orb", "Cancel"
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply(int option, String reply) {
             InvItem result;
             int reqLvl, exp;
             switch (option) {
@@ -544,8 +538,12 @@ public class InvUseOnItem implements PacketHandler {
                 return;
             }
             if (owner.getCurStat(12) < reqLvl) {
-              owner.getActionSender().sendMessage(
-                      "You need a crafting level of " + reqLvl + " to make a " + result.getDef().getName() + ".");
+              owner.getActionSender()
+                   .sendMessage("You need a crafting level of " +
+                                reqLvl +
+                                " to make a " +
+                                result.getDef().getName() +
+                                ".");
               return;
             }
             if (owner.getInventory().remove(glass) > -1) {
@@ -563,7 +561,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean combineKeys(Player player, final InvItem firstHalf, final InvItem secondHalf) {
+  private boolean combineKeys(Player player, InvItem firstHalf, InvItem secondHalf) {
     if (secondHalf.getID() != 527) {
       return false;
     }
@@ -575,19 +573,17 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean mixFlour(Player player, final InvItem Water, final InvItem Flour) {
+  private boolean mixFlour(Player player, InvItem Water, InvItem Flour) {
     if (Flour.getID() != 23) {
       return false;
     }
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
-        String[] options = new String[]{
-                "Pizza Base",
-                "Pastry Dough",
-                "Cancel"
+        String[] options = {
+          "Pizza Base", "Pastry Dough", "Cancel"
         };
         owner.setMenuHandler(new MenuHandler(options) {
-          public void handleReply(final int option, final String reply) {
+          public void handleReply(int option, String reply) {
             InvItem result;
             switch (option) {
               case 0: // Pizza Base
@@ -613,7 +609,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addTomato(Player player, final InvItem Base, final InvItem Tomato) {
+  private boolean addTomato(Player player, InvItem Base, InvItem Tomato) {
     if (Tomato.getID() != 320) {
       return false;
     }
@@ -625,7 +621,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addCheese(Player player, final InvItem UnfinishedPizza, final InvItem Cheese) {
+  private boolean addCheese(Player player, InvItem UnfinishedPizza, InvItem Cheese) {
     if (Cheese.getID() != 319) {
       return false;
     }
@@ -637,7 +633,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addPastry(Player player, final InvItem Pastry, final InvItem Dish) {
+  private boolean addPastry(Player player, InvItem Pastry, InvItem Dish) {
     if (Pastry.getID() != 250) {
       return false;
     }
@@ -649,7 +645,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addCookingApple(Player player, final InvItem CookingApple, final InvItem Shell) {
+  private boolean addCookingApple(Player player, InvItem CookingApple, InvItem Shell) {
     if (CookingApple.getID() != 252) {
       return false;
     }
@@ -661,7 +657,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addCookedmeat(Player player, final InvItem Cookedmeat, final InvItem Shell) {
+  private boolean addCookedmeat(Player player, InvItem Cookedmeat, InvItem Shell) {
     if (Cookedmeat.getID() != 132) {
       return false;
     }
@@ -673,7 +669,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addRedberries(Player player, final InvItem Redberries, final InvItem Shell) {
+  private boolean addRedberries(Player player, InvItem Redberries, InvItem Shell) {
     if (Redberries.getID() != 236) {
       return false;
     }
@@ -685,7 +681,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addYellowDye(Player player, final InvItem Dye, final InvItem Cape) {
+  private boolean addYellowDye(Player player, InvItem Dye, InvItem Cape) {
     int newID;
     switch (Cape.getID()) {
       case 183: // Red Cape
@@ -723,7 +719,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addRedDye(Player player, final InvItem Dye, final InvItem Cape) {
+  private boolean addRedDye(Player player, InvItem Dye, InvItem Cape) {
     int newID;
     switch (Cape.getID()) {
       case 512: // Yellow Cape
@@ -758,7 +754,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addBlueDye(Player player, final InvItem Dye, final InvItem Cape) {
+  private boolean addBlueDye(Player player, InvItem Dye, InvItem Cape) {
     int newID;
     switch (Cape.getID()) {
       case 183: // Red Cape
@@ -793,7 +789,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addOrangeDye(Player player, final InvItem Dye, final InvItem Cape) {
+  private boolean addOrangeDye(Player player, InvItem Dye, InvItem Cape) {
     int newID;
     switch (Cape.getID()) {
       case 183: // Red Cape
@@ -828,7 +824,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addGreenDye(Player player, final InvItem Dye, final InvItem Cape) {
+  private boolean addGreenDye(Player player, InvItem Dye, InvItem Cape) {
     int newID;
     switch (Cape.getID()) {
       case 183: // Red Cape
@@ -860,7 +856,7 @@ public class InvUseOnItem implements PacketHandler {
     return true;
   }
 
-  private boolean addPurpleDye(Player player, final InvItem Dye, final InvItem Cape) {
+  private boolean addPurpleDye(Player player, InvItem Dye, InvItem Cape) {
     int newID;
     switch (Cape.getID()) {
       case 183: // Red Cape

@@ -9,7 +9,6 @@ import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
-import org.firescape.server.util.Logger;
 
 public class PlayerLogin implements PacketHandler {
   /**
@@ -39,7 +38,7 @@ public class PlayerLogin implements PacketHandler {
       if (username.trim().length() < 3 || password.trim().length() < 3) {
         RSCPacketBuilder pb = new RSCPacketBuilder();
         pb.setBare(true);
-        pb.addByte((byte) loginCode);
+        pb.addByte(loginCode);
         session.write(pb.toPacket());
         player.destroy(true);
         loginCode = 7;
@@ -49,7 +48,6 @@ public class PlayerLogin implements PacketHandler {
       if (world.countPlayers() >= org.firescape.server.GameVars.maxUsers) {
         loginCode = 10;
       } else if (clientVersion != GameVars.clientVersion) {
-        Logger.print("Client versions is " + clientVersion + " but should be " + GameVars.clientVersion, 4);
         loginCode = 4;
       } else if (!player.setSessionKeys(sessionKeys)) {
         loginCode = 5;
@@ -57,13 +55,13 @@ public class PlayerLogin implements PacketHandler {
       } else if (res == 0) {
         loginCode = 2; // invalid username/pass.
       } else if (res == 2) {
-        loginCode = 3; // user logged in.
+        loginCode = 3;
       } else if (res == 6) {
         loginCode = 6;
       } else {
-        if (loginCode != 5)
+        if (loginCode != 5) {
           player.bad_login = false;
-
+        }
         if (loginCode != 5 || loginCode != 3) {
           player.load(username, password, uid, reconnecting);
           return;
@@ -77,7 +75,7 @@ public class PlayerLogin implements PacketHandler {
     if (loginCode != 22) {
       RSCPacketBuilder pb = new RSCPacketBuilder();
       pb.setBare(true);
-      pb.addByte((byte) loginCode);
+      pb.addByte(loginCode);
       session.write(pb.toPacket());
       player.destroy(true);
     }

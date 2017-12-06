@@ -5,24 +5,24 @@ import org.apache.mina.common.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoder;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Opcode;
+import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Logger;
 
 /**
- * Encodes the high level <code>RSCPacket</code> class into the proper protocol
- * data required for transmission.
+ * Encodes the high level <code>RSCPacket</code> class into the proper protocol data required for transmission.
  */
 public class RSCProtocolEncoder implements ProtocolEncoder {
   /**
-   * Converts a <code>RSCPacket</code> object into the raw data needed for
-   * transmission.
+   * Converts a <code>RSCPacket</code> object into the raw data needed for transmission.
    *
    * @param session The IO session associated with the packet
    * @param message A <code>RSCPacket</code> to encode
-   * @param out     The output stream to which to write the data
+   * @param out The output stream to which to write the data
    */
   public void encode(IoSession session, Object message, ProtocolEncoderOutput out) {
     if (!(message instanceof RSCPacket)) {
-      Logger.error(new Exception("Wrong packet type! " + message.toString()));
+      Logger.error(new Exception("Wrong packet type! " + message));
       return;
     }
     RSCPacket p = (RSCPacket) message;
@@ -49,6 +49,18 @@ public class RSCProtocolEncoder implements ProtocolEncoder {
     }
     buffer.put(data, 0, dataLength);
     buffer.flip();
+    byte[] debugData = new byte[data.length + 1];
+    debugData[0] = (byte) p.getID();
+    for (int i = 1; i < debugData.length; ++i) {
+      debugData[i] = data[i - 1];
+    }
+    System.out.println(String.format(
+      "[Packet] >>> %s(id=%d) size=%d\n%s",
+      Opcode.getServer(204, p.getID()),
+      p.getID(),
+      debugData.length,
+      DataConversions.bytesToHex(debugData)
+    ));
     out.write(buffer);
   }
 

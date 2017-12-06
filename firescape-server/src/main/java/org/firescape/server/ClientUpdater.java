@@ -11,16 +11,16 @@ import org.firescape.server.util.EntityList;
 import java.util.List;
 
 public final class ClientUpdater {
-  private static World world = World.getWorld();
-  private EntityList<Player> players = world.getPlayers();
-  private EntityList<Npc> npcs = world.getNpcs();
-  private PlayerPositionPacketBuilder playerPositionBuilder = new PlayerPositionPacketBuilder();
-  private PlayerUpdatePacketBuilder playerApperanceBuilder = new PlayerUpdatePacketBuilder();
-  private GameObjectPositionPacketBuilder gameObjectPositionBuilder = new GameObjectPositionPacketBuilder();
-  private WallObjectPositionPacketBuilder wallObjectPositionPacketBuilder = new WallObjectPositionPacketBuilder();
-  private ItemPositionPacketBuilder itemPositionBuilder = new ItemPositionPacketBuilder();
-  private NpcPositionPacketBuilder npcPositionPacketBuilder = new NpcPositionPacketBuilder();
-  private NpcUpdatePacketBuilder npcApperanceBuilder = new NpcUpdatePacketBuilder();
+  private static final World world = World.getWorld();
+  private final EntityList<Player> players = world.getPlayers();
+  private final EntityList<Npc> npcs = world.getNpcs();
+  private final PlayerPositionPacketBuilder playerPositionBuilder = new PlayerPositionPacketBuilder();
+  private final PlayerUpdatePacketBuilder playerApperanceBuilder = new PlayerUpdatePacketBuilder();
+  private final GameObjectPositionPacketBuilder gameObjectPositionBuilder = new GameObjectPositionPacketBuilder();
+  private final WallObjectPositionPacketBuilder wallObjectPositionPacketBuilder = new WallObjectPositionPacketBuilder();
+  private final ItemPositionPacketBuilder itemPositionBuilder = new ItemPositionPacketBuilder();
+  private final NpcPositionPacketBuilder npcPositionPacketBuilder = new NpcPositionPacketBuilder();
+  private final NpcUpdatePacketBuilder npcApperanceBuilder = new NpcUpdatePacketBuilder();
 
   public ClientUpdater() {
     world.setClientUpdater(this);
@@ -37,14 +37,12 @@ public final class ClientUpdater {
     // GUI.refreshWorldList(GUI.lastClickedName);
     for (Player p : players) {
       updateTimeouts(p);
-
       // Must be done in the right order!
       updatePlayerPositions(p);
       updateNpcPositions(p);
       updateGameObjects(p);
       updateWallObjects(p);
       updateItems(p);
-
       updatePlayerApperances(p);
       updateNpcApperances(p);
     }
@@ -52,8 +50,7 @@ public final class ClientUpdater {
   }
 
   /**
-   * Update the position of npcs, and check if who (and what) they are aware of
-   * needs updated
+   * Update the position of npcs, and check if who (and what) they are aware of needs updated
    */
   private void updateNpcPositions() {
     for (Npc n : npcs) {
@@ -64,8 +61,7 @@ public final class ClientUpdater {
   }
 
   /**
-   * Update the position of players, and check if who (and what) they are aware
-   * of needs updated
+   * Update the position of players, and check if who (and what) they are aware of needs updated
    */
   private void updatePlayersPositions() {
     for (Player p : players) {
@@ -149,14 +145,13 @@ public final class ClientUpdater {
       }
     } else if (curTime - p.getLastMoved() >= 900000) {
       p.getActionSender()
-              .sendMessage("@cya@You have not moved for 15 mins, please move to a new area to avoid logout.");
+       .sendMessage("@cya@You have not moved for 15 mins, please move to a new area to avoid " + "logout" + ".");
       p.warnToMove();
     }
   }
 
   /**
-   * Update positions of the given player, and any players they should be aware
-   * of
+   * Update positions of the given player, and any players they should be aware of
    */
   private void updatePlayerPositions(Player p) {
     playerPositionBuilder.setPlayer(p);
@@ -211,8 +206,7 @@ public final class ClientUpdater {
   }
 
   /**
-   * Update appearance of the given player, and any players they should be aware
-   * of
+   * Update appearance of the given player, and any players they should be aware of
    */
   private void updatePlayerApperances(Player p) {
     playerApperanceBuilder.setPlayer(p);
@@ -247,14 +241,12 @@ public final class ClientUpdater {
       p.getWatchedObjects().update();
       p.getWatchedItems().update();
       p.getWatchedNpcs().update();
-
       p.clearProjectilesNeedingDisplayed();
       p.clearPlayersNeedingHitsUpdate();
       p.clearNpcsNeedingHitsUpdate();
       p.clearChatMessagesNeedingDisplayed();
       p.clearNpcMessagesNeedingDisplayed();
       p.clearBubblesNeedingDisplayed();
-
       p.resetSpriteChanged();
       p.setAppearnceChanged(false);
     }

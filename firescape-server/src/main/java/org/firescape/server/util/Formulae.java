@@ -15,373 +15,273 @@ import java.util.Random;
 public class Formulae {
 
   public static final int[] experienceArray = {
-          83,
-          174,
-          276,
-          388,
-          512,
-          650,
-          801,
-          969,
-          1154,
-          1358,
-          1584,
-          1833,
-          2107,
-          2411,
-          2746,
-          3115,
-          3523,
-          3973,
-          4470,
-          5018,
-          5624,
-          6291,
-          7028,
-          7842,
-          8740,
-          9730,
-          10824,
-          12031,
-          13363,
-          14833,
-          16456,
-          18247,
-          20224,
-          22406,
-          24815,
-          27473,
-          30408,
-          33648,
-          37224,
-          41171,
-          45529,
-          50339,
-          55649,
-          61512,
-          67983,
-          75127,
-          83014,
-          91721,
-          101333,
-          111945,
-          123660,
-          136594,
-          150872,
-          166636,
-          184040,
-          203254,
-          224466,
-          247886,
-          273742,
-          302288,
-          333804,
-          368599,
-          407015,
-          449428,
-          496254,
-          547953,
-          605032,
-          668051,
-          737627,
-          814445,
-          899257,
-          992895,
-          1096278,
-          1210421,
-          1336443,
-          1475581,
-          1629200,
-          1798808,
-          1986068,
-          2192818,
-          2421087,
-          2673114,
-          2951373,
-          3258594,
-          3597792,
-          3972294,
-          4385776,
-          4842295,
-          5346332,
-          5902831,
-          6517253,
-          7195629,
-          7944614,
-          8771558,
-          9684577,
-          10692629,
-          11805606,
-          13034431,
-          14391160
+    83,
+    174,
+    276,
+    388,
+    512,
+    650,
+    801,
+    969,
+    1154,
+    1358,
+    1584,
+    1833,
+    2107,
+    2411,
+    2746,
+    3115,
+    3523,
+    3973,
+    4470,
+    5018,
+    5624,
+    6291,
+    7028,
+    7842,
+    8740,
+    9730,
+    10824,
+    12031,
+    13363,
+    14833,
+    16456,
+    18247,
+    20224,
+    22406,
+    24815,
+    27473,
+    30408,
+    33648,
+    37224,
+    41171,
+    45529,
+    50339,
+    55649,
+    61512,
+    67983,
+    75127,
+    83014,
+    91721,
+    101333,
+    111945,
+    123660,
+    136594,
+    150872,
+    166636,
+    184040,
+    203254,
+    224466,
+    247886,
+    273742,
+    302288,
+    333804,
+    368599,
+    407015,
+    449428,
+    496254,
+    547953,
+    605032,
+    668051,
+    737627,
+    814445,
+    899257,
+    992895,
+    1096278,
+    1210421,
+    1336443,
+    1475581,
+    1629200,
+    1798808,
+    1986068,
+    2192818,
+    2421087,
+    2673114,
+    2951373,
+    3258594,
+    3597792,
+    3972294,
+    4385776,
+    4842295,
+    5346332,
+    5902831,
+    6517253,
+    7195629,
+    7944614,
+    8771558,
+    9684577,
+    10692629,
+    11805606,
+    13034431,
+    14391160
   };
   public static final int[] eArray = {
-          0,
-          0,
-          83,
-          174,
-          276,
-          388,
-          512,
-          650,
-          801,
-          969,
-          1154,
-          1358,
-          1584,
-          1833,
-          2107,
-          2411,
-          2746,
-          3115,
-          3523,
-          3973,
-          4470,
-          5018,
-          5624,
-          6291,
-          7028,
-          7842,
-          8740,
-          9730,
-          10824,
-          12031,
-          13363,
-          14833,
-          16456,
-          18247,
-          20224,
-          22406,
-          24815,
-          27473,
-          30408,
-          33648,
-          37224,
-          41171,
-          45529,
-          50339,
-          55649,
-          61512,
-          67983,
-          75127,
-          83014,
-          91721,
-          101333,
-          111945,
-          123660,
-          136594,
-          150872,
-          166636,
-          184040,
-          203254,
-          224466,
-          247886,
-          273742,
-          302288,
-          333804,
-          368599,
-          407015,
-          449428,
-          496254,
-          547953,
-          605032,
-          668051,
-          737627,
-          814445,
-          899257,
-          992895,
-          1096278,
-          1210421,
-          1336443,
-          1475581,
-          1629200,
-          1798808,
-          1986068,
-          2192818,
-          2421087,
-          2673114,
-          2951373,
-          3258594,
-          3597792,
-          3972294,
-          4385776,
-          4842295,
-          5346332,
-          5902831,
-          6517253,
-          7195629,
-          7944614,
-          8771558,
-          9684577,
-          10692629,
-          11805606,
-          13034431,
-          14391160
+    0,
+    0,
+    83,
+    174,
+    276,
+    388,
+    512,
+    650,
+    801,
+    969,
+    1154,
+    1358,
+    1584,
+    1833,
+    2107,
+    2411,
+    2746,
+    3115,
+    3523,
+    3973,
+    4470,
+    5018,
+    5624,
+    6291,
+    7028,
+    7842,
+    8740,
+    9730,
+    10824,
+    12031,
+    13363,
+    14833,
+    16456,
+    18247,
+    20224,
+    22406,
+    24815,
+    27473,
+    30408,
+    33648,
+    37224,
+    41171,
+    45529,
+    50339,
+    55649,
+    61512,
+    67983,
+    75127,
+    83014,
+    91721,
+    101333,
+    111945,
+    123660,
+    136594,
+    150872,
+    166636,
+    184040,
+    203254,
+    224466,
+    247886,
+    273742,
+    302288,
+    333804,
+    368599,
+    407015,
+    449428,
+    496254,
+    547953,
+    605032,
+    668051,
+    737627,
+    814445,
+    899257,
+    992895,
+    1096278,
+    1210421,
+    1336443,
+    1475581,
+    1629200,
+    1798808,
+    1986068,
+    2192818,
+    2421087,
+    2673114,
+    2951373,
+    3258594,
+    3597792,
+    3972294,
+    4385776,
+    4842295,
+    5346332,
+    5902831,
+    6517253,
+    7195629,
+    7944614,
+    8771558,
+    9684577,
+    10692629,
+    11805606,
+    13034431,
+    14391160
   };
   public static final String[] statArray = {
-          "attack",
-          "defense",
-          "strength",
-          "hits",
-          "ranged",
-          "prayer",
-          "magic",
-          "cooking",
-          "woodcut",
-          "fletching",
-          "fishing",
-          "firemaking",
-          "crafting",
-          "smithing",
-          "mining",
-          "herblaw",
-          "agility",
-          "thieving"
+    "attack",
+    "defense",
+    "strength",
+    "hits",
+    "ranged",
+    "prayer",
+    "magic",
+    "cooking",
+    "woodcut",
+    "fletching",
+    "fishing",
+    "firemaking",
+    "crafting",
+    "smithing",
+    "mining",
+    "herblaw",
+    "agility",
+    "thieving"
   };
   public static final int[] woodcuttingAxeIDs = {
-          405,
-          204,
-          203,
-          428,
-          88,
-          12,
-          87
+    405, 204, 203, 428, 88, 12, 87
   };
   public static final int[] miningAxeIDs = {
-          1262,
-          1261,
-          1260,
-          1259,
-          1258,
-          156
+    1262, 1261, 1260, 1259, 1258, 156
   };
   public static final int[] arrowIDs = {
-          723,
-          647,
-          646,
-          645,
-          644,
-          643,
-          642,
-          641,
-          640,
-          639,
-          638,
-          574,
-          11
+    723, 647, 646, 645, 644, 643, 642, 641, 640, 639, 638, 574, 11
   };
   public static final int[] bowIDs = {
-          188,
-          189,
-          648,
-          649,
-          650,
-          651,
-          652,
-          653,
-          654,
-          655,
-          656,
-          657
+    188, 189, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657
   };
   public static final int[] boltIDs = {
-          786,
-          592,
-          190
+    786, 592, 190
   };
   public static final int[] xbowIDs = {
-          59,
-          60
+    59, 60
   };
   public static final int[] safePacketIDs = {
-          70,
-          123,
-          128,
-          255
+    70, 123, 128, 255
   };
   public static final int[] headSprites = {
-          1,
-          4,
-          6,
-          7,
-          8
+    1, 4, 6, 7, 8
   };
   public static final int[] bodySprites = {
-          2,
-          5
+    2, 5
   };
   public static final int[] runeIDs = {
-          31,
-          32,
-          33,
-          34,
-          35,
-          36,
-          37,
-          38,
-          40,
-          41,
-          42,
-          46,
-          619,
-          825
+    31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 46, 619, 825
   };
 
   public static final int[] potionsUnfinished = {
-          454,
-          455,
-          456,
-          457,
-          458,
-          459,
-          460,
-          461,
-          462,
-          463
+    454, 455, 456, 457, 458, 459, 460, 461, 462, 463
   };
   public static final int[] potions1Dose = {
-          224,
-          476,
-          479,
-          482,
-          485,
-          488,
-          491,
-          494,
-          497,
-          500,
-          568,
-          571
+    224, 476, 479, 482, 485, 488, 491, 494, 497, 500, 568, 571
   };
   public static final int[] potions2Dose = {
-          223,
-          475,
-          478,
-          481,
-          484,
-          487,
-          490,
-          493,
-          496,
-          499,
-          567,
-          570
+    223, 475, 478, 481, 484, 487, 490, 493, 496, 499, 567, 570
   };
   public static final int[] potions3Dose = {
-          222,
-          474,
-          477,
-          480,
-          483,
-          486,
-          489,
-          492,
-          495,
-          498,
-          566,
-          569
+    222, 474, 477, 480, 483, 486, 489, 492, 495, 498, 566, 569
   };
-  private static Random r = new Random();
+  private static final Random r = new Random();
 
   public static int getPotionDose(int id) {
     if (DataConversions.inArray(potions1Dose, id)) {
@@ -429,27 +329,28 @@ public class Formulae {
   public static boolean catchThief(int lvl, int reqLevel) {
     double rand = ((r.nextDouble() * 100) + 1) / 100;
     double success = getMiningFailPercent((double) lvl, (double) reqLevel) / 100.0;
-
-    if (success < 0.35)
+    if (success < 0.35) {
       success = 0.35;
-
+    }
     if (reqLevel < 15) {
       if (lvl - reqLevel < 10) {
-        if (Rand(1, 10) == 5)
+        if (Rand(1, 10) == 5) {
           success = 1.0;
+        }
       }
     }
-
     // System.out.println("Rand: " + rand + "%, success: " + success + "% - " +
     // (rand < success ? "success" : "fail"));
-
     return !(rand < success);
   }
 
   public static double getMiningFailPercent(double curLvl, double reqLvl) {
     double dif = curLvl - reqLvl; // Get difference
-    return (3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) + (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3)
-            + 0.014307 * Math.pow(dif, 2) + 1.65560813 * dif + 18.2095966;
+    return (3.27 * Math.pow(10, -6)) * Math.pow(dif, 4) +
+           (-5.516 * Math.pow(10, -4)) * Math.pow(dif, 3) +
+           0.014307 * Math.pow(dif, 2) +
+           1.65560813 * dif +
+           18.2095966;
     // (3.27 * 10^-6)x^4 + (-5.516 * 10^-4)x^3 + 0.014307x^2 + 1.65560813x +
     // 18.2095966'
   }
@@ -609,12 +510,7 @@ public class Formulae {
    */
   public static int getSmithingExp(int barID, int barCount) {
     int[] exps = {
-            13,
-            25,
-            37,
-            50,
-            83,
-            74
+      13, 25, 37, 50, 83, 74
     };
     int type = getBarType(barID);
     if (type < 0) {
@@ -649,12 +545,7 @@ public class Formulae {
    */
   public static int minSmithingLevel(int barID) {
     int[] levels = {
-            1,
-            15,
-            30,
-            50,
-            70,
-            85
+      1, 15, 30, 50, 70, 85
     };
     int type = getBarType(barID);
     if (type < 0) {
@@ -713,11 +604,9 @@ public class Formulae {
    */
   public static int calcRangeHit(int rangeLvl, int rangeEquip, int armourEquip, int arrowID) {
     int armourRatio = (int) (60D + (((rangeEquip * 3D) - armourEquip) / 300D) * 40D);
-
     if (DataConversions.random(0, 100) > armourRatio && DataConversions.random(0, 1) == 0) {
       return 0;
     }
-
     int max = (int) (((double) rangeLvl * 0.15D) + 0.85D + arrowPower(arrowID));
     int peak = (int) (((double) max / 100D) * (double) armourRatio);
     int dip = (int) (((double) peak / 3D) * 2D);
@@ -803,36 +692,35 @@ public class Formulae {
     if (attacker instanceof Player) {
       Player owner = (Player) attacker;
       int newAtt = (owner.getMagicPoints()) + owner.getCurStat(6);
-      int newDef = (int) ((addPrayers(defender.isPrayerActivated(0), defender.isPrayerActivated(3),
-              defender.isPrayerActivated(9)) * defender.getDefense() / 4D) + (defender.getArmourPoints() / 4D));
+      int newDef = (int) ((addPrayers(defender.isPrayerActivated(0),
+                                      defender.isPrayerActivated(3),
+                                      defender.isPrayerActivated(9)
+      ) *
+                           defender.getDefense() / 4D) + (defender.getArmourPoints() / 4D));
       int hitChance = DataConversions.random(0, 150 + (newAtt - newDef));
       // int hitChance = (int)(50D + (double)owner.getMagicPoints() - newDef);
-
       if (hitChance > (defender instanceof Npc ? 50 : 60)) {
         int max = owner.isCharged() ? Rand(15, 25) : Rand(0, 10);
         int maxProb = 5; // 5%
         int nearMaxProb = 10; // 10%
         int avProb = 80; // 80%
         int lowHit = 5; // 5%
-
         // Probablities are shifted up/down based on armour
         int shiftValue = (int) Math.round(defender.getArmourPoints() * 0.02D);
         maxProb -= shiftValue;
         nearMaxProb -= (int) Math.round(shiftValue * 1.5);
         avProb -= (int) Math.round(shiftValue * 2.0);
         lowHit += (int) Math.round(shiftValue * 3.5);
-
         int hitRange = DataConversions.random(0, 100);
-
         if (hitRange >= (100 - maxProb)) {
           return max;
         } else if (hitRange >= (100 - nearMaxProb)) {
           return DataConversions.roundUp(Math.abs((max - (max * (DataConversions.random(0, 10) * 0.01D)))));
         } else if (hitRange >= (100 - avProb)) {
-          int newMax = (int) DataConversions.roundUp((max - (max * 0.1D)));
+          int newMax = DataConversions.roundUp((max - (max * 0.1D)));
           return DataConversions.roundUp(Math.abs((newMax - (newMax * (DataConversions.random(0, 50) * 0.01D)))));
         } else {
-          int newMax = (int) DataConversions.roundUp((max - (max * 0.5D)));
+          int newMax = DataConversions.roundUp((max - (max * 0.5D)));
           return DataConversions.roundUp(Math.abs((newMax - (newMax * (DataConversions.random(0, 95) * 0.01D)))));
         }
       }
@@ -841,8 +729,7 @@ public class Formulae {
   }
 
   /**
-   * Adds the prayers together to calculate what perecntage the stat should be
-   * increased
+   * Adds the prayers together to calculate what perecntage the stat should be increased
    */
   private static double addPrayers(boolean first, boolean second, boolean third) {
     if (third) {
@@ -861,42 +748,45 @@ public class Formulae {
    * Calulates what one mob should hit on another with meelee
    */
   public static int calcFightHit(Mob attacker, Mob defender) {
-    int newAtt = (int) ((addPrayers(attacker.isPrayerActivated(2), attacker.isPrayerActivated(5),
-            attacker.isPrayerActivated(11)) * attacker.getAttack()) + (attacker.getWeaponAimPoints() / 4D)
-            + styleBonus(attacker, 0));
-    int newDef = (int) ((addPrayers(defender.isPrayerActivated(0), defender.isPrayerActivated(3),
-            defender.isPrayerActivated(9)) * defender.getDefense()) + (defender.getArmourPoints() / 4D)
-            + styleBonus(attacker, 1));
-
+    int newAtt = (int) ((addPrayers(attacker.isPrayerActivated(2),
+                                    attacker.isPrayerActivated(5),
+                                    attacker.isPrayerActivated(11)
+    ) *
+                         attacker.getAttack()) + (attacker.getWeaponAimPoints() / 4D) + styleBonus(attacker, 0));
+    int newDef = (int) ((addPrayers(defender.isPrayerActivated(0),
+                                    defender.isPrayerActivated(3),
+                                    defender.isPrayerActivated(9)
+    ) *
+                         defender.getDefense()) + (defender.getArmourPoints() / 4D) + styleBonus(attacker, 1));
     int hitChance = DataConversions.random(0, 100) + (newAtt - newDef);
-
     if (hitChance > (defender instanceof Npc ? 50 : 60)) {
-      int max = maxHit(attacker.getStrength(), attacker.getWeaponPowerPoints(), attacker.isPrayerActivated(1),
-              attacker.isPrayerActivated(4), attacker.isPrayerActivated(10), styleBonus(attacker, 2));
-
+      int max = maxHit(attacker.getStrength(),
+                       attacker.getWeaponPowerPoints(),
+                       attacker.isPrayerActivated(1),
+                       attacker.isPrayerActivated(4),
+                       attacker.isPrayerActivated(10),
+                       styleBonus(attacker, 2)
+      );
       int maxProb = 5; // 5%
       int nearMaxProb = 10; // 10%
       int avProb = 80; // 80%
       int lowHit = 5; // 5%
-
       // Probablities are shifted up/down based on armour
       int shiftValue = (int) Math.round(defender.getArmourPoints() * 0.02D);
       maxProb -= shiftValue;
       nearMaxProb -= (int) Math.round(shiftValue * 1.5);
       avProb -= (int) Math.round(shiftValue * 2.0);
       lowHit += (int) Math.round(shiftValue * 3.5);
-
       int hitRange = DataConversions.random(0, 100);
-
       if (hitRange >= (100 - maxProb)) {
         return max;
       } else if (hitRange >= (100 - nearMaxProb)) {
         return DataConversions.roundUp(Math.abs((max - (max * (DataConversions.random(0, 10) * 0.01D)))));
       } else if (hitRange >= (100 - avProb)) {
-        int newMax = (int) DataConversions.roundUp((max - (max * 0.1D)));
+        int newMax = DataConversions.roundUp((max - (max * 0.1D)));
         return DataConversions.roundUp(Math.abs((newMax - (newMax * (DataConversions.random(0, 50) * 0.01D)))));
       } else {
-        int newMax = (int) DataConversions.roundUp((max - (max * 0.5D)));
+        int newMax = DataConversions.roundUp((max - (max * 0.5D)));
         return DataConversions.roundUp(Math.abs((newMax - (newMax * (DataConversions.random(0, 95) * 0.01D)))));
       }
     }
@@ -914,8 +804,9 @@ public class Formulae {
   /**
    * Calculate the max hit possible with the given stats
    */
-  public static int maxHit(int strength, int weaponPower, boolean burst, boolean superhuman, boolean ultimate,
-                           int bonus) {
+  public static int maxHit(
+    int strength, int weaponPower, boolean burst, boolean superhuman, boolean ultimate, int bonus
+  ) {
     double newStrength = (strength * addPrayers(burst, superhuman, ultimate)) + bonus;
     return (int) (newStrength * (((double) weaponPower * 0.00175D) + 0.1D) + 1.05D);
   }
@@ -928,8 +819,7 @@ public class Formulae {
   }
 
   /**
-   * Calculates what a spell should hit based on its strength and the magic
-   * equipment stats of the caster
+   * Calculates what a spell should hit based on its strength and the magic equipment stats of the caster
    */
   public static int calcSpellHit(int spellStr, int magicEquip) {
     int mageRatio = (int) (50D + (double) magicEquip);
@@ -1086,7 +976,6 @@ public class Formulae {
     double defense = def + hits;
     double mage = pray + magic;
     mage /= 8D;
-
     if (attack < ((double) range * 1.5D)) {
       return (int) ((defense / 4D) + ((double) range * 0.375D) + mage);
     } else {

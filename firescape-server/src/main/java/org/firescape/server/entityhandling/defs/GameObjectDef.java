@@ -14,8 +14,7 @@ public class GameObjectDef extends EntityDef {
    */
   public String command2;
   /**
-   * The object type. Can't figure out the significance of it. Item type 2 & 3
-   * seem to be special
+   * The object type. Can't figure out the significance of it. Item type 2 & 3 seem to be special
    */
   public int type;
   /**

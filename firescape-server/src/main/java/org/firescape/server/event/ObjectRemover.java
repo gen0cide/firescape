@@ -6,7 +6,7 @@ import org.firescape.server.model.World;
 
 public class ObjectRemover extends DelayedEvent {
   public static final World world = World.getWorld();
-  private GameObject object;
+  private final GameObject object;
 
   public ObjectRemover(GameObject object, int delay) {
     super(null, delay);
@@ -16,12 +16,12 @@ public class ObjectRemover extends DelayedEvent {
   public void run() {
     ActiveTile tile = world.getTile(object.getLocation());
     if (!tile.hasGameObject() || !tile.getGameObject().equals(object)) {
-      super.running = false;
+      this.running = false;
       return;
     }
     tile.remove(object);
     world.unregisterGameObject(object);
-    super.running = false;
+    this.running = false;
   }
 
   public boolean equals(Object o) {

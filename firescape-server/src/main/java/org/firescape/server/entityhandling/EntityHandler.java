@@ -10,46 +10,46 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class handles the loading of entities from the conf files, and provides
- * methods for relaying these entities to the user.
+ * This class handles the loading of entities from the conf files, and provides methods for relaying these entities to
+ * the user.
  */
 @SuppressWarnings("unchecked")
 public class EntityHandler {
 
-  private static DoorDef[] doors;
-  private static GameObjectDef[] gameObjects;
-  private static NPCDef[] npcs;
-  private static PrayerDef[] prayers;
-  private static ItemDef[] items;
-  private static TileDef[] tiles;
-  private static AdvertDef[] adverts;
+  private static final DoorDef[] doors;
+  private static final GameObjectDef[] gameObjects;
+  private static final NPCDef[] npcs;
+  private static final PrayerDef[] prayers;
+  private static final ItemDef[] items;
+  private static final TileDef[] tiles;
+  private static final AdvertDef[] adverts;
 
-  private static List[] keyChestLoots;
-  private static ItemHerbSecond[] herbSeconds;
-  private static HashMap<Integer, ItemDartTipDef> dartTips;
-  private static HashMap<Integer, ItemGemDef> gems;
-  private static HashMap<Integer, ItemLogCutDef> logCut;
-  private static HashMap<Integer, ItemBowStringDef> bowString;
-  private static HashMap<Integer, ItemArrowHeadDef> arrowHeads;
-  private static HashMap<Integer, FiremakingDef> firemaking;
-  private static HashMap<Integer, int[]> itemAffectedTypes;
-  private static HashMap<Integer, ItemWieldableDef> itemWieldable;
-  private static HashMap<Integer, ItemUnIdentHerbDef> itemUnIdentHerb;
-  private static HashMap<Integer, ItemHerbDef> itemHerb;
-  private static HashMap<Integer, Integer> itemEdibleHeals;
-  private static HashMap<Integer, ItemCookingDef> itemCooking;
-  private static ItemSmithingDef[] itemSmithing;
-  private static ItemCraftingDef[] itemCrafting;
-  private static HashMap<Integer, ItemSmeltingDef> itemSmelting;
+  private static final List[] keyChestLoots;
+  private static final ItemHerbSecond[] herbSeconds;
+  private static final HashMap<Integer, ItemDartTipDef> dartTips;
+  private static final HashMap<Integer, ItemGemDef> gems;
+  private static final HashMap<Integer, ItemLogCutDef> logCut;
+  private static final HashMap<Integer, ItemBowStringDef> bowString;
+  private static final HashMap<Integer, ItemArrowHeadDef> arrowHeads;
+  private static final HashMap<Integer, FiremakingDef> firemaking;
+  private static final HashMap<Integer, int[]> itemAffectedTypes;
+  private static final HashMap<Integer, ItemWieldableDef> itemWieldable;
+  private static final HashMap<Integer, ItemUnIdentHerbDef> itemUnIdentHerb;
+  private static final HashMap<Integer, ItemHerbDef> itemHerb;
+  private static final HashMap<Integer, Integer> itemEdibleHeals;
+  private static final HashMap<Integer, ItemCookingDef> itemCooking;
+  private static final ItemSmithingDef[] itemSmithing;
+  private static final ItemCraftingDef[] itemCrafting;
+  private static final HashMap<Integer, ItemSmeltingDef> itemSmelting;
 
-  private static SpellDef[] spells;
-  private static HashMap<Integer, Integer> spellAggressiveLvl;
+  private static final SpellDef[] spells;
+  private static final HashMap<Integer, Integer> spellAggressiveLvl;
 
-  private static HashMap<Point, TelePoint> objectTelePoints;
-  private static HashMap<Integer, CerterDef> certers;
-  private static HashMap<Integer, ObjectMiningDef> objectMining;
-  private static HashMap<Integer, ObjectWoodcuttingDef> objectWoodcutting;
-  private static HashMap<Integer, ObjectFishingDef[]> objectFishing;
+  private static final HashMap<Point, TelePoint> objectTelePoints;
+  private static final HashMap<Integer, CerterDef> certers;
+  private static final HashMap<Integer, ObjectMiningDef> objectMining;
+  private static final HashMap<Integer, ObjectWoodcuttingDef> objectWoodcutting;
+  private static final HashMap<Integer, ObjectFishingDef[]> objectFishing;
 
   static {
     doors = (DoorDef[]) PersistenceManager.load("defs/DoorDef.xml.gz");
@@ -59,32 +59,30 @@ public class EntityHandler {
     items = (ItemDef[]) PersistenceManager.load("defs/ItemDef.xml.gz");
     spells = (SpellDef[]) PersistenceManager.load("defs/SpellDef.xml.gz");
     tiles = (TileDef[]) PersistenceManager.load("defs/TileDef.xml.gz");
-
     keyChestLoots = (List[]) PersistenceManager.load("defs/extras/KeyChestLoot.xml.gz");
     herbSeconds = (ItemHerbSecond[]) PersistenceManager.load("defs/extras/ItemHerbSecond.xml");
-    dartTips = (HashMap<Integer, ItemDartTipDef>) PersistenceManager.load("defs/extras/ItemDartTipDef.xml");
+    dartTips = (HashMap<Integer, ItemDartTipDef>) PersistenceManager.load("defs/extras/ItemDartTipDef" + ".xml");
     gems = (HashMap<Integer, ItemGemDef>) PersistenceManager.load("defs/extras/ItemGemDef.xml");
     logCut = (HashMap<Integer, ItemLogCutDef>) PersistenceManager.load("defs/extras/ItemLogCutDef.xml");
     bowString = (HashMap<Integer, ItemBowStringDef>) PersistenceManager.load("defs/extras/ItemBowStringDef.xml");
     arrowHeads = (HashMap<Integer, ItemArrowHeadDef>) PersistenceManager.load("defs/extras/ItemArrowHeadDef.xml");
-    firemaking = (HashMap<Integer, FiremakingDef>) PersistenceManager.load("defs/extras/FiremakingDef.xml");
+    firemaking = (HashMap<Integer, FiremakingDef>) PersistenceManager.load("defs/extras/FiremakingDef" + ".xml");
     itemAffectedTypes = (HashMap<Integer, int[]>) PersistenceManager.load("defs/extras/ItemAffectedTypes.xml");
     itemWieldable = (HashMap<Integer, ItemWieldableDef>) PersistenceManager.load("defs/extras/ItemWieldableDef.xml");
-    itemUnIdentHerb = (HashMap<Integer, ItemUnIdentHerbDef>) PersistenceManager
-            .load("defs/extras/ItemUnIdentHerbDef.xml");
+    itemUnIdentHerb = (HashMap<Integer, ItemUnIdentHerbDef>) PersistenceManager.load("defs/extras/ItemUnIdentHerbDef" +
+                                                                                     ".xml");
     itemHerb = (HashMap<Integer, ItemHerbDef>) PersistenceManager.load("defs/extras/ItemHerbDef.xml");
-    itemEdibleHeals = (HashMap<Integer, Integer>) PersistenceManager.load("defs/extras/ItemEdibleHeals.xml");
+    itemEdibleHeals = (HashMap<Integer, Integer>) PersistenceManager.load("defs/extras/ItemEdibleHeals" + ".xml");
     itemCooking = (HashMap<Integer, ItemCookingDef>) PersistenceManager.load("defs/extras/ItemCookingDef.xml");
     itemSmelting = (HashMap<Integer, ItemSmeltingDef>) PersistenceManager.load("defs/extras/ItemSmeltingDef.xml");
     itemSmithing = (ItemSmithingDef[]) PersistenceManager.load("defs/extras/ItemSmithingDef.xml");
     itemCrafting = (ItemCraftingDef[]) PersistenceManager.load("defs/extras/ItemCraftingDef.xml");
     objectMining = (HashMap<Integer, ObjectMiningDef>) PersistenceManager.load("defs/extras/ObjectMining.xml");
-    objectWoodcutting = (HashMap<Integer, ObjectWoodcuttingDef>) PersistenceManager
-            .load("defs/extras/ObjectWoodcutting.xml");
+    objectWoodcutting = (HashMap<Integer, ObjectWoodcuttingDef>) PersistenceManager.load(
+      "defs/extras/ObjectWoodcutting.xml");
     objectFishing = (HashMap<Integer, ObjectFishingDef[]>) PersistenceManager.load("defs/extras/ObjectFishing.xml");
     spellAggressiveLvl = (HashMap<Integer, Integer>) PersistenceManager.load("defs/extras/SpellAggressiveLvl.xml.gz");
     adverts = (AdvertDef[]) PersistenceManager.load("defs/extras/Adverts.xml");
-
     objectTelePoints = (HashMap<Point, TelePoint>) PersistenceManager.load("locs/extras/ObjectTelePoints.xml.gz");
     certers = (HashMap<Integer, CerterDef>) PersistenceManager.load("defs/extras/NpcCerters.xml.gz");
   }
@@ -173,6 +171,7 @@ public class EntityHandler {
 
   /**
    * @param id the npcs ID
+   *
    * @return the CerterDef for the given npc
    */
   public static CerterDef getCerterDef(int id) {
@@ -181,6 +180,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ItemSmeltingDef with the given ID
    */
   public static ItemSmeltingDef getItemSmeltingDef(int id) {
@@ -189,6 +189,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ItemCookingDef with the given ID
    */
   public static ItemCookingDef getItemCookingDef(int id) {
@@ -197,6 +198,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ObjectFishingDef with the given ID
    */
   public static ObjectFishingDef getObjectFishingDef(int id, int click) {
@@ -209,6 +211,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ObjectMiningDef with the given ID
    */
   public static ObjectMiningDef getObjectMiningDef(int id) {
@@ -217,6 +220,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ObjectWoodcuttingDef with the given ID
    */
   public static ObjectWoodcuttingDef getObjectWoodcuttingDef(int id) {
@@ -225,6 +229,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ItemHerbDef with the given ID
    */
   public static ItemHerbDef getItemHerbDef(int id) {
@@ -233,6 +238,7 @@ public class EntityHandler {
 
   /**
    * @param the point we are currently at
+   *
    * @return the point we should be teleported to
    */
   public static Point getObjectTelePoint(Point location, String command) {
@@ -248,6 +254,7 @@ public class EntityHandler {
 
   /**
    * @param the spells id
+   *
    * @return the lvl of the spell (for calculating what it hits)
    */
   public static int getSpellAggressiveLvl(int id) {
@@ -260,6 +267,7 @@ public class EntityHandler {
 
   /**
    * @param the items id
+   *
    * @return the amount eating the item should heal
    */
   public static int getItemEdibleHeals(int id) {
@@ -272,6 +280,7 @@ public class EntityHandler {
 
   /**
    * @param the items type
+   *
    * @return the types of items affected
    */
   public static int[] getItemAffectedTypes(int type) {
@@ -280,6 +289,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ItemUnIdentHerbDef with the given ID
    */
   public static ItemUnIdentHerbDef getItemUnIdentHerbDef(int id) {
@@ -288,6 +298,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ItemWieldableDef with the given ID
    */
   public static ItemWieldableDef getItemWieldableDef(int id) {
@@ -296,6 +307,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the DoorDef with the given ID
    */
   public static DoorDef getDoorDef(int id) {
@@ -307,6 +319,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the GameObjectDef with the given ID
    */
   public static GameObjectDef getGameObjectDef(int id) {
@@ -318,6 +331,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the ItemDef with the given ID
    */
   public static ItemDef getItemDef(int id) {
@@ -329,6 +343,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the TileDef with the given ID
    */
   public static TileDef getTileDef(int id) {
@@ -340,6 +355,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the NPCDef with the given ID
    */
   public static NPCDef getNpcDef(int id) {
@@ -351,6 +367,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the PrayerDef with the given ID
    */
   public static PrayerDef getPrayerDef(int id) {
@@ -362,6 +379,7 @@ public class EntityHandler {
 
   /**
    * @param id the entities ID
+   *
    * @return the SpellDef with the given ID
    */
   public static SpellDef getSpellDef(int id) {

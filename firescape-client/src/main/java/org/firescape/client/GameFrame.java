@@ -1,71 +1,73 @@
 package org.firescape.client;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GameFrame extends Frame {
 
-  int frameWidth;
-  int frameHeight;
-  int graphicsTranslate;
-  int frameOffset;
-  GameWindow aGameWindow;
-  Graphics aGraphics49;
-  public GameFrame(GameWindow gameWindow, int width, int height, String title, boolean resizable, boolean flag1) {
-    frameOffset = 28;
-    frameWidth = width;
-    frameHeight = height;
-    aGameWindow = gameWindow;
-    if (flag1)
-      frameOffset = 48;
-    else
-      frameOffset = 28;
+  int windowWidth;
+  int windowHeight;
+  int translationMode;
+  int windowYTranslation;
+  GameShell gameShell;
+
+  public GameFrame(GameShell game, int width, int height, String title, boolean resizable, boolean flag1) {
+    windowYTranslation = 28;
+    windowWidth = width;
+    windowHeight = height;
+    this.gameShell = game;
+    if (flag1) {
+      windowYTranslation = 48;
+    } else {
+      windowYTranslation = 28;
+    }
     setTitle(title);
-    setResizable(true);
-    show();
+    setResizable(resizable);
+    setVisible(true);
     toFront();
-    resize(frameWidth, frameHeight);
-    aGraphics49 = getGraphics();
+    setSize(windowWidth, windowHeight);
+
+    addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        gameShell.destroy();
+      }
+    });
   }
 
-  public void resize(int i, int j) {
-    super.resize(i, j + frameOffset);
+  public void setSize(int x, int y) {
+    super.setSize(x, y + windowYTranslation);
+  }
+
+  protected void processEvent(AWTEvent e) {
+    if (e instanceof MouseEvent) {
+      MouseEvent evt = (MouseEvent) e;
+      e = new MouseEvent(
+        evt.getComponent(),
+        evt.getID(),
+        evt.getWhen(),
+        evt.getModifiers(),
+        evt.getX(),
+        evt.getY() - 24,
+        evt.getClickCount(),
+        evt.isPopupTrigger()
+      );
+    }
+    super.processEvent(e);
+  }
+
+  public void paint(Graphics g) {
+    gameShell.paint(g);
   }
 
   public Graphics getGraphics() {
     Graphics g = super.getGraphics();
-    if (graphicsTranslate == 0)
+    if (translationMode == 0) {
       g.translate(0, 24);
-    else
+    } else {
       g.translate(-5, 0);
+    }
     return g;
-  }
-
-  public boolean handleEvent(Event event) {
-    if (event.id == 401)
-      aGameWindow.keyDown(event, event.key);
-    else if (event.id == 402)
-      aGameWindow.keyUp(event, event.key);
-    else if (event.id == 501)
-      aGameWindow.mouseDown(event, event.x, event.y - 24);
-    else if (event.id == 506)
-      aGameWindow.mouseDrag(event, event.x, event.y - 24);
-    else if (event.id == 502)
-      aGameWindow.mouseUp(event, event.x, event.y - 24);
-    else if (event.id == 503)
-      aGameWindow.mouseMove(event, event.x, event.y - 24);
-    else if (event.id == 201)
-      aGameWindow.destroy();
-    else if (event.id == 1001)
-      aGameWindow.action(event, event.target);
-    else if (event.id == 403)
-      aGameWindow.keyDown(event, event.key);
-    else if (event.id == 404)
-      aGameWindow.keyUp(event, event.key);
-    return true;
-  }
-
-  // Create Account
-  public final void paint(Graphics g) {
-    aGameWindow.paint(g);
   }
 }

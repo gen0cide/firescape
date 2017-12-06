@@ -136,10 +136,8 @@ public class NPCDef extends EntityDef {
   }
 
   public int[] getStats() {
-    return new int[]{
-            attack,
-            defense,
-            strength
+    return new int[] {
+      attack, defense, strength
     };
   }
 

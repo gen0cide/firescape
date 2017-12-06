@@ -4,8 +4,7 @@ import org.firescape.server.net.Packet;
 import org.firescape.server.util.Logger;
 
 /**
- * A mutable sequence of bytes used to construct the immutable
- * <code>RSCPacket</code> objects.
+ * A mutable sequence of bytes used to construct the immutable <code>RSCPacket</code> objects.
  */
 public class StaticPacketBuilder {
   /**
@@ -16,39 +15,39 @@ public class StaticPacketBuilder {
    * Bitmasks for <code>addBits()</code>
    */
   protected static int bitmasks[] = {
-          0,
-          0x1,
-          0x3,
-          0x7,
-          0xf,
-          0x1f,
-          0x3f,
-          0x7f,
-          0xff,
-          0x1ff,
-          0x3ff,
-          0x7ff,
-          0xfff,
-          0x1fff,
-          0x3fff,
-          0x7fff,
-          0xffff,
-          0x1ffff,
-          0x3ffff,
-          0x7ffff,
-          0xfffff,
-          0x1fffff,
-          0x3fffff,
-          0x7fffff,
-          0xffffff,
-          0x1ffffff,
-          0x3ffffff,
-          0x7ffffff,
-          0xfffffff,
-          0x1fffffff,
-          0x3fffffff,
-          0x7fffffff,
-          -1
+    0,
+    0x1,
+    0x3,
+    0x7,
+    0xf,
+    0x1f,
+    0x3f,
+    0x7f,
+    0xff,
+    0x1ff,
+    0x3ff,
+    0x7ff,
+    0xfff,
+    0x1fff,
+    0x3fff,
+    0x7fff,
+    0xffff,
+    0x1ffff,
+    0x3ffff,
+    0x7ffff,
+    0xfffff,
+    0x1fffff,
+    0x3fffff,
+    0x7fffff,
+    0xffffff,
+    0x1ffffff,
+    0x3ffffff,
+    0x7ffffff,
+    0xfffffff,
+    0x1fffffff,
+    0x3fffffff,
+    0x7fffffff,
+    -1
   };
   /**
    * The payload buffer
@@ -61,15 +60,14 @@ public class StaticPacketBuilder {
   /**
    * Current index into the buffer by bits
    */
-  protected int bitPosition = 0;
+  protected int bitPosition;
   /**
    * Whether this packet does not use the standard packet header
    */
-  protected boolean bare = false;
+  protected boolean bare;
 
   /**
-   * Constructs a packet builder with no data and an initial capacity of
-   * <code>DEFAULT_SIZE</code>.
+   * Constructs a packet builder with no data and an initial capacity of <code>DEFAULT_SIZE</code>.
    *
    * @see DEFAULT_SIZE
    */
@@ -78,8 +76,7 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Constructs a packet builder with no data and an initial capacity of
-   * <code>capacity</code>.
+   * Constructs a packet builder with no data and an initial capacity of <code>capacity</code>.
    *
    * @param capacity The initial capacity of the buffer
    */
@@ -88,8 +85,8 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Sets this packet as bare. A bare packet will contain only the payload data,
-   * rather than having the standard packet header prepended.
+   * Sets this packet as bare. A bare packet will contain only the payload data, rather than having the standard packet
+   * header prepended.
    *
    * @param bare Whether this packet is to be sent bare
    */
@@ -110,7 +107,6 @@ public class StaticPacketBuilder {
     for (; numBits > bitOffset; bitOffset = 8) {
       payload[bytePos] &= ~bitmasks[bitOffset]; // mask out the desired area
       payload[bytePos++] |= (value >> (numBits - bitOffset)) & bitmasks[bitOffset];
-
       numBits -= bitOffset;
     }
     if (numBits == bitOffset) {
@@ -129,14 +125,16 @@ public class StaticPacketBuilder {
    * @param minimumCapacity The size needed
    */
   private void ensureCapacity(int minimumCapacity) {
-    if (minimumCapacity >= payload.length)
+    if (minimumCapacity >= payload.length) {
       expandCapacity(minimumCapacity);
+    }
   }
 
   /**
    * Expands the buffer to the specified size.
    *
    * @param minimumCapacity The minimum capacity to which to expand
+   *
    * @see java.lang.AbstractStringBuilder#expandCapacity(int)
    */
   private void expandCapacity(int minimumCapacity) {
@@ -160,11 +158,11 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Adds the contents of <code>byte</code> array <code>data</code> to the
-   * packet. The size of this packet will grow by the length of the provided
-   * array.
+   * Adds the contents of <code>byte</code> array <code>data</code> to the packet. The size of this packet will grow by
+   * the length of the provided array.
    *
    * @param data The bytes to add to this packet
+   *
    * @return A reference to this object
    */
   public StaticPacketBuilder addBytes(byte[] data) {
@@ -172,13 +170,13 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Adds the contents of <code>byte</code> array <code>data</code>, starting at
-   * index <code>offset</code>. The size of this packet will grow by
-   * <code>len</code> bytes.
+   * Adds the contents of <code>byte</code> array <code>data</code>, starting at index <code>offset</code>. The size of
+   * this packet will grow by <code>len</code> bytes.
    *
-   * @param data   The bytes to add to this packet
+   * @param data The bytes to add to this packet
    * @param offset The index of the first byte to append
-   * @param len    The number of bytes to append
+   * @param len The number of bytes to append
+   *
    * @return A reference to this object
    */
   public StaticPacketBuilder addBytes(byte[] data, int offset, int len) {
@@ -190,10 +188,10 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Adds a <code>byte</code> to the data buffer. The size of this packet will
-   * grow by one byte.
+   * Adds a <code>byte</code> to the data buffer. The size of this packet will grow by one byte.
    *
    * @param val The <code>byte</code> value to add
+   *
    * @return A reference to this object
    */
   public StaticPacketBuilder addByte(byte val) {
@@ -201,25 +199,26 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Adds a <code>byte</code> to the data buffer. The size of this packet will
-   * grow by one byte.
+   * Adds a <code>byte</code> to the data buffer. The size of this packet will grow by one byte.
    *
-   * @param val           The <code>byte</code> value to add
+   * @param val The <code>byte</code> value to add
    * @param checkCapacity Whether the buffer capacity should be checked
+   *
    * @return A reference to this object
    */
   private StaticPacketBuilder addByte(byte val, boolean checkCapacity) {
-    if (checkCapacity)
+    if (checkCapacity) {
       ensureCapacity(curLength + 1);
+    }
     payload[curLength++] = val;
     return this;
   }
 
   /**
-   * Adds a <code>short</code> to the data stream. The size of this packet will
-   * grow by two bytes.
+   * Adds a <code>short</code> to the data stream. The size of this packet will grow by two bytes.
    *
    * @param val The <code>short</code> value to add
+   *
    * @return A reference to this object
    */
   public StaticPacketBuilder addShort(int val) {
@@ -230,10 +229,10 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Adds a <code>long</code> to the data stream. The size of this packet will
-   * grow by eight bytes.
+   * Adds a <code>long</code> to the data stream. The size of this packet will grow by eight bytes.
    *
    * @param val The <code>long</code> value to add
+   *
    * @return A reference to this object
    */
   public StaticPacketBuilder addLong(long val) {
@@ -243,10 +242,10 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Adds a <code>int</code> to the data stream. The size of this packet will
-   * grow by four bytes.
+   * Adds a <code>int</code> to the data stream. The size of this packet will grow by four bytes.
    *
    * @param val The <code>int</code> value to add
+   *
    * @return A reference to this object
    */
   public StaticPacketBuilder addInt(int val) {
@@ -259,8 +258,7 @@ public class StaticPacketBuilder {
   }
 
   /**
-   * Returns a <code>Packet</code> object for the data contained in this
-   * builder.
+   * Returns a <code>Packet</code> object for the data contained in this builder.
    *
    * @return A <code>Packet</code> object
    */

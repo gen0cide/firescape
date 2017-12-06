@@ -13,10 +13,7 @@ import java.io.IOException;
 public class MapGenerator {
   private static final World world = World.getWorld();
   private static final String[] labels = {
-          "Ground",
-          "Level-1",
-          "Level-2",
-          "Underground"
+    "Ground", "Level-1", "Level-2", "Underground"
   };
   private static final int WIDTH = World.MAX_WIDTH * 2;
   private static final int HEIGHT = World.MAX_HEIGHT * 2;
@@ -26,8 +23,8 @@ public class MapGenerator {
   private static final int BLACK = new Color(0, 0, 0).getRGB();
   private static final int PURPLE = new Color(150, 0, 255).getRGB();
 
-  private BufferedImage image;
-  private Graphics gfx;
+  private final BufferedImage image;
+  private final Graphics gfx;
 
   public MapGenerator() {
     image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
@@ -78,7 +75,7 @@ public class MapGenerator {
             gfx.setColor(Color.GREEN);
             gfx.drawLine(0, y, WIDTH, y);
             gfx.drawLine(0, y + 1, WIDTH, y + 1);
-            gfx.drawString(labels[label++], x + 10, y + 20);
+            gfx.drawString(labels[label++], 0 + 10, y + 20);
           }
           continue;
         }

@@ -4,8 +4,8 @@ import org.firescape.server.model.Mob;
 import org.firescape.server.model.Player;
 
 public abstract class WalkToMobEvent extends DelayedEvent {
+  private final int radius;
   protected Mob affectedMob;
-  private int radius;
 
   public WalkToMobEvent(Player owner, Mob affectedMob, int radius) {
     super(owner, 500);
@@ -13,7 +13,7 @@ public abstract class WalkToMobEvent extends DelayedEvent {
     this.radius = radius;
     if (owner.withinRange(affectedMob, radius)) {
       arrived();
-      super.running = false;
+      this.running = false;
     }
   }
 
@@ -27,7 +27,7 @@ public abstract class WalkToMobEvent extends DelayedEvent {
     } else {
       failed();
     }
-    super.running = false;
+    this.running = false;
   }
 
   public void failed() {

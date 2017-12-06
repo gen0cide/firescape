@@ -40,6 +40,26 @@ public final class World {
    */
   private static World worldInstance;
   /**
+   * Data about the tiles, are they walkable etc
+   */
+  private final TileValue[][] tileType = new TileValue[MAX_WIDTH][MAX_HEIGHT];
+  /**
+   * A list of all players on the server
+   */
+  private final EntityList<Player> players = new EntityList<Player>(2000);
+  /**
+   * A list of all npcs on the server
+   */
+  private final EntityList<Npc> npcs = new EntityList<Npc>(4000);
+  /**
+   * A list of all shops on the server
+   */
+  private final List<Shop> shops = new ArrayList<Shop>();
+  /**
+   * The mapping of npc IDs to their handler
+   */
+  private final TreeMap<Integer, NpcHandler> npcHandlers = new TreeMap<Integer, NpcHandler>();
+  /**
    * Redis pool for use for persistence
    */
   public JedisPool redis = new JedisPool(new JedisPoolConfig(), "localhost");
@@ -52,24 +72,12 @@ public final class World {
    */
   List list = new ArrayList(); // List implemented as growable array
   List npcList = new ArrayList();
-  Player winner = null;
-  Player autoer = null;
-  /**
-   * Data about the tiles, are they walkable etc
-   */
-  private TileValue[][] tileType = new TileValue[MAX_WIDTH][MAX_HEIGHT];
+  Player winner;
+  Player autoer;
   /**
    * Jackpot for PvP tournament
    */
-  private int jackpot = 0;
-  /**
-   * A list of all players on the server
-   */
-  private EntityList<Player> players = new EntityList<Player>(2000);
-  /**
-   * A list of all npcs on the server
-   */
-  private EntityList<Npc> npcs = new EntityList<Npc>(4000);
+  private int jackpot;
   /**
    * The client updater instance
    */
@@ -82,14 +90,6 @@ public final class World {
    * The server instance
    */
   private Server server;
-  /**
-   * A list of all shops on the server
-   */
-  private List<Shop> shops = new ArrayList<Shop>();
-  /**
-   * The mapping of npc IDs to their handler
-   */
-  private TreeMap<Integer, NpcHandler> npcHandlers = new TreeMap<Integer, NpcHandler>();
 
   /**
    * returns the associated npc handler
@@ -106,8 +106,7 @@ public final class World {
   }
 
   /**
-   * returns the only instance of this world, if there is not already one, makes
-   * it and loads everything
+   * returns the only instance of this world, if there is not already one, makes it and loads everything
    */
   public static synchronized World getWorld() {
     if (worldInstance == null) {
@@ -192,16 +191,13 @@ public final class World {
       String play = player.getUsername().replaceAll(" ", "_");
       File f = new File("players/" + play.toLowerCase() + ".cfg");
       Properties pr = new Properties();
-
       FileInputStream fis = new FileInputStream(f);
       pr.load(fis);
       fis.close();
-
       FileOutputStream fos = new FileOutputStream(f);
       pr.setProperty("loggedin", "false");
       pr.store(fos, "Character Data.");
       fos.close();
-
       for (Player pla : this.getPlayers()) {
         if (pla.isFriendsWith(player.getUsername())) {
           pla.getActionSender().sendFriendUpdate(player.getUsernameHash(), 0);
@@ -260,7 +256,6 @@ public final class World {
   }
 
   public void unbanPlayer(String player) {
-
     Server.writeValue(player, "rank", "0");
   }
 
@@ -277,7 +272,7 @@ public final class World {
   /**
    * Inserts a new shop into the world
    */
-  public void registerShop(final Shop shop) {
+  public void registerShop(Shop shop) {
     shop.setEquilibrium();
     shops.add(shop);
   }
@@ -395,7 +390,7 @@ public final class World {
   /**
    * Adds a DelayedEvent that will spawn a GameObject
    */
-  public void delayedSpawnObject(final GameObjectLoc loc, final int respawnTime) {
+  public void delayedSpawnObject(GameObjectLoc loc, int respawnTime) {
     delayedEventHandler.add(new SingleEvent(null, respawnTime) {
       public void action() {
         registerGameObject(new GameObject(loc));
@@ -406,7 +401,7 @@ public final class World {
   /**
    * Adds a DelayedEvent that will remove a GameObject
    */
-  public void delayedRemoveObject(final GameObject object, final int delay) {
+  public void delayedRemoveObject(GameObject object, int delay) {
     delayedEventHandler.add(new SingleEvent(null, delay) {
       public void action() {
         ActiveTile tile = getTile(object.getLocation());
@@ -430,10 +425,18 @@ public final class World {
    */
   public void registerNpc(Npc n) {
     NPCLoc npc = n.getLoc();
-    if (npc.startX < npc.minX || npc.startX > npc.maxX || npc.startY < npc.minY || npc.startY > npc.maxY
-            || (getTileValue(npc.startX, npc.startY).mapValue & 64) != 0) {
-      System.out.println(
-              "Fucked Npc: <id>" + npc.id + "</id><startX>" + npc.startX + "</startX><startY>" + npc.startY + "</startY>");
+    if (npc.startX < npc.minX ||
+        npc.startX > npc.maxX ||
+        npc.startY < npc.minY ||
+        npc.startY > npc.maxY ||
+        (getTileValue(npc.startX, npc.startY).mapValue & 64) != 0) {
+      System.out.println("Fucked Npc: <id>" +
+                         npc.id +
+                         "</id><startX>" +
+                         npc.startX +
+                         "</startX><startY>" +
+                         npc.startY +
+                         "</startY>");
     }
     npcs.add(n);
   }
@@ -606,7 +609,7 @@ public final class World {
   /**
    * Registers an item to be removed after 3 minutes
    */
-  public void registerItem(final Item i) {
+  public void registerItem(Item i) {
     if (i.getLoc() == null) {
       delayedEventHandler.add(new DelayedEvent(null, 180000) {
         public void run() {

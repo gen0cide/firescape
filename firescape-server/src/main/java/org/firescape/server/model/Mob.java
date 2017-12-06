@@ -9,7 +9,20 @@ import org.firescape.server.util.Logger;
 
 public abstract class Mob extends Entity {
 
-  public boolean inDuel = false;
+  private final int[][] mobSprites = {
+    {
+      3, 2, 1
+    }, {
+      4, -1, 0
+    }, {
+      5, 6, 7
+    }
+  };
+  /**
+   * The path we are walking
+   */
+  private final PathHandler pathHandler = new PathHandler(this);
+  public boolean inDuel;
   protected int mobSprite = 1;
   /**
    * Have we moved since last update?
@@ -26,7 +39,7 @@ public abstract class Mob extends Entity {
   /**
    * ID for our current appearance, used client side to detect changed
    */
-  protected int appearanceID = 0;
+  protected int appearanceID;
   /**
    * Time of last movement, used for timeout
    */
@@ -34,7 +47,7 @@ public abstract class Mob extends Entity {
   /**
    * If we are warned to move
    */
-  protected boolean warnedToMove = false;
+  protected boolean warnedToMove;
   /**
    * Tiles around us that we can see
    */
@@ -46,52 +59,31 @@ public abstract class Mob extends Entity {
   /**
    * Set when the mob has been destroyed to alert players
    */
-  protected boolean removed = false;
-  private int[][] mobSprites = new int[][]{
-          {
-                  3,
-                  2,
-                  1
-          },
-          {
-                  4,
-                  -1,
-                  0
-          },
-          {
-                  5,
-                  6,
-                  7
-          }
-  };
+  protected boolean removed;
   /**
    * Used to block new requests when we are in the middle of one
    */
-  private boolean busy = false;
+  private boolean busy;
   /**
    * Has the sprite changed?
    */
-  private boolean spriteChanged = false;
+  private boolean spriteChanged;
   /**
    * Who they are in combat with
    */
-  private Mob combatWith = null;
+  private Mob combatWith;
   /**
    * Timer used to track start and end of combat
    */
-  private long combatTimer = 0;
-  /**
-   * The path we are walking
-   */
-  private PathHandler pathHandler = new PathHandler(this);
+  private long combatTimer;
   /**
    * Amount of damage last dealt to the player
    */
-  private int lastDamage = 0;
+  private int lastDamage;
   /**
    * How many times we have hit our opponent
    */
-  private int hitsMade = 0;
+  private int hitsMade;
   /**
    * The end state of the last combat encounter
    */
@@ -138,7 +130,7 @@ public abstract class Mob extends Entity {
   public abstract int getArmourPoints();
 
   public void resetCombat(CombatState state) {
-    for (DelayedEvent event : world.getDelayedEventHandler().getEvents()) {
+    for (DelayedEvent event : Entity.world.getDelayedEventHandler().getEvents()) {
       if (event instanceof FightEvent) {
         FightEvent fighting = (FightEvent) event;
         if (fighting.getOwner().equals(this) || fighting.getAffectedMob().equals(this)) {
@@ -173,14 +165,6 @@ public abstract class Mob extends Entity {
     return lastCombatState;
   }
 
-  public boolean isPrayerActivated(int pID) {
-    return activatedPrayers[pID];
-  }
-
-  public void setPrayer(int pID, boolean b) {
-    activatedPrayers[pID] = b;
-  }
-
   public ViewArea getViewArea() {
     return viewArea;
   }
@@ -199,6 +183,10 @@ public abstract class Mob extends Entity {
 
   public void setBusy(boolean busy) {
     this.busy = busy;
+  }
+
+  public boolean isPrayerActivated(int pID) {
+    return activatedPrayers[pID];
   }
 
   public void warnToMove() {
@@ -222,8 +210,8 @@ public abstract class Mob extends Entity {
     ourAppearanceChanged = true;
   }
 
-  public void setAppearnceChanged(boolean b) {
-    ourAppearanceChanged = b;
+  public void setPrayer(int pID, boolean b) {
+    activatedPrayers[pID] = b;
   }
 
   public void updateAppearanceID() {
@@ -234,6 +222,10 @@ public abstract class Mob extends Entity {
 
   public int getAppearanceID() {
     return appearanceID;
+  }
+
+  public void setAppearnceChanged(boolean b) {
+    ourAppearanceChanged = b;
   }
 
   public void setLocation(Point p) {

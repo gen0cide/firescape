@@ -1,5 +1,4 @@
 package org.firescape.server.util;
-
 /**
  * A class to handle loading configuration from XML
  */
@@ -26,15 +25,14 @@ public class Config {
    * Called to load config settings from the given file
    *
    * @param file the xml file to load settings from
+   *
    * @throws IOException if an i/o error occurs
    */
   public static void initConfig(String file) throws IOException {
     START_TIME = System.currentTimeMillis();
-
     Properties props = new Properties();
     FileInputStream fis = new FileInputStream(new File(file));
     props.load(fis);
-
     GameVars.clientVersion = Integer.valueOf(props.getProperty("ClientVersion"));
     GameVars.portNumber = Integer.valueOf(props.getProperty("PortNumber"));
     GameVars.rangedDelaySpeed = Integer.valueOf(props.getProperty("ArrowDelaySpeed"));
@@ -62,8 +60,7 @@ public class Config {
   }
 
   /**
-   * Called to load RSCD_HOME and CONF_DIR Used to be situated in
-   * PersistenceManager
+   * Called to load RSCD_HOME and CONF_DIR Used to be situated in PersistenceManager
    */
   private static void loadEnv() {
     String home = System.getenv("RSCD_HOME");
@@ -71,7 +68,6 @@ public class Config {
       home = ".";
     }
     CONF_DIR = "conf" + File.separator + "server";
-
     RSCD_HOME = home;
   }
 }

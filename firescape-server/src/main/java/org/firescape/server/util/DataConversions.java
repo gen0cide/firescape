@@ -15,75 +15,75 @@ import java.util.Random;
 
 public final class DataConversions {
   private static final BigInteger key = new BigInteger(
-          "730546719878348732291497161314617369560443701473303681965331739205703475535302276087891130348991033265134162275669215460061940182844329219743687403068279");
+    "730546719878348732291497161314617369560443701473303681965331739205703475535302276087891130348991033265134162275669215460061940182844329219743687403068279");
   private static final BigInteger modulus = new BigInteger(
-          "1549611057746979844352781944553705273443228154042066840514290174539588436243191882510185738846985723357723362764835928526260868977814405651690121789896823");
-  private static SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
-  private static MessageDigest md;
-  private static Random rand = new Random();
-  private static char characters[] = {
-          ' ',
-          'e',
-          't',
-          'a',
-          'o',
-          'i',
-          'h',
-          'n',
-          's',
-          'r',
-          'd',
-          'l',
-          'u',
-          'm',
-          'w',
-          'c',
-          'y',
-          'f',
-          'g',
-          'p',
-          'b',
-          'v',
-          'k',
-          'x',
-          'j',
-          'q',
-          'z',
-          '0',
-          '1',
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          ' ',
-          '!',
-          '?',
-          '.',
-          ',',
-          ':',
-          ';',
-          '(',
-          ')',
-          '-',
-          '&',
-          '*',
-          '\\',
-          '\'',
-          '@',
-          '#',
-          '+',
-          '=',
-          '\243',
-          '$',
-          '%',
-          '"',
-          '[',
-          ']'
+    "1549611057746979844352781944553705273443228154042066840514290174539588436243191882510185738846985723357723362764835928526260868977814405651690121789896823");
+  private static final SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yy");
+  private static final Random rand = new Random();
+  private static final char[] characters = {
+    ' ',
+    'e',
+    't',
+    'a',
+    'o',
+    'i',
+    'h',
+    'n',
+    's',
+    'r',
+    'd',
+    'l',
+    'u',
+    'm',
+    'w',
+    'c',
+    'y',
+    'f',
+    'g',
+    'p',
+    'b',
+    'v',
+    'k',
+    'x',
+    'j',
+    'q',
+    'z',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    ' ',
+    '!',
+    '?',
+    '.',
+    ',',
+    ':',
+    ';',
+    '(',
+    ')',
+    '-',
+    '&',
+    '*',
+    '\\',
+    '\'',
+    '@',
+    '#',
+    '+',
+    '=',
+    '\243',
+    '$',
+    '%',
+    '"',
+    '[',
+    ']'
   };
+  private static MessageDigest md;
 
   /**
    * Creates an instance of the message digest used for creating md5 hashes
@@ -97,10 +97,12 @@ public final class DataConversions {
   }
 
   public static void main(String[] argv) {
-    if (argv[0].equals("encode"))
+    if (argv[0].equals("encode")) {
       System.out.println(usernameToHash(argv[1]));
-    if (argv[0].equals("decode"))
+    }
+    if (argv[0].equals("decode")) {
       System.out.println(hashToUsername(Long.parseLong(argv[1])));
+    }
   }
 
   /**
@@ -111,25 +113,27 @@ public final class DataConversions {
     String s1 = "";
     for (int i = 0; i < s.length(); i++) {
       char c = s.charAt(i);
-      if (c >= 'a' && c <= 'z')
+      if (c >= 'a' && c <= 'z') {
         s1 = s1 + c;
-      else if (c >= '0' && c <= '9')
+      } else if (c >= '0' && c <= '9') {
         s1 = s1 + c;
-      else
+      } else {
         s1 = s1 + ' ';
+      }
     }
-
     s1 = s1.trim();
-    if (s1.length() > 12)
+    if (s1.length() > 12) {
       s1 = s1.substring(0, 12);
+    }
     long l = 0L;
     for (int j = 0; j < s1.length(); j++) {
       char c1 = s1.charAt(j);
       l *= 37L;
-      if (c1 >= 'a' && c1 <= 'z')
+      if (c1 >= 'a' && c1 <= 'z') {
         l += (1 + c1) - 97;
-      else if (c1 >= '0' && c1 <= '9')
+      } else if (c1 >= '0' && c1 <= '9') {
         l += (27 + c1) - 48;
+      }
     }
     return l;
   }
@@ -138,19 +142,21 @@ public final class DataConversions {
    * Converts a usernames hash back to the username
    */
   public static String hashToUsername(long l) {
-    if (l < 0L)
+    if (l < 0L) {
       return "invalid_name";
+    }
     String s = "";
     while (l != 0L) {
       int i = (int) (l % 37L);
       l /= 37L;
-      if (i == 0)
+      if (i == 0) {
         s = " " + s;
-      else if (i < 27) {
-        if (l % 37L == 0L)
+      } else if (i < 27) {
+        if (l % 37L == 0L) {
           s = (char) ((i + 65) - 1) + s;
-        else
+        } else {
           s = (char) ((i + 97) - 1) + s;
+        }
       } else {
         s = (char) ((i + 48) - 27) + s;
       }
@@ -158,9 +164,16 @@ public final class DataConversions {
     return s;
   }
 
+  public static String bytesToHex(byte[] in) {
+    final StringBuilder builder = new StringBuilder();
+    for (byte b : in) {
+      builder.append(String.format("%02x ", b));
+    }
+    return builder.toString();
+  }
+
   /**
-   * Returns a ByteBuffer containing everything available from the given
-   * InputStream
+   * Returns a ByteBuffer containing everything available from the given InputStream
    */
   public static final ByteBuffer streamToBuffer(BufferedInputStream in) throws IOException {
     byte[] buffer = new byte[in.available()];
@@ -258,10 +271,11 @@ public final class DataConversions {
         code += 195;
       }
       if (j == -1) {
-        if (code < 13)
+        if (code < 13) {
           j = code;
-        else
+        } else {
           buffer[length++] = (byte) code;
+        }
       } else if (code < 13) {
         buffer[length++] = (byte) ((j << 4) + code);
         j = -1;
@@ -279,8 +293,7 @@ public final class DataConversions {
   }
 
   /**
-   * returns the code used to represent the given character in our byte array
-   * encoding methods
+   * returns the code used to represent the given character in our byte array encoding methods
    */
   private static int getCharCode(char c) {
     for (int x = 0; x < characters.length; x++) {
@@ -388,8 +401,7 @@ public final class DataConversions {
   }
 
   /**
-   * returns a random number within the given bounds, but allows for certain
-   * values to be weighted
+   * returns a random number within the given bounds, but allows for certain values to be weighted
    */
   public static int randomWeighted(int low, int dip, int peak, int max) {
     int total = 0;

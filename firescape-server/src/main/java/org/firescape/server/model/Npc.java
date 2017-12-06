@@ -14,37 +14,48 @@ import org.firescape.server.util.Formulae;
 import java.util.Random;
 
 public class Npc extends Mob {
+
   /**
    * World instance
    */
   private static final World world = World.getWorld();
+
   /**
    * Random
    */
-  private Random r = new Random();
+  private final Random r = new Random();
+
   /**
    * The location of this npc
    */
-  private NPCLoc loc;
+  private final NPCLoc loc;
+
   /**
    * The definition of this npc
    */
-  private NPCDef def;
+  private final NPCDef def;
+
   /**
    * The npcs hitpoints
    */
   private int curHits;
+
   private int curAttack;
+
   private int curStrength;
+
   private int curDefense;
+
   /**
    * DelayedEvent used for unblocking an npc after set time
    */
-  private DelayedEvent timeout = null;
+  private DelayedEvent timeout;
+
   /**
    * The player currently blocking this npc
    */
-  private Player blocker = null;
+  private Player blocker;
+
   /**
    * Should this npc respawn once it has been killed?
    **/
@@ -58,9 +69,9 @@ public class Npc extends Mob {
     def = EntityHandler.getNpcDef(loc.getId());
     curHits = def.getHits();
     this.loc = loc;
-    super.setID(loc.getId());
-    super.setLocation(Point.location(loc.startX(), loc.startY()), true);
-    super.setCombatLevel(Formulae.getCombatLevel(def.getAtt(), def.getDef(), def.getStr(), def.getHits(), 0, 0, 0));
+    this.setID(loc.getId());
+    this.setLocation(Point.location(loc.startX(), loc.startY()), true);
+    this.setCombatLevel(Formulae.getCombatLevel(def.getAtt(), def.getDef(), def.getStr(), def.getHits(), 0, 0, 0));
   }
 
   public final int Rand(int low, int high) {
@@ -102,18 +113,8 @@ public class Npc extends Mob {
   }
 
   public void moveNpc(Path path) {
-    super.setPath(path);
+    this.setPath(path);
     super.updatePosition();
-  }  public void remove() {
-    if (!removed && shouldRespawn && def.respawnTime() > 0) {
-      world.getDelayedEventHandler().add(new DelayedEvent(null, def.respawnTime() * 1000) {
-        public void run() {
-          world.registerNpc(new Npc(loc));
-          running = false;
-        }
-      });
-    }
-    removed = true;
   }
 
   public NPCDef getDef() {
@@ -125,22 +126,19 @@ public class Npc extends Mob {
       Player player = (Player) mob;
       player.getActionSender().sendSound("victory");
     }
-    Mob opponent = super.getOpponent();
+    Mob opponent = this.getOpponent();
     if (opponent != null) {
       opponent.resetCombat(CombatState.WON);
     }
     resetCombat(CombatState.LOST);
     world.unregisterNpc(this);
     remove();
-
     Player owner = mob instanceof Player ? (Player) mob : null;
     ItemDropDef[] drops = def.getDrops();
-
     int total = 0;
     for (ItemDropDef drop : drops) {
       total += drop.getWeight();
     }
-
     int hit = DataConversions.random(0, total);
     total = 0;
     for (ItemDropDef drop : drops) {
@@ -156,7 +154,17 @@ public class Npc extends Mob {
     }
   }
 
-
+  public void remove() {
+    if (!removed && shouldRespawn && def.respawnTime() > 0) {
+      world.getDelayedEventHandler().add(new DelayedEvent(null, def.respawnTime() * 1000) {
+        public void run() {
+          DelayedEvent.world.registerNpc(new Npc(loc));
+          running = false;
+        }
+      });
+    }
+    removed = true;
+  }
 
   public int getCombatStyle() {
     return 0;
@@ -218,31 +226,6 @@ public class Npc extends Mob {
     curHits = lvl;
   }
 
-  private Player findVictim() {
-    long now = System.currentTimeMillis();
-    ActiveTile[][] tiles = getViewArea().getViewedArea(2, 2, 2, 2);
-    for (int x = 0; x < tiles.length; x++) {
-      for (int y = 0; y < tiles[x].length; y++) {
-        ActiveTile t = tiles[x][y];
-        if (t != null) {
-          for (Player p : t.getPlayers()) {
-            if (p.isBusy()
-                    || now - p.getCombatTimer() < (p.getCombatState() == CombatState.RUNNING
-                    || p.getCombatState() == CombatState.WAITING ? 3000 : 500)
-                    || !p.nextTo(this)
-                    || !p.getLocation().inBounds(loc.minX - 4, loc.minY - 4, loc.maxX + 4, loc.maxY + 4)) {
-              continue;
-            }
-            if (getLocation().inWilderness() || p.getCombatLevel() < (getCombatLevel() * 2) + 1) {
-              return p;
-            }
-          }
-        }
-      }
-    }
-    return null;
-  }
-
   public void updatePosition() {
     long now = System.currentTimeMillis();
     Player victim = null;
@@ -252,17 +235,14 @@ public class Npc extends Mob {
       victim.resetAll();
       victim.setStatus(Action.FIGHTING_MOB);
       victim.getActionSender().sendMessage("You are under attack!");
-
       setLocation(victim.getLocation(), true);
       for (Player p : getViewArea().getPlayersInView()) {
         p.removeWatchedNpc(this);
       }
-
       victim.setBusy(true);
       victim.setSprite(9);
       victim.setOpponent(this);
       victim.setCombatTimer();
-
       setBusy(true);
       setSprite(8);
       setOpponent(victim);
@@ -274,12 +254,40 @@ public class Npc extends Mob {
     if (now - lastMovement > 6000) {
       lastMovement = now;
       if (!isBusy() && finishedPath() && DataConversions.random(0, 2) == 1) {
-        super.setPath(new Path(getX(), getY(), DataConversions.random(loc.minX(), loc.maxX()),
-                DataConversions.random(loc.minY(), loc.maxY())));
+        this.setPath(new Path(
+          getX(),
+          getY(),
+          DataConversions.random(loc.minX(), loc.maxX()),
+          DataConversions.random(loc.minY(), loc.maxY())
+        ));
       }
     }
     super.updatePosition();
   }
 
+  private Player findVictim() {
+    long now = System.currentTimeMillis();
+    ActiveTile[][] tiles = getViewArea().getViewedArea(2, 2, 2, 2);
+    for (int x = 0; x < tiles.length; x++) {
+      for (int y = 0; y < tiles[x].length; y++) {
+        ActiveTile t = tiles[x][y];
+        if (t != null) {
+          for (Player p : t.getPlayers()) {
+            if (p.isBusy() ||
+                now - p.getCombatTimer() <
+                (p.getCombatState() == CombatState.RUNNING || p.getCombatState() == CombatState.WAITING ? 3000 : 500) ||
+                !p.nextTo(this) ||
+                !p.getLocation().inBounds(loc.minX - 4, loc.minY - 4, loc.maxX + 4, loc.maxY + 4)) {
+              continue;
+            }
+            if (getLocation().inWilderness() || p.getCombatLevel() < (getCombatLevel() * 2) + 1) {
+              return p;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
 
 }

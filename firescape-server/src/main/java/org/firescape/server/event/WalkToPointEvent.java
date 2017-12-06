@@ -4,9 +4,9 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.Point;
 
 public abstract class WalkToPointEvent extends DelayedEvent {
+  private final int radius;
+  private final boolean stop;
   protected Point location;
-  private int radius;
-  private boolean stop;
 
   public WalkToPointEvent(Player owner, Point location, int radius, boolean stop) {
     super(owner, 500);
@@ -16,7 +16,7 @@ public abstract class WalkToPointEvent extends DelayedEvent {
     if (stop && owner.withinRange(location, radius)) {
       owner.resetPath();
       arrived();
-      super.running = false;
+      this.running = false;
     }
   }
 
@@ -31,7 +31,7 @@ public abstract class WalkToPointEvent extends DelayedEvent {
     } else if (owner.withinRange(location, radius)) {
       arrived();
     }
-    super.running = false;
+    this.running = false;
   }
 
   public Point getLocation() {

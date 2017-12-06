@@ -3,10 +3,7 @@ package org.firescape.server.packethandler.client;
 import org.apache.mina.common.IoSession;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.DoorDef;
-import org.firescape.server.event.FightEvent;
-import org.firescape.server.event.ShortEvent;
-import org.firescape.server.event.Thieving;
-import org.firescape.server.event.WalkToPointEvent;
+import org.firescape.server.event.*;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
@@ -28,8 +25,8 @@ public class WallObjectAction implements PacketHandler {
         return;
       }
       player.resetAll();
-      final GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
-      final int click = pID == 126 ? 0 : 1;
+      GameObject object = world.getTile(p.readShort(), p.readShort()).getGameObject();
+      int click = pID == 126 ? 0 : 1;
       if (object == null) {
         player.setSuspiciousPlayer(true);
         return;
@@ -39,18 +36,19 @@ public class WallObjectAction implements PacketHandler {
         public void arrived() {
           owner.resetPath();
           DoorDef def = object.getDoorDef();
-          if (owner.isBusy() || owner.isRanging() || !owner.nextTo(object) || def == null
-                  || owner.getStatus() != Action.USING_DOOR) {
+          if (owner.isBusy() ||
+              owner.isRanging() ||
+              !owner.nextTo(object) ||
+              def == null ||
+              owner.getStatus() != Action.USING_DOOR) {
             return;
           }
           owner.resetAll();
           String command = (click == 0 ? def.getCommand1() : def.getCommand2()).toLowerCase();
           Point telePoint = EntityHandler.getObjectTelePoint(object.getLocation(), command);
-
           if (telePoint != null) {
             owner.teleport(telePoint.getX(), telePoint.getY(), false);
           } else {
-
             if (command.equals("pick lock")) {
               if (owner.getSpam()) {
                 return;
@@ -60,7 +58,6 @@ public class WallObjectAction implements PacketHandler {
               thiev.lockpick();
               return;
             }
-
             switch (object.getID()) {
               case 1:
                 replaceGameObject(2, false);
@@ -71,7 +68,6 @@ public class WallObjectAction implements PacketHandler {
               case 8:
                 replaceGameObject(9, true);
                 break;
-
               case 94:
               case 23:
                 owner.getActionSender().sendMessage("The door is locked");
@@ -83,12 +79,14 @@ public class WallObjectAction implements PacketHandler {
                 if (owner.getY() > 523) {
                   if (owner.getCurStat(10) < 68) {
                     owner.setBusy(true);
-                    Npc masterFisher = world.getNpc(368, 582, 588, 524, 527);
+                    Npc masterFisher = DelayedEvent.world.getNpc(368, 582, 588, 524, 527);
                     if (masterFisher != null) {
-                      owner.informOfNpcMessage(
-                              new ChatMessage(masterFisher, "Hello only the top fishers are allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(masterFisher,
+                                                               "Hello only the top fishers are " + "allowed in here",
+                                                               owner
+                      ));
                     }
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         owner.getActionSender().sendMessage("You need a fishing level of 68 to enter");
@@ -110,12 +108,14 @@ public class WallObjectAction implements PacketHandler {
                 if (owner.getY() <= 3380) {
                   if (owner.getCurStat(14) < 66) {
                     owner.setBusy(true);
-                    Npc dwarf = world.getNpc(191, 265, 270, 3379, 3380);
+                    Npc dwarf = DelayedEvent.world.getNpc(191, 265, 270, 3379, 3380);
                     if (dwarf != null) {
-                      owner.informOfNpcMessage(
-                              new ChatMessage(dwarf, "Hello only the top miners are allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(dwarf,
+                                                               "Hello only the top miners are allowed in " + "here",
+                                                               owner
+                      ));
                     }
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         owner.getActionSender().sendMessage("You need a mining level of 66 to enter");
@@ -137,19 +137,21 @@ public class WallObjectAction implements PacketHandler {
                 if (owner.getY() <= 600) {
                   if (owner.getCurStat(12) < 40) {
                     owner.setBusy(true);
-                    Npc master = world.getNpc(231, 341, 349, 599, 612);
+                    Npc master = DelayedEvent.world.getNpc(231, 341, 349, 599, 612);
                     if (master != null) {
-                      owner.informOfNpcMessage(
-                              new ChatMessage(master, "Hello only the top crafters are allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(master,
+                                                               "Hello only the top crafters are allowed " + "in here",
+                                                               owner
+                      ));
                     }
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         owner.getActionSender().sendMessage("You need a crafting level of 40 to enter");
                       }
                     });
                   } else if (!owner.getInventory().wielding(191)) {
-                    Npc master = world.getNpc(231, 341, 349, 599, 612);
+                    Npc master = DelayedEvent.world.getNpc(231, 341, 349, 599, 612);
                     if (master != null) {
                       owner.informOfNpcMessage(new ChatMessage(master, "Where is your apron?", owner));
                     }
@@ -169,19 +171,21 @@ public class WallObjectAction implements PacketHandler {
                 if (owner.getY() >= 488) {
                   if (owner.getCurStat(7) < 32) {
                     owner.setBusy(true);
-                    Npc chef = world.getNpc(133, 176, 181, 480, 487);
+                    Npc chef = DelayedEvent.world.getNpc(133, 176, 181, 480, 487);
                     if (chef != null) {
-                      owner.informOfNpcMessage(
-                              new ChatMessage(chef, "Hello only the top cooks are allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(chef,
+                                                               "Hello only the top cooks are allowed in " + "here",
+                                                               owner
+                      ));
                     }
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         owner.getActionSender().sendMessage("You need a cooking level of 32 to enter");
                       }
                     });
                   } else if (!owner.getInventory().wielding(192)) {
-                    Npc chef = world.getNpc(133, 176, 181, 480, 487);
+                    Npc chef = DelayedEvent.world.getNpc(133, 176, 181, 480, 487);
                     if (chef != null) {
                       owner.informOfNpcMessage(new ChatMessage(chef, "Where is your chef's hat?", owner));
                     }
@@ -201,12 +205,14 @@ public class WallObjectAction implements PacketHandler {
                 if (owner.getX() <= 598) {
                   if (owner.getCurStat(6) < 66) {
                     owner.setBusy(true);
-                    Npc wizard = world.getNpc(513, 596, 597, 755, 758);
+                    Npc wizard = DelayedEvent.world.getNpc(513, 596, 597, 755, 758);
                     if (wizard != null) {
-                      owner.informOfNpcMessage(
-                              new ChatMessage(wizard, "Hello only the top wizards are allowed in here", owner));
+                      owner.informOfNpcMessage(new ChatMessage(wizard,
+                                                               "Hello only the top wizards are allowed " + "in here",
+                                                               owner
+                      ));
                     }
-                    world.getDelayedEventHandler().add(new ShortEvent(owner) {
+                    DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
                       public void action() {
                         owner.setBusy(false);
                         owner.getActionSender().sendMessage("You need a magic level of 66 to enter");
@@ -235,8 +241,8 @@ public class WallObjectAction implements PacketHandler {
               case 22: // edge dungeon wall
                 if (object.getX() == 219 && object.getY() == 3282) {
                   owner.getActionSender().sendSound("secretdoor");
-                  world.unregisterGameObject(object);
-                  world.delayedSpawnObject(object.getLoc(), 1000);
+                  DelayedEvent.world.unregisterGameObject(object);
+                  DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
                   owner.getActionSender().sendMessage("You just went through a secret door");
                   if (owner.getX() <= 218) {
                     owner.teleport(219, 3282, false);
@@ -319,8 +325,8 @@ public class WallObjectAction implements PacketHandler {
                 if (object.getX() != 374 && object.getY() != 3332) {
                   replaceGameObject(1, true);
                 } else {
-                  Npc affectedNpc = world.getNpc(206, 374, 374, 3331, 3331);
-                  Npc affectedNpc2 = world.getNpc(206, 374, 374, 3333, 3333);
+                  Npc affectedNpc = DelayedEvent.world.getNpc(206, 374, 374, 3331, 3331);
+                  Npc affectedNpc2 = DelayedEvent.world.getNpc(206, 374, 374, 3333, 3333);
                   if (affectedNpc == null) {
                     affectedNpc = affectedNpc2;
                   }
@@ -332,38 +338,43 @@ public class WallObjectAction implements PacketHandler {
                     owner.resetAll();
                     owner.setStatus(Action.FIGHTING_MOB);
                     owner.getActionSender().sendMessage("You are under attack!");
-
                     affectedNpc.setLocation(owner.getLocation(), true);
                     for (Player p : affectedNpc.getViewArea().getPlayersInView()) {
                       p.removeWatchedNpc(affectedNpc);
                     }
-
                     owner.setBusy(true);
                     owner.setSprite(9);
                     owner.setOpponent(affectedNpc);
                     owner.setCombatTimer();
-
                     affectedNpc.setBusy(true);
                     affectedNpc.setSprite(8);
                     affectedNpc.setOpponent(owner);
                     affectedNpc.setCombatTimer();
                     FightEvent fighting = new FightEvent(owner, affectedNpc, true);
                     fighting.setLastRun(0);
-                    world.getDelayedEventHandler().add(fighting);
+                    DelayedEvent.world.getDelayedEventHandler().add(fighting);
                   }
-                  if (affectedNpc == null && affectedNpc2 == null && owner.getLocation().getX() == 374
-                          && owner.getLocation().getY() == 3332) {
+                  if (affectedNpc == null &&
+                      affectedNpc2 == null &&
+                      owner.getLocation().getX() == 374 &&
+                      owner.getLocation().getY() == 3332) {
                     // replaceGameObject(1, true);
-                    world.registerGameObject(
-                            new GameObject(object.getLocation(), 1, object.getDirection(), object.getType()));
+                    DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                                         1,
+                                                                         object.getDirection(),
+                                                                         object.getType()
+                    ));
                     owner.teleport(373, 3332, false);
-                    world.delayedSpawnObject(object.getLoc(), 1000);
+                    DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
                   } else if (owner.getLocation().getX() == 373 && owner.getLocation().getY() == 3332) {
                     // owner.teleport(374, 3332, false);
-                    world.registerGameObject(
-                            new GameObject(object.getLocation(), 1, object.getDirection(), object.getType()));
+                    DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                                         1,
+                                                                         object.getDirection(),
+                                                                         object.getType()
+                    ));
                     owner.teleport(374, 3332, false);
-                    world.delayedSpawnObject(object.getLoc(), 1000);
+                    DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
                   }
                 }
                 break;
@@ -378,15 +389,22 @@ public class WallObjectAction implements PacketHandler {
         }
 
         private void replaceGameObject(int newID, boolean open) {
-          world
-                  .registerGameObject(new GameObject(object.getLocation(), newID, object.getDirection(), object.getType()));
+          DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                               newID,
+                                                               object.getDirection(),
+                                                               object.getType()
+          ));
           owner.getActionSender().sendSound(open ? "opendoor" : "closedoor");
         }
 
         private void doDoor() {
           owner.getActionSender().sendSound("opendoor");
-          world.registerGameObject(new GameObject(object.getLocation(), 11, object.getDirection(), object.getType()));
-          world.delayedSpawnObject(object.getLoc(), 1000);
+          DelayedEvent.world.registerGameObject(new GameObject(object.getLocation(),
+                                                               11,
+                                                               object.getDirection(),
+                                                               object.getType()
+          ));
+          DelayedEvent.world.delayedSpawnObject(object.getLoc(), 1000);
         }
       });
     } catch (Exception e) {

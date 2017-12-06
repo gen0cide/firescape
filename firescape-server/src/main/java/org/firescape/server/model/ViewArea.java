@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewArea {
-  private static World world = World.getWorld();
-  private Mob mob;
+  private static final World world = World.getWorld();
+  private final Mob mob;
 
   public ViewArea(Mob mob) {
     this.mob = mob;
@@ -14,7 +14,7 @@ public class ViewArea {
   public List<Player> getPlayersInView() {
     List<Player> players = new ArrayList<Player>();
     ActiveTile[][] viewArea = getViewedArea(15, 15, 16, 16);
-    for (int x = 0; x < viewArea.length; x++)
+    for (int x = 0; x < viewArea.length; x++) {
       for (int y = 0; y < viewArea[x].length; y++) {
         ActiveTile t = viewArea[x][y];
         if (t != null) {
@@ -24,6 +24,7 @@ public class ViewArea {
           }
         }
       }
+    }
     return players;
   }
 
@@ -101,7 +102,7 @@ public class ViewArea {
   public List<Npc> getNpcsInView() {
     List<Npc> npcs = new ArrayList<Npc>();
     ActiveTile[][] viewArea = getViewedArea(15, 15, 16, 16);
-    for (int x = 0; x < viewArea.length; x++)
+    for (int x = 0; x < viewArea.length; x++) {
       for (int y = 0; y < viewArea[x].length; y++) {
         ActiveTile t = viewArea[x][y];
         if (t != null) {
@@ -111,6 +112,7 @@ public class ViewArea {
           }
         }
       }
+    }
     return npcs;
   }
 

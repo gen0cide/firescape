@@ -8,3 +8,4 @@ firescape-server/players/*.cfg
 .svn
 *.pem
 .env
+.lst

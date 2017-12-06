@@ -1,0 +1,35 @@
+ document.write('<app'); document.write('let ');
+ document.write('name="RuneScape Classic" ');
+ document.write('id=game ');
+ document.write('width="100%" ');
+ document.write('height="100%" ');
+ document.write('archive=loader1726866179.jar code=loader.class ');
+ 
+ document.write('mayscript>');
+ document.write('<param name=cabbase value=loader-1830474537.cab>');
+ document.write('<param name="java_arguments" value="-Xmx96m -Dsun.java2d.noddraw=true">');
+ document.write('<param name=nodeid value=5001>');
+ document.write('<param name=modewhere value=0>');
+ document.write('<param name=modewhat value=0>');
+ document.write('<param name=servertype value=3>');
+ document.write('<param name=advertsuppressed value=1>');
+ document.write('<param name=objecttag value=0>');
+ document.write('<param name=js value=1>');
+ document.write('<param name=affid value=0>');
+ 
+ document.write('<param name=settings value=wwGlrZHF5gKN6D3mDdihco3oPeYN2KFybL9hUUFqOvk>');
+ document.write('<param name=country value=0>');
+ if (haveie6) document.write('<param name=haveie6 value=1>');
+ else document.write('<param name=haveie6 value=0>');
+ 
+  document.write('<param name=crashurl value="error_loader_crash.ws?a=0&j=1">');
+  document.write('<param name=unsignedurl value="http://www.runescape.com/classicapplet/classicgame.ws?f=1&j=1&a=1">');
+  
+ 
+ document.write('<div class="nojava">');
+ document.write('<div>It seems like Java is not installed on your computer</div>Java is a free download that is required to play RuneScape. <a href="http://jdl.sun.com/webapps/getjava/BrowserRedirect?host=java.com&returnPage=http%3A%2F%2Fclassic1.runescape.com%2Fj1_o0_a0_m0" target="_parent">Click here to install Java</a>.<br><br>If you believe you already have Java installed then you might get this message if it is disabled. <a href="http://java.com/en/download/help/enable_browser.xml" target="_parent">Click here for instructions on enabling Java</a>.');
+ if (activex_supported) {
+  document.write('<br><br>If you have checked Java is enabled but you still get this message you may try <a href="http://www.runescape.com/options.ws" target="_parent">clicking here</a> and changing your Java option to "Force Sun Java", which may resolve the problem.');
+ }
+ document.write('</div>');
+ document.write('</applet>');

@@ -1,6 +1,7 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToMobEvent;
 import org.firescape.server.model.*;
@@ -22,8 +23,8 @@ public class InvUseOnNpc implements PacketHandler {
       return;
     }
     player.resetAll();
-    final Npc affectedNpc = world.getNpc(p.readShort());
-    final InvItem item = player.getInventory().get(p.readShort());
+    Npc affectedNpc = world.getNpc(p.readShort());
+    InvItem item = player.getInventory().get(p.readShort());
     if (affectedNpc == null || item == null) { // This shouldn't happen
       return;
     }
@@ -32,14 +33,18 @@ public class InvUseOnNpc implements PacketHandler {
     world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedNpc, 1) {
       public void arrived() {
         owner.resetPath();
-        if (!owner.getInventory().contains(item) || owner.isBusy() || owner.isRanging() || !owner.nextTo(affectedNpc)
-                || affectedNpc.isBusy() || owner.getStatus() != Action.USING_INVITEM_ON_NPC) {
+        if (!owner.getInventory().contains(item) ||
+            owner.isBusy() ||
+            owner.isRanging() ||
+            !owner.nextTo(affectedNpc) ||
+            affectedNpc.isBusy() ||
+            owner.getStatus() != Action.USING_INVITEM_ON_NPC) {
           return;
         }
         owner.resetAll();
         switch (affectedNpc.getID()) {
           case 2: // Sheep
-            if (!itemId(new int[]{144})) {
+            if (!itemId(new int[] { 144 })) {
               owner.getActionSender().sendMessage("Nothing interesting happens.");
               return;
             }
@@ -48,7 +53,7 @@ public class InvUseOnNpc implements PacketHandler {
             affectedNpc.resetPath();
             showBubble();
             owner.getActionSender().sendMessage("You attempt to shear the sheep");
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 if (DataConversions.random(0, 4) != 0) {
                   owner.getActionSender().sendMessage("You get some wool");
@@ -168,9 +173,9 @@ public class InvUseOnNpc implements PacketHandler {
                 owner.getActionSender().sendMessage("Nothing interesting happens.");
                 return;
             }
-            final InvItem newPlate = new InvItem(newID, 1);
+            InvItem newPlate = new InvItem(newID, 1);
             owner.getActionSender().sendMessage("Thrander hammers the armour");
-            world.getDelayedEventHandler().add(new ShortEvent(owner) {
+            DelayedEvent.world.getDelayedEventHandler().add(new ShortEvent(owner) {
               public void action() {
                 if (owner.getInventory().remove(item) > -1) {
                   owner.getInventory().add(newPlate);

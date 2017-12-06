@@ -31,7 +31,6 @@ public class WorldLoader {
     } catch (Exception e) {
       Logger.error(e);
     }
-
     for (int lvl = 0; lvl < 4; lvl++) {
       int wildX = 2304;
       int wildY = 1776 - (lvl * 944);
@@ -43,9 +42,7 @@ public class WorldLoader {
         }
       }
     }
-
     // try { out.close(); } catch(Exception e) { Logger.error(e); }
-
     for (GameObjectLoc gameObject : (List<GameObjectLoc>) PersistenceManager.load("locs/GameObjectLoc.xml.gz")) {
       world.registerGameObject(new GameObject(gameObject));
     }
@@ -58,7 +55,6 @@ public class WorldLoader {
     for (Shop shop : (List<Shop>) PersistenceManager.load("locs/Shops.xml.gz")) {
       world.registerShop(shop);
     }
-
     System.gc();
   }
 
@@ -86,7 +82,6 @@ public class WorldLoader {
     } catch (Exception e) {
       Logger.error(e);
     }
-
     for (int y = 0; y < Sector.HEIGHT; y++) {
       for (int x = 0; x < Sector.WIDTH; x++) {
         int bx = bigX + x;
@@ -103,29 +98,31 @@ public class WorldLoader {
         if (groundOverlay > 0 && EntityHandler.getTileDef(groundOverlay - 1).getObjectType() != 0) {
           world.getTileValue(bx, by).mapValue |= 0x40; // 64
         }
-
         int verticalWall = s.getTile(x, y).verticalWall & 0xFF;
-        if (verticalWall > 0 && EntityHandler.getDoorDef(verticalWall - 1).getUnknown() == 0
-                && EntityHandler.getDoorDef(verticalWall - 1).getDoorType() != 0) {
+        if (verticalWall > 0 &&
+            EntityHandler.getDoorDef(verticalWall - 1).getUnknown() == 0 &&
+            EntityHandler.getDoorDef(verticalWall - 1).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 1; // 1
           world.getTileValue(bx, by - 1).mapValue |= 4; // 4
         }
-
         int horizontalWall = s.getTile(x, y).horizontalWall & 0xFF;
-        if (horizontalWall > 0 && EntityHandler.getDoorDef(horizontalWall - 1).getUnknown() == 0
-                && EntityHandler.getDoorDef(horizontalWall - 1).getDoorType() != 0) {
+        if (horizontalWall > 0 &&
+            EntityHandler.getDoorDef(horizontalWall - 1).getUnknown() == 0 &&
+            EntityHandler.getDoorDef(horizontalWall - 1).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 2; // 2
           world.getTileValue(bx - 1, by).mapValue |= 8; // 8
         }
-
         int diagonalWalls = s.getTile(x, y).diagonalWalls;
-        if (diagonalWalls > 0 && diagonalWalls < 12000 && EntityHandler.getDoorDef(diagonalWalls - 1).getUnknown() == 0
-                && EntityHandler.getDoorDef(diagonalWalls - 1).getDoorType() != 0) {
+        if (diagonalWalls > 0 &&
+            diagonalWalls < 12000 &&
+            EntityHandler.getDoorDef(diagonalWalls - 1).getUnknown() == 0 &&
+            EntityHandler.getDoorDef(diagonalWalls - 1).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 0x20; // 32
         }
-        if (diagonalWalls > 12000 && diagonalWalls < 24000
-                && EntityHandler.getDoorDef(diagonalWalls - 12001).getUnknown() == 0
-                && EntityHandler.getDoorDef(diagonalWalls - 12001).getDoorType() != 0) {
+        if (diagonalWalls > 12000 &&
+            diagonalWalls < 24000 &&
+            EntityHandler.getDoorDef(diagonalWalls - 12001).getUnknown() == 0 &&
+            EntityHandler.getDoorDef(diagonalWalls - 12001).getDoorType() != 0) {
           world.getTileValue(bx, by).mapValue |= 0x10; // 16
         }
         /** end of shit **/

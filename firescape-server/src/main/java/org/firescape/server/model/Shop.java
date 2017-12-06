@@ -16,7 +16,7 @@ public class Shop {
   /**
    * The maximum size of a shop
    */
-  private static int MAX_SIZE = 40;
+  private static final int MAX_SIZE = 40;
 
   private String name;
   private boolean general;
@@ -53,9 +53,9 @@ public class Shop {
 
   public void initRestock() {
     players = new ArrayList<Player>();
-    final Shop shop = this;
+    Shop shop = this;
     world.getDelayedEventHandler().add(new DelayedEvent(null, respawnRate) {
-      private int iterations = 0;
+      private int iterations;
 
       public void run() {
         boolean changed = false;

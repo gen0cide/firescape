@@ -16,10 +16,10 @@ public class NpcHandlerDef implements Serializable {
   public String className;
 
   /**
-   * Constructs a new packet handler definition, entailing that npcs with the
-   * given IDs are to be handled by the specified class.
+   * Constructs a new packet handler definition, entailing that npcs with the given IDs are to be handled by the
+   * specified class.
    *
-   * @param ids       The IDs of npcs to be handled
+   * @param ids The IDs of npcs to be handled
    * @param className The name of the packet handler class
    */
   public NpcHandlerDef(int[] ids, String className) {

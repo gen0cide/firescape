@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Party {
 
-  public final static World world = World.getWorld();
+  public static final World world = World.getWorld();
   public int MaxPartySize = 100; // Maximum
   // size of
   // Players
@@ -27,22 +27,19 @@ public class Party {
   public void invitePlayer(String playername) {
     try {
       Player target = world.getPlayer(playername);
-
       if (playername.equals(player.getUsername())) {
         player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@You cannot invite your self to a Clan");
         return;
       }
-
       if (player.inParty && !player.myParty.get(0).equals(player.getUsername())) {
         player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@Sorry, you are not the Clan leader.");
         return;
       }
-
       if (this.isPartyFull()) {
-        player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@You cannot fit anymore players into your Clan");
+        player.getActionSender()
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@You cannot fit anymore players into your" + "" + " Clan");
         return;
       }
-
       if (target.inParty) {
         player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@Sorry, they are already in a Clan");
         return;
@@ -51,10 +48,15 @@ public class Party {
         player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@You have already invited this player");
         return;
       }
-      target.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@" + player.getUsername()
-              + " @whi@has Invited you to join there Clan, type ::accept to join.");
-      player.getActionSender().sendMessage(
-              "@cya@[@whi@Clan@cya@]@whi@You have invited @whi@" + target.getUsername() + " @whi@to join your Clan");
+      target.getActionSender()
+            .sendMessage("@cya@[@whi@Clan@cya@]@whi@" +
+                         player.getUsername() +
+                         " @whi@has " +
+                         "Invited you to join there Clan, type ::accept to join.");
+      player.getActionSender()
+            .sendMessage("@cya@[@whi@Clan@cya@]@whi@You have invited @whi@" +
+                         target.getUsername() +
+                         " @whi@to join your Clan");
       target.lastPartyInvite = player.getUsername();
       player.invitedPlayers.add(target.getUsername());
 
@@ -70,37 +72,36 @@ public class Party {
 
   public void acceptPlayer() {
     try {
-
       Player leader = world.getPlayer(player.lastPartyInvite);
-
       if (player.lastPartyInvite == null) {
         player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@Sorry, nobody has invited you to a Clan");
       }
-
       if (this.invitedPlayersContains(player.getUsername(), leader)) {
-
         if (leader.myParty.size() > MaxPartySize) {
           player.getActionSender()
-                  .sendMessage("@cya@[@whi@Clan@cya@]@whi@Sorry, the Clan you are trying to join is currently Full.");
+                .sendMessage("@cya@[@whi@Clan@cya@]@whi@Sorry, the Clan you are trying to join" +
+                             "" +
+                             " is currently Full.");
           return;
         }
         if (!leader.inParty) {
           leader.myParty.add(leader.getUsername());
         }
-
         leader.myParty.add(player.getUsername());
         player.myParty = leader.myParty;
         player.inParty = true;
         leader.inParty = true;
         player.lastPartyInvite = null;
-
         sendPartyMessage("@cya@[@whi@Clan@cya@]@whi@" + player.getUsername() + "@whi@ has joined the Clan");
         player.getActionSender()
-                .sendMessage("@cya@[@whi@Clan@cya@]@whi@Clan Members: @yel@" + this.partyMembersString());
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@Clan Members: @yel@" + this.partyMembersString());
 
       } else {
-        player.getActionSender().sendMessage(
-                "@cya@[@whi@Clan@cya@]@whi@" + leader.getUsername() + " has not invited you to join there Clan");
+        player.getActionSender()
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@" +
+                           leader.getUsername() +
+                           " has not " +
+                           "invited you to join there Clan");
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -108,7 +109,6 @@ public class Party {
   }
 
   public boolean invitedPlayersContains(String name, Player leader) {
-
     try {
       for (int i = 0; i < leader.invitedPlayers.size(); i++) {
         if (leader.invitedPlayers.get(i).equals(name)) {
@@ -157,8 +157,11 @@ public class Party {
       }
       for (int i = 0; i < player.myParty.size(); i++) {
         Player member = world.getPlayer(player.myParty.get(i));
-        member.getActionSender().sendMessage(
-                "@say@@cya@[@whi@Clan Chat@cya@] @cya@[@whi@" + player.getUsername() + "@cya@]@whi@: " + message);
+        member.getActionSender()
+              .sendMessage("@say@@cya@[@whi@Clan Chat@cya@] @cya@[@whi@" +
+                           player.getUsername() +
+                           "@cya@]@whi@: " +
+                           message);
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -167,7 +170,6 @@ public class Party {
 
   public void updatePartyMembers() {
     try {
-
       for (int i = 0; i < player.myParty.size(); i++) {
         Player member = world.getPlayer(player.myParty.get(i));
         member.myParty = player.myParty;
@@ -181,19 +183,20 @@ public class Party {
 
   public void removePlayer() {
     try {
-
       ArrayList<String> temparray = new ArrayList<String>();
       temparray.addAll(player.myParty);
-
       for (int i = 0; i < temparray.size(); i++) {
         Player member = world.getPlayer(temparray.get(i));
         if (member.myParty.get(i).isEmpty()) {
-
         } else {
           removePlayerParty(getIndex());
         }
         member.getActionSender()
-                .sendMessage("@cya@[@whi@Clan@cya@]@whi@(@yel@" + player.getUsername() + "@whi@) @whi@Has left the Clan");
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@(@yel@" +
+                           player.getUsername() +
+                           "@whi@)" +
+                           "" +
+                           " @whi@Has left the Clan");
         if (temparray.get(i).isEmpty()) {
           break;
         }
@@ -207,13 +210,11 @@ public class Party {
   }
 
   public void removePlayerParty(int id) {
-
     player.myParty.remove(id);
   }
 
   public int getIndex() {
     try {
-
       for (int i = 0; i < player.myParty.size(); i++) {
         if (player.myParty.get(i).equals(player.getUsername())) {
           return i;
@@ -236,7 +237,6 @@ public class Party {
   // playersToGiveTo
   {
     try {
-
       for (Player p : player.getViewArea().getPlayersInView()) {
         if (partyContains(p.getUsername())) {
           playersToGiveTo.add(p.getUsername());
@@ -266,16 +266,23 @@ public class Party {
       player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@You are not the Clan leader");
       return;
     }
-
     for (int i = 0; i < player.myParty.size(); i++) {
       if (player.myParty.get(i).equals(player.getUsername())) {
         player.getActionSender()
-                .sendMessage("@cya@[@whi@Clan@cya@]@whi@" + player.getUsername() + " Has Wished To Summon The Clan");
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@" +
+                           player.getUsername() +
+                           " Has " +
+                           "Wished " +
+                           "To Summon The Clan");
 
       } else {
         Player member = world.getPlayer(player.myParty.get(i));
-        member.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@" + player.getUsername()
-                + " @whi@wishes to Summon you. Write ::go  (to be summoned)");
+        member.getActionSender()
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@" +
+                           player.getUsername() +
+                           " @whi@wishes" +
+                           "" +
+                           " to Summon you. Write ::go  (to be summoned)");
         member.summonLeader = player.getUsername();
       }
     }
@@ -290,8 +297,10 @@ public class Party {
     Player leader = world.getPlayer(player.myParty.get(0));
     if (player.inParty) {
       if (player.isSkulled()) {
-        player.getActionSender().sendMessage(
-                "@cya@[@whi@Clan@cya@]@whi@Your leader wanted to summon you, but he cannot when you are skulled.");
+        player.getActionSender()
+              .sendMessage("@cya@[@whi@Clan@cya@]@whi@Your leader wanted to summon you, but he" +
+                           "" +
+                           " cannot when you are skulled.");
         player.summonLeader = null;
         return;
       }
@@ -302,7 +311,6 @@ public class Party {
         player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@Nobody has tried to summon you");
       }
     } else {
-
       player.getActionSender().sendMessage("@cya@[@whi@Clan@cya@]@whi@Sorry, you are not in a Clan");
     }
   }

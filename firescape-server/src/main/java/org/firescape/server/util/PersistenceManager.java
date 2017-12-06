@@ -22,9 +22,8 @@ public class PersistenceManager {
     xstream.addPermission(com.thoughtworks.xstream.security.InterfaceTypePermission.INTERFACES);
     xstream.addPermission(com.thoughtworks.xstream.security.AnyTypePermission.ANY);
     xstream.allowTypeHierarchy(Collection.class);
-    xstream.allowTypesByWildcard(new String[]{
-            "org.firescape.server.**",
-            "org.firescape.server.entityhandling.defs.**"
+    xstream.allowTypesByWildcard(new String[] {
+      "org.firescape.server.**", "org.firescape.server.entityhandling.defs.**"
     });
     setupAliases();
   }

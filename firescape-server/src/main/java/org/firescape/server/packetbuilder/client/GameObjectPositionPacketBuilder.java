@@ -25,7 +25,7 @@ public class GameObjectPositionPacketBuilder {
       Collection<GameObject> newObjects = watchedObjects.getNewEntities();
       Collection<GameObject> knownObjets = watchedObjects.getKnownEntities();
       RSCPacketBuilder packet = new RSCPacketBuilder();
-      packet.setID(27);
+      packet.setID(48);
       for (GameObject o : knownObjets) {
         if (o.getType() != 0) {
           continue;

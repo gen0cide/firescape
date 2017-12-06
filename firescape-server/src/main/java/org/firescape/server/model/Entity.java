@@ -51,8 +51,7 @@ public class Entity {
 
   public final boolean nextTo(Entity e) {
     int[] currentCoords = {
-            getX(),
-            getY()
+      getX(), getY()
     };
     while (currentCoords[0] != e.getX() || currentCoords[1] != e.getY()) {
       currentCoords = nextStep(currentCoords[0], currentCoords[1], e);
@@ -73,14 +72,12 @@ public class Entity {
 
   public int[] nextStep(int myX, int myY, Entity e) {
     if (myX == e.getX() && myY == e.getY()) {
-      return new int[]{
-              myX,
-              myY
+      return new int[] {
+        myX, myY
       };
     }
     int newX = myX, newY = myY;
     boolean myXBlocked = false, myYBlocked = false, newXBlocked = false, newYBlocked = false;
-
     if (myX > e.getX()) {
       myXBlocked = isBlocking(e, myX - 1, myY, 8); // Check right tiles left
       // wall
@@ -90,7 +87,6 @@ public class Entity {
       // wall
       newX = myX + 1;
     }
-
     if (myY > e.getY()) {
       myYBlocked = isBlocking(e, myX, myY - 1, 4); // Check top tiles bottom
       // wall
@@ -100,40 +96,33 @@ public class Entity {
       // wall
       newY = myY + 1;
     }
-
     // If both directions are blocked OR we are going straight and the direction
     // is blocked
     if ((myXBlocked && myYBlocked) || (myXBlocked && myY == newY) || (myYBlocked && myX == newX)) {
       return null;
     }
-
     if (newX > myX) {
       newXBlocked = isBlocking(e, newX, newY, 2); // Check dest tiles right wall
     } else if (newX < myX) {
       newXBlocked = isBlocking(e, newX, newY, 8); // Check dest tiles left wall
     }
-
     if (newY > myY) {
       newYBlocked = isBlocking(e, newX, newY, 1); // Check dest tiles top wall
     } else if (newY < myY) {
       newYBlocked = isBlocking(e, newX, newY, 4); // Check dest tiles bottom
       // wall
     }
-
     // If both directions are blocked OR we are going straight and the direction
     // is blocked
     if ((newXBlocked && newYBlocked) || (newXBlocked && myY == newY) || (myYBlocked && myX == newX)) {
       return null;
     }
-
     // If only one direction is blocked, but it blocks both tiles
     if ((myXBlocked && newXBlocked) || (myYBlocked && newYBlocked)) {
       return null;
     }
-
-    return new int[]{
-            newX,
-            newY
+    return new int[] {
+      newX, newY
     };
   }
 
@@ -152,14 +141,18 @@ public class Entity {
     if ((val & 32) != 0) { // There is a diagonal wall here: /
       return true;
     }
-    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
-            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
+    return (val & 64) != 0 &&
+           (e instanceof Npc ||
+            e instanceof Player ||
+            (e instanceof Item && !((Item) e).isOn(x, y)) ||
+            (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
   }
 
   private boolean isObjectBlocking(Entity e, int x, int y, byte bit) {
     byte val = world.getTileValue(x, y).objectValue;
-    if ((val & bit) != 0 && !Formulae.doorAtFacing(e, x, y, Formulae.bitToDoorDir(bit))
-            && !Formulae.objectAtFacing(e, x, y, Formulae.bitToObjectDir(bit))) { // There
+    if ((val & bit) != 0 &&
+        !Formulae.doorAtFacing(e, x, y, Formulae.bitToDoorDir(bit)) &&
+        !Formulae.objectAtFacing(e, x, y, Formulae.bitToObjectDir(bit))) { // There
       // is
       // a
       // wall
@@ -186,8 +179,11 @@ public class Entity {
       // /
       return true;
     }
-    return (val & 64) != 0 && (e instanceof Npc || e instanceof Player || (e instanceof Item && !((Item) e).isOn(x, y))
-            || (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
+    return (val & 64) != 0 &&
+           (e instanceof Npc ||
+            e instanceof Player ||
+            (e instanceof Item && !((Item) e).isOn(x, y)) ||
+            (e instanceof GameObject && !((GameObject) e).isOn(x, y)));
   }
 
 }

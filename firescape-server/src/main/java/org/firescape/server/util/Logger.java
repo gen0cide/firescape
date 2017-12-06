@@ -26,7 +26,7 @@ public class Logger {
     {
       type = "[Network] ";
     }
-    System.out.println(type + o.toString());
+    System.out.println(type + o);
     // org.firescape.server.GUI.cout(o.toString(), i);
   }
 
@@ -35,7 +35,6 @@ public class Logger {
   }
 
   public static void event(Object o) {
-
   }
 
   public static void error(Object o) {

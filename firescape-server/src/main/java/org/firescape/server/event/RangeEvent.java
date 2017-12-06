@@ -9,7 +9,7 @@ import org.firescape.server.util.Formulae;
 import java.util.ArrayList;
 
 public class RangeEvent extends DelayedEvent {
-  private Mob affectedMob;
+  private final Mob affectedMob;
   private boolean firstRun = true;
 
   public RangeEvent(Player owner, Mob affectedMob) {
@@ -18,7 +18,6 @@ public class RangeEvent extends DelayedEvent {
   }
 
   public static void rangePlayer(int rangeLevel, int arrowID, int rangePoints, Npc affectedMob, Player owner) {
-
     // NPC fights back
     int damage = 0;
     try {
@@ -37,10 +36,9 @@ public class RangeEvent extends DelayedEvent {
     for (Player p : playersToInform) {
       p.informOfProjectile(projectile);
       p.informOfProjectile(projectile2);
-      p.informOfModifiedHits(((Player) owner));
+      p.informOfModifiedHits(owner);
     }
     owner.getActionSender().sendStat(3);
-
     if (newHp <= 0) {
       owner.killedBy(owner);
     }
@@ -48,8 +46,11 @@ public class RangeEvent extends DelayedEvent {
 
   public void run() {
     int bowID = owner.getRangeEquip();
-    if (!owner.loggedIn() || (affectedMob instanceof Player && !((Player) affectedMob).loggedIn())
-            || affectedMob.getHits() <= 0 || !owner.checkAttack(affectedMob, true) || bowID < 0) {
+    if (!owner.loggedIn() ||
+        (affectedMob instanceof Player && !((Player) affectedMob).loggedIn()) ||
+        affectedMob.getHits() <= 0 ||
+        !owner.checkAttack(affectedMob, true) ||
+        bowID < 0) {
       owner.resetRange();
       return;
     }
@@ -96,12 +97,15 @@ public class RangeEvent extends DelayedEvent {
       owner.resetRange();
       return;
     }
-    int damage = Formulae.calcRangeHit(owner.getCurStat(4), owner.getRangePoints(), affectedMob.getArmourPoints(),
-            arrowID);
+    int damage = Formulae.calcRangeHit(owner.getCurStat(4),
+                                       owner.getRangePoints(),
+                                       affectedMob.getArmourPoints(),
+                                       arrowID
+    );
     if (!Formulae.looseArrow(damage)) {
       Item arrows = getArrows(arrowID);
       if (arrows == null) {
-        world.registerItem(new Item(arrowID, affectedMob.getX(), affectedMob.getY(), 1, owner));
+        DelayedEvent.world.registerItem(new Item(arrowID, affectedMob.getX(), affectedMob.getY(), 1, owner));
       } else {
         arrows.setAmount(arrows.getAmount() + 1);
       }
@@ -113,33 +117,30 @@ public class RangeEvent extends DelayedEvent {
       }
     }
     if (affectedMob instanceof Npc && owner.withinRange(affectedMob, 6) && !affectedMob.isBusy() && !owner.isBusy()) {
-      final Npc affectedNpc = (Npc) affectedMob;
-      final Player victim = owner;
+      Npc affectedNpc = (Npc) affectedMob;
+      Player victim = owner;
       if (victim != null) {
-        world.getDelayedEventHandler().add(new NpcWalkEvent(owner, affectedNpc, 0) {
+        DelayedEvent.world.getDelayedEventHandler().add(new NpcWalkEvent(owner, affectedNpc, 0) {
           public void arrived() {
             affectedNpc.resetPath();
             victim.resetPath();
             victim.resetAll();
             victim.setStatus(Action.FIGHTING_MOB);
             victim.getActionSender().sendMessage("You are under attack!");
-
             for (Player p : affectedNpc.getViewArea().getPlayersInView()) {
               p.removeWatchedNpc(affectedNpc);
             }
-
             victim.setBusy(true);
             victim.setSprite(9);
             victim.setOpponent(affectedNpc);
             victim.setCombatTimer();
-
             affectedNpc.setBusy(true);
             affectedNpc.setSprite(8);
             affectedNpc.setOpponent(victim);
             affectedNpc.setCombatTimer();
             FightEvent fighting = new FightEvent(victim, affectedNpc, true);
             fighting.setLastRun(0);
-            world.getDelayedEventHandler().add(fighting);
+            DelayedEvent.world.getDelayedEventHandler().add(fighting);
           }
         });
       }
@@ -171,7 +172,7 @@ public class RangeEvent extends DelayedEvent {
   }
 
   private Item getArrows(int id) {
-    for (Item i : world.getTile(affectedMob.getLocation()).getItems()) {
+    for (Item i : DelayedEvent.world.getTile(affectedMob.getLocation()).getItems()) {
       if (i.getID() == id && i.visibleTo(owner) && !i.isRemoved()) {
         return i;
       }

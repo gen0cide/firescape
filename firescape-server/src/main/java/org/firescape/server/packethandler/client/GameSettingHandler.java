@@ -23,11 +23,9 @@ public class GameSettingHandler implements PacketHandler {
     }
     boolean on = p.readByte() == 1;
     player.setGameSetting(idx, on);
-
     // builder.setPlayer(player);
     // builder.setIndex(idx);
     // builder.setOn(on);
-
   }
 
 }

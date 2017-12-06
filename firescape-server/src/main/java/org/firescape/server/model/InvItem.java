@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class InvItem extends Entity implements Comparable<InvItem>, Serializable {
 
   private int amount;
-  private boolean wielded = false;
+  private boolean wielded;
 
   public InvItem(int id) {
     setID(id);
@@ -40,10 +40,6 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
     return wielded;
   }
 
-  public void setWield(boolean wielded) {
-    this.wielded = wielded;
-  }
-
   public int getAmount() {
     return amount;
   }
@@ -53,6 +49,10 @@ public class InvItem extends Entity implements Comparable<InvItem>, Serializable
       amount = 0;
     }
     this.amount = amount;
+  }
+
+  public void setWield(boolean wielded) {
+    this.wielded = wielded;
   }
 
   public boolean wieldingAffectsItem(InvItem i) {

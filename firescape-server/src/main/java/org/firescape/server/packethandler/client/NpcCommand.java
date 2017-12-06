@@ -17,14 +17,15 @@ public class NpcCommand implements PacketHandler {
 
   public void handlePacket(Packet p, IoSession session) throws Exception {
     int serverIndex = p.readShort();
-    final Player player = (Player) session.getAttachment();
+    Player player = (Player) session.getAttachment();
     if (player.isBusy()) {
       return;
     }
-    final Mob affectedMob = world.getNpc(serverIndex);
-    final Npc affectedNpc = (Npc) affectedMob;
-    if (affectedNpc == null || affectedMob == null || player == null)
+    Mob affectedMob = world.getNpc(serverIndex);
+    Npc affectedNpc = (Npc) affectedMob;
+    if (affectedNpc == null || affectedMob == null || player == null) {
       return;
+    }
     affectedNpc.getID();
     Thieving thiev = new Thieving(player, affectedNpc, affectedMob);
     thiev.beginPickpocket();

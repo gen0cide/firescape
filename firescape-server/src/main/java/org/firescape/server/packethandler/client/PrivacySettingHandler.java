@@ -20,7 +20,6 @@ public class PrivacySettingHandler implements PacketHandler {
     for (int i = 0; i < 4; i++) {
       newSettings[i] = p.readByte() == 1;
     }
-
     for (int i = 0; i < 4; i++) {
       player.setPrivacySetting(i, newSettings[i]);
     }

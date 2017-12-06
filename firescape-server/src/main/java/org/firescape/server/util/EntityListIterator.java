@@ -6,10 +6,10 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class EntityListIterator<E extends Entity> implements Iterator<E> {
-  private Integer[] indicies;
-  private Object[] entities;
-  private EntityList<E> entityList;
-  private int curIndex = 0;
+  private final Integer[] indicies;
+  private final Object[] entities;
+  private final EntityList<E> entityList;
+  private int curIndex;
 
   public EntityListIterator(Object[] entities, Set<Integer> indicies, EntityList<E> entityList) {
     this.entities = entities;

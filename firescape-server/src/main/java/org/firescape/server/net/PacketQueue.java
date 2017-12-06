@@ -10,7 +10,7 @@ public class PacketQueue<T extends Packet> {
   /**
    * The list of packets in the queue
    */
-  private ArrayList<T> packets = new ArrayList<T>();
+  private final ArrayList<T> packets = new ArrayList<T>();
 
   /**
    * Adds a packet to the queue
@@ -29,8 +29,7 @@ public class PacketQueue<T extends Packet> {
   }
 
   /**
-   * Returns the packets currently in the list and removes them from the backing
-   * store
+   * Returns the packets currently in the list and removes them from the backing store
    */
   @SuppressWarnings("unchecked")
   public List<T> getPackets() {

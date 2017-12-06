@@ -6,6 +6,10 @@ public class PathHandler {
    */
   private static final World world = World.getWorld();
   /**
+   * The mob that this path belongs to
+   */
+  private final Mob mob;
+  /**
    * The path we are walking
    */
   private Path path;
@@ -13,10 +17,6 @@ public class PathHandler {
    * The waypoint in the path we are currently at
    */
   private int curWaypoint;
-  /**
-   * The mob that this path belongs to
-   */
-  private Mob mob;
 
   /**
    * Constructs a new PathHandler belonging to the given Mob
@@ -84,8 +84,7 @@ public class PathHandler {
    */
   protected void setNextPosition() {
     int[] newCoords = {
-            -1,
-            -1
+      -1, -1
     };
     if (curWaypoint == -1) {
       if (atStart()) {
@@ -99,8 +98,11 @@ public class PathHandler {
         curWaypoint++;
       }
       if (curWaypoint < path.length()) {
-        newCoords = getNextCoords(mob.getX(), path.getWaypointX(curWaypoint), mob.getY(),
-                path.getWaypointY(curWaypoint));
+        newCoords = getNextCoords(mob.getX(),
+                                  path.getWaypointX(curWaypoint),
+                                  mob.getY(),
+                                  path.getWaypointY(curWaypoint)
+        );
       } else {
         resetPath();
       }
@@ -130,8 +132,7 @@ public class PathHandler {
   protected int[] getNextCoords(int startX, int destX, int startY, int destY) {
     try {
       int[] coords = {
-              startX,
-              startY
+        startX, startY
       };
       boolean myXBlocked = false, myYBlocked = false, newXBlocked = false, newYBlocked = false;
       if (startX > destX) {
@@ -143,7 +144,6 @@ public class PathHandler {
         // right wall
         coords[0] = startX + 1;
       }
-
       if (startY > destY) {
         myYBlocked = isBlocking(startX, startY - 1, 4); // Check top tiles
         // bottom wall
@@ -153,13 +153,11 @@ public class PathHandler {
         // top wall
         coords[1] = startY + 1;
       }
-
       // If both directions are blocked OR we are going straight and the
       // direction is blocked
       if ((myXBlocked && myYBlocked) || (myXBlocked && startY == destY) || (myYBlocked && startX == destX)) {
         return cancelCoords();
       }
-
       if (coords[0] > startX) {
         newXBlocked = isBlocking(coords[0], coords[1], 2); // Check dest tiles
         // right wall
@@ -167,7 +165,6 @@ public class PathHandler {
         newXBlocked = isBlocking(coords[0], coords[1], 8); // Check dest tiles
         // left wall
       }
-
       if (coords[1] > startY) {
         newYBlocked = isBlocking(coords[0], coords[1], 1); // Check dest tiles
         // top wall
@@ -175,18 +172,15 @@ public class PathHandler {
         newYBlocked = isBlocking(coords[0], coords[1], 4); // Check dest tiles
         // bottom wall
       }
-
       // If both directions are blocked OR we are going straight and the
       // direction is blocked
       if ((newXBlocked && newYBlocked) || (newXBlocked && startY == coords[1]) || (myYBlocked && startX == coords[0])) {
         return cancelCoords();
       }
-
       // If only one direction is blocked, but it blocks both tiles
       if ((myXBlocked && newXBlocked) || (myYBlocked && newYBlocked)) {
         return cancelCoords();
       }
-
       return coords;
     } catch (Exception e) {
       return cancelCoords();
@@ -200,9 +194,8 @@ public class PathHandler {
 
   private int[] cancelCoords() {
     resetPath();
-    return new int[]{
-            -1,
-            -1
+    return new int[] {
+      -1, -1
     };
   }
 

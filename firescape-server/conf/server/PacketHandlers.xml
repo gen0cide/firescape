@@ -20,7 +20,7 @@
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>129</int>
+      <int>102</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PlayerLogoutRequest</className>
   </PacketHandler>
@@ -32,7 +32,7 @@
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>5</int>
+      <int>67</int>
     </ids>
     <className>org.firescape.server.packethandler.client.Ping</className>
   </PacketHandler>
@@ -44,224 +44,224 @@
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>246</int>
-      <int>132</int>
+      <int>187</int>
+      <int>16</int>
     </ids>
     <className>org.firescape.server.packethandler.client.WalkRequest</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>145</int>
+      <int>216</int>
     </ids>
     <className>org.firescape.server.packethandler.client.ChatHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>176</int>
+      <int>64</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PrivacySettingHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>157</int>
+      <int>111</int>
     </ids>
     <className>org.firescape.server.packethandler.client.GameSettingHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>147</int>
+      <int>246</int>
     </ids>
     <className>org.firescape.server.packethandler.client.DropHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>56</int>
-      <int>248</int>
+      <int>254</int>
+      <int>60</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PrayerHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>90</int>
+      <int>38</int>
     </ids>
     <className>org.firescape.server.packethandler.client.CommandHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>181</int>
-      <int>92</int>
+      <int>169</int>
+      <int>170</int>
     </ids>
     <className>org.firescape.server.packethandler.client.WieldHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>83</int>
+      <int>235</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PlayerAppearanceIDHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>206</int>
-      <int>55</int>
-      <int>71</int>
-      <int>49</int>
-      <int>67</int>
-      <int>17</int>
-      <int>104</int>
-      <int>232</int>
+      <int>158</int>
+      <int>4</int>
+      <int>99</int>
+      <int>229</int>
+      <int>50</int>
+      <int>137</int>
+      <int>249</int>
+      <int>180</int>
     </ids>
     <className>org.firescape.server.packethandler.client.SpellHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>218</int>
+      <int>235</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PlayerAppearanceUpdater</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>166</int>
-      <int>211</int>
-      <int>216</int>
-      <int>70</int>
-      <int>53</int>
+      <int>142</int>
+      <int>55</int>
+      <int>230</int>
+      <int>46</int>
+      <int>104</int>
     </ids>
     <className>org.firescape.server.packethandler.client.TradeHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>168</int>
-      <int>52</int>
-      <int>25</int>
-      <int>108</int>
-      <int>254</int>
+      <int>195</int>
+      <int>167</int>
+      <int>218</int>
+      <!--<int>108</int>-->
+      <!--<int>254</int>-->
     </ids>
     <className>org.firescape.server.packethandler.client.FriendHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>89</int>
+      <int>90</int>
     </ids>
     <className>org.firescape.server.packethandler.client.InvActionHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>16</int>
+      <int>113</int>
     </ids>
     <className>org.firescape.server.packethandler.client.InvUseOnPlayer</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>245</int>
+      <int>247</int>
     </ids>
     <className>org.firescape.server.packethandler.client.PickupItem</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>40</int>
-      <int>51</int>
+      <int>136</int>
+      <int>79</int>
     </ids>
     <className>org.firescape.server.packethandler.client.ObjectAction</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>235</int>
-      <int>126</int>
+      <int>14</int>
+      <int>127</int>
     </ids>
     <className>org.firescape.server.packethandler.client.WallObjectAction</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>36</int>
-      <int>94</int>
+      <int>115</int>
+      <int>161</int>
     </ids>
     <className>org.firescape.server.packethandler.client.InvUseOnObject</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>57</int>
-      <int>73</int>
+      <int>190</int>
+      <int>171</int>
     </ids>
     <className>org.firescape.server.packethandler.client.AttackHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>42</int>
+      <int>29</int>
     </ids>
     <className>org.firescape.server.packethandler.client.StyleHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>177</int>
+      <int>153</int>
     </ids>
     <className>org.firescape.server.packethandler.client.TalkToNpcHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>48</int>
-      <int>183</int>
-      <int>198</int>
+      <int>212</int>
+      <int>23</int>
+      <int>22</int>
     </ids>
     <className>org.firescape.server.packethandler.client.BankHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>154</int>
+      <int>116</int>
     </ids>
     <className>org.firescape.server.packethandler.client.MenuReplyHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>156</int>
+      <int>3</int>
     </ids>
     <className>org.firescape.server.packethandler.client.ExceptionHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>34</int>
+      <int>53</int>
     </ids>
     <className>org.firescape.server.packethandler.client.InvUseOnGroundItem</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>27</int>
+      <int>91</int>
     </ids>
     <className>org.firescape.server.packethandler.client.InvUseOnItem</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>253</int>
-      <int>128</int>
-      <int>255</int>
+      <int>236</int>
+      <int>166</int>
+      <int>221</int>
     </ids>
     <className>org.firescape.server.packethandler.client.ShopHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>142</int>
+      <int>135</int>
     </ids>
     <className>org.firescape.server.packethandler.client.InvUseOnNpc</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>68</int>
+      <int>165</int>
     </ids>
     <className>org.firescape.server.packethandler.client.FollowRequest</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>35</int>
-      <int>123</int>
-      <int>87</int>
-      <int>222</int>
-      <int>225</int>
-      <int>252</int>
+      <int>176</int>
+      <int>77</int>
+      <int>197</int>
+      <int>33</int>
+      <int>8</int>
+      <int>103</int>
     </ids>
     <className>org.firescape.server.packethandler.client.DuelHandler</className>
   </PacketHandler>
   <PacketHandler>
     <ids>
-      <int>74</int>
+      <int>202</int>
     </ids>
     <className>org.firescape.server.packethandler.client.NpcCommand</className>
   </PacketHandler>

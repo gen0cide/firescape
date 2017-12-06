@@ -1,6 +1,7 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.FightEvent;
 import org.firescape.server.event.RangeEvent;
 import org.firescape.server.event.WalkToMobEvent;
@@ -9,6 +10,8 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 
@@ -28,9 +31,9 @@ public class AttackHandler implements PacketHandler {
     player.resetAll();
     Mob affectedMob = null;
     int serverIndex = p.readShort();
-    if (pID == 57) {
+    if (pID == Opcode.getClient(204, Command.Client.CL_PLAYER_ATTACK)) {
       affectedMob = world.getPlayer(serverIndex);
-    } else if (pID == 73) {
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_NPC_ATTACK)) {
       affectedMob = world.getNpc(serverIndex);
     }
     if (affectedMob == null || affectedMob.equals(player)) { // This shouldn't
@@ -44,8 +47,11 @@ public class AttackHandler implements PacketHandler {
       world.getDelayedEventHandler().add(new WalkToMobEvent(player, affectedMob, 2) {
         public void arrived() {
           owner.resetPath();
-          if (owner.isBusy() || affectedMob.isBusy() || !owner.nextTo(affectedMob)
-                  || !owner.checkAttack(affectedMob, false) || owner.getStatus() != Action.ATTACKING_MOB) {
+          if (owner.isBusy() ||
+              affectedMob.isBusy() ||
+              !owner.nextTo(affectedMob) ||
+              !owner.checkAttack(affectedMob, false) ||
+              owner.getStatus() != Action.ATTACKING_MOB) {
             return;
           }
           owner.resetAll();
@@ -58,12 +64,10 @@ public class AttackHandler implements PacketHandler {
             affectedPlayer.getActionSender().sendMessage("You are under attack!");
           }
           affectedMob.resetPath();
-
           owner.setLocation(affectedMob.getLocation(), true);
           for (Player p : owner.getViewArea().getPlayersInView()) {
             p.removeWatchedPlayer(owner);
           }
-
           owner.setBusy(true);
           owner.setSprite(9);
           owner.setOpponent(affectedMob);
@@ -74,7 +78,7 @@ public class AttackHandler implements PacketHandler {
           affectedMob.setCombatTimer();
           FightEvent fighting = new FightEvent(owner, affectedMob);
           fighting.setLastRun(0);
-          world.getDelayedEventHandler().add(fighting);
+          DelayedEvent.world.getDelayedEventHandler().add(fighting);
         }
       });
     } else {

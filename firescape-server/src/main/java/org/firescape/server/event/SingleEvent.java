@@ -10,7 +10,7 @@ public abstract class SingleEvent extends DelayedEvent {
 
   public void run() {
     action();
-    super.running = false;
+    this.running = false;
   }
 
   public abstract void action();

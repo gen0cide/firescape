@@ -5,12 +5,12 @@ import org.firescape.server.util.Formulae;
 
 public class PlayerAppearance {
 
+  private final byte hairColour;
+  private final byte topColour;
+  private final byte trouserColour;
+  private final byte skinColour;
   public int head;
   public int body;
-  private byte hairColour;
-  private byte topColour;
-  private byte trouserColour;
-  private byte skinColour;
 
   public PlayerAppearance(int hairColour, int topColour, int trouserColour, int skinColour, int head, int body) {
     this.hairColour = (byte) hairColour;
@@ -35,19 +35,8 @@ public class PlayerAppearance {
   }
 
   public int[] getSprites() {
-    return new int[]{
-            head,
-            body,
-            3,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+    return new int[] {
+      head, body, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
   }
 

@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class FightEvent extends DelayedEvent {
-  private Mob affectedMob;
+  private final Mob affectedMob;
+  private final int firstHit;
+  private final Random r = new Random();
   private int hits;
-  private int firstHit;
-  private Random r = new Random();
 
   public FightEvent(Player owner, Mob affectedMob) {
     this(owner, affectedMob, false);

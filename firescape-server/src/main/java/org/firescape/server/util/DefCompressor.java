@@ -10,14 +10,16 @@ import java.util.zip.GZIPOutputStream;
 public class DefCompressor {
 
   public static void main(String[] argv) throws Exception {
-    if (argv[0].equals("compress"))
+    if (argv[0].equals("compress")) {
       compressFile(new File(argv[1]));
-    if (argv[0].equals("decompress"))
+    }
+    if (argv[0].equals("decompress")) {
       decompressFile(new File(argv[1]));
+    }
   }
 
   public static void compressFile(File f) throws IOException {
-    File target = new File(f.toString() + ".gz");
+    File target = new File(f + ".gz");
     System.out.print("Compressing: " + f.getName() + ".. ");
     long initialSize = f.length();
     FileInputStream fis = new FileInputStream(f);

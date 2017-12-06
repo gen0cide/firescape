@@ -11,22 +11,18 @@ import java.util.Set;
  * <p>
  * These sets control the state of this collection.
  * <p>
- * To update this collections current state, you need to explicity call the
- * update method.
+ * To update this collections current state, you need to explicity call the update method.
  * <p>
- * The purpose of this collection is to seperate new values added to this
- * collection untill the update method has been called. Removal of entities will
- * NOT take effect until the update method is called. This is so we can see what
- * is being removed (and in cases this is required by the server) to handle them
- * specially.
+ * The purpose of this collection is to seperate new values added to this collection untill the update method has been
+ * called. Removal of entities will NOT take effect until the update method is called. This is so we can see what is
+ * being removed (and in cases this is required by the server) to handle them specially.
  */
 
 public class StatefulEntityCollection<T extends Entity> {
 
-  private Set<T> newEntities = new HashSet<T>();
-  private Set<T> knownEntities = new HashSet<T>();
-  private Set<T> entitiesToRemove = new HashSet<T>();
-
+  private final Set<T> newEntities = new HashSet<T>();
+  private final Set<T> knownEntities = new HashSet<T>();
+  private final Set<T> entitiesToRemove = new HashSet<T>();
   // We need to keep these in the order they logged in, currently it doesn't
   // seem to?
 

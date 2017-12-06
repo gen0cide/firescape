@@ -1,6 +1,6 @@
 package org.firescape.server.model;
 
 public class TileValue {
-  public byte mapValue = 0;
-  public byte objectValue = 0;
+  public byte mapValue;
+  public byte objectValue;
 }

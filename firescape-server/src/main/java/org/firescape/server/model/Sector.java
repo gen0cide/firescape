@@ -17,7 +17,7 @@ public class Sector {
   /**
    * An array containing all the tiles within this Sector
    */
-  private Tile[] tiles;
+  private final Tile[] tiles;
 
   /**
    * Creates a new Sector full of blank tiles
@@ -38,11 +38,9 @@ public class Sector {
       throw new IOException("Provided buffer too short");
     }
     Sector sector = new Sector();
-
     for (int i = 0; i < length; i++) {
       sector.setTile(i, Tile.unpack(in));
     }
-
     return sector;
   }
 
@@ -79,11 +77,9 @@ public class Sector {
    */
   public ByteBuffer pack() {
     ByteBuffer out = ByteBuffer.allocate(10 * tiles.length);
-
     for (int i = 0; i < tiles.length; i++) {
       out.put(tiles[i].pack());
     }
-
     out.flip();
     return out;
   }

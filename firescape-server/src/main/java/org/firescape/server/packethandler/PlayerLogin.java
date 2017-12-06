@@ -16,7 +16,7 @@ public class PlayerLogin implements PacketHandler {
   /**
    * The player to update
    */
-  private Player player;
+  private final Player player;
 
   public PlayerLogin(Player player) {
     this.player = player;
@@ -30,17 +30,12 @@ public class PlayerLogin implements PacketHandler {
     pb.addByte(loginCode);
     player.getSession().write(pb.toPacket());
     if (loginCode == 0 || loginCode == 1 || loginCode == 99) {
-
       player.setOwner(p.readInt());
       player.setGroupID(p.readInt());
-
       player.setSubscriptionExpires(p.readLong());
-
       player.setLastIP(DataConversions.IPToString(p.readLong()));
       player.setLastLogin(p.readLong());
-
       player.setLocation(Point.location(p.readShort(), p.readShort()), true);
-
       player.setFatigue(p.readShort());
       player.setKills(p.readShort());
       player.setDeaths(p.readShort());
@@ -49,21 +44,23 @@ public class PlayerLogin implements PacketHandler {
       player.setZamorakSpellCast(p.readShort());
       player.setQuestPoints(p.readShort());
       player.setCombatStyle((int) p.readByte());
-
       player.setPrivacySetting(0, p.readByte() == 1);
       player.setPrivacySetting(1, p.readByte() == 1);
       player.setPrivacySetting(2, p.readByte() == 1);
       player.setPrivacySetting(3, p.readByte() == 1);
-
       player.setGameSetting(0, p.readByte() == 1);
       player.setGameSetting(2, p.readByte() == 1);
       player.setGameSetting(3, p.readByte() == 1);
       player.setGameSetting(4, p.readByte() == 1);
       player.setGameSetting(5, p.readByte() == 1);
       player.setGameSetting(6, p.readByte() == 1);
-
-      PlayerAppearance appearance = new PlayerAppearance(p.readShort(), p.readShort(), p.readShort(), p.readShort(),
-              p.readShort(), p.readShort());
+      PlayerAppearance appearance = new PlayerAppearance(p.readShort(),
+                                                         p.readShort(),
+                                                         p.readShort(),
+                                                         p.readShort(),
+                                                         p.readShort(),
+                                                         p.readShort()
+      );
       if (!appearance.isValid()) {
         loginCode = 7;
         player.destroy(true);
@@ -71,13 +68,11 @@ public class PlayerLogin implements PacketHandler {
       }
       player.setAppearance(appearance);
       player.setWornItems(player.getPlayerAppearance().getSprites());
-
       player.setMale(p.readByte() == 1);
       long skull = p.readLong();
       if (skull > 0) {
         player.addSkull(skull);
       }
-
       for (int i = 0; i < 18; i++) {
         int exp = (int) p.readLong();
         player.setExp(i, exp);
@@ -85,7 +80,6 @@ public class PlayerLogin implements PacketHandler {
         player.setCurStat(i, p.readShort());
       }
       player.setCombatLevel(Formulae.getCombatlevel(player.getMaxStats()));
-
       Inventory inventory = new Inventory(player);
       int invCount = p.readShort();
       for (int i = 0; i < invCount; i++) {
@@ -97,48 +91,43 @@ public class PlayerLogin implements PacketHandler {
         inventory.add(item);
       }
       player.setInventory(inventory);
-
       Bank bank = new Bank();
       int bnkCount = p.readShort();
       for (int i = 0; i < bnkCount; i++) {
         bank.add(new InvItem(p.readShort(), p.readInt()));
       }
       player.setBank(bank);
-
       int friendCount = p.readShort();
       for (int i = 0; i < friendCount; i++) {
         player.addFriend(org.firescape.server.util.DataConversions.hashToUsername(p.readLong()));
       }
-
       int ignoreCount = p.readShort();
       for (int i = 0; i < ignoreCount; i++) {
         player.addIgnore(org.firescape.server.util.DataConversions.hashToUsername(p.readLong()));
       }
 
       /* End of loading methods */
-
       world.registerPlayer(player);
-
       player.updateViewedPlayers();
       player.updateViewedObjects();
-
+      player.updateViewedNpcs();
       org.firescape.server.packetbuilder.client.MiscPacketBuilder sender = player.getActionSender();
-      sender.sendServerInfo();
-      sender.sendFatigue();
-      sender.sendKills();
-      sender.sendDeaths();
-      sender.sendQuestPoints();
-      sender.sendGuthixSpellCast();
-      sender.sendSaradominSpellCast();
-      sender.sendZamorakSpellCast();
-      sender.sendKillingSpree();
-      sender.sendImpCatcherComplete();
-      sender.sendRomeoJulietComplete();
-      sender.sendSheepShearerComplete();
-      sender.sendWitchPotionComplete();
-      sender.sendDoricsQuestComplete();
-      sender.sendDruidicRitualComplete();
-      sender.sendCooksAssistantComplete();
+      //      sender.sendServerInfo();
+      //      sender.sendFatigue();
+      //      sender.sendKills();
+      //      sender.sendDeaths();
+      //      sender.sendQuestPoints();
+      //      sender.sendGuthixSpellCast();
+      //      sender.sendSaradominSpellCast();
+      //      sender.sendZamorakSpellCast();
+      //      sender.sendKillingSpree();
+      //      sender.sendImpCatcherComplete();
+      //      sender.sendRomeoJulietComplete();
+      //      sender.sendSheepShearerComplete();
+      //      sender.sendWitchPotionComplete();
+      //      sender.sendDoricsQuestComplete();
+      //      sender.sendDruidicRitualComplete();
+      //      sender.sendCooksAssistantComplete();
       sender.sendWorldInfo(); // sends info
       sender.sendInventory();
       sender.sendEquipmentStats();
@@ -150,14 +139,13 @@ public class PlayerLogin implements PacketHandler {
       sender.sendCombatStyle();
       int timeTillShutdown = world.getServer().timeTillShutdown();
       if (timeTillShutdown > -1) {
-        sender.startShutdown((int) (timeTillShutdown / 1000));
+        sender.startShutdown(timeTillShutdown / 1000);
       }
       if (player.getLastLogin() == 0L) {
         player.setChangingAppearance(true);
         sender.sendAppearanceScreen();
       }
       sender.sendLoginBox();
-
       player.setLoggedIn(true);
       player.setBusy(false);
     } else {

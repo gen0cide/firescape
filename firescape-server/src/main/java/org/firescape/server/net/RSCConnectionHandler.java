@@ -18,7 +18,7 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * A reference to the game engine's packet queue
    */
-  private PacketQueue<RSCPacket> packets;
+  private final PacketQueue<RSCPacket> packets;
 
   /**
    * Creates a new connection handler for the given engine.
@@ -36,8 +36,8 @@ public class RSCConnectionHandler implements IoHandler {
    */
   public void sessionCreated(IoSession session) {
     session.getFilterChain().addFirst("protocolFilter", new ProtocolCodecFilter(new RSCCodecFactory()));
-    Logger.connection(
-            "Connection from: " + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress());
+    Logger.connection("Connection from: " +
+                      ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress());
   }
 
   /**
@@ -52,8 +52,7 @@ public class RSCConnectionHandler implements IoHandler {
   }
 
   /**
-   * Invoked whenever an IO session is closed. This must handle unregistering
-   * the disconnecting player from the engine.
+   * Invoked whenever an IO session is closed. This must handle unregistering the disconnecting player from the engine.
    *
    * @param session The IO session which has been closed
    */
@@ -68,7 +67,7 @@ public class RSCConnectionHandler implements IoHandler {
    * Invoked when the idle status of a session changes.
    *
    * @param session The session in question
-   * @param status  The new idle status
+   * @param status The new idle status
    */
   public void sessionIdle(IoSession session, IdleStatus status) {
     Player player = (Player) session.getAttachment();
@@ -81,7 +80,7 @@ public class RSCConnectionHandler implements IoHandler {
    * Invoked whenever an exception is thrown by MINA or this IoHandler.
    *
    * @param session The associated session
-   * @param cause   The exception thrown
+   * @param cause The exception thrown
    */
   public void exceptionCaught(IoSession session, Throwable cause) {
   }
@@ -98,7 +97,6 @@ public class RSCConnectionHandler implements IoHandler {
       return;
     }
     RSCPacket p = (RSCPacket) message;
-    System.out.println("[" + player.getUsername() + "] " + p.toString());
     player.addPacket(p);
     packets.add(p);
   }
