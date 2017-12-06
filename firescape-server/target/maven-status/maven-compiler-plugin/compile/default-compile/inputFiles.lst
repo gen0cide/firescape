@@ -1,3 +1,4 @@
+/root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/CowSay.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/Kolodion.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/packethandler/client/StyleHandler.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/packethandler/client/WieldHandler.java
@@ -24,6 +25,7 @@
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/io/PlayerLoader.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/event/DelayedEvent.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/util/EntityList.java
+/root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/HansSay.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/packethandler/client/NpcCommand.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/npchandler/Aggie.java
 /root/Desktop/firescape/firescape-server/src/main/java/org/firescape/server/Server.java

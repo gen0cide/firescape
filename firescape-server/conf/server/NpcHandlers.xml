@@ -28,6 +28,20 @@
 
   <NpcHandler>
     <ids>
+      <int>6</int>
+    </ids>
+    <className>org.firescape.server.npchandler.CowSay</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>5</int>
+    </ids>
+    <className>org.firescape.server.npchandler.HansSay</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
       <int>9</int>
     </ids>
     <className>org.firescape.server.npchandler.PriestGear</className>
