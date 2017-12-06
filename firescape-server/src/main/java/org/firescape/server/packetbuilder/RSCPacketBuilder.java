@@ -1,7 +1,6 @@
 package org.firescape.server.packetbuilder;
 
 import org.firescape.server.net.RSCPacket;
-import org.firescape.server.util.Logger;
 
 public class RSCPacketBuilder extends StaticPacketBuilder {
   /**

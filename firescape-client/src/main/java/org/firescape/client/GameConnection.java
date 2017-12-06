@@ -296,6 +296,9 @@ public class GameConnection extends GameShell {
     resetLoginVars();
   }
 
+  protected void resetLoginVars() {
+  }
+
   protected void lostConnection() {
     try {
       throw new Exception("");
@@ -701,9 +704,6 @@ public class GameConnection extends GameShell {
   }
 
   protected void resetGame() {
-  }
-
-  protected void resetLoginVars() {
   }
 
   protected void cantLogout() {

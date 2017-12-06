@@ -13,16 +13,7 @@ public class WallObject {
   public int invisible;
 
   public WallObject(
-    int i,
-    String n,
-    String d,
-    String c1,
-    String c2,
-    int h,
-    int tf,
-    int tb,
-    int a,
-    int inv
+    int i, String n, String d, String c1, String c2, int h, int tf, int tb, int a, int inv
   ) {
     this.id = i;
     this.name = n;

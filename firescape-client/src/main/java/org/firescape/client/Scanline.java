@@ -1,7 +1,6 @@
 package org.firescape.client;
 
-public class
-Scanline {
+public class Scanline {
 
   int startX;
   int endX;

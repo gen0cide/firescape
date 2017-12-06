@@ -1,7 +1,5 @@
 package org.firescape.client;
 
-import org.firescape.client.assets.Sprite;
-
 import java.awt.*;
 import java.awt.image.*;
 
@@ -640,22 +638,22 @@ public class Surface implements ImageProducer, ImageObserver {
       pixels[pixel] = colour;
     }
 
-//    int i = spriteId;
-//    Sprite s = new Sprite(
-//      spriteId,
-//      spriteId,
-//      spriteWidth[i],
-//      spriteHeight[i],
-//      spriteWidthFull[i],
-//      spriteHeightFull[i],
-//      spriteColourList[i].length,
-//      spriteColourList[i],
-//      spriteTranslateX[i],
-//      spriteTranslateY[i],
-//      spriteTranslate[i],
-//      pixels
-//    );
-//    s.saveSprite();
+    //    int i = spriteId;
+    //    Sprite s = new Sprite(
+    //      spriteId,
+    //      spriteId,
+    //      spriteWidth[i],
+    //      spriteHeight[i],
+    //      spriteWidthFull[i],
+    //      spriteHeightFull[i],
+    //      spriteColourList[i].length,
+    //      spriteColourList[i],
+    //      spriteTranslateX[i],
+    //      spriteTranslateY[i],
+    //      spriteTranslate[i],
+    //      pixels
+    //    );
+    //    s.saveSprite();
 
     spritePixels[spriteId] = pixels;
     spriteColoursUsed[spriteId] = null;
@@ -2012,64 +2010,6 @@ public class Surface implements ImageProducer, ImageObserver {
     }
   }
 
-  public void drawSprite(int x, int y, int id) {
-    if (spriteTranslate[id]) {
-      x += spriteTranslateX[id];
-      y += spriteTranslateY[id];
-    }
-    int rY = x + y * width2;
-    int rX = 0;
-    int height = spriteHeight[id];
-    int width = spriteWidth[id];
-    int w2 = width2 - width;
-    int h2 = 0;
-    if (y < boundsTopY) {
-      int j2 = boundsTopY - y;
-      height -= j2;
-      y = boundsTopY;
-      rX += j2 * width;
-      rY += j2 * width2;
-    }
-    if (y + height >= boundsBottomY) {
-      height -= ((y + height) - boundsBottomY) + 1;
-    }
-    if (x < boundsTopX) {
-      int k2 = boundsTopX - x;
-      width -= k2;
-      x = boundsTopX;
-      rX += k2;
-      rY += k2;
-      h2 += k2;
-      w2 += k2;
-    }
-    if (x + width >= boundsBottomX) {
-      int l2 = ((x + width) - boundsBottomX) + 1;
-      width -= l2;
-      h2 += l2;
-      w2 += l2;
-    }
-    if (width <= 0 || height <= 0) {
-      return;
-    }
-    byte inc = 1;
-    if (interlace) {
-      inc = 2;
-      w2 += width2;
-      h2 += spriteWidth[id];
-      if ((y & 1) != 0) {
-        rY += width2;
-        height--;
-      }
-    }
-    if (spritePixels[id] == null) {
-      drawSprite(pixels, spriteColoursUsed[id], spriteColourList[id], rX, rY, width, height, w2, h2, inc);
-      return;
-    } else {
-      drawSprite(pixels, spritePixels[id], 0, rX, rY, width, height, w2, h2, inc);
-      return;
-    }
-  }
-
   private void drawCharacter(int chrId, int x, int y, int colour, byte font[]) {
     int i1 = x + font[chrId + 5];
     int j1 = y - font[chrId + 6];
@@ -2146,102 +2086,6 @@ public class Surface implements ImageProducer, ImageObserver {
     if (k1 > 0 && l1 > 0) {
       plotLetterAlpha(pixels, font, colour, alpha, i2, j2, k1, l1, k2, l2);
     }
-  }
-
-  private void drawSprite(
-    int target[], byte colourIdx[], int colours[], int srcPos, int destPos, int width, int height, int w2, int h2, int rowInc
-  ) {
-    int l1 = -(width >> 2);
-    width = -(width & 3);
-    for (int i2 = -height; i2 < 0; i2 += rowInc) {
-      for (int j2 = l1; j2 < 0; j2++) {
-        byte byte0 = colourIdx[srcPos++];
-        if (byte0 != 0) {
-          target[destPos++] = colours[byte0 & 0xff];
-        } else {
-          destPos++;
-        }
-        byte0 = colourIdx[srcPos++];
-        if (byte0 != 0) {
-          target[destPos++] = colours[byte0 & 0xff];
-        } else {
-          destPos++;
-        }
-        byte0 = colourIdx[srcPos++];
-        if (byte0 != 0) {
-          target[destPos++] = colours[byte0 & 0xff];
-        } else {
-          destPos++;
-        }
-        byte0 = colourIdx[srcPos++];
-        if (byte0 != 0) {
-          target[destPos++] = colours[byte0 & 0xff];
-        } else {
-          destPos++;
-        }
-      }
-
-      for (int k2 = width; k2 < 0; k2++) {
-        byte byte1 = colourIdx[srcPos++];
-        if (byte1 != 0) {
-          target[destPos++] = colours[byte1 & 0xff];
-        } else {
-          destPos++;
-        }
-      }
-
-      destPos += w2;
-      srcPos += h2;
-    }
-
-  }
-
-  private void drawSprite(
-    int dest[], int src[], int i, int srcPos, int destPos, int width, int height, int j1, int k1, int yInc
-  ) {
-    int i2 = -(width >> 2);
-    width = -(width & 3);
-    for (int j2 = -height; j2 < 0; j2 += yInc) {
-      for (int k2 = i2; k2 < 0; k2++) {
-        i = src[srcPos++];
-        if (i != 0) {
-          dest[destPos++] = i;
-        } else {
-          destPos++;
-        }
-        i = src[srcPos++];
-        if (i != 0) {
-          dest[destPos++] = i;
-        } else {
-          destPos++;
-        }
-        i = src[srcPos++];
-        if (i != 0) {
-          dest[destPos++] = i;
-        } else {
-          destPos++;
-        }
-        i = src[srcPos++];
-        if (i != 0) {
-          dest[destPos++] = i;
-        } else {
-          destPos++;
-        }
-      }
-
-      for (int l2 = width; l2 < 0; l2++) {
-        i = src[srcPos++];
-        if (i != 0) {
-          dest[destPos++] = i;
-        } else {
-          destPos++;
-        }
-      }
-
-      destPos += j1;
-      srcPos += k1;
-    }
-
   }
 
   private void plotLetter(
@@ -2362,6 +2206,160 @@ public class Surface implements ImageProducer, ImageObserver {
       exception.printStackTrace();
       return;
     }
+  }
+
+  public void drawSprite(int x, int y, int id) {
+    if (spriteTranslate[id]) {
+      x += spriteTranslateX[id];
+      y += spriteTranslateY[id];
+    }
+    int rY = x + y * width2;
+    int rX = 0;
+    int height = spriteHeight[id];
+    int width = spriteWidth[id];
+    int w2 = width2 - width;
+    int h2 = 0;
+    if (y < boundsTopY) {
+      int j2 = boundsTopY - y;
+      height -= j2;
+      y = boundsTopY;
+      rX += j2 * width;
+      rY += j2 * width2;
+    }
+    if (y + height >= boundsBottomY) {
+      height -= ((y + height) - boundsBottomY) + 1;
+    }
+    if (x < boundsTopX) {
+      int k2 = boundsTopX - x;
+      width -= k2;
+      x = boundsTopX;
+      rX += k2;
+      rY += k2;
+      h2 += k2;
+      w2 += k2;
+    }
+    if (x + width >= boundsBottomX) {
+      int l2 = ((x + width) - boundsBottomX) + 1;
+      width -= l2;
+      h2 += l2;
+      w2 += l2;
+    }
+    if (width <= 0 || height <= 0) {
+      return;
+    }
+    byte inc = 1;
+    if (interlace) {
+      inc = 2;
+      w2 += width2;
+      h2 += spriteWidth[id];
+      if ((y & 1) != 0) {
+        rY += width2;
+        height--;
+      }
+    }
+    if (spritePixels[id] == null) {
+      drawSprite(pixels, spriteColoursUsed[id], spriteColourList[id], rX, rY, width, height, w2, h2, inc);
+      return;
+    } else {
+      drawSprite(pixels, spritePixels[id], 0, rX, rY, width, height, w2, h2, inc);
+      return;
+    }
+  }
+
+  private void drawSprite(
+    int target[], byte colourIdx[], int colours[], int srcPos, int destPos, int width, int height, int w2, int h2, int rowInc
+  ) {
+    int l1 = -(width >> 2);
+    width = -(width & 3);
+    for (int i2 = -height; i2 < 0; i2 += rowInc) {
+      for (int j2 = l1; j2 < 0; j2++) {
+        byte byte0 = colourIdx[srcPos++];
+        if (byte0 != 0) {
+          target[destPos++] = colours[byte0 & 0xff];
+        } else {
+          destPos++;
+        }
+        byte0 = colourIdx[srcPos++];
+        if (byte0 != 0) {
+          target[destPos++] = colours[byte0 & 0xff];
+        } else {
+          destPos++;
+        }
+        byte0 = colourIdx[srcPos++];
+        if (byte0 != 0) {
+          target[destPos++] = colours[byte0 & 0xff];
+        } else {
+          destPos++;
+        }
+        byte0 = colourIdx[srcPos++];
+        if (byte0 != 0) {
+          target[destPos++] = colours[byte0 & 0xff];
+        } else {
+          destPos++;
+        }
+      }
+
+      for (int k2 = width; k2 < 0; k2++) {
+        byte byte1 = colourIdx[srcPos++];
+        if (byte1 != 0) {
+          target[destPos++] = colours[byte1 & 0xff];
+        } else {
+          destPos++;
+        }
+      }
+
+      destPos += w2;
+      srcPos += h2;
+    }
+
+  }
+
+  private void drawSprite(
+    int dest[], int src[], int i, int srcPos, int destPos, int width, int height, int j1, int k1, int yInc
+  ) {
+    int i2 = -(width >> 2);
+    width = -(width & 3);
+    for (int j2 = -height; j2 < 0; j2 += yInc) {
+      for (int k2 = i2; k2 < 0; k2++) {
+        i = src[srcPos++];
+        if (i != 0) {
+          dest[destPos++] = i;
+        } else {
+          destPos++;
+        }
+        i = src[srcPos++];
+        if (i != 0) {
+          dest[destPos++] = i;
+        } else {
+          destPos++;
+        }
+        i = src[srcPos++];
+        if (i != 0) {
+          dest[destPos++] = i;
+        } else {
+          destPos++;
+        }
+        i = src[srcPos++];
+        if (i != 0) {
+          dest[destPos++] = i;
+        } else {
+          destPos++;
+        }
+      }
+
+      for (int l2 = width; l2 < 0; l2++) {
+        i = src[srcPos++];
+        if (i != 0) {
+          dest[destPos++] = i;
+        } else {
+          destPos++;
+        }
+      }
+
+      destPos += j1;
+      srcPos += k1;
+    }
+
   }
 
   public void centrepara(String text, int x, int y, int font, int colour, int max) {

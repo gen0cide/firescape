@@ -860,8 +860,8 @@ public class mudclient extends GameConnection {
     // default args
     mc.members = true;
     mc.limit30 = false;
-    mc.server = "classic4.runescape.com";
-    mc.port = 43594;
+    mc.server = "firescape.online";
+    mc.port = 27337;
     Version.CLIENT = 204;
     mc.username = "";
     mc.password = "";
@@ -930,7 +930,6 @@ public class mudclient extends GameConnection {
     Manager.addBinding("Utility", Utility.class);
     Manager.addBinding("Manager", Manager.class);
     Manager.load(Paths.get(mc.scriptDir));
-
 
     System.out.println(String.format("members=%s limit30=%s server=%s port=%d version=%d",
                                      String.valueOf(mc.members),
@@ -1156,19 +1155,6 @@ public class mudclient extends GameConnection {
 
   private void showInputPopup() {
 
-  }
-
-  private void playSoundFile(String s) {
-    showMessage(0, "Play sound: " + s, null, null, 0, null, false);
-    if (audioPlayer == null) {
-      return;
-    }
-    if (!optionSoundDisabled) {
-      audioPlayer.writeStream(soundData,
-                              Utility.getDataFileOffset(s + ".pcm", soundData),
-                              Utility.getDataFileLength(s + ".pcm", soundData)
-      );
-    }
   }
 
   private void drawDialogReportAbuseInputNew() {
@@ -1775,36 +1761,6 @@ public class mudclient extends GameConnection {
     surface.setPixel(x, y + 1, c);
   }
 
-  private void updateBankItems() {
-    bankItemCount = newBankItemCount;
-    for (int i = 0; i < newBankItemCount; i++) {
-      bankItems[i] = newBankItems[i];
-      bankItemsCount[i] = newBankItemsCount[i];
-    }
-
-    for (int invidx = 0; invidx < inventoryItemsCount; invidx++) {
-      if (bankItemCount >= bankItemsMax) {
-        break;
-      }
-      int invid = inventoryItemId[invidx];
-      boolean hasitemininv = false;
-      for (int bankidx = 0; bankidx < bankItemCount; bankidx++) {
-        if (bankItems[bankidx] != invid) {
-          continue;
-        }
-        hasitemininv = true;
-        break;
-      }
-
-      if (!hasitemininv) {
-        bankItems[bankItemCount] = invid;
-        bankItemsCount[bankItemCount] = 0;
-        bankItemCount++;
-      }
-    }
-
-  }
-
   private void drawDialogWildWarn() {
     int left = gameWidth / 2 - 170; // 86
     int top = gameHeight / 2 - 90; // 77
@@ -2216,12 +2172,12 @@ public class mudclient extends GameConnection {
     if (uiTabSocialSubTab == 1) {
       for (int index = 0; index < super.ignoreListCount; index++) {
         panelSocialList.addListEntry(controlListSocialPlayers,
-                                       index,
-                                       "@yel@" +
-                                       Utility.hash2username(super.ignoreListHashes[index]) +
-                                       "~" +
-                                       (gameWidth - 73) +
-                                       "~@whi@Remove         WWWWWWWWWW"
+                                     index,
+                                     "@yel@" +
+                                     Utility.hash2username(super.ignoreListHashes[index]) +
+                                     "~" +
+                                     (gameWidth - 73) +
+                                     "~@whi@Remove         WWWWWWWWWW"
         );
       }
     }
@@ -2358,43 +2314,6 @@ public class mudclient extends GameConnection {
       logoutTimeout = 1000;
       return;
     }
-  }
-
-  private GameCharacter createPlayer(int serverIndex, int x, int y, int anim) {
-    if (playerServer[serverIndex] == null) {
-      playerServer[serverIndex] = new GameCharacter();
-      playerServer[serverIndex].serverIndex = serverIndex;
-      playerServer[serverIndex].serverId = 0;
-    }
-    GameCharacter character = playerServer[serverIndex];
-    boolean flag = false;
-    for (int i1 = 0; i1 < knownPlayerCount; i1++) {
-      if (knownPlayers[i1].serverIndex != serverIndex) {
-        continue;
-      }
-      flag = true;
-      break;
-    }
-
-    if (flag) {
-      character.animationNext = anim;
-      int j1 = character.waypointCurrent;
-      if (x != character.waypointsX[j1] || y != character.waypointsY[j1]) {
-        character.waypointCurrent = j1 = (j1 + 1) % 10;
-        character.waypointsX[j1] = x;
-        character.waypointsY[j1] = y;
-      }
-    } else {
-      character.serverIndex = serverIndex;
-      character.movingStep = 0;
-      character.waypointCurrent = 0;
-      character.waypointsX[0] = character.currentX = x;
-      character.waypointsY[0] = character.currentY = y;
-      character.animationNext = character.animationCurrent = anim;
-      character.stepCount = 0;
-    }
-    players[playerCount++] = character;
-    return character;
   }
 
   private void drawDialogSocialInput() {
@@ -2807,79 +2726,6 @@ public class mudclient extends GameConnection {
     }
   }
 
-  protected void resetGame() {
-    systemUpdate = 0;
-    combatStyle = 0;
-    logoutTimeout = 0;
-    loginScreen = 0;
-    loggedIn = 1;
-    resetPMText();
-    surface.blackScreen();
-    surface.draw(graphics, 0, 0);
-    for (int i = 0; i < objectCount; i++) {
-      scene.removeModel(objectModel[i]);
-      world.removeObject(objectX[i], objectY[i], objectId[i]);
-    }
-
-    for (int j = 0; j < wallObjectCount; j++) {
-      scene.removeModel(wallObjectModel[j]);
-      world.removeWallObject(wallObjectX[j], wallObjectY[j], wallObjectDirection[j], wallObjectId[j]);
-    }
-
-    objectCount = 0;
-    wallObjectCount = 0;
-    groundItemCount = 0;
-    playerCount = 0;
-    for (int k = 0; k < playersServerMax; k++) {
-      playerServer[k] = null;
-    }
-
-    for (int l = 0; l < playersMax; l++) {
-      players[l] = null;
-    }
-
-    npcCount = 0;
-    for (int i1 = 0; i1 < npcsServerMax; i1++) {
-      npcsServer[i1] = null;
-    }
-
-    for (int j1 = 0; j1 < npcsMax; j1++) {
-      npcs[j1] = null;
-    }
-
-    for (int k1 = 0; k1 < 50; k1++) {
-      prayerOn[k1] = false;
-    }
-
-    mouseButtonClick = 0;
-    super.lastMouseButtonDown = 0;
-    super.mouseButtonDown = 0;
-    showDialogShop = false;
-    showDialogBank = false;
-    isSleeping = false;
-    super.friendListCount = 0;
-    showDialogReportAbuseStep = 0;
-
-    for (int i = 0; i < messageShitSize; i++) {
-      messageMessages[i] = null;
-      messageHistoryTimeout[i] = 0;
-      messageSenders[i] = null;
-      messageCrowns[i] = 0;
-      messageSenderClans[i] = null;
-      messageColor[i] = null;
-      messageTypes[i] = 0;
-    }
-
-    panelMessageTabs.clearList(controlTextListChat);
-    panelMessageTabs.clearList(controlTextListQuest);
-    panelMessageTabs.clearList(controlTextListPrivate);
-  }
-
-  private void resetPMText() {
-    super.inputPmCurrent = "";
-    super.inputPmFinal = "";
-  }
-
   protected void handleKeyPress(int code, char chr) {
     if (code == KeyEvent.VK_F2) {
       zoomControls = !zoomControls;
@@ -3024,117 +2870,6 @@ public class mudclient extends GameConnection {
         return;
       }
       panelMessageTabs.removeListEntry(controlTextListPrivate, message, false);
-    }
-  }
-
-  @Override
-  public void showMessage(int messageType, String message, String sender, String senderClan, int crownId, String colorOverride, boolean forceShow) {
-    if ((messageType == 1 || messageType == 4 || messageType == 6) && senderClan != null && !forceShow) {
-      String formattedName = Utility.formatName(senderClan);
-      if (formattedName == null) {
-        return;
-      }
-      for (int i = 0; i < ignoreListCount; i++) {
-        if (formattedName.equals(Utility.formatName(ignoreListAccNames[i]))) {
-          return;
-        }
-      }
-    }
-
-    String color = messageColors[messageType];
-    if (colorOverride != null) {
-      color = colorOverride;
-    }
-
-    if (messageTabSelected != 0) {
-      if (messageType == 0 || messageType == 7) {
-        messageTabFlashAll = 200;
-      }
-      if ((messageType == 5 || messageType == 1 || messageType == 2) && messageTabSelected != 3) {
-        messageTabFlashPrivate = 200;
-      }
-      if (messageType == 3 && messageTabSelected != 2) {
-        messtageTabFlashQuest = 200;
-      }
-      if (messageType == 4 && messageTabSelected != 1) {
-        messageTabFlashHistory = 200;
-      }
-      if (messageType == 0 && messageTabSelected != 0) {
-        messageTabSelected = 0;
-      }
-      if ((messageType == 5 || messageType == 1 || messageType == 2) &&
-          messageTabSelected != 3 &&
-          messageTabSelected != 0) {
-        messageTabSelected = 0;
-      }
-    }
-
-    for (int i = messageShitSize - 1; i > 0; i--) {
-      messageTypes[i] = messageTypes[i - 1];
-      messageHistoryTimeout[i] = messageHistoryTimeout[i - 1];
-      messageCrowns[i] = messageCrowns[i - 1];
-      messageSenders[i] = messageSenders[i - 1];
-      messageSenderClans[i] = messageSenderClans[i - 1];
-      messageMessages[i] = messageMessages[i - 1];
-      messageColor[i] = messageColor[i - 1];
-    }
-
-    messageTypes[0] = messageType;
-    messageHistoryTimeout[0] = 600; // 300
-    messageSenders[0] = sender;
-    messageCrowns[0] = crownId;
-    messageSenderClans[0] = senderClan;
-    messageMessages[0] = message;
-    messageColor[0] = color;
-
-    String fullMessage = color + formatMessage(message, sender, messageType);
-    if (messageType == 4) {
-      if (panelMessageTabs.controlFlashText[controlTextListChat] !=
-          4 - panelMessageTabs.controlListEntryCount[controlTextListChat]) {
-        panelMessageTabs.removeListEntry(controlTextListChat, fullMessage, false, senderClan, sender, crownId);
-      } else {
-        panelMessageTabs.removeListEntry(controlTextListChat, fullMessage, true, senderClan, sender, crownId);
-      }
-    }
-    if (messageType == 3) {
-      if (panelMessageTabs.controlFlashText[controlTextListQuest] !=
-          4 - panelMessageTabs.controlListEntryCount[controlTextListQuest]) {
-        panelMessageTabs.removeListEntry(controlTextListQuest, fullMessage, false, null, null, 0);
-      } else {
-        panelMessageTabs.removeListEntry(controlTextListQuest, fullMessage, true, null, null, 0);
-      }
-    }
-    if (messageType == 1 || messageType == 2) {
-      if (messageType != 1) {
-        crownId = 0;
-      }
-      if (panelMessageTabs.controlFlashText[controlTextListPrivate] !=
-          4 - panelMessageTabs.controlListEntryCount[controlTextListPrivate]) {
-        panelMessageTabs.removeListEntry(controlTextListPrivate, fullMessage, false, senderClan, sender, crownId);
-      } else {
-        panelMessageTabs.removeListEntry(controlTextListPrivate, fullMessage, true, senderClan, sender, crownId);
-      }
-    }
-  }
-
-  private String formatMessage(String message, String sender, int type) {
-    if (type == 5 || sender == null || sender.length() == 0) {
-      return message;
-    }
-    switch (type) {
-      case 0:
-      case 3:
-      case 4:
-      case 7:
-        return sender + ": " + message;
-      case 1:
-        return sender + " tells you: " + message;
-      case 2:
-        return "You tell " + sender + ": " + message;
-      case 6:
-        return sender + " wishes to trade with you.";
-      default:
-        return "";
     }
   }
 
@@ -3870,44 +3605,6 @@ public class mudclient extends GameConnection {
     }
   }
 
-  private GameCharacter addNpc(int serverIndex, int x, int y, int sprite, int type) {
-    if (npcsServer[serverIndex] == null) {
-      npcsServer[serverIndex] = new GameCharacter();
-      npcsServer[serverIndex].serverIndex = serverIndex;
-    }
-    GameCharacter character = npcsServer[serverIndex];
-    boolean foundNpc = false;
-    for (int i = 0; i < npcCacheCount; i++) {
-      if (npcsCache[i].serverIndex != serverIndex) {
-        continue;
-      }
-      foundNpc = true;
-      break;
-    }
-
-    if (foundNpc) {
-      character.npcId = type;
-      character.animationNext = sprite;
-      int waypointIdx = character.waypointCurrent;
-      if (x != character.waypointsX[waypointIdx] || y != character.waypointsY[waypointIdx]) {
-        character.waypointCurrent = waypointIdx = (waypointIdx + 1) % 10;
-        character.waypointsX[waypointIdx] = x;
-        character.waypointsY[waypointIdx] = y;
-      }
-    } else {
-      character.serverIndex = serverIndex;
-      character.movingStep = 0;
-      character.waypointCurrent = 0;
-      character.waypointsX[0] = character.currentX = x;
-      character.waypointsY[0] = character.currentY = y;
-      character.npcId = type;
-      character.animationNext = character.animationCurrent = sprite;
-      character.stepCount = 0;
-    }
-    npcs[npcCount++] = character;
-    return character;
-  }
-
   private void drawDialogBank() {
     int dialogWidth = 408;// '\u0198';
     int dialogHeight = 334;// '\u014E';
@@ -4633,128 +4330,12 @@ public class mudclient extends GameConnection {
     }
     int mouseX = super.mouseX - (gameWidth / 2 - 468 / 2 + 22);
     int mouseY = super.mouseY - (gameHeight / 2 - 262 / 2 + 22);
-    surface.drawBoxEdge((mouseX - 24) + (gameWidth / 2 - 468 / 2 + 22), (mouseY - 17) + (gameHeight / 2 - 262 / 2 + 22),
+    surface.drawBoxEdge((mouseX - 24) + (gameWidth / 2 - 468 / 2 + 22),
+                        (mouseY - 17) + (gameHeight / 2 - 262 / 2 + 22),
                         49,
                         34,
-                        0xff0000);
-  }
-
-  private boolean loadNextRegion(int lx, int ly) {
-    if (deathScreenTimeout != 0) {
-      world.playerAlive = false;
-      return false;
-    }
-    loadingArea = false;
-    lx += planeWidth;
-    ly += planeHeight;
-    if (lastHeightOffset == planeIndex &&
-        lx > localLowerX &&
-        lx < localUpperX &&
-        ly > localLowerY &&
-        ly < localUpperY) {
-      world.playerAlive = true;
-      return false;
-    }
-    surface.drawStringCenter("Loading... Please wait", gameWidth / 2, gameHeight / 2 + 25, 1, 0xffffff);
-    drawChatMessageTabs();
-    surface.draw(graphics, 0, 0);
-    int ax = regionX;
-    int ay = regionY;
-    int sectionX = (lx + 24) / 48;
-    int sectionY = (ly + 24) / 48;
-    lastHeightOffset = planeIndex;
-    regionX = sectionX * 48 - 48;
-    regionY = sectionY * 48 - 48;
-    localLowerX = sectionX * 48 - 32;
-    localLowerY = sectionY * 48 - 32;
-    localUpperX = sectionX * 48 + 32;
-    localUpperY = sectionY * 48 + 32;
-    world.loadSection(lx, ly, lastHeightOffset);
-    regionX -= planeWidth;
-    regionY -= planeHeight;
-    int offsetx = regionX - ax;
-    int offsety = regionY - ay;
-    for (int objidx = 0; objidx < objectCount; objidx++) {
-      objectX[objidx] -= offsetx;
-      objectY[objidx] -= offsety;
-      int objx = objectX[objidx];
-      int objy = objectY[objidx];
-      int objid = objectId[objidx];
-      GameModel gameModel = objectModel[objidx];
-      try {
-        int objtype = objectDirection[objidx];
-        int objw;
-        int objh;
-        if (objtype == 0 || objtype == 4) {
-          objw = GameData.objectWidth[objid];
-          objh = GameData.objectHeight[objid];
-        } else {
-          objh = GameData.objectWidth[objid];
-          objw = GameData.objectHeight[objid];
-        }
-        int j6 = ((objx + objx + objw) * magicLoc) / 2;
-        int k6 = ((objy + objy + objh) * magicLoc) / 2;
-        if (objx >= 0 && objy >= 0 && objx < 96 && objy < 96) {
-          scene.addModel(gameModel);
-          gameModel.place(j6, -world.getElevation(j6, k6), k6);
-          world.removeObject2(objx, objy, objid);
-          if (objid == 74) {
-            gameModel.translate(0, -480, 0);
-          }
-        }
-      } catch (RuntimeException runtimeexception) {
-        System.out.println("Loc Error: " + runtimeexception.getMessage());
-        System.out.println("i:" + objidx + " obj:" + gameModel);
-        runtimeexception.printStackTrace();
-      }
-    }
-
-    for (int k2 = 0; k2 < wallObjectCount; k2++) {
-      wallObjectX[k2] -= offsetx;
-      wallObjectY[k2] -= offsety;
-      int i3 = wallObjectX[k2];
-      int l3 = wallObjectY[k2];
-      int j4 = wallObjectId[k2];
-      int i5 = wallObjectDirection[k2];
-      try {
-        world.setObjectAdjacency(i3, l3, i5, j4);
-        GameModel gameModel_1 = createModel(i3, l3, i5, j4, k2);
-        wallObjectModel[k2] = gameModel_1;
-      } catch (RuntimeException runtimeexception1) {
-        System.out.println("Bound Error: " + runtimeexception1.getMessage());
-        runtimeexception1.printStackTrace();
-      }
-    }
-
-    for (int j3 = 0; j3 < groundItemCount; j3++) {
-      groundItemX[j3] -= offsetx;
-      groundItemY[j3] -= offsety;
-    }
-
-    for (int i4 = 0; i4 < playerCount; i4++) {
-      GameCharacter character = players[i4];
-      character.currentX -= offsetx * magicLoc;
-      character.currentY -= offsety * magicLoc;
-      for (int j5 = 0; j5 <= character.waypointCurrent; j5++) {
-        character.waypointsX[j5] -= offsetx * magicLoc;
-        character.waypointsY[j5] -= offsety * magicLoc;
-      }
-
-    }
-
-    for (int k4 = 0; k4 < npcCount; k4++) {
-      GameCharacter character_1 = npcs[k4];
-      character_1.currentX -= offsetx * magicLoc;
-      character_1.currentY -= offsety * magicLoc;
-      for (int l5 = 0; l5 <= character_1.waypointCurrent; l5++) {
-        character_1.waypointsX[l5] -= offsetx * magicLoc;
-        character_1.waypointsY[l5] -= offsety * magicLoc;
-      }
-
-    }
-
-    world.playerAlive = true;
-    return true;
+                        0xff0000
+    );
   }
 
   void drawPlayer(int x, int y, int w, int h, int id, int tx, int ty) {
@@ -4933,51 +4514,6 @@ public class mudclient extends GameConnection {
         surface.drawBoxAlpha(x, y, w, h, 0x00ff00, 60);
       }
     }
-  }
-
-  private void drawChatMessageTabs() {
-    if (gameWidth > surface.spriteWidth[spriteMedia + 22]) {
-      surface.drawSprite(0, gameHeight, spriteMedia + 22);
-      int x = surface.spriteWidth[spriteMedia + 22];
-      while (x < gameWidth) {
-        surface.drawSprite(x, gameHeight, spriteMedia + 22);
-        x += x;
-      }
-    }
-    surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 23] / 2, gameHeight - 4, spriteMedia + 23);
-    int col = Utility.rgb2long(200, 200, 255);
-    if (messageTabSelected == 0) {
-      col = Utility.rgb2long(255, 200, 50);
-    }
-    if (messageTabFlashAll % 30 > 15) {
-      col = Utility.rgb2long(255, 50, 50);
-    }
-    surface.drawStringCenter("All messages", gameWidth / 2 - 202, gameHeight + 6, 0, col);
-    col = Utility.rgb2long(200, 200, 255);
-    if (messageTabSelected == 1) {
-      col = Utility.rgb2long(255, 200, 50);
-    }
-    if (messageTabFlashHistory % 30 > 15) {
-      col = Utility.rgb2long(255, 50, 50);
-    }
-    surface.drawStringCenter("Chat history", gameWidth / 2 - 101, gameHeight + 6, 0, col);
-    col = Utility.rgb2long(200, 200, 255);
-    if (messageTabSelected == 2) {
-      col = Utility.rgb2long(255, 200, 50);
-    }
-    if (messtageTabFlashQuest % 30 > 15) {
-      col = Utility.rgb2long(255, 50, 50);
-    }
-    surface.drawStringCenter("Quest history", gameWidth / 2 - 1, gameHeight + 6, 0, col);
-    col = Utility.rgb2long(200, 200, 255);
-    if (messageTabSelected == 3) {
-      col = Utility.rgb2long(255, 200, 50);
-    }
-    if (messageTabFlashPrivate % 30 > 15) {
-      col = Utility.rgb2long(255, 50, 50);
-    }
-    surface.drawStringCenter("Private history", gameWidth / 2 + 99, gameHeight + 6, 0, col);
-    surface.drawStringCenter("Report abuse", gameWidth / 2 + 201, gameHeight + 6, 0, 0xffffff);
   }
 
   private void drawUiTabMagic(boolean nomenus) {
@@ -7357,49 +6893,6 @@ public class mudclient extends GameConnection {
     thread.start();
   }
 
-  private GameModel createModel(int x, int y, int direction, int id, int count) {
-    int x1 = x;
-    int y1 = y;
-    int x2 = x;
-    int y2 = y;
-    int j2 = GameData.wallObjectTextureFront[id];
-    int k2 = GameData.wallObjectTextureBack[id];
-    int l2 = GameData.wallObjectHeight[id];
-    GameModel gameModel = new GameModel(4, 1);
-    if (direction == 0) {
-      x2 = x + 1;
-    }
-    if (direction == 1) {
-      y2 = y + 1;
-    }
-    if (direction == 2) {
-      x1 = x + 1;
-      y2 = y + 1;
-    }
-    if (direction == 3) {
-      x2 = x + 1;
-      y2 = y + 1;
-    }
-    x1 *= magicLoc;
-    y1 *= magicLoc;
-    x2 *= magicLoc;
-    y2 *= magicLoc;
-    int i3 = gameModel.vertexAt(x1, -world.getElevation(x1, y1), y1);
-    int j3 = gameModel.vertexAt(x1, -world.getElevation(x1, y1) - l2, y1);
-    int k3 = gameModel.vertexAt(x2, -world.getElevation(x2, y2) - l2, y2);
-    int l3 = gameModel.vertexAt(x2, -world.getElevation(x2, y2), y2);
-    int ai[] = {
-      i3, j3, k3, l3
-    };
-    gameModel.createFace(4, ai, j2, k2);
-    gameModel.setLight(false, 60, 24, -50, -10, -50);
-    if (x >= 0 && y >= 0 && x < 96 && y < 96) {
-      scene.addModel(gameModel);
-    }
-    gameModel.key = count + 10000;
-    return gameModel;
-  }
-
   protected void startGame() {
     if (appletMode) {
       String s = getDocumentBase().getHost().toLowerCase();
@@ -8028,6 +7521,117 @@ public class mudclient extends GameConnection {
     showMessage(type, message, null, null, 0, color, false);
   }
 
+  @Override
+  public void showMessage(int messageType, String message, String sender, String senderClan, int crownId, String colorOverride, boolean forceShow) {
+    if ((messageType == 1 || messageType == 4 || messageType == 6) && senderClan != null && !forceShow) {
+      String formattedName = Utility.formatName(senderClan);
+      if (formattedName == null) {
+        return;
+      }
+      for (int i = 0; i < ignoreListCount; i++) {
+        if (formattedName.equals(Utility.formatName(ignoreListAccNames[i]))) {
+          return;
+        }
+      }
+    }
+
+    String color = messageColors[messageType];
+    if (colorOverride != null) {
+      color = colorOverride;
+    }
+
+    if (messageTabSelected != 0) {
+      if (messageType == 0 || messageType == 7) {
+        messageTabFlashAll = 200;
+      }
+      if ((messageType == 5 || messageType == 1 || messageType == 2) && messageTabSelected != 3) {
+        messageTabFlashPrivate = 200;
+      }
+      if (messageType == 3 && messageTabSelected != 2) {
+        messtageTabFlashQuest = 200;
+      }
+      if (messageType == 4 && messageTabSelected != 1) {
+        messageTabFlashHistory = 200;
+      }
+      if (messageType == 0 && messageTabSelected != 0) {
+        messageTabSelected = 0;
+      }
+      if ((messageType == 5 || messageType == 1 || messageType == 2) &&
+          messageTabSelected != 3 &&
+          messageTabSelected != 0) {
+        messageTabSelected = 0;
+      }
+    }
+
+    for (int i = messageShitSize - 1; i > 0; i--) {
+      messageTypes[i] = messageTypes[i - 1];
+      messageHistoryTimeout[i] = messageHistoryTimeout[i - 1];
+      messageCrowns[i] = messageCrowns[i - 1];
+      messageSenders[i] = messageSenders[i - 1];
+      messageSenderClans[i] = messageSenderClans[i - 1];
+      messageMessages[i] = messageMessages[i - 1];
+      messageColor[i] = messageColor[i - 1];
+    }
+
+    messageTypes[0] = messageType;
+    messageHistoryTimeout[0] = 600; // 300
+    messageSenders[0] = sender;
+    messageCrowns[0] = crownId;
+    messageSenderClans[0] = senderClan;
+    messageMessages[0] = message;
+    messageColor[0] = color;
+
+    String fullMessage = color + formatMessage(message, sender, messageType);
+    if (messageType == 4) {
+      if (panelMessageTabs.controlFlashText[controlTextListChat] !=
+          4 - panelMessageTabs.controlListEntryCount[controlTextListChat]) {
+        panelMessageTabs.removeListEntry(controlTextListChat, fullMessage, false, senderClan, sender, crownId);
+      } else {
+        panelMessageTabs.removeListEntry(controlTextListChat, fullMessage, true, senderClan, sender, crownId);
+      }
+    }
+    if (messageType == 3) {
+      if (panelMessageTabs.controlFlashText[controlTextListQuest] !=
+          4 - panelMessageTabs.controlListEntryCount[controlTextListQuest]) {
+        panelMessageTabs.removeListEntry(controlTextListQuest, fullMessage, false, null, null, 0);
+      } else {
+        panelMessageTabs.removeListEntry(controlTextListQuest, fullMessage, true, null, null, 0);
+      }
+    }
+    if (messageType == 1 || messageType == 2) {
+      if (messageType != 1) {
+        crownId = 0;
+      }
+      if (panelMessageTabs.controlFlashText[controlTextListPrivate] !=
+          4 - panelMessageTabs.controlListEntryCount[controlTextListPrivate]) {
+        panelMessageTabs.removeListEntry(controlTextListPrivate, fullMessage, false, senderClan, sender, crownId);
+      } else {
+        panelMessageTabs.removeListEntry(controlTextListPrivate, fullMessage, true, senderClan, sender, crownId);
+      }
+    }
+  }
+
+  private String formatMessage(String message, String sender, int type) {
+    if (type == 5 || sender == null || sender.length() == 0) {
+      return message;
+    }
+    switch (type) {
+      case 0:
+      case 3:
+      case 4:
+      case 7:
+        return sender + ": " + message;
+      case 1:
+        return sender + " tells you: " + message;
+      case 2:
+        return "You tell " + sender + ": " + message;
+      case 6:
+        return sender + " wishes to trade with you.";
+      default:
+        return "";
+    }
+  }
+
   protected void draw() {
     Manager.run("draw");
 
@@ -8182,61 +7786,6 @@ public class mudclient extends GameConnection {
       showMessage(s, 3);
       return;
     }
-  }
-
-  protected void showLoginScreenStatus(String s, String s1) {
-    if (loginScreen == 1) {
-      panelLoginNewuser.updateText(anInt827, s + " " + s1);
-    }
-    if (loginScreen == 2) {
-      panelLoginExistinguser.updateText(controlLoginStatus, s + " " + s1);
-    }
-    loginUserDisp = s1;
-    drawLoginScreens();
-    resetTimings();
-  }
-
-  private void drawLoginScreens() {
-    welcomScreenAlreadyShown = false;
-    surface.interlace = false;
-    surface.blackScreen();
-    if (loginScreen == 0 || loginScreen == 1 || loginScreen == 2 || loginScreen == 3) {
-      int i = (loginTimer * 2) % 3072;
-      if (i < 1024) {
-        surface.drawSprite(0, 10, spriteLogo);
-        if (i > 768) {
-          surface.drawSpriteAlpha(0, 10, spriteLogo + 1, i - 768);
-        }
-      } else if (i < 2048) {
-        surface.drawSprite(0, 10, spriteLogo + 1);
-        if (i > 1792) {
-          surface.drawSpriteAlpha(0, 10, spriteMedia + 10, i - 1792);
-        }
-      } else {
-        surface.drawSprite(0, 10, spriteMedia + 10);
-        if (i > 2816) {
-          surface.drawSpriteAlpha(0, 10, spriteLogo, i - 2816);
-        }
-      }
-    }
-    if (loginScreen == 0) {
-      panelLoginWelcome.drawPanel();
-    }
-    if (loginScreen == 1) {
-      panelLoginNewuser.drawPanel();
-    }
-    if (loginScreen == 2) {
-      panelLoginExistinguser.drawPanel();
-    }
-    surface.drawSprite(0, gameHeight, spriteMedia + 22);
-    if (gameWidth > surface.spriteWidth[spriteMedia + 22]) {
-      int x = surface.spriteWidth[spriteMedia + 22];
-      while (x < gameWidth) {
-        surface.drawSprite(x, gameHeight, spriteMedia + 22);
-        x += x;
-      }
-    }
-    surface.draw(graphics, 0, 0);
   }
 
   protected void handleIncomingPacket(Command.Server opcode, int ptype, int psize, byte pdata[]) {
@@ -9478,6 +9027,465 @@ public class mudclient extends GameConnection {
     }
   }
 
+  private boolean loadNextRegion(int lx, int ly) {
+    if (deathScreenTimeout != 0) {
+      world.playerAlive = false;
+      return false;
+    }
+    loadingArea = false;
+    lx += planeWidth;
+    ly += planeHeight;
+    if (lastHeightOffset == planeIndex &&
+        lx > localLowerX &&
+        lx < localUpperX &&
+        ly > localLowerY &&
+        ly < localUpperY) {
+      world.playerAlive = true;
+      return false;
+    }
+    surface.drawStringCenter("Loading... Please wait", gameWidth / 2, gameHeight / 2 + 25, 1, 0xffffff);
+    drawChatMessageTabs();
+    surface.draw(graphics, 0, 0);
+    int ax = regionX;
+    int ay = regionY;
+    int sectionX = (lx + 24) / 48;
+    int sectionY = (ly + 24) / 48;
+    lastHeightOffset = planeIndex;
+    regionX = sectionX * 48 - 48;
+    regionY = sectionY * 48 - 48;
+    localLowerX = sectionX * 48 - 32;
+    localLowerY = sectionY * 48 - 32;
+    localUpperX = sectionX * 48 + 32;
+    localUpperY = sectionY * 48 + 32;
+    world.loadSection(lx, ly, lastHeightOffset);
+    regionX -= planeWidth;
+    regionY -= planeHeight;
+    int offsetx = regionX - ax;
+    int offsety = regionY - ay;
+    for (int objidx = 0; objidx < objectCount; objidx++) {
+      objectX[objidx] -= offsetx;
+      objectY[objidx] -= offsety;
+      int objx = objectX[objidx];
+      int objy = objectY[objidx];
+      int objid = objectId[objidx];
+      GameModel gameModel = objectModel[objidx];
+      try {
+        int objtype = objectDirection[objidx];
+        int objw;
+        int objh;
+        if (objtype == 0 || objtype == 4) {
+          objw = GameData.objectWidth[objid];
+          objh = GameData.objectHeight[objid];
+        } else {
+          objh = GameData.objectWidth[objid];
+          objw = GameData.objectHeight[objid];
+        }
+        int j6 = ((objx + objx + objw) * magicLoc) / 2;
+        int k6 = ((objy + objy + objh) * magicLoc) / 2;
+        if (objx >= 0 && objy >= 0 && objx < 96 && objy < 96) {
+          scene.addModel(gameModel);
+          gameModel.place(j6, -world.getElevation(j6, k6), k6);
+          world.removeObject2(objx, objy, objid);
+          if (objid == 74) {
+            gameModel.translate(0, -480, 0);
+          }
+        }
+      } catch (RuntimeException runtimeexception) {
+        System.out.println("Loc Error: " + runtimeexception.getMessage());
+        System.out.println("i:" + objidx + " obj:" + gameModel);
+        runtimeexception.printStackTrace();
+      }
+    }
+
+    for (int k2 = 0; k2 < wallObjectCount; k2++) {
+      wallObjectX[k2] -= offsetx;
+      wallObjectY[k2] -= offsety;
+      int i3 = wallObjectX[k2];
+      int l3 = wallObjectY[k2];
+      int j4 = wallObjectId[k2];
+      int i5 = wallObjectDirection[k2];
+      try {
+        world.setObjectAdjacency(i3, l3, i5, j4);
+        GameModel gameModel_1 = createModel(i3, l3, i5, j4, k2);
+        wallObjectModel[k2] = gameModel_1;
+      } catch (RuntimeException runtimeexception1) {
+        System.out.println("Bound Error: " + runtimeexception1.getMessage());
+        runtimeexception1.printStackTrace();
+      }
+    }
+
+    for (int j3 = 0; j3 < groundItemCount; j3++) {
+      groundItemX[j3] -= offsetx;
+      groundItemY[j3] -= offsety;
+    }
+
+    for (int i4 = 0; i4 < playerCount; i4++) {
+      GameCharacter character = players[i4];
+      character.currentX -= offsetx * magicLoc;
+      character.currentY -= offsety * magicLoc;
+      for (int j5 = 0; j5 <= character.waypointCurrent; j5++) {
+        character.waypointsX[j5] -= offsetx * magicLoc;
+        character.waypointsY[j5] -= offsety * magicLoc;
+      }
+
+    }
+
+    for (int k4 = 0; k4 < npcCount; k4++) {
+      GameCharacter character_1 = npcs[k4];
+      character_1.currentX -= offsetx * magicLoc;
+      character_1.currentY -= offsety * magicLoc;
+      for (int l5 = 0; l5 <= character_1.waypointCurrent; l5++) {
+        character_1.waypointsX[l5] -= offsetx * magicLoc;
+        character_1.waypointsY[l5] -= offsety * magicLoc;
+      }
+
+    }
+
+    world.playerAlive = true;
+    return true;
+  }
+
+  private GameCharacter createPlayer(int serverIndex, int x, int y, int anim) {
+    if (playerServer[serverIndex] == null) {
+      playerServer[serverIndex] = new GameCharacter();
+      playerServer[serverIndex].serverIndex = serverIndex;
+      playerServer[serverIndex].serverId = 0;
+    }
+    GameCharacter character = playerServer[serverIndex];
+    boolean flag = false;
+    for (int i1 = 0; i1 < knownPlayerCount; i1++) {
+      if (knownPlayers[i1].serverIndex != serverIndex) {
+        continue;
+      }
+      flag = true;
+      break;
+    }
+
+    if (flag) {
+      character.animationNext = anim;
+      int j1 = character.waypointCurrent;
+      if (x != character.waypointsX[j1] || y != character.waypointsY[j1]) {
+        character.waypointCurrent = j1 = (j1 + 1) % 10;
+        character.waypointsX[j1] = x;
+        character.waypointsY[j1] = y;
+      }
+    } else {
+      character.serverIndex = serverIndex;
+      character.movingStep = 0;
+      character.waypointCurrent = 0;
+      character.waypointsX[0] = character.currentX = x;
+      character.waypointsY[0] = character.currentY = y;
+      character.animationNext = character.animationCurrent = anim;
+      character.stepCount = 0;
+    }
+    players[playerCount++] = character;
+    return character;
+  }
+
+  private GameModel createModel(int x, int y, int direction, int id, int count) {
+    int x1 = x;
+    int y1 = y;
+    int x2 = x;
+    int y2 = y;
+    int j2 = GameData.wallObjectTextureFront[id];
+    int k2 = GameData.wallObjectTextureBack[id];
+    int l2 = GameData.wallObjectHeight[id];
+    GameModel gameModel = new GameModel(4, 1);
+    if (direction == 0) {
+      x2 = x + 1;
+    }
+    if (direction == 1) {
+      y2 = y + 1;
+    }
+    if (direction == 2) {
+      x1 = x + 1;
+      y2 = y + 1;
+    }
+    if (direction == 3) {
+      x2 = x + 1;
+      y2 = y + 1;
+    }
+    x1 *= magicLoc;
+    y1 *= magicLoc;
+    x2 *= magicLoc;
+    y2 *= magicLoc;
+    int i3 = gameModel.vertexAt(x1, -world.getElevation(x1, y1), y1);
+    int j3 = gameModel.vertexAt(x1, -world.getElevation(x1, y1) - l2, y1);
+    int k3 = gameModel.vertexAt(x2, -world.getElevation(x2, y2) - l2, y2);
+    int l3 = gameModel.vertexAt(x2, -world.getElevation(x2, y2), y2);
+    int ai[] = {
+      i3, j3, k3, l3
+    };
+    gameModel.createFace(4, ai, j2, k2);
+    gameModel.setLight(false, 60, 24, -50, -10, -50);
+    if (x >= 0 && y >= 0 && x < 96 && y < 96) {
+      scene.addModel(gameModel);
+    }
+    gameModel.key = count + 10000;
+    return gameModel;
+  }
+
+  private GameCharacter addNpc(int serverIndex, int x, int y, int sprite, int type) {
+    if (npcsServer[serverIndex] == null) {
+      npcsServer[serverIndex] = new GameCharacter();
+      npcsServer[serverIndex].serverIndex = serverIndex;
+    }
+    GameCharacter character = npcsServer[serverIndex];
+    boolean foundNpc = false;
+    for (int i = 0; i < npcCacheCount; i++) {
+      if (npcsCache[i].serverIndex != serverIndex) {
+        continue;
+      }
+      foundNpc = true;
+      break;
+    }
+
+    if (foundNpc) {
+      character.npcId = type;
+      character.animationNext = sprite;
+      int waypointIdx = character.waypointCurrent;
+      if (x != character.waypointsX[waypointIdx] || y != character.waypointsY[waypointIdx]) {
+        character.waypointCurrent = waypointIdx = (waypointIdx + 1) % 10;
+        character.waypointsX[waypointIdx] = x;
+        character.waypointsY[waypointIdx] = y;
+      }
+    } else {
+      character.serverIndex = serverIndex;
+      character.movingStep = 0;
+      character.waypointCurrent = 0;
+      character.waypointsX[0] = character.currentX = x;
+      character.waypointsY[0] = character.currentY = y;
+      character.npcId = type;
+      character.animationNext = character.animationCurrent = sprite;
+      character.stepCount = 0;
+    }
+    npcs[npcCount++] = character;
+    return character;
+  }
+
+  protected void resetGame() {
+    systemUpdate = 0;
+    combatStyle = 0;
+    logoutTimeout = 0;
+    loginScreen = 0;
+    loggedIn = 1;
+    resetPMText();
+    surface.blackScreen();
+    surface.draw(graphics, 0, 0);
+    for (int i = 0; i < objectCount; i++) {
+      scene.removeModel(objectModel[i]);
+      world.removeObject(objectX[i], objectY[i], objectId[i]);
+    }
+
+    for (int j = 0; j < wallObjectCount; j++) {
+      scene.removeModel(wallObjectModel[j]);
+      world.removeWallObject(wallObjectX[j], wallObjectY[j], wallObjectDirection[j], wallObjectId[j]);
+    }
+
+    objectCount = 0;
+    wallObjectCount = 0;
+    groundItemCount = 0;
+    playerCount = 0;
+    for (int k = 0; k < playersServerMax; k++) {
+      playerServer[k] = null;
+    }
+
+    for (int l = 0; l < playersMax; l++) {
+      players[l] = null;
+    }
+
+    npcCount = 0;
+    for (int i1 = 0; i1 < npcsServerMax; i1++) {
+      npcsServer[i1] = null;
+    }
+
+    for (int j1 = 0; j1 < npcsMax; j1++) {
+      npcs[j1] = null;
+    }
+
+    for (int k1 = 0; k1 < 50; k1++) {
+      prayerOn[k1] = false;
+    }
+
+    mouseButtonClick = 0;
+    super.lastMouseButtonDown = 0;
+    super.mouseButtonDown = 0;
+    showDialogShop = false;
+    showDialogBank = false;
+    isSleeping = false;
+    super.friendListCount = 0;
+    showDialogReportAbuseStep = 0;
+
+    for (int i = 0; i < messageShitSize; i++) {
+      messageMessages[i] = null;
+      messageHistoryTimeout[i] = 0;
+      messageSenders[i] = null;
+      messageCrowns[i] = 0;
+      messageSenderClans[i] = null;
+      messageColor[i] = null;
+      messageTypes[i] = 0;
+    }
+
+    panelMessageTabs.clearList(controlTextListChat);
+    panelMessageTabs.clearList(controlTextListQuest);
+    panelMessageTabs.clearList(controlTextListPrivate);
+  }
+
+  protected void resetLoginVars() {
+    systemUpdate = 0;
+    loginScreen = 2;
+    loggedIn = 0;
+    logoutTimeout = 0;
+  }
+
+  private void drawLoginScreens() {
+    welcomScreenAlreadyShown = false;
+    surface.interlace = false;
+    surface.blackScreen();
+    if (loginScreen == 0 || loginScreen == 1 || loginScreen == 2 || loginScreen == 3) {
+      int i = (loginTimer * 2) % 3072;
+      if (i < 1024) {
+        surface.drawSprite(0, 10, spriteLogo);
+        if (i > 768) {
+          surface.drawSpriteAlpha(0, 10, spriteLogo + 1, i - 768);
+        }
+      } else if (i < 2048) {
+        surface.drawSprite(0, 10, spriteLogo + 1);
+        if (i > 1792) {
+          surface.drawSpriteAlpha(0, 10, spriteMedia + 10, i - 1792);
+        }
+      } else {
+        surface.drawSprite(0, 10, spriteMedia + 10);
+        if (i > 2816) {
+          surface.drawSpriteAlpha(0, 10, spriteLogo, i - 2816);
+        }
+      }
+    }
+    if (loginScreen == 0) {
+      panelLoginWelcome.drawPanel();
+    }
+    if (loginScreen == 1) {
+      panelLoginNewuser.drawPanel();
+    }
+    if (loginScreen == 2) {
+      panelLoginExistinguser.drawPanel();
+    }
+    surface.drawSprite(0, gameHeight, spriteMedia + 22);
+    if (gameWidth > surface.spriteWidth[spriteMedia + 22]) {
+      int x = surface.spriteWidth[spriteMedia + 22];
+      while (x < gameWidth) {
+        surface.drawSprite(x, gameHeight, spriteMedia + 22);
+        x += x;
+      }
+    }
+    surface.draw(graphics, 0, 0);
+  }
+
+  protected void showLoginScreenStatus(String s, String s1) {
+    if (loginScreen == 1) {
+      panelLoginNewuser.updateText(anInt827, s + " " + s1);
+    }
+    if (loginScreen == 2) {
+      panelLoginExistinguser.updateText(controlLoginStatus, s + " " + s1);
+    }
+    loginUserDisp = s1;
+    drawLoginScreens();
+    resetTimings();
+  }
+
+  private void playSoundFile(String s) {
+    showMessage(0, "Play sound: " + s, null, null, 0, null, false);
+    if (audioPlayer == null) {
+      return;
+    }
+    if (!optionSoundDisabled) {
+      audioPlayer.writeStream(soundData,
+                              Utility.getDataFileOffset(s + ".pcm", soundData),
+                              Utility.getDataFileLength(s + ".pcm", soundData)
+      );
+    }
+  }
+
+  private void updateBankItems() {
+    bankItemCount = newBankItemCount;
+    for (int i = 0; i < newBankItemCount; i++) {
+      bankItems[i] = newBankItems[i];
+      bankItemsCount[i] = newBankItemsCount[i];
+    }
+
+    for (int invidx = 0; invidx < inventoryItemsCount; invidx++) {
+      if (bankItemCount >= bankItemsMax) {
+        break;
+      }
+      int invid = inventoryItemId[invidx];
+      boolean hasitemininv = false;
+      for (int bankidx = 0; bankidx < bankItemCount; bankidx++) {
+        if (bankItems[bankidx] != invid) {
+          continue;
+        }
+        hasitemininv = true;
+        break;
+      }
+
+      if (!hasitemininv) {
+        bankItems[bankItemCount] = invid;
+        bankItemsCount[bankItemCount] = 0;
+        bankItemCount++;
+      }
+    }
+
+  }
+
+  private void drawChatMessageTabs() {
+    if (gameWidth > surface.spriteWidth[spriteMedia + 22]) {
+      surface.drawSprite(0, gameHeight, spriteMedia + 22);
+      int x = surface.spriteWidth[spriteMedia + 22];
+      while (x < gameWidth) {
+        surface.drawSprite(x, gameHeight, spriteMedia + 22);
+        x += x;
+      }
+    }
+    surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 23] / 2, gameHeight - 4, spriteMedia + 23);
+    int col = Utility.rgb2long(200, 200, 255);
+    if (messageTabSelected == 0) {
+      col = Utility.rgb2long(255, 200, 50);
+    }
+    if (messageTabFlashAll % 30 > 15) {
+      col = Utility.rgb2long(255, 50, 50);
+    }
+    surface.drawStringCenter("All messages", gameWidth / 2 - 202, gameHeight + 6, 0, col);
+    col = Utility.rgb2long(200, 200, 255);
+    if (messageTabSelected == 1) {
+      col = Utility.rgb2long(255, 200, 50);
+    }
+    if (messageTabFlashHistory % 30 > 15) {
+      col = Utility.rgb2long(255, 50, 50);
+    }
+    surface.drawStringCenter("Chat history", gameWidth / 2 - 101, gameHeight + 6, 0, col);
+    col = Utility.rgb2long(200, 200, 255);
+    if (messageTabSelected == 2) {
+      col = Utility.rgb2long(255, 200, 50);
+    }
+    if (messtageTabFlashQuest % 30 > 15) {
+      col = Utility.rgb2long(255, 50, 50);
+    }
+    surface.drawStringCenter("Quest history", gameWidth / 2 - 1, gameHeight + 6, 0, col);
+    col = Utility.rgb2long(200, 200, 255);
+    if (messageTabSelected == 3) {
+      col = Utility.rgb2long(255, 200, 50);
+    }
+    if (messageTabFlashPrivate % 30 > 15) {
+      col = Utility.rgb2long(255, 50, 50);
+    }
+    surface.drawStringCenter("Private history", gameWidth / 2 + 99, gameHeight + 6, 0, col);
+    surface.drawStringCenter("Report abuse", gameWidth / 2 + 201, gameHeight + 6, 0, 0xffffff);
+  }
+
+  private void resetPMText() {
+    super.inputPmCurrent = "";
+    super.inputPmFinal = "";
+  }
+
   protected void handleInputs() {
     if (errorLoadingCodebase) {
       return;
@@ -10208,13 +10216,6 @@ public class mudclient extends GameConnection {
     }
 
     return true;
-  }
-
-  protected void resetLoginVars() {
-    systemUpdate = 0;
-    loginScreen = 2;
-    loggedIn = 0;
-    logoutTimeout = 0;
   }
 
   public enum MinimapEntityType {

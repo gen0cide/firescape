@@ -49,11 +49,6 @@ public class Buffer {
     offset += len;
   }
 
-  public void putShort(int var1) {
-    this.buffer[this.offset++] = (byte) (var1 >> 8);
-    this.buffer[this.offset++] = (byte) var1;
-  }
-
   public void putByte(int i) {
     buffer[offset++] = (byte) i;
   }
@@ -61,6 +56,11 @@ public class Buffer {
   public void putBytes(byte src[], int srcPos, int len) {
     System.arraycopy(src, srcPos, buffer, offset, len);
     offset += len;
+  }
+
+  public void putShort(int var1) {
+    this.buffer[this.offset++] = (byte) (var1 >> 8);
+    this.buffer[this.offset++] = (byte) var1;
   }
 
   public int getUnsignedByte() {

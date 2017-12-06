@@ -9,11 +9,13 @@ require './target/firescape-jar-with-dependencies.jar'
 server = Java::OrgFirescapeServer::Server.new
 
 class FireScape
-  
-  @@world = Java::OrgFirescapeServerModel::World.get_world
 
-  def enum_players
-    @@world.players
+  def world
+    Java::OrgFirescapeServerModel::World.get_world
+  end
+
+  def players
+    world.players
   end
 
   def find_player(id)
@@ -28,7 +30,7 @@ class FireScape
   end
 end
 
-slack = Thread.new do  
+slack = Thread.new do
   redis = Redis.new
 
   redis.subscribe('game_chat') do |on|

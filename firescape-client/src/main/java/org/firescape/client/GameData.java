@@ -3,9 +3,7 @@ package org.firescape.client;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.firescape.client.assets.*;
-import org.firescape.client.assets.GameObject;
 
-import javax.xml.soap.Text;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -100,11 +98,6 @@ public class GameData {
   public static int npcWalkModel[];
   public static int npcCombatModel[];
   public static int npcCombatAnimation[];
-  static byte dataString[];
-  static byte dataInteger[];
-  static int stringOffset;
-  static int offset;
-
   public static List<Animation> animationPack = new ArrayList<Animation>();
   public static List<Item> itemPack = new ArrayList<Item>();
   public static List<NPC> npcPack = new ArrayList<NPC>();
@@ -116,8 +109,11 @@ public class GameData {
   public static List<Texture> texturePack = new ArrayList<Texture>();
   public static List<Tile> tilePack = new ArrayList<Tile>();
   public static List<WallObject> wallObjectPack = new ArrayList<WallObject>();
-
   public static Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+  static byte dataString[];
+  static byte dataInteger[];
+  static int stringOffset;
+  static int offset;
 
   public static void loadData(byte buffer[], boolean isMembers) {
     dataString = Utility.loadData("string.dat", 0, buffer);
@@ -199,22 +195,19 @@ public class GameData {
     }
 
     for (i = 0; i < itemCount; i++) {
-      itemPack.add(
-        new Item(
-          i,
-          itemName[i],
-          itemDescription[i],
-          itemCommand[i],
-          itemPicture[i],
-          itemBasePrice[i],
-          itemStackable[i],
-          itemUnused[i],
-          itemWearable[i],
-          itemMask[i],
-          itemSpecial[i],
-          itemMembers[i]
-        )
-      );
+      itemPack.add(new Item(i,
+                            itemName[i],
+                            itemDescription[i],
+                            itemCommand[i],
+                            itemPicture[i],
+                            itemBasePrice[i],
+                            itemStackable[i],
+                            itemUnused[i],
+                            itemWearable[i],
+                            itemMask[i],
+                            itemSpecial[i],
+                            itemMembers[i]
+      ));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/items.json")) {
@@ -321,29 +314,26 @@ public class GameData {
     }
 
     for (i = 0; i < npcCount; i++) {
-      npcPack.add(
-        new NPC(
-          i,
-          npcName[i],
-          npcDescription[i],
-          npcCommand[i],
-          npcAttack[i],
-          npcStrength[i],
-          npcHits[i],
-          npcDefense[i],
-          npcAttackable[i],
-          npcSprite[i],
-          npcColourHair[i],
-          npcColourTop[i],
-          npcColorBottom[i],
-          npcColourSkin[i],
-          npcWidth[i],
-          npcHeight[i],
-          npcWalkModel[i],
-          npcCombatModel[i],
-          npcCombatAnimation[i]
-        )
-      );
+      npcPack.add(new NPC(i,
+                          npcName[i],
+                          npcDescription[i],
+                          npcCommand[i],
+                          npcAttack[i],
+                          npcStrength[i],
+                          npcHits[i],
+                          npcDefense[i],
+                          npcAttackable[i],
+                          npcSprite[i],
+                          npcColourHair[i],
+                          npcColourTop[i],
+                          npcColorBottom[i],
+                          npcColourSkin[i],
+                          npcWidth[i],
+                          npcHeight[i],
+                          npcWalkModel[i],
+                          npcCombatModel[i],
+                          npcCombatAnimation[i]
+      ));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/npcs.json")) {
@@ -365,13 +355,7 @@ public class GameData {
     }
 
     for (i = 0; i < textureCount; i++) {
-      texturePack.add(
-        new Texture(
-          i,
-          textureName[i],
-          textureSubtypeName[i]
-        )
-      );
+      texturePack.add(new Texture(i, textureName[i], textureSubtypeName[i]));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/textures.json")) {
@@ -412,17 +396,14 @@ public class GameData {
     }
 
     for (i = 0; i < animationCount; i++) {
-      animationPack.add(
-        new Animation(
-          i,
-          animationName[i],
-          animationCharacterColour[i],
-          animationSomething[i],
-          animationHasA[i],
-          animationHasF[i],
-          animationNumber[i]
-        )
-      );
+      animationPack.add(new Animation(i,
+                                      animationName[i],
+                                      animationCharacterColour[i],
+                                      animationSomething[i],
+                                      animationHasA[i],
+                                      animationHasF[i],
+                                      animationNumber[i]
+      ));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/animations.json")) {
@@ -478,20 +459,17 @@ public class GameData {
     }
 
     for (i = 0; i < objectCount; i++) {
-      gameObjectPack.add(
-        new GameObject(
-          i,
-          objectName[i],
-          objectDescription[i],
-          objectCommand1[i],
-          objectCommand2[i],
-          objectModelIndex[i],
-          objectWidth[i],
-          objectHeight[i],
-          objectType[i],
-          objectElevation[i]
-        )
-      );
+      gameObjectPack.add(new GameObject(i,
+                                        objectName[i],
+                                        objectDescription[i],
+                                        objectCommand1[i],
+                                        objectCommand2[i],
+                                        objectModelIndex[i],
+                                        objectWidth[i],
+                                        objectHeight[i],
+                                        objectType[i],
+                                        objectElevation[i]
+      ));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/game_objects.json")) {
@@ -547,20 +525,17 @@ public class GameData {
     }
 
     for (i = 0; i < wallObjectCount; i++) {
-      wallObjectPack.add(
-        new WallObject(
-          i,
-          wallObjectName[i],
-          wallObjectDescription[i],
-          wallObjectCommand1[i],
-          wallObjectCommand2[i],
-          wallObjectHeight[i],
-          wallObjectTextureFront[i],
-          wallObjectTextureBack[i],
-          wallObjectAdjacent[i],
-          wallObjectInvisible[i]
-        )
-      );
+      wallObjectPack.add(new WallObject(i,
+                                        wallObjectName[i],
+                                        wallObjectDescription[i],
+                                        wallObjectCommand1[i],
+                                        wallObjectCommand2[i],
+                                        wallObjectHeight[i],
+                                        wallObjectTextureFront[i],
+                                        wallObjectTextureBack[i],
+                                        wallObjectAdjacent[i],
+                                        wallObjectInvisible[i]
+      ));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/wall_objects.json")) {
@@ -581,13 +556,7 @@ public class GameData {
     }
 
     for (i = 0; i < roofCount; i++) {
-      roofTilePack.add(
-        new RoofTile(
-          i,
-          roofHeight[i],
-          roofNumVertices[i]
-        )
-      );
+      roofTilePack.add(new RoofTile(i, roofHeight[i], roofNumVertices[i]));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/roof_tiles.json")) {
@@ -613,14 +582,7 @@ public class GameData {
     }
 
     for (i = 0; i < tileCount; i++) {
-      tilePack.add(
-        new Tile(
-          i,
-          tileDecoration[i],
-          tileType[i],
-          tileAdjacent[i]
-        )
-      );
+      tilePack.add(new Tile(i, tileDecoration[i], tileType[i], tileAdjacent[i]));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/tiles.json")) {
@@ -682,18 +644,15 @@ public class GameData {
     }
 
     for (i = 0; i < spellCount; i++) {
-      spellPack.add(
-        new Spell(
-          i,
-          spellName[i],
-          spellDescription[i],
-          spellLevel[i],
-          spellRunesRequired[i],
-          spellType[i],
-          spellRunesId[i],
-          spellRunesCount[i]
-        )
-      );
+      spellPack.add(new Spell(i,
+                              spellName[i],
+                              spellDescription[i],
+                              spellLevel[i],
+                              spellRunesRequired[i],
+                              spellType[i],
+                              spellRunesId[i],
+                              spellRunesCount[i]
+      ));
     }
 
     try (PrintWriter out = new PrintWriter("conf/json/spells.json")) {

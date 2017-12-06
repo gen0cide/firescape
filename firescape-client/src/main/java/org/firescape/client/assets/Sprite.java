@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.DirectColorModel;
-import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,6 +12,10 @@ import java.io.PrintWriter;
 import java.lang.reflect.Modifier;
 
 public class Sprite {
+  public static Gson gson = new GsonBuilder().setPrettyPrinting()
+                                             .serializeNulls()
+                                             .excludeFieldsWithModifiers(Modifier.PRIVATE)
+                                             .create();
   public int id;
   public int offset;
   public int width;
@@ -28,13 +29,9 @@ public class Sprite {
   public boolean translate;
   private int[] pixels;
 
-  public static Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().excludeFieldsWithModifiers
-    (Modifier.PRIVATE).create();
-
-  public Sprite(int id, int offset, int width, int height, int fullWidth, int fullHeight, int colorCount, int[]
-    colors, int
-    translateX, int
-    translateY, boolean translate, int[] pixels) {
+  public Sprite(
+    int id, int offset, int width, int height, int fullWidth, int fullHeight, int colorCount, int[] colors, int translateX, int translateY, boolean translate, int[] pixels
+  ) {
     this.id = id;
     this.offset = offset;
     this.width = width;
@@ -49,10 +46,15 @@ public class Sprite {
     this.pixels = pixels;
   }
 
+  public void saveSprite() {
+    saveImage();
+    saveMetadata();
+  }
+
   public void saveImage() {
     BufferedImage image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
-    for(int y = 0; y < height; y++) {
-      for(int x = 0; x < width; x++) {
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
         image.setRGB(x, y, this.pixels[x + y * width]);
       }
     }
@@ -71,10 +73,5 @@ public class Sprite {
     } catch (FileNotFoundException e) {
       System.out.println("Nope!");
     }
-  }
-
-  public void saveSprite() {
-    saveImage();
-    saveMetadata();
   }
 }
