@@ -25,7 +25,7 @@ public class SpritePacker {
   /**
    * The sprite directory to import new sprites from
    */
-  public static String NEW_DIR = "./sprites/";
+  public static String NEW_DIR = "./sprites/dat/";
   /**
    * The sprites currently loaded
    */
@@ -209,7 +209,7 @@ public class SpritePacker {
   public static final void main(String[] args) {
     JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 
-    chooser.setFileFilter(new FileNameExtensionFilter("Firescape Sprite Pack (.firepack)", "firepack"));
+    chooser.setFileFilter(new FileNameExtensionFilter("Firescape Sprite Pack (.jag)", "jag"));
     if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
       try {
         new SpritePacker(chooser.getSelectedFile());

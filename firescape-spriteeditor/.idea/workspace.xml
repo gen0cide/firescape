@@ -12,26 +12,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EntityHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/entityhandling/EntityHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="124" column="16" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NPCDef.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/entityhandling/defs/NPCDef.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ItemDef.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/entityhandling/defs/ItemDef.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -102,11 +82,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataFileDecrypter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataFileDecrypter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/data/DataFileDecrypter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9264">
-              <caret line="579" column="21" lean-forward="false" selection-start-line="579" selection-start-column="21" selection-end-line="579" selection-end-column="21" />
+            <state relative-caret-position="-7354">
+              <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpritePacker.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpritePacker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-124">
+              <caret line="185" column="25" lean-forward="false" selection-start-line="185" selection-start-column="25" selection-end-line="185" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpriteLoader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpriteLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4979">
+              <caret line="351" column="17" lean-forward="false" selection-start-line="351" selection-start-column="17" selection-end-line="351" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -118,6 +118,8 @@
     <findStrings>
       <find>rscd</find>
       <find>RSCD</find>
+      <find>getSprites</find>
+      <find>sprites</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -141,8 +143,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/util/PersistenceManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpriteUnpacker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpritePacker.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpriteEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpritePacker.java" />
       </list>
     </option>
   </component>
@@ -382,7 +384,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.SpriteEditor">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -392,6 +394,19 @@
     </configuration>
     <configuration name="SpriteEditor" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.firescape.spriteeditor.SpriteEditor" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="firescape-spriteeditor" />
+      <envs />
+    </configuration>
+    <configuration name="SpritePacker" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.firescape.spriteeditor.SpritePacker" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -438,6 +453,10 @@
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.SpriteEditor" />
+      <item index="1" class="java.lang.String" itemvalue="Application.SpritePacker" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -449,12 +468,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512528066035</updated>
-      <workItem from="1512528067457" duration="1696000" />
+      <workItem from="1512528067457" duration="5053000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1696000" />
+    <option name="totallyTimeSpent" value="5053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -492,7 +511,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpritePacker.java</url>
+          <line>84</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -508,22 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="109" column="100" lean-forward="false" selection-start-line="109" selection-start-column="100" selection-end-line="109" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpritePacker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="211" column="100" lean-forward="false" selection-start-line="211" selection-start-column="100" selection-end-line="211" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpriteLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="351" column="17" lean-forward="false" selection-start-line="351" selection-start-column="17" selection-end-line="351" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -650,8 +662,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/data/DataFileDecrypter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9264">
-          <caret line="579" column="21" lean-forward="false" selection-start-line="579" selection-start-column="21" selection-end-line="579" selection-end-column="21" />
+        <state relative-caret-position="-7354">
+          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpriteLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4979">
+          <caret line="351" column="17" lean-forward="false" selection-start-line="351" selection-start-column="17" selection-end-line="351" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/firescape/spriteeditor/SpritePacker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-124">
+          <caret line="185" column="25" lean-forward="false" selection-start-line="185" selection-start-column="25" selection-end-line="185" selection-end-column="25" />
           <folding />
         </state>
       </provider>
