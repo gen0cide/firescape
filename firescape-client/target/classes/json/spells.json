@@ -1,0 +1,834 @@
+[
+  {
+    "id": 0,
+    "name": "Wind strike",
+    "description": "A strength 1 missile attack",
+    "level": 1,
+    "totalRequiredRuneCount": 2,
+    "type": 2,
+    "requiredRuneIDs": [
+      33,
+      35
+    ],
+    "requiredRuneCounts": [
+      1,
+      1
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Confuse",
+    "description": "Reduces your opponents attack by 5%",
+    "level": 3,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      34,
+      36
+    ],
+    "requiredRuneCounts": [
+      3,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Water strike",
+    "description": "A strength 2 missile attack",
+    "level": 5,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      33,
+      35
+    ],
+    "requiredRuneCounts": [
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Enchant lvl-1 amulet",
+    "description": "For use on sapphire amulets",
+    "level": 7,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      32,
+      46
+    ],
+    "requiredRuneCounts": [
+      1,
+      1
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Earth strike",
+    "description": "A strength 3 missile attack",
+    "level": 9,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      33,
+      35
+    ],
+    "requiredRuneCounts": [
+      2,
+      1,
+      1
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Weaken",
+    "description": "Reduces your opponents strength by 5%",
+    "level": 11,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      34,
+      36
+    ],
+    "requiredRuneCounts": [
+      3,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Fire strike",
+    "description": "A strength 4 missile attack",
+    "level": 13,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      35
+    ],
+    "requiredRuneCounts": [
+      3,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Bones to bananas",
+    "description": "Changes all held bones into bananas!",
+    "level": 15,
+    "totalRequiredRuneCount": 3,
+    "type": 0,
+    "requiredRuneIDs": [
+      34,
+      32,
+      40
+    ],
+    "requiredRuneCounts": [
+      2,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Wind bolt",
+    "description": "A strength 5 missile attack",
+    "level": 17,
+    "totalRequiredRuneCount": 2,
+    "type": 2,
+    "requiredRuneIDs": [
+      33,
+      41
+    ],
+    "requiredRuneCounts": [
+      2,
+      1
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Curse",
+    "description": "Reduces your opponents defense by 5%",
+    "level": 19,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      34,
+      36
+    ],
+    "requiredRuneCounts": [
+      2,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Low level alchemy",
+    "description": "Converts an item into gold",
+    "level": 21,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      31,
+      40
+    ],
+    "requiredRuneCounts": [
+      3,
+      1
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Water bolt",
+    "description": "A strength 6 missile attack",
+    "level": 23,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      33,
+      41
+    ],
+    "requiredRuneCounts": [
+      2,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Varrock teleport",
+    "description": "Teleports you to Varrock",
+    "level": 25,
+    "totalRequiredRuneCount": 3,
+    "type": 0,
+    "requiredRuneIDs": [
+      31,
+      33,
+      42
+    ],
+    "requiredRuneCounts": [
+      1,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Enchant lvl-2 amulet",
+    "description": "For use on emerald amulets",
+    "level": 27,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      33,
+      46
+    ],
+    "requiredRuneCounts": [
+      3,
+      1
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Earth bolt",
+    "description": "A strength 7 missile attack",
+    "level": 29,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      33,
+      41
+    ],
+    "requiredRuneCounts": [
+      3,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Lumbridge teleport",
+    "description": "Teleports you to Lumbridge",
+    "level": 31,
+    "totalRequiredRuneCount": 3,
+    "type": 0,
+    "requiredRuneIDs": [
+      34,
+      33,
+      42
+    ],
+    "requiredRuneCounts": [
+      1,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Telekinetic grab",
+    "description": "Take an item you can see but can\u0027t reach",
+    "level": 33,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      33,
+      42
+    ],
+    "requiredRuneCounts": [
+      1,
+      1
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Fire bolt",
+    "description": "A strength 8 missile attack",
+    "level": 35,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      41
+    ],
+    "requiredRuneCounts": [
+      4,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Falador teleport",
+    "description": "Teleports you to Falador",
+    "level": 37,
+    "totalRequiredRuneCount": 3,
+    "type": 0,
+    "requiredRuneIDs": [
+      32,
+      33,
+      42
+    ],
+    "requiredRuneCounts": [
+      1,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Crumble undead",
+    "description": "Hits skeleton, ghosts \u0026 zombies hard!",
+    "level": 39,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      33,
+      41
+    ],
+    "requiredRuneCounts": [
+      2,
+      2,
+      1
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Wind blast",
+    "description": "A strength 9 missile attack",
+    "level": 41,
+    "totalRequiredRuneCount": 2,
+    "type": 2,
+    "requiredRuneIDs": [
+      33,
+      38
+    ],
+    "requiredRuneCounts": [
+      3,
+      1
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Superheat item",
+    "description": "Smelt 1 ore without a furnace",
+    "level": 43,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      31,
+      40
+    ],
+    "requiredRuneCounts": [
+      4,
+      1
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Camelot teleport",
+    "description": "Teleports you to Camelot",
+    "level": 45,
+    "totalRequiredRuneCount": 2,
+    "type": 0,
+    "requiredRuneIDs": [
+      33,
+      42
+    ],
+    "requiredRuneCounts": [
+      5,
+      1
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Water blast",
+    "description": "A strength 10 missile attack",
+    "level": 47,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      33,
+      38
+    ],
+    "requiredRuneCounts": [
+      3,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Enchant lvl-3 amulet",
+    "description": "For use on ruby amulets",
+    "level": 49,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      31,
+      46
+    ],
+    "requiredRuneCounts": [
+      5,
+      1
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Iban blast",
+    "description": "A strength 25 missile attack!",
+    "level": 50,
+    "totalRequiredRuneCount": 2,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      38
+    ],
+    "requiredRuneCounts": [
+      5,
+      1
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Ardougne teleport",
+    "description": "Teleports you to Ardougne",
+    "level": 51,
+    "totalRequiredRuneCount": 2,
+    "type": 0,
+    "requiredRuneIDs": [
+      32,
+      42
+    ],
+    "requiredRuneCounts": [
+      2,
+      2
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Earth blast",
+    "description": "A strength 11 missile attack",
+    "level": 53,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      33,
+      38
+    ],
+    "requiredRuneCounts": [
+      4,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 28,
+    "name": "High level alchemy",
+    "description": "Convert an item into more gold",
+    "level": 55,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      31,
+      40
+    ],
+    "requiredRuneCounts": [
+      5,
+      1
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Charge Water Orb",
+    "description": "Needs to be cast on a water obelisk",
+    "level": 56,
+    "totalRequiredRuneCount": 3,
+    "type": 5,
+    "requiredRuneIDs": [
+      32,
+      46,
+      611
+    ],
+    "requiredRuneCounts": [
+      30,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Enchant lvl-4 amulet",
+    "description": "For use on diamond amulets",
+    "level": 57,
+    "totalRequiredRuneCount": 2,
+    "type": 3,
+    "requiredRuneIDs": [
+      34,
+      46
+    ],
+    "requiredRuneCounts": [
+      10,
+      1
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Watchtower teleport",
+    "description": "Teleports you to the watchtower",
+    "level": 58,
+    "totalRequiredRuneCount": 2,
+    "type": 0,
+    "requiredRuneIDs": [
+      34,
+      42
+    ],
+    "requiredRuneCounts": [
+      2,
+      2
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Fire blast",
+    "description": "A strength 12 missile attack",
+    "level": 59,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      38
+    ],
+    "requiredRuneCounts": [
+      5,
+      4,
+      1
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Claws of Guthix",
+    "description": "Summons the power of Guthix",
+    "level": 60,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      1,
+      4,
+      2
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Saradomin strike",
+    "description": "Summons the power of Saradomin",
+    "level": 60,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      2,
+      4,
+      2
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Flames of Zamorak",
+    "description": "Summons the power of Zamorak",
+    "level": 60,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      4,
+      1,
+      2
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Charge earth Orb",
+    "description": "Needs to be cast on an earth obelisk",
+    "level": 60,
+    "totalRequiredRuneCount": 3,
+    "type": 5,
+    "requiredRuneIDs": [
+      34,
+      46,
+      611
+    ],
+    "requiredRuneCounts": [
+      30,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Wind wave",
+    "description": "A strength 13 missile attack",
+    "level": 62,
+    "totalRequiredRuneCount": 2,
+    "type": 2,
+    "requiredRuneIDs": [
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      5,
+      1
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Charge Fire Orb",
+    "description": "Needs to be cast on a fire obelisk",
+    "level": 63,
+    "totalRequiredRuneCount": 3,
+    "type": 5,
+    "requiredRuneIDs": [
+      31,
+      46,
+      611
+    ],
+    "requiredRuneCounts": [
+      30,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Water wave",
+    "description": "A strength 14 missile attack",
+    "level": 65,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      32,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      7,
+      5,
+      1
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Charge air Orb",
+    "description": "Needs to be cast on an air obelisk",
+    "level": 66,
+    "totalRequiredRuneCount": 3,
+    "type": 5,
+    "requiredRuneIDs": [
+      33,
+      46,
+      611
+    ],
+    "requiredRuneCounts": [
+      30,
+      3,
+      1
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Vulnerability",
+    "description": "Reduces your opponents defense by 10%",
+    "level": 66,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      32,
+      825
+    ],
+    "requiredRuneCounts": [
+      5,
+      5,
+      1
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Enchant lvl-5 amulet",
+    "description": "For use on dragonstone amulets",
+    "level": 68,
+    "totalRequiredRuneCount": 3,
+    "type": 3,
+    "requiredRuneIDs": [
+      32,
+      34,
+      46
+    ],
+    "requiredRuneCounts": [
+      15,
+      15,
+      1
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Earth wave",
+    "description": "A strength 15 missile attack",
+    "level": 70,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      7,
+      5,
+      1
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Enfeeble",
+    "description": "Reduces your opponents strength by 10%",
+    "level": 73,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      32,
+      825
+    ],
+    "requiredRuneCounts": [
+      8,
+      8,
+      1
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Fire wave",
+    "description": "A strength 16 missile attack",
+    "level": 75,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      31,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      7,
+      5,
+      1
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Stun",
+    "description": "Reduces your opponents attack by 10%",
+    "level": 80,
+    "totalRequiredRuneCount": 3,
+    "type": 2,
+    "requiredRuneIDs": [
+      34,
+      32,
+      825
+    ],
+    "requiredRuneCounts": [
+      12,
+      12,
+      1
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Charge",
+    "description": "Increase your mage arena spells damage",
+    "level": 80,
+    "totalRequiredRuneCount": 3,
+    "type": 0,
+    "requiredRuneIDs": [
+      31,
+      33,
+      619
+    ],
+    "requiredRuneCounts": [
+      3,
+      3,
+      3
+    ]
+  }
+]

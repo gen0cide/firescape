@@ -1,5 +1,7 @@
 package org.firescape.client;
 
+import org.firescape.client.assets.Sprite;
+
 import java.awt.*;
 import java.awt.image.*;
 
@@ -637,6 +639,23 @@ public class Surface implements ImageProducer, ImageObserver {
       }
       pixels[pixel] = colour;
     }
+
+//    int i = spriteId;
+//    Sprite s = new Sprite(
+//      spriteId,
+//      spriteId,
+//      spriteWidth[i],
+//      spriteHeight[i],
+//      spriteWidthFull[i],
+//      spriteHeightFull[i],
+//      spriteColourList[i].length,
+//      spriteColourList[i],
+//      spriteTranslateX[i],
+//      spriteTranslateY[i],
+//      spriteTranslate[i],
+//      pixels
+//    );
+//    s.saveSprite();
 
     spritePixels[spriteId] = pixels;
     spriteColoursUsed[spriteId] = null;
