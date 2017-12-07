@@ -12,6 +12,57 @@
     <className>org.firescape.server.npchandler.Bankers</className>
   </NpcHandler>
 
+  <NpcHandler>
+    <ids>
+      <int>94</int>
+    </ids>
+    <className>org.firescape.server.npchandler.DwarfMinner</className>
+  </NpcHandler>
+
+    <NpcHandler>
+    <ids>
+      <int>4</int>
+      <int>62</int>
+      <int>153</int>
+      <int>154</int>
+    </ids>
+    <className>org.firescape.server.npchandler.GoblinPoison</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>76</int>
+    </ids>
+    <className>org.firescape.server.npchandler.BarbarianGear</className>
+  </NpcHandler>
+  
+  <NpcHandler>
+    <ids>
+      <int>78</int>
+    </ids>
+    <className>org.firescape.server.npchandler.BarbarianUpgrade</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>6</int>
+    </ids>
+    <className>org.firescape.server.npchandler.CowSay</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>5</int>
+    </ids>
+    <className>org.firescape.server.npchandler.HansSay</className>
+  </NpcHandler>
+
+  <NpcHandler>
+    <ids>
+      <int>9</int>
+    </ids>
+    <className>org.firescape.server.npchandler.PriestGear</className>
+  </NpcHandler>
 
     <NpcHandler>
     <ids>
