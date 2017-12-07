@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="23c84063-2d7a-4e76-a4e5-9479a55c4fbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/deprecated/main/resources/org/firescape/server/conf/server/NpcHandlers.xml" afterPath="$PROJECT_DIR$/deprecated/main/resources/org/firescape/server/conf/server/NpcHandlers.xml" />
-      <change beforePath="$PROJECT_DIR$/firescape-client/target/firescape-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/firescape-client/target/firescape-jar-with-dependencies.jar" />
-      <change beforePath="$PROJECT_DIR$/firescape-client/target/firescape.jar" afterPath="$PROJECT_DIR$/firescape-client/target/firescape.jar" />
-      <change beforePath="$PROJECT_DIR$/firescape-client/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/firescape-client/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/firescape-client/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/firescape-client/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/firescape-client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/firescape-client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/classes/server/NpcHandlers.xml" afterPath="$PROJECT_DIR$/firescape-server/target/classes/server/NpcHandlers.xml" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/classes/server/locs/Shops.xml.gz" afterPath="$PROJECT_DIR$/firescape-server/target/classes/server/locs/Shops.xml.gz" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/firescape-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/firescape-server/target/firescape-jar-with-dependencies.jar" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/firescape.jar" afterPath="$PROJECT_DIR$/firescape-server/target/firescape.jar" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/firescape-server/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/firescape-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/firescape-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/firescape-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/jars/server/server-1.0.jar" afterPath="$PROJECT_DIR$/jars/server/server-1.0.jar" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/org/firescape/server/conf/server/NpcHandlers.xml" afterPath="$PROJECT_DIR$/server/src/main/resources/org/firescape/server/conf/server/NpcHandlers.xml" />
-    </list>
+    <list default="true" id="23c84063-2d7a-4e76-a4e5-9479a55c4fbc" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/server/target/" />
     <ignored path="$PROJECT_DIR$/client/target/" />
@@ -529,7 +513,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17652000" />
+    <option name="totallyTimeSpent" value="17653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="37" width="1680" height="964" extended-state="0" />
