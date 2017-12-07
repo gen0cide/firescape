@@ -380,27 +380,21 @@ public class GameConnection extends GameShell {
       return;
     }
     if (opcode == Command.Server.SV_FRIEND_STATUS_CHANGE) {
-      long hash = Utility.getUnsignedLong(incomingPacket, 1);
+      long hash = Utility.getUnsignedLong(incomingPacket, 2);
       int online = 0;
       for (int i2 = 0; i2 < friendListCount; i2++) {
         if (friendListHashes[i2] == hash) {
+          friendListOnline[i2] = Utility.getUnsignedByte(incomingPacket[10]);
           if (friendListOnline[i2] == 0) {
             showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged in");
-            online = 1;
           }
           if (friendListOnline[i2] != 0) {
             showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged out");
           }
-          friendListOnline[i2] = online;
-          psize = 0; // not sure what this is for
           sortFriendsList();
           return;
         }
       }
-      friendListHashes[friendListCount] = hash;
-      friendListOnline[friendListCount] = online;
-      friendListCount++;
-      sortFriendsList();
       return;
     }
     if (opcode == Command.Server.SV_IGNORE_LIST) {
@@ -419,18 +413,8 @@ public class GameConnection extends GameShell {
     }
     if (opcode == Command.Server.SV_FRIEND_MESSAGE) {
       long from = Utility.getUnsignedLong(incomingPacket, 1);
-      long k1 = Utility.getUnsignedInt(incomingPacket, 9); // is this some sort of message id ?
-      for (int j2 = 0; j2 < maxSocialListSize; j2++) {
-        if (friendListUnknown[j2] == k1) {
-          return;
-        }
-      }
-
-      friendListUnknown[friendListUnknown2] = k1;
-      friendListUnknown2 = (friendListUnknown2 + 1) % maxSocialListSize;
-      String rawMessage = new String(Arrays.copyOfRange(incomingPacket, 13, 13 + (psize - 13)));
-      String msg = WordFilter.filter(rawMessage);
-      showServerMessage("@pri@" + Utility.hash2username(from) + ": tells you " + msg);
+      String rawMessage = new String(Arrays.copyOfRange(incomingPacket, 9, psize));
+      showServerMessage("@pri@" + Utility.hash2username(from) + ": tells you " +rawMessage);
       return;
     }
     handleIncomingPacket(opcode, ptype, psize, incomingPacket);

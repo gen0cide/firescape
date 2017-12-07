@@ -1,9 +1,6 @@
 package org.firescape.server.packetbuilder.client;
 
-import org.firescape.server.model.Bank;
-import org.firescape.server.model.InvItem;
-import org.firescape.server.model.Player;
-import org.firescape.server.model.Shop;
+import org.firescape.server.model.*;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.opcode.Command;
 import org.firescape.server.opcode.Opcode;
@@ -484,7 +481,6 @@ public class MiscPacketBuilder {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_MESSAGE));
     s.addLong(usernameHash);
-    s.addInt(0);
     s.addBytes(message);
     this.packets.add(s.toPacket());
   }
@@ -496,6 +492,14 @@ public class MiscPacketBuilder {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_STATUS_CHANGE));
     s.addLong(usernameHash);
+    Player fp = World.getWorld().getPlayer(usernameHash);
+    if (fp == null) {
+      s.addByte((byte) 0);
+    } else if (fp.loggedIn()) {
+      s.addByte((byte) 1);
+    } else {
+      s.addByte((byte) 0);
+    }
     this.packets.add(s.toPacket());
   }
 
@@ -508,7 +512,12 @@ public class MiscPacketBuilder {
     s.addByte((byte) this.player.getFriendList().size());
     for (String friend : this.player.getFriendList()) {
       s.addLong(org.firescape.server.util.DataConversions.usernameToHash(friend));
-      s.addByte((byte) 1);
+      Player fp = World.getWorld().getPlayer(friend);
+      if (fp == null) {
+        s.addByte((byte) 0);
+      } else {
+        s.addByte((byte) 1);
+      }
     }
     this.packets.add(s.toPacket());
   }

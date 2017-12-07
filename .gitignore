@@ -1,5 +1,5 @@
 *.class
-rscd.jar
+*.jar
 .metadata
 .recommenders
 .DS_Store
@@ -10,4 +10,5 @@ firescape-server/players/*.cfg
 .env
 .lst
 client/target
-Server/target
+server/target
+.idea/

@@ -48,13 +48,12 @@ public class PlayerLoader {
           }
         } else {
           Properties pr = new Properties();
-          pr.load(new FileInputStream(new File("players/Template")));
+          pr.load(PlayerLoader.class.getResourceAsStream("/org/firescape/server/players/base.cfg"));
           ByteArrayOutputStream bos = new ByteArrayOutputStream();
           pr.setProperty("pass", pass);
           pr.store(bos, "Redis backed character data");
           jedis.set(redis_key, bos.toString());
           Logger.print("Saved " + redis_key + " data to redis.", 3);
-          // Server.writeValue(user, "pass", pass);
           Logger.print("Account Created: " + user, 3);
           return 1;
         }

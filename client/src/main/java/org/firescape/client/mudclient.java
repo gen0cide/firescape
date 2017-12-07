@@ -2145,7 +2145,7 @@ public class mudclient extends GameConnection {
     if (uiTabSocialSubTab == 0) {
       for (int index = 0; index < super.friendListCount; index++) {
         String s;
-        if (super.friendListOnline[index] == 255) {
+        if (super.friendListOnline[index] == 1) {
           s = "@gre@";
         } else if (super.friendListOnline[index] > 0) {
           s = "@yel@";
@@ -2186,21 +2186,7 @@ public class mudclient extends GameConnection {
         } else if (super.friendListOnline[index] == 255) {
           surface.drawStringCenter("Click to message " + name, uiX + uiWidth / 2, uiY + 35, 1, 0xffffff);
         } else if (super.friendListOnline[index] > 0) {
-          if (super.friendListOnline[index] < 200) {
-            surface.drawStringCenter(name + " is on world " + (super.friendListOnline[index] - 9),
-                                     uiX + uiWidth / 2,
-                                     uiY + 35,
-                                     1,
-                                     0xffffff
-            );
-          } else {
-            surface.drawStringCenter(name + " is on classic " + (super.friendListOnline[index] - 219),
-                                     uiX + uiWidth / 2,
-                                     uiY + 35,
-                                     1,
-                                     0xffffff
-            );
-          }
+
         } else {
           surface.drawStringCenter(name + " is offline", uiX + uiWidth / 2, uiY + 35, 1, 0xffffff);
         }
@@ -2371,10 +2357,14 @@ public class mudclient extends GameConnection {
         super.inputPmCurrent = "";
         super.inputPmFinal = "";
         showDialogSocialInput = 0;
-        byte[] msg = Utility.stringToByteArray(s1);
-        sendPrivateMessage(Utility.username2hash(privateMessageTarget), msg, msg.length);
-        s1 = WordFilter.filter(s1);
-        showServerMessage("@pri@You tell " + privateMessageTarget + ": " + s1);
+        byte[] msg = new byte[0];
+        try {
+          msg = s1.getBytes("UTF-8");
+          sendPrivateMessage(Utility.username2hash(privateMessageTarget), msg, msg.length);
+          showServerMessage("@pri@You tell " + privateMessageTarget + ": " + s1);
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+        }
       }
     }
     if (showDialogSocialInput == 3) {
@@ -8141,8 +8131,6 @@ public class mudclient extends GameConnection {
             offset += mLen;
           }
         }
-
-        System.out.println("WAT");
         return;
       }
       if (opcode == Command.Server.SV_REGION_WALL_OBJECTS) {
@@ -8638,13 +8626,7 @@ public class mudclient extends GameConnection {
           newBankItems[index] = Utility.getUnsignedShort(pdata, offset);
           offset += 2;
           newBankItemsCount[index] = Utility.getUnsignedInt(pdata, offset);
-          if (Version.CLIENT <= 204) {
-            if (newBankItemsCount[index] >= 128) {
-              offset += 4;
-            } else {
-              offset++;
-            }
-          }
+          offset += 4;
         }
 
         updateBankItems();

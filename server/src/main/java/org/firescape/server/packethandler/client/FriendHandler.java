@@ -36,7 +36,7 @@ public class FriendHandler implements PacketHandler {
         }
       }
       if (isOnline) {
-        player.getActionSender().sendFriendUpdate(f, org.firescape.server.util.Config.SERVER_NUM);
+        player.getActionSender().sendFriendUpdate(f, 1);
       } else {
         player.getActionSender().sendFriendUpdate(f, 0);
       }
@@ -66,8 +66,7 @@ public class FriendHandler implements PacketHandler {
       }
       if (player.getFriendList().contains(friend) && !player.getIgnoreList().contains(friend) && isOnline) {
         Player pe = world.getPlayer(f);
-        // System.out.println(DataConversions.byteToString(remaining, 0,
-        // remaining.length));
+        pa.getActionSender().sendPrivateMessage(player.getUsernameHash(), remaining);
       } else {
         player.getActionSender().sendMessage("the target is not online.");
       }
