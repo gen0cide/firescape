@@ -12,3 +12,5 @@ firescape-server/players/*.cfg
 client/target
 server/target
 .idea/
+!lib/jruby-gems.jar
+!lib/hex-string.jar
