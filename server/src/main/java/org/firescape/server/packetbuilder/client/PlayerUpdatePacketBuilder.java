@@ -7,6 +7,7 @@ import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import java.util.List;
 
 public class PlayerUpdatePacketBuilder {
+
   private Player playerToUpdate;
 
   /**

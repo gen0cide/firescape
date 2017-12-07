@@ -4,6 +4,7 @@ import org.firescape.server.model.Mob;
 import org.firescape.server.model.Player;
 
 public abstract class WalkToMobEvent extends DelayedEvent {
+
   private final int radius;
   protected Mob affectedMob;
 

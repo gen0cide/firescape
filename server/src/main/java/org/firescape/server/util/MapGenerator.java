@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class MapGenerator {
+
   private static final World world = World.getWorld();
   private static final String[] labels = {
     "Ground", "Level-1", "Level-2", "Underground"

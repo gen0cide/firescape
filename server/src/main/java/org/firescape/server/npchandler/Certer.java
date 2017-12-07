@@ -7,6 +7,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class Certer implements NpcHandler {
+
   /**
    * World instance
    */

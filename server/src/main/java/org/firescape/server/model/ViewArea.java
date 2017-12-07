@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewArea {
+
   private static final World world = World.getWorld();
   private final Mob mob;
 

@@ -6,6 +6,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class Wyson implements NpcHandler {
+
   /**
    * World instance
    */

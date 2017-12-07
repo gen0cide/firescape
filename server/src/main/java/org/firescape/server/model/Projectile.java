@@ -1,6 +1,7 @@
 package org.firescape.server.model;
 
 public class Projectile {
+
   /**
    * Who fired the projectile
    */

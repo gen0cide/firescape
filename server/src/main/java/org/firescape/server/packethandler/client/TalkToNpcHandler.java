@@ -13,6 +13,7 @@ import org.firescape.server.states.Action;
 import org.firescape.server.util.Logger;
 
 public class TalkToNpcHandler implements PacketHandler {
+
   /**
    * World instance
    */

@@ -6,6 +6,7 @@ import org.apache.mina.common.IoSession;
  * An immutable packet object.
  */
 public final class RSCPacket extends Packet {
+
   /**
    * The ID of the packet
    */

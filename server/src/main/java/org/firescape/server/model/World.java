@@ -27,6 +27,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 public final class World {
+
   /**
    * The maximum width of the map
    */

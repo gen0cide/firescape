@@ -9,6 +9,7 @@ import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class ShopHandler implements PacketHandler {
+
   /**
    * World instance
    */

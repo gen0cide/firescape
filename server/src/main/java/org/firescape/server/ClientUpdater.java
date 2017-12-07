@@ -11,6 +11,7 @@ import org.firescape.server.util.EntityList;
 import java.util.List;
 
 public final class ClientUpdater {
+
   private static final World world = World.getWorld();
   private final EntityList<Player> players = world.getPlayers();
   private final EntityList<Npc> npcs = world.getNpcs();

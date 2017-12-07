@@ -10133,6 +10133,7 @@ public class mudclient extends GameConnection {
   }
 
   public static class MinimapEntity {
+
     public MinimapEntityType type;
     public int x;
     public int y;

@@ -13,6 +13,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public class PersistenceManager {
+
   private static final XStream xstream = new XStream();
 
   static {

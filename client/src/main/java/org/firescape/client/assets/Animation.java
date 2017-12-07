@@ -1,6 +1,7 @@
 package org.firescape.client.assets;
 
 public class Animation {
+
   public int id;
   public String name;
   public int color;

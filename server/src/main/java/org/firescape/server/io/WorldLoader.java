@@ -17,6 +17,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 public class WorldLoader {
+
   private ZipFile tileArchive;
   private ZipInputStream zipStream;
   // private ZipOutputStream out;

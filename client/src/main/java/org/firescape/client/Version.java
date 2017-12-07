@@ -1,6 +1,7 @@
 package org.firescape.client;
 
 public class Version {
+
   public static short FIRESCAPE_VERSION = 1;
   public static int CLIENT = 204;
   public static int CONFIG = 85;

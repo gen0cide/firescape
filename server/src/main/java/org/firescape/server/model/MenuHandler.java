@@ -1,6 +1,7 @@
 package org.firescape.server.model;
 
 public abstract class MenuHandler {
+
   /**
    * The Player this handler is responsible for
    */

@@ -1,6 +1,7 @@
 package org.firescape.server.model;
 
 public class Path {
+
   /**
    * The starting coordinates for the path
    */

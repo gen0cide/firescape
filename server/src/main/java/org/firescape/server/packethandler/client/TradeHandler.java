@@ -14,6 +14,7 @@ import org.firescape.server.packethandler.PacketHandler;
 import java.util.ArrayList;
 
 public class TradeHandler implements PacketHandler {
+
   /**
    * World instance
    */
@@ -52,10 +53,9 @@ public class TradeHandler implements PacketHandler {
       }
       player.setWishToTrade(affectedPlayer);
       player.getActionSender()
-            .sendMessage(affectedPlayer.isTrading() ? affectedPlayer.getUsername() +
-                                                      " is " +
-                                                      "already" +
-                                                      " in a trade" : "Sending trade request");
+            .sendMessage(affectedPlayer.isTrading()
+                         ? affectedPlayer.getUsername() + " is " + "already" + " in a trade"
+                         : "Sending trade request");
       affectedPlayer.getActionSender().sendMessage(player.getUsername() + " wishes to trade with you");
       if (!player.isTrading() &&
           affectedPlayer.getWishToTrade() != null &&

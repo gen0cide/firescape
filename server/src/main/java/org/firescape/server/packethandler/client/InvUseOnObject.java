@@ -20,6 +20,7 @@ import org.firescape.server.util.Formulae;
 import java.util.List;
 
 public class InvUseOnObject implements PacketHandler {
+
   /**
    * World instance
    */

@@ -9,6 +9,7 @@ import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import java.util.List;
 
 public class NpcUpdatePacketBuilder {
+
   private Player playerToUpdate;
 
   /**

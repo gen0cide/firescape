@@ -170,7 +170,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the npcs ID
+   * @param id
+   *   the npcs ID
    *
    * @return the CerterDef for the given npc
    */
@@ -179,7 +180,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ItemSmeltingDef with the given ID
    */
@@ -188,7 +190,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ItemCookingDef with the given ID
    */
@@ -197,7 +200,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ObjectFishingDef with the given ID
    */
@@ -210,7 +214,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ObjectMiningDef with the given ID
    */
@@ -219,7 +224,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ObjectWoodcuttingDef with the given ID
    */
@@ -228,7 +234,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ItemHerbDef with the given ID
    */
@@ -237,7 +244,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param the point we are currently at
+   * @param the
+   *   point we are currently at
    *
    * @return the point we should be teleported to
    */
@@ -253,7 +261,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param the spells id
+   * @param the
+   *   spells id
    *
    * @return the lvl of the spell (for calculating what it hits)
    */
@@ -266,7 +275,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param the items id
+   * @param the
+   *   items id
    *
    * @return the amount eating the item should heal
    */
@@ -279,7 +289,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param the items type
+   * @param the
+   *   items type
    *
    * @return the types of items affected
    */
@@ -288,7 +299,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ItemUnIdentHerbDef with the given ID
    */
@@ -297,7 +309,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ItemWieldableDef with the given ID
    */
@@ -306,7 +319,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the DoorDef with the given ID
    */
@@ -318,7 +332,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the GameObjectDef with the given ID
    */
@@ -330,7 +345,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the ItemDef with the given ID
    */
@@ -342,7 +358,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the TileDef with the given ID
    */
@@ -354,7 +371,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the NPCDef with the given ID
    */
@@ -366,7 +384,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the PrayerDef with the given ID
    */
@@ -378,7 +397,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the entities ID
+   * @param id
+   *   the entities ID
    *
    * @return the SpellDef with the given ID
    */

@@ -4,6 +4,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class ManMeatSeller implements NpcHandler {
+
   /**
    * World instance
    */

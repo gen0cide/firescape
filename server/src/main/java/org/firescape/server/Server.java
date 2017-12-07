@@ -28,6 +28,7 @@ import java.util.Set;
  * The entry point for RSC server.
  */
 public class Server {
+
   public static final String JRubyEntryPoint = "require 'pry'\n" +
                                                "require 'pry-remote'\n" +
                                                "require 'redis'\n" +
@@ -408,6 +409,7 @@ public class Server {
   }
 
   public interface MathLib {
+
     String Puts(String s);
   }
 }

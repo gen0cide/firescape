@@ -4,6 +4,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class DwarfMinner implements NpcHandler {
+
   /**
    * World instance
    */
@@ -15,9 +16,8 @@ public class DwarfMinner implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "No thanks",
-                "Deal!"
+        String[] options = new String[] {
+          "No thanks", "Deal!"
         };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {

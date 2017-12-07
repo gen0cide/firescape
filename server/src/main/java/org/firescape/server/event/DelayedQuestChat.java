@@ -5,6 +5,7 @@ import org.firescape.server.model.Npc;
 import org.firescape.server.model.Player;
 
 public abstract class DelayedQuestChat extends DelayedEvent {
+
   public int curIndex;
   public String[] messages;
   public Npc npc;

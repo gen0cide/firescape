@@ -9,6 +9,7 @@ import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
 
 public class PlayerLogin implements PacketHandler {
+
   /**
    * World instance
    */

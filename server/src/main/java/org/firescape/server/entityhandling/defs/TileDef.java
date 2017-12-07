@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs;
 
 public class TileDef {
+
   public int colour;
   public int unknown;
   public int objectType;

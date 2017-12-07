@@ -6,6 +6,7 @@ import org.firescape.server.entityhandling.locs.ItemLoc;
 import org.firescape.server.event.DelayedEvent;
 
 public class Item extends Entity {
+
   /**
    * World instance
    */

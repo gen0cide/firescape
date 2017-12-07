@@ -9,6 +9,7 @@ import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.Formulae;
 
 public class SessionRequest implements PacketHandler {
+
   /**
    * World instance
    */

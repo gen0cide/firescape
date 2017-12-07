@@ -5,6 +5,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class Juliet implements NpcHandler {
+
   /**
    * World instance
    */

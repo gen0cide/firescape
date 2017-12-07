@@ -4,6 +4,7 @@ import org.firescape.server.model.GameObject;
 import org.firescape.server.model.Player;
 
 public abstract class WalkToObjectEvent extends DelayedEvent {
+
   private final boolean stop;
   protected GameObject object;
 

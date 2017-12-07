@@ -4,6 +4,7 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.Point;
 
 public abstract class WalkToPointEvent extends DelayedEvent {
+
   private final int radius;
   private final boolean stop;
   protected Point location;

@@ -9,6 +9,7 @@ import org.firescape.server.util.Formulae;
 import java.util.ArrayList;
 
 public class RangeEvent extends DelayedEvent {
+
   private final Mob affectedMob;
   private boolean firstRun = true;
 

@@ -186,8 +186,10 @@ public class GameConnection extends GameShell {
         return;
       }
       if (resp == 4) {
-        showLoginScreenStatus("The client has been updated.", "Download the latest at github" +
-                                                              ".com/gen0cide/firescape/releases");
+        showLoginScreenStatus(
+          "The client has been updated.",
+          "Download the latest at github" + ".com/gen0cide/firescape/releases"
+        );
         return;
       }
       if (resp == 6) {
@@ -414,7 +416,7 @@ public class GameConnection extends GameShell {
     if (opcode == Command.Server.SV_FRIEND_MESSAGE) {
       long from = Utility.getUnsignedLong(incomingPacket, 1);
       String rawMessage = new String(Arrays.copyOfRange(incomingPacket, 9, psize));
-      showServerMessage("@pri@" + Utility.hash2username(from) + ": tells you " +rawMessage);
+      showServerMessage("@pri@" + Utility.hash2username(from) + ": tells you " + rawMessage);
       return;
     }
     handleIncomingPacket(opcode, ptype, psize, incomingPacket);

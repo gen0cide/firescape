@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MiscPacketBuilder {
+
   /**
    * The player we are creating packets for
    */
@@ -440,9 +441,9 @@ public class MiscPacketBuilder {
    */
   public void sendAlert(String message, boolean big) {
     RSCPacketBuilder s = new RSCPacketBuilder();
-    s.setID(big ? Opcode.getServer(204, Command.Server.SV_SERVER_MESSAGE) : Opcode.getServer(204,
-                                                                                             Command.Server.SV_SERVER_MESSAGE_ONTOP
-    ));
+    s.setID(big
+            ? Opcode.getServer(204, Command.Server.SV_SERVER_MESSAGE)
+            : Opcode.getServer(204, Command.Server.SV_SERVER_MESSAGE_ONTOP));
     try {
       s.addBytes(message.getBytes("UTF-8"));
     } catch (UnsupportedEncodingException e) {

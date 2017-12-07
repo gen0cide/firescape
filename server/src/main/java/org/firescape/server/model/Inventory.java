@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Inventory {
+
   /**
    * The maximum size of an inventory
    */

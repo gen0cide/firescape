@@ -6,6 +6,7 @@ import org.firescape.server.entityhandling.defs.GameObjectDef;
 import org.firescape.server.entityhandling.locs.GameObjectLoc;
 
 public class GameObject extends Entity {
+
   /**
    * Location definition of the object
    */

@@ -10,6 +10,7 @@ import org.firescape.server.util.StatefulEntityCollection;
 import java.util.Collection;
 
 public class NpcPositionPacketBuilder {
+
   private Player playerToUpdate;
 
   /**

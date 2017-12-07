@@ -5,6 +5,7 @@ import org.firescape.server.model.Path;
 import org.firescape.server.model.Player;
 
 public abstract class NpcWalkEvent extends DelayedEvent {
+
   private final int radius;
   protected Npc affectedMob;
 

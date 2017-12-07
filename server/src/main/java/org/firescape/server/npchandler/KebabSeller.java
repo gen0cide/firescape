@@ -5,6 +5,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class KebabSeller implements NpcHandler {
+
   /**
    * World instance
    */

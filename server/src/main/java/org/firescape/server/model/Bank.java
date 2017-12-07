@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Bank {
+
   /**
    * The maximum size of a bank
    */

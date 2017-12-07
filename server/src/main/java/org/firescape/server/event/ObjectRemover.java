@@ -5,6 +5,7 @@ import org.firescape.server.model.GameObject;
 import org.firescape.server.model.World;
 
 public class ObjectRemover extends DelayedEvent {
+
   public static final World world = World.getWorld();
   private final GameObject object;
 

@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class CerterDef {
+
   /**
    * Type of stall
    */

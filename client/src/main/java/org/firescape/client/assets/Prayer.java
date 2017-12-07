@@ -1,6 +1,7 @@
 package org.firescape.client.assets;
 
 public class Prayer {
+
   public int id;
   public String name;
   public String description;

@@ -11,6 +11,7 @@ import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 
 public class FriendHandler implements PacketHandler {
+
   /**
    * World instance
    */

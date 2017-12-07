@@ -10,9 +10,7 @@ import java.util.stream.Stream;
 public class Manager {
 
   public static final String[] scriptIncludes = {
-    "helper.js",
-    "hud.js",
-    "login.js"
+    "helper.js", "hud.js", "login.js"
   };
 
   private static ScriptEngineManager manager = new ScriptEngineManager();

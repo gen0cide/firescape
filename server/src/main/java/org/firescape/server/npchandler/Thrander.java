@@ -8,6 +8,7 @@ import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 
 public class Thrander implements NpcHandler {
+
   /**
    * World instance
    */

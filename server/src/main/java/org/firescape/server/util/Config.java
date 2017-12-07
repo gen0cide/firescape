@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
+
   public static int SERVER_NUM = 72;
   public static String CONF_DIR, RSCD_HOME;
   // public static int SERVER_PORT, SERVER_VERSION, MAX_PLAYERS, LS_PORT,
@@ -24,9 +25,11 @@ public class Config {
   /**
    * Called to load config settings from the given file
    *
-   * @param file the xml file to load settings from
+   * @param file
+   *   the xml file to load settings from
    *
-   * @throws IOException if an i/o error occurs
+   * @throws IOException
+   *   if an i/o error occurs
    */
   public static void initConfig(String file) throws IOException {
     START_TIME = System.currentTimeMillis();

@@ -7,6 +7,7 @@ import org.firescape.server.util.Logger;
  * A mutable sequence of bytes used to construct the immutable <code>RSCPacket</code> objects.
  */
 public class StaticPacketBuilder {
+
   /**
    * Default capacity
    */
@@ -78,7 +79,8 @@ public class StaticPacketBuilder {
   /**
    * Constructs a packet builder with no data and an initial capacity of <code>capacity</code>.
    *
-   * @param capacity The initial capacity of the buffer
+   * @param capacity
+   *   The initial capacity of the buffer
    */
   public StaticPacketBuilder(int capacity) {
     payload = new byte[capacity];
@@ -88,7 +90,8 @@ public class StaticPacketBuilder {
    * Sets this packet as bare. A bare packet will contain only the payload data, rather than having the standard packet
    * header prepended.
    *
-   * @param bare Whether this packet is to be sent bare
+   * @param bare
+   *   Whether this packet is to be sent bare
    */
   public StaticPacketBuilder setBare(boolean bare) {
     this.bare = bare;
@@ -122,7 +125,8 @@ public class StaticPacketBuilder {
   /**
    * Ensures that the buffer is at least <code>minimumBytes</code> bytes.
    *
-   * @param minimumCapacity The size needed
+   * @param minimumCapacity
+   *   The size needed
    */
   private void ensureCapacity(int minimumCapacity) {
     if (minimumCapacity >= payload.length) {
@@ -133,7 +137,8 @@ public class StaticPacketBuilder {
   /**
    * Expands the buffer to the specified size.
    *
-   * @param minimumCapacity The minimum capacity to which to expand
+   * @param minimumCapacity
+   *   The minimum capacity to which to expand
    *
    * @see java.lang.AbstractStringBuilder#expandCapacity(int)
    */
@@ -161,7 +166,8 @@ public class StaticPacketBuilder {
    * Adds the contents of <code>byte</code> array <code>data</code> to the packet. The size of this packet will grow by
    * the length of the provided array.
    *
-   * @param data The bytes to add to this packet
+   * @param data
+   *   The bytes to add to this packet
    *
    * @return A reference to this object
    */
@@ -173,9 +179,12 @@ public class StaticPacketBuilder {
    * Adds the contents of <code>byte</code> array <code>data</code>, starting at index <code>offset</code>. The size of
    * this packet will grow by <code>len</code> bytes.
    *
-   * @param data The bytes to add to this packet
-   * @param offset The index of the first byte to append
-   * @param len The number of bytes to append
+   * @param data
+   *   The bytes to add to this packet
+   * @param offset
+   *   The index of the first byte to append
+   * @param len
+   *   The number of bytes to append
    *
    * @return A reference to this object
    */
@@ -190,7 +199,8 @@ public class StaticPacketBuilder {
   /**
    * Adds a <code>byte</code> to the data buffer. The size of this packet will grow by one byte.
    *
-   * @param val The <code>byte</code> value to add
+   * @param val
+   *   The <code>byte</code> value to add
    *
    * @return A reference to this object
    */
@@ -201,8 +211,10 @@ public class StaticPacketBuilder {
   /**
    * Adds a <code>byte</code> to the data buffer. The size of this packet will grow by one byte.
    *
-   * @param val The <code>byte</code> value to add
-   * @param checkCapacity Whether the buffer capacity should be checked
+   * @param val
+   *   The <code>byte</code> value to add
+   * @param checkCapacity
+   *   Whether the buffer capacity should be checked
    *
    * @return A reference to this object
    */
@@ -217,7 +229,8 @@ public class StaticPacketBuilder {
   /**
    * Adds a <code>short</code> to the data stream. The size of this packet will grow by two bytes.
    *
-   * @param val The <code>short</code> value to add
+   * @param val
+   *   The <code>short</code> value to add
    *
    * @return A reference to this object
    */
@@ -231,7 +244,8 @@ public class StaticPacketBuilder {
   /**
    * Adds a <code>long</code> to the data stream. The size of this packet will grow by eight bytes.
    *
-   * @param val The <code>long</code> value to add
+   * @param val
+   *   The <code>long</code> value to add
    *
    * @return A reference to this object
    */
@@ -244,7 +258,8 @@ public class StaticPacketBuilder {
   /**
    * Adds a <code>int</code> to the data stream. The size of this packet will grow by four bytes.
    *
-   * @param val The <code>int</code> value to add
+   * @param val
+   *   The <code>int</code> value to add
    *
    * @return A reference to this object
    */

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CommandHandler implements PacketHandler {
+
   /**
    * World instance
    */

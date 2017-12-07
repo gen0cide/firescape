@@ -32,11 +32,9 @@ public class Script {
   }
 
   public void load() throws Exception {
-    BufferedReader br = new BufferedReader(
-      new InputStreamReader(
-        this.getClass().getResourceAsStream("/org/firescape/client/conf/scripts/" + path)
-      )
-    );
+    BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass()
+                                                                     .getResourceAsStream(
+                                                                       "/org/firescape/client/conf/scripts/" + path)));
     engine.eval(br);
   }
 

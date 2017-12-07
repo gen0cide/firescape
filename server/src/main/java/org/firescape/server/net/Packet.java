@@ -9,6 +9,7 @@ import java.net.InetSocketAddress;
  * An immutable packet object.
  */
 public class Packet {
+
   /**
    * The associated IO session
    */
@@ -37,8 +38,10 @@ public class Packet {
   /**
    * Creates a new packet with the specified parameters. The packet is considered not to be a bare packet.
    *
-   * @param session The session to associate with the packet
-   * @param pData The payload the packet
+   * @param session
+   *   The session to associate with the packet
+   * @param pData
+   *   The payload the packet
    */
   public Packet(IoSession session, byte[] pData) {
     this(session, pData, false);
@@ -47,9 +50,12 @@ public class Packet {
   /**
    * Creates a new packet with the specified parameters.
    *
-   * @param session The session to associate with the packet
-   * @param pData The payload of the packet
-   * @param bare Whether this packet is bare, which means that it does not include the standard packet header
+   * @param session
+   *   The session to associate with the packet
+   * @param pData
+   *   The payload of the packet
+   * @param bare
+   *   Whether this packet is bare, which means that it does not include the standard packet header
    */
   public Packet(IoSession session, byte[] pData, boolean bare) {
     this.session = session;
@@ -209,7 +215,8 @@ public class Packet {
   /**
    * Reads a string of the specified length from the payload.
    *
-   * @param length The length of the string to be read
+   * @param length
+   *   The length of the string to be read
    *
    * @return A <code>String</code>
    */
@@ -222,7 +229,8 @@ public class Packet {
   /**
    * Skips the specified number of bytes in the payload.
    *
-   * @param x The number of bytes to be skipped
+   * @param x
+   *   The number of bytes to be skipped
    */
   public void skip(int x) {
     caret += x;
@@ -249,8 +257,9 @@ public class Packet {
    * @return A <code>String</code> representing this packet
    */
   public String toString() {
-    String origin = session == null ? "this" : ((InetSocketAddress) session.getRemoteAddress()).getAddress()
-                                                                                               .getHostAddress();
+    String origin = session == null
+                    ? "this"
+                    : ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress();
     return "origin = " + origin + " length = " + pLength;
   }
 

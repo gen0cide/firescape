@@ -4,6 +4,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class GoblinPoison implements NpcHandler {
+
   /**
    * World instance
    */
@@ -15,9 +16,8 @@ public class GoblinPoison implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "Uhm.. No.",
-                "Yea, cool!"
+        String[] options = new String[] {
+          "Uhm.. No.", "Yea, cool!"
         };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {

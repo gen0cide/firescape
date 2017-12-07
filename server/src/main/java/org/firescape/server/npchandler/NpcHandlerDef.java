@@ -6,6 +6,7 @@ import java.io.Serializable;
  * The definition of a npc handler, for use with XStream.
  */
 public class NpcHandlerDef implements Serializable {
+
   /**
    * The IDs of npcs which the handler is responsible for
    */
@@ -19,8 +20,10 @@ public class NpcHandlerDef implements Serializable {
    * Constructs a new packet handler definition, entailing that npcs with the given IDs are to be handled by the
    * specified class.
    *
-   * @param ids The IDs of npcs to be handled
-   * @param className The name of the packet handler class
+   * @param ids
+   *   The IDs of npcs to be handled
+   * @param className
+   *   The name of the packet handler class
    */
   public NpcHandlerDef(int[] ids, String className) {
     this.ids = ids;

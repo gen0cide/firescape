@@ -4,6 +4,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class BarbarianGear implements NpcHandler {
+
   /**
    * World instance
    */
@@ -15,10 +16,8 @@ public class BarbarianGear implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "No thank you",
-                "Sure, I'll take an axe!",
-                "Sure, I'll take some meat!"
+        String[] options = new String[] {
+          "No thank you", "Sure, I'll take an axe!", "Sure, I'll take some meat!"
         };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
@@ -63,7 +62,7 @@ public class BarbarianGear implements NpcHandler {
                         npc.unblock();
                       }
                     });
-                  } 
+                  }
                 } else {
                   npc.unblock();
                 }

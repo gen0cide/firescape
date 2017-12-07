@@ -11,6 +11,7 @@ import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 
 public class WallObjectAction implements PacketHandler {
+
   /**
    * World instance
    */

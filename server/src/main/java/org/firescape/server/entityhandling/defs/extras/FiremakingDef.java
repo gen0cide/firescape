@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class FiremakingDef {
+
   /**
    * The firemaking level required to light these logs
    */

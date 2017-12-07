@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class DelayedEventHandler {
+
   private static final World world = World.getWorld();
   private final ArrayList<DelayedEvent> toAdd = new ArrayList<DelayedEvent>();
   private final ArrayList<DelayedEvent> events = new ArrayList<DelayedEvent>();

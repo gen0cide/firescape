@@ -4,6 +4,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class HansSay implements NpcHandler {
+
   /**
    * World instance
    */
@@ -15,11 +16,11 @@ public class HansSay implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "No thank you",
-                "Sure, I'll take a bow and arrows!",
-                "Sure, I'll take a crossbow and bolts!",
-                "I heard you may have party hats for 500?"
+        String[] options = new String[] {
+          "No thank you",
+          "Sure, I'll take a bow and arrows!",
+          "Sure, I'll take a crossbow and bolts!",
+          "I heard you may have party hats for 500?"
         };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
@@ -64,7 +65,7 @@ public class HansSay implements NpcHandler {
                         npc.unblock();
                       }
                     });
-                  } 
+                  }
                 } else if (option == 3) {
                   if (owner.getInventory().remove(10, 500) > -1) {
                     owner.getActionSender().sendMessage("You buy a party hat!");
@@ -80,7 +81,7 @@ public class HansSay implements NpcHandler {
                         npc.unblock();
                       }
                     });
-                  } 
+                  }
                 } else {
                   npc.unblock();
                 }

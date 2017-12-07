@@ -19,6 +19,7 @@ import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 
 public class ObjectAction implements PacketHandler {
+
   /**
    * World instance
    */

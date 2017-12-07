@@ -4,6 +4,7 @@ import org.firescape.server.event.ShortEvent;
 import org.firescape.server.model.*;
 
 public class PriestGear implements NpcHandler {
+
   /**
    * World instance
    */
@@ -15,9 +16,8 @@ public class PriestGear implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "Uhm... No thank you..",
-                "Praise!"
+        String[] options = new String[] {
+          "Uhm... No thank you..", "Praise!"
         };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {
@@ -30,11 +30,11 @@ public class PriestGear implements NpcHandler {
               public void action() {
                 owner.setBusy(false);
                 if (option == 1) {
-                    owner.getActionSender().sendMessage("The priest hands you a set of robes");
-                    owner.getInventory().add(new InvItem(807, 1));
-                    owner.getInventory().add(new InvItem(808, 1));
-                    owner.getActionSender().sendInventory();
-                    npc.unblock();
+                  owner.getActionSender().sendMessage("The priest hands you a set of robes");
+                  owner.getInventory().add(new InvItem(807, 1));
+                  owner.getInventory().add(new InvItem(808, 1));
+                  owner.getActionSender().sendInventory();
+                  npc.unblock();
                 } else {
                   npc.unblock();
                 }

@@ -6,6 +6,7 @@ import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class PlayerAppearanceUpdater implements PacketHandler {
+
   /**
    * World instance
    */
