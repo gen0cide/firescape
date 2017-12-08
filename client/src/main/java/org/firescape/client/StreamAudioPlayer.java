@@ -1,67 +1,41 @@
 package org.firescape.client;
 
 import javax.sound.sampled.*;
-import java.io.InputStream;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.nio.ByteOrder;
 
-public class StreamAudioPlayer extends InputStream {
+public class StreamAudioPlayer {
 
-  byte buffer[];
-  int start;
-  int end;
-  Clip clip;
-  AudioInputStream audioIn;
+  // from sun.audio.AudioDevice.openChannel
+  private static final AudioFormat pcmFormat = new AudioFormat(
+    AudioFormat.Encoding.ULAW,
+    8000, 8,
+    1, 1,
+    8000, true);
+  // from com.sun.media.sound.Toolkit.getPCMConvertedAudioInputStream
+  private static final AudioFormat lineFormat = new AudioFormat(
+    AudioFormat.Encoding.PCM_SIGNED, 8000,
+    16, 1, 2,
+    8000, ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN);
+  private Clip clip;
 
-  public StreamAudioPlayer() {
-    return;
-    //    InputStream bio = null;
-    //    bio = new BufferedInputStream(this);
-    //    audioIn = null;
-    //    try {
-    //      audioIn = AudioSystem.getAudioInputStream(bio);
-    //      BufferedInputStream bufferedInputStream = new BufferedInputStream(audioIn);
-    //      audioIn = new AudioInputStream(bufferedInputStream, audioIn.getFormat(), audioIn.getFrameLength());
-    //      AudioFormat format = audioIn.getFormat();
-    //      DataLine.Info info = new DataLine.Info(Clip.class, format);
-    //      Clip clip = (Clip) AudioSystem.getLine(info);
-    //      clip.open(audioIn);
-    //      clip.start();
-    //    } catch (UnsupportedAudioFileException e) {
-    //      e.printStackTrace();
-    //    } catch (IOException e) {
-    //      e.printStackTrace();
-    //    } catch (LineUnavailableException e) {
-    //      e.printStackTrace();
-    //    }
+  public StreamAudioPlayer() throws LineUnavailableException {
+    clip = AudioSystem.getClip();
   }
 
   public void stopPlayer() {
-    return;
-    //    if (clip.isRunning()) {
-    //      clip.stop();
-    //    }
+    clip.stop();
+    clip.flush();
   }
 
-  public void writeStream(byte buf[], int off, int len) {
-    buffer = buf;
-    start = off;
-    end = off + len;
-  }
-
-  public int read() {
-    byte abyte0[] = new byte[1];
-    read(abyte0, 0, 1);
-    return abyte0[0];
-  }
-
-  public int read(byte abyte0[], int i, int j) {
-    for (int k = 0; k < j; k++) {
-      if (start < end) {
-        abyte0[i + k] = buffer[start++];
-      } else {
-        abyte0[i + k] = -1;
-      }
-    }
-
-    return j;
+  public void writeStream(byte buf[], int off, int len) throws IOException, LineUnavailableException {
+    stopPlayer();
+    clip.close();
+    ByteArrayInputStream buffer = new ByteArrayInputStream(buf, off, len);
+    AudioInputStream audio = new AudioInputStream(buffer, pcmFormat, -1);
+    audio = AudioSystem.getAudioInputStream(lineFormat, audio);
+    clip.open(audio);
+    clip.start();
   }
 }

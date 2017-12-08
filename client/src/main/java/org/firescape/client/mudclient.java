@@ -4,6 +4,7 @@ import org.firescape.client.opcode.Command;
 import org.firescape.client.opcode.Opcode;
 import org.firescape.client.script.Manager;
 
+import javax.sound.sampled.LineUnavailableException;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -8028,10 +8029,9 @@ public class mudclient extends GameConnection {
             }
             // TODO messy as fuck, refactor i guess but needs to reach the last else block if player = null i think?
           } else if (updateType == 1) {
-            byte messageLength = pdata[offset++];
+            int messageLength = Utility.getUnsignedByte(pdata[offset++]);
             if (player != null) {
-              String msg = new String(Arrays.copyOfRange(pdata, offset, offset + (int) messageLength));
-              String filtered = WordFilter.filter(msg);
+              String msg = new String(Arrays.copyOfRange(pdata, offset, offset + messageLength));
               boolean ignored = false;
               for (int i = 0; i < super.ignoreListCount; i++) {
                 if (super.ignoreListHashes[i] == player.hash) {
@@ -8042,7 +8042,7 @@ public class mudclient extends GameConnection {
 
               if (!ignored) {
                 player.messageTimeout = 150;
-                player.message = filtered;
+                player.message = msg;
                 showMessage(player.name + ": " + player.message, 2);
               }
             }
@@ -8088,17 +8088,18 @@ public class mudclient extends GameConnection {
             // TODO same shit as above?
           } else if (updateType == 5) {
             if (player != null) {
-              player.serverId = Utility.getUnsignedShort(pdata, offset);
+              int aID = Utility.getUnsignedShort(pdata, offset);
               offset += 2;
+              if (player.appearanceID == -1 || player.appearanceID != aID) {
+                player.appearanceID = aID;
+              }
               player.hash = Utility.getUnsignedLong(pdata, offset);
               offset += 8;
               player.name = Utility.hash2username(player.hash);
 
-              int equippedCount = Utility.getUnsignedByte(pdata[offset]);
-              offset++;
+              int equippedCount = pdata[offset++] & 0xff;
               for (int i = 0; i < equippedCount; i++) {
-                player.equippedItem[i] = Utility.getUnsignedByte(pdata[offset]);
-                offset++;
+                player.equippedItem[i] = pdata[offset++] & 0xff;
               }
 
               for (int i = equippedCount; i < 12; i++) {
@@ -8111,15 +8112,13 @@ public class mudclient extends GameConnection {
               player.colourSkin = pdata[offset++] & 0xff;
               player.level = pdata[offset++] & 0xff;
               player.skullVisible = pdata[offset++] & 0xff;
-              offset++; //server sends mod rank here
             } else {
-              offset += 14;
-              int unused = Utility.getUnsignedByte(pdata[offset]);
-              offset += unused + 1;
+              offset += 10;
+              int equippedCount = pdata[offset++] & 0xff;
+              offset += 6 + equippedCount;
             }
           } else if (updateType == 6) {
-            byte mLen = pdata[offset];
-            offset++;
+            int mLen = pdata[offset++] & 0xff;
             if (player != null) {
               String msg = new String(Arrays.copyOfRange(pdata, offset, offset + mLen));
               player.messageTimeout = 150;
@@ -9309,10 +9308,16 @@ public class mudclient extends GameConnection {
       return;
     }
     if (!optionSoundDisabled) {
-      audioPlayer.writeStream(soundData,
-                              Utility.getDataFileOffset(s + ".pcm", soundData),
-                              Utility.getDataFileLength(s + ".pcm", soundData)
-      );
+      try {
+        audioPlayer.writeStream(soundData,
+                                Utility.getDataFileOffset(s + ".pcm", soundData),
+                                Utility.getDataFileLength(s + ".pcm", soundData)
+        );
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (LineUnavailableException e) {
+        e.printStackTrace();
+      }
     }
   }
 
@@ -9850,10 +9855,7 @@ public class mudclient extends GameConnection {
         } else if (s.equalsIgnoreCase("lostcon") && !appletMode) {
           lostConnection();
         } else {
-          java.util.List<Object> kek = Manager.run("handleCommand", s);
-          if (!kek.contains(true) && !kek.contains(Exception.class)) {
-            sendCommandString(s);
-          }
+          sendCommandString(s);
         }
       } else {
         byte[] msg = new byte[0];

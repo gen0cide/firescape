@@ -4,6 +4,7 @@ import org.apache.mina.common.IoSession;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
+import org.firescape.server.packetbuilder.client.MiscPacketBuilder;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
@@ -100,11 +101,11 @@ public class PlayerLogin implements PacketHandler {
       player.setBank(bank);
       int friendCount = p.readShort();
       for (int i = 0; i < friendCount; i++) {
-        player.addFriend(org.firescape.server.util.DataConversions.hashToUsername(p.readLong()));
+        player.addFriend(DataConversions.hashToUsername(p.readLong()));
       }
       int ignoreCount = p.readShort();
       for (int i = 0; i < ignoreCount; i++) {
-        player.addIgnore(org.firescape.server.util.DataConversions.hashToUsername(p.readLong()));
+        player.addIgnore(DataConversions.hashToUsername(p.readLong()));
       }
 
       /* End of loading methods */
@@ -112,7 +113,7 @@ public class PlayerLogin implements PacketHandler {
       player.updateViewedPlayers();
       player.updateViewedObjects();
       player.updateViewedNpcs();
-      org.firescape.server.packetbuilder.client.MiscPacketBuilder sender = player.getActionSender();
+      MiscPacketBuilder sender = player.getActionSender();
       //      sender.sendServerInfo();
       //      sender.sendFatigue();
       //      sender.sendKills();

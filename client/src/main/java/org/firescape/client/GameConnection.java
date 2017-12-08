@@ -186,9 +186,8 @@ public class GameConnection extends GameShell {
         return;
       }
       if (resp == 4) {
-        showLoginScreenStatus(
-          "The client has been updated.",
-          "Download the latest at github" + ".com/gen0cide/firescape/releases"
+        showLoginScreenStatus("The client has been updated.",
+                              "Download the latest at github" + ".com/gen0cide/firescape/releases"
         );
         return;
       }
@@ -372,29 +371,33 @@ public class GameConnection extends GameShell {
       return;
     }
     if (opcode == Command.Server.SV_FRIEND_LIST) {
-      friendListCount = Utility.getUnsignedByte(incomingPacket[1]);
+      friendListCount = incomingPacket[1] & 0xff;
+      int friendOffset = 0;
       for (int k = 0; k < friendListCount; k++) {
-        friendListHashes[k] = Utility.getUnsignedLong(incomingPacket, 2 + k * 9);
-        friendListOnline[k] = Utility.getUnsignedByte(incomingPacket[10 + k * 9]);
+        friendListHashes[k] = Utility.getUnsignedLong(incomingPacket, 2 + friendOffset);
+        friendListOnline[k] = Utility.getUnsignedByte(incomingPacket[10 + friendOffset]);
+        friendOffset += 9;
       }
 
       sortFriendsList();
       return;
     }
     if (opcode == Command.Server.SV_FRIEND_STATUS_CHANGE) {
-      long hash = Utility.getUnsignedLong(incomingPacket, 2);
-      int online = 0;
+      long hash = Utility.getUnsignedLong(incomingPacket, 1);
       for (int i2 = 0; i2 < friendListCount; i2++) {
         if (friendListHashes[i2] == hash) {
-          friendListOnline[i2] = Utility.getUnsignedByte(incomingPacket[10]);
-          if (friendListOnline[i2] == 0) {
-            showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged in");
+          int friendStatus = Utility.getUnsignedByte(incomingPacket[9]);
+          if (friendListOnline[i2] != friendStatus) {
+            friendListOnline[i2] = friendStatus;
+            if (friendListOnline[i2] == 1) {
+              showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged in");
+            }
+            if (friendListOnline[i2] == 0) {
+              showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged out");
+            }
+            sortFriendsList();
+            return;
           }
-          if (friendListOnline[i2] != 0) {
-            showServerMessage("@pri@" + Utility.hash2username(hash) + " has logged out");
-          }
-          sortFriendsList();
-          return;
         }
       }
       return;

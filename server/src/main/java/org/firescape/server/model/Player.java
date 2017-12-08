@@ -15,7 +15,10 @@ import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.packetbuilder.client.MiscPacketBuilder;
 import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
-import org.firescape.server.util.*;
+import org.firescape.server.util.DataConversions;
+import org.firescape.server.util.Formulae;
+import org.firescape.server.util.Logger;
+import org.firescape.server.util.StatefulEntityCollection;
 import redis.clients.jedis.Jedis;
 
 import java.io.*;
@@ -1275,6 +1278,8 @@ public final class Player extends Mob {
       getSession().write(pb.toPacket());
       updateViewedPlayers();
       updateViewedObjects();
+      updateViewedNpcs();
+      updateViewedItems();
       //      sender.sendServerInfo();
       //      sender.sendFatigue();
       //      sender.sendImpCatcherComplete();
@@ -1304,13 +1309,13 @@ public final class Player extends Mob {
       // GUI.populateWorldList();
       for (Player p : Entity.world.getPlayers()) {
         if (p.isFriendsWith(this.getUsername())) {
-          p.getActionSender().sendFriendUpdate(this.getUsernameHash(), org.firescape.server.util.Config.SERVER_NUM);
+          p.getActionSender().sendFriendUpdate(DataConversions.usernameToHash(this.username), 1);
         }
       }
       for (String player : getFriendList()) {
         Player p = Entity.world.getPlayer(DataConversions.usernameToHash(player));
         if (p != null) {
-          sender.sendFriendUpdate(p.getUsernameHash(), Config.SERVER_NUM);
+          sender.sendFriendUpdate(DataConversions.usernameToHash(player), 1);
         } else {
           sender.sendFriendUpdate(DataConversions.usernameToHash(player), 0);
         }

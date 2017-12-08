@@ -9,6 +9,8 @@ import org.firescape.server.event.*;
 import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
+import org.firescape.server.opcode.Command;
+import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
@@ -142,116 +144,88 @@ public class SpellHandler implements PacketHandler {
       player.resetPath();
       return;
     }
-    switch (pID) {
-      case 206: // Cast on self
-        if (player.isDueling()) {
-          player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+    if (pID == Opcode.getClient(204, Command.Client.CL_CAST_SELF)) {
+      if (player.isDueling()) {
+        player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        return;
+      }
+      if (spell.getSpellType() == 0) {
+        handleTeleport(player, spell, idx);
+      }
+      handleGroundCast(player, spell, idx);
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_PLAYER)) {
+      if (spell.getSpellType() == 1 || spell.getSpellType() == 2) {
+        Player affectedPlayer = world.getPlayer(p.readShort());
+        if (affectedPlayer == null) { // This shouldn't happen
+          player.resetPath();
           return;
         }
-        if (spell.getSpellType() == 0) {
-          handleTeleport(player, spell, idx);
+        if (player.withinRange(affectedPlayer, 5)) {
+          player.resetPath();
         }
-        // if(spell.getSpellType() == 6) {
-        handleGroundCast(player, spell, idx);
-        // }
-        break;
-      case 55: // Cast on player
-        if (spell.getSpellType() == 1 || spell.getSpellType() == 2) {
-          Player affectedPlayer = world.getPlayer(p.readShort());
-          if (affectedPlayer == null) { // This shouldn't happen
-            player.resetPath();
-            return;
-          }
-          if (player.withinRange(affectedPlayer, 5)) {
-            player.resetPath();
-          }
-          handleMobCast(player, affectedPlayer, idx);
-        }
-        // if(spell.getSpellType() == 6) {
-        // handleGroundCast(player, spell);
-        // }
-        break;
-      case 71: // Cast on npc
-        if (spell.getSpellType() == 2) {
-          Npc affectedNpc = world.getNpc(p.readShort());
-          if (affectedNpc == null) { // This shouldn't happen
-            player.resetPath();
-            return;
-          }
-          if (player.withinRange(affectedNpc, 5)) {
-            player.resetPath();
-          }
-          handleMobCast(player, affectedNpc, idx);
-        }
-        // if(spell.getSpellType() == 6) {
-        // handleGroundCast(player, spell);
-        // }
-        break;
-      case 49: // Cast on inventory item
-        if (player.isDueling()) {
-          player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        handleMobCast(player, affectedPlayer, idx);
+      }
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_NPC)) {
+      if (spell.getSpellType() == 2) {
+        Npc affectedNpc = world.getNpc(p.readShort());
+        if (affectedNpc == null) { // This shouldn't happen
+          player.resetPath();
           return;
         }
-        if (spell.getSpellType() == 3) {
-          InvItem item = player.getInventory().get(p.readShort());
-          if (item == null) { // This shoudln't happen
-            player.resetPath();
-            return;
-          }
-          handleInvItemCast(player, spell, idx, item);
+        if (player.withinRange(affectedNpc, 5)) {
+          player.resetPath();
         }
-        // if(spell.getSpellType() == 6) {
-        // handleGroundCast(player, spell);
-        // }
-        break;
-      case 67: // Cast on door - type 4
-        if (player.isDueling()) {
-          player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        handleMobCast(player, affectedNpc, idx);
+      }
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_INVITEM)) {
+      if (player.isDueling()) {
+        player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        return;
+      }
+      if (spell.getSpellType() == 3) {
+        InvItem item = player.getInventory().get(p.readShort());
+        if (item == null) { // This shoudln't happen
+          player.resetPath();
           return;
         }
-        player.getActionSender().sendMessage("@or1@This type of spell is not yet implemented.");
-        // if(spell.getSpellType() == 6) {
-        // handleGroundCast(player, spell);
-        // }
-        break;
-      case 17: // Cast on game object - type 5
-        if (player.isDueling()) {
-          player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
-          return;
+        handleInvItemCast(player, spell, idx, item);
+      }
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_WALLOBJECT)) {
+      if (player.isDueling()) {
+        player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        return;
+      }
+      player.getActionSender().sendMessage("@or1@This type of spell is not yet implemented.");
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_OBJECT)) {
+      if (player.isDueling()) {
+        player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        return;
+      }
+      player.getActionSender().sendMessage("@or1@This type of spell is not yet implemented.");
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_GROUNDITEM)) {
+      if (player.isDueling()) {
+        player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        return;
+      }
+      ActiveTile t = world.getTile(p.readShort(), p.readShort());
+      int itemId = p.readShort();
+      Item affectedItem = null;
+      for (Item i : t.getItems()) {
+        if (i.getID() == itemId) {
+          affectedItem = i;
+          break;
         }
-        player.getActionSender().sendMessage("@or1@This type of spell is not yet implemented.");
-        // if(spell.getSpellType() == 6) {
-        // handleGroundCast(player, spell);
-        // }
-        break;
-      case 104: // Cast on ground item
-        if (player.isDueling()) {
-          player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
-          return;
-        }
-        ActiveTile t = world.getTile(p.readShort(), p.readShort());
-        int itemId = p.readShort();
-        Item affectedItem = null;
-        for (Item i : t.getItems()) {
-          if (i.getID() == itemId) {
-            affectedItem = i;
-            break;
-          }
-        }
-        if (affectedItem == null) { // This shouldn't happen
-          return;
-        }
-        handleItemCast(player, spell, idx, affectedItem);
-        break;
-      case 232: // Cast on ground - type 6
-        if (player.isDueling()) {
-          player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
-          return;
-        }
-        // if(spell.getSpellType() == 6) {
-        handleGroundCast(player, spell, idx);
-        // }
-        break;
+      }
+      if (affectedItem == null) { // This shouldn't happen
+        return;
+      }
+      handleItemCast(player, spell, idx, affectedItem);
+    } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_GROUND)) {
+      if (player.isDueling()) {
+        player.getActionSender().sendMessage("This type of spell cannot be used in a duel.");
+        return;
+      }
+      handleGroundCast(player, spell, idx);
     }
     player.getActionSender().sendInventory();
     player.getActionSender().sendStat(6);

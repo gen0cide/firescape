@@ -5,6 +5,7 @@ import org.firescape.server.net.RSCPacket;
 import org.firescape.server.opcode.Command;
 import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
+import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
 
@@ -489,17 +490,14 @@ public class MiscPacketBuilder {
   /**
    * Updates a friends login status
    */
-  public void sendFriendUpdate(long usernameHash, int world) {
+  public void sendFriendUpdate(long usernameHash, int online) {
     RSCPacketBuilder s = new RSCPacketBuilder();
     s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_STATUS_CHANGE));
     s.addLong(usernameHash);
-    Player fp = World.getWorld().getPlayer(usernameHash);
-    if (fp == null) {
+    if (online == 0) {
       s.addByte((byte) 0);
-    } else if (fp.loggedIn()) {
-      s.addByte((byte) 1);
     } else {
-      s.addByte((byte) 0);
+      s.addByte((byte) 1);
     }
     this.packets.add(s.toPacket());
   }
@@ -512,7 +510,7 @@ public class MiscPacketBuilder {
     s.setID(Opcode.getServer(204, Command.Server.SV_FRIEND_LIST));
     s.addByte((byte) this.player.getFriendList().size());
     for (String friend : this.player.getFriendList()) {
-      s.addLong(org.firescape.server.util.DataConversions.usernameToHash(friend));
+      s.addLong(DataConversions.usernameToHash(friend));
       Player fp = World.getWorld().getPlayer(friend);
       if (fp == null) {
         s.addByte((byte) 0);
@@ -531,7 +529,7 @@ public class MiscPacketBuilder {
     s.setID(Opcode.getServer(204, Command.Server.SV_IGNORE_LIST));
     s.addByte((byte) this.player.getIgnoreList().size());
     for (String user : this.player.getIgnoreList()) {
-      s.addLong(org.firescape.server.util.DataConversions.usernameToHash(user));
+      s.addLong(DataConversions.usernameToHash(user));
     }
     this.packets.add(s.toPacket());
   }

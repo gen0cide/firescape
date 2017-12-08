@@ -30,6 +30,7 @@ final class GameCharacter {
   public int colourTop;
   public int colourBottom;
   public int colourSkin;
+  public int appearanceID;
   public int incomingProjectileSprite;
   public int attackingPlayerServerIndex;
   public int attackingNpcServerIndex;
@@ -44,6 +45,7 @@ final class GameCharacter {
     waypointsY = new int[10];
     equippedItem = new int[12];
     level = -1;
+    appearanceID = -1;
     //unused = false;
     //unused1 = -1;
   }
