@@ -1,0 +1,8 @@
+FROM ubuntu:xenial
+
+RUN apt update && apt install -y openjdk-8-jdk
+
+ADD jars/server/server-1.0.jar /firescape-server/server.jar
+WORKDIR /firescape-server
+EXPOSE 27337 5000
+CMD java -jar server.jar
