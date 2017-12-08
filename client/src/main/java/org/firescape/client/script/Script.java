@@ -5,7 +5,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.nio.file.Path;
 
 public class Script {
 

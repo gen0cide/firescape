@@ -11,10 +11,9 @@ public class BarbarianUpgrade implements NpcHandler {
   public static final World world = World.getWorld();
 
   public void handleNpc(final Npc npc, final Player player) throws Exception {
-    player.informOfNpcMessage(new ChatMessage(
-      npc,
-      "Hey, wana upgrade one of those wimpy axes for another 100 gold?",
-      player
+    player.informOfNpcMessage(new ChatMessage(npc,
+                                              "Hey, wana upgrade one of those wimpy axes for another 100 gold?",
+                                              player
     ));
     player.setBusy(true);
     world.getDelayedEventHandler().add(new ShortEvent(player) {

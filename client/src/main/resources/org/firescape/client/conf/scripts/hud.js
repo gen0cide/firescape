@@ -1,16 +1,10 @@
 function drawUi() {
-    if (mc.debugHud != mc.class.static._DEBUG_HUD_NONE) {
-        drawHudObjectNames();
-    }
+    drawHudObjectNames();
     drawAboveHeadStuff();
-    if (mc.debugHud != mc.class.static._DEBUG_HUD_NONE) {
-//        drawHudMinimap();
-//        drawHudInventory();
-//        drawHudSkills();
-//        mc.drawDialogCombatStyle();
-
-        drawHudMisc();
-    }
+    drawHudInventory();
+    drawHudMisc();
+    drawHudSkills();
+    mc.drawDialogCombatStyle();
 }
 
 function drawHudObjectNames() {
@@ -137,10 +131,10 @@ function drawAboveHeadStuff() {
 }
 
 function drawHudMinimap() {
-    var uiX = mc.gameWidth - 205 + 40 - 60;
-    var uiY = 10;
-    var uiWidth = 156 + 60;
-    var uiHeight = 152 + 60;
+    var uiX = mc.gameWidth - 205 + 40 - 30;
+    var uiY = 35 + 192 + 40;
+    var uiWidth = 126 + 60;
+    var uiHeight = 122 + 60;
 
 
     mc.surface.drawBoxEdge(uiX - 1, uiY - 1, uiWidth + 2, uiHeight + 2, 0);
@@ -217,8 +211,8 @@ function drawHudInventory() {
 function drawHudSkills() {
     var uiWidth = 196;
     var uiHeight = 205;
-    var uiX = mc.gameWidth - uiWidth - 10;
-    var uiY = 35 + 152 + 60;
+    var uiX = 9;
+    var uiY = 35 + 152;
 
     mc.surface.drawBoxAlpha(uiX, uiY - 13, uiWidth, uiHeight, Utility.static.rgb2long(220, 220, 220), 128);
 
@@ -250,14 +244,15 @@ function drawHudSkills() {
 }
 
 function drawHudMisc() {
-    var y = mc.gameHeight / 2;
-    mc.surface.drawstring("@yel@rx:" + mc.regionX + " ry:" + mc.regionY, 15, y, 1, 0);
+    var y = 25;
+    var x = (mc.gameWidth / 2) - 38;
+    mc.surface.drawstring("@yel@rx:@whi@" + mc.regionX + " @yel@ry:@whi@" + mc.regionY, x, y, 1, 0);
     y += 13;
-    mc.surface.drawstring("@yel@lx:" + mc.localRegionX + " ly:" + mc.localRegionY, 15, y, 1, 0);
+    mc.surface.drawstring("@yel@lx:@whi@" + mc.localRegionX + " @yel@ly:@whi@" + mc.localRegionY, x, y, 1, 0);
     y += 13;
-    mc.surface.drawstring("@yel@x:" + (mc.regionX + mc.localRegionX) + " y:" + (mc.regionY + mc.localRegionY), 15, y, 1, 0);
+    mc.surface.drawstring("@yel@x:@whi@" + (mc.regionX + mc.localRegionX) + " @yel@y:@whi@" + (mc.regionY + mc.localRegionY), x, y, 1, 0);
     y += 13;
-    mc.surface.drawstring("@yel@mx:" + mc.mouseX + " my:" + mc.mouseY, 15, y, 1, 0);
+    mc.surface.drawstring("@yel@mx:@whi@" + mc.mouseX + " @yel@my:@whi@" + mc.mouseY, x, y, 1, 0);
     y += 13;
-    mc.surface.drawstring("@yel@dsx:" + (mc.mouseX - ((512 * 2) / 2 - 468 / 2)) + " dsy:" + (mc.mouseY - ((334 * 2) / 2 - 262 / 2)), 15, y, 1, 0);
+    mc.surface.drawstring("@yel@dsx:@whi@" + (mc.mouseX - ((512 * 2) / 2 - 468 / 2)) + " @yel@dsy:@whi@" + (mc.mouseY - ((334 * 2) / 2 - 262 / 2)), x, y, 1, 0);
 }
