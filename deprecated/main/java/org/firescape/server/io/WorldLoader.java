@@ -4,8 +4,6 @@ import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.locs.GameObjectLoc;
 import org.firescape.server.entityhandling.locs.ItemLoc;
 import org.firescape.server.entityhandling.locs.NPCLoc;
-import org.firescape.server.model.*;
-import org.firescape.server.util.Config;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Logger;
 import org.firescape.server.util.PersistenceManager;
@@ -18,6 +16,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class WorldLoader {
+
   private ZipFile tileArchive;
   // private ZipOutputStream out;
 
@@ -25,14 +24,8 @@ public class WorldLoader {
   public void loadWorld(World world) {
     System.out.println(System.getProperty("java.class.path") + "bastard!");
 
-
-
-
-
     try {
-      tileArchive = new ZipFile(new File(getClass().getResource("../conf/server/data/Landscape" +
-                                                                                 ".rscd").getFile
-        ()));
+      tileArchive = new ZipFile(new File(getClass().getResource("../conf/server/data/Landscape" + ".rscd").getFile()));
     } catch (Exception e) {
       Logger.error(e);
     }
@@ -48,19 +41,20 @@ public class WorldLoader {
       }
     }
     // try { out.close(); } catch(Exception e) { Logger.error(e); }
-    for (GameObjectLoc gameObject : (List<GameObjectLoc>) PersistenceManager.load(getClass().getResource
-      ("server/locs/GameObjectLoc.xml.gz").getFile())) {
+    for (GameObjectLoc gameObject : (List<GameObjectLoc>) PersistenceManager.load(getClass().getResource(
+      "server/locs/GameObjectLoc.xml.gz").getFile())) {
       world.registerGameObject(new GameObject(gameObject));
     }
-    for (ItemLoc item : (List<ItemLoc>) PersistenceManager.load(getClass().getResource("server/locs/ItemLoc.xml.gz").getFile())) {
+    for (ItemLoc item : (List<ItemLoc>) PersistenceManager.load(getClass().getResource("server/locs/ItemLoc.xml.gz")
+                                                                          .getFile())) {
       world.registerItem(new Item(item));
     }
     for (NPCLoc npc : (List<NPCLoc>) PersistenceManager.load(getClass().getResource("server/locs/NpcLoc.xml.gz")
                                                                        .getFile())) {
       world.registerNpc(new Npc(npc));
     }
-    for (Shop shop : (List<Shop>) PersistenceManager.load(getClass().getResource("server/locs/Shops.xml.gz").getFile()
-    )) {
+    for (Shop shop : (List<Shop>) PersistenceManager.load(getClass().getResource("server/locs/Shops.xml.gz")
+                                                                    .getFile())) {
       world.registerShop(shop);
     }
     System.gc();

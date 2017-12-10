@@ -5878,6 +5878,7 @@ public class mudclient extends GameConnection {
     int msrcidx = menuSourceIndex[i];
     int mtargetindex = menuTargetIndex[i];
     int mitemid = menuItemID[i];
+    System.out.println("mitemid = " + mitemid);
     String mtext = menuTextVar[i];
     if (mitemid == 200) {
       walkToGroundItem(localRegionX, localRegionY, mx, my, true);
@@ -6107,6 +6108,7 @@ public class mudclient extends GameConnection {
       super.clientStream.sendPacket();
     }
     if (mitemid == 2810) {
+      System.out.println("SENDING TRADE TO PLAYER ID = " + midx);
       super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_PLAYER_TRADE));
       super.clientStream.putShort(midx);
       super.clientStream.sendPacket();
@@ -7378,10 +7380,7 @@ public class mudclient extends GameConnection {
     scene.render();
     surface.fade2black();
     surface.fade2black();
-    surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 10] / 2,
-                       gameHeight / 2 - 152,
-                       spriteMedia + 10
-    ); // runescape logo
+    surface.drawSprite(gameWidth / 2 - 245, gameHeight / 2 - 152, spriteMedia + 10); // runescape logo
 
     surface.drawSprite(spriteLogo, 0, 0, gameWidth, gameHeight);
     surface.drawWorld(spriteLogo);
@@ -7398,10 +7397,7 @@ public class mudclient extends GameConnection {
     scene.render();
     surface.fade2black();
     surface.fade2black();
-    surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 10] / 2,
-                       gameHeight / 2 - 152,
-                       spriteMedia + 10
-    );
+    surface.drawSprite(gameWidth / 2 - 245, gameHeight / 2 - 152, spriteMedia + 10);
     surface.drawSprite(spriteLogo + 1, 0, 0, gameWidth, gameHeight);  // h was 200
     surface.drawWorld(spriteLogo + 1);
 
@@ -7427,10 +7423,7 @@ public class mudclient extends GameConnection {
     surface.fade2black();
     surface.fade2black();
 
-    surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 10] / 2,
-                       gameHeight / 2 - 152,
-                       spriteMedia + 10
-    );
+    surface.drawSprite(gameWidth / 2 - 245, gameHeight / 2 - 152, spriteMedia + 10);
     surface.drawSprite(spriteMedia + 10, 0, 0, gameWidth, gameHeight);
     surface.drawWorld(spriteMedia + 10);
   }

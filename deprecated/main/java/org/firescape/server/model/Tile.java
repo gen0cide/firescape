@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
  * A representation of one tile within our world map
  */
 public class Tile {
+
   /**
    * The elevation of this tile
    */

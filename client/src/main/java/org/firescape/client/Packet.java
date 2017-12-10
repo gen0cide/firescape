@@ -209,14 +209,17 @@ public class Packet {
   }
 
   public void sendPacket() {
-    byte[] packetDebug = Arrays.copyOfRange(packetData, packetStart + 2, packetEnd);
-    System.out.println(String.format(
-      "[Packet] >>> %s(id=%d) size=%d\n%s",
-      Opcode.getClient(Version.CLIENT, packetData[packetStart + 2] & 0xff),
-      packetData[packetStart + 2] & 0xff,
-      packetDebug.length,
-      Utility.bytesToHex(packetDebug)
-    ));
+    String dumpPacketDebug = System.getenv("FIRESCAPE_DUMP_OUTGOING_PACKETS");
+    if (dumpPacketDebug != null) {
+      byte[] packetDebug = Arrays.copyOfRange(packetData, packetStart + 2, packetEnd);
+      System.out.println(String.format(
+        "[Packet] >>> %s(id=%d) size=%d\n%s",
+        Opcode.getClient(Version.CLIENT, packetData[packetStart + 2] & 0xff),
+        packetData[packetStart + 2] & 0xff,
+        packetDebug.length,
+        Utility.bytesToHex(packetDebug)
+      ));
+    }
     if (isaacOutgoing != null) {
       int i = packetData[packetStart + 2] & 0xff;
       packetData[packetStart + 2] = (byte) (i + isaacOutgoing.getNextValue());

@@ -4,7 +4,6 @@ import org.firescape.client.opcode.Command;
 import org.firescape.client.opcode.Keys;
 import org.firescape.client.opcode.Opcode;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.Arrays;
 

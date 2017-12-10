@@ -5,12 +5,12 @@ import org.firescape.server.entityhandling.defs.extras.ItemUnIdentHerbDef;
 import org.firescape.server.event.MiniEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.SingleEvent;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.DataConversions;
 
 public class InvActionHandler implements PacketHandler {
+
   /**
    * World instance
    */
@@ -775,8 +775,9 @@ public class InvActionHandler implements PacketHandler {
     world.getDelayedEventHandler().add(new MiniEvent(player) {
       public void action() {
         owner.getActionSender().sendMessage("You have " + left + " doses left.");
-        int baseStat = owner.getCurStat(affectedStat) >
-                       owner.getMaxStat(affectedStat) ? owner.getMaxStat(affectedStat) : owner.getCurStat(affectedStat);
+        int baseStat = owner.getCurStat(affectedStat) > owner.getMaxStat(affectedStat)
+                       ? owner.getMaxStat(affectedStat)
+                       : owner.getCurStat(affectedStat);
         int newStat = baseStat +
                       DataConversions.roundUp((owner.getMaxStat(affectedStat) / 100D) * percentageIncrease) +
                       modifier;

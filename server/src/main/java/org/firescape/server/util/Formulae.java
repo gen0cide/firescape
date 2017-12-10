@@ -218,6 +218,7 @@ public class Formulae {
     13034431,
     14391160
   };
+
   public static final String[] statArray = {
     "attack",
     "defense",
@@ -238,18 +239,23 @@ public class Formulae {
     "agility",
     "thieving"
   };
+
   public static final int[] woodcuttingAxeIDs = {
     405, 204, 203, 428, 88, 12, 87
   };
+
   public static final int[] miningAxeIDs = {
     1262, 1261, 1260, 1259, 1258, 156
   };
+
   public static final int[] arrowIDs = {
     723, 647, 646, 645, 644, 643, 642, 641, 640, 639, 638, 574, 11
   };
+
   public static final int[] bowIDs = {
     188, 189, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657
   };
+
   public static final int[] boltIDs = {
     786, 592, 190
   };

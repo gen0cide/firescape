@@ -5,7 +5,6 @@ import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
-import java.io.*;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Properties;
@@ -13,6 +12,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public class PersistenceManager {
+
   private static final XStream xstream = new XStream();
 
   static {

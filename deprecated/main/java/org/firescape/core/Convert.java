@@ -1,6 +1,7 @@
 package org.firescape.core;
 
 public class Convert {
+
   private static final char[] characters = {
     ' ',
     'e',
@@ -93,12 +94,12 @@ public class Convert {
     return j;
   }
 
-  public static int getUnsignedShort(byte abyte0[], int i) {
-    return ((abyte0[i] & 0xff) << 8) + (abyte0[i + 1] & 0xff);
-  }
-
   public static int getUnsignedByte(byte byte0) {
     return byte0 & 0xff;
+  }
+
+  public static int getUnsignedShort(byte abyte0[], int i) {
+    return ((abyte0[i] & 0xff) << 8) + (abyte0[i + 1] & 0xff);
   }
 
   public static String formatAuthString(String s, int maxlen) {
@@ -192,15 +193,6 @@ public class Convert {
     return s;
   }
 
-  private static int getCharCode(char c) {
-    for (int x = 0; x < characters.length; x++) {
-      if (c == characters[x]) {
-        return x;
-      }
-    }
-    return 0;
-  }
-
   public static byte[] stringToByteArray(String message) {
     byte[] buffer = new byte[100];
     if (message.length() > 80) {
@@ -234,6 +226,15 @@ public class Convert {
     byte[] string = new byte[length];
     System.arraycopy(buffer, 0, string, 0, length);
     return string;
+  }
+
+  private static int getCharCode(char c) {
+    for (int x = 0; x < characters.length; x++) {
+      if (c == characters[x]) {
+        return x;
+      }
+    }
+    return 0;
   }
 
   public static String byteArrayToString(byte[] data, int offset, int length) {

@@ -2,9 +2,9 @@ package org.firescape.server.npchandler;
 
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
-import org.firescape.server.model.*;
 
 public class Kolodion implements NpcHandler {
+
   /**
    * World instance
    */

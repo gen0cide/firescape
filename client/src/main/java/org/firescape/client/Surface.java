@@ -1,7 +1,12 @@
 package org.firescape.client;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Surface implements ImageProducer, ImageObserver {
 
@@ -460,6 +465,7 @@ public class Surface implements ImageProducer, ImageObserver {
 
   public void parseSprite(int spriteId, byte spriteData[], byte indexData[], int frameCount) {
     int indexOff = Utility.getUnsignedShort(spriteData, 0);
+    int debugIndexOff = indexOff;
     int fullWidth = Utility.getUnsignedShort(indexData, indexOff);
     indexOff += 2;
     int fullHeight = Utility.getUnsignedShort(indexData, indexOff);
@@ -497,7 +503,6 @@ public class Surface implements ImageProducer, ImageObserver {
             spriteTranslate[id] = true;
           }
         }
-
       } else if (unknown == 1) {
         for (int x = 0; x < spriteWidth[id]; x++) {
           for (int y = 0; y < spriteHeight[id]; y++) {
@@ -506,12 +511,54 @@ public class Surface implements ImageProducer, ImageObserver {
               spriteTranslate[id] = true;
             }
           }
-
         }
-
+      }
+      InputStream inputstream = this.getClass()
+                                    .getResourceAsStream("/org/firescape/client/conf/overwritten/" + id + ".png");
+      if (inputstream != null) {
+        System.out.println("Overwriting Sprite: " + id);
+        overwriteSpritePixels(id, inputstream);
       }
     }
+  }
 
+  public void overwriteSpritePixels(int id, InputStream inputstream) {
+    BufferedImage sprite = loadNewSprite(inputstream);
+    int[] pixelIndex = new int[sprite.getWidth() * sprite.getHeight()];
+    for (int y = 0; y < sprite.getHeight(); y++) {
+      for (int x = 0; x < sprite.getWidth(); x++) {
+        int pixel = sprite.getRGB(x, y);
+        if (pixel == 0) {
+          pixel = 1;
+        } else if (pixel == -65281) {
+          pixel = 0;
+        }
+        pixelIndex[x + y * spriteWidth[id]] = pixel;
+      }
+    }
+    Set<Integer> uniqueColors = new TreeSet<Integer>();
+    uniqueColors.add(-65281);
+    for (int i = 0; i < pixelIndex.length; i++) {
+      uniqueColors.add(pixelIndex[i]);
+    }
+
+    Integer[] colorList = uniqueColors.toArray(new Integer[uniqueColors.size()]);
+    int[] colorArray = new int[colorList.length];
+    for (int i = 0; i < colorList.length; i++) {
+      colorArray[i] = colorList[i].intValue();
+    }
+    spriteColourList[id] = colorArray;
+    spritePixels[id] = pixelIndex;
+  }
+
+  public BufferedImage loadNewSprite(InputStream is) {
+    try {
+      BufferedImage logo = ImageIO.read(is);
+      return logo;
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   public void readSleepWord(int spriteId, byte spriteData[]) {
@@ -638,22 +685,22 @@ public class Surface implements ImageProducer, ImageObserver {
       pixels[pixel] = colour;
     }
 
-    //    int i = spriteId;
-    //    Sprite s = new Sprite(
-    //      spriteId,
-    //      spriteId,
-    //      spriteWidth[i],
-    //      spriteHeight[i],
-    //      spriteWidthFull[i],
-    //      spriteHeightFull[i],
-    //      spriteColourList[i].length,
-    //      spriteColourList[i],
-    //      spriteTranslateX[i],
-    //      spriteTranslateY[i],
-    //      spriteTranslate[i],
-    //      pixels
-    //    );
-    //    s.saveSprite();
+    //        int i = spriteId;
+    //        Sprite s = new Sprite(
+    //          spriteId,
+    //          spriteId,
+    //          spriteWidth[i],
+    //          spriteHeight[i],
+    //          spriteWidthFull[i],
+    //          spriteHeightFull[i],
+    //          spriteColourList[i].length,
+    //          spriteColourList[i],
+    //          spriteTranslateX[i],
+    //          spriteTranslateY[i],
+    //          spriteTranslate[i],
+    //          pixels
+    //        );
+    //        s.saveSprite();
 
     spritePixels[spriteId] = pixels;
     spriteColoursUsed[spriteId] = null;

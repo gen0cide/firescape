@@ -13,6 +13,7 @@ import java.io.File;
  * the application.
  */
 public class EntityHandler {
+
   /**
    * The NPC def array
    */
@@ -47,18 +48,13 @@ public class EntityHandler {
       }
     }
 
-    textures = (TextureDef[]) PersistenceManager.load(new File(
-      "data",
-      "Textures.xml.gz"
-    ));
-    animations = (AnimationDef[]) PersistenceManager.load(new File(
-      "data",
-      "Animations.xml.gz"
-    ));
+    textures = (TextureDef[]) PersistenceManager.load(new File("data", "Textures.xml.gz"));
+    animations = (AnimationDef[]) PersistenceManager.load(new File("data", "Animations.xml.gz"));
   }
 
   /**
-   * @param id the array index
+   * @param id
+   *   the array index
    *
    * @return the npc def at the given array index
    */
@@ -78,7 +74,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the array index
+   * @param id
+   *   the array index
    *
    * @return the item def at the given array index
    */
@@ -98,7 +95,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the array index
+   * @param id
+   *   the array index
    *
    * @return the texture def at the given array index
    */
@@ -118,7 +116,8 @@ public class EntityHandler {
   }
 
   /**
-   * @param id the array index
+   * @param id
+   *   the array index
    *
    * @return the animation def from the given array index
    */

@@ -5,12 +5,12 @@ import org.firescape.server.model.TileValue;
 import org.firescape.server.model.World;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class MapGenerator {
+
   private static final World world = World.getWorld();
   private static final String[] labels = {
     "Ground", "Level-1", "Level-2", "Underground"
@@ -53,18 +53,6 @@ public class MapGenerator {
     }
   }
 
-  private void drawDot(int xCoord, int yCoord, int colour) {
-    image.setRGB(WIDTH - xCoord - 1, yCoord, colour);
-  }
-
-  private void fillTile(int xCoord, int yCoord, int colour) {
-    for (int xOff = 0; xOff < 2; xOff++) {
-      for (int yOff = 0; yOff < 2; yOff++) {
-        drawDot(xCoord + xOff, yCoord + yOff, colour);
-      }
-    }
-  }
-
   public void generate() {
     gfx.fillRect(0, 0, WIDTH, HEIGHT);
     int label = 0;
@@ -94,6 +82,28 @@ public class MapGenerator {
         }
       }
     }
+  }
+
+  public boolean save(String filename) {
+    try {
+      File file = new File(filename);
+      ImageIO.write(image, "png", file);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  private void fillTile(int xCoord, int yCoord, int colour) {
+    for (int xOff = 0; xOff < 2; xOff++) {
+      for (int yOff = 0; yOff < 2; yOff++) {
+        drawDot(xCoord + xOff, yCoord + yOff, colour);
+      }
+    }
+  }
+
+  private void drawDot(int xCoord, int yCoord, int colour) {
+    image.setRGB(WIDTH - xCoord - 1, yCoord, colour);
   }
 
   private void handleTile(int xImg, int yImg, TileValue tile) {
@@ -128,16 +138,6 @@ public class MapGenerator {
     }
     if ((type & 64) != 0) { // Unwalkable/Object
       fillTile(xImg, yImg, BLUE);
-    }
-  }
-
-  public boolean save(String filename) {
-    try {
-      File file = new File(filename);
-      ImageIO.write(image, "png", file);
-      return true;
-    } catch (Exception e) {
-      return false;
     }
   }
 }

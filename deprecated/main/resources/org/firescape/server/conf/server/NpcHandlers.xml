@@ -19,7 +19,7 @@
     <className>org.firescape.server.npchandler.DwarfMinner</className>
   </NpcHandler>
 
-    <NpcHandler>
+  <NpcHandler>
     <ids>
       <int>4</int>
       <int>62</int>
@@ -35,7 +35,7 @@
     </ids>
     <className>org.firescape.server.npchandler.BarbarianGear</className>
   </NpcHandler>
-  
+
   <NpcHandler>
     <ids>
       <int>78</int>
@@ -64,14 +64,14 @@
     <className>org.firescape.server.npchandler.PriestGear</className>
   </NpcHandler>
 
-    <NpcHandler>
+  <NpcHandler>
     <ids>
       <int>11</int>
     </ids>
     <className>org.firescape.server.npchandler.ManMeatSeller</className>
   </NpcHandler>
 
-    <NpcHandler>
+  <NpcHandler>
     <ids>
       <int>65</int>
       <int>100</int>

@@ -27,6 +27,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 public final class World {
+
   /**
    * The maximum width of the map
    */
@@ -171,18 +172,6 @@ public final class World {
       Server.writeValue(player, "rank", "6");
     }
 
-  }
-
-  /**
-   * Gets a player by their username hash
-   */
-  public Player getPlayer(long usernameHash) {
-    for (Player p : players) {
-      if (p.getUsernameHash() == usernameHash) {
-        return p;
-      }
-    }
-    return null;
   }
 
   public void kickPlayer(String p) {
@@ -472,6 +461,18 @@ public final class World {
       return friend.loggedIn();
     }
     return false;
+  }
+
+  /**
+   * Gets a player by their username hash
+   */
+  public Player getPlayer(long usernameHash) {
+    for (Player p : players) {
+      if (p.getUsernameHash() == usernameHash) {
+        return p;
+      }
+    }
+    return null;
   }
 
   /**

@@ -1,8 +1,6 @@
 package org.firescape.server;
 
 import org.apache.mina.common.IoSession;
-import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.extras.AdvertDef;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.SaveEvent;
 import org.firescape.server.model.Player;
@@ -15,7 +13,6 @@ import org.firescape.server.packethandler.PacketHandlerDef;
 import org.firescape.server.util.Logger;
 import org.firescape.server.util.PersistenceManager;
 
-import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
@@ -104,6 +101,12 @@ public final class GameEngine extends Thread {
 
   }
 
+  private static String processAdvert(String advert, Player p) {
+    advert = advert.replaceAll("%name", p.getUsername());
+    advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
+    return advert;
+  }
+
   /**
    * The thread execution process.
    */
@@ -119,30 +122,8 @@ public final class GameEngine extends Thread {
       }
     });
     while (running) {
-      long curTime = System.currentTimeMillis();
-      if (curTime - lastAdvert >= 60000L) {
-        lastAdvert = curTime;
-        if (++curAdvert >= EntityHandler.getAdverts().length || curAdvert < 0) {
-          curAdvert = 0;
-        }
-        AdvertDef advertDef = EntityHandler.getAdverts()[curAdvert];
-        String advert = advertDef.getMessage();
-        Player p;
-        for (Iterator i$ = world.getPlayers().iterator(); i$.hasNext(); p.getActionSender()
-                                                                         .sendMessage((new StringBuilder()).append(
-                                                                           "@cya@[Server Message] @whi@")
-                                                                                                           .append(
-                                                                                                             processAdvert(
-                                                                                                               advert,
-                                                                                                               p
-                                                                                                             ))
-                                                                                                           .toString())) {
-          p = (Player) i$.next();
-        }
-
-      }
       try {
-        Thread.sleep(100);
+        Thread.sleep(300);
       } catch (InterruptedException ie) {
       }
       processIncomingPackets();
@@ -152,12 +133,6 @@ public final class GameEngine extends Thread {
     if (!running) {
       world.getServer().unbind();
     }
-  }
-
-  private static String processAdvert(String advert, Player p) {
-    advert = advert.replaceAll("%name", p.getUsername());
-    advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
-    return advert;
   }
 
   /**

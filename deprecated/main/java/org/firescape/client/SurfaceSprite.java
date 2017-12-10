@@ -1,7 +1,5 @@
 package org.firescape.client;
 
-import java.awt.*;
-
 public class SurfaceSprite extends Surface {
 
   public mudclient mudclientref;

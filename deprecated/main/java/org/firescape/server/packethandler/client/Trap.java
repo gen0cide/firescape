@@ -8,6 +8,7 @@ import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.util.Logger;
 
 public class Trap implements PacketHandler {
+
   /**
    * World instance
    */

@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.entityhandling.defs;
  * The abstract class EntityDef implements methods for return values which are shared between entities.
  */
 public abstract class EntityDef {
+
   /**
    * The name of the entity
    */

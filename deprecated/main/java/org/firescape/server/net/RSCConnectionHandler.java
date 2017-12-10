@@ -15,6 +15,7 @@ import java.net.InetSocketAddress;
  * Handles the protocol events fired from MINA.
  */
 public class RSCConnectionHandler implements IoHandler {
+
   /**
    * A reference to the game engine's packet queue
    */
@@ -23,7 +24,8 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Creates a new connection handler for the given engine.
    *
-   * @param engine The engine in use
+   * @param engine
+   *   The engine in use
    */
   public RSCConnectionHandler(GameEngine engine) {
     packets = engine.getPacketQueue();
@@ -32,7 +34,8 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked whenever an IO session is created.
    *
-   * @param session The session opened
+   * @param session
+   *   The session opened
    */
   public void sessionCreated(IoSession session) {
     session.getFilterChain().addFirst("protocolFilter", new ProtocolCodecFilter(new RSCCodecFactory()));
@@ -43,7 +46,8 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked when a new session is opened.
    *
-   * @param session The session opened
+   * @param session
+   *   The session opened
    */
   public void sessionOpened(IoSession session) {
     session.setAttachment(new Player(session));
@@ -54,7 +58,8 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked whenever an IO session is closed. This must handle unregistering the disconnecting player from the engine.
    *
-   * @param session The IO session which has been closed
+   * @param session
+   *   The IO session which has been closed
    */
   public void sessionClosed(IoSession session) {
     Player player = (Player) session.getAttachment();
@@ -66,8 +71,10 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked when the idle status of a session changes.
    *
-   * @param session The session in question
-   * @param status The new idle status
+   * @param session
+   *   The session in question
+   * @param status
+   *   The new idle status
    */
   public void sessionIdle(IoSession session, IdleStatus status) {
     Player player = (Player) session.getAttachment();
@@ -79,8 +86,10 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked whenever an exception is thrown by MINA or this IoHandler.
    *
-   * @param session The associated session
-   * @param cause The exception thrown
+   * @param session
+   *   The associated session
+   * @param cause
+   *   The exception thrown
    */
   public void exceptionCaught(IoSession session, Throwable cause) {
   }
@@ -88,8 +97,10 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked whenever a packet is ready to be added to the queue.
    *
-   * @param session The IO session on which the packet was received
-   * @param message The packet
+   * @param session
+   *   The IO session on which the packet was received
+   * @param message
+   *   The packet
    */
   public void messageReceived(IoSession session, Object message) {
     Player player = (Player) session.getAttachment();
@@ -104,8 +115,10 @@ public class RSCConnectionHandler implements IoHandler {
   /**
    * Invoked whenever a packet is sent.
    *
-   * @param session The associated session
-   * @param message The packet sent
+   * @param session
+   *   The associated session
+   * @param message
+   *   The packet sent
    */
   public void messageSent(IoSession session, Object message) {
   }

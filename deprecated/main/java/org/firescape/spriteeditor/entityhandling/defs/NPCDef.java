@@ -7,6 +7,7 @@ import org.firescape.spriteeditor.entityhandling.defs.extras.*;
  * The definition wrapper for npcs
  */
 public class NPCDef extends EntityDef {
+
   /**
    * The primary command
    */
@@ -80,7 +81,8 @@ public class NPCDef extends EntityDef {
   }
 
   /**
-   * @param index the sprite index to get
+   * @param index
+   *   the sprite index to get
    *
    * @return this npc's sprite from the given index
    */

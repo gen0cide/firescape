@@ -3,6 +3,7 @@ package org.firescape.server.model;
 import org.firescape.server.util.Formulae;
 
 public class Point {
+
   public int x;
   public int y;
 

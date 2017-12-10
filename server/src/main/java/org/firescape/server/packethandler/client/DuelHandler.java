@@ -52,7 +52,7 @@ public class DuelHandler implements PacketHandler {
       return;
     }
     if (pID == Opcode.getClient(204, Command.Client.CL_PLAYER_DUEL)) { // Sending duel request
-      affectedPlayer = world.getPlayer(p.readShort());
+      affectedPlayer = world.getPlayerByServerIndex(p.readShort());
       if (affectedPlayer == null ||
           affectedPlayer.isDueling() ||
           !player.withinRange(affectedPlayer, 8) ||

@@ -13,12 +13,16 @@ import org.firescape.server.util.Logger;
  * Encodes the high level <code>RSCPacket</code> class into the proper protocol data required for transmission.
  */
 public class RSCProtocolEncoder implements ProtocolEncoder {
+
   /**
    * Converts a <code>RSCPacket</code> object into the raw data needed for transmission.
    *
-   * @param session The IO session associated with the packet
-   * @param message A <code>RSCPacket</code> to encode
-   * @param out The output stream to which to write the data
+   * @param session
+   *   The IO session associated with the packet
+   * @param message
+   *   A <code>RSCPacket</code> to encode
+   * @param out
+   *   The output stream to which to write the data
    */
   public void encode(IoSession session, Object message, ProtocolEncoderOutput out) {
     if (!(message instanceof RSCPacket)) {
@@ -67,7 +71,8 @@ public class RSCProtocolEncoder implements ProtocolEncoder {
   /**
    * Releases all resources used by this encoder.
    *
-   * @param session The IO session
+   * @param session
+   *   The IO session
    */
   public void dispose(IoSession session) {
   }

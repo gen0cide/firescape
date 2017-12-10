@@ -3,6 +3,7 @@ package org.firescape.server.util;
 import org.firescape.server.model.World;
 
 public class Logger {
+
   /**
    * World instance
    */

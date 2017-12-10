@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class FightEvent extends DelayedEvent {
+
   private final Mob affectedMob;
   private final int firstHit;
   private final Random r = new Random();

@@ -1,6 +1,7 @@
 package org.firescape.core;
 
 public class Command {
+
   public enum Client {
     CL_APPEARANCE,
     CL_BANK_CLOSE,

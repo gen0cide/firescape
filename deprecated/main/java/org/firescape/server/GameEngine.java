@@ -22,6 +22,7 @@ import java.util.TreeMap;
  * The central motor of the game. This class is responsible for the primary operation of the entire game.
  */
 public final class GameEngine extends Thread {
+
   /**
    * World instance
    */

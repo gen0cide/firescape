@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.data;
  * Holds all data file variables and data
  */
 class DataFileVariables {
+
   public static int anIntArray489[];
   /**
    * Data file variables
@@ -55,6 +56,7 @@ class DataFileVariables {
   int anIntArrayArray501[][];
   int anIntArray502[];
   int anInt503;
+
   /**
    * Constructs a new data file variable holder
    */

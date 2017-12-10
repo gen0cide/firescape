@@ -2,7 +2,6 @@ package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
 import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.extras.*;
 import org.firescape.server.event.MiniEvent;
 import org.firescape.server.model.InvItem;
 import org.firescape.server.model.MenuHandler;
@@ -14,6 +13,7 @@ import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 
 public class InvUseOnItem implements PacketHandler {
+
   /**
    * World instance
    */

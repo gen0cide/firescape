@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class AdvertDef {
+
   public String message;
 
   public AdvertDef() {

@@ -3,6 +3,7 @@ package org.firescape.server.entityhandling.locs;
 import java.io.Serializable;
 
 public class NPCLoc implements Serializable {
+
   /**
    * The id of the Npc
    */

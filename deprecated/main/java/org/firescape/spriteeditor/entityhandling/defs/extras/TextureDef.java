@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.entityhandling.defs.extras;
  * Defines a texture definition
  */
 public class TextureDef {
+
   /**
    * This texture's data name
    */

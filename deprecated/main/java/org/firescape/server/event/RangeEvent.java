@@ -1,7 +1,6 @@
 package org.firescape.server.event;
 
 import org.firescape.server.GameVars;
-import org.firescape.server.model.*;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
@@ -9,6 +8,7 @@ import org.firescape.server.util.Formulae;
 import java.util.ArrayList;
 
 public class RangeEvent extends DelayedEvent {
+
   private final Mob affectedMob;
   private boolean firstRun = true;
 

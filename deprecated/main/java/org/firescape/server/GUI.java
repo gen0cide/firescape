@@ -9,11 +9,9 @@ import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
 
-import javax.swing.*;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;

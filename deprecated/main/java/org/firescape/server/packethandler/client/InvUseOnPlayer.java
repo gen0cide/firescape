@@ -14,6 +14,7 @@ import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 
 public class InvUseOnPlayer implements PacketHandler {
+
   /**
    * World instance
    */

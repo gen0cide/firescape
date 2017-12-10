@@ -2,12 +2,10 @@ package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
 import org.firescape.server.entityhandling.EntityHandler;
-import org.firescape.server.entityhandling.defs.extras.*;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.MiniEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToObjectEvent;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.opcode.Command;
@@ -20,6 +18,7 @@ import org.firescape.server.util.Formulae;
 import java.util.List;
 
 public class InvUseOnObject implements PacketHandler {
+
   /**
    * World instance
    */

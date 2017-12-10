@@ -6,7 +6,6 @@ import org.firescape.server.clan.Party;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.SingleEvent;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.CombatState;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CommandHandler implements PacketHandler {
+
   /**
    * World instance
    */

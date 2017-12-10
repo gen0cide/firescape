@@ -534,9 +534,12 @@ public class WordFilter {
   }
 
   /**
-   * @param filterChar character to compare against
-   * @param currentChar current character
-   * @param nextChar next character
+   * @param filterChar
+   *   character to compare against
+   * @param currentChar
+   *   current character
+   * @param nextChar
+   *   next character
    *
    * @return 0 for no match, 1 for currentChar matches, 2 for both currentChar and nextChar matching
    */

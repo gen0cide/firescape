@@ -4,7 +4,6 @@ import org.firescape.client.opcode.Command;
 import org.firescape.client.opcode.Opcode;
 import org.firescape.client.script.Manager;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -10158,6 +10157,7 @@ public class mudclient extends GameConnection {
   }
 
   public static class MinimapEntity {
+
     public MinimapEntityType type;
     public int x;
     public int y;

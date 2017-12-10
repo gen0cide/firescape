@@ -1,12 +1,12 @@
 package org.firescape.server.packetbuilder.client;
 
-import org.firescape.server.model.*;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
 
 import java.util.List;
 
 public class PlayerUpdatePacketBuilder {
+
   private Player playerToUpdate;
 
   /**

@@ -5,6 +5,7 @@ import org.firescape.core.Command;
 import java.util.HashMap;
 
 public class V204 {
+
   public static HashMap<Command.Client, Integer> client = new HashMap<Command.Client, Integer>() {{
     put(Command.Client.CL_TRADE_CONFIRM_ACCEPT, 104);
     put(Command.Client.CL_APPEARANCE, 235);

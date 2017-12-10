@@ -6,7 +6,6 @@ import org.firescape.server.entityhandling.defs.extras.FiremakingDef;
 import org.firescape.server.entityhandling.defs.extras.ObjectFishDef;
 import org.firescape.server.entityhandling.defs.extras.ObjectMiningDef;
 import org.firescape.server.entityhandling.defs.extras.ObjectWoodcuttingDef;
-import org.firescape.server.model.*;
 
 import java.util.ArrayList;
 import java.util.List;

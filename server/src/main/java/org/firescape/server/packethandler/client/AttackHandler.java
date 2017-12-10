@@ -33,7 +33,7 @@ public class AttackHandler implements PacketHandler {
     Mob affectedMob = null;
     int serverIndex = p.readShort();
     if (pID == Opcode.getClient(204, Command.Client.CL_PLAYER_ATTACK)) {
-      affectedMob = world.getPlayer(serverIndex);
+      affectedMob = world.getPlayerByServerIndex(serverIndex);
     } else if (pID == Opcode.getClient(204, Command.Client.CL_NPC_ATTACK)) {
       affectedMob = world.getNpc(serverIndex);
     }

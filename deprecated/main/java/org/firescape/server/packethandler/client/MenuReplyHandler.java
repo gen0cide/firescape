@@ -8,6 +8,7 @@ import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class MenuReplyHandler implements PacketHandler {
+
   /**
    * World instance
    */

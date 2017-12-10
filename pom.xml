@@ -5,30 +5,30 @@
 
   <groupId>org.firescape</groupId>
   <artifactId>firescape-suite</artifactId>
-  <version>2</version>
+  <version>3</version>
   <packaging>pom</packaging>
 
   <profiles>
     <profile>
       <id>server</id>
       <modules>
-         <module>server</module>
+        <module>server</module>
       </modules>
     </profile>
     <profile>
       <id>client</id>
       <modules>
-         <module>client</module>
+        <module>client</module>
       </modules>
     </profile>
     <profile>
       <id>all</id>
       <activation>
-          <activeByDefault>true</activeByDefault>
+        <activeByDefault>true</activeByDefault>
       </activation>
       <modules>
-         <module>server</module>
-         <module>client</module>
+        <module>server</module>
+        <module>client</module>
       </modules>
     </profile>
   </profiles>

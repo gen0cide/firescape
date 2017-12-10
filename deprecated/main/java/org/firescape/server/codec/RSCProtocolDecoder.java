@@ -13,12 +13,16 @@ import org.firescape.server.util.DataConversions;
  * object.
  */
 public class RSCProtocolDecoder extends CumulativeProtocolDecoder {
+
   /**
    * Parses the data in the provided byte buffer and writes it to <code>out</code> as a <code>RSCPacket</code>.
    *
-   * @param session The IoSession the data was read from
-   * @param in The buffer
-   * @param out The decoder output stream to which to write the <code>RSCPacket</code>
+   * @param session
+   *   The IoSession the data was read from
+   * @param in
+   *   The buffer
+   * @param out
+   *   The decoder output stream to which to write the <code>RSCPacket</code>
    *
    * @return Whether enough data was available to create a packet
    */
@@ -71,9 +75,11 @@ public class RSCProtocolDecoder extends CumulativeProtocolDecoder {
   /**
    * Releases the buffer used by the given session.
    *
-   * @param session The session for which to release the buffer
+   * @param session
+   *   The session for which to release the buffer
    *
-   * @throws Exception if failed to dispose all resources
+   * @throws Exception
+   *   if failed to dispose all resources
    */
   public void dispose(IoSession session) throws Exception {
     super.dispose(session);

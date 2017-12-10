@@ -16,7 +16,6 @@ import org.firescape.server.util.Logger;
 import org.jruby.embed.ScriptingContainer;
 import redis.clients.jedis.Jedis;
 
-import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
@@ -25,6 +24,7 @@ import java.util.Properties;
  * The entry point for RSC server.
  */
 public class Server {
+
   public static final String JRubyEntryPoint = "require 'pry'\n" +
                                                "require 'pry-remote'\n" +
                                                "require 'redis'\n" +
@@ -147,7 +147,11 @@ public class Server {
       IoAcceptorConfig config = new SocketAcceptorConfig();
       config.setDisconnectOnUnbind(true);
       ((SocketSessionConfig) config.getSessionConfig()).setReuseAddress(true);
-      acceptor.bind(new InetSocketAddress("0.0.0.0", org.firescape.server.GameVars.portNumber), new RSCConnectionHandler(engine), config);
+      acceptor.bind(
+        new InetSocketAddress("0.0.0.0", org.firescape.server.GameVars.portNumber),
+        new RSCConnectionHandler(engine),
+        config
+      );
     } catch (Exception e) {
       Logger.error(e);
     }
@@ -404,6 +408,7 @@ public class Server {
   }
 
   public interface MathLib {
+
     String Puts(String s);
   }
 }

@@ -3,6 +3,7 @@ package org.firescape.core;
 import java.io.UnsupportedEncodingException;
 
 public class ServerPacketBuilder {
+
   public static Packet sendFatigue(int val) {
     Packet p = new Packet();
     p.setID(Opcode.getServer(Command.Server.SV_PLAYER_STAT_FATIGUE));

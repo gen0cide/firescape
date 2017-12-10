@@ -1,9 +1,7 @@
 package org.firescape.spriteeditor;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -22,6 +20,7 @@ import java.util.zip.ZipOutputStream;
  * Packs the sprites into a compressed archive.
  */
 public class SpritePacker {
+
   /**
    * The sprite directory to import new sprites from
    */
@@ -34,22 +33,23 @@ public class SpritePacker {
   /**
    * Constructs a new sprite packer with the given file
    *
-   * @param file the file to output the sprites to
+   * @param file
+   *   the file to output the sprites to
    */
   public SpritePacker(File file) {
     // Open the .pak archive and put all Sprites into a Map
-		if (file.exists()) {
-			sprites = readZip(file);
-		} else {
-			sprites = null;
-		}
+    if (file.exists()) {
+      sprites = readZip(file);
+    } else {
+      sprites = null;
+    }
 
     try {
-			if (!file.exists()) {
-				if (file.createNewFile()) {
-					file = file.getAbsoluteFile();
-				}
-			}
+      if (!file.exists()) {
+        if (file.createNewFile()) {
+          file = file.getAbsoluteFile();
+        }
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -59,17 +59,17 @@ public class SpritePacker {
     String[] spriteList = newSprites.list();
     Sprite created = null;
 
-		if (sprites == null) {
-			sprites = new TreeMap<Integer, Sprite>();
-		}
+    if (sprites == null) {
+      sprites = new TreeMap<Integer, Sprite>();
+    }
 
     int count = 0;
     final int total = spriteList.length;
 
     for (int i = 0; i < total; i++) {
-			if (!spriteList[i].endsWith(".spr")) {
-				continue;
-			}
+      if (!spriteList[i].endsWith(".spr")) {
+        continue;
+      }
 
       try {
         created = Sprite.deserializeFrom(new File(NEW_DIR + spriteList[i]));
@@ -102,21 +102,21 @@ public class SpritePacker {
 
       int intProg = (int) (((double) ++count / (double) total) * 100D);
 
-			if (intProg <= 0) {
-				intProg = 1;
-			}
+      if (intProg <= 0) {
+        intProg = 1;
+      }
 
       String progress = String.valueOf(intProg);
 
-			if (intProg < 10) {
-				progress = "0" + progress + "%";
-			} else {
-				progress = progress + "%";
-			}
+      if (intProg < 10) {
+        progress = "0" + progress + "%";
+      } else {
+        progress = progress + "%";
+      }
 
-			if (intProg == 100) {
-				progress = "99% - packing";
-			}
+      if (intProg == 100) {
+        progress = "99% - packing";
+      }
 
       System.out.println("\n\n == Progress: " + progress + " ==\n\n");
     }
@@ -131,15 +131,16 @@ public class SpritePacker {
   /**
    * Loads the sprites from the given file
    *
-   * @param file the pak file to load
+   * @param file
+   *   the pak file to load
    */
   public TreeMap<Integer, Sprite> readZip(File file) {
     try {
       TreeMap<Integer, Sprite> sprites = new TreeMap<Integer, Sprite>();
 
-			if (file == null) {
-				file.createNewFile();
-			}
+      if (file == null) {
+        file.createNewFile();
+      }
 
       ZipFile zip = new ZipFile(file);
 
@@ -222,9 +223,12 @@ public class SpritePacker {
   /**
    * Saves the given image into the given format into the given file
    *
-   * @param image the image to save
-   * @param format the format to save the image in
-   * @param file the file to save to
+   * @param image
+   *   the image to save
+   * @param format
+   *   the format to save the image in
+   * @param file
+   *   the file to save to
    */
   public static void saveImage(BufferedImage image, String format, File file) throws IOException {
     ImageIO.write(image, format, file);
@@ -235,10 +239,9 @@ public class SpritePacker {
    */
   public static BufferedImage loadImage(File file) throws IOException {
     Image image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(file.getAbsolutePath())).getImage();
-    BufferedImage buffImage = new BufferedImage(
-      image.getWidth(null),
-      image.getHeight(null),
-      BufferedImage.TYPE_INT_RGB
+    BufferedImage buffImage = new BufferedImage(image.getWidth(null),
+                                                image.getHeight(null),
+                                                BufferedImage.TYPE_INT_RGB
     );
 
     Graphics g = buffImage.createGraphics();

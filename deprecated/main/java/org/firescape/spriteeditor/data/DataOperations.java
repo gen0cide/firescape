@@ -1,11 +1,10 @@
 package org.firescape.spriteeditor.data;
 
-import java.io.*;
-
 /**
  * Handles various data operations
  */
 public class DataOperations {
+
   /**
    * Data base length array
    */

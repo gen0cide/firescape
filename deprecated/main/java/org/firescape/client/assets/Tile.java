@@ -1,6 +1,7 @@
 package org.firescape.client.assets;
 
 public class Tile {
+
   public int id;
   public int decoration;
   public int type;

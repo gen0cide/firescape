@@ -8,6 +8,7 @@ import org.apache.mina.filter.codec.ProtocolEncoder;
  * Provides access to the protocol encoders and decoders for the RSC protocol.
  */
 public class RSCCodecFactory implements ProtocolCodecFactory {
+
   /**
    * The protocol encoder in use
    */

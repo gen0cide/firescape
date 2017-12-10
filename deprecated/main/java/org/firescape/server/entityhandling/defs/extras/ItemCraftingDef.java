@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class ItemCraftingDef {
+
   /**
    * The crafting level required to make this item
    */

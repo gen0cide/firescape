@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class ItemSmithingDef {
+
   /**
    * The smithing level required to make this item
    */

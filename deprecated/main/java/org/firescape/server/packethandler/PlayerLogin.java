@@ -1,7 +1,6 @@
 package org.firescape.server.packethandler;
 
 import org.apache.mina.common.IoSession;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.util.DataConversions;
@@ -9,6 +8,7 @@ import org.firescape.server.util.Formulae;
 import org.firescape.server.util.Logger;
 
 public class PlayerLogin implements PacketHandler {
+
   /**
    * World instance
    */

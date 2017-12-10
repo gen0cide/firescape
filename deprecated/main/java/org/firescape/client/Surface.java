@@ -1,8 +1,5 @@
 package org.firescape.client;
 
-import java.awt.*;
-import java.awt.image.*;
-
 public class Surface implements ImageProducer, ImageObserver {
 
   public static int anInt346;

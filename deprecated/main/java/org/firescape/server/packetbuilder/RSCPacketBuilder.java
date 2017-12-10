@@ -3,6 +3,7 @@ package org.firescape.server.packetbuilder;
 import org.firescape.server.net.RSCPacket;
 
 public class RSCPacketBuilder extends StaticPacketBuilder {
+
   /**
    * ID of the packet
    */
@@ -11,7 +12,8 @@ public class RSCPacketBuilder extends StaticPacketBuilder {
   /**
    * Sets the ID for this packet.
    *
-   * @param id The ID of the packet
+   * @param id
+   *   The ID of the packet
    */
   public RSCPacketBuilder setID(int pID) {
     this.pID = pID;

@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class CertDef {
+
   /**
    * The name of the item this cert is for
    */

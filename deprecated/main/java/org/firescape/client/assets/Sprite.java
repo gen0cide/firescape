@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Modifier;
 
 public class Sprite {
+
   public static Gson gson = new GsonBuilder().setPrettyPrinting()
                                              .serializeNulls()
                                              .excludeFieldsWithModifiers(Modifier.PRIVATE)

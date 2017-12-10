@@ -4,6 +4,7 @@ package org.firescape.server;
  * @author Ent All Game variables that may be tweaked by the Control Panel will be stored here.
  */
 public class GameVars {
+
   /**
    * FireScape's current version.
    */

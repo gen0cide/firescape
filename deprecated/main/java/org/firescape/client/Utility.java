@@ -1,6 +1,5 @@
 package org.firescape.client;
 
-import java.io.*;
 import java.net.URL;
 
 public class Utility {
@@ -1028,6 +1027,7 @@ public class Utility {
   }
 
   public static class Gjstr2 {
+
     public String result;
     public int newOffset;
 
@@ -1038,12 +1038,14 @@ public class Utility {
   }
 
   public static class Cabbage extends Gjstr2 {
+
     public Cabbage(String s, int i) {
       super(s, i);
     }
   }
 
   public static class UInt3 {
+
     public int result;
     public int newOffset;
 

@@ -1,6 +1,7 @@
 package org.firescape.client.assets;
 
 public class Spell {
+
   public int id;
   public String name;
   public String description;
