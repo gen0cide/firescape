@@ -182,35 +182,35 @@ public class RangeEvent extends DelayedEvent {
   }
 
   public double getArrowMod(int arrowId) {
-    double poisonDmgIncrease = 0.025;
+    double poisonDmgIncrease = 0.255;
     switch (arrowId) {
       case 11:
         return 1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 574:
         return 1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 638:
-        return 1.05 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 639:
-        return 1.05 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 640:
-        return 1.1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.2 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 641:
-        return 1.1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.2 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 642:
-        return 1.2 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.4 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 643:
-        return 1.2 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.4 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 786:
-        return 1.3 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0); // pearl xbow
+        return 1.6 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0); // pearl xbow
       // bolts
       case 644:
-        return 1.3 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.6 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 645:
-        return 1.3 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.6 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 646:
-        return 1.4 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.8 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       case 647:
-        return 1.4 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
+        return 1.8 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
       default:
         return 1 + (isPoisioned(arrowId) ? poisonDmgIncrease : 0);
     }
