@@ -1,0 +1,182 @@
+{
+  "195": {
+    "requiredLvl": 20,
+    "exp": 1200,
+    "respawnTime": 30,
+    "oreId": 383,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "100": {
+    "requiredLvl": 1,
+    "exp": 540,
+    "respawnTime": 3,
+    "oreId": 150,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "196": {
+    "requiredLvl": 20,
+    "exp": 1200,
+    "respawnTime": 30,
+    "oreId": 383,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "101": {
+    "requiredLvl": 1,
+    "exp": 540,
+    "respawnTime": 3,
+    "oreId": 150,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "102": {
+    "requiredLvl": 15,
+    "exp": 1050,
+    "respawnTime": 5,
+    "oreId": 151,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "103": {
+    "requiredLvl": 15,
+    "exp": 1050,
+    "respawnTime": 5,
+    "oreId": 151,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "104": {
+    "requiredLvl": 1,
+    "exp": 540,
+    "respawnTime": 3,
+    "oreId": 202,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "105": {
+    "requiredLvl": 1,
+    "exp": 540,
+    "respawnTime": 3,
+    "oreId": 202,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "106": {
+    "requiredLvl": 55,
+    "exp": 2400,
+    "respawnTime": 60,
+    "oreId": 153,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "107": {
+    "requiredLvl": 55,
+    "exp": 2400,
+    "respawnTime": 60,
+    "oreId": 153,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "108": {
+    "requiredLvl": 70,
+    "exp": 2850,
+    "respawnTime": 120,
+    "oreId": 154,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "109": {
+    "requiredLvl": 70,
+    "exp": 2850,
+    "respawnTime": 120,
+    "oreId": 154,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "110": {
+    "requiredLvl": 30,
+    "exp": 1500,
+    "respawnTime": 30,
+    "oreId": 155,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "111": {
+    "requiredLvl": 30,
+    "exp": 1500,
+    "respawnTime": 30,
+    "oreId": 155,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "112": {
+    "requiredLvl": 40,
+    "exp": 1950,
+    "respawnTime": 30,
+    "oreId": 152,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "113": {
+    "requiredLvl": 40,
+    "exp": 1950,
+    "respawnTime": 30,
+    "oreId": 152,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "114": {
+    "requiredLvl": 1,
+    "exp": 150,
+    "respawnTime": 2,
+    "oreId": 149,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "210": {
+    "requiredLvl": 85,
+    "exp": 3750,
+    "respawnTime": 600,
+    "oreId": 409,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "115": {
+    "requiredLvl": 1,
+    "exp": 150,
+    "respawnTime": 2,
+    "oreId": 149,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "211": {
+    "requiredLvl": 85,
+    "exp": 3750,
+    "respawnTime": 600,
+    "oreId": 409,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

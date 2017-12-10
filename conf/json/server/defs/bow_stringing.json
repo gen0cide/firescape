@@ -1,0 +1,98 @@
+{
+  "658": {
+    "requiredLvl": 25,
+    "exp": 750,
+    "bowID": 648,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "659": {
+    "requiredLvl": 20,
+    "exp": 510,
+    "bowID": 649,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "276": {
+    "requiredLvl": 10,
+    "exp": 300,
+    "bowID": 188,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "660": {
+    "requiredLvl": 40,
+    "exp": 1260,
+    "bowID": 650,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "277": {
+    "requiredLvl": 5,
+    "exp": 150,
+    "bowID": 189,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "661": {
+    "requiredLvl": 35,
+    "exp": 990,
+    "bowID": 651,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "662": {
+    "requiredLvl": 55,
+    "exp": 1740,
+    "bowID": 652,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "663": {
+    "requiredLvl": 50,
+    "exp": 1500,
+    "bowID": 653,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "664": {
+    "requiredLvl": 70,
+    "exp": 2250,
+    "bowID": 654,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "665": {
+    "requiredLvl": 65,
+    "exp": 2010,
+    "bowID": 655,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "666": {
+    "requiredLvl": 85,
+    "exp": 2760,
+    "bowID": 656,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "667": {
+    "requiredLvl": 80,
+    "exp": 2490,
+    "bowID": 657,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for herbs
  */
-public class ItemUnIdentHerbDef {
+public class ItemUnIdentHerbDef extends EntityDef {
 
   /**
    * Herblaw level required to identify

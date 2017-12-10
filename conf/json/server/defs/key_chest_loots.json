@@ -1,0 +1,148 @@
+[
+  [
+    {
+      "amount": 3,
+      "wielded": false,
+      "location": null,
+      "id": 408,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 5,
+      "wielded": false,
+      "location": null,
+      "id": 369,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 20,
+      "wielded": false,
+      "location": null,
+      "id": 518,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 30,
+      "wielded": false,
+      "location": null,
+      "id": 517,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 526,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 527,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 750,
+      "wielded": false,
+      "location": null,
+      "id": 10,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 527,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 2000,
+      "wielded": false,
+      "location": null,
+      "id": 10,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 179,
+      "index": 0
+    }
+  ],
+  [
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 160,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 164,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 159,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 163,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 158,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 162,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 157,
+      "index": 0
+    },
+    {
+      "amount": 1,
+      "wielded": false,
+      "location": null,
+      "id": 161,
+      "index": 0
+    }
+  ]
+]

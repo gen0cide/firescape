@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for rocks
  */
-public class ObjectMiningDef {
+public class ObjectMiningDef extends EntityDef {
 
   /**
    * Herblaw level required to identify

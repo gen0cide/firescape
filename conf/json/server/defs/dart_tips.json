@@ -1,0 +1,50 @@
+{
+  "1062": {
+    "requiredLvl": 1,
+    "exp": 30.0,
+    "dartID": 1013,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "1063": {
+    "requiredLvl": 15,
+    "exp": 60.0,
+    "dartID": 1015,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "1064": {
+    "requiredLvl": 30,
+    "exp": 135.0,
+    "dartID": 1024,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "1065": {
+    "requiredLvl": 45,
+    "exp": 210.0,
+    "dartID": 1068,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "1066": {
+    "requiredLvl": 60,
+    "exp": 285.0,
+    "dartID": 1069,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "1067": {
+    "requiredLvl": 75,
+    "exp": 360.0,
+    "dartID": 1070,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 import org.firescape.server.entityhandling.EntityHandler;
+import org.firescape.server.entityhandling.defs.EntityDef;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -9,7 +10,7 @@ import java.util.Set;
 /**
  * The definition wrapper for items
  */
-public class ItemWieldableDef {
+public class ItemWieldableDef extends EntityDef {
 
   /**
    * Sprite Id of the item

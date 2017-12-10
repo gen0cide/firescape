@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for items
  */
-public class ItemLogCutDef {
+public class ItemLogCutDef extends EntityDef {
 
   public int shortbowID;
   public int shortbowLvl;

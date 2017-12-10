@@ -1,0 +1,314 @@
+{
+  "192": [
+    {
+      "defs": [
+        {
+          "fishId": 358,
+          "requiredLevel": 20,
+          "exp": 1500,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 356,
+          "requiredLevel": 30,
+          "exp": 2100,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 378,
+      "baitId": 381,
+      "id": 0,
+      "name": null,
+      "description": null
+    },
+    {
+      "defs": [
+        {
+          "fishId": 354,
+          "requiredLevel": 5,
+          "exp": 600,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 361,
+          "requiredLevel": 10,
+          "exp": 900,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 377,
+      "baitId": 380,
+      "id": 0,
+      "name": null,
+      "description": null
+    }
+  ],
+  "193": [
+    {
+      "defs": [
+        {
+          "fishId": 349,
+          "requiredLevel": 1,
+          "exp": 300,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 351,
+          "requiredLevel": 15,
+          "exp": 1200,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 376,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    },
+    {
+      "defs": [
+        {
+          "fishId": 354,
+          "requiredLevel": 5,
+          "exp": 600,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 361,
+          "requiredLevel": 10,
+          "exp": 900,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 377,
+      "baitId": 380,
+      "id": 0,
+      "name": null,
+      "description": null
+    }
+  ],
+  "194": [
+    {
+      "defs": [
+        {
+          "fishId": 369,
+          "requiredLevel": 50,
+          "exp": 3000,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 366,
+          "requiredLevel": 35,
+          "exp": 2400,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 379,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    },
+    {
+      "defs": [
+        {
+          "fishId": 372,
+          "requiredLevel": 40,
+          "exp": 2700,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 375,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    }
+  ],
+  "261": [
+    {
+      "defs": [
+        {
+          "fishId": 552,
+          "requiredLevel": 16,
+          "exp": 600,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 550,
+          "requiredLevel": 23,
+          "exp": 1350,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 554,
+          "requiredLevel": 46,
+          "exp": 3000,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 17,
+          "requiredLevel": 16,
+          "exp": 30,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 16,
+          "requiredLevel": 16,
+          "exp": 30,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 622,
+          "requiredLevel": 16,
+          "exp": 30,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 548,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    },
+    {
+      "defs": [
+        {
+          "fishId": 545,
+          "requiredLevel": 76,
+          "exp": 3300,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 379,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    }
+  ],
+  "376": [
+    {
+      "defs": [
+        {
+          "fishId": 372,
+          "requiredLevel": 40,
+          "exp": 2700,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 375,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    },
+    {
+      "defs": [
+        {
+          "fishId": 369,
+          "requiredLevel": 50,
+          "exp": 3000,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 366,
+          "requiredLevel": 35,
+          "exp": 2400,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 379,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    }
+  ],
+  "557": [
+    {
+      "defs": [
+        {
+          "fishId": 369,
+          "requiredLevel": 50,
+          "exp": 3000,
+          "id": 0,
+          "name": null,
+          "description": null
+        },
+        {
+          "fishId": 366,
+          "requiredLevel": 35,
+          "exp": 2400,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 379,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    },
+    {
+      "defs": [
+        {
+          "fishId": 372,
+          "requiredLevel": 40,
+          "exp": 2700,
+          "id": 0,
+          "name": null,
+          "description": null
+        }
+      ],
+      "netId": 375,
+      "baitId": -1,
+      "id": 0,
+      "name": null,
+      "description": null
+    }
+  ]
+}

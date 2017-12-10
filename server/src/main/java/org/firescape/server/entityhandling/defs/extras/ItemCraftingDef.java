@@ -1,6 +1,8 @@
 package org.firescape.server.entityhandling.defs.extras;
 
-public class ItemCraftingDef {
+import org.firescape.server.entityhandling.defs.EntityDef;
+
+public class ItemCraftingDef extends EntityDef {
 
   /**
    * The crafting level required to make this item

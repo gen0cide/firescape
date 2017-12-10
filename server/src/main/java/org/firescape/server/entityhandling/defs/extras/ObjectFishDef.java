@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for fish
  */
-public class ObjectFishDef {
+public class ObjectFishDef extends EntityDef {
 
   /**
    * The id of the fish

@@ -1,0 +1,82 @@
+{
+  "0": {
+    "requiredLvl": 1,
+    "exp": 750,
+    "fell": 100,
+    "respawnTime": 30,
+    "logId": 14,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "1": {
+    "requiredLvl": 1,
+    "exp": 750,
+    "fell": 100,
+    "respawnTime": 30,
+    "logId": 14,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "306": {
+    "requiredLvl": 15,
+    "exp": 1140,
+    "fell": 10,
+    "respawnTime": 60,
+    "logId": 632,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "307": {
+    "requiredLvl": 30,
+    "exp": 1890,
+    "fell": 10,
+    "respawnTime": 60,
+    "logId": 633,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "308": {
+    "requiredLvl": 45,
+    "exp": 3000,
+    "fell": 15,
+    "respawnTime": 120,
+    "logId": 634,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "309": {
+    "requiredLvl": 60,
+    "exp": 5250,
+    "fell": 20,
+    "respawnTime": 120,
+    "logId": 635,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "70": {
+    "requiredLvl": 1,
+    "exp": 750,
+    "fell": 100,
+    "respawnTime": 30,
+    "logId": 14,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "310": {
+    "requiredLvl": 75,
+    "exp": 7500,
+    "fell": 20,
+    "respawnTime": 180,
+    "logId": 636,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

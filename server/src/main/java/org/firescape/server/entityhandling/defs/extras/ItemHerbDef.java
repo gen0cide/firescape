@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for items
  */
-public class ItemHerbDef {
+public class ItemHerbDef extends EntityDef {
 
   /**
    * The exp smelting this item gives

@@ -1,0 +1,146 @@
+[
+  {
+    "requiredLvl": 5,
+    "itemID": 283,
+    "exp": 450,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 6,
+    "itemID": 288,
+    "exp": 600,
+    "id": 1,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 8,
+    "itemID": 296,
+    "exp": 900,
+    "id": 2,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 8,
+    "itemID": 284,
+    "exp": 1200,
+    "id": 3,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 10,
+    "itemID": 289,
+    "exp": 1650,
+    "id": 4,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 13,
+    "itemID": 297,
+    "exp": 1950,
+    "id": 5,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 18,
+    "itemID": 285,
+    "exp": 1950,
+    "id": 6,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 24,
+    "itemID": 290,
+    "exp": 1800,
+    "id": 7,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 30,
+    "itemID": 298,
+    "exp": 2100,
+    "id": 8,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 30,
+    "itemID": 286,
+    "exp": 2100,
+    "id": 9,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 40,
+    "itemID": 291,
+    "exp": 2250,
+    "id": 10,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 50,
+    "itemID": 299,
+    "exp": 2550,
+    "id": 11,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 42,
+    "itemID": 287,
+    "exp": 2550,
+    "id": 12,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 56,
+    "itemID": 292,
+    "exp": 2700,
+    "id": 13,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 70,
+    "itemID": 300,
+    "exp": 3000,
+    "id": 14,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 55,
+    "itemID": 543,
+    "exp": 3000,
+    "id": 15,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 72,
+    "itemID": 544,
+    "exp": 3150,
+    "id": 16,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 80,
+    "itemID": 524,
+    "exp": 4500,
+    "id": 17,
+    "name": null,
+    "description": null
+  }
+]

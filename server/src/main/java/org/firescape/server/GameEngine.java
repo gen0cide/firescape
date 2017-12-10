@@ -1,6 +1,7 @@
 package org.firescape.server;
 
 import org.apache.mina.common.IoSession;
+import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.SaveEvent;
 import org.firescape.server.model.Player;
@@ -121,6 +122,7 @@ public final class GameEngine extends Thread {
         SaveEvent.saveAll();
       }
     });
+    EntityHandler.writeGameDefs();
     while (running) {
       try {
         Thread.sleep(300);

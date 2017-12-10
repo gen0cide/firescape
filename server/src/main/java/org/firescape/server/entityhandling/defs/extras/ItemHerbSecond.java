@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for items
  */
-public class ItemHerbSecond {
+public class ItemHerbSecond extends EntityDef {
 
   /**
    * The level required to complete this potion

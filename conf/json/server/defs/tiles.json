@@ -1,0 +1,202 @@
+[
+  {
+    "colour": -16913,
+    "unknown": 1,
+    "objectType": 0,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 1,
+    "unknown": 3,
+    "objectType": 1,
+    "id": 1,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 3,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 2,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 3,
+    "unknown": 4,
+    "objectType": 0,
+    "id": 3,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -16913,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 4,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -27685,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 5,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 25,
+    "unknown": 3,
+    "objectType": 1,
+    "id": 6,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 12345678,
+    "unknown": 5,
+    "objectType": 1,
+    "id": 7,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -26426,
+    "unknown": 1,
+    "objectType": 1,
+    "id": 8,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -1,
+    "unknown": 5,
+    "objectType": 1,
+    "id": 9,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 31,
+    "unknown": 3,
+    "objectType": 1,
+    "id": 10,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 3,
+    "unknown": 4,
+    "objectType": 0,
+    "id": 11,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -4534,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 12,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 32,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 13,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -9225,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 14,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -3172,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 15,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 15,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 16,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -2,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 17,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -1,
+    "unknown": 3,
+    "objectType": 1,
+    "id": 18,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -2,
+    "unknown": 4,
+    "objectType": 0,
+    "id": 19,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -2,
+    "unknown": 4,
+    "objectType": 1,
+    "id": 20,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -2,
+    "unknown": 0,
+    "objectType": 0,
+    "id": 21,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -17793,
+    "unknown": 2,
+    "objectType": 0,
+    "id": 22,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": -14594,
+    "unknown": 1,
+    "objectType": 1,
+    "id": 23,
+    "name": null,
+    "description": null
+  },
+  {
+    "colour": 1,
+    "unknown": 3,
+    "objectType": 0,
+    "id": 24,
+    "name": null,
+    "description": null
+  }
+]

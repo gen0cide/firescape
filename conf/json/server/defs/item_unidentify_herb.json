@@ -1,0 +1,82 @@
+{
+  "435": {
+    "requiredLvl": 5,
+    "exp": 120,
+    "newId": 445,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "436": {
+    "requiredLvl": 10,
+    "exp": 150,
+    "newId": 446,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "165": {
+    "requiredLvl": 3,
+    "exp": 60,
+    "newId": 444,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "437": {
+    "requiredLvl": 20,
+    "exp": 180,
+    "newId": 447,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "438": {
+    "requiredLvl": 25,
+    "exp": 240,
+    "newId": 448,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "439": {
+    "requiredLvl": 40,
+    "exp": 270,
+    "newId": 449,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "440": {
+    "requiredLvl": 48,
+    "exp": 300,
+    "newId": 450,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "441": {
+    "requiredLvl": 54,
+    "exp": 360,
+    "newId": 451,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "442": {
+    "requiredLvl": 65,
+    "exp": 390,
+    "newId": 452,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "443": {
+    "requiredLvl": 70,
+    "exp": 420,
+    "newId": 453,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

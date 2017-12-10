@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for ores
  */
-public class ReqOreDef {
+public class ReqOreDef extends EntityDef {
 
   /**
    * The id of the ore

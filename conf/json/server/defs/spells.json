@@ -1,0 +1,671 @@
+[
+  {
+    "reqLevel": 1,
+    "type": 2,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 1,
+      "35": 1
+    },
+    "exp": 22,
+    "id": 0,
+    "name": "Wind strike",
+    "description": "A strength 1 missile attack"
+  },
+  {
+    "reqLevel": 3,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 3,
+      "34": 2,
+      "36": 1
+    },
+    "exp": 26,
+    "id": 1,
+    "name": "Confuse",
+    "description": "Reduces your opponents attack by 5%"
+  },
+  {
+    "reqLevel": 5,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 1,
+      "33": 1,
+      "35": 1
+    },
+    "exp": 30,
+    "id": 2,
+    "name": "Water strike",
+    "description": "A strength 2 missile attack"
+  },
+  {
+    "reqLevel": 7,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "32": 1,
+      "46": 1
+    },
+    "exp": 35,
+    "id": 3,
+    "name": "Enchant lvl-1 amulet",
+    "description": "For use on sapphire amulets"
+  },
+  {
+    "reqLevel": 9,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 1,
+      "34": 2,
+      "35": 1
+    },
+    "exp": 38,
+    "id": 4,
+    "name": "Earth strike",
+    "description": "A strength 3 missile attack"
+  },
+  {
+    "reqLevel": 11,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 3,
+      "34": 2,
+      "36": 1
+    },
+    "exp": 42,
+    "id": 5,
+    "name": "Weaken",
+    "description": "Reduces your opponents strength by 5%"
+  },
+  {
+    "reqLevel": 13,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 2,
+      "35": 1,
+      "31": 3
+    },
+    "exp": 46,
+    "id": 6,
+    "name": "Fire strike",
+    "description": "A strength 4 missile attack"
+  },
+  {
+    "reqLevel": 15,
+    "type": 6,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 2,
+      "34": 2,
+      "40": 1
+    },
+    "exp": 50,
+    "id": 7,
+    "name": "Bones to bananas",
+    "description": "Changes all held bones into bananas!"
+  },
+  {
+    "reqLevel": 17,
+    "type": 2,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 2,
+      "41": 1
+    },
+    "exp": 54,
+    "id": 8,
+    "name": "Wind bolt",
+    "description": "A strength 5 missile attack"
+  },
+  {
+    "reqLevel": 19,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 2,
+      "34": 3,
+      "36": 1
+    },
+    "exp": 58,
+    "id": 9,
+    "name": "Curse",
+    "description": "Reduces your opponents defense by 5%"
+  },
+  {
+    "reqLevel": 21,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "40": 1,
+      "31": 3
+    },
+    "exp": 62,
+    "id": 10,
+    "name": "Low level alchemy",
+    "description": "Converts an item into gold"
+  },
+  {
+    "reqLevel": 23,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 2,
+      "33": 2,
+      "41": 1
+    },
+    "exp": 66,
+    "id": 11,
+    "name": "Water bolt",
+    "description": "A strength 6 missile attack"
+  },
+  {
+    "reqLevel": 25,
+    "type": 0,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 3,
+      "42": 1,
+      "31": 1
+    },
+    "exp": 70,
+    "id": 12,
+    "name": "Varrock teleport",
+    "description": "Teleports you to Varrock"
+  },
+  {
+    "reqLevel": 27,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 3,
+      "46": 1
+    },
+    "exp": 74,
+    "id": 13,
+    "name": "Enchant lvl-2 amulet",
+    "description": "For use on emerald amulets"
+  },
+  {
+    "reqLevel": 29,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 2,
+      "34": 3,
+      "41": 1
+    },
+    "exp": 76,
+    "id": 14,
+    "name": "Earth bolt",
+    "description": "A strength 7 missile attack"
+  },
+  {
+    "reqLevel": 31,
+    "type": 0,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 3,
+      "34": 1,
+      "42": 1
+    },
+    "exp": 82,
+    "id": 15,
+    "name": "Lumbridge teleport",
+    "description": "Teleports you to Lumbridge"
+  },
+  {
+    "reqLevel": 33,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 1,
+      "42": 1
+    },
+    "exp": 86,
+    "id": 16,
+    "name": "Telekinetic grab",
+    "description": "Take an item you can see but can\u0027t reach"
+  },
+  {
+    "reqLevel": 35,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 3,
+      "41": 1,
+      "31": 4
+    },
+    "exp": 90,
+    "id": 17,
+    "name": "Fire bolt",
+    "description": "A strength 8 missile attack"
+  },
+  {
+    "reqLevel": 37,
+    "type": 0,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 1,
+      "33": 3,
+      "42": 1
+    },
+    "exp": 94,
+    "id": 18,
+    "name": "Falador teleport",
+    "description": "Teleports you to Falador"
+  },
+  {
+    "reqLevel": 39,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 2,
+      "34": 2,
+      "41": 1
+    },
+    "exp": 98,
+    "id": 19,
+    "name": "Crumble undead",
+    "description": "Hits skeleton, ghosts \u0026 zombies hard!"
+  },
+  {
+    "reqLevel": 41,
+    "type": 2,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 3,
+      "38": 1
+    },
+    "exp": 102,
+    "id": 20,
+    "name": "Wind blast",
+    "description": "A strength 9 missile attack"
+  },
+  {
+    "reqLevel": 43,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "40": 1,
+      "31": 4
+    },
+    "exp": 106,
+    "id": 21,
+    "name": "Superheat item",
+    "description": "Smelt 1 ore without a furnace"
+  },
+  {
+    "reqLevel": 45,
+    "type": 0,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 5,
+      "42": 1
+    },
+    "exp": 110,
+    "id": 22,
+    "name": "Camelot teleport",
+    "description": "Teleports you to Camelot"
+  },
+  {
+    "reqLevel": 47,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 3,
+      "33": 3,
+      "38": 1
+    },
+    "exp": 114,
+    "id": 23,
+    "name": "Water blast",
+    "description": "A strength 10 missile attack"
+  },
+  {
+    "reqLevel": 49,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "46": 1,
+      "31": 5
+    },
+    "exp": 118,
+    "id": 24,
+    "name": "Enchant lvl-3 amulet",
+    "description": "For use on ruby amulets"
+  },
+  {
+    "reqLevel": 50,
+    "type": 2,
+    "runeCount": 2,
+    "requiredRunes": {
+      "38": 1,
+      "31": 5
+    },
+    "exp": 120,
+    "id": 25,
+    "name": "Iban blast",
+    "description": "A strength 25 missile attack!"
+  },
+  {
+    "reqLevel": 51,
+    "type": 0,
+    "runeCount": 2,
+    "requiredRunes": {
+      "32": 2,
+      "42": 2
+    },
+    "exp": 122,
+    "id": 26,
+    "name": "Ardougne teleport",
+    "description": "Teleports you to Ardougne"
+  },
+  {
+    "reqLevel": 53,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 3,
+      "34": 4,
+      "38": 1
+    },
+    "exp": 126,
+    "id": 27,
+    "name": "Earth blast",
+    "description": "A strength 11 missile attack"
+  },
+  {
+    "reqLevel": 55,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "40": 1,
+      "31": 5
+    },
+    "exp": 130,
+    "id": 28,
+    "name": "High level alchemy",
+    "description": "Convert an item into more gold"
+  },
+  {
+    "reqLevel": 56,
+    "type": 5,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 30,
+      "611": 1,
+      "46": 3
+    },
+    "exp": 132,
+    "id": 29,
+    "name": "Charge Water Orb",
+    "description": "Needs to be cast on a water obelisk"
+  },
+  {
+    "reqLevel": 57,
+    "type": 3,
+    "runeCount": 2,
+    "requiredRunes": {
+      "34": 10,
+      "46": 1
+    },
+    "exp": 134,
+    "id": 30,
+    "name": "Enchant lvl-4 amulet",
+    "description": "For use on diamond amulets"
+  },
+  {
+    "reqLevel": 58,
+    "type": 0,
+    "runeCount": 2,
+    "requiredRunes": {
+      "34": 2,
+      "42": 2
+    },
+    "exp": 138,
+    "id": 31,
+    "name": "Watchtower teleport",
+    "description": "Teleports you to the watchtower"
+  },
+  {
+    "reqLevel": 59,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 4,
+      "38": 1,
+      "31": 5
+    },
+    "exp": 140,
+    "id": 32,
+    "name": "Fire blast",
+    "description": "A strength 12 missile attack"
+  },
+  {
+    "reqLevel": 60,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 4,
+      "619": 2,
+      "31": 1
+    },
+    "exp": 140,
+    "id": 33,
+    "name": "Claws of Guthix",
+    "description": "Summons the power of Guthix"
+  },
+  {
+    "reqLevel": 60,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 4,
+      "619": 2,
+      "31": 2
+    },
+    "exp": 140,
+    "id": 34,
+    "name": "Saradomin strike",
+    "description": "Summons the power of Saradomin"
+  },
+  {
+    "reqLevel": 60,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 1,
+      "619": 2,
+      "31": 4
+    },
+    "exp": 140,
+    "id": 35,
+    "name": "Flames of Zamorak",
+    "description": "Summons the power of Zamorak"
+  },
+  {
+    "reqLevel": 60,
+    "type": 5,
+    "runeCount": 3,
+    "requiredRunes": {
+      "34": 30,
+      "611": 1,
+      "46": 3
+    },
+    "exp": 140,
+    "id": 36,
+    "name": "Charge earth Orb",
+    "description": "Needs to be cast on an earth obelisk"
+  },
+  {
+    "reqLevel": 61,
+    "type": 0,
+    "runeCount": 2,
+    "requiredRunes": {
+      "42": 2,
+      "31": 2
+    },
+    "exp": 122,
+    "id": 37,
+    "name": "Lost City teleport",
+    "description": "Teleports you to the Lost City"
+  },
+  {
+    "reqLevel": 62,
+    "type": 2,
+    "runeCount": 2,
+    "requiredRunes": {
+      "33": 5,
+      "619": 1
+    },
+    "exp": 144,
+    "id": 38,
+    "name": "Wind wave",
+    "description": "A strength 13 missile attack"
+  },
+  {
+    "reqLevel": 63,
+    "type": 5,
+    "runeCount": 3,
+    "requiredRunes": {
+      "611": 1,
+      "46": 3,
+      "31": 30
+    },
+    "exp": 146,
+    "id": 39,
+    "name": "Charge Fire Orb",
+    "description": "Needs to be cast on a fire obelisk"
+  },
+  {
+    "reqLevel": 65,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 7,
+      "33": 5,
+      "619": 1
+    },
+    "exp": 150,
+    "id": 40,
+    "name": "Water wave",
+    "description": "A strength 14 missile attack"
+  },
+  {
+    "reqLevel": 66,
+    "type": 5,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 30,
+      "611": 1,
+      "46": 3
+    },
+    "exp": 152,
+    "id": 41,
+    "name": "Charge air Orb",
+    "description": "Needs to be cast on an air obelisk"
+  },
+  {
+    "reqLevel": 66,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 5,
+      "34": 5,
+      "825": 1
+    },
+    "exp": 152,
+    "id": 42,
+    "name": "Vulnerability",
+    "description": "Reduces your opponents defense by 10%"
+  },
+  {
+    "reqLevel": 68,
+    "type": 3,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 15,
+      "34": 15,
+      "46": 1
+    },
+    "exp": 156,
+    "id": 43,
+    "name": "Enchant lvl-5 amulet",
+    "description": "For use on dragonstone amulets"
+  },
+  {
+    "reqLevel": 70,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 5,
+      "34": 7,
+      "619": 1
+    },
+    "exp": 160,
+    "id": 44,
+    "name": "Earth wave",
+    "description": "A strength 15 missile attack"
+  },
+  {
+    "reqLevel": 73,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 8,
+      "34": 8,
+      "825": 1
+    },
+    "exp": 166,
+    "id": 45,
+    "name": "Enfeeble",
+    "description": "Reduces your opponents strength by 10%"
+  },
+  {
+    "reqLevel": 75,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 5,
+      "619": 1,
+      "31": 7
+    },
+    "exp": 170,
+    "id": 46,
+    "name": "Fire wave",
+    "description": "A strength 16 missile attack"
+  },
+  {
+    "reqLevel": 80,
+    "type": 2,
+    "runeCount": 3,
+    "requiredRunes": {
+      "32": 12,
+      "34": 12,
+      "825": 1
+    },
+    "exp": 180,
+    "id": 47,
+    "name": "Stun",
+    "description": "Reduces your opponents attack by 10%"
+  },
+  {
+    "reqLevel": 80,
+    "type": 6,
+    "runeCount": 3,
+    "requiredRunes": {
+      "33": 3,
+      "619": 3,
+      "31": 3
+    },
+    "exp": 180,
+    "id": 48,
+    "name": "Charge",
+    "description": "Increase your mage arena spells damage"
+  }
+]

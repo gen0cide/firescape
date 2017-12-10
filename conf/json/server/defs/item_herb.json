@@ -1,0 +1,82 @@
+{
+  "448": {
+    "exp": 1140,
+    "potionId": 458,
+    "requiredLvl": 30,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "449": {
+    "exp": 1500,
+    "potionId": 459,
+    "requiredLvl": 45,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "450": {
+    "exp": 1710,
+    "potionId": 460,
+    "requiredLvl": 50,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "451": {
+    "exp": 1890,
+    "potionId": 461,
+    "requiredLvl": 55,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "452": {
+    "exp": 2100,
+    "potionId": 462,
+    "requiredLvl": 66,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "453": {
+    "exp": 2430,
+    "potionId": 463,
+    "requiredLvl": 72,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "444": {
+    "exp": 390,
+    "potionId": 454,
+    "requiredLvl": 3,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "445": {
+    "exp": 570,
+    "potionId": 455,
+    "requiredLvl": 5,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "446": {
+    "exp": 750,
+    "potionId": 456,
+    "requiredLvl": 12,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "447": {
+    "exp": 930,
+    "potionId": 457,
+    "requiredLvl": 22,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

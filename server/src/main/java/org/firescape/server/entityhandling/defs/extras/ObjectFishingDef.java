@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for fishing spots
  */
-public class ObjectFishingDef {
+public class ObjectFishingDef extends EntityDef {
 
   /**
    * The fish that can be caught here

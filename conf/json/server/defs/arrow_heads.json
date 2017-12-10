@@ -1,0 +1,50 @@
+{
+  "672": {
+    "requiredLvl": 45,
+    "exp": 210.0,
+    "arrowID": 642,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "673": {
+    "requiredLvl": 60,
+    "exp": 285.0,
+    "arrowID": 644,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "674": {
+    "requiredLvl": 75,
+    "exp": 360.0,
+    "arrowID": 646,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "669": {
+    "requiredLvl": 1,
+    "exp": 30.0,
+    "arrowID": 11,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "670": {
+    "requiredLvl": 15,
+    "exp": 60.0,
+    "arrowID": 638,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "671": {
+    "requiredLvl": 30,
+    "exp": 135.0,
+    "arrowID": 640,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

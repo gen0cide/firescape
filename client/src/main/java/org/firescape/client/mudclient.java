@@ -5878,7 +5878,6 @@ public class mudclient extends GameConnection {
     int msrcidx = menuSourceIndex[i];
     int mtargetindex = menuTargetIndex[i];
     int mitemid = menuItemID[i];
-    System.out.println("mitemid = " + mitemid);
     String mtext = menuTextVar[i];
     if (mitemid == 200) {
       walkToGroundItem(localRegionX, localRegionY, mx, my, true);
@@ -5987,8 +5986,8 @@ public class mudclient extends GameConnection {
     }
     if (mitemid == 600) {
       super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_CAST_INVITEM));
-      super.clientStream.putShort(midx);
       super.clientStream.putShort(msrcidx);
+      super.clientStream.putShort(midx);
       super.clientStream.sendPacket();
       selectedSpell = -1;
     }
@@ -6032,8 +6031,8 @@ public class mudclient extends GameConnection {
       int l3 = (my - 64) / magicLoc;
       walkToActionSource(localRegionX, localRegionY, l1, l3, true);
       super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_CAST_NPC));
-      super.clientStream.putShort(midx);
       super.clientStream.putShort(msrcidx);
+      super.clientStream.putShort(midx);
       super.clientStream.sendPacket();
       selectedSpell = -1;
     }
@@ -6079,8 +6078,8 @@ public class mudclient extends GameConnection {
       int i5 = (my - 64) / magicLoc;
       walkToActionSource(localRegionX, localRegionY, i3, i5, true);
       super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_CAST_PLAYER));
-      super.clientStream.putShort(midx);
       super.clientStream.putShort(msrcidx);
+      super.clientStream.putShort(midx);
       super.clientStream.sendPacket();
       selectedSpell = -1;
     }
@@ -6122,9 +6121,9 @@ public class mudclient extends GameConnection {
     if (mitemid == 900) {
       walkToActionSource(localRegionX, localRegionY, mx, my, true);
       super.clientStream.newPacket(Opcode.getClient(Version.CLIENT, Command.Client.CL_CAST_GROUND));
+      super.clientStream.putShort(midx);
       super.clientStream.putShort(mx + regionX);
       super.clientStream.putShort(my + regionY);
-      super.clientStream.putShort(midx);
       super.clientStream.sendPacket();
       selectedSpell = -1;
     }

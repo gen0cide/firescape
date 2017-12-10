@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for trees
  */
-public class ObjectWoodcuttingDef {
+public class ObjectWoodcuttingDef extends EntityDef {
 
   /**
    * Herblaw level required to identify

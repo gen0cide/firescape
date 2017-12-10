@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for items
  */
-public class ItemBowStringDef {
+public class ItemBowStringDef extends EntityDef {
 
   /**
    * The level required to attach this bow string

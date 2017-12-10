@@ -1,6 +1,8 @@
 package org.firescape.server.entityhandling.defs.extras;
 
-public class CerterDef {
+import org.firescape.server.entityhandling.defs.EntityDef;
+
+public class CerterDef extends EntityDef {
 
   /**
    * Type of stall

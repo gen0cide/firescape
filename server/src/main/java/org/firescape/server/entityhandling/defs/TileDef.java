@@ -1,6 +1,6 @@
 package org.firescape.server.entityhandling.defs;
 
-public class TileDef {
+public class TileDef extends EntityDef {
 
   public int colour;
   public int unknown;

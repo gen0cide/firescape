@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for items
  */
-public class ItemDartTipDef {
+public class ItemDartTipDef extends EntityDef {
 
   /**
    * The level required to attach this head to an arrow

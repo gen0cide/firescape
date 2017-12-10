@@ -1,11 +1,16 @@
 package org.firescape.server.entityhandling;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.firescape.server.entityhandling.defs.*;
 import org.firescape.server.entityhandling.defs.extras.*;
 import org.firescape.server.model.Point;
 import org.firescape.server.model.TelePoint;
 import org.firescape.server.util.PersistenceManager;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,14 +58,22 @@ public class EntityHandler {
 
   static {
     doors = (DoorDef[]) PersistenceManager.load("defs/DoorDef.xml.gz");
+    indexEntityArray(doors);
     gameObjects = (GameObjectDef[]) PersistenceManager.load("defs/GameObjectDef.xml.gz");
+    indexEntityArray(gameObjects);
     npcs = (NPCDef[]) PersistenceManager.load("defs/NPCDef.xml.gz");
+    indexEntityArray(npcs);
     prayers = (PrayerDef[]) PersistenceManager.load("defs/PrayerDef.xml.gz");
+    indexEntityArray(prayers);
     items = (ItemDef[]) PersistenceManager.load("defs/ItemDef.xml.gz");
+    indexEntityArray(items);
     spells = (SpellDef[]) PersistenceManager.load("defs/SpellDef.xml.gz");
+    indexEntityArray(spells);
     tiles = (TileDef[]) PersistenceManager.load("defs/TileDef.xml.gz");
+    indexEntityArray(tiles);
     keyChestLoots = (List[]) PersistenceManager.load("defs/extras/KeyChestLoot.xml.gz");
     herbSeconds = (ItemHerbSecond[]) PersistenceManager.load("defs/extras/ItemHerbSecond.xml");
+    indexEntityArray(herbSeconds);
     dartTips = (HashMap<Integer, ItemDartTipDef>) PersistenceManager.load("defs/extras/ItemDartTipDef" + ".xml");
     gems = (HashMap<Integer, ItemGemDef>) PersistenceManager.load("defs/extras/ItemGemDef.xml");
     logCut = (HashMap<Integer, ItemLogCutDef>) PersistenceManager.load("defs/extras/ItemLogCutDef.xml");
@@ -76,7 +89,9 @@ public class EntityHandler {
     itemCooking = (HashMap<Integer, ItemCookingDef>) PersistenceManager.load("defs/extras/ItemCookingDef.xml");
     itemSmelting = (HashMap<Integer, ItemSmeltingDef>) PersistenceManager.load("defs/extras/ItemSmeltingDef.xml");
     itemSmithing = (ItemSmithingDef[]) PersistenceManager.load("defs/extras/ItemSmithingDef.xml");
+    indexEntityArray(itemSmithing);
     itemCrafting = (ItemCraftingDef[]) PersistenceManager.load("defs/extras/ItemCraftingDef.xml");
+    indexEntityArray(itemCrafting);
     objectMining = (HashMap<Integer, ObjectMiningDef>) PersistenceManager.load("defs/extras/ObjectMining.xml");
     objectWoodcutting = (HashMap<Integer, ObjectWoodcuttingDef>) PersistenceManager.load(
       "defs/extras/ObjectWoodcutting.xml");
@@ -85,6 +100,59 @@ public class EntityHandler {
     adverts = (AdvertDef[]) PersistenceManager.load("defs/extras/Adverts.xml");
     objectTelePoints = (HashMap<Point, TelePoint>) PersistenceManager.load("locs/extras/ObjectTelePoints.xml.gz");
     certers = (HashMap<Integer, CerterDef>) PersistenceManager.load("defs/extras/NpcCerters.xml.gz");
+  }
+
+  public static Gson gson = new GsonBuilder().setPrettyPrinting()
+                                             .serializeNulls()
+                                             .create();
+
+  public static void indexEntityArray(Object[] oa) {
+    for (int i = 0; i < oa.length; i++) {
+      EntityDef ed = (EntityDef) oa[i];
+      ed.id = i;
+    }
+  }
+
+  public static void writeGameDefs() {
+    writeGameDef("doors", doors);
+    writeGameDef("game_objects", gameObjects);
+    writeGameDef("npcs", npcs);
+    writeGameDef("prayers", prayers);
+    writeGameDef("items", items);
+    writeGameDef("spells", spells);
+    writeGameDef("tiles", tiles);
+    writeGameDef("key_chest_loots", keyChestLoots);
+    writeGameDef("herbs_advanced", herbSeconds);
+    writeGameDef("dart_tips", dartTips);
+    writeGameDef("gems", gems);
+    writeGameDef("logcutting", logCut);
+    writeGameDef("bow_stringing", bowString);
+    writeGameDef("arrow_heads", arrowHeads);
+    writeGameDef("firemaking", firemaking);
+    writeGameDef("item_affected_types", itemAffectedTypes);
+    writeGameDef("item_wieldable", itemWieldable);
+    writeGameDef("item_unidentify_herb", itemUnIdentHerb);
+    writeGameDef("item_herb", itemHerb);
+    writeGameDef("item_heals", itemEdibleHeals);
+    writeGameDef("item_cooking", itemCooking);
+    writeGameDef("item_smelting", itemSmelting);
+    writeGameDef("item_smithing", itemSmithing);
+    writeGameDef("item_crafting", itemCrafting);
+    writeGameDef("object_mining", objectMining);
+    writeGameDef("object_woodcutting", objectWoodcutting);
+    writeGameDef("object_fishing", objectFishing);
+    writeGameDef("spell_aggressive_levels", spellAggressiveLvl);
+    writeGameDef("object_telepoints", objectTelePoints);
+    writeGameDef("certers", certers);
+    return;
+  }
+
+  public static void writeGameDef(String name, Object o) {
+    try (PrintWriter out = new PrintWriter("conf/json/server/defs/" + name + ".json")) {
+      out.println(gson.toJson(o));
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 
   public static List[] getKeyChestLoots() {

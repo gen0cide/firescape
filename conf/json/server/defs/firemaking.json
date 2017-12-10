@@ -1,0 +1,50 @@
+{
+  "632": {
+    "level": 15,
+    "exp": 875,
+    "length": 110,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "633": {
+    "level": 30,
+    "exp": 1350,
+    "length": 130,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "634": {
+    "level": 45,
+    "exp": 1650,
+    "length": 150,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "635": {
+    "level": 60,
+    "exp": 1950,
+    "length": 170,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "636": {
+    "level": 75,
+    "exp": 2250,
+    "length": 190,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "14": {
+    "level": 1,
+    "exp": 750,
+    "length": 90,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

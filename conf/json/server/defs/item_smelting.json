@@ -1,0 +1,131 @@
+{
+  "150": {
+    "exp": 180,
+    "barId": 169,
+    "requiredLvl": 1,
+    "reqOres": [
+      {
+        "oreId": 202,
+        "amount": 1,
+        "id": 0,
+        "name": null,
+        "description": null
+      }
+    ],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "151": {
+    "exp": 510,
+    "barId": 171,
+    "requiredLvl": 30,
+    "reqOres": [
+      {
+        "oreId": 155,
+        "amount": 2,
+        "id": 0,
+        "name": null,
+        "description": null
+      }
+    ],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "152": {
+    "exp": 660,
+    "barId": 172,
+    "requiredLvl": 40,
+    "reqOres": [],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "153": {
+    "exp": 900,
+    "barId": 173,
+    "requiredLvl": 50,
+    "reqOres": [
+      {
+        "oreId": 155,
+        "amount": 4,
+        "id": 0,
+        "name": null,
+        "description": null
+      }
+    ],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "409": {
+    "exp": 1500,
+    "barId": 408,
+    "requiredLvl": 85,
+    "reqOres": [
+      {
+        "oreId": 155,
+        "amount": 8,
+        "id": 0,
+        "name": null,
+        "description": null
+      }
+    ],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "202": {
+    "exp": 180,
+    "barId": 169,
+    "requiredLvl": 1,
+    "reqOres": [
+      {
+        "oreId": 150,
+        "amount": 1,
+        "id": 0,
+        "name": null,
+        "description": null
+      }
+    ],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "154": {
+    "exp": 1110,
+    "barId": 174,
+    "requiredLvl": 70,
+    "reqOres": [
+      {
+        "oreId": 155,
+        "amount": 6,
+        "id": 0,
+        "name": null,
+        "description": null
+      }
+    ],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "9999": {
+    "exp": 360,
+    "barId": 170,
+    "requiredLvl": 15,
+    "reqOres": [],
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "383": {
+    "exp": 390,
+    "barId": 384,
+    "requiredLvl": 20,
+    "reqOres": [],
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

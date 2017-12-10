@@ -1,0 +1,132 @@
+[
+  {
+    "requiredLvl": 3,
+    "exp": 390,
+    "potionID": 474,
+    "unfinishedID": 454,
+    "secondID": 270,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 5,
+    "exp": 570,
+    "potionID": 566,
+    "unfinishedID": 455,
+    "secondID": 473,
+    "id": 1,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 12,
+    "exp": 750,
+    "potionID": 222,
+    "unfinishedID": 456,
+    "secondID": 220,
+    "id": 2,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 22,
+    "exp": 930,
+    "potionID": 477,
+    "unfinishedID": 457,
+    "secondID": 219,
+    "id": 3,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 30,
+    "exp": 1140,
+    "potionID": 480,
+    "unfinishedID": 458,
+    "secondID": 471,
+    "id": 4,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 38,
+    "exp": 1620,
+    "potionID": 483,
+    "unfinishedID": 458,
+    "secondID": 469,
+    "id": 5,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 45,
+    "exp": 1500,
+    "potionID": 486,
+    "unfinishedID": 459,
+    "secondID": 270,
+    "id": 6,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 48,
+    "exp": 1740,
+    "potionID": 569,
+    "unfinishedID": 459,
+    "secondID": 473,
+    "id": 7,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 50,
+    "exp": 1710,
+    "potionID": 489,
+    "unfinishedID": 460,
+    "secondID": 469,
+    "id": 8,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 55,
+    "exp": 1890,
+    "potionID": 492,
+    "unfinishedID": 461,
+    "secondID": 220,
+    "id": 9,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 60,
+    "exp": 2100,
+    "potionID": 572,
+    "unfinishedID": 461,
+    "secondID": 472,
+    "id": 10,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 66,
+    "exp": 2250,
+    "potionID": 495,
+    "unfinishedID": 462,
+    "secondID": 471,
+    "id": 11,
+    "name": null,
+    "description": null
+  },
+  {
+    "requiredLvl": 72,
+    "exp": 2430,
+    "potionID": 498,
+    "unfinishedID": 463,
+    "secondID": 501,
+    "id": 12,
+    "name": null,
+    "description": null
+  }
+]

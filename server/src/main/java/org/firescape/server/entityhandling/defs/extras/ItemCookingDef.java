@@ -1,9 +1,11 @@
 package org.firescape.server.entityhandling.defs.extras;
 
+import org.firescape.server.entityhandling.defs.EntityDef;
+
 /**
  * The definition wrapper for items
  */
-public class ItemCookingDef {
+public class ItemCookingDef extends EntityDef {
 
   /**
    * The exp cooking this item gives

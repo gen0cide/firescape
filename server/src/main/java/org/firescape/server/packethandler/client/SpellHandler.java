@@ -115,19 +115,23 @@ public class SpellHandler implements PacketHandler {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
     if ((player.isBusy() && !player.inCombat()) || player.isRanging()) {
+      System.out.println("PLAYER BUSY");
       return;
     }
     if (player.isDueling() && player.getDuelSetting(1)) {
       player.getActionSender().sendMessage("Magic is disabled in this duel");
+      System.out.println("PLAYER DUELING");
       return;
     }
     player.resetAllExceptDueling();
     int idx = p.readShort();
     if (idx < 0 || idx >= 52) {
       player.setSuspiciousPlayer(true);
+      System.out.println("SUSPICIOUS PLAYER");
       return;
     }
     if (!canCast(player)) {
+      System.out.println("CANT CAST");
       return;
     }
     SpellDef spell = EntityHandler.getSpellDef(idx);
@@ -169,6 +173,7 @@ public class SpellHandler implements PacketHandler {
       if (spell.getSpellType() == 2) {
         Npc affectedNpc = world.getNpc(p.readShort());
         if (affectedNpc == null) { // This shouldn't happen
+          System.out.println("THIS SHOULDNT HAPPEN");
           player.resetPath();
           return;
         }
@@ -237,6 +242,7 @@ public class SpellHandler implements PacketHandler {
         affectedMob.getCombatState() == CombatState.WAITING &&
         System.currentTimeMillis() - affectedMob.getCombatTimer() < 1000) {
       player.resetPath();
+      System.out.println("CANT CAST RIGHT NOW");
       return;
     }
     if (!player.isBusy()) {
@@ -251,6 +257,7 @@ public class SpellHandler implements PacketHandler {
             affectedMob.getHits() <= 0 ||
             !owner.checkAttack(affectedMob, true) ||
             owner.getStatus() != Action.CASTING_MOB) {
+          System.out.println("STILL CANNOT CAST");
           return;
         }
         owner.resetAllExceptDueling();
@@ -787,9 +794,12 @@ public class SpellHandler implements PacketHandler {
                     DelayedEvent.world.getDelayedEventHandler().add(fighting);
                   }
                 });
+              } else {
+                System.out.println("VICTIM WAS NULL");
               }
             }
             if (!checkAndRemoveRunes(owner, spell)) {
+              System.out.println("NOT ENOUGH RUNES");
               return;
             }
             if (affectedMob instanceof Player && !owner.isDueling()) {

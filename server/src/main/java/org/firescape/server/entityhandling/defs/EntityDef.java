@@ -5,6 +5,8 @@ package org.firescape.server.entityhandling.defs;
  */
 public abstract class EntityDef {
 
+  public int id;
+
   /**
    * The name of the entity
    */

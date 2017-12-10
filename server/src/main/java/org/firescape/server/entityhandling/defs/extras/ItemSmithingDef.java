@@ -1,6 +1,8 @@
 package org.firescape.server.entityhandling.defs.extras;
 
-public class ItemSmithingDef {
+import org.firescape.server.entityhandling.defs.EntityDef;
+
+public class ItemSmithingDef extends EntityDef {
 
   /**
    * The smithing level required to make this item

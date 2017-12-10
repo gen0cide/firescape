@@ -1,6 +1,8 @@
 package org.firescape.server.entityhandling.defs.extras;
 
-public class FiremakingDef {
+import org.firescape.server.entityhandling.defs.EntityDef;
+
+public class FiremakingDef extends EntityDef {
 
   /**
    * The firemaking level required to light these logs

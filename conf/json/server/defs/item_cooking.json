@@ -1,0 +1,227 @@
+{
+  "256": {
+    "exp": 1800,
+    "cookedId": 258,
+    "burnedId": 260,
+    "requiredLvl": 10,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "324": {
+    "exp": 3300,
+    "cookedId": 325,
+    "burnedId": 322,
+    "requiredLvl": 35,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "133": {
+    "exp": 900,
+    "cookedId": 132,
+    "burnedId": 134,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "137": {
+    "exp": 1200,
+    "cookedId": 138,
+    "burnedId": 139,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "339": {
+    "exp": 3600,
+    "cookedId": 330,
+    "burnedId": 331,
+    "requiredLvl": 40,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "345": {
+    "exp": 2700,
+    "cookedId": 346,
+    "burnedId": 347,
+    "requiredLvl": 25,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "349": {
+    "exp": 900,
+    "cookedId": 350,
+    "burnedId": 353,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "351": {
+    "exp": 900,
+    "cookedId": 352,
+    "burnedId": 353,
+    "requiredLvl": 15,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "545": {
+    "exp": 6300,
+    "cookedId": 546,
+    "burnedId": 547,
+    "requiredLvl": 80,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "354": {
+    "exp": 1200,
+    "cookedId": 355,
+    "burnedId": 360,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "356": {
+    "exp": 2700,
+    "cookedId": 357,
+    "burnedId": 360,
+    "requiredLvl": 25,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "358": {
+    "exp": 2100,
+    "cookedId": 359,
+    "burnedId": 360,
+    "requiredLvl": 15,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "550": {
+    "exp": 2250,
+    "cookedId": 551,
+    "burnedId": 365,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "552": {
+    "exp": 1800,
+    "cookedId": 553,
+    "burnedId": 365,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "361": {
+    "exp": 1500,
+    "cookedId": 362,
+    "burnedId": 365,
+    "requiredLvl": 5,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "554": {
+    "exp": 3900,
+    "cookedId": 555,
+    "burnedId": 368,
+    "requiredLvl": 42,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "363": {
+    "exp": 2400,
+    "cookedId": 364,
+    "burnedId": 365,
+    "requiredLvl": 20,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "366": {
+    "exp": 3000,
+    "cookedId": 367,
+    "burnedId": 368,
+    "requiredLvl": 30,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "369": {
+    "exp": 4200,
+    "cookedId": 370,
+    "burnedId": 371,
+    "requiredLvl": 45,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "372": {
+    "exp": 3600,
+    "cookedId": 373,
+    "burnedId": 374,
+    "requiredLvl": 40,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "502": {
+    "exp": 900,
+    "cookedId": 132,
+    "burnedId": 134,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "503": {
+    "exp": 900,
+    "cookedId": 132,
+    "burnedId": 134,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "504": {
+    "exp": 900,
+    "cookedId": 132,
+    "burnedId": 134,
+    "requiredLvl": 1,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "254": {
+    "exp": 3000,
+    "cookedId": 257,
+    "burnedId": 260,
+    "requiredLvl": 30,
+    "id": 0,
+    "name": null,
+    "description": null
+  },
+  "255": {
+    "exp": 2400,
+    "cookedId": 259,
+    "burnedId": 260,
+    "requiredLvl": 20,
+    "id": 0,
+    "name": null,
+    "description": null
+  }
+}

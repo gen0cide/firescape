@@ -1,6 +1,9 @@
 package org.firescape.server.entityhandling.defs;
 
 import org.firescape.server.entityhandling.defs.extras.ItemDropDef;
+import org.firescape.server.model.Item;
+import org.firescape.server.model.World;
+import org.firescape.server.util.DataConversions;
 
 /**
  * The definition wrapper for npcs
@@ -74,6 +77,25 @@ public class NPCDef extends EntityDef {
 
   public ItemDropDef[] getDrops() {
     return drops;
+  }
+
+  public ItemDropDef getNextDrop() {
+    int total = 0;
+    for (ItemDropDef drop : drops) {
+      total += drop.getWeight();
+    }
+    int hit = DataConversions.random(0, total);
+    total = 0;
+    for (ItemDropDef drop : drops) {
+      if (drop.getWeight() == 0) {
+        return drop;
+      }
+      if (hit >= total && hit < (total + drop.getWeight())) {
+        return drop;
+      }
+      total += drop.getWeight();
+    }
+    return drops[0];
   }
 
   public String getCommand() {
