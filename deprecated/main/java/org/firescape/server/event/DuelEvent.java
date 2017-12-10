@@ -8,6 +8,7 @@ import org.firescape.server.util.Formulae;
 import java.util.ArrayList;
 
 public class DuelEvent extends DelayedEvent {
+
   private final Player affectedPlayer;
   private int hits;
 

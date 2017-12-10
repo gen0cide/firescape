@@ -1,6 +1,5 @@
 package org.firescape.client;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

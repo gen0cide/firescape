@@ -178,7 +178,7 @@ public class Server {
 
         Iterator<String> it = names.iterator();
         while (it.hasNext()) {
-          String s = it.next();
+          String s = it.next().substring(8);
           writeValue(s, "loggedin", "false");
           count++;
         }

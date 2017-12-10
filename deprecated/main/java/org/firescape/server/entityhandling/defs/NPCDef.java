@@ -6,6 +6,7 @@ import org.firescape.server.entityhandling.defs.extras.ItemDropDef;
  * The definition wrapper for npcs
  */
 public class NPCDef extends EntityDef {
+
   /**
    * The primary command
    */

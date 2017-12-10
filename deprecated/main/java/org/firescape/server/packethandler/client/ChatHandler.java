@@ -7,6 +7,7 @@ import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class ChatHandler implements PacketHandler {
+
   /**
    * World instance
    */

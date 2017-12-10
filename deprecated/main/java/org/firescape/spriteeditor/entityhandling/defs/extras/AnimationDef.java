@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.entityhandling.defs.extras;
  * Defines an animation
  */
 public class AnimationDef {
+
   /**
    * This animation's name
    */

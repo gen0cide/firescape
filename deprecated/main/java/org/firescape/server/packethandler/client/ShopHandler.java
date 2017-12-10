@@ -1,7 +1,6 @@
 package org.firescape.server.packethandler.client;
 
 import org.apache.mina.common.IoSession;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.opcode.Command;
@@ -9,6 +8,7 @@ import org.firescape.server.opcode.Opcode;
 import org.firescape.server.packethandler.PacketHandler;
 
 public class ShopHandler implements PacketHandler {
+
   /**
    * World instance
    */

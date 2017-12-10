@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.entityhandling.defs.extras;
  * Defines an item drop definition (Useless for the sprite editor, simply kept to keep NPCDef happy).
  */
 public class ItemDropDef {
+
   /**
    * This item drop's id
    */

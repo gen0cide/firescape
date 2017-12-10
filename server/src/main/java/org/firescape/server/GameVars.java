@@ -56,7 +56,7 @@ public class GameVars {
   /**
    * the Client version code to verify the correct client connecting.
    */
-  public static int clientVersion = 2;
+  public static int clientVersion = 3;
   /**
    * the port number
    */

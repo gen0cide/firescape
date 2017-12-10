@@ -3,6 +3,7 @@ package org.firescape.server.model;
 import java.io.UnsupportedEncodingException;
 
 public class ChatMessage {
+
   /**
    * Who sent the message
    */

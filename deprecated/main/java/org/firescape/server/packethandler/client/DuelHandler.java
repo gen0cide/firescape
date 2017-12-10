@@ -19,6 +19,7 @@ import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 
 public class DuelHandler implements PacketHandler {
+
   /**
    * World instance
    */
@@ -66,10 +67,9 @@ public class DuelHandler implements PacketHandler {
       }
       player.setWishToDuel(affectedPlayer);
       player.getActionSender()
-            .sendMessage(affectedPlayer.isDueling() ? (affectedPlayer.getUsername() +
-                                                       " is " +
-                                                       "already" +
-                                                       " in a duel") : "Sending duel request");
+            .sendMessage(affectedPlayer.isDueling()
+                         ? (affectedPlayer.getUsername() + " is " + "already" + " in a duel")
+                         : "Sending duel request");
       affectedPlayer.getActionSender()
                     .sendMessage(player.getUsername() +
                                  " " +

@@ -2,7 +2,6 @@ package org.firescape.spriteeditor;
 
 import org.firescape.spriteeditor.util.PersistenceManager;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +14,7 @@ import java.nio.ByteBuffer;
  * matter, but the variables others do.
  */
 public class Sprite {
+
   /**
    * Declares which colour to render transparent
    */
@@ -79,7 +79,8 @@ public class Sprite {
   }
 
   /**
-   * @param file the file to read from
+   * @param file
+   *   the file to read from
    *
    * @return a sprite deserialized from the given file
    */
@@ -97,9 +98,9 @@ public class Sprite {
       for (int x = 0; x < img.getWidth(); x++) {
         int rgb = img.getRGB(x, y);
 
-				if (rgb == TRANSPARENT) {
-					rgb = 0;
-				}
+        if (rgb == TRANSPARENT) {
+          rgb = 0;
+        }
 
         pixels[x + y * img.getWidth()] = rgb;
       }
@@ -111,12 +112,13 @@ public class Sprite {
   /**
    * Create a new sprite from raw data packed into the given ByteBuffer
    *
-   * @param in the byte buffer to read from
+   * @param in
+   *   the byte buffer to read from
    */
   public static Sprite unpack(ByteBuffer in) throws IOException {
-		if (in.remaining() < 25) {
-			throw new IOException("Provided buffer too short - Headers missing");
-		}
+    if (in.remaining() < 25) {
+      throw new IOException("Provided buffer too short - Headers missing");
+    }
 
     int width = in.getInt();
     int height = in.getInt();
@@ -130,13 +132,13 @@ public class Sprite {
 
     int[] pixels = new int[width * height];
 
-		if (in.remaining() < (pixels.length * 4)) {
-			throw new IOException("Provided buffer too short - Pixels missing");
-		}
+    if (in.remaining() < (pixels.length * 4)) {
+      throw new IOException("Provided buffer too short - Pixels missing");
+    }
 
-		for (int pixel = 0; pixel < pixels.length; pixel++) {
-			pixels[pixel] = in.getInt();
-		}
+    for (int pixel = 0; pixel < pixels.length; pixel++) {
+      pixels[pixel] = in.getInt();
+    }
 
     Sprite sprite = new Sprite(pixels, width, height);
     sprite.setRequiresShift(requiresShift);
@@ -149,7 +151,8 @@ public class Sprite {
   /**
    * Sets whether or not this sprite needs to shift
    *
-   * @param requiresShift the shift flag
+   * @param requiresShift
+   *   the shift flag
    */
   public void setRequiresShift(boolean requiresShift) {
     this.requiresShift = requiresShift;
@@ -158,8 +161,10 @@ public class Sprite {
   /**
    * Sets this sprite's shift vars
    *
-   * @param xShift how far to shift this sprite along x axis
-   * @param yShift how far to shift this sprite along y axis
+   * @param xShift
+   *   how far to shift this sprite along x axis
+   * @param yShift
+   *   how far to shift this sprite along y axis
    */
   public void setShift(int xShift, int yShift) {
     this.xShift = xShift;
@@ -169,8 +174,10 @@ public class Sprite {
   /**
    * Sets the width and height 'clones' to the given values
    *
-   * @param width2 the new width2 value
-   * @param height2 the new height2 value
+   * @param width2
+   *   the new width2 value
+   * @param height2
+   *   the new height2 value
    */
   public void setSomething(int width2, int height2) {
     this.width2 = width2;
@@ -194,8 +201,10 @@ public class Sprite {
   /**
    * Sets this sprite's id and package name
    *
-   * @param this sprite's new id
-   * @param packageName this sprite's package name
+   * @param this
+   *   sprite's new id
+   * @param packageName
+   *   this sprite's package name
    */
   public void setName(int id, String packageName) {
     this.id = id;
@@ -245,7 +254,8 @@ public class Sprite {
   }
 
   /**
-   * @param i the array index to get
+   * @param i
+   *   the array index to get
    *
    * @return the given pixel from the pixel data array
    */
@@ -261,8 +271,10 @@ public class Sprite {
   /**
    * Sets the given pixel index to the given value
    *
-   * @param i the pixel index
-   * @param val the pixel value
+   * @param i
+   *   the pixel index
+   * @param val
+   *   the pixel value
    */
   public void setPixel(int i, int val) {
     if (i < 0 || i >= pixels.length) {
@@ -299,7 +311,8 @@ public class Sprite {
   /**
    * Serializes this sprite object into the given file
    *
-   * @param file the file to save this sprite object in to
+   * @param file
+   *   the file to save this sprite object in to
    */
   public void serializeTo(File file) throws IOException {
     PersistenceManager.write(file, this);
@@ -312,9 +325,9 @@ public class Sprite {
     BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
     for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				img.setRGB(x, y, pixels[x + y * width]);
-			}
+      for (int x = 0; x < width; x++) {
+        img.setRGB(x, y, pixels[x + y * width]);
+      }
     }
 
     return img;
@@ -336,9 +349,9 @@ public class Sprite {
     out.putInt(width2);
     out.putInt(height2);
 
-		for (int pixel = 0; pixel < pixels.length; pixel++) {
-			out.putInt(pixels[pixel]);
-		}
+    for (int pixel = 0; pixel < pixels.length; pixel++) {
+      out.putInt(pixels[pixel]);
+    }
 
     out.flip();
     return out;

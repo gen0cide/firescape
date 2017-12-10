@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class Config {
 
-  public static int SERVER_NUM = 72;
+  public static int SERVER_NUM = 1;
   public static String CONF_DIR, RSCD_HOME;
   // public static int SERVER_PORT, SERVER_VERSION, MAX_PLAYERS, LS_PORT,
   // SERVER_NUM;

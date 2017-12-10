@@ -2,7 +2,7 @@ package org.firescape.client;
 
 public class Version {
 
-  public static short FIRESCAPE_VERSION = 2;
+  public static short FIRESCAPE_VERSION = 3;
   public static int CLIENT = 204;
   public static int CONFIG = 85;
   public static int MAPS = 63;

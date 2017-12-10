@@ -2,9 +2,7 @@ package org.firescape.spriteeditor;
 
 import org.firescape.spriteeditor.util.ImageLoader;
 
-import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -22,6 +20,7 @@ import java.util.TreeMap;
  * @author Alex Levinson (gen0cide)
  */
 public class SpriteEditor extends JFrame implements ActionListener {
+
   /**
    * The default font of the application GUI
    */
@@ -120,8 +119,10 @@ public class SpriteEditor extends JFrame implements ActionListener {
   /**
    * Adds the given button to the list
    *
-   * @param parent the container to add the button to
-   * @param name the button's name
+   * @param parent
+   *   the container to add the button to
+   * @param name
+   *   the button's name
    */
   private JButton addButton(Container parent, String name) {
     JButton button = new JButton(name);
@@ -135,9 +136,12 @@ public class SpriteEditor extends JFrame implements ActionListener {
   /**
    * Adds the given text field to the list
    *
-   * @param parent the container to add the field to
-   * @param name the field's name
-   * @param size the size of the text field
+   * @param parent
+   *   the container to add the field to
+   * @param name
+   *   the field's name
+   * @param size
+   *   the size of the text field
    */
   private JTextField addField(Container parent, String name, int size) {
     JPanel panel = new JPanel();
@@ -156,7 +160,8 @@ public class SpriteEditor extends JFrame implements ActionListener {
   /**
    * Loads the given sprite into the editor
    *
-   * @param sprite the Sprite to load
+   * @param sprite
+   *   the Sprite to load
    */
   private void loadSprite(Sprite sprite) {
     this.currentSprite = sprite;
@@ -190,9 +195,12 @@ public class SpriteEditor extends JFrame implements ActionListener {
   /**
    * Sets the given field data
    *
-   * @param name the name of the field
-   * @param contents the text to set in the field
-   * @param enabled false if the player can't edit the field
+   * @param name
+   *   the name of the field
+   * @param contents
+   *   the text to set in the field
+   * @param enabled
+   *   false if the player can't edit the field
    */
   private void setField(String name, String contents, boolean enabled) {
     JTextField field = fields.get(name);
@@ -225,104 +233,104 @@ public class SpriteEditor extends JFrame implements ActionListener {
    * Invoked when an action is performed on a component object
    */
   public void actionPerformed(ActionEvent event) {
-		if (event.getSource() == buttons.get("Clear")) {
-			loadSprite(null);
-		} else if (event.getSource() == buttons.get("Unpack")) {
-			try {
-				super.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				SpriteLoader loader = new SpriteLoader(drawer);
-				int count = 0;
+    if (event.getSource() == buttons.get("Clear")) {
+      loadSprite(null);
+    } else if (event.getSource() == buttons.get("Unpack")) {
+      try {
+        super.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SpriteLoader loader = new SpriteLoader(drawer);
+        int count = 0;
 
-				for (Sprite sprite : loader.getSprites()) {
-					File folder = new File("./sprites/dat/");
+        for (Sprite sprite : loader.getSprites()) {
+          File folder = new File("./sprites/dat/");
 
-					if (!folder.exists()) {
-						folder.mkdirs();
-					}
+          if (!folder.exists()) {
+            folder.mkdirs();
+          }
 
-					try {
-						sprite.serializeTo(new File(folder.getAbsolutePath() + "/" + sprite.getID() + ".spr"));
+          try {
+            sprite.serializeTo(new File(folder.getAbsolutePath() + "/" + sprite.getID() + ".spr"));
 
-						File folder2 = new File("./sprites/img/" + sprite.getPackageName() + "/");
+            File folder2 = new File("./sprites/img/" + sprite.getPackageName() + "/");
 
-						if (!folder2.exists()) {
-							folder2.mkdirs();
-						}
+            if (!folder2.exists()) {
+              folder2.mkdirs();
+            }
 
-						ImageLoader.saveImage(sprite.toImage(),
-																	"png",
-																	new File(folder2.getAbsolutePath() + "/" + sprite.getID() + ".png")
-						);
-						count++;
-					} catch (Exception ex) {
-						ex.printStackTrace();
-					}
-				}
+            ImageLoader.saveImage(sprite.toImage(),
+                                  "png",
+                                  new File(folder2.getAbsolutePath() + "/" + sprite.getID() + ".png")
+            );
+            count++;
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
+        }
 
-				loadSprite(null);
-				System.out.println("\n\nSuccessfully unpacked all game sprites and images (" + count + ").");
-			} finally {
-				super.setCursor(Cursor.getDefaultCursor());
-			}
-		} else if (event.getSource() == buttons.get("Load Sprite")) {
-			JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-			chooser.setFileFilter(new FileNameExtensionFilter("Firescape Sprite Files", "spr"));
+        loadSprite(null);
+        System.out.println("\n\nSuccessfully unpacked all game sprites and images (" + count + ").");
+      } finally {
+        super.setCursor(Cursor.getDefaultCursor());
+      }
+    } else if (event.getSource() == buttons.get("Load Sprite")) {
+      JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+      chooser.setFileFilter(new FileNameExtensionFilter("Firescape Sprite Files", "spr"));
 
-			if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-				try {
-					File file = chooser.getSelectedFile();
-					loadSprite(Sprite.deserializeFrom(file));
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-				}
-			}
-		} else if (event.getSource() == buttons.get("Load Image")) {
-			JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-			chooser.setFileFilter(new FileNameExtensionFilter("Image Files", "png"));
-			if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-				try {
-					File file = chooser.getSelectedFile();
-					loadSprite(Sprite.fromImage(ImageLoader.loadImage(file)));
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-				}
-			}
-		} else if (event.getSource() == buttons.get("Save Sprite")) {
-			JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-			chooser.setFileFilter(new FileNameExtensionFilter("Firescape Sprite Files", "spr"));
-			if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-				try {
-					currentSprite.serializeTo(chooser.getSelectedFile());
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-				}
-			}
-		} else if (event.getSource() == buttons.get("Save Image")) {
-			JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-			chooser.setFileFilter(new FileNameExtensionFilter("Image Files", "png"));
-			if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-				try {
-					ImageLoader.saveImage(currentSprite.toImage(), "png", chooser.getSelectedFile());
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-				}
-			}
-		} else if (event.getSource() == buttons.get("Refresh")) {
-			if (currentSprite != null) {
-				currentSprite.setName(getInt(fields.get("ID").getText()), fields.get("Package").getText());
-				currentSprite.setShift(getInt(fields.get("X-Shift").getText()), getInt(fields.get("Y-Shift").getText()));
-				currentSprite.setSomething(getInt(fields.get("Width-2").getText()), getInt(fields.get("Height-2").getText()));
-				currentSprite.setRequiresShift(fields.get("Shift").getText().equalsIgnoreCase("true"));
-			}
+      if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        try {
+          File file = chooser.getSelectedFile();
+          loadSprite(Sprite.deserializeFrom(file));
+        } catch (Exception e) {
+          System.err.println(e.getMessage());
+        }
+      }
+    } else if (event.getSource() == buttons.get("Load Image")) {
+      JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+      chooser.setFileFilter(new FileNameExtensionFilter("Image Files", "png"));
+      if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        try {
+          File file = chooser.getSelectedFile();
+          loadSprite(Sprite.fromImage(ImageLoader.loadImage(file)));
+        } catch (Exception e) {
+          System.err.println(e.getMessage());
+        }
+      }
+    } else if (event.getSource() == buttons.get("Save Sprite")) {
+      JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+      chooser.setFileFilter(new FileNameExtensionFilter("Firescape Sprite Files", "spr"));
+      if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+        try {
+          currentSprite.serializeTo(chooser.getSelectedFile());
+        } catch (Exception e) {
+          System.err.println(e.getMessage());
+        }
+      }
+    } else if (event.getSource() == buttons.get("Save Image")) {
+      JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+      chooser.setFileFilter(new FileNameExtensionFilter("Image Files", "png"));
+      if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+        try {
+          ImageLoader.saveImage(currentSprite.toImage(), "png", chooser.getSelectedFile());
+        } catch (Exception e) {
+          System.err.println(e.getMessage());
+        }
+      }
+    } else if (event.getSource() == buttons.get("Refresh")) {
+      if (currentSprite != null) {
+        currentSprite.setName(getInt(fields.get("ID").getText()), fields.get("Package").getText());
+        currentSprite.setShift(getInt(fields.get("X-Shift").getText()), getInt(fields.get("Y-Shift").getText()));
+        currentSprite.setSomething(getInt(fields.get("Width-2").getText()), getInt(fields.get("Height-2").getText()));
+        currentSprite.setRequiresShift(fields.get("Shift").getText().equalsIgnoreCase("true"));
+      }
 
-			loadSprite(currentSprite);
-		} else if (event.getSource() == buttons.get("Overlay")) {
-			overlay = JColorChooser.showDialog(this, "Choose an overlay", overlay);
-			fields.get("Overlay").setText(String.valueOf(getOverlay()));
-			loadSprite(currentSprite);
-		} else if (event.getSource() == buttons.get("Quit")) {
-			System.exit(0);
-		}
+      loadSprite(currentSprite);
+    } else if (event.getSource() == buttons.get("Overlay")) {
+      overlay = JColorChooser.showDialog(this, "Choose an overlay", overlay);
+      fields.get("Overlay").setText(String.valueOf(getOverlay()));
+      loadSprite(currentSprite);
+    } else if (event.getSource() == buttons.get("Quit")) {
+      System.exit(0);
+    }
   }
 
   /**

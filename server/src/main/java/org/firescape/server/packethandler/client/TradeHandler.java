@@ -31,7 +31,7 @@ public class TradeHandler implements PacketHandler {
       return;
     }
     if (pID == Opcode.getClient(204, Command.Client.CL_PLAYER_TRADE)) { // Sending trade request
-      affectedPlayer = world.getPlayer(p.readShort());
+      affectedPlayer = world.getPlayerByServerIndex(p.readShort());
       if (affectedPlayer == null ||
           !player.withinRange(affectedPlayer, 8) ||
           player.isTrading() ||

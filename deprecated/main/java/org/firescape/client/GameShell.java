@@ -3,8 +3,6 @@ package org.firescape.client;
 import org.firescape.client.script.Manager;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.IndexColorModel;
 import java.awt.image.MemoryImageSource;
 import java.io.DataInputStream;
@@ -244,67 +242,7 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
     }
   }
 
-  private void drawLoadingScreen(int percent, String text) {
-    try {
-      int midx = (appletWidth - 281) / 2;
-      int midy = (appletHeight - 148) / 2;
-      graphics.setColor(Color.black);
-      graphics.fillRect(0, 0, appletWidth, appletHeight);
-      if (!hasRefererLogoNotused) {
-        graphics.drawImage(imageLogo, midx, midy, this);
-      }
-      midx += 2;
-      midy += 90;
-      loadingProgressPercent = percent;
-      loadingProgessText = text;
-      graphics.setColor(new Color(132, 132, 132));
-      if (hasRefererLogoNotused) {
-        graphics.setColor(new Color(220, 0, 0));
-      }
-      graphics.drawRect(midx - 2, midy - 2, 280, 23);
-      graphics.fillRect(midx, midy, (277 * percent) / 100, 20);
-      graphics.setColor(new Color(198, 198, 198));
-      if (hasRefererLogoNotused) {
-        graphics.setColor(new Color(255, 255, 255));
-      }
-      drawString(graphics, text, fontTimesRoman15, midx + 138, midy + 10);
-      if (!hasRefererLogoNotused) {
-        drawString(graphics, "Created by JAGeX - visit www.jagex.com", fontHelvetica13b, midx + 138, midy + 30);
-        drawString(graphics, "\2512001-2002 Andrew Gower and Jagex Ltd", fontHelvetica13b, midx + 138, midy + 44);
-      } else {
-        graphics.setColor(new Color(132, 132, 152));
-        drawString(graphics,
-                   "\2512001-2002 Andrew Gower and Jagex Ltd",
-                   fontHelvetica12,
-                   midx + 138,
-                   appletHeight - 20
-        );
-      }
-      if (logoHeaderText != null) {
-        graphics.setColor(Color.white);
-        drawString(graphics, logoHeaderText, fontHelvetica13b, midx + 138, midy - 120);
-      }
-    } catch (Exception ignored) {
-    }
-  }
-
   protected void startGame() {
-  }
-
-  private void closeProgram() {
-    stopTimeout = -2;
-    System.out.println("Closing program");
-    onClosing();
-    try {
-      Thread.sleep(1000L);
-    } catch (Exception ignored) {
-    }
-    if (gameFrame != null) {
-      gameFrame.dispose();
-    }
-    if (!startedAsApplet) {
-      System.exit(0);
-    }
   }
 
   protected synchronized void handleInputs() {
@@ -379,22 +317,6 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 
     MemoryImageSource memoryimagesource = new MemoryImageSource(i, j, indexcolormodel, abyte4, 0, i);
     return createImage(memoryimagesource);
-  }
-
-  protected void drawString(Graphics g, String s, Font font, int i, int j) {
-    Object obj;
-    if (gameFrame == null) {
-      obj = this;
-    } else {
-      obj = gameFrame;
-    }
-    FontMetrics fontmetrics = ((Component) (obj)).getFontMetrics(font);
-    fontmetrics.stringWidth(s);
-    g.setFont(font);
-    g.drawString(s, i - fontmetrics.stringWidth(s) / 2, j + fontmetrics.getHeight() / 4);
-  }
-
-  protected void onClosing() {
   }
 
   protected void showLoadingProgress(int i, String s) {
@@ -486,6 +408,63 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
     //    emptyMethod();
   }
 
+  private void drawLoadingScreen(int percent, String text) {
+    try {
+      int midx = (appletWidth - 281) / 2;
+      int midy = (appletHeight - 148) / 2;
+      graphics.setColor(Color.black);
+      graphics.fillRect(0, 0, appletWidth, appletHeight);
+      if (!hasRefererLogoNotused) {
+        graphics.drawImage(imageLogo, midx, midy, this);
+      }
+      midx += 2;
+      midy += 90;
+      loadingProgressPercent = percent;
+      loadingProgessText = text;
+      graphics.setColor(new Color(132, 132, 132));
+      if (hasRefererLogoNotused) {
+        graphics.setColor(new Color(220, 0, 0));
+      }
+      graphics.drawRect(midx - 2, midy - 2, 280, 23);
+      graphics.fillRect(midx, midy, (277 * percent) / 100, 20);
+      graphics.setColor(new Color(198, 198, 198));
+      if (hasRefererLogoNotused) {
+        graphics.setColor(new Color(255, 255, 255));
+      }
+      drawString(graphics, text, fontTimesRoman15, midx + 138, midy + 10);
+      if (!hasRefererLogoNotused) {
+        drawString(graphics, "Created by JAGeX - visit www.jagex.com", fontHelvetica13b, midx + 138, midy + 30);
+        drawString(graphics, "\2512001-2002 Andrew Gower and Jagex Ltd", fontHelvetica13b, midx + 138, midy + 44);
+      } else {
+        graphics.setColor(new Color(132, 132, 152));
+        drawString(graphics,
+                   "\2512001-2002 Andrew Gower and Jagex Ltd",
+                   fontHelvetica12,
+                   midx + 138,
+                   appletHeight - 20
+        );
+      }
+      if (logoHeaderText != null) {
+        graphics.setColor(Color.white);
+        drawString(graphics, logoHeaderText, fontHelvetica13b, midx + 138, midy - 120);
+      }
+    } catch (Exception ignored) {
+    }
+  }
+
+  protected void drawString(Graphics g, String s, Font font, int i, int j) {
+    Object obj;
+    if (gameFrame == null) {
+      obj = this;
+    } else {
+      obj = gameFrame;
+    }
+    FontMetrics fontmetrics = ((Component) (obj)).getFontMetrics(font);
+    fontmetrics.stringWidth(s);
+    g.setFont(font);
+    g.drawString(s, i - fontmetrics.stringWidth(s) / 2, j + fontmetrics.getHeight() / 4);
+  }
+
   public void destroy() {
     stopTimeout = -1;
     try {
@@ -500,6 +479,25 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
         appletThread = null;
       }
     }
+  }
+
+  private void closeProgram() {
+    stopTimeout = -2;
+    System.out.println("Closing program");
+    onClosing();
+    try {
+      Thread.sleep(1000L);
+    } catch (Exception ignored) {
+    }
+    if (gameFrame != null) {
+      gameFrame.dispose();
+    }
+    if (!startedAsApplet) {
+      System.exit(0);
+    }
+  }
+
+  protected void onClosing() {
   }
 
   protected Socket createSocket(String s, int i) throws IOException {

@@ -1,17 +1,19 @@
 package org.firescape.spriteeditor;
 
-import java.awt.*;
-
 /**
  * Draws the sprites in the editor.
  */
 public class SpriteDrawer extends SpriteHandler {
+
   /**
    * Constructs a sprite drawer with the given information
    *
-   * @param component the parent component to render to
-   * @param width the width of the drawing region
-   * @param height the height of the drawing region
+   * @param component
+   *   the parent component to render to
+   * @param width
+   *   the width of the drawing region
+   * @param height
+   *   the height of the drawing region
    */
   public SpriteDrawer(Component component, int width, int height) {
     super(component, width, height);
@@ -20,10 +22,14 @@ public class SpriteDrawer extends SpriteHandler {
   /**
    * Draws the given sprite at the given coordinates with the given colour overlay
    *
-   * @param x the x coord to render at
-   * @param y the y coord to render at
-   * @param sprite the sprite object to render
-   * @param overlay the colour overlay to cast over the sprite
+   * @param x
+   *   the x coord to render at
+   * @param y
+   *   the y coord to render at
+   * @param sprite
+   *   the sprite object to render
+   * @param overlay
+   *   the colour overlay to cast over the sprite
    */
   public void drawSprite(int x, int y, Sprite sprite, int overlay) {
     if (sprite.requiresShift()) {
@@ -46,9 +52,9 @@ public class SpriteDrawer extends SpriteHandler {
       l += j2 * super.WIDTH;
     }
 
-		if (y + spriteHeight >= super.HEIGHT) {
-			spriteHeight -= ((y + spriteHeight) - super.HEIGHT) + 1;
-		}
+    if (y + spriteHeight >= super.HEIGHT) {
+      spriteHeight -= ((y + spriteHeight) - super.HEIGHT) + 1;
+    }
 
     if (x < 0) {
       int k2 = 0 - x;
@@ -85,13 +91,13 @@ public class SpriteDrawer extends SpriteHandler {
         int buffer = newPixels[j++];
         if (buffer != 0) {
           int[] underData = { buffer & 0xff, buffer >> 8 & 0xff, buffer >> 16 & 0xff };
-					if (overData != null && underData[2] == underData[1] && underData[1] == underData[0]) {
-						existingPixels[k] = ((underData[2] * overData[2] >> 8) << 16) +
-																((underData[1] * overData[1] >> 8) << 8) +
-																(underData[0] * overData[0] >> 8);
-					} else {
-						existingPixels[k] = buffer;
-					}
+          if (overData != null && underData[2] == underData[1] && underData[1] == underData[0]) {
+            existingPixels[k] = ((underData[2] * overData[2] >> 8) << 16) +
+                                ((underData[1] * overData[1] >> 8) << 8) +
+                                (underData[0] * overData[0] >> 8);
+          } else {
+            existingPixels[k] = buffer;
+          }
         }
 
         k++;

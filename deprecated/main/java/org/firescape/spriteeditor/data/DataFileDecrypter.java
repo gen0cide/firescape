@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.data;
  * Handles data file decryption. Truth is I'm not sure what a lot of this mumbo jumbo is.
  */
 public class DataFileDecrypter {
+
   /**
    * Unpacks the given data
    */
@@ -505,8 +506,9 @@ public class DataFileDecrypter {
       i3 <<= 1;
     }
 
-    for (int k2 = i + 1; k2 <= j; k2++)
+    for (int k2 = i + 1; k2 <= j; k2++) {
       ai1[k2] = (ai[k2 - 1] + 1 << 1) - ai1[k2];
+    }
   }
 
   /**

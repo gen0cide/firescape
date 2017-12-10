@@ -155,7 +155,7 @@ public class SpellHandler implements PacketHandler {
       handleGroundCast(player, spell, idx);
     } else if (pID == Opcode.getClient(204, Command.Client.CL_CAST_PLAYER)) {
       if (spell.getSpellType() == 1 || spell.getSpellType() == 2) {
-        Player affectedPlayer = world.getPlayer(p.readShort());
+        Player affectedPlayer = world.getPlayerByServerIndex(p.readShort());
         if (affectedPlayer == null) { // This shouldn't happen
           player.resetPath();
           return;

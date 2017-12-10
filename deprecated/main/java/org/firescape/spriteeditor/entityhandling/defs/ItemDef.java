@@ -4,6 +4,7 @@ package org.firescape.spriteeditor.entityhandling.defs;
  * The definition wrapper for items
  */
 public class ItemDef extends EntityDef {
+
   /**
    * The command of the object
    */

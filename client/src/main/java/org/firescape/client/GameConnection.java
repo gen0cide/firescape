@@ -354,12 +354,15 @@ public class GameConnection extends GameShell {
   }
 
   private void handlePacket(Command.Server opcode, int ptype, int psize) {
-    System.out.println(String.format("[Packet] <<< %s(id=%d) size=%d\n%s",
-                                     opcode.name(),
-                                     ptype,
-                                     psize,
-                                     Utility.bytesToHex(Arrays.copyOfRange(incomingPacket, 0, psize))
-    ));
+    String assetDumpEnabled = System.getenv("FIRESCAPE_DUMP_INCOMING_PACKETS");
+    if (assetDumpEnabled != null) {
+      System.out.println(String.format("[Packet] <<< %s(id=%d) size=%d\n%s",
+                                       opcode.name(),
+                                       ptype,
+                                       psize,
+                                       Utility.bytesToHex(Arrays.copyOfRange(incomingPacket, 0, psize))
+      ));
+    }
     int offset = 1;
     if (opcode == Command.Server.SV_MESSAGE) {
       String s = new String(Arrays.copyOfRange(incomingPacket, 1, 1 + (psize - 1)));

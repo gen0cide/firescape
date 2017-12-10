@@ -15,13 +15,10 @@ import org.firescape.server.packetbuilder.RSCPacketBuilder;
 import org.firescape.server.packetbuilder.client.MiscPacketBuilder;
 import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
-import org.firescape.server.util.*;
 import redis.clients.jedis.Jedis;
 
-import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
 
 /**
  * A single player.
@@ -479,14 +476,6 @@ public final class Player extends Mob {
     loggedIn = !isInvisible;
   }
 
-  public boolean isInvisible() {
-    return isInvisible;
-  }
-
-  public void setInvisible(boolean invisible) {
-    isInvisible = invisible;
-  }
-
   public int isRomeoJulietComplete() {
     return romeostatus = 3;
   }
@@ -567,6 +556,51 @@ public final class Player extends Mob {
     }
   }
 
+  public String getUsername() {
+    return username;
+  }
+
+  public void destroy(boolean force) {
+    if (destroy) {
+      return;
+    }
+    String user = this.getUsername();
+    if (force || canLogout()) {
+      if (user == null) {
+        destroy = true;
+        actionSender.sendLogout();
+        return;
+      }
+      destroy = true;
+      actionSender.sendLogout();
+      Server.writeValue(user, "loggedin", "false");
+      if (this.isAdmin()) {
+        GameVars.adminsOnline--;
+      } else if (this.rank == 3 || this.rank == 2) {
+        GameVars.modsOnline--;
+      }
+    } else {
+      long startDestroy = System.currentTimeMillis();
+      Entity.world.getDelayedEventHandler().add(new DelayedEvent(this, 3000) {
+        public void run() {
+          if (owner.canLogout() ||
+              (!(owner.inCombat() && owner.isDueling()) && System.currentTimeMillis() - startDestroy > 60000)) {
+            owner.destroy(true);
+            running = false;
+          }
+        }
+      });
+    }
+  }
+
+  public boolean canLogout() {
+    return !isBusy() && System.currentTimeMillis() - getCombatTimer() > 10000;
+  }
+
+  public boolean isAdmin() {
+    return rank == 4;
+  }
+
   public ChatMessage getNextChatMessage() {
     return chatQueue.poll();
   }
@@ -594,10 +628,6 @@ public final class Player extends Mob {
       rangeEvent = null;
     }
     setStatus(Action.IDLE);
-  }
-
-  public boolean canLogout() {
-    return !isBusy() && System.currentTimeMillis() - getCombatTimer() > 10000;
   }
 
   public boolean isFollowing(Mob mob) {
@@ -638,20 +668,6 @@ public final class Player extends Mob {
       followEvent = null;
     }
     resetPath();
-  }
-
-  public boolean withinRange(Entity e) {
-    int xDiff = location.getX() - e.getLocation().getX();
-    int yDiff = location.getY() - e.getLocation().getY();
-    return xDiff <= 16 && xDiff >= -15 && yDiff <= 16 && yDiff >= -15;
-  }
-
-  public boolean isDueling() {
-    return isDueling;
-  }
-
-  public void setDueling(boolean b) {
-    isDueling = b;
   }
 
   public void setSkulledOn(Player player) {
@@ -702,10 +718,6 @@ public final class Player extends Mob {
     this.setAppearnceChanged(true);
     skullEvent.stop();
     skullEvent = null;
-  }
-
-  public void setSubscriptionExpires(long expires) {
-    subscriptionExpires = expires;
   }
 
   public int getDaysSubscriptionLeft() {
@@ -838,14 +850,6 @@ public final class Player extends Mob {
 
   public void setInitialized() {
     initialized = true;
-  }
-
-  public int getDrainRate() {
-    return drainRate;
-  }
-
-  public void setDrainRate(int rate) {
-    drainRate = rate;
   }
 
   public int getRangeEquip() {
@@ -983,6 +987,14 @@ public final class Player extends Mob {
     tradeOffer.clear();
   }
 
+  public boolean isDueling() {
+    return isDueling;
+  }
+
+  public void setDueling(boolean b) {
+    isDueling = b;
+  }
+
   public void resetDuelOffer() {
     duelOffer.clear();
   }
@@ -1043,39 +1055,6 @@ public final class Player extends Mob {
     boolean valid = (sessionKeys[2] == keys[2] && sessionKeys[3] == keys[3]);
     sessionKeys = keys;
     return valid;
-  }
-
-  public void destroy(boolean force) {
-    if (destroy) {
-      return;
-    }
-    String user = this.getUsername();
-    if (force || canLogout()) {
-      if (user == null) {
-        destroy = true;
-        actionSender.sendLogout();
-        return;
-      }
-      destroy = true;
-      actionSender.sendLogout();
-      Server.writeValue(user, "loggedin", "false");
-      if (this.isAdmin()) {
-        GameVars.adminsOnline--;
-      } else if (this.rank == 3 || this.rank == 2) {
-        GameVars.modsOnline--;
-      }
-    } else {
-      long startDestroy = System.currentTimeMillis();
-      Entity.world.getDelayedEventHandler().add(new DelayedEvent(this, 3000) {
-        public void run() {
-          if (owner.canLogout() ||
-              (!(owner.inCombat() && owner.isDueling()) && System.currentTimeMillis() - startDestroy > 60000)) {
-            owner.destroy(true);
-            running = false;
-          }
-        }
-      });
-    }
   }
 
   // save
@@ -1327,6 +1306,150 @@ public final class Player extends Mob {
 
   }
 
+  public int getMaxStat(int id) {
+    return maxStat[id];
+  }
+
+  public MiscPacketBuilder getActionSender() {
+    return actionSender;
+  }
+
+  public int getDrainRate() {
+    return drainRate;
+  }
+
+  public void setDrainRate(int rate) {
+    drainRate = rate;
+  }
+
+  public void incCurStat(int i, int amount) {
+    curStat[i] += amount;
+    if (curStat[i] < 0) {
+      curStat[i] = 0;
+    }
+  }
+
+  public void setSubscriptionExpires(long expires) {
+    subscriptionExpires = expires;
+  }
+
+  public void setPrivacySetting(int i, boolean b) {
+    privacySettings[i] = b;
+  }
+
+  public void setGameSetting(int i, boolean b) {
+    gameSettings[i] = b;
+  }
+
+  public IoSession getSession() {
+    return ioSession;
+  }
+
+  public void setAppearance(PlayerAppearance appearance) {
+    this.appearance = appearance;
+  }
+
+  public PlayerAppearance getPlayerAppearance() {
+    return appearance;
+  }
+
+  public void setExp(int id, int lvl) {
+    if (lvl < 0) {
+      lvl = 0;
+    }
+    exp[id] = lvl;
+  }
+
+  public void setMaxStat(int id, int lvl) {
+    if (lvl < 0) {
+      lvl = 0;
+    }
+    maxStat[id] = lvl;
+  }
+
+  public int[] getMaxStats() {
+    return maxStat;
+  }
+
+  public List<String> getFriendList() {
+    return friendList;
+  }
+
+  public void updateWornItems(int index, int id) {
+    wornItems[index] = id;
+    this.ourAppearanceChanged = true;
+  }
+
+  public long getLastLogin() {
+    return lastLogin;
+  }
+
+  public void setLastLogin(long l) {
+    lastLogin = l;
+  }
+
+  public void setLoggedIn(boolean loggedIn) {
+    if (loggedIn) {
+      currentLogin = System.currentTimeMillis();
+    }
+    this.loggedIn = loggedIn;
+  }
+
+  public void updateViewedPlayers() {
+    List<Player> playersInView = viewArea.getPlayersInView();
+    for (Player p : playersInView) {
+      if (p.getIndex() != getIndex() && p.loggedIn()) {
+        this.informOfPlayer(p);
+      }
+      if (p.isInvisible()) {
+        p.informOfPlayer(this);
+      }
+    }
+  }
+
+  public void updateViewedObjects() {
+    List<GameObject> objectsInView = viewArea.getGameObjectsInView();
+    for (GameObject o : objectsInView) {
+      if (!watchedObjects.contains(o) && !o.isRemoved() && withinRange(o)) {
+        watchedObjects.add(o);
+      }
+    }
+  }
+
+  public boolean isFriendsWith(String username) {
+    return friendList.contains(username);
+  }
+
+  public boolean loggedIn() {
+    return loggedIn;
+  }
+
+  /**
+   * This is a 'another player has tapped us on the shoulder' method.
+   * <p>
+   * If we are in another players viewArea, they should in theory be in ours. So they will call this method to let the
+   * player know they should probably be informed of them.
+   */
+  public void informOfPlayer(Player p) {
+    if ((!watchedPlayers.contains(p) || watchedPlayers.isRemoving(p)) && withinRange(p)) {
+      watchedPlayers.add(p);
+    }
+  }
+
+  public boolean isInvisible() {
+    return isInvisible;
+  }
+
+  public void setInvisible(boolean invisible) {
+    isInvisible = invisible;
+  }
+
+  public boolean withinRange(Entity e) {
+    int xDiff = location.getX() - e.getLocation().getX();
+    int yDiff = location.getY() - e.getLocation().getY();
+    return xDiff <= 16 && xDiff >= -15 && yDiff <= 16 && yDiff >= -15;
+  }
+
   public void save() {
     try {
       if (!this.bad_login) {
@@ -1431,10 +1554,6 @@ public final class Player extends Mob {
     }
   }
 
-  public String getUsername() {
-    return username;
-  }
-
   public int getFatigue() {
     return fatigue;
   }
@@ -1503,10 +1622,6 @@ public final class Player extends Mob {
     return lastIP;
   }
 
-  public long getLastLogin() {
-    return lastLogin;
-  }
-
   public int getCombatStyle() {
     return combatStyle;
   }
@@ -1542,10 +1657,6 @@ public final class Player extends Mob {
     return inventory;
   }
 
-  public List<String> getFriendList() {
-    return friendList;
-  }
-
   public Bank getBank() {
     return bank;
   }
@@ -1560,10 +1671,6 @@ public final class Player extends Mob {
 
   public void setMale(boolean male) {
     maleGender = male;
-  }
-
-  public void setLastLogin(long l) {
-    lastLogin = l;
   }
 
   public void setLastIP(String ip) {
@@ -1874,10 +1981,6 @@ public final class Player extends Mob {
     affectedPlayer.actionSender.sendKillingSpree();
   }
 
-  public MiscPacketBuilder getActionSender() {
-    return actionSender;
-  }
-
   public void incKills() {
     kills++;
   }
@@ -1911,15 +2014,6 @@ public final class Player extends Mob {
 
   public void setSuspiciousPlayer(boolean suspicious) {
     this.suspicious = suspicious;
-  }
-
-  public void updateWornItems(int index, int id) {
-    wornItems[index] = id;
-    this.ourAppearanceChanged = true;
-  }
-
-  public PlayerAppearance getPlayerAppearance() {
-    return appearance;
   }
 
   public void removePrayerDrain(int prayerID) {
@@ -2110,10 +2204,6 @@ public final class Player extends Mob {
     drainer.setDelay(240000 / drainRate);
   }
 
-  public boolean isFriendsWith(String username) {
-    return friendList.contains(username);
-  }
-
   public boolean isIgnoring(String user) {
     return ignoreList.contains(user);
   }
@@ -2254,6 +2344,7 @@ public final class Player extends Mob {
   public void setGroupID(int id) {
     rank = id;
   }
+  // destroy
 
   public boolean isSubscriber() {
     return rank == 1 || isEvent() || isPMod() || isMod() || isAdmin();
@@ -2269,10 +2360,6 @@ public final class Player extends Mob {
 
   public boolean isMod() {
     return rank == 3 || isAdmin();
-  }
-
-  public boolean isAdmin() {
-    return rank == 4;
   }
 
   public int getMagicPoints() {
@@ -2314,29 +2401,9 @@ public final class Player extends Mob {
     this.ourAppearanceChanged = true;
   }
 
-  public void setGameSetting(int i, boolean b) {
-    gameSettings[i] = b;
-  }
-
-  public void setPrivacySetting(int i, boolean b) {
-    privacySettings[i] = b;
-  }
-
   public long getLastPing() {
     return lastPing;
   }
-
-  public IoSession getSession() {
-    return ioSession;
-  }
-
-  public void setLoggedIn(boolean loggedIn) {
-    if (loggedIn) {
-      currentLogin = System.currentTimeMillis();
-    }
-    this.loggedIn = loggedIn;
-  }
-  // destroy
 
   public String getPassword() {
     return password;
@@ -2344,10 +2411,6 @@ public final class Player extends Mob {
 
   public void ping() {
     lastPing = System.currentTimeMillis();
-  }
-
-  public void setAppearance(PlayerAppearance appearance) {
-    this.appearance = appearance;
   }
 
   public void addPlayersAppearanceIDs(int[] indicies, int[] appearanceIDs) {
@@ -2380,27 +2443,6 @@ public final class Player extends Mob {
     }
   }
 
-  public void updateViewedPlayers() {
-    List<Player> playersInView = viewArea.getPlayersInView();
-    for (Player p : playersInView) {
-      if (p.getIndex() != getIndex() && p.loggedIn()) {
-        this.informOfPlayer(p);
-      }
-      if (p.isInvisible()) {
-        p.informOfPlayer(this);
-      }
-    }
-  }
-
-  public void updateViewedObjects() {
-    List<GameObject> objectsInView = viewArea.getGameObjectsInView();
-    for (GameObject o : objectsInView) {
-      if (!watchedObjects.contains(o) && !o.isRemoved() && withinRange(o)) {
-        watchedObjects.add(o);
-      }
-    }
-  }
-
   public void updateViewedItems() {
     List<Item> itemsInView = viewArea.getItemsInView();
     for (Item i : itemsInView) {
@@ -2416,18 +2458,6 @@ public final class Player extends Mob {
       if ((!watchedNpcs.contains(n) || watchedNpcs.isRemoving(n)) && withinRange(n)) {
         watchedNpcs.add(n);
       }
-    }
-  }
-
-  /**
-   * This is a 'another player has tapped us on the shoulder' method.
-   * <p>
-   * If we are in another players viewArea, they should in theory be in ours. So they will call this method to let the
-   * player know they should probably be informed of them.
-   */
-  public void informOfPlayer(Player p) {
-    if ((!watchedPlayers.contains(p) || watchedPlayers.isRemoving(p)) && withinRange(p)) {
-      watchedPlayers.add(p);
     }
   }
 
@@ -2456,10 +2486,6 @@ public final class Player extends Mob {
     }
   }
 
-  public boolean loggedIn() {
-    return loggedIn;
-  }
-
   public void revalidateWatchedObjects() {
     for (GameObject o : watchedObjects.getKnownEntities()) {
       if (!withinRange(o) || o.isRemoved()) {
@@ -2486,21 +2512,6 @@ public final class Player extends Mob {
 
   public int[] getCurStats() {
     return curStat;
-  }
-
-  public int getMaxStat(int id) {
-    return maxStat[id];
-  }
-
-  public void setMaxStat(int id, int lvl) {
-    if (lvl < 0) {
-      lvl = 0;
-    }
-    maxStat[id] = lvl;
-  }
-
-  public int[] getMaxStats() {
-    return maxStat;
   }
 
   public int getSkillTotal() {
@@ -2554,13 +2565,6 @@ public final class Player extends Mob {
     }
   }
 
-  public void incCurStat(int i, int amount) {
-    curStat[i] += amount;
-    if (curStat[i] < 0) {
-      curStat[i] = 0;
-    }
-  }
-
   public void incMaxStat(int i, int amount) {
     maxStat[i] += amount;
     if (maxStat[i] < 0) {
@@ -2571,13 +2575,6 @@ public final class Player extends Mob {
   // destroy
   public int[] getExps() {
     return exp;
-  }
-
-  public void setExp(int id, int lvl) {
-    if (lvl < 0) {
-      lvl = 0;
-    }
-    exp[id] = lvl;
   }
 
   public void setExp(int[] lvls) {

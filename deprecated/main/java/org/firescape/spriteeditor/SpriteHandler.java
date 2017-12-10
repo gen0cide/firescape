@@ -1,12 +1,10 @@
 package org.firescape.spriteeditor;
 
-import java.awt.*;
-import java.awt.image.*;
-
 /**
  * Handles rendering of sprites
  */
 public class SpriteHandler implements ImageProducer, ImageObserver {
+
   /**
    * The width of this sprite handler
    */
@@ -35,9 +33,12 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
   /**
    * Constructs a new sprite handler with the given info
    *
-   * @param component the component to render to
-   * @param width the width of the render region
-   * @param height the height of the render region
+   * @param component
+   *   the component to render to
+   * @param width
+   *   the width of the render region
+   * @param height
+   *   the height of the render region
    */
   public SpriteHandler(Component component, int width, int height) {
     image = component.createImage(this);
@@ -53,9 +54,9 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
   public void reset() {
     imagePixelArray = new int[WIDTH * HEIGHT];
 
-		for (int c = 0; c < imagePixelArray.length; c++) {
-			imagePixelArray[c] = 0;
-		}
+    for (int c = 0; c < imagePixelArray.length; c++) {
+      imagePixelArray[c] = 0;
+    }
   }
 
   /**
@@ -75,9 +76,12 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
   /**
    * Draws the image to the given graphics object
    *
-   * @param g the Graphics object to draw to
-   * @param x the x coordinate to draw at
-   * @param y the y coordinate to draw at
+   * @param g
+   *   the Graphics object to draw to
+   * @param x
+   *   the x coordinate to draw at
+   * @param y
+   *   the y coordinate to draw at
    */
   public void drawImage(Graphics g, int x, int y) {
     completePixels();
@@ -88,16 +92,17 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
    * Completes the pixels using the image consumer
    */
   private synchronized void completePixels() {
-		if (imageConsumer == null) {
-			return;
-		}
+    if (imageConsumer == null) {
+      return;
+    }
 
     imageConsumer.setPixels(0, 0, WIDTH, HEIGHT, colorModel, imagePixelArray, 0, WIDTH);
     imageConsumer.imageComplete(2);
   }
 
   /**
-   * @param imageconsumer the image consumer to compare
+   * @param imageconsumer
+   *   the image consumer to compare
    *
    * @return if the given comsumer is our consumer
    */
@@ -108,19 +113,21 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
   /**
    * Removes the given image consumer from the sprite handler if it's the right consumer
    *
-   * @param imageconsumer the image consumer to remove
+   * @param imageconsumer
+   *   the image consumer to remove
    */
   public synchronized void removeConsumer(ImageConsumer imageconsumer) {
-		if (imageConsumer == imageconsumer) // If it's not ours, don't remove it
-		{
-			imageConsumer = null;
-		}
+    if (imageConsumer == imageconsumer) // If it's not ours, don't remove it
+    {
+      imageConsumer = null;
+    }
   }
 
   /**
    * Adds the image consumer to our sprite handler
    *
-   * @param imageconsumer the image consumer to render with
+   * @param imageconsumer
+   *   the image consumer to render with
    */
   public void startProduction(ImageConsumer imageconsumer) {
     addConsumer(imageconsumer);
@@ -129,7 +136,8 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
   /**
    * Adds the given image consumer to the sprite handler
    *
-   * @param imageconsumer the image consumer
+   * @param imageconsumer
+   *   the image consumer
    */
   public synchronized void addConsumer(ImageConsumer imageconsumer) {
     imageConsumer = imageconsumer;
@@ -142,7 +150,8 @@ public class SpriteHandler implements ImageProducer, ImageObserver {
   /**
    * Requests top down left right resend. Whatever the fuck that means.
    *
-   * @param imageconsumer the image consumer to do nothing with?
+   * @param imageconsumer
+   *   the image consumer to do nothing with?
    */
   public void requestTopDownLeftRightResend(ImageConsumer imageconsumer) {
     System.out.println("TDLR - wtf?");

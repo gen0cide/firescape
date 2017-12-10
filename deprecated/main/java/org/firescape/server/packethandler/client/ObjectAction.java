@@ -7,8 +7,6 @@ import org.firescape.server.entityhandling.defs.extras.ObjectFishDef;
 import org.firescape.server.entityhandling.defs.extras.ObjectFishingDef;
 import org.firescape.server.entityhandling.defs.extras.ObjectMiningDef;
 import org.firescape.server.entityhandling.defs.extras.ObjectWoodcuttingDef;
-import org.firescape.server.event.*;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.opcode.Command;
@@ -19,6 +17,7 @@ import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 
 public class ObjectAction implements PacketHandler {
+
   /**
    * World instance
    */

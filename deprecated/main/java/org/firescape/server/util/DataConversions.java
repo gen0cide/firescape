@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public final class DataConversions {
+
   private static final BigInteger key = new BigInteger(
     "730546719878348732291497161314617369560443701473303681965331739205703475535302276087891130348991033265134162275669215460061940182844329219743687403068279");
   private static final BigInteger modulus = new BigInteger(

@@ -112,6 +112,14 @@ public class Packet {
     return addBytes(data, 0, data.length);
   }
 
+  public Packet addBytes(byte[] data, int offset, int len) {
+    int newLength = curLength + len;
+    ensureCapacity(newLength);
+    System.arraycopy(data, offset, payload, curLength, len);
+    curLength = newLength;
+    return this;
+  }
+
   public Packet addString(String s) {
     try {
       byte[] msg = s.getBytes("UTF-8");
@@ -121,14 +129,6 @@ public class Packet {
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
-    return this;
-  }
-
-  public Packet addBytes(byte[] data, int offset, int len) {
-    int newLength = curLength + len;
-    ensureCapacity(newLength);
-    System.arraycopy(data, offset, payload, curLength, len);
-    curLength = newLength;
     return this;
   }
 

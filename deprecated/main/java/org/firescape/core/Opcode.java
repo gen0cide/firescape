@@ -5,6 +5,7 @@ import org.firescape.core.version.V204;
 import java.util.Map;
 
 public class Opcode {
+
   public static Command.Server getServer(int id) {
     try {
       Map<Command.Server, Integer> m;

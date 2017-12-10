@@ -4,13 +4,13 @@ import org.apache.mina.common.IoSession;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToMobEvent;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 import org.firescape.server.util.DataConversions;
 
 public class InvUseOnNpc implements PacketHandler {
+
   /**
    * World instance
    */

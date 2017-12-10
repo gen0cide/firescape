@@ -773,10 +773,10 @@ public final class World {
   /**
    * Gets a Player by their server index
    */
-  public Player getPlayer(int usernameHash) {
+  public Player getPlayerByServerIndex(int serverIndex) {
     Player player = null;
     for (Player p : getPlayers()) {
-      if (p.getUsernameHash() == usernameHash) {
+      if (p.getIndex() == serverIndex) {
         return p;
       }
     }

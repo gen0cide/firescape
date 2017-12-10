@@ -1,9 +1,9 @@
 package org.firescape.server.npchandler;
 
 import org.firescape.server.event.ShortEvent;
-import org.firescape.server.model.*;
 
 public class ManMeatSeller implements NpcHandler {
+
   /**
    * World instance
    */
@@ -15,9 +15,8 @@ public class ManMeatSeller implements NpcHandler {
     world.getDelayedEventHandler().add(new ShortEvent(player) {
       public void action() {
         owner.setBusy(false);
-        String[] options = new String[]{
-                "No way creep",
-                "Gimme gimme gimme"
+        String[] options = new String[] {
+          "No way creep", "Gimme gimme gimme"
         };
         owner.setMenuHandler(new MenuHandler(options) {
           public void handleReply(final int option, final String reply) {

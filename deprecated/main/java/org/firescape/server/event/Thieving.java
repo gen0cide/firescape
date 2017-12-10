@@ -1,7 +1,6 @@
 package org.firescape.server.event;
 
 import org.firescape.server.entityhandling.defs.GameObjectDef;
-import org.firescape.server.model.*;
 import org.firescape.server.states.Action;
 
 import java.util.ArrayList;

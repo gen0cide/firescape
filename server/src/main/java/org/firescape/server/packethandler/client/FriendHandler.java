@@ -20,7 +20,6 @@ public class FriendHandler implements PacketHandler {
   public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
     int pID = ((RSCPacket) p).getID();
-    player.getUsernameHash();
     long f = p.readLong();
     boolean isOnline = world.getPlayers().contains(world.getPlayer(f));
     String friend = DataConversions.hashToUsername(f);

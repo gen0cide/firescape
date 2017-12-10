@@ -1,0 +1,29 @@
+{
+  "gson": {
+    "DEFAULT_JSON_NON_EXECUTABLE": false,
+    "DEFAULT_LENIENT": false,
+    "DEFAULT_PRETTY_PRINT": false,
+    "DEFAULT_ESCAPE_HTML": true,
+    "DEFAULT_SERIALIZE_NULLS": false,
+    "DEFAULT_COMPLEX_MAP_KEYS": false,
+    "DEFAULT_SPECIALIZE_FLOAT_VALUES": false
+  },
+  "id": 1177,
+  "offset": 7798,
+  "width": 25,
+  "height": 26,
+  "fullWidth": 102,
+  "fullHeight": 144,
+  "colorCount": 6,
+  "colors": [
+    16711935,
+    16776187,
+    7899779,
+    10056200,
+    3950672,
+    6571548
+  ],
+  "translateX": 13,
+  "translateY": 0,
+  "translate": true
+}

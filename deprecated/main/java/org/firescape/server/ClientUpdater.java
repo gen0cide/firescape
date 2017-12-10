@@ -5,12 +5,12 @@ import org.firescape.server.model.Npc;
 import org.firescape.server.model.Player;
 import org.firescape.server.model.World;
 import org.firescape.server.net.RSCPacket;
-import org.firescape.server.packetbuilder.client.*;
 import org.firescape.server.util.EntityList;
 
 import java.util.List;
 
 public final class ClientUpdater {
+
   private static final World world = World.getWorld();
   private final EntityList<Player> players = world.getPlayers();
   private final EntityList<Npc> npcs = world.getNpcs();

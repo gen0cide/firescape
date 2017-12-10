@@ -24,7 +24,7 @@ class FireScape
 
   def give_item(player_id, item_id, quantity = 1)
     item = Java::OrgFirescapeServerModel::InvItem.new(item_id, quantity)
-    i = Java::OrgFirescapeServerModel::InvItem.new(1261,1)
+    i = Java::OrgFirescapeServerModel::InvItem.new(1261, 1)
     player = find_player(player_id)
     player.get_inventory.add(item)
     player.get_action_sender.send_inventory
@@ -51,7 +51,7 @@ mgmt = Thread.new do
     exit
   end
 
-  while(@@is_running)
+  while (@@is_running)
     binding.remote_pry('localhost', '9040')
   end
 end

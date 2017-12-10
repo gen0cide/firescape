@@ -2,12 +2,12 @@ package org.firescape.server.npchandler;
 
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
-import org.firescape.server.model.*;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Gamble implements NpcHandler {
+
   /**
    * World instance
    */

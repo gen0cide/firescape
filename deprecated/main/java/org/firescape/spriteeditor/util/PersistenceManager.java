@@ -2,7 +2,6 @@ package org.firescape.spriteeditor.util;
 
 import com.thoughtworks.xstream.XStream;
 
-import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -10,6 +9,7 @@ import java.util.zip.GZIPOutputStream;
  * Handles the input and output of XML through XStream
  */
 public class PersistenceManager {
+
   /**
    * The XStream object this persistence manager uses to i/o serialized xml data
    */
@@ -29,8 +29,10 @@ public class PersistenceManager {
   /**
    * Adds the given alias link to the given class name
    *
-   * @param name the class alias
-   * @param className the official class name
+   * @param name
+   *   the class alias
+   * @param className
+   *   the official class name
    */
   private static void addAlias(String name, String className) {
     try {
@@ -41,7 +43,8 @@ public class PersistenceManager {
   }
 
   /**
-   * @param file the file to load
+   * @param file
+   *   the file to load
    *
    * @return a <code>Object</code> representation of the given file
    */
@@ -62,8 +65,10 @@ public class PersistenceManager {
   /**
    * Serializes the given object into the given file
    *
-   * @param file the file to write to
-   * @param o the object to output
+   * @param file
+   *   the file to write to
+   * @param o
+   *   the object to output
    */
   public static void write(File file, Object o) {
     try {

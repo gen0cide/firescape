@@ -6,7 +6,6 @@ import org.firescape.server.entityhandling.defs.extras.FiremakingDef;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
 import org.firescape.server.event.WalkToPointEvent;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
@@ -14,6 +13,7 @@ import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 
 public class InvUseOnGroundItem implements PacketHandler {
+
   /**
    * World instance
    */

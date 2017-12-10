@@ -5,8 +5,6 @@ import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.SpellDef;
 import org.firescape.server.entityhandling.defs.extras.ItemSmeltingDef;
 import org.firescape.server.entityhandling.defs.extras.ReqOreDef;
-import org.firescape.server.event.*;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packethandler.PacketHandler;
@@ -15,10 +13,10 @@ import org.firescape.server.states.CombatState;
 import org.firescape.server.util.DataConversions;
 import org.firescape.server.util.Formulae;
 
-import java.util.*;
 import java.util.Map.Entry;
 
 public class SpellHandler implements PacketHandler {
+
   /**
    * World instance
    */

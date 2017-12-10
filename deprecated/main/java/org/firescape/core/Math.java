@@ -36,12 +36,12 @@ public class Math {
     return (bd.doubleValue());
   }
 
-  public static int random(int low, int high) {
-    return low + rand.nextInt(high - low + 1);
-  }
-
   public static boolean percentChance(int percent) {
     return random(1, 100) <= percent;
+  }
+
+  public static int random(int low, int high) {
+    return low + rand.nextInt(high - low + 1);
   }
 
   public static String timeFormat(long l) {

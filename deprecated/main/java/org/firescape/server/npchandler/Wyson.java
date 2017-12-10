@@ -3,9 +3,9 @@ package org.firescape.server.npchandler;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.MiniEvent;
 import org.firescape.server.event.ShortEvent;
-import org.firescape.server.model.*;
 
 public class Wyson implements NpcHandler {
+
   /**
    * World instance
    */

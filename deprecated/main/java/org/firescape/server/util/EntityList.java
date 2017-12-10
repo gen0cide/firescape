@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class EntityList<T extends Entity> implements Iterable<T> {
+
   /**
    * The Default capacity of an EntityList
    */

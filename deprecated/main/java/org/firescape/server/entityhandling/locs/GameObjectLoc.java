@@ -3,6 +3,7 @@ package org.firescape.server.entityhandling.locs;
 import java.io.Serializable;
 
 public class GameObjectLoc implements Serializable {
+
   /**
    * The id of the gameObject
    */

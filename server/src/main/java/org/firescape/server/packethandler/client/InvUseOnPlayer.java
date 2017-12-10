@@ -27,7 +27,7 @@ public class InvUseOnPlayer implements PacketHandler {
       return;
     }
     player.resetAll();
-    Player affectedPlayer = world.getPlayer(p.readShort());
+    Player affectedPlayer = world.getPlayerByServerIndex(p.readShort());
     InvItem item = player.getInventory().get(p.readShort());
     if (affectedPlayer == null || item == null) { // This shouldn't happen
       return;

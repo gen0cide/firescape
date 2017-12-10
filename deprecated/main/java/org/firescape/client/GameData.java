@@ -2,7 +2,6 @@ package org.firescape.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.firescape.client.assets.*;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -98,7 +97,7 @@ public class GameData {
   public static int npcWalkModel[];
   public static int npcCombatModel[];
   public static int npcCombatAnimation[];
-  
+
   public static List<Animation> animationPack = new ArrayList<Animation>();
   public static List<Item> itemPack = new ArrayList<Item>();
   public static List<NPC> npcPack = new ArrayList<NPC>();
@@ -111,7 +110,7 @@ public class GameData {
   public static List<Tile> tilePack = new ArrayList<Tile>();
   public static List<WallObject> wallObjectPack = new ArrayList<WallObject>();
   public static Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
-  
+
   static byte dataString[];
   static byte dataInteger[];
   static int stringOffset;
@@ -199,18 +198,19 @@ public class GameData {
     String assetDumpEnabled = System.getenv("FIRESCAPE_DUMP_ASSETS");
     if (assetDumpEnabled != null) {
       for (i = 0; i < itemCount; i++) {
-        itemPack.add(new Item(i,
-                              itemName[i],
-                              itemDescription[i],
-                              itemCommand[i],
-                              itemPicture[i],
-                              itemBasePrice[i],
-                              itemStackable[i],
-                              itemUnused[i],
-                              itemWearable[i],
-                              itemMask[i],
-                              itemSpecial[i],
-                              itemMembers[i]
+        itemPack.add(new Item(
+          i,
+          itemName[i],
+          itemDescription[i],
+          itemCommand[i],
+          itemPicture[i],
+          itemBasePrice[i],
+          itemStackable[i],
+          itemUnused[i],
+          itemWearable[i],
+          itemMask[i],
+          itemSpecial[i],
+          itemMembers[i]
         ));
       }
 
@@ -320,25 +320,26 @@ public class GameData {
 
     if (assetDumpEnabled != null) {
       for (i = 0; i < npcCount; i++) {
-        npcPack.add(new NPC(i,
-                            npcName[i],
-                            npcDescription[i],
-                            npcCommand[i],
-                            npcAttack[i],
-                            npcStrength[i],
-                            npcHits[i],
-                            npcDefense[i],
-                            npcAttackable[i],
-                            npcSprite[i],
-                            npcColourHair[i],
-                            npcColourTop[i],
-                            npcColorBottom[i],
-                            npcColourSkin[i],
-                            npcWidth[i],
-                            npcHeight[i],
-                            npcWalkModel[i],
-                            npcCombatModel[i],
-                            npcCombatAnimation[i]
+        npcPack.add(new NPC(
+          i,
+          npcName[i],
+          npcDescription[i],
+          npcCommand[i],
+          npcAttack[i],
+          npcStrength[i],
+          npcHits[i],
+          npcDefense[i],
+          npcAttackable[i],
+          npcSprite[i],
+          npcColourHair[i],
+          npcColourTop[i],
+          npcColorBottom[i],
+          npcColourSkin[i],
+          npcWidth[i],
+          npcHeight[i],
+          npcWalkModel[i],
+          npcCombatModel[i],
+          npcCombatAnimation[i]
         ));
       }
 
@@ -406,13 +407,14 @@ public class GameData {
 
     if (assetDumpEnabled != null) {
       for (i = 0; i < animationCount; i++) {
-        animationPack.add(new Animation(i,
-                                        animationName[i],
-                                        animationCharacterColour[i],
-                                        animationSomething[i],
-                                        animationHasA[i],
-                                        animationHasF[i],
-                                        animationNumber[i]
+        animationPack.add(new Animation(
+          i,
+          animationName[i],
+          animationCharacterColour[i],
+          animationSomething[i],
+          animationHasA[i],
+          animationHasF[i],
+          animationNumber[i]
         ));
       }
 
@@ -471,16 +473,17 @@ public class GameData {
 
     if (assetDumpEnabled != null) {
       for (i = 0; i < objectCount; i++) {
-        gameObjectPack.add(new GameObject(i,
-                                          objectName[i],
-                                          objectDescription[i],
-                                          objectCommand1[i],
-                                          objectCommand2[i],
-                                          objectModelIndex[i],
-                                          objectWidth[i],
-                                          objectHeight[i],
-                                          objectType[i],
-                                          objectElevation[i]
+        gameObjectPack.add(new GameObject(
+          i,
+          objectName[i],
+          objectDescription[i],
+          objectCommand1[i],
+          objectCommand2[i],
+          objectModelIndex[i],
+          objectWidth[i],
+          objectHeight[i],
+          objectType[i],
+          objectElevation[i]
         ));
       }
 
@@ -539,16 +542,17 @@ public class GameData {
 
     if (assetDumpEnabled != null) {
       for (i = 0; i < wallObjectCount; i++) {
-        wallObjectPack.add(new WallObject(i,
-                                          wallObjectName[i],
-                                          wallObjectDescription[i],
-                                          wallObjectCommand1[i],
-                                          wallObjectCommand2[i],
-                                          wallObjectHeight[i],
-                                          wallObjectTextureFront[i],
-                                          wallObjectTextureBack[i],
-                                          wallObjectAdjacent[i],
-                                          wallObjectInvisible[i]
+        wallObjectPack.add(new WallObject(
+          i,
+          wallObjectName[i],
+          wallObjectDescription[i],
+          wallObjectCommand1[i],
+          wallObjectCommand2[i],
+          wallObjectHeight[i],
+          wallObjectTextureFront[i],
+          wallObjectTextureBack[i],
+          wallObjectAdjacent[i],
+          wallObjectInvisible[i]
         ));
       }
 
@@ -611,7 +615,7 @@ public class GameData {
     }
 
     projectileSprite = getUnsignedShort();
-    
+
     if (assetDumpEnabled != null) {
       try (PrintWriter out = new PrintWriter("conf/json/projectile_sprite.json")) {
         out.println(gson.toJson(new ProjectileSprite(projectileSprite)));
@@ -667,14 +671,15 @@ public class GameData {
 
     if (assetDumpEnabled != null) {
       for (i = 0; i < spellCount; i++) {
-        spellPack.add(new Spell(i,
-                                spellName[i],
-                                spellDescription[i],
-                                spellLevel[i],
-                                spellRunesRequired[i],
-                                spellType[i],
-                                spellRunesId[i],
-                                spellRunesCount[i]
+        spellPack.add(new Spell(
+          i,
+          spellName[i],
+          spellDescription[i],
+          spellLevel[i],
+          spellRunesRequired[i],
+          spellType[i],
+          spellRunesId[i],
+          spellRunesCount[i]
         ));
       }
 

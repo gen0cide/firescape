@@ -7,6 +7,7 @@ import java.util.List;
  * Synchronized packet queue
  */
 public class PacketQueue<T extends Packet> {
+
   /**
    * The list of packets in the queue
    */

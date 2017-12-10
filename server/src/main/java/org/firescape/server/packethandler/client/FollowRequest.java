@@ -15,7 +15,7 @@ public class FollowRequest implements PacketHandler {
 
   public void handlePacket(Packet p, IoSession session) throws Exception {
     Player player = (Player) session.getAttachment();
-    Player affectedPlayer = world.getPlayer(p.readShort());
+    Player affectedPlayer = world.getPlayerByServerIndex(p.readShort());
     if (affectedPlayer == null) {
       player.setSuspiciousPlayer(true);
       return;

@@ -1,6 +1,5 @@
 package org.firescape.spriteeditor;
 
-import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -16,6 +15,7 @@ import java.util.zip.ZipFile;
  * Unpacks the sprites into an uncompressed folder.
  */
 public class SpriteUnpacker {
+
   /**
    * The folder to unpack the sprites into
    */
@@ -28,19 +28,20 @@ public class SpriteUnpacker {
   /**
    * Constructs a new sprite unpacker to load from the given file
    *
-   * @param file the file to unpack from
+   * @param file
+   *   the file to unpack from
    */
   public SpriteUnpacker(File file) {
     // Open the .pak archive and put all Sprites into a Map
     sprites = readZip(file);
 
-		if (!new File(FOLDER + "/img/").exists()) {
-			new File(FOLDER + "/img/").mkdir();
-		}
+    if (!new File(FOLDER + "/img/").exists()) {
+      new File(FOLDER + "/img/").mkdir();
+    }
 
-		if (!new File(FOLDER + "/dat/").exists()) {
-			new File(FOLDER + "/dat/").mkdir();
-		}
+    if (!new File(FOLDER + "/dat/").exists()) {
+      new File(FOLDER + "/dat/").mkdir();
+    }
 
     int img = 0;
     int spr = 0;
@@ -68,7 +69,8 @@ public class SpriteUnpacker {
   }
 
   /**
-   * @param file the file to load
+   * @param file
+   *   the file to load
    *
    * @return the sprites loaded from the given file
    */

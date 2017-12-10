@@ -6,6 +6,7 @@ import java.io.Serializable;
  * The definition of a packet handler, for use with XStream.
  */
 public class PacketHandlerDef implements Serializable {
+
   /**
    * The IDs of packets which the handler is responsible for
    */
@@ -19,8 +20,10 @@ public class PacketHandlerDef implements Serializable {
    * Constructs a new packet handler definition, entailing that packets with the given IDs are to be handled by the
    * specified class.
    *
-   * @param ids The IDs of packets to be handled
-   * @param className The name of the packet handler class
+   * @param ids
+   *   The IDs of packets to be handled
+   * @param className
+   *   The name of the packet handler class
    */
   public PacketHandlerDef(int[] ids, String className) {
     this.ids = ids;

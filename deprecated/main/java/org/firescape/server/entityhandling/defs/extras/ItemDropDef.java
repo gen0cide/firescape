@@ -1,6 +1,7 @@
 package org.firescape.server.entityhandling.defs.extras;
 
 public class ItemDropDef {
+
   public int id;
   public int amount;
   public int weight;

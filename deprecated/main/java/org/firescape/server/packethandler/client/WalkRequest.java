@@ -14,6 +14,7 @@ import org.firescape.server.states.Action;
 import org.firescape.server.states.CombatState;
 
 public class WalkRequest implements PacketHandler {
+
   /**
    * World instance
    */

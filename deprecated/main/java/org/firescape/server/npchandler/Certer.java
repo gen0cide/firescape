@@ -4,9 +4,9 @@ import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.extras.CerterDef;
 import org.firescape.server.event.DelayedEvent;
 import org.firescape.server.event.ShortEvent;
-import org.firescape.server.model.*;
 
 public class Certer implements NpcHandler {
+
   /**
    * World instance
    */

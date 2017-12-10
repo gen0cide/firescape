@@ -1,6 +1,7 @@
 package org.firescape.client.assets;
 
 public class RoofTile {
+
   public int id;
   public int height;
   public int numVerticies;

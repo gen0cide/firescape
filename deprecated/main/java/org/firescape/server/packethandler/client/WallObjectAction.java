@@ -3,14 +3,13 @@ package org.firescape.server.packethandler.client;
 import org.apache.mina.common.IoSession;
 import org.firescape.server.entityhandling.EntityHandler;
 import org.firescape.server.entityhandling.defs.DoorDef;
-import org.firescape.server.event.*;
-import org.firescape.server.model.*;
 import org.firescape.server.net.Packet;
 import org.firescape.server.net.RSCPacket;
 import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.states.Action;
 
 public class WallObjectAction implements PacketHandler {
+
   /**
    * World instance
    */
