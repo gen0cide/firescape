@@ -1,0 +1,21 @@
+{{Infobox monster
+| Update     = New - Legends Quest!
+| Released = [[20 August]] [[2003]]
+| Members    = Yes
+|image = [[File:Oomlie Bird.png]]
+|Combat = 32
+|Hitpoints = 40
+|Max hit = 3
+|Aggressive = 1
+|Poisonous = No
+|Poisonable = Yes
+|Examine = A variety of flightless jungle fowl - it has a sharp beak and a bad temper.
+}}
+'''Oomlie birds''' are [[monster]]s found in the [[Kharazi Jungle]]. They're encountered during the [[Legend's Quest]]. [[Raw Oomlie Meat]] is an ingredient for [[Cooked Oomlie meat Parcel]]s.
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image=Bones|Item=Bones|Quantity=1|Rarity=Always}}
+{{DropsTableLine|Image=Raw Oomlie Meat|Item=Raw Oomlie Meat|Quantity=1|Rarity=Always}}
+|}
+{{LegendsQuest}}

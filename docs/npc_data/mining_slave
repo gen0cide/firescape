@@ -1,0 +1,23 @@
+{{Infobox monster
+| name         = Mining Slave
+| image        = [[File:Mining Slave.png]]
+| Released     = [[14 April]] [[2003]]
+| Update       = New Throwing Weapons!
+| Combat       = 16
+| Hitpoints    = 16
+| Aggressive   = 2
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Examine      = A chained slave forced to mine rocks.
+}}
+
+'''Mining Slaves''' are human slaves found at the [[Desert Mining Camp]] south of the [[Shantay Pass]] in the [[Kharidian desert]] where players must go for the quest [[Tourist Trap]]. They are similar to [[Mining Slave]]s, and get harassed by [[Rowdy Guard]]s at the camp.
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item=Bones|Quantity=1|Rarity=Always}}
+|}
+
+{{TouristTrap}}

@@ -1,0 +1,71 @@
+{{Infobox monster
+|name = Chaos druid
+|image = [[File:Chaos druid.png]]
+|Released = [[27 February]] [[2002]]
+|Update = Latest RuneScape News (27 February 2002)
+|Members = Yes
+|Combat = 19
+|Hitpoints = 20
+|Aggressive = 3
+|Poisonous = No
+|Poisonable = Yes
+|Examine = A crazy evil druid
+|Max hit = 2}}
+
+'''Chaos druids''' are [[monster]]s who worship [[Zamorak]]. They are commonly used for [[Herblaw]] training because of their common herb drops. While in the [[Edgeville dungeon]], low levels should be aware that these are one of the many monsters that are aggressive. Though they don't hit high nor often, they can be a nuisance while trying to leave the dungeon due to the fact that players must complete three rounds of combat before running away from the fight. They often attack players three to four times before they can exit. 
+
+==Locations==
+*[[East Ardougne]] tower requiring 46 [[Thieving]] to pick the lock
+*[[Edgeville dungeon]]
+*[[Taverley dungeon]]
+*[[Yanille agility dungeon|Yanille Dungeon]]
+
+[[File:Chaos_druid_taverley.png|thumb|A player killing Chaos Druids in the Taverley Dungeon]]
+
+==Drops==
+===100% drop===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Law-Rune| Item = Law-Rune| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Air-Rune| Item = Air-Rune| Quantity = 24| Rarity = Uncommon}}
+{{DropsTableLine|Image = Mind-Rune| Item = Mind-Rune| Quantity = 8| Rarity = Uncommon}}
+{{DropsTableLine|Image = Body-Rune| Item = Body-Rune| Quantity = 6| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 2| Rarity = Uncommon}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 6| Rarity = Rare}}
+|}
+
+=== Herbs ===
+All herbs are dropped in [[Herb|Unidentified]] form.
+{{DropsTableHead}}
+{{DropsTableLine|Image = Guam leaf|Item = Guam leaf|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Marrentill|Item = Marrentill|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Tarromin|Item = Tarromin|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Harralander|Item = Harralander|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Ranarr Weed|Item = Ranarr Weed|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Irit Leaf|Item = Irit Leaf|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Avantoe|Item = Avantoe|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Kwuarm|Item = Kwuarm|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cadantine|Item = Cadantine|Quantity = 1-2*|Rarity = Rare}}
+{{DropsTableLine|Image = Dwarf Weed|Item = Dwarf Weed|Quantity = 1-2*|Rarity = Rare}}
+|}
+<small>* it is possible to get two different herbs</small>
+
+{{RareDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 3-35| Rarity = Common}}
+{{DropsTableLine|Image = Vial (water)| Item = Vial (water)| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Unholy Symbol mould| Item = Unholy Symbol mould| Quantity = 1*| Rarity = Rare}}
+{{DropsTableLine|Image = Snape grass| Item = Snape grass| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Bronze Long Sword| Item = Bronze Long Sword| Quantity = 1| Rarity = Rare}}
+|}
+
+(*) Upon completion on [[Observatory Quest]]
+
+==See Also==
+{{Druids}}
+[[Category:Herblaw]]

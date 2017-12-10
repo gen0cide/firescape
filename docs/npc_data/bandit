@@ -1,0 +1,68 @@
+{{Infobox monster
+|name       = Bandit
+|image      = [[File:Bandit (black shirt).png]]
+|Update     = Wilderness system online
+|Released   = [[13 August]] [[2001]]
+|Combat     = 29
+|Hitpoints  = 25
+|Aggressive = 3
+|Members    = No
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 3
+|Weakness   = None
+|Examine    = He's ready for a fight
+}}
+
+{{Infobox monster
+|name       = Bandit
+|image      = [[File:Bandit (blue shirt).png]]
+|Released   = [[13 August]] [[2001]]
+|Update     = Wilderness system online
+|Members    = No
+|Combat     = 29
+|Hitpoints  = 25
+|Aggressive = 2
+|Members    = No
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 3
+|Weakness   = None
+|Examine    = A wilderness outlaw
+}}
+
+'''Bandits''' are found roaming around the [[Bandit Camp]] which is found within level 18 [[Wilderness]]. There are two types of bandits, the only difference between them outside of appearance and examine text is that the bandits with black shirts are aggressive while the bandits with the blue shirts are not. 
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+===Weapons and armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Iron Scimitar|Item = Iron Scimitar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Longbow|Item = Longbow|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel Axe|Item = Steel Axe|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel Square Shield|Item = Steel Square Shield|Quantity = 1|Rarity = Uncommon}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 7|Rarity = Uncommon}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 6|Rarity = Uncommon}}
+{{DropsTableLine|Image = Mind-Rune|Item = Mind-Rune|Quantity = Unknown|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 4|Rarity = Rare}}
+{{DropsTableLine|Image = Death-Rune|Item = Death-Rune|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 2|Rarity = Rare}}
+|}
+
+===Other drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1, 53, 80|Rarity = Common}}
+{{DropsTableLine|Image = Coal|Item = Coal|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Uncut sapphire|Item = Uncut sapphire|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Uncut emerald|Item = Uncut emerald|Quantity = 1|Rarity = Rare}}
+|}
+
+{{HerbDropTable}}

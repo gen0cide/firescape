@@ -1,0 +1,110 @@
+{{Infobox monster
+| name         = Zombie
+| image        = [[File:Zombie.PNG]]
+| Released     = [[4 January]] [[2001]]
+| Update       = Runescape beta is now online!
+| Combat       = 19
+| Hitpoints    = 22
+| Aggressive   = 2
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Weakness     = [[Crumble undead]]
+| Examine      = The living dead
+}}
+
+{{Infobox monster
+| name         = Zombie
+| image        = [[File:Zombie.PNG]]
+| Released     = [[4 January]] [[2001]]
+| Update       = Runescape beta is now online!
+| Combat       = 24
+| Hitpoints    = 24
+| Aggressive   = 3
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Weakness     = [[Crumble undead]]
+| Examine      = The living dead
+}}
+
+{{Infobox monster
+| name         = Zombie
+| image        = [[File:Zombie (hatchet).png]]
+| Released     = [[4 January]] [[2001]]
+| Update       = Runescape beta is now online!
+| Combat       = 32
+| Hitpoints    = 30
+| Aggressive   = 3
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = [[Crumble undead]]
+| Examine      = The living dead
+}}
+
+'''Zombies''' are undead [[monster]]s that can be fought throughout [[RuneScape Classic]]. Because zombies are undead, the spell [[Crumble undead]] is effective. They can be summoned by [[necromancer]]s to attack players.
+
+==Locations==
+*[[Edgeville Dungeon]]
+*[[Entrana dungeon]] (level 32)
+*[[Gnome Village Dungeon]] (level 32)
+*[[Graveyard of Shadows]] (level 24 & 32)
+*[[Varrock Sewers]]
+*[[Kharazi Jungle]] dungeon inside [[Strange Barrel]]s.
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = always}}
+|}
+
+===Other (level 24)===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 10-18|Rarity = Common}}
+{{DropsTableLine|Image = Iron Mace|Item = Iron Mace|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron dagger|Item = Iron dagger|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Kite Shield|Item = Bronze Kite Shield|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Crossbow|Item = Crossbow|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Tin ore|Item = Tin ore|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 2|Rarity = Uncommon}}
+{{DropsTableLine|Image = Body-Rune|Item = Body-Rune|Quantity = 2|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Eye of newt|Item = Eye of newt|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Tinderbox|Item = Tinderbox|Quantity = 1|Rarity = Uncommon}}
+|}
+
+=== Other (level 32)===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 5-45|Rarity = Common}}
+{{DropsTableLine|Image = Iron Axe|Item = Iron Axe|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Scimitar|Item = Iron Scimitar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Short Sword|Item = Iron Short Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel dagger|Item = Steel dagger|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Chain Mail Body|Item = Bronze Chain Mail Body|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Medium Iron Helmet|Item = Medium Iron Helmet|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze bar|Item = Bronze bar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 10|Rarity = Uncommon}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 6|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 3|Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 1|Rarity = Rare}}
+|}
+<small>Armed zombies in [[Entrana dungeon]] also drop [[Bronze Axe]]s quite often.</small>
+
+{{HerbDropTable}}
+<small>Herbs are only dropped by armed level 32 zombies</small>
+{{RareDropTable}}
+
+==Images==
+<gallery>
+File:SummonedZombies.png|A player attacked by an army of zombies summoned by a necromancer
+</gallery>
+==See also==
+{{Undead}}
+{{DragonSlayer|state=collapsed}}
+{{LostCity|state=collapsed}}
+{{WaterfallQuest|state=collapsed}}

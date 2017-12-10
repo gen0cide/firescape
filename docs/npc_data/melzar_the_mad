@@ -1,0 +1,32 @@
+{{infobox monster
+|name = Melzar the mad
+|image = [[File:Melzar the mad.png]]
+|Released= [[23 September]] [[2001]]
+|Update= Dragon quest online!
+|Members = No
+|Combat = 45
+|Hitpoints = 44
+|Aggressive = 3
+|Poisonous = No
+|Max hit = 5
+|Examine = He looks totally insane
+}} 
+'''Melzar the mad''' is a [[monster]] encountered during the [[Dragon Slayer]] [[quest]]. He is found in the basement of a maze of his own making, pacing around and muttering madly to himself. He holds a [[Magenta key|key]] that allows the player further access into [[Melzar's Maze|his maze.]] The key can be obtained by killing him. When in combat with the player, Melzar will babble insane gibberish.
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Bones|Item=Bones|Quantity=1|Rarity=always}}
+{{DropsTableLine|Image=Magenta key|Item=Magenta key|Quantity=1|Rarity=always}}
+|}
+
+===Other Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Coins|Item=Coins|Quantity=1, 4, 29|Rarity=unknown}}
+{{DropsTableLine|Image=Earth-Rune|Item=Earth-Rune|Quantity=24|Rarity=unknown}}
+{{DropsTableLine|Image=Fire-Rune|Item=Fire-Rune|Quantity=12|Rarity=unknown}}
+{{DropsTableLine|Image=Blood-Rune|Item=Blood-Rune|Quantity=1|Rarity=unknown}}
+|}
+
+{{stub}}
+{{DragonSlayer}}

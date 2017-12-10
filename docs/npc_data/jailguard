@@ -1,0 +1,28 @@
+{{Infobox monster
+|name = Jailguard
+|image = [[File:Jailguard.png]]
+|Released = [[28 February]] [[2001]]
+|Update = Yet another new quest, and new options menu
+|Combat = 34
+|Hitpoints = 32
+|Members = No
+|Aggressive = 1
+|Poisonous = No
+|Poisonable = Yes
+|Max hit = 3
+|Weakness = None
+|Examine = I wonder what he's guarding
+}}
+
+'''Jailguards''' are [[monster]]s which guard the jail that [[Prince Ali]] is in during the [[Prince Ali Rescue]] quest. [[Joe]] is a named jail guard directly involved in the quest.
+
+==Locations==
+*Just east of [[Draynor Village]]
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+{{PrinceAliRescue}}

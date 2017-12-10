@@ -1,0 +1,27 @@
+{{Infobox monster
+| Released     = [[14 April]] [[2003]]
+| Update       = New Throwing Weapons!
+| name         = Desert Wolf
+| image        = [[File:Desert Wolf.png]]
+| Combat       = 31
+| Hitpoints    = 34
+| Aggressive   = 3
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = 
+| Examine      = A vicious Desert wolf
+}}
+
+A '''desert wolf''' is a type of [[wolf]] that is located in the [[Desert]]. Players who wish to kill desert wolves should bring [[waterskin]]s to avoid damage from thirst and possibly death.
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Grey wolf fur| Item = Grey wolf fur| Quantity = 1| Rarity = Always}}
+|}
+
+{{stub}}
+{{Wolves}}

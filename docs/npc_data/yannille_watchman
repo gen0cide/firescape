@@ -1,0 +1,31 @@
+{{Infobox monster
+| Released     = [[7 May]] [[2003]]
+| Update       = New - Watch Tower Quest!
+| Members      = Yes
+| name         = Yanille Watchman
+| image        = [[File:Yanille Watchman.png]]
+| Combat       = 33
+| Hitpoints    = 22
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 5
+| Examine      = * He watches out for invading ogres
+* A captured guard of Yanille
+}}
+
+'''Yanille watchmen''' are [[monster]]s which can be found guarding [[Yanille]] on the 2nd floor of [[Watchtower (building)|Watchtower]] towards the western side of Yanille. They require level 65 [[Thieving]] to pickpocket and give the player 137.5 [[Thieving]] [[experience]].
+== Appearance ==
+The Yanillian watchmen are light skin toned men. Their uniform is an iron or steel [[helmet]], a black shirt, an iron or steel[[Chain Mail Body| chain mail body and]] black pants.
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+== Pickpocket ==
+* 60 [[File:Coins.png]]
+* [[Bread]] [[File:Bread.png]]
+
+{{pickpocket}}

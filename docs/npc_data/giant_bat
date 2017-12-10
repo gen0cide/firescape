@@ -1,0 +1,35 @@
+{{Infobox monster
+|name       = Giant bat
+|image      = [[File:Giant Bat.png]]
+|Released   = [[27 February]] [[2002]]
+|Update     = Latest RuneScape News (27 February 2002)
+|Combat     = 32
+|Hitpoints  = 32
+|Aggressive = 3
+|Members    = Yes
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 3
+|Examine    = An angry flying rodent
+}}
+
+'''Giant bats''' are [[monster]]s commonly found within caves and dungeons. They drop [[bat bones]], which provide slightly higher [[prayer]] experience when buried in comparison to regular [[bones]], and are also used in a few quests.
+
+==Locations==
+*[[Crandor and Karamja dungeon]]
+*[[Gnome Village dungeon]]
+*[[Taverley dungeon]]
+*[[Waterfall dungeon]]
+*[[Yanille agility dungeon]]
+*South of [[Seer's Village]]
+*[[Legends' Guild]] dungeon
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bat bones| Item = Bat Bones| Quantity = 1| Rarity = Always}}
+|}
+
+{{DruidicRitual|state=collapsed}}
+{{DwarfCannon|state=collapsed}}
+{{MerlinsCrystal|state=collapsed}}

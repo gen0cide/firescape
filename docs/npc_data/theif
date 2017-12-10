@@ -1,0 +1,52 @@
+{{infobox monster
+|Released      = [[4 January]] [[2001]]
+|Update        = Runescape beta is now online!
+|Members       = Yes
+| name         = Thief
+| image        = [[File:Thief.png]]
+| Combat       = 21
+| Hitpoints    = 17
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Examine      = He'll take anything that isn't nailed down
+}}
+{{infobox monster
+|Released      = [[28 May]] [[2002]]
+|Update        = Latest RuneScape News (28 May 2002)
+|Members       = Yes
+| name         = Thief
+| image        = [[File:Thief.png]]
+| Combat       = 21
+| Hitpoints    = 17
+| Aggressive   = 3
+| Poisonous    = No
+| Poisonable   = Yes
+| Examine      = A dastardly blanket thief
+}}
+A '''thief''' is a commonly found [[monster]] in [[RuneScape Classic]]. Though they are rarely trained on, some players kill them for their herb drops.
+
+The [[blanket]] thieves in the [[Ardougne sewers]] are encountered during the [[Monk's Friend]] [[quest]].
+==Locations==
+*[[Ardougne sewers]]
+*South-East [[Varrock]]
+*[[Port Sarim]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 3-15|Rarity = Common}}
+{{DropsTableLine|Image = Bronze Arrows|Item = Bronze Arrow|Quantity = 7|Rarity = Common}}
+{{DropsTableLine|Image = Medium Bronze Helmet|Item = Medium Bronze Helmet|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Copper ore|Item = Copper ore|Quantity = 1|Rarity = Uncommon}}
+|}
+
+{{HerbDropTable}}
+
+==See also==
+{{MonksFriend}}

@@ -1,0 +1,30 @@
+{{infobox monster
+| name         = Kalrag
+| image        = [[File:Kalrag.png]]
+| Released     = [[3 March]] [[2003]]
+| Update       = New Quest Online - Part Three
+| Members      = Yes
+| Combat       = 78
+| Hitpoints    = 78
+| Aggressive   = 2
+| Poisonous    = No
+| Max hit      = 8
+| Examine      = I think this is one of Ibans pets
+| Poisonable   = No
+}}
+'''Kalrag''' is a [[monster]] who plays an important role in the [[Underground Pass]] quest. A player must kill it to smear "'''Iban's blood'''" on [[a Doll of Iban]] to get to the next step in the quest.
+
+Prior to the release of [[RuneScape 2]] this area was a popular place to [[Melee training|train melee]] at higher levels. Owing to this is the fact that when Kalrag is killed, [[Blessed Spider|his followers]] become aggressive towards the player.
+
+==Locations==
+*[[Underground Pass (location)]]
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = common}}
+{{DropsTableLine|Image = Blood-Rune|Item = Blood-Rune}}
+{{DropsTableLine|Image = Coins|Item = Coins}}
+|}
+
+{{UndergroundPass}}
+{{spiders}}

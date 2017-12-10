@@ -1,0 +1,27 @@
+{{infobox monster
+| name         = San Tojalon
+| Update     = New - Legends Quest!
+| Released = [[20 August]] [[2003]]
+| Members    = Yes
+| image        = [[File:San Tojalon.png]]
+| Combat       = 120
+| Hitpoints    = 120
+| Aggressive   = 3
+| Poisonous    = No
+| Max hit      = 13
+| Examine      = The animated spirit of San Tojalon
+}} 
+'''San Tojalon''' is a [[monster]] fought during the [[Legends' Quest]]. He is one of the three spirits found in the lower levels [[Legends caverns]] and must be defeated in order to gather all the pieces of the [[A red crystal|heart crystal]] used for the source of the spring water.
+
+The Other spirits are called [[Ranalph Devere]] and [[Irvig Senay]].
+
+==Locations==
+*[[Legends caverns]]
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image=A chunk of crystal|Item=A chunk of crystal|Rarity=Always|Quantity=1}}
+|}
+
+{{Undead}}
+{{LegendsQuest|state=collapsed}}

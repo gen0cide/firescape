@@ -1,0 +1,45 @@
+{{Infobox monster
+|name       = Earth warrior
+|image      = [[File:EarthWarrior.png]]
+|Released   = [[18 March]] [[2002]]
+|Update     = Latest RuneScape News (18 March 2002)
+|Members    = Yes
+|Combat     = 52
+|Hitpoints  = 54
+|Aggressive = 3
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 5
+|Examine    = A strange inhuman warrior
+}}
+
+'''Earth warriors''' are a type of [[monster]] found in the [[Edgeville dungeon]]. They guard an [[item spawn]] of one [[Steel arrow heads|steel arrow head]].
+
+==Drops==
+
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 12, 36| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 2| Rarity = Uncommon}}
+{{DropsTableLine|Image = Death-Rune| Item = Death-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 2| Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune| Item = Law-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Blood-Rune| Item = Blood-Rune| Quantity = 1| Rarity = Rare}}
+|}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 12| Rarity = Common}}
+{{DropsTableLine|Image = Staff of earth| Item = Staff of earth| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel Spear| Item = Steel Spear| Quantity = 1| Rarity = Uncommon}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+{{Warriors}}

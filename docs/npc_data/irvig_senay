@@ -1,0 +1,27 @@
+{{infobox monster
+| Update     = New - Legends Quest!
+| Released = [[20 August]] [[2003]]
+| Members    = Yes
+| name         = Irvig Senay
+| image        = [[File:Irvig Senay.png]]
+| Combat       = 125
+| Hitpoints    = 125
+| Aggressive   = 3
+| Poisonous    = No
+| Max hit      = 13
+| Examine      = The animated spirit of Irvig Senay
+}} 
+'''Irvig Senay''' is a [[monster]] fought during the [[Legends' Quest]]. He is one of the three spirits in the lower levels of the [[Legends caverns]] and must be defeated in order to gather all the pieces of [[A red crystal|a crystal]] used for the source of the spring water.
+
+The other spirits are called [[San Tojalon]] and [[Ranalph Devere]].
+
+==Locations==
+*[[Legends caverns]]
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image=A lump of crystal|Item=A lump of crystal|Rarity=Always|Quantity=1}}
+|}
+
+{{Undead}}
+{{LegendsQuest|state=collapsed}}

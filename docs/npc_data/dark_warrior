@@ -1,0 +1,63 @@
+{{Infobox monster
+|Update = Wilderness system online
+|Released = [[13 August]] [[2001]]
+|Members = No
+|name = Dark Warrior
+|image = [[File:Dark Warrior.png]]
+|Combat = 21
+|Poisonous = No
+|Hitpoints = 17
+|Examine = A warrior touched by chaos
+|Max hit = 2
+|Aggressive = 2
+}}
+
+'''Dark Warriors''' are a type of [[monster]] which can be found in two locations. Wandering inside and outside the [[Dark Warriors' Fortress]] located between level 11 - 15 wilderness just north west of [[Edgeville]] bank or inside of [[Strange Barrel]]s. They are followers of the god [[Zamorak]].
+
+These monsters are the only source of the [[Black Mace]]. They are also the only source of the [[Medium Black Helmet]] other than digging one up at the digsite.
+
+==Locations==
+*[[Dark Warriors' Fortress]]
+*[[Kharazi Jungle]] dungeon inside [[Strange Barrel]]s
+
+== Appearance ==
+Dark Warriors wear a [[Medium black Helmet|Medium black helmet]], [[Black plate mail body]], [[Black platelegs]], and are wielding what appears to be a [[Black battle Axe]] or [[Black axe]]. They are male and have a tan skin tone.
+
+== History ==
+* Dark Warriors were added to the game [[13 August]] [[2001]], and had a unique drop, the Medium black helmet which was released on the same day. Another unique drop, the Black mace was added nearly 4 months later, on [[8 December]] 2001.
+
+==Drops==
+
+===100% drop===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+===Weapons and armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Iron Mace| Item = Iron Mace| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Black Mace| Item = Black Mace| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Medium Bronze Helmet| Item = Medium Bronze Helmet| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Medium Black Helmet| Item = Medium Black Helmet| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Arrows| Item = Bronze Arrows| Quantity = 8| Rarity = Common}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Water-Rune| Item = Water-Rune| Quantity = 2| Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Mind-Rune| Item = Mind-Rune| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 2| Rarity = Rare}}
+|}
+
+{{HerbDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 1-30| Rarity = Common}}
+{{DropsTableLine|Image = Iron ore| Item = Iron ore| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Sardine| Item = Sardine| Quantity = 1| Rarity = Uncommon}}
+|}
+
+{{Warriors}}

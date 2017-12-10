@@ -1,0 +1,66 @@
+{{Infobox monster
+|name       = Greater Demon
+|image      = [[File:Greater Demon.png]]
+|Update     = Wilderness system online
+|Released   = [[13 August]] [[2001]]
+|Combat     = 87
+|Hitpoints  = 87
+|Aggressive = 3
+|Members    = No
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 10
+|Weakness   = [[Silverlight]], [[Holy Water Vial]]
+|Examine    = big red and incredibly evil
+}}
+
+'''Greater Demons''' are [[monster|monsters]] with a combat level of 87. They are more dangerous than [[lesser demon|lesser demons]] and also have a chance to drop the [[Rune Mace]] and the [[Large Rune Helmet]].
+
+== Locations ==
+*[[Entrana dungeon]]
+*[[Lava Maze dungeon]]
+*[[Demonic Ruins]]
+
+== History ==
+* Greater demons had the highest combat monster available for those on free-to-play worlds. It was surpassed only by the level 110 [[quest]] monster [[Elvarg]], which was released on[[23 September| 23 September 2001]], just over a month after the Greater Demon was released.
+* They are not fought as often as they used to be, due to the availability of members monsters such as [[dragon|dragons]], which tend to give more valuable drops and additional [[prayer]] [[experience]] from burying their bones.
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Ashes| Item = Ashes| Quantity = 1| Rarity = Always}}
+|}
+
+===Weapons & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Steel Axe| Item = Steel Axe| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Steel battle Axe| Item = Steel battle Axe| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Steel 2-handed Sword| Item = Steel 2-handed Sword| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Arrows| Item = Bronze Arrows| Quantity = 5| Rarity = Uncommon}}
+{{DropsTableLine|Image = Mithril Kite Shield| Item = Mithril Kite Shield| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Adamantite Plate Mail Legs| Item = Adamantite Plate Mail Legs| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Large Rune Helmet| Item = Large Rune Helmet| Quantity = 1| Rarity = Rare}} {{DropsTableLine|Image = Rune Mace|Item = Rune Mace|Quantity = 1|Rarity = Rare}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Fire-Rune| Item = Fire-Rune| Quantity = 50, 75| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 10| Rarity = Uncommon}}
+{{DropsTableLine|Image = Death-Rune| Item = Death-Rune| Quantity = 3, 5| Rarity = Uncommon}}
+|}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 32-220| Rarity = Common}}
+{{DropsTableLine|Image = Sleeping Bag| Item = Sleeping Bag| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Wine| Item = Wine| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Swordfish| Item = Swordfish| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Tuna| Item = Tuna| Quantity = 1-2| Rarity = Uncommon}}
+{{DropsTableLine|Image = Strength Potion| Item = Strength Potion| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Gold bar| Item = Gold bar| Quantity = 1| Rarity = Rare}}
+|}
+{{RareDropTable}}
+
+{{demons}}
+{{LostCity|state=collapsed}}
+[[Category:Demons]]

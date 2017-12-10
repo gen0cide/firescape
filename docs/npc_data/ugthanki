@@ -1,0 +1,25 @@
+{{infobox monster
+| Released     = [[14 April]] [[2003]]
+| Update       = New Throwing Weapons!
+| Members      = Yes
+| name         = Ugthanki
+| image        = [[File:Camel.png]]
+| Combat       = 45
+| Hitpoints    = 45
+| Aggressive   = 2
+| Poisonous    = No
+| Max hit      = 5
+| Examine      = A dangerous type of spitting camel that can temporarily blind an opponent.
+}} 
+'''Ugthanki''' are a type of [[monster]], similar to [[camel]]s. They are found in the [[desert]] south of [[Shantay Pass]] and drop [[raw ugthanki meat]] when killed.
+
+==Locations==
+*[[Kharidian desert]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Raw Ugthanki Meat|Item = Raw Ugthanki Meat|Quantity = 1|Rarity = Always}}
+|}
+
+{{stub}}

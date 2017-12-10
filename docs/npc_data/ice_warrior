@@ -1,0 +1,50 @@
+{{infobox monster
+| name         = Ice warrior
+| image        = [[File:Ice warrior.png]]
+| Released     = [[24 May]] [[2001]]
+| Update       = Runescape updated (24 May 2001)
+| Combat       = 57
+| Hitpoints    = 59
+| Aggressive   = 3
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 6
+| Examine      = A strange inhuman warrior
+}} 
+'''Ice warriors''' are a type of [[monster]] which inhabit icy regions. They are soldiers of the [[Ice Queen]] and follow her lead. It is stated in their examine description that they are not considered human.
+
+==Locations==
+*[[Asgarnia Ice dungeon]]
+*[[White Wolf Mountain caves]]
+*High level [[Wilderness]] [[Frozen Waste Plateau]] - west most point along the high-level wilderness fence.
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 3|Rarity = Common}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Death-Rune|Item = Death-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Blood-Rune|Item = Blood-Rune|Quantity = 1|Rarity = Rare}}
+|}
+
+{{HerbDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 15|Rarity = Common}}
+{{DropsTableLine|Image = Bronze Spear|Item = Bronze Spear|Quantity = 15|Rarity = Rare}}
+{{DropsTableLine|Image = Iron battle Axe|Item = Iron battle Axe|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Mithril Mace|Item = Mithril Mace|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Mithril ore|Item = Mithril ore|Quantity = 1|Rarity = Rare}}
+|}
+
+{{RareDropTable}}
+
+{{Warriors}}

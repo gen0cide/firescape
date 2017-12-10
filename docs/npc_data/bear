@@ -1,0 +1,42 @@
+{{infobox monster
+|name = Bear
+|image = [[File:Bear.png]]
+|Released     = [[4 January]] [[2001]]
+|Update       = Runescape beta is now online!
+|Combat = 24
+|Hitpoints = 25
+|Aggressive = 1
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = Eek! A bear!
+|Max hit = 3}}
+{{infobox monster
+|Update = Wilderness system online
+|Released = [[13 August]] [[2001]]
+|Members = No
+|name = Bear
+|image = [[File:Bear.png]]
+|Combat = 26
+|Hitpoints = 27
+|Aggressive = 3
+|Poisonous = No
+|Poisonable = Yes
+|Examine = Eek! A bear!
+}}
+A '''bear''' is a [[monster]] in [[RuneScape Classic]] that can be found in various locations and have a unique drop of [[fur]] every time they are killed. Bears are often encountered in the low-leveled [[wilderness]] as they guard an area with [[bronze arrow]] spawns. A non-attackable bear is located upstairs in [[Varrock Museum]].
+==Locations==
+*Near [[Varrock]]
+*Low [[Wilderness]]
+*[[Entrana]]
+*Mining spot northeast of [[East Ardougne]]
+*[[Ardougne]] Zoo
+*East of [[Draynor Village]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Fur|Item = Fur|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Raw bear meat|Item = Raw bear meat|Quantity = 1|Rarity = Always}}
+|}

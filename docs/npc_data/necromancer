@@ -1,0 +1,54 @@
+{{Infobox monster
+|name       = Necromancer
+|image      = [[File:Necromancer.png]]
+|Released   = [[17 June]] [[2002]]
+|Update     = Latest RuneScape News (17 June 2002)
+|Combat     = 34
+|Hitpoints  = 40
+|Aggressive = 5
+|Members    = Yes
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 3
+|Weakness   = None
+|Examine    = A crazy evil necromancer
+}}
+
+A [[Necromancer]] is a [[monster]] that summons [[zombie]]s when provoked. Usually, they will summon up to 7 after which the Necromancer can be defeated. Due to an oversight, an infinite amount of [[zombie]]s can be summoned, allowing quick combat [[experience]]. They turn into a [[zombie]] after defeat. The Necromancer is a source of the [[Zamorak robe top]] and the [[Zamorak robe bottom]], the other being [[Iban disciple]]s.
+
+==Location==
+* [[Necromancers' Tower]]
+
+==Drops==
+=== 100% drop ===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+=== Runes ===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Water-Rune| Item = Water-Rune| Quantity = 12| Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 7| Rarity = Common}}
+{{DropsTableLine|Image = Fire-Rune| Item = Fire-Rune| Quantity = 12| Rarity = Common}}
+{{DropsTableLine|Image = Mind-Rune| Item = Mind-Rune| Quantity = 12| Rarity = Common}}
+{{DropsTableLine|Image = Body-Rune| Item = Body-Rune| Quantity = 12| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 3| Rarity = Uncommon}}
+{{DropsTableLine|Image = Blood-Rune| Item = Blood-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 3| Rarity = Uncommon}}
+|}
+
+=== Other ===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 1-17| Rarity = Common}}
+{{DropsTableLine|Image = Robe of Zamorak (top)| Item = Zamorak robes| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Robe of Zamorak (bottom)| Item = Zamorak robes| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Iron Short Sword| Item = Iron Short Sword| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Mace| Item = Iron Mace| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Staff| Item = Staff| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Staff of fire| Item = Staff of fire| Quantity = 1| Rarity = Rare}}
+|}
+
+==Gallery==
+<gallery>
+SummonedZombies.png|A Necromancer summoning nonstop.
+</gallery>

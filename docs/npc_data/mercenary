@@ -1,0 +1,46 @@
+{{Infobox monster
+| name       = Mercenary
+| image      = [[File:Mercenary.png]]
+| Released   = [[14 April]] [[2003]]
+| Update     = New Throwing Weapons!
+| Combat     = 50
+| Hitpoints  = 60
+| Aggressive = 2
+| Members    = Yes
+| Poisonous  = No
+| Poisonable = Yes
+| Max hit    = 5
+| Weakness   = None
+| Examine    = He seems to be guarding an area
+}}
+
+{{Infobox monster
+| name       = Mercenary
+| image      = [[File:Mercenary.png]]
+| Released   = [[14 April]] [[2003]]
+| Update     = New Throwing Weapons!
+| Combat     = 39
+| Hitpoints  = 48
+| Aggressive = 2
+| Members    = Yes
+| Poisonous  = No
+| Poisonable = Yes
+| Max hit    = 4
+| Weakness   = None
+| Examine    = * He seems to be guarding an area
+* He seems to be guarding this area
+}}
+
+'''Mercenaries''' are [[monster]]s encountered during the [[Tourist Trap]] quest.
+
+==Locations==
+*[[Desert Mining Camp]]
+*[[Desert Mining Camp mine]]
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item=Bones|Quantity=1|Rarity=Always}}
+|}
+
+{{stub}}
+{{TouristTrap}}

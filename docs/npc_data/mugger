@@ -1,0 +1,34 @@
+{{infobox monster
+|name = Mugger
+|image = [[File:Mugger.png]]
+|Released = [[4 January]] [[2001]]
+|Update = Runescape beta is now online!
+|Combat = 10
+|Hitpoints = 8
+|Aggressive = 3
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = He jumps out and attacks people
+}}
+'''Muggers''' are weak [[monster]]s that can be found in south-east [[Varrock]], the [[Asgarnia Ice dungeon]], and inside [[Strange Barrel]]s.
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Rope| Item = Rope| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 5| Rarity = Common}}
+{{DropsTableLine|Image = Fishing Bait| Item = Fishing Bait| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Arrows| Item = Bronze Arrow| Quantity = 7| Rarity = Uncommon}}
+{{DropsTableLine|Image = Copper ore| Item = Copper ore| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 3| Rarity = Uncommon}}
+{{DropsTableLine|Image = Water-Rune| Item = Water-Rune| Quantity = 4| Rarity = Uncommon}}
+{{DropsTableLine|Image = Mind-Rune| Item = Mind-Rune| Quantity = 6| Rarity = Uncommon}}
+{{DropsTableLine|Image = Medium Bronze Helmet| Item = Medium Bronze Helmet| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Knife| Item = Knife| Quantity = 1| Rarity = Rare}}
+|}
+
+{{HerbDropTable}}

@@ -1,0 +1,52 @@
+{{infobox monster
+| name         = Gnome local
+|Released = [[12 December]] [[2002]]
+|Update = Agility skill online
+|Members = Yes
+| image        = [[File:Gnome local (woman).png]]
+| Combat       = 3
+| Hitpoints    = 3
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 1
+| Weakness     =
+| Examine      = A tree gnome villager
+}}
+{{infobox monster
+| name         = Gnome local
+|Released = [[12 December]] [[2002]]
+|Update = Agility skill online
+|Members = Yes
+| image        = [[File:Gnome Local.png]]
+| Combat       = 9
+| Hitpoints    = 9
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Weakness     =
+| Examine      = A tree gnome villager
+}}
+'''Gnome locals''' are really nice people, when you talk to a [[Gnome child|child]] he gives you a [[King worm]]. They live near the [[The Grand Tree (location)|Grand Tree]], and can be [[Thieving#Pickpocket|pickpocketed]] with 75+ [[thieving]] skill for 198 [[experience]] per each successful attempt.
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+== Pickpocket ==
+* 200-400 [[File:Coins.png|link=Coins]] (most common)
+* [[Swamp toad]] [[File:Swamp_Toad.png|link=Swamp toad]] (common)
+* [[King worm]] [[File:King_worm.png|link=King worm]] (common)
+* [[Earth-rune]] [[File:Earth-Rune.png|link=Earth-Rune]] (uncommon)
+* [[Gold ore]] [[File:Goldore.PNG|link=Gold]] (rare)
+
+==See also==
+* [[Gnome guard]]
+* [[Gnome child]]
+* [[Gnome]]
+{{Pickpocket}}
+{{Gnomes}}
+[[Category:Thieving]]

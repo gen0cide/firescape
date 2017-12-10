@@ -1,0 +1,21 @@
+{{Infobox monster
+| name         = Zoo keeper
+| image        = [[File:Zoo keeper.png]]
+| Released     = [[30 April]] [[2002]]
+| Update       = Latest RuneScape News (30 April 2002)
+| Combat       = 20
+| Hitpoints    = 20
+| Aggressive   = 2
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Examine      = He looks after Ardougne city zoo
+}}
+
+The '''Zoo keeper''' is a [[monster]] who watches over the animals that are found in [[Ardougne Zoo]].
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}

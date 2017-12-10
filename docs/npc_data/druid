@@ -1,0 +1,46 @@
+{{Infobox monster
+| name         = Druid
+| image        = [[File:Druid.png]]
+| Released     = [[27 February]] [[2002]]
+| Update       = Latest RuneScape News (27 February 2002)
+| Members      = Yes
+| Combat       = 29
+| Hitpoints    = 30
+| Aggressive   = 2
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Examine      = A worshipper of Guthix
+}} 
+'''Druids''' are [[monster]]s who are nature loving followers of [[Guthix]] and skilled [[herblaw|potion-makers]]. They wear [[Druid's robes]] and can be found in the small town of [[Taverley]].
+
+==Locations==
+*[[Taverley]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+{{HerbDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 2, 4| Rarity = Common}}
+{{DropsTableLine|Image = Vial| Item = Vial| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Vial (water)| Item = Vial (water)| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Fire-Rune| Item = Fire-Rune| Quantity = 6| Rarity = Common}}
+{{DropsTableLine|Image = Water-Rune| Item = Water-Rune| Quantity = 6| Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 6, 18| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 2| Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune| Item = Law-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Druids robe (top)| Item = Druids robes| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Druids robe (bottom)| Item = Druids robes| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Longbow| Item = Longbow| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron dagger| Item = Iron Dagger| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Limpwurt root| Item = Limpwurt root| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Cure poison Potion| Item = Cure poison Potion| Quantity = 1| Rarity = Uncommon}}
+|}
+
+{{Druids}}

@@ -1,0 +1,53 @@
+{{Infobox monster
+| Released   = [[27 January]] [[2003]]
+| Update     = Shilo Village Quest online
+| Members    = Yes
+| name       = Jogre
+| image      = [[File:Jogre.png]]
+| Combat     = 58
+| Hitpoints  = 60
+| Aggressive = 3
+| Poisonous  = No
+| Poisonable = Yes
+| Max hit    = 8
+| Examine    = An aggressive humanoid
+}}
+
+'''Jogres''' are [[monster]]s that are found on [[Karamja]]. Jogres were released on [[27 January]] [[2003]], along with the [[Shilo Village (quest)|Shilo Village quest]].
+
+==Locations==
+* Inside the [[Jogre dungeon]]
+* Northeast of [[Tai Bwo Wannai]]
+* South of [[Tai Bwo Wannai]], west of [[Cairn Isle]]
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Big Bones| Item = Big Bones| Quantity = 1| Rarity = Always}}
+|}
+
+===Weapons and Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bronze Spear| Item = Bronze Spear| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Iron Spear| Item = Iron Spear| Quantity = 1| Rarity = Uncommon}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 1, 3, 7| Rarity = Common}}
+|}
+{{HerbDropTable}}
+{{RareDropTable}}
+
+
+===Other Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 22| Rarity = Common}}
+{{DropsTableLine|Image = Banana| Item = Banana| Quantity = 1, 2| Rarity = Unknown}}
+{{DropsTableLine|Image = Pineapple| Item = Pineapple| Quantity = 1, 2| Rarity = Common}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1, 2| Rarity = Unknown}}
+{{DropsTableLine|Image = Big Bones| Item = Big Bones| Quantity = 1-3| Rarity = Unknown}}
+{{DropsTableLine|Image = Knife| Item = Knife| Quantity = 1| Rarity = Common}}
+|}
+{{JunglePotion}}
+{{Ogres}}

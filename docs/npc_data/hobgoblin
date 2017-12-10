@@ -1,0 +1,74 @@
+{{Infobox monster
+| name         = Hobgoblin
+| image        = [[File:Hobgoblin (blue).png]]
+| Released     = [[6 April]] [[2001]]
+| Update       = Massive update!
+| Combat       = 32
+| Hitpoints    = 29
+| Aggressive   = 3
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = None
+| Examine      = A large ugly green creature
+}}
+
+{{Infobox monster
+| name         = Hobgoblin
+| image        = [[File:Hobgoblin.PNG]]
+| Released     = [[6 April]] [[2001]]
+| Update       = Massive update!
+| Combat       = 48
+| Hitpoints    = 49
+| Aggressive   = 3
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 6
+| Weakness     = None
+| Examine      = An ugly green creature
+}}
+
+'''Hobgoblins''' are [[monster]]s that are commonly killed for [[limpwurt root]]s. They can be found on a peninsula behind the [[Crafting Guild]], in the [[Edgeville Dungeon]] (bring a [[brass key]] for easier access) in the [[Wilderness]] [[Wilderness hobgoblin mine|Hobgoblin mine]], in [[Witchaven dungeon]], [[Gnome Village Dungeon]] and inside [[Strange Barrel]]s.
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+===Weapons and armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Iron Short Sword| Item = Iron Short Sword| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Steel dagger| Item = Steel Dagger| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Steel Long Sword| Item = Steel Long Sword| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Spear| Item = Bronze Spear| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Spear| Item = Iron Spear| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel Spear| Item = Steel Spear| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Crossbow| Item = Crossbow| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Rune Spear| Item = Rune Spear| Quantity = 1| Rarity = Very Rare}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Water-Rune| Item = Water-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Fire-Rune| Item = Fire-Rune| Quantity = 5| Rarity = Uncommon}}
+{{DropsTableLine|Image = Body-Rune| Item = Body-Rune| Quantity = 4| Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 2| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 3| Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune| Item = Law-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune| Item = Cosmic-Rune| Quantity = 1| Rarity = Rare}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+===Other drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 5-42| Rarity = Common}}
+{{DropsTableLine|Image = Limpwurt root| Item = Limpwurt root| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Goblin Armour| Item = Goblin Armour| Quantity = 1| Rarity = Uncommon}}
+|}
+{{Goblins}}
+{{FamilyCrest|state=collapsed}}
+[[Category:The Knight's Sword]]

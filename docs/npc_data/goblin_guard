@@ -1,0 +1,29 @@
+{{infobox monster
+| name         = Goblin guard
+| image        = [[File:Goblin guard.png]]
+| Released     = [[17 March]] [[2003]]
+| Update       = Observatory Quest online!
+| Combat       = 48
+| Hitpoints    = 43
+| Aggressive   = 2
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = No
+| Max hit      = 6
+| Weakness     = None
+| Examine      = An imposing green creature
+}}
+
+The '''Goblin guard''' is a [[monster]] encountered during the [[Observatory Quest]]. He guards the kitchen in which the [[lens mould]] is found. The keep key must be obtained from a chest in the dungeon and he must be killed in order to enter the keep.
+
+==Locations==
+*[[Observatory dungeon]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Big Bones|Item = Big Bones|Quantity = 1|Rarity = always}}
+|}
+
+{{ObservatoryQuest}}
+{{Goblins}}

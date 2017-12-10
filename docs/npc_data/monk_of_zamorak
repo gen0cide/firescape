@@ -1,0 +1,74 @@
+{{Infobox monster
+| name         = Monk of Zamorak
+| image        = [[File:Monk of Zamorak.png]]
+| Released     = [[6 April]] [[2001]]
+| Update       = Massive update!
+| Combat       = 19
+| Hitpoints    = 20
+| Aggressive   = 2
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Examine      = An evil cleric
+}}
+
+{{Infobox monster
+| name         = Monk of Zamorak
+| image        = [[File:Monk of Zamorak (mace).png]]
+| Released     = [[6 April]] [[2001]]
+| Update       = Massive update!
+| Combat       = 29
+| Hitpoints    = 30
+| Aggressive   = 2
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Examine      = An evil cleric
+}}
+
+{{Infobox monster
+| name         = Monk of Zamorak
+| image        = [[File:Monk of Zamorak (staff).png]]
+| Released     = [[27 February]] [[2002]]
+| Update       = Latest RuneScape News (27 February 2002)
+| Combat       = 47
+| Hitpoints    = 40
+| Aggressive   = 3
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 5
+| Examine      = An evil cleric
+}}
+
+'''Monks of Zamorak''' are evil [[monster]]s dedicated to the worship of [[Zamorak]]. They occupy the [[Chaos Temple (Goblin Village)|Chaos Temple]] and are protectors of the [[Wine of Zamorak|Wine of Zamorak.]]
+
+== Training ==
+Killing the Monks of Zamorak is considered to be a good training method for mid level players who wish to train their combat skills. When fought at the [[Chaos Temple (Goblin Village)|Chaos Temple]] north of Falador, the monks are located right next to an [[altar]] which can be used to restore the players [[prayer|prayer points]]. The monks are guaranteed to drop a [[Steel Mace]] and Bones after being killed, but banking the maces is not encouraged.
+
+== Collecting Wine of Zamorak ==
+Players who try to take the wine by any means other than the [[telegrab]] [[spell]] will be cursed by the player and say "''A curse be upon you''", and then attacked. The curse lowers the players stats temporarily. The wine may be taken without the use of the telegrab spell if all of the Monks are currently slain and waiting to respawn.
+
+==Locations==
+*[[Chaos Temple (Goblin Village)|Chaos Temple]] north of the [[Goblin Village]] (level 19 & 29)
+*[[Grave of Scorpius]]
+*[[Taverley dungeon]] (level 47)
+
+==Drops==
+===Level 19===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+===Level 29 (Maced)===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Steel Mace|Item = Steel Mace|Quantity = 1|Rarity = Always}}
+|}
+
+===Level 47 (Staff)===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}

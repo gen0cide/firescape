@@ -1,0 +1,52 @@
+{{Infobox monster
+| name         = Tribesman
+| image        = [[File:Tribesman.png]]
+| Released     = [[15 August]] [[2002]]
+| Update       = Sheep and cults
+| Members      = Yes
+| Combat       = 39
+| Hitpoints    = 39
+| Aggressive   = 3
+| Poisonous    = Yes
+| Max hit      = 5
+| Examine      = A primative{{sic}} warrior
+}} 
+'''Tribesmen''' are dangerous [[monster]]s found in the jungles of [[Karamja]]. They can inflict [[poison (effect)|poison]].
+
+==Locations==
+* Southwest of [[Brimhaven]] at the [[Tribal brew]] near the [[Brimhaven mine]].
+* In close proximity of [[Tai Bwo Wannai]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+===Spears===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bronze Spear|Item = Bronze Spear|Quantity = 1-2|Rarity = Common}}
+{{DropsTableLine|Image = Iron Spear|Item = Iron Spear|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel Spear|Item = Steel Spear|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Mithril Spear|Item = Mithril Spear|Quantity = 1|Rarity = Rare}}
+|}
+
+{{HerbDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 15, 28, 42, 62|Rarity = Common}}
+{{DropsTableLine|Image = Snape grass|Item = Snape grass|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Limpwurt root|Item = Limpwurt root|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 2|Rarity = Common}}
+|-
+|[[File:Goldore.PNG]]
+|[[Gold]]
+|1
+|style="background:#F0E68C; color:#000000;"|Uncommon
+|-
+{{DropsTableLine|Image = Poison antidote|Item = Poison antidote|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Poison Bronze Arrows|Item = Poison Bronze Arrows|Quantity = 5|Rarity = Rare}}
+{{DropsTableLine|Image = Poison Crossbow bolts|Item = Poison Crossbow bolts|Quantity = 4|Rarity = Rare}}
+|}
+
+{{JunglePotion|state=collapsed}}

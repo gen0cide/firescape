@@ -1,0 +1,22 @@
+{{Infobox monster
+|name = Monk
+|image = [[File:Monk.png]]
+|Released = [[6 April]] [[2001]]
+|Update = Massive update!
+|Combat = 13
+|Hitpoints = 15
+|Aggressive = 1
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Max hit = 2
+|Examine = A Peaceful monk
+}}
+
+A '''Monk''' is an [[monster|attackable NPC]] that is found at the [[Monestary|Monastery]], [[Entrana]] and in many [[church]]es. Monks are holy characters that are dressed on [[monk's robes]], however, they do not drop them upon death. [[Abbot Langley]] is a well known monk who resides on the ground floor of the Monestary. He can restore players [[Hits]] upon request which is a reason why monks are often killed at the monastery as no [[food]] is required.
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}

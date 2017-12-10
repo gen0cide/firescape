@@ -1,0 +1,65 @@
+{{Infobox monster
+|Update   = Wilderness system online
+|Released = [[13 August]] [[2001]]
+|Members  = No
+|name = Chaos dwarf
+|image = [[File:Chaosdwarf.png]]
+|Combat = 59
+|Aggressive = 5
+|Poisonous = No
+|Poisonable = Yes
+|Examine = a dwarf gone bad
+|Hitpoints = 61}}
+'''Chaos Dwarves''' are [[monster]]s in [[RuneScape Classic|''RuneScape Classic'']] that can be fought. They are found in [[Taverley dungeon]], the [[Wilderness]], and inside [[Strange Barrel]]s. Inside [[Taverley dungeon]], they are found in the south-eastern area, near the [[poison scorpion]]s and the [[lesser demon]]s. Chaos dwarves are [[Aggressiveness|aggressive]] toward all players up to level 118 but they will retreat when on low health.
+
+They are the only monsters that drop the [[Muddy Key]] which is used to open the [[Muddy chest]] in the center of the [[Lava Maze]].
+
+==Locations==
+* [[Taverley dungeon]]
+* [[Deep Wilderness dungeon]]
+* [[Chaos Ridge]], level 30 West [[Wilderness]]
+* [[Forest of Evil]], level 35 East [[Wilderness]] guarding [[Iron Kite Shield|Iron kite shield]] spawn and two [[Adamantite rock|Adamantite rocks]]
+* [[Legends caverns]] inside [[Strange Barrel]]s
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine| Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+==Weapons & Armour==
+{{DropsTableHead}}
+{{DropsTableLine| Image = Large Steel Helmet| Item = Large Steel Helmet| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine| Image = Mithril Long Sword| Item = Mithril Long Sword| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine| Image = Mithril Square Shield| Item = Mithril Square Shield| Quantity = 1| Rarity = Rare}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine| Image = Air-Rune| Item = Air-Rune| Quantity = 16| Rarity = Uncommon}}
+{{DropsTableLine| Image = Water-Rune| Item = Water-Rune| Quantity = 7| Rarity = Uncommon}}
+{{DropsTableLine| Image = Mind-Rune| Item = Mind-Rune| Quantity = 25| Rarity = Uncommon}}
+{{DropsTableLine| Image = Cosmic-Rune| Item = Cosmic-Rune| Quantity = 2| Rarity = Uncommon}}
+{{DropsTableLine| Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 7| Rarity = Uncommon}}
+{{DropsTableLine| Image = Nature-Rune| Item = Nature-Rune| Quantity = 6| Rarity = Uncommon}}
+{{DropsTableLine| Image = Law-Rune| Item = Law-Rune| Quantity = 2| Rarity = Very rare}}
+{{DropsTableLine| Image = Death-Rune| Item = Death-Rune| Quantity = 5| Rarity = Very rare}}
+{{DropsTableLine| Image = Blood-Rune| Item = Blood-Rune| Quantity = 5| Rarity = Very rare}}
+|}
+
+{{RareDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine| Image = Coins| Item = Coins| Quantity = 25, 47, 92| Rarity = Common}}
+{{DropsTableLine| Image = Cheese| Item = Cheese| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine| Image = Tomato| Item = Tomato| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine| Image = Coal| Item = Coal| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine| Image = Mithril bar| Item = Mithril bar| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine| Image = Muddy key| Item = Muddy key| Quantity = 1| Rarity = Uncommon}}
+|}
+
+==See Also==
+{{Dwarves}}
+[[Category:Hero's Quest]]
+[[Category:Scorpion Catcher]]

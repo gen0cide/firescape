@@ -1,0 +1,32 @@
+{{infobox monster
+|image = [[File:Wizard.png]]
+|name = Wizard
+|Released = [[4 January]] [[2001]]
+|Update = Runescape beta is now online!
+|Combat = 16
+|Hitpoints = 14
+|Aggressive = 1
+|Members = No
+|Poisonous = No
+|Max hit = 2
+|Poisonable = Yes
+|Examine = An old wizard.
+}}
+
+'''Wizards''' are [[monster]]s with a [[combat level]] of 16 which can be found in various places around [[RuneScape Classic]]. Unlike wizards in [[RuneScape 2]], they use melee instead of [[magic]]. They are often killed for their [[Wizard Robe]], which is arguably best item for mages that is worn on the torso.
+
+==Locations==
+*[[Wizard's tower]]
+*North of [[Port Sarim]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Wizardshat (blue)|Item = Wizardshat|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Wizards robe|Item = Wizards robe|Quantity = 1|Rarity = Always}}
+|}
+
+===Other drops===
+
+{{stub}}

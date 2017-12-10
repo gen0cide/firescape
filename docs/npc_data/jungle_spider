@@ -1,0 +1,20 @@
+{{Infobox monster
+|name       = Jungle Spider
+|image      = [[File:Jungle spider.png]]
+|Released   = [[12 December]] [[2002]]
+|Update     = Agility skill online
+|Combat     = 47
+|Hitpoints  = 50
+|Aggressive = 3
+|Members    = Yes
+|Poisonous  = No
+|Poisonable = No
+|Max hit    = 5
+|Examine    = A venomous deadly spider.
+}}
+
+'''Jungle Spiders''' are [[monster]]s which drop nothing. They can be found on [[Hazelmere's island]] and throughout [[Karamja]]. Although their [[examine]] information suggests that they are able to [[poison]] the player, however this is not the case.
+
+{{Spiders}}
+{{JunglePotion|state=collapsed}}
+{{TheGrandTree|state=collapsed}}

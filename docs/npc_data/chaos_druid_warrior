@@ -1,0 +1,65 @@
+{{Infobox monster
+| name         = Chaos druid warrior
+| image        = [[File:Chaos druid warrior.png]]
+| Released     = [[12 December]] [[2002]]
+| Update       = Agility skill online
+| Combat       = 44
+| Hitpoints    = 40
+| Aggressive   = 3
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 5
+| Weakness     =
+| Examine      = A crazy evil druid
+}}
+
+'''Chaos Druid warriors''' are [[monster]]s found just north of [[Yanille]] in the [[Yanille agility dungeon|Yanille Agility Dungeon]]. It is recommended to have at least 40 [[Agility]] and [[Antipoison]] to attempt to cross the first obstacle in reaching the Chaos Druid Warriors.
+
+==Drops==
+===100% drop===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Air-Rune| Item = Air-Rune| Quantity = 24| Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune| Item = Earth-Rune| Quantity = 6| Rarity = Common}}
+{{DropsTableLine|Image = Fire-Rune| Item = Fire-Rune| Quantity = 8| Rarity = Common}}
+{{DropsTableLine|Image = Law-Rune| Item = Law-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 2| Rarity = Uncommon}}
+|}
+
+=== Herbs ===
+All herbs are dropped in [[Herb|Unidentified]] form.
+{{DropsTableHead}}
+{{DropsTableLine|Image = Guam leaf|Item = Guam leaf|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Marrentill|Item = Marrentill|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Tarromin|Item = Tarromin|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Harralander|Item = Harralander|Quantity = 1-2*|Rarity = Common}}
+{{DropsTableLine|Image = Ranarr Weed|Item = Ranarr Weed|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Irit Leaf|Item = Irit Leaf|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Avantoe|Item = Avantoe|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Kwuarm|Item = Kwuarm|Quantity = 1-2*|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cadantine|Item = Cadantine|Quantity = 1-2*|Rarity = Rare}}
+{{DropsTableLine|Image = Dwarf Weed|Item = Dwarf Weed|Quantity = 1-2*|Rarity = Rare}}
+|}
+<small>* it is possible to get two different herbs</small>
+
+{{RareDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 3, 10, 29| Rarity = Common}}
+{{DropsTableLine|Image = Vial (water)| Item = Vial (water)| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = White berries| Item = White berries| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Ground unicorn horn| Item = Ground unicorn horn| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Limpwurt root| Item = Limpwurt root| Quantity = 1-3| Rarity = Uncommon}}
+{{DropsTableLine|Image = Super defense Potion| Item = Super defense Potion| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Black dagger| Item = Black dagger| Quantity = 1| Rarity = Rare}}
+|}
+
+== See Also ==
+{{Druids}}
+[[Category:Herblaw]]

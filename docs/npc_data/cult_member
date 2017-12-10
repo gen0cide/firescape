@@ -1,0 +1,26 @@
+{{infobox monster
+|Released     = [[15 August]] [[2002]]
+|Update       = Sheep and cults
+|Members      = Yes
+| name         = Cult member
+| image        = [[File:Cult member.png]]
+| Combat       = 20
+| Hitpoints    = 20
+| Aggressive   = 2
+| Poisonous    = No
+| Max hit      = 3
+| Examine      = An{{sic}} suspicous looking man in black
+}} 
+'''Cult members''' are [[monster]]s encountered during the [[Hazeel Cult]] quest.
+
+==Locations==
+*[[Ardougne sewers]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+{{stub}}
+{{TheHazeelCult}}

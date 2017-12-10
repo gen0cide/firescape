@@ -1,0 +1,81 @@
+
+{{infobox monster
+| name         = slave{{sic}}
+| image        = [[File:Slave (grey hair).png]] [[File:Slave (white beard).png]] [[File:Slave (blonde hair).png]] [[File:Slave (blonde beard).png]] [[File:Slave (red face).png]]
+| Released     = [[3 March]] [[2003]]
+| Update       = New Quest Online - Part Three
+| Combat       = 16
+| Hitpoints    = 16
+| Aggressive   = 2
+| Members      = Yes
+| Poisonous    =
+| Poisonable   =
+| Max hit      =
+| Weakness     =
+| Examine      = * He seems possessed (grey hair, blonde hair)
+* He seems to have been here a while (white beard, blonde beard, red face)
+}}
+'''Slaves''' are [[monster]]s found in the [[Underground Pass (location)|Underground Pass]]. They are victims of the evil resurrected mage [[Iban]].
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+==Dialogue==
+The slaves attack when the conversation ends.
+
+* ''the man seems to be in a weak state of mind''
+
+===White beard===
+* '''Player:''' hello, are you ok?
+* '''slave:''' Oh yes, you're a fine one. Nice red cheeks, shiny hair
+* '''slave:''' Let's see now, some potatoes, some cabbage, 
+* '''slave:''' maybe half a clove of garlic
+* '''slave:''' ... yes I think you'd make a fine soup
+* '''slave:''' You don't mind do you?
+* '''Player:''' actually i do
+* '''slave:''' You're welcome to have some with me of course.
+
+===Grey hair===
+* '''Player:''' hello
+* '''slave:''' Eating me... they keep eating me!
+* '''slave:''' Eating me from the inside. Please stop them eating me
+* '''slave:''' ... I can feel them wriggling inside me right now
+* '''slave:''' ... please stop them!
+
+===Red face===
+* '''Player:''' hello
+* '''slave:''' What's that... is that a dagger I see before me?
+* '''slave:''' Why should I bear the slings and arrows of outrageous fortune?
+* '''slave:''' for what is man but the quintessence of dust?
+* '''slave:''' And so I say goodnight sweet prince. The rest is silence.
+
+===Blonde beard===
+* '''Player:''' hi
+* '''Slave:''' Kill the villagers, burn them all- every last one
+* '''Slave:''' I want nothing to survive: nothing but the sweet smell of burning flesh
+* '''Player:''' you're ill
+* '''Slave:''' What's that - you've never smelt it before
+* '''Slave:''' Well, let's just say it's an acquired taste
+
+===Brown hair===
+* '''Player:''' hello
+* '''slave:''' Danger, everywhere danger! But not from man nor beast-
+* '''slave:''' no this is the dagner that is inside you.
+* '''slave:''' Bring it out, nurture it, cherish it
+* '''slave:''' Stroke it like you would stork a wounded bird-
+* '''slave:''' then strange it before it takes hold of your very being
+* '''slave:''' Don't say I didn't warn you
+
+This slave in particular doesn't attack when the conversation ends.
+
+The slave on the north side says utter nonsense:
+* '''Player''': hi
+* '''Slave''': Mwaarrr Fnnntchh. Gbpp dng sktd delp?
+* '''Player''': pardon?
+* '''Slave''': Kip lar falut: Gbpp dng sktd delp?
+* '''Player''': sorry, i dont under..
+* '''Slave''': Mwaarrr Fnnntchh. Gbpp dng sktd delp?
+* '''Slave''': GBPP DNG SKTD DELP! GBPP DNG SKTD DELP!
+{{UndergroundPass}}

@@ -1,0 +1,28 @@
+{{Infobox monster
+|Released     = [[9 April]] [[2002]]
+|Update       = New members quest online!
+|Members      = Yes
+|image = [[File:Chronozon.png]]
+|Combat = 121
+|Hitpoints = 60
+|Aggressive = 3
+|Poisonous = No
+|Poisonable =  Yes
+|Examine = Chronozon the blood demon
+|Max hit = 19
+}}
+
+'''Chronozon''' is a powerful [[demon]] found in the [[Edgeville dungeon]]. He has the appearance of a dark colored greater demon and is encountered during the [[Family Crest]] quest. Players [[magic]] level must be a minimum of 59 in order to defeat him, as he can only be killed successfully damaging him one time with each of the following spells in any order:
+*[[Wind blast]]
+*[[Water blast]]
+*[[Earth blast]]
+*[[Fire blast]]
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Ashes| Item = Ashes| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Crest fragment3| Item = Crest fragment| Quantity = 1| Rarity = During [[Family Crest]]}}
+|}
+
+{{demons}}
+{{FamilyCrest}}

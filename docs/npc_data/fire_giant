@@ -1,0 +1,79 @@
+{{2007 page}}{{RSW}}
+{{Infobox monster
+|Released      = [[24 September]] [[2002]]
+|Update        = Tutorial island
+|Members       = Yes
+|name          = Fire Giant
+|image         = [[File:Fire Giant.png]]
+|Combat        = 109
+|Hitpoints     = 110
+|Aggressive    = 3
+|Poisonous     = No
+|Poisonable    = Yes
+|Max hit       = 12
+|Examine       = A big guy with red glowing skin
+}}
+
+'''Fire Giants''' are [[monster]]s which were released in [[2002#May|May 2002]]; their first location was within the [[Waterfall dungeon]] underneath the [[Baxtorian Falls]]. In September 2002, the [[Waterfall Quest]] was released, which involves portions of this dungeon. Following the quest's release, players were now required to have equipped [[Glarial's Amulet]] in order to enter the [[Waterfall Dungeon]].
+
+Fire Giants are a popular choice to kill for strong players, as they are known to drop both the [[Dragon medium helmet]] and the [[Half Dragon Square Shield|Half Dragon Square Shield.]] Fire Giants have also become a notable source of [[Dragonstone]]s, which became considerably more rare due to the [[Crystal chest]] in [[Taverly]] being inoperable as result of an ongoing bug which is unlikely to be fixed.
+
+==Locations==
+*[[Deep Wilderness dungeon]]
+*[[Waterfall Dungeon]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Big Bones| Item = Big Bones| Quantity = 1| Rarity = Always}}
+|}
+
+===Weapons===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Steel Axe| Item = Steel Axe| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Rune Axe| Item = Rune Axe| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Rune battle Axe| Item = Rune battle Axe| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Rune Scimitar| Item = Rune Scimitar| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Rune 2-handed Sword| Item = Rune 2-handed Sword| Quantity = 1| Rarity = Very rare}}
+{{DropsTableLine|Image = Battlestaff of fire| Item = Battlestaff of fire| Quantity = 1| Rarity = Rare}}
+|}
+
+===Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Mithril Square Shield| Item = Mithril Square Shield| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Rune Square Shield| Item = Rune Square Shield| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Rune Kite Shield| Item = Rune Kite Shield| Quantity = 1| Rarity = Very rare}}
+{{DropsTableLine|Image = Dragon medium Helmet| Item = Dragon medium helmet| Quantity = 1| Rarity = Very rare}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Fire-Rune| Item = Fire-Rune| Quantity = 25,50,100| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 3| Rarity = Uncommon}}
+{{DropsTableLine|Image = Death-Rune| Item = Death-Rune| Quantity = 3,30| Rarity = Rare}}
+{{DropsTableLine|Image = Blood-Rune| Item = Blood-Rune| Quantity = 3, 15| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 3| Rarity = Rare}}
+{{DropsTableLine|Image = Law-Rune| Item = Law-Rune| Quantity = 1,30| Rarity = Uncommon}}
+|}
+
+===Bars===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Runite bar| Item = Runite bar| Quantity = 1| Rarity = Very rare}}
+{{DropsTableLine|Image = Steel bar| Item = Steel bar| Quantity = 1| Rarity = Uncommon}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 15, 50, 60| Rarity = Common}}
+{{DropsTableLine|Image = Lobster| Item = Lobster| Quantity = 1-2| Rarity = Common}}
+{{DropsTableLine|Image = Strength Potion| Item = Strength Potion| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Dragonstone| Item = Dragonstone| Quantity = 1| Rarity = Very rare}}
+{{DropsTableLine|Image = Silver certificate| Item = Silver certificate| Quantity = 20| Rarity = Very rare}}
+|}
+
+==See also==
+{{giants}}
+{{WaterfallQuest|state=collapsed}}

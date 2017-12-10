@@ -1,0 +1,23 @@
+{{infobox monster
+| Released     = [[7 May]] [[2003]]
+| Update       = New - Watch Tower Quest!
+| Members      = Yes
+| name         = Soldier
+| image        = [[File:Soldier.png]]
+| Combat       = 28
+| Hitpoints    = 22
+| Aggressive   = 1
+| Poisonous    = No
+| Max hit      = 
+| Examine      = A soldier of the town of Yanille
+}} 
+'''Soldiers''' are [[monster]]s who guard the gates of [[Yanille]]. They can be attacked and are sometimes used for [[training]] purposes.
+
+==Locations==
+*[[Yanille]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}

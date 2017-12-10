@@ -1,0 +1,46 @@
+{{Infobox monster
+| name         = Ogre guard
+| Released     = [[7 May]] [[2003]]
+| Update       = New - Watch Tower Quest!
+| Members      = Yes
+| image        = [[File:Ogre guard.png]]
+| Combat       = 78
+| Hitpoints    = 80
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 8
+| Weakness     =
+| Examine      = These ogres protect the city
+}}
+
+{{Infobox monster
+| name         = Ogre guard
+| Released     = [[7 May]] [[2003]]
+| Update       = New - Watch Tower Quest!
+| Members      = Yes
+| image        = [[File:Ogre guard (adamantite).png]]
+| Combat       = 96
+| Hitpoints    = 99
+| Aggressive   = 2
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 10
+| Weakness     =
+| Examine      = this creature looks very tough
+}}
+
+'''Ogre guards''' are [[monster]]s that walk around [[Gu'Tanoth]]. They are located in the marketplace, near the southeast and northwest [[gate]]s, aswell as in the south by the [[battlement]] and [[rock]] obstacle.
+
+Only the two marketplace (level 96) guards who guard the [[cave entrance]] to [[Ogre Enclave]] may be attacked. They respawn immediately after being killed.
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Big Bones|Item = Big Bones|Quantity = 2|Rarity = Always}}
+|}
+
+
+
+{{Watchtower|state=collapsed}}
+{{Ogres}}

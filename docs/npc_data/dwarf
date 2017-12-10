@@ -1,0 +1,64 @@
+''This article is about the monster. For the [[Mining Guild|Mining Guild's]] guard, see [[Dwarf (Mining Guild)]]. ''
+{{infobox monster
+|name = Dwarf
+|image = [[File:Dwarf.png]]
+|Released = [[6 April]] [[2001]]
+|Update = Massive update!
+|Combat = 18
+|Hitpoints = 16
+|Aggressive = 2
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Max hit = 2
+|Weakness = 
+|Examine = A short angry guy
+}}
+'''Dwarves''' are humanoid [[monster]]s of short stature. They reside in and around mountain areas, and generally prefer to dwell underground. Dwarves are renowned for their [[Mining]] and [[Smithing]] abilities, as well as their fondness of [[beer]]. The [[Dwarven stout]] is named for them.
+
+==Locations==
+*In and around the [[Dwarven Mine]]
+*Northwest of the [[Fishing Guild]]
+*South of [[Yanille]]
+*Locked in the [[Taverley dungeon|Black Knight's Base]] jail cells
+
+== See also ==
+* [[Mountain Dwarf]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Bones|Item=Bones|Quantity=1|Rarity=Always}}
+|}
+===Ores===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Tin ore|Item=Tin ore|Quantity=1|Rarity=Uncommon}}
+{{DropsTableLine|Image=Iron ore|Item=Iron ore|Quantity=1|Rarity=Uncommon}}
+{{DropsTableLine|Image=Copper ore|Item=Copper ore|Quantity=1|Rarity=Rare}}
+{{DropsTableLine|Image=Coal|Item=Coal|Quantity=1|Rarity=Rare}}
+|}
+===Bars===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Bronze bar|Item=Bronze bar|Quantity=1|Rarity=Common}}
+{{DropsTableLine|Image=Iron bar|Item=Iron bar|Quantity=1|Rarity=Uncommon}}
+|}
+
+===Weapons & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Medium Bronze Helmet|Item=Medium Bronze Helmet|Quantity=1|Rarity=Uncommon}}
+{{DropsTableLine|Image=Bronze battle Axe|Item=Bronze battle Axe|Quantity=1|Rarity=Uncommon}}
+{{DropsTableLine|Image=Iron battle Axe|Item=Iron battle Axe|Quantity=1|Rarity=Rare}}
+|}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image=Coins|Item=Coins|Quantity=4, 10, 30|Rarity=Common}}
+{{DropsTableLine|Image=Hammer|Item=Hammer|Quantity=1|Rarity=Common}}
+{{DropsTableLine|Image=Bronze Pickaxe|Item=Bronze pickaxe|Quantity=1|Rarity=Common}}
+{{DropsTableLine|Image=Chaos-Rune|Item=Chaos-Rune|Quantity=1|Rarity=Uncommon}}
+{{DropsTableLine|Image=Nature-Rune|Item=Nature-Rune|Quantity=1|Rarity=Uncommon}}
+|}
+
+{{RareDropTable}}
+
+{{Dwarves}}

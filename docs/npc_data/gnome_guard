@@ -1,0 +1,51 @@
+{{infobox monster
+| name         = Gnome guard
+|Released = [[12 December]] [[2002]]
+|Update = Agility skill online
+|Members = Yes
+| image        = [[File:Gnome Guard.png]]
+| Combat       = 23
+| Hitpoints    = 23
+| Aggressive   = 3
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = 
+| Examine      = A tree gnome guard}}
+{{infobox monster
+| name         = Gnome guard
+|Released = [[12 December]] [[2002]]
+|Update = Agility skill online
+|Members = Yes
+| image        = [[File:Gnome guard (crossbow).png]]
+| Combat       = 27
+| Hitpoints    = 31
+| Aggressive   = 2
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = 
+| Examine      = A tree gnome guard}}
+{{infobox monster
+| name         = Gnome guard
+|Released = [[12 December]] [[2002]]
+|Update = Agility skill online
+|Members = Yes
+| image        = [[File:Gnome Guard.png]]
+| Combat       = 31
+| Hitpoints    = 31
+| Aggressive   = 2
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = 
+| Examine      = A tree gnome guard}}
+'''Gnome guards''' are [[monster]]s found near and in the [[Grand Tree]].
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+==See also==
+*[[Gnome local]]

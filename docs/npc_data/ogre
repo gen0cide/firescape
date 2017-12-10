@@ -1,0 +1,24 @@
+{{infobox monster
+|name = Ogre
+|image = [[File:Ogre.png]]
+| Released     = [[7 May]] [[2003]]
+| Update       = New - Watch Tower Quest!
+| Members      = Yes
+|Combat = 58
+|Hitpoints = 60
+|Aggressive = 5
+|Poisonous = No
+|Poisonable = Yes
+|Max hit = 7
+|Examine = *A large dim looking humanoid
+*Useful for ranged training ([[Combat Training Camp]])
+}}
+An '''ogre''' is a large human-like [[monster]]. They can be found west or south of [[Yanille]] around [[Gu'Tanoth]], and at the [[Combat Training Camp]] (which can only be accessed after completing the quest [[Biohazard]]). The training camp is an excellent way to train [[range]]d or [[magic]] as the ogres are caged and cannot be attacked with [[melee]]. Their [[hostility]] varies by location{{clarify}}; they can be either aggressive or combative.
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Big Bones|Item = Big Bones|Quantity = 1|Rarity = Always}}
+|}
+
+== See Also ==
+{{Ogres}}

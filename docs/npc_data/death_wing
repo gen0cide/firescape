@@ -1,0 +1,25 @@
+{{infobox monster
+| Update     = New - Legends Quest!
+| Released = [[20 August]] [[2003]]
+| Members    = Yes
+| name         = Death Wing
+| image        = [[File:Death Wing.png]]
+| Combat       = 80
+| Hitpoints    = 80
+| Aggressive   = 3
+| Poisonous    = No
+| Max hit      = 9
+| Examine      = A supernatural creature of the underworld
+}} 
+'''Death Wings''' are [[monster]]s encountered during the [[Legends' Quest]] in the third section of [[Legends caverns]]. They share the appearance of [[giant bat]]s.
+
+==Locations==
+*[[Legends caverns]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine| Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+{{LegendsQuest}}

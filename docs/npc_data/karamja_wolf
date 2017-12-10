@@ -1,0 +1,27 @@
+{{Infobox monster
+|name       = Karamja Wolf
+|image      = [[File:Karamja Wolf.png]]
+|Update     = New - Legends Quest!
+|Released   = [[20 August]] [[2003]]
+|Combat     = 61
+|Hitpoints  = 61
+|Aggressive = 3
+|Members    = Yes
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 7
+|Weakness   =
+|Examine    = A hungry{{sic}}
+}}
+
+'''Karamja Wolves''' are [[wolves]] that can be found within the [[Kharazi Jungle]]. Their examine text was not added to the game properly, therefore appearing incomplete.
+Karamja Wolves are the highest level [[Aggressiveness|aggressive]] monster that eventually becomes non-aggressive to the player. This occurs when the player reaches the maximum [[Combat level]] of 123.
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Grey wolf fur| Item = Grey wolf fur| Quantity = 1| Rarity = Always}}
+|}
+
+{{Wolves}}
+{{LegendsQuest|state=collapsed}}

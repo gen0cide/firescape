@@ -1,0 +1,32 @@
+{{infobox monster
+| name         = Iban disciple
+| image        = [[File:Iban disciple.png]]
+| Released     = [[3 March]] [[2003]]
+| Update       = New Quest Online - Part Three
+| Combat       = 19
+| Hitpoints    = 20
+| Aggressive   = 2
+| Poisonous    = No
+| Max hit      = 2
+| Members      = Yes
+| Examine      = An evil follower of Iban
+}} 
+'''Iban disciples''' are [[monster]]s found during the [[Underground Pass]] quest. They are followers of [[Iban]] and worship [[Zamorak]].
+
+==Locations==
+*[[Underground Pass (location)]]
+
+==Drops==
+Iban disciples will always drop [[Zamorak robes]] during the [[Underground Pass]] [[quest]]. However, after the quest they will drop Zamorak robes only if the player has a repaired [[Staff of Iban]] in bank or with them. If the player has no Staff of Iban then they will drop broken version of Staff of Iban and you will have to pay [[Dark Mage]] in [[West Ardougne]] 200,000 [[coins]] to repair it.
+===During quest and when the player owns repaired Staff of Iban:===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Robe of Zamorak (top)| Item = Robe of Zamorak (top)| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Robe of Zamorak (bottom)| Item = Robe of Zamorak (bottom)| Quantity = 1| Rarity = Always}}
+|}
+===If the player has lost their Staff of Iban:===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Staff of Iban| Item = Staff of Iban (broken)| Quantity = 1| Rarity = Always}}
+|}
+{{UndergroundPass}}

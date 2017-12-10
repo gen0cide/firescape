@@ -1,0 +1,27 @@
+{{infobox monster
+|Released     = [[27 February]] [[2002]]
+|Update       = Latest RuneScape News (27 February 2002)
+|Members      = Yes
+| name         = Hellhound
+| image        = [[File:Hellhound.png]]
+| Combat       = 114
+| Hitpoints    = 116
+| Aggressive   = 3
+| Poisonous    = No
+| Max hit      = 
+| Examine      = Hello nice doggy
+| Poisonable   = No}} 
+'''Hellhounds''' are [[monster]]s which inhabit a few dungeons. Unlike in [[RuneScape 2]] there is only one in the [[Witchaven dungeon]].
+
+==Locations==
+*[[Taverley dungeon]]
+*[[Witchaven dungeon]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+{{stub}}
+{{FamilyCrest|state=collapsed}}

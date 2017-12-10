@@ -1,0 +1,25 @@
+{{Infobox monster
+|image = [[File:Holthion.png]]
+|Released     = [[3 March]] [[2003]]
+|Update       = New Quest Online - Part Three
+|Members      = Yes
+|Hitpoints = 78
+|Max hit = 8
+|Combat = 78
+|Aggressive = 3
+|Poisonous = No
+|Weakness = [[Silverlight]]
+|Examine = big red and incredibly evil
+}}
+'''Holthion''' is a powerful [[demon]] found deep in the [[Underground Pass]]. Players must defeat him during the quest to obtain the amulet used as a key to a [[chest]] containing the [[Shadow of Iban]].
+
+The other demons summoned by [[Kardia the Witch]] that hold amulets for the chest are [[Doomion]] and [[Othainian]].
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image=Ashes|Item=Ashes|Quantity=1|Rarity=Always}}
+{{DropsTableLine|Image=Amulet of Doomion|Item=Amulet of Doomion|Quantity=1|Rarity=During quest}}
+|}
+
+{{UndergroundPass}}
+{{demons}}

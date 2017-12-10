@@ -1,0 +1,26 @@
+{{Infobox monster
+|name       = Othanian
+|image      = [[File:Othainian.png]]
+|Released   = [[3 March]] [[2003]]
+|Update     = New Quest Online - Part Three
+|Hitpoints  = 78
+|Max hit    = 8
+|Combat     = 78
+|Aggressive = 3
+|Members    = Yes
+|Poisonous  = No
+|Poisonable = Yes
+|Weakness   = [[Silverlight]]
+|Examine    = big red and incredibly evil
+}}
+
+'''Othainian''' is a powerful [[demon]] found deep in the [[Underground Pass (location)|Underground Pass]]. Players must defeat him during the [[Underground Pass|quest]] to obtain the amulet used as a key to a [[chest]] that contains [[Shadow of Iban]].
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image=Ashes|Item=Ashes|Quantity=1|Rarity=Always}}
+{{DropsTableLine|Image=Amulet of Othainian|Item=Amulet of Othainian|Quantity=1|Rarity=During quest}}
+|}
+
+{{UndergroundPass}}
+{{demons}}

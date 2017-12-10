@@ -1,0 +1,21 @@
+{{infobox monster
+|Released      = [[14 April]] [[2003]]
+|Update        = New Throwing Weapons!
+|Members       = Yes
+|name = Shantay Pass Guard
+|image = [[File:Shantay Pass Guard.png]]
+|Combat = 32
+|Hitpoints = 32
+|Max hit = 4
+|Aggressive = 2
+|Poisonous = No
+|Poisonable = Yes
+|Examine = He seems to be guarding the Shantay Pass
+}}
+'''Shantay Pass Guards''' are [[monster]]s that can be found in the [[Shantay Pass]]. The only non-attackable guard can be bribed 200 [[coins]] to be let past the gate into the [[desert]] without a [[Shantay Desert Pass]].
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}

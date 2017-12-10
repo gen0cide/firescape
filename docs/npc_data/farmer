@@ -1,0 +1,47 @@
+{{2007 page}}
+{{RSW}}
+{{infobox monster
+| name         = Farmer
+| image        = [[File:Farmer.png]]
+| Released     = [[4 January]] [[2001]]
+| Update       = Runescape beta is now online!
+| Combat       = 15
+| Hitpoints    = 12
+| Aggressive   = 1
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 1
+| Weakness     = 
+| Examine      = * He grows the crops in this area
+* An{{sic}} humble peasant
+}}
+
+'''Farmers''' are [[monster]]s who can be found walking around farm areas. Farmers require level 10 [[Thieving]] to be [[Thieving#Pickpocket|pickpocketed]], and if they are pickpocketed successfully, players will receive 9 [[coins]] and 14.5 Thieving [[experience]].
+
+==Locations==
+
+* North of [[East Ardougne]] (4)
+* South of [[Falador]] (1)
+* [[Lumbridge]] farms
+* South of [[Varrock]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+
+{{HerbDropTable}}
+
+===Others===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 3, 5| Rarity = Common}}
+{{DropsTableLine|Image = Bronze Arrows| Item = Bronze Arrow| Quantity = 7| Rarity = Common}}
+{{DropsTableLine|Image = Medium Bronze Helmet| Item = Medium Bronze Helmet| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Copper ore| Item = Copper ore| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Fishing Bait| Item = Fishing Bait| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 1| Rarity = Rare}}
+|}
+
+{{pickpocket}}

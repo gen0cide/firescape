@@ -1,0 +1,62 @@
+{{infobox monster
+| name         = Paladin
+| image        = [[File:Ardougne Paladin.png]]
+| Released     = [[30 April]] [[2002]]
+| Update       = Latest RuneScape News (30 April 2002)
+| Combat       = 71
+| Hitpoints    = 57
+| Members      = Yes
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 9
+| Weakness     =
+| Examine      = A paladin of Ardougne}}
+'''Paladins''' are [[monster]]s located in [[East Ardougne]]. They require level 70 [[Thieving]] to [[pickpocket]], granting 152 [[experience]], 80 [[coins]] and 1 [[Chaos-Rune]] per pickpocket. A large group of Paladins can be found in a small room on the second floor of [[King Lathas|King Lathas']] [[Ardougne Castle|castle]] but to access the room again level 70 Thieving is required.
+
+== Underground Pass ==
+Three paladins are also encountered during the [[Underground Pass]] quest. They must be killed for the insignia they carry which allows deeper access into the dungeon.
+
+==Locations==
+* Throughout [[East Ardougne]]
+* Second floor of [[Ardougne Castle|King Lathas' castle]] (requires level 70 thieving)
+
+== Appearance ==
+The Paladins of Ardougne are light skin toned men with short yellow hair and a yellow beard. He is wearing an [[Adamantite Plate Mail Body]] with[[Adamantite Plate Mail Legs| Adamantite Plate Mail Legs.]] He is wielding an [[Adamantite Mace]] and holding what appears to be either an [[Adamantite Kite Shield]] or [[Adamantite Square Shield]].
+
+==Drops==
+
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = always}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 20|Rarity = Common}}
+{{DropsTableLine|Image = Blood-Rune|Item = Blood-Rune|Quantity = 1|Rarity = Rare}}
+|}
+
+===Bars===
+1-3 different bars are dropped at a time.
+{{DropsTableHead}}
+{{DropsTableLine|Image = Iron bar|Item = Iron bar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel bar|Item = Steel bar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Mithril bar|Item = Mithril bar|Quantity = 1|Rarity = Uncommon}}
+|}
+===Weapon & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Steel Long Sword|Item = Steel Long Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Steel Short Sword|Item = Steel Short Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Large Steel Helmet|Item = Large Steel Helmet|Quantity = 1|Rarity = Uncommon}}
+|}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1, 2, 8, 48|Rarity = Common}}
+|}
+
+{{RareDropTable}}
+
+{{pickpocket}}
+{{UndergroundPass|state=collapsed}}

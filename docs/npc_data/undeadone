@@ -1,0 +1,32 @@
+{{infobox monster
+|Released     = [[3 March]] [[2003]]
+|Update       = New Quest Online - Part Three
+|Members      = Yes
+|name = UndeadOne
+|image = [[File:Zombie.PNG]]
+|Combat = 62
+|Hitpoints = 59
+|Aggressive = 3
+|Poisonous = No
+|Poisonable =
+|Weakness = [[Crumble undead]]
+|Examine = One of Rashaliyas Minions
+|Max hit = 6
+}}
+
+'''UndeadOnes''' are undead [[monster]]s said to be under the control of [[Rashiliyia]]. They can be found attacking the entrance to [[Shilo Village (location)|Shilo Village]], but do not disappear when the [[Shilo Village (quest)|Shilo Village quest]] is completed and [[Rashiliyia]] is defeated. They are far more aggressive than a normal monster; they will detect players several steps away from them.
+
+The spell [[Crumble undead]] does '''not''' work on UndeadOnes.
+
+==Locations==
+*Outside [[Shilo Village (location)|Shilo Village]]
+*[[Rashiliyia's Tomb]]
+*[[Underground Pass (location)|Underground Pass]]
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+{{Shilovillage}}
+{{Undead}}

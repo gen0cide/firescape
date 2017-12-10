@@ -1,0 +1,51 @@
+{{infobox monster
+|Released = [[20 August]] [[2003]]
+|Update = New - Legends Quest!
+|Members = Yes
+| name         = Shadow Warrior
+| image        = [[File:ShadowWarrior.PNG]]
+| Combat       = 64
+| Hitpoints    = 67
+| Aggressive   = 3
+| Poisonous    = No  
+| Poisonable   =
+| Max hit      = 6
+| Examine      = A sinsistar{{sic}} shadowy figure
+}}
+'''Shadow Warriors''' are [[monster]]s that are only found within the [[Legends' Guild]] basement. They are commonly killed by high level players because they sometimes drop the left [[Half Dragon Square Shield|half dragon square shield]].
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 30|Rarity = Common}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 2|Rarity = Common}}
+{{DropsTableLine|Image = Death-Rune|Item = Death-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Blood-Rune|Item = Blood-Rune|Quantity = 1|Rarity = Uncommon}}
+|}
+
+===Weapon & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Black throwing knife|Item = Black throwing knife|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Black robe|Item = Black robe|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Adamantite Spear|Item = Adamantite Spear|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Black Long Sword|Item = Black Long Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Poisoned Black dagger|Item = Poisoned Black dagger|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Rune Spear|Item = Rune Spear|Quantity = 1|Rarity = Very rare}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+===Other drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 8|Rarity = Common}}
+{{DropsTableLine|Image = Mithril bar|Item = Mithril bar|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Weapon poison|Item = Weapon poison|Quantity = 1|Rarity = Rare}}
+|}
+
+{{Warriors}}

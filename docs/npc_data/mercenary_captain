@@ -1,0 +1,26 @@
+{{infobox monster
+|Released      = [[14 April]] [[2003]]
+|Update        = New Throwing Weapons!
+|Members       = Yes
+| name         = Mercenary Captain
+| image        = [[File:Mercenary_Captain.png]]
+| Combat       = 64
+| Hitpoints    = 80
+| Aggressive   = 2
+| Poisonous    = No
+| Max hit      = 5
+| Examine      = He's in control of the local guards.
+}} 
+The '''Mercenary Captain''' is the leader of all of the [[Mercenary|Mercenaries]] in the [[Desert Mining Camp]], and is hired to guard the entrance of it to prevent people accessing the camp and discovering the slave-trade that was going on there. The Mercenary Captain plays a role in the [[Tourist Trap]] quest, in which he must be provoked to the point of outrage so that he initiates [[combat]] with the player himself, rather than having his mercenaries do his dirty work for him. After being killed by the player, the Captain drops a [[Metal key]] which can open the gate to the Desert Mining Camp.
+
+==Locations==
+*[[Desert Mining Camp]] gate
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Metal Key|Item = Metal Key|Quantity = 1|Rarity = Always}}
+|}
+
+{{stub}}
+{{TouristTrap}}

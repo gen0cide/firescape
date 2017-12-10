@@ -1,0 +1,24 @@
+{{Infobox monster
+|image = [[File:Doomion.png]]
+|Released     = [[3 March]] [[2003]]
+|Update       = New Quest Online - Part Three
+|Members      = Yes
+|Combat = 98
+|Aggressive = 3
+|Poisonous = No
+|Weakness = [[Silverlight]]
+|Max hit = 10
+|Hitpoints = 98
+|Examine = A big scary jet black demon
+}}
+
+'''Doomion''' is a powerful [[demon]] found deep in the [[Underground Pass]]. Players must defeat him (along with [[Holthion]] and [[Othanian]]) during the quest to obtain the amulet used as a key for a [[chest]] that contains [[Shadow of Iban]].
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image=Ashes|Item=Ashes|Quantity=1|Rarity=Always}}
+{{DropsTableLine|Image=Amulet of Doomion|Item=Amulet of Doomion|Quantity=1|Rarity=During quest}}
+|}
+
+{{UndergroundPass}}
+{{demons}}

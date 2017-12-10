@@ -1,0 +1,55 @@
+{{Infobox monster
+| name         = Thug
+| image        = [[File:Thug.png]]
+| Update       = Latest RuneScape News (18 March 2002)
+| Released     = [[18 March]] [[2002]]
+| Combat       = 18
+| Hitpoints    = 18
+| Aggressive   = 3
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = None
+| Examine      = He likes hitting things
+}}
+
+'''Thugs''' are aggressive [[monster]]s found in the [[Edgeville dungeon]] and in level 5 [[wilderness]] north of Edgeville. They are a decent source of nature-runes for lower levels, and grant good experience for lower levels. Thugs are aggressive and attack players on sight because they are located in the wilderness. This makes killing them a relatively efficient to train combat skills at lower levels, however higher level players may experience there are too few Thugs to be worthwhile.
+
+==Locations==
+* Level 5 wilderness north of Edgeville
+
+*[[Edgeville dungeon]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Death-Rune|Item = Death-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Blood-Rune|Item = Blood-Rune|Quantity = 1|Rarity = Rare}}
+|}
+===Weapon & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Iron battle Axe|Item = Iron battle Axe|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Steel Axe|Item = Steel Axe|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Medium Iron Helmet|Item = Medium Iron Helmet|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Iron battle Axe|Item = Iron battle Axe|Quantity = 1|Rarity = Common}}
+|}
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = Unknown|Rarity = Common}}
+{{DropsTableLine|Image = Coal|Item = Coal|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron ore|Item = Iron ore|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Iron bar|Item = Iron bar|Quantity = 1|Rarity = Common}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}

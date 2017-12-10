@@ -1,0 +1,54 @@
+{{infobox monster
+|name = White Knight
+|image = [[File:White knight.png]]
+|Released = [[6 April]] [[2001]]
+|Update = Massive update!
+|Combat = 56
+|Hitpoints = 52
+|Aggressive = 1
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = A chivalrous knight
+|Max hit = 7}}
+A '''White Knight''' is a [[Aggression|non-aggressive]] human [[monster]] found in [[Falador]] roaming in and around the [[White Knights Castle|White Knight's Castle]].
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+=== Runes ===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 20|Rarity = Uncommon}}
+{{DropsTableLine|Image = Body-Rune|Item = Body-Rune|Quantity = 8|Rarity = Uncommon}}
+{{DropsTableLine|Image = Mind-Rune|Item = Mind-Rune|Quantity = 3|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 2|Rarity = Rare}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 3|Rarity = Rare}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 1|Rarity = Rare}}
+|}
+
+===Weapon & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Longbow|Item = Longbow|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Iron Long Sword|Item = Iron Long Sword|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Steel Short Sword|Item = Steel Short Sword|Quantity = 1|Rarity = Uncommon}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 8, 15, 48, 70|Rarity = Common}}
+{{DropsTableLine|Image = Iron bar|Item = Iron bar|Quantity = 2-3|Rarity = Common}}
+{{DropsTableLine|Image = Iron ore|Item = Iron ore|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Flourpot|Item = Flour|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Half an apple pie|Item = Half an apple pie|Quantity = 1|Rarity = Uncommon}}
+|}
+
+==Trivia==
+*In [[RuneScape 2]], White Knights stay within the [[White Knights Castle]], unlike RuneScape Classic in which they wander all of Falador.
+*A White Knight's armour has a different shade of grey than [[steel]] or [[iron]] armour.
+{{Knights|state=collapsed}}

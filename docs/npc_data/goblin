@@ -1,0 +1,126 @@
+{{Infobox monster
+| name         = Goblin
+| image        = [[File:Wormbrain.png]]
+| Released     = [[4 January]] [[2001]]
+| Update       = Runescape beta is now online!
+| Combat       = 7
+| Hitpoints    = 5
+| Aggressive   = 1
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 1
+| Weakness     =
+| Examine      = An ugly green creature
+}}
+
+{{Infobox monster
+| name         = Goblin
+| image        = [[File:Goblin.png]]
+| Released     = [[6 April]] [[2001]]
+| Update       = Massive update!
+| Combat       = 13
+| Hitpoints    = 12
+| Aggressive   = 1
+| Members      = No
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Weakness     =
+| Examine      = An ugly green creature
+}}
+
+{{Infobox monster
+| name         = Goblin
+| image        = [[File:Goblin.png]]
+| Released     = [[17 March]] [[2003]]
+| Update       = Observatory Quest online!
+| Combat       = 19
+| Hitpoints    = 16
+| Aggressive   = 3
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Weakness     =
+| Examine      = These goblins have grown strong
+}}
+'''Goblins''' are a common [[monster]] for new players to train on. There are many wandering around in [[Lumbridge]], where players start, so they are commonly one of the first monsters players will ever kill. They are great monsters to train on because they are weak, making them easy to kill. Although these monsters are great to train on and gain profit from at lower levels, not many players kill them.
+
+== Locations==
+===Level 7===
+*Around [[Lumbridge]]
+*East [[Draynor]] (only 1 in Wheat Field)
+*West of [[Port Sarim Jail]]
+*[[Goblin Cave]] near the [[Fishing Guild]]
+===Level 13===
+*Just west of [[Varrock]]
+*[[Goblin Village]]
+*Around [[Taverley]]
+*Northwest of [[Ardougne]]
+*[[Goblin Cave]] near the [[Fishing Guild]]
+*[[Tree Gnome Village]]
+*[[Observatory dungeon]] and a goblin settlement northeast of [[Observatory]]
+
+===Level 19===
+*[[Observatory dungeon]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = always}}
+|}
+
+===Other drops (Level 7)===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1, 5|Rarity = Very Common}}
+{{DropsTableLine|Image = Body-Rune|Item = Body-rune|Quantity = 1-7|Rarity = Very Common}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-rune|Quantity = 1-4|Rarity = Common}}
+{{DropsTableLine|Image = Crossbow bolts|Item = Crossbow bolts|Quantity = 1-8|Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune|Item = Earth-rune|Quantity = 1-3|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Spear|Item = Bronze spear|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Goblin Armour|Item = Goblin armour|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Square Shield|Item = Bronze square shield|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Beer|Item = Beer|Quantity = 1|Rarity = Semi-rare}}
+{{DropsTableLine|Image = Brass necklace|Item = Brass Necklace|Quantity = 1|Rarity = Semi-rare}}
+{{DropsTableLine|Image = Chef's hat|Item = Chef's hat|Quantity = 1|Rarity = Semi-rare}}
+{{DropsTableLine|Image = Shortbow|Item = Shortbow|Quantity = 1|Rarity = Semi-rare}}
+|}
+
+====Notes====
+
+* [[Goblin armour]] and [[bronze spear]]s are dropped at the same time.
+* About 12% of runes dropped are [[earth rune]]s, 35% are [[water rune]]s, and the rest are [[body rune]]s.
+* Water runes and [[crossbow bolt]]s are dropped at around the same rate as each other.
+* However, body runes are only dropped at around 13% of the rate of coins.
+* [[Chef's hat]]s are dropped at 13% of the rate of earth runes.
+
+
+
+===Other drops (level 13)===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1-16|Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune|Item = Earth-rune|Quantity = 3|Rarity = Common}}
+{{DropsTableLine|Image = Body-Rune|Item = Body-rune|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Mind-Rune|Item = Mind-rune |Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-rune |Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-rune|Quantity = 1|Rarity = Unknown}}
+{{DropsTableLine|Image = Grapes|Item = Grapes|Quantity = 1|Rarity = Unknown}}
+{{DropsTableLine|Image = Cape (red)|Item = Cape (red)|Quantity = 1|Rarity = Unknown}}
+{{DropsTableLine|Image = Bronze Scimitar|Item = Bronze scimitar|Quantity = 1|Rarity = Unknown}}
+{{DropsTableLine|Image = Herb|Item = Herb|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Spear|Item = Bronze spear|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Goblin Armour|Item = Goblin Armour|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Arrows|Item = Bronze arrows|Quantity = 7|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Axe|Item = Bronze axe|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Tin ore|Item = Tin ore|Quantity = 1|Rarity = Uncommon}}
+|}
+
+==Gallery==
+<gallery>
+Goblin.gif|Concept art of a goblin
+</gallery>
+
+{{Goblins}}
+{{GoblinDiplomacy|state=collapsed}}
+{{DwarfCannon|state=collapsed}}

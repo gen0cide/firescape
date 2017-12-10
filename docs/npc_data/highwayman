@@ -1,0 +1,29 @@
+{{Infobox monster
+|name       = Highwayman
+|image      = [[File:Highwayman.png]]
+|Released   = [[4 January]] [[2001]]
+|Update     = Runescape beta is now online!
+|Combat     = 13
+|Hitpoints  = 13
+|Aggressive = 3
+|Members    = No
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 2
+|Weakness   =
+|Examine    = He holds up passers by
+}}
+
+The '''Highwayman''' is a [[monster]] found in various locations around [[RuneScape Classic]] that will attack players as they pass by.
+
+==Locations==
+*North of [[Seer's Village]]
+*South of [[Falador]]
+*North of [[Lumbridge]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+{{DropsTableLine|Image = Cape (black)| Item = Cape| Quantity = 1| Rarity = Always}}
+|}

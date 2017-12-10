@@ -1,0 +1,29 @@
+{{Infobox monster
+| name       = Jailer
+| image      = [[File:Jailer.png]]
+| Released   = [[27 February]] [[2002]]
+| Update     = Latest RuneScape News (27 February 2002)
+| Combat     = 51
+| Hitpoints  = 47
+| Aggressive = 3
+| Members    = Yes
+| Poisonous  = No
+| Poisonable = Yes
+| Max hit    = 5
+| Weakness   = None
+| Examine    = Guards prisoners for the black knights
+}}
+
+The '''Jailer''' is a [[monster]] who guards the [[Black Knight]] jail deep in the [[Taverley dungeon]]. After he is killed he drops a key that unlocks the cell. Once inside the cell players can obtain the [[dusty key]] which is required for accessing the dungeon further. This step is completed during the [[Hero's Quest]].
+
+==Locations==
+*[[Taverley dungeon]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Jail keys|Item = Jail keys|Quantity = 1|Rarity = Always}}
+|}
+
+{{HerosQuest}}

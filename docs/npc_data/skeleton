@@ -1,0 +1,186 @@
+{{Infobox monster
+|name = Skeleton
+|image = [[Image:Skeleton.png]]
+|Released = [[4 January]] [[2001]]
+|Update = Runescape beta is now online!
+|Combat = 19
+|Hitpoints = 18
+|Aggressive = 1
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = It rattles as it walks
+|Max hit =
+|Weakness = [[Crumble undead]]
+}}
+
+{{Infobox monster
+|name = Skeleton
+|image = [[Image:Skeleton.png]]
+|Released = [[4 January]] [[2001]]
+|Update = Runescape beta is now online!
+|Combat = 21
+|Hitpoints = 17
+|Aggressive = 2
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = It rattles as it walks
+|Max hit =
+|Weakness = [[Crumble undead]]
+}}
+
+{{Infobox monster
+|name = Skeleton
+|image = [[Image:Skeleton.png]]
+|Released = [[4 January]] [[2001]]
+|Update = Runescape beta is now online!
+|Combat = 25
+|Hitpoints = 24
+|Aggressive = 3
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = It rattles as it walks
+|Max hit = 3
+|Weakness = [[Crumble undead]]
+}}
+
+{{Infobox monster
+|name = Skeleton
+|image = [[Image:Skeleton (with scimitar).png]]
+|Update = Runescape beta is now online!
+|Released = [[4 January]] [[2001]]
+|Combat = 31
+|Hitpoints = 29
+|Aggressive = 3
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = It rattles as it walks
+|Max hit =
+|Weakness = [[Crumble undead]]
+}}
+
+{{Infobox monster
+|name = Skeleton
+|image = [[Image:Skeleton (with scimitar).png]]
+|Released = [[4 January]] [[2001]]
+|Update = Runescape beta is now online!
+|Combat = 54
+|Hitpoints = 59
+|Aggressive = 3
+|Members = No
+|Poisonous = No
+|Poisonable = Yes
+|Examine = A Taller than normal skeleton
+|Max hit = 5
+|Weakness = [[Crumble undead]]
+}}
+
+'''Skeletons''' are [[monster]]s which reside throughout [[RuneScape Classic]]. They can easily kill an unsuspecting player that wanders through the wrong section of the [[wilderness]] or into the [[Taverley dungeon]]. They are the first monster encountered when a player enters the [[Taverley dungeon]]. While skeletons can be dangerous (and even lethal) to lower-leveled players, many medium and high-leveled players train on skeletons with ease.
+
+A skeleton will also attack the player during [[The Restless Ghost]] quest.
+
+==Locations==
+*[[Crandor]] (level 31s) and [[Crandor and Karamja dungeon]]
+*[[Draynor Manor]]
+*[[Edgeville Dungeon]] (Level 21, 25, 54)
+*[[Kharazi Jungle]] dungeon inside [[Strange Barrel]]s.
+*West of the [[Legends Guild]]
+*[[Taverley dungeon|Taverley (or members) Dungeon]]
+*[[Varrock sewers]]
+*Bottom of [[Wizards' Tower]]
+*[[Temple of Ikov]] (level 54)
+*South of the [[Temple of Ikov]] (level 25)
+*[[Wilderness|The Wilderness]]
+*[[Yanille Agility Dungeon]] (Level 54)
+
+==Drops (level 21)==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1-6|Rarity = Common}}
+{{DropsTableLine|Image = Leather Gloves|Item = Leather Gloves|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 2|Rarity = Common}}
+{{DropsTableLine|Image = Earth-Rune|Item = Earth-Rune|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Mind-Rune|Item = Mind-Rune|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 2|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Arrows|Item = Bronze Arrow|Quantity = Unknown|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Mace|Item = Iron Mace|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Medium Bronze Helmet|Item = Medium Bronze Helmet|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Bronze Chain Mail Body|Item = Bronze Chain Mail Body|Quantity = 1|Rarity = Rare}}
+|}
+
+{{HerbDropTable}}
+
+==Drops (level 25)==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 2-48|Rarity = Common}}
+{{DropsTableLine|Image = Bronze Arrows|Item = Bronze Arrow|Quantity = 2-5|Rarity = Uncommon}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 8|Rarity = Uncommon}}
+{{DropsTableLine|Image = Fire-Rune|Item = Fire-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Earth-Rune|Item = Earth-Rune|Quantity = 2|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 2|Rarity = Rare}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 2|Rarity = Rare}}
+{{DropsTableLine|Image = Iron ore|Item = Iron ore|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Bronze Short Sword|Item = Bronze Short Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron dagger|Item = Iron dagger|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Grain|Item = Grain|Quantity = 1|Rarity = Unknown}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+==Drops (level 31)==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1, 5, 10, 25, 45, 65|Rarity = Common}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 10|Rarity = Uncommon}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 6|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 3|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Iron Axe|Item = Iron Axe|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Scimitar|Item = Iron Scimitar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Short Sword|Item = Iron Short Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Medium Iron Helmet|Item = Medium Iron Helmet|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze Chain Mail Body|Item = Bronze Chain Mail Body|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze bar|Item = Bronze bar|Quantity = 1|Rarity = Uncommon}}
+|}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+==Drops (level 54)==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1, 5, 10, 25, 45, 65|Rarity = Common}}
+{{DropsTableLine|Image = Iron Axe|Item = Iron Axe|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Iron Scimitar|Item = Iron Scimitar|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron Short Sword|Item = Iron Short Sword|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron 2-handed Sword|Item = Iron 2-handed Sword|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Medium Iron Helmet|Item = Medium Iron Helmet|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Bronze Chain Mail Body|Item = Bronze Chain Mail Body|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Bronze bar|Item = Bronze bar|Quantity = 1|Rarity = Common}}
+|}
+''This list is not complete. Please contribute and add more drops.''
+
+===Runes===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Air-Rune|Item = Air-Rune|Quantity = 10|Rarity = Common}}
+{{DropsTableLine|Image = Water-Rune|Item = Water-Rune|Quantity = 6|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 3|Rarity = Uncommon}}
+{{DropsTableLine|Image = Death-Rune|Item = Death-Rune|Quantity = 3|Rarity = Rare}}
+{{DropsTableLine|Image = Nature-Rune|Item = Nature-Rune|Quantity = 1|Rarity = Rare}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 1-2|Rarity = Rare}}
+|}
+{{HerbDropTable}}
+{{RareDropTable}}
+
+{{Restlessghost|state=collapsed}}
+{{Digsite|state=collapsed}}
+{{WaterfallQuest|state=collapsed}}
+{{Undead}}

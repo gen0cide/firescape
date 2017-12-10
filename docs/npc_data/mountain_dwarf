@@ -1,0 +1,59 @@
+{{infobox monster
+|Released      = [[28 May]] [[2002]]
+|Update        = Latest RuneScape News (28 May 2002)
+|Members       = Yes
+| name         = Mountain Dwarf
+| image        = [[File:Mountain Dwarf.png]]
+| Combat       = 28
+| Hitpoints    = 26
+| Aggressive   = 1
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     =
+| Examine      = A short angry guy.
+}}
+'''Mountain Dwarves''' are one of the various [[Dwarf|dwarves]] in [[RuneScape Classic]].
+
+Mountain Dwarves are located in the [[Dwarven tunnel]] below [[White Wolf Mountain]] which connects [[Taverly|Taverley]] and [[Catherby]]. The completion of the quest [[Fishing contest]] is required to enter this tunnel.
+
+== See also ==
+* [[Dwarf]]
+
+==Drops==
+===100%===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones| Item = Bones| Quantity = 1| Rarity = Always}}
+|}
+===Ores===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Tin ore| Item = Tin ore| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron ore| Item = Iron ore| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Coal| Item = Coal| Quantity = 1| Rarity = Rare}}
+{{DropsTableLine|Image = Copper ore| Item = Copper ore| Quantity = 1| Rarity = Rare}}
+|}
+===Bars===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bronze bar| Item = Bronze bar| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Iron bar| Item = Iron bar| Quantity = 1| Rarity = Uncommon}}
+|}
+
+===Weapons & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Medium Bronze Helmet| Item = Medium Bronze Helmet| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Bronze battle Axe| Item = Bronze battle Axe| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Iron battle Axe| Item = Iron battle Axe| Quantity = 1| Rarity = Rare}}
+|}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins| Item = Coins| Quantity = 4, 10, 30| Rarity = Common}}
+{{DropsTableLine|Image = Hammer| Item = Hammer| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Bronze Pickaxe| Item = Bronze pickaxe| Quantity = 1| Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune| Item = Chaos-Rune| Quantity = 1| Rarity = Uncommon}}
+{{DropsTableLine|Image = Nature-Rune| Item = Nature-Rune| Quantity = 1| Rarity = Uncommon}}
+|}
+
+{{RareDropTable}}
+{{Dwarves}}
+{{FishingContest}}

@@ -1,0 +1,44 @@
+{{Infobox monster
+| name         = Souless
+| image        = [[File:Souless.png]]
+| Released     = [[3 March]] [[2003]]
+| Update       = New Quest Online - Part Three
+| Combat       = 16
+| Hitpoints    = 16
+| Aggressive   = 2
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 2
+| Weakness     = [[Crumble undead]]
+| Examine      = He seems an empty shell
+}}
+{{Infobox monster
+| name         = Souless
+| image        = [[File:Souless.png]]
+| Released     = [[3 March]] [[2003]]
+| Update       = New Quest Online - Part Three
+| Members      = Yes
+| Combat       = 24
+| Hitpoints    = 24
+| Aggressive   = 3
+| Poisonous    = No
+| Poisonable   = Yes
+| Max hit      = 3
+| Weakness     = [[Crumble undead]]
+| Examine      = A servent{{sic}} to zamorak
+}}
+
+'''Souless''' are [[monster|monsters]] encountered in the [[Underground Pass (location)|Underground Pass]] during the quest, [[Underground Pass]]. They are servants of [[Iban]] and appear to be a deformed humanoid life form.
+
+== Combat training ==
+They are sometimes used for melee [[combat]] training, but they are in a location that is time consuming to travel to, which makes them unpopular with some players. They drop nothing other than bones.
+
+==Drops==
+===100% Drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+{{UndergroundPass}}
+{{Undead}}

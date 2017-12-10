@@ -1,0 +1,30 @@
+{{Infobox monster
+| name         = Black Knight titan
+| image        = [[File:Black Knight Titan.png]]
+| Released     = [[23 July]] [[2002]]
+| Update       = Members' quests
+| Combat       = 146
+| Hitpoints    = 142
+| Aggressive   = 1
+| Members      = Yes
+| Poisonous    = No
+| Poisonable   = No
+| Max hit      = 15
+| Examine      = He is blocking the way
+}}
+
+The '''Black Knight titan''' is a [[monster]] encountered during [[The Holy Grail]] quest. The last damage the players deals to him must be done with [[Excalibur]] in order to defeat him, but during this stage he does not move and can be killed more easily using [[ranged]] or [[magic]]. His appearance is that of a larger [[Black Knight]].
+
+==Locations==
+*[[Fisherking Realm]]
+
+==Drops==
+===100% drops===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+{{DropsTableLine|Image = Ashes|Item = Ashes|Quantity = 1|Rarity = Always}}
+|}
+
+{{stub}}
+{{TheHolyGrail}}
+{{Knights}}

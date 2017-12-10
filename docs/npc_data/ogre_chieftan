@@ -1,0 +1,23 @@
+{{Infobox monster
+| Name       = Ogre Chieftan
+| Image      = [[File:Ogre Chieftain.png]]
+| Combat     = 78
+| Released   = [[7 May]] [[2003]]
+| Update     = New - Watch Tower Quest!
+| Members    = Yes
+| Hitpoints  = 80
+| Aggressive = 3
+| Poisonous  = No
+| Poisonable = Yes
+| Max hit    = 9
+| Examine    = A slightly bigger uglier ogre
+}}
+
+'''Ogre Chieftains''' are [[monster]]s found in [[Gu'tanoth]]. They can also be found guarding and inside the [[Ogre Enclave]]. These have a slow [[respawn]] rate, high [[Hits|health]], hit frequently and have no drops other than bones, making them not very good for training.
+
+==Drops==
+{{DropsTableHead}}
+{{DropsTableLine|Image = Big Bones|Item = Big Bones|Quantity = 1|Rarity = Always}}
+|}
+
+{{Ogres}}

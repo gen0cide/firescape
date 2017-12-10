@@ -1,0 +1,52 @@
+{{Infobox monster
+|name       = Renegade knight
+|image      = [[File:Renegade knight.png]]
+|Released   = [[27 February]] [[2002]]
+|Update     = Latest RuneScape News (27 February 2002)
+|Combat     = 51
+|Hitpoints  = 48
+|Aggressive = 3
+|Members    = Yes
+|Poisonous  = No
+|Poisonable = Yes
+|Max hit    = 7
+|Examine    = He isn't very friendly
+}}
+
+The '''Renegade knights''' are [[monster]]s located in [[Keep LeFaye]] and featured during the [[Merlin's Crystal]] quest. They drop the same items as regular [[Black Knight]]s.
+
+==Drops==
+=== 100% drop===
+{{DropsTableHead}}{{DropsTableLine|Image = Bones|Item = Bones|Quantity = 1|Rarity = Always}}
+|}
+
+=== Runes ===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Earth-Rune|Item = Earth-Rune|Quantity = 7|Rarity = Common}}
+{{DropsTableLine|Image = Body-Rune|Item = Body-Rune|Quantity = 6|Rarity = Common}}
+{{DropsTableLine|Image = Chaos-Rune|Item = Chaos-Rune|Quantity = 4|Rarity = Uncommon}}
+{{DropsTableLine|Image = Death-Rune|Item = Death-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Cosmic-Rune|Item = Cosmic-Rune|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Law-Rune|Item = Law-Rune|Quantity = 2|Rarity = Uncommon}}
+
+===Weapons & Armour===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Shortbow|Item = Shortbow|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Iron Short Sword|Item = Iron Short Sword|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Large Iron Helmet|Item = Large Iron Helmet|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Steel Mace|Item = Steel Mace|Quantity = 1|Rarity = Uncommon}}
+
+{{HerbDropTable}}
+{{RareDropTable}}
+
+===Other===
+{{DropsTableHead}}
+{{DropsTableLine|Image = Coins|Item = Coins|Quantity = 1-58|Rarity = Common}}
+{{DropsTableLine|Image = Steel bar|Item = Steel bar|Quantity = 1|Rarity = Common}}
+{{DropsTableLine|Image = Flour|Item = Flour|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Tin ore|Item = Tin ore|Quantity = 1|Rarity = Uncommon}}
+{{DropsTableLine|Image = Bread|Item = Bread|Quantity = 1|Rarity = Rare}}
+
+{{Stubs}}
+{{MerlinsCrystal}}
+{{Knights|state=collapsed}}
