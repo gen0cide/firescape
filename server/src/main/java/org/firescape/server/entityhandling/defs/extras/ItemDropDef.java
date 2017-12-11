@@ -1,7 +1,5 @@
 package org.firescape.server.entityhandling.defs.extras;
 
-import org.firescape.server.entityhandling.defs.EntityDef;
-
 public class ItemDropDef {
 
   public int id;

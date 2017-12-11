@@ -253,6 +253,7 @@ public class Server {
     try {
       launchServer();
     } catch (Exception e) {
+
     }
   }
 

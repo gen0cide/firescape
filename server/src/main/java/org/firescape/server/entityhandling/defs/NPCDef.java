@@ -1,8 +1,6 @@
 package org.firescape.server.entityhandling.defs;
 
 import org.firescape.server.entityhandling.defs.extras.ItemDropDef;
-import org.firescape.server.model.Item;
-import org.firescape.server.model.World;
 import org.firescape.server.util.DataConversions;
 
 /**

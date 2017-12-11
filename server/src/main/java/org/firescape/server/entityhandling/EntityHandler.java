@@ -2,15 +2,17 @@ package org.firescape.server.entityhandling;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.firescape.server.GameEngine;
+import org.firescape.server.db.*;
 import org.firescape.server.entityhandling.defs.*;
 import org.firescape.server.entityhandling.defs.extras.*;
 import org.firescape.server.model.Point;
 import org.firescape.server.model.TelePoint;
+import org.firescape.server.util.Formulae;
 import org.firescape.server.util.PersistenceManager;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,6 +57,7 @@ public class EntityHandler {
   private static final HashMap<Integer, ObjectMiningDef> objectMining;
   private static final HashMap<Integer, ObjectWoodcuttingDef> objectWoodcutting;
   private static final HashMap<Integer, ObjectFishingDef[]> objectFishing;
+  public static Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 
   static {
     doors = (DoorDef[]) PersistenceManager.load("defs/DoorDef.xml.gz");
@@ -102,10 +105,6 @@ public class EntityHandler {
     certers = (HashMap<Integer, CerterDef>) PersistenceManager.load("defs/extras/NpcCerters.xml.gz");
   }
 
-  public static Gson gson = new GsonBuilder().setPrettyPrinting()
-                                             .serializeNulls()
-                                             .create();
-
   public static void indexEntityArray(Object[] oa) {
     for (int i = 0; i < oa.length; i++) {
       EntityDef ed = (EntityDef) oa[i];
@@ -114,37 +113,265 @@ public class EntityHandler {
   }
 
   public static void writeGameDefs() {
-    writeGameDef("doors", doors);
-    writeGameDef("game_objects", gameObjects);
-    writeGameDef("npcs", npcs);
-    writeGameDef("prayers", prayers);
-    writeGameDef("items", items);
-    writeGameDef("spells", spells);
-    writeGameDef("tiles", tiles);
-    writeGameDef("key_chest_loots", keyChestLoots);
-    writeGameDef("herbs_advanced", herbSeconds);
-    writeGameDef("dart_tips", dartTips);
-    writeGameDef("gems", gems);
-    writeGameDef("logcutting", logCut);
-    writeGameDef("bow_stringing", bowString);
-    writeGameDef("arrow_heads", arrowHeads);
-    writeGameDef("firemaking", firemaking);
-    writeGameDef("item_affected_types", itemAffectedTypes);
-    writeGameDef("item_wieldable", itemWieldable);
-    writeGameDef("item_unidentify_herb", itemUnIdentHerb);
-    writeGameDef("item_herb", itemHerb);
-    writeGameDef("item_heals", itemEdibleHeals);
-    writeGameDef("item_cooking", itemCooking);
-    writeGameDef("item_smelting", itemSmelting);
-    writeGameDef("item_smithing", itemSmithing);
-    writeGameDef("item_crafting", itemCrafting);
-    writeGameDef("object_mining", objectMining);
-    writeGameDef("object_woodcutting", objectWoodcutting);
-    writeGameDef("object_fishing", objectFishing);
-    writeGameDef("spell_aggressive_levels", spellAggressiveLvl);
-    writeGameDef("object_telepoints", objectTelePoints);
-    writeGameDef("certers", certers);
+    GameEngine.OpenDB();
+    saveDoors();
+    System.out.println("Saved Doors");
+    saveGameObjects();
+    System.out.println("Saved Game Objects");
+    saveItems();
+    System.out.println("Saved Items");
+    saveNPCs();
+    System.out.println("Saved NPCs");
+    savePrayers();
+    System.out.println("Saved Prayers");
+    saveSpells();
+    System.out.println("Saved Spells");
+    saveStats();
+    System.out.println("Saved Stats");
+    saveTiles();
+    System.out.println("Saved Tiles");
+    GameEngine.CloseDB();
+    //    writeGameDef("doors", doors);
+    //    writeGameDef("game_objects", gameObjects);
+    //    writeGameDef("npcs", npcs);
+    //    writeGameDef("prayers", prayers);
+    //    writeGameDef("items", items);
+    //    writeGameDef("spells", spells);
+    //    writeGameDef("tiles", tiles);
+    //    writeGameDef("key_chest_loots", keyChestLoots);
+    //    writeGameDef("herbs_advanced", herbSeconds);
+    //    writeGameDef("dart_tips", dartTips);
+    //    writeGameDef("gems", gems);
+    //    writeGameDef("logcutting", logCut);
+    //    writeGameDef("bow_stringing", bowString);
+    //    writeGameDef("arrow_heads", arrowHeads);
+    //    writeGameDef("firemaking", firemaking);
+    //    writeGameDef("item_affected_types", itemAffectedTypes);
+    //    writeGameDef("item_wieldable", itemWieldable);
+    //    writeGameDef("item_unidentify_herb", itemUnIdentHerb);
+    //    writeGameDef("item_herb", itemHerb);
+    //    writeGameDef("item_heals", itemEdibleHeals);
+    //    writeGameDef("item_cooking", itemCooking);
+    //    writeGameDef("item_smelting", itemSmelting);
+    //    writeGameDef("item_smithing", itemSmithing);
+    //    writeGameDef("item_crafting", itemCrafting);
+    //    writeGameDef("object_mining", objectMining);
+    //    writeGameDef("object_woodcutting", objectWoodcutting);
+    //    writeGameDef("object_fishing", objectFishing);
+    //    writeGameDef("spell_aggressive_levels", spellAggressiveLvl);
+    //    writeGameDef("object_telepoints", objectTelePoints);
+    //    writeGameDef("certers", certers);
     return;
+  }
+
+  public static void saveDoors() {
+    int id = 0;
+    for (DoorDef door : doors) {
+      Door d = new Door();
+      d.set("id",
+            id,
+            "name",
+            door.name,
+            "description",
+            door.description,
+            "command1",
+            door.command1,
+            "command2",
+            door.command2,
+            "door_type",
+            door.doorType,
+            "unknown",
+            door.unknown,
+            "model_var1",
+            door.modelVar1,
+            "model_var2",
+            door.modelVar2,
+            "model_var3",
+            door.modelVar3
+      );
+      d.insert();
+      id++;
+    }
+  }
+
+  public static void saveGameObjects() {
+    int id = 0;
+    for (GameObjectDef obj : gameObjects) {
+      GameObject go = new GameObject();
+      go.set("id",
+             id,
+             "name",
+             obj.name,
+             "description",
+             obj.description,
+             "command1",
+             obj.command1,
+             "command2",
+             obj.command2,
+             "object_type",
+             obj.type,
+             "width",
+             obj.width,
+             "height",
+             obj.height,
+             "ground_item_var",
+             obj.groundItemVar,
+             "object_model",
+             obj.objectModel
+      );
+      go.insert();
+      id++;
+    }
+  }
+
+  public static void saveItems() {
+    int id = 0;
+    for (ItemDef obj : items) {
+      Item i = new Item();
+      i.set("id",
+            id,
+            "name",
+            obj.name,
+            "description",
+            obj.description,
+            "command",
+            obj.command,
+            "sprite_id",
+            obj.sprite,
+            "stackable",
+            obj.stackable,
+            "wieldable",
+            obj.wieldable,
+            "base_price",
+            obj.basePrice,
+            "picture_mask",
+            obj.pictureMask
+      );
+      i.insert();
+      id++;
+    }
+  }
+
+  public static void saveNPCs() {
+    int id = 0;
+    for (NPCDef obj : npcs) {
+      NPC n = new NPC();
+      n.set("id",
+            id,
+            "name",
+            obj.name,
+            "description",
+            obj.description,
+            "command",
+            obj.command,
+            "hair_color",
+            obj.hairColour,
+            "top_color",
+            obj.topColour,
+            "skin_color",
+            obj.skinColour,
+            "camera1",
+            obj.camera1,
+            "camera2",
+            obj.camera2,
+            "walk_model",
+            obj.walkModel,
+            "combat_model",
+            obj.combatModel,
+            "combat_sprite",
+            obj.combatSprite,
+            "hits",
+            obj.hits,
+            "attack",
+            obj.attack,
+            "defense",
+            obj.defense,
+            "strength",
+            obj.strength,
+            "respawn_time",
+            obj.respawnTime,
+            "attackable",
+            obj.attackable,
+            "aggressive",
+            obj.aggressive
+      );
+      n.insert();
+      id++;
+    }
+  }
+
+  public static void savePrayers() {
+    int id = 0;
+    for (PrayerDef obj : prayers) {
+      Prayer p = new Prayer();
+      p.set("id",
+            id,
+            "name",
+            obj.name,
+            "description",
+            obj.description,
+            "drain_rate",
+            obj.drainRate,
+            "required_level",
+            obj.reqLevel
+      );
+      p.insert();
+      id++;
+    }
+  }
+
+  public static void saveSpells() {
+    int id = 0;
+    for (SpellDef obj : spells) {
+      Spell s = new Spell();
+      s.set("id",
+            id,
+            "name",
+            obj.name,
+            "description",
+            obj.description,
+            "spell_type",
+            obj.type,
+            "required_level",
+            obj.reqLevel,
+            "experience",
+            obj.exp
+      );
+      s.insert();
+      id++;
+    }
+  }
+
+  public static void saveStats() {
+    int id = 0;
+    for (String s : Formulae.statArray) {
+      Stat st = new Stat();
+      st.set("id", id, "name", s);
+      st.insert();
+      id++;
+    }
+  }
+
+  public static void saveTiles() {
+    int id = 0;
+    for (TileDef obj : tiles) {
+      Tile t = new Tile();
+      t.set("id",
+            id,
+            "name",
+            obj.name,
+            "description",
+            obj.description,
+            "color",
+            obj.colour,
+            "object_type",
+            obj.objectType,
+            "unknown",
+            obj.unknown
+      );
+      t.insert();
+      id++;
+    }
   }
 
   public static void writeGameDef(String name, Object o) {

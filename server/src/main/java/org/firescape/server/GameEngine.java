@@ -13,7 +13,10 @@ import org.firescape.server.packethandler.PacketHandler;
 import org.firescape.server.packethandler.PacketHandlerDef;
 import org.firescape.server.util.Logger;
 import org.firescape.server.util.PersistenceManager;
+import org.javalite.activejdbc.DB;
+import org.postgresql.ds.PGSimpleDataSource;
 
+import javax.sql.DataSource;
 import java.util.TreeMap;
 
 /**
@@ -25,6 +28,8 @@ public final class GameEngine extends Thread {
    * World instance
    */
   private static final World world = World.getWorld();
+  public static DataSource dataSource;
+  public static DB dbConn;
   private static boolean running = true;
   /**
    * The packet queue to be processed
@@ -106,6 +111,21 @@ public final class GameEngine extends Thread {
     advert = advert.replaceAll("%name", p.getUsername());
     advert = advert.replaceAll("%online", String.valueOf(world.getPlayers().size()));
     return advert;
+  }
+
+  public static void OpenDB() {
+    PGSimpleDataSource ds = new PGSimpleDataSource();
+    ds.setServerName("localhost");
+    ds.setDatabaseName("firescape");
+    ds.setUser("flint");
+    ds.setPassword("");
+    ds.setApplicationName("gameserver");
+    dataSource = ds;
+    new DB("firescape").open(dataSource);
+  }
+
+  public static void CloseDB() {
+    return;
   }
 
   /**
