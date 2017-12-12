@@ -19,11 +19,11 @@ public class NPCDef extends EntityDef {
   /**
    * Colour of our hair
    */
-  public int hairColor;
+  public int hairColour;
   /**
    * Colour of our top
    */
-  public int topColor;
+  public int topColour;
   /**
    * Colour of our legs
    */
@@ -104,12 +104,12 @@ public class NPCDef extends EntityDef {
     return sprites[index];
   }
 
-  public int getHairColor() {
-    return hairColor;
+  public int getHairColour() {
+    return hairColour;
   }
 
-  public int getTopColor() {
-    return topColor;
+  public int getTopColour() {
+    return topColour;
   }
 
   public int getBottomColour() {
