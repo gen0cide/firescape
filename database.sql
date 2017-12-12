@@ -134,6 +134,7 @@ DROP INDEX "public"."player_friends_index" CASCADE;
 DROP INDEX "public"."player_ignores_index" CASCADE;
 DROP INDEX "public"."player_logs_index" CASCADE;
 DROP INDEX "public"."npc_drops_index" CASCADE;
+DROP INDEX "public"."npc_sprites_index" CASCADE;
 
 DROP TABLE "public"."npcs" CASCADE;
 DROP TABLE "public"."items" CASCADE;
@@ -188,6 +189,7 @@ DROP TABLE "public"."player_friends" CASCADE;
 DROP TABLE "public"."player_ignores" CASCADE;
 DROP TABLE "public"."player_logs" CASCADE;
 DROP TABLE "public"."npc_drops" CASCADE;
+DROP TABLD "public"."npc_sprites" CASCADE;
 
 CREATE TABLE "public"."npcs" (
 	"id" serial NOT NULL PRIMARY KEY,
@@ -888,6 +890,16 @@ CREATE TABLE "public"."npc_drops" (
 
 CREATE UNIQUE INDEX CONCURRENTLY "npc_drops_index" ON "public"."npc_drops" USING btree ("id" ASC);
 
+CREATE TABLE "public"."npc_sprites" (
+  "id" serial NOT NULL PRIMARY KEY,
+  "npc_id" integer,
+  "name" text,
+  "description" text,
+  "created_at" timestamp with time zone,
+  "updated_at" timestamp with time zone
+) WITHOUT OIDS;
+
+CREATE UNIQUE INDEX CONCURRENTLY "npc_sprites_index" ON "public"."npc_sprites" USING btree ("id" ASC);
 
 ALTER TABLE "public"."wieldable_items" ADD CONSTRAINT "fk_wieldable_items" FOREIGN KEY ("item_id") REFERENCES "public"."items" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."wieldable_item_stats" ADD CONSTRAINT "fk_wieldable_item_stats" FOREIGN KEY ("wieldable_item_id") REFERENCES "public"."wieldable_items" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -971,4 +983,4 @@ ALTER TABLE "public"."player_ignores" ADD CONSTRAINT "fk_player_ignores_1" FOREI
 ALTER TABLE "public"."player_logs" ADD CONSTRAINT "fk_player_logs" FOREIGN KEY ("player_id") REFERENCES "public"."players" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."npc_drops" ADD CONSTRAINT "fk_npc_drops" FOREIGN KEY ("npc_id") REFERENCES "public"."npcs" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."npc_drops" ADD CONSTRAINT "fk_npc_drops_1" FOREIGN KEY ("item_id") REFERENCES "public"."items" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
+ALTER TABLE "public"."npc_sprites" ADD CONSTRAINT "fk_npc_sprites" FOREIGN KEY ("npc_id") REFERENCES "public"."npcs" ("id") ON DELETE CASCADE ON UPDATE CASCADE;

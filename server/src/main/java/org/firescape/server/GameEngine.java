@@ -142,7 +142,7 @@ public final class GameEngine extends Thread {
         SaveEvent.saveAll();
       }
     });
-    EntityHandler.writeGameDefs();
+//    EntityHandler.writeGameDefs();
     while (running) {
       try {
         Thread.sleep(300);

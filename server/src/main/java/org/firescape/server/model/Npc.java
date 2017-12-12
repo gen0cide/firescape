@@ -134,9 +134,24 @@ public class Npc extends Mob {
     world.unregisterNpc(this);
     remove();
     Player owner = mob instanceof Player ? (Player) mob : null;
-    ItemDropDef newDrop = def.getNextDrop();
-    world.registerItem(new Item(newDrop.getID(), getX(), getY(), newDrop.getAmount(), owner));
-    return;
+    ItemDropDef[] drops = def.getDrops();
+    int total = 0;
+    for (ItemDropDef drop : drops) {
+      total += drop.getWeight();
+    }
+    int hit = DataConversions.random(0, total);
+    total = 0;
+    for (ItemDropDef drop : drops) {
+      if (drop.getWeight() == 0) {
+        world.registerItem(new Item(drop.getID(), getX(), getY(), drop.getAmount(), owner));
+        continue;
+      }
+      if (hit >= total && hit < (total + drop.getWeight())) {
+        world.registerItem(new Item(drop.getID(), getX(), getY(), drop.getAmount(), owner));
+        break;
+      }
+      total += drop.getWeight();
+    }
   }
 
   public void remove() {

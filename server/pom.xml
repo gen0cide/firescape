@@ -4,7 +4,7 @@
 
   <groupId>org.firescape</groupId>
   <artifactId>firescape-server</artifactId>
-  <version>3.0</version>
+  <version>4.0</version>
 
   <properties>
     <maven.compiler.source>9</maven.compiler.source>
